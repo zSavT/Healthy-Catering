@@ -1,7 +1,7 @@
 class Item
 {
-    int idItem = -1;
+    protected int idItem = -1;
 
-    string nome = "";
-    string descrizione = "";
+    protected string nome = "";
+    protected string descrizione = "";
 }
