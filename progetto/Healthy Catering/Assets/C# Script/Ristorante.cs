@@ -1,7 +1,8 @@
 public class Ristorante
 {
+    string nome = "";
+    
     int punteggio = 0;
 
-    List <OggettoQuantita<Ingrediente>> magazzino = null;
-    //List <OggettoQuantita<altro tipo di oggetto>> inventario = null;
+    List <OggettoQuantita<Ingrediente>> magazzinoIngredienti = null;
 }
