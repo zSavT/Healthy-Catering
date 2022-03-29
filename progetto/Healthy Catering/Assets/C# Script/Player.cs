@@ -1,8 +1,9 @@
-public class Player {
-    int idPlayer;
-    string nome;
+public class Player
+{
+    string nome = "";
     
-    int soldi;
+    int soldi = 0;
 
-    //inventario
+    List <OggettoQuantita<Ingrediente>> inventario = null;
+    //List <OggettoQuantita<altro tipo di oggetto>> inventario = null;
 }

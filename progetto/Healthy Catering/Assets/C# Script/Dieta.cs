@@ -1,7 +1,5 @@
-public class Patologia
+public class Dieta
 {
-    int idPatologia = -1;
-
     string nome = "";
     string descrizione = "";
 }
