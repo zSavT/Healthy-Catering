@@ -1,0 +1,16 @@
+<?xml version = "1.0"?>
+<dieta>
+   <dieta0>
+      <nome>Vegano</nome>
+      <descrizione></descrizione>
+   </dieta0>
+	
+   <dieta1>
+      <nome>Vegetariano</nome>
+      <descrizione></descrizione>
+   </dieta1>
+    <dieta2>
+        <nome>Onnivoro</nome>
+        <descrizione></descrizione>
+    </dieta2>
+</dieta>
