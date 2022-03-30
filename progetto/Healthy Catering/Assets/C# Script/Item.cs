@@ -4,4 +4,16 @@ class Item
 
     protected string nome = "";
     protected string descrizione = "";
+
+    public Item(int idItem, string nome, string descrizione)
+    {
+        this.idItem = idItem;
+        this.nome = nome;
+        this.descrizione = descrizione;
+    }
+
+    ~Item()
+    {
+        
+    }
 }
