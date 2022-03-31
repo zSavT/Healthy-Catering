@@ -1,0 +1,34 @@
+C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\prova serializza.csproj.AssemblyReference.cache
+C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\prova serializza.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\prova serializza.AssemblyInfoInputs.cache
+C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\prova serializza.AssemblyInfo.cs
+C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\prova serializza.csproj.CoreCompileInputs.cache
+C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\bin\Debug\net6.0\prova serializza.exe
+C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\bin\Debug\net6.0\prova serializza.deps.json
+C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\bin\Debug\net6.0\prova serializza.runtimeconfig.json
+C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\bin\Debug\net6.0\prova serializza.dll
+C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\bin\Debug\net6.0\prova serializza.pdb
+C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\bin\Debug\net6.0\ColinChang.MongoHelper.JsonConvert.dll
+C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\bin\Debug\net6.0\MongoDB.Bson.dll
+C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\prova serializza.csproj.CopyComplete
+C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\prova serializza.dll
+C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\refint\prova serializza.dll
+C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\prova serializza.pdb
+C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\prova serializza.genruntimeconfig.cache
+C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\ref\prova serializza.dll
+C:\Users\verio\Repo\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\prova serializza.csproj.AssemblyReference.cache
+C:\Users\verio\Repo\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\prova serializza.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\verio\Repo\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\prova serializza.AssemblyInfoInputs.cache
+C:\Users\verio\Repo\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\prova serializza.AssemblyInfo.cs
+C:\Users\verio\Repo\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\prova serializza.csproj.CoreCompileInputs.cache
+C:\Users\verio\Repo\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\prova serializza.dll
+C:\Users\verio\Repo\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\refint\prova serializza.dll
+C:\Users\verio\Repo\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\bin\Debug\net6.0\prova serializza.exe
+C:\Users\verio\Repo\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\bin\Debug\net6.0\prova serializza.deps.json
+C:\Users\verio\Repo\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\bin\Debug\net6.0\prova serializza.runtimeconfig.json
+C:\Users\verio\Repo\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\bin\Debug\net6.0\prova serializza.dll
+C:\Users\verio\Repo\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\bin\Debug\net6.0\prova serializza.pdb
+C:\Users\verio\Repo\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\prova serializza.pdb
+C:\Users\verio\Repo\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\prova serializza.genruntimeconfig.cache
+C:\Users\verio\Repo\Healthy-Catering\progetto\Healthy Catering\Assets\C# Script\prova serializza\obj\Debug\net6.0\ref\prova serializza.dll
