@@ -1,0 +1,17 @@
+<?xml version = "1.0"?>
+<OggettoQuantita>
+   <OggettoQuantita0>
+      <oggetto></oggetto>
+      <quantita></quantita>
+   </OggettoQuantita0>
+
+   <OggettoQuantita>
+    <oggetto></oggetto>
+    <quantita></quantita>
+ </OggettoQuantita1>
+	
+   <OggettoQuantita2>
+    <oggetto></oggetto>
+    <quantita></quantita>
+   </OggettoQuantita2>
+</OggettoQuantita>
