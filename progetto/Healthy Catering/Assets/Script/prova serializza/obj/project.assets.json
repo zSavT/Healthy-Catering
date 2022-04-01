@@ -2,15 +2,6 @@
   "version": 3,
   "targets": {
     "net6.0": {
-      "Json.Net/1.0.33": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Json.Net.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Json.Net.dll": {}
-        }
-      },
       "Newtonsoft.Json/13.0.1": {
         "type": "package",
         "compile": {
@@ -19,89 +10,10 @@
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
-      },
-      "Serilog/2.9.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Serilog.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Serilog.dll": {}
-        }
-      },
-      "Serilog.Formatting.Compact/1.1.1-dev-00944": {
-        "type": "package",
-        "dependencies": {
-          "Serilog": "2.9.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Serilog.Formatting.Compact.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Serilog.Formatting.Compact.dll": {}
-        }
-      },
-      "SmartFormat/3.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Memory": "4.5.4",
-          "System.ValueTuple": "4.5.0"
-        },
-        "compile": {
-          "lib/netstandard2.1/SmartFormat.ZString.dll": {},
-          "lib/netstandard2.1/SmartFormat.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.1/SmartFormat.ZString.dll": {},
-          "lib/netstandard2.1/SmartFormat.dll": {}
-        }
-      },
-      "SmartFormat.Extensions.Newtonsoft.Json/3.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.1",
-          "SmartFormat": "3.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.1/SmartFormat.Extensions.Newtonsoft.Json.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.1/SmartFormat.Extensions.Newtonsoft.Json.dll": {}
-        }
-      },
-      "System.Memory/4.5.4": {
-        "type": "package",
-        "compile": {
-          "ref/netcoreapp2.1/_._": {}
-        },
-        "runtime": {
-          "lib/netcoreapp2.1/_._": {}
-        }
-      },
-      "System.ValueTuple/4.5.0": {
-        "type": "package",
-        "compile": {
-          "ref/netcoreapp2.0/_._": {}
-        },
-        "runtime": {
-          "lib/netcoreapp2.0/_._": {}
-        }
       }
     }
   },
   "libraries": {
-    "Json.Net/1.0.33": {
-      "sha512": "5tE+db6BqhRAvITIVBeRsQorLGshPExfm4FmMRvWWAfs4RxeTbFFj2PIEybwmMW0qR30HKkXDYhq0YkDK2Jtxw==",
-      "type": "package",
-      "path": "json.net/1.0.33",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "json.net.1.0.33.nupkg.sha512",
-        "json.net.nuspec",
-        "lib/netstandard2.0/Json.Net.dll"
-      ]
-    },
     "Newtonsoft.Json/13.0.1": {
       "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
       "type": "package",
@@ -128,179 +40,27 @@
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]
-    },
-    "Serilog/2.9.0": {
-      "sha512": "QzcrD33A3+CsVvwi1I5CSei67ikQnkGrw7SscgL+vZTghaC2aNYg8fiUcedXHzKJFNjgje9rBjzwYGQTKEaXaA==",
-      "type": "package",
-      "path": "serilog/2.9.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net45/Serilog.dll",
-        "lib/net45/Serilog.xml",
-        "lib/net46/Serilog.dll",
-        "lib/net46/Serilog.xml",
-        "lib/netstandard1.0/Serilog.dll",
-        "lib/netstandard1.0/Serilog.xml",
-        "lib/netstandard1.3/Serilog.dll",
-        "lib/netstandard1.3/Serilog.xml",
-        "lib/netstandard2.0/Serilog.dll",
-        "lib/netstandard2.0/Serilog.xml",
-        "serilog.2.9.0.nupkg.sha512",
-        "serilog.nuspec"
-      ]
-    },
-    "Serilog.Formatting.Compact/1.1.1-dev-00944": {
-      "sha512": "MgSyUm8OPAdde20nM6iq+IAIrmQ++cFvvG89BClPnQMpkj53x12Y3ONCbH0eIlmPICS/ZkbM+gMQnCFBVBrLHw==",
-      "type": "package",
-      "path": "serilog.formatting.compact/1.1.1-dev-00944",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net452/Serilog.Formatting.Compact.dll",
-        "lib/net452/Serilog.Formatting.Compact.xml",
-        "lib/netstandard1.1/Serilog.Formatting.Compact.dll",
-        "lib/netstandard1.1/Serilog.Formatting.Compact.xml",
-        "lib/netstandard2.0/Serilog.Formatting.Compact.dll",
-        "lib/netstandard2.0/Serilog.Formatting.Compact.xml",
-        "serilog.formatting.compact.1.1.1-dev-00944.nupkg.sha512",
-        "serilog.formatting.compact.nuspec"
-      ]
-    },
-    "SmartFormat/3.0.0": {
-      "sha512": "zVoeAhc3Ax27Mdi13iWOHrBMIJDNf8ZIMm8bHX6PdsuBdHGcepkKS0B+2PIYI8SIppOhA+LBD4mLqAalfYCI+g==",
-      "type": "package",
-      "path": "smartformat/3.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "PkgReadMe.md",
-        "SmartFormat_365x365.png",
-        "lib/net461/SmartFormat.ZString.dll",
-        "lib/net461/SmartFormat.ZString.xml",
-        "lib/net461/SmartFormat.dll",
-        "lib/net461/SmartFormat.xml",
-        "lib/netstandard2.0/SmartFormat.ZString.dll",
-        "lib/netstandard2.0/SmartFormat.ZString.xml",
-        "lib/netstandard2.0/SmartFormat.dll",
-        "lib/netstandard2.0/SmartFormat.xml",
-        "lib/netstandard2.1/SmartFormat.ZString.dll",
-        "lib/netstandard2.1/SmartFormat.ZString.xml",
-        "lib/netstandard2.1/SmartFormat.dll",
-        "lib/netstandard2.1/SmartFormat.xml",
-        "smartformat.3.0.0.nupkg.sha512",
-        "smartformat.nuspec"
-      ]
-    },
-    "SmartFormat.Extensions.Newtonsoft.Json/3.0.0": {
-      "sha512": "zMLj48GrHOKbNtw2Sp31uf5+URBbOxJTg1GUwFzULTG39MaHg3Cwt76dPF87odqL187TASonI+R+/kZiLDZq5A==",
-      "type": "package",
-      "path": "smartformat.extensions.newtonsoft.json/3.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "PkgReadMe.md",
-        "SmartFormat_365x365.png",
-        "lib/net461/SmartFormat.Extensions.Newtonsoft.Json.dll",
-        "lib/net461/SmartFormat.Extensions.Newtonsoft.Json.xml",
-        "lib/netstandard2.0/SmartFormat.Extensions.Newtonsoft.Json.dll",
-        "lib/netstandard2.0/SmartFormat.Extensions.Newtonsoft.Json.xml",
-        "lib/netstandard2.1/SmartFormat.Extensions.Newtonsoft.Json.dll",
-        "lib/netstandard2.1/SmartFormat.Extensions.Newtonsoft.Json.xml",
-        "smartformat.extensions.newtonsoft.json.3.0.0.nupkg.sha512",
-        "smartformat.extensions.newtonsoft.json.nuspec"
-      ]
-    },
-    "System.Memory/4.5.4": {
-      "sha512": "1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
-      "type": "package",
-      "path": "system.memory/4.5.4",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/System.Memory.dll",
-        "lib/net461/System.Memory.xml",
-        "lib/netcoreapp2.1/_._",
-        "lib/netstandard1.1/System.Memory.dll",
-        "lib/netstandard1.1/System.Memory.xml",
-        "lib/netstandard2.0/System.Memory.dll",
-        "lib/netstandard2.0/System.Memory.xml",
-        "ref/netcoreapp2.1/_._",
-        "system.memory.4.5.4.nupkg.sha512",
-        "system.memory.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
-    "System.ValueTuple/4.5.0": {
-      "sha512": "okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
-      "type": "package",
-      "path": "system.valuetuple/4.5.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net461/System.ValueTuple.dll",
-        "lib/net461/System.ValueTuple.xml",
-        "lib/net47/System.ValueTuple.dll",
-        "lib/net47/System.ValueTuple.xml",
-        "lib/netcoreapp2.0/_._",
-        "lib/netstandard1.0/System.ValueTuple.dll",
-        "lib/netstandard1.0/System.ValueTuple.xml",
-        "lib/netstandard2.0/_._",
-        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
-        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.xml",
-        "lib/uap10.0.16299/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net461/System.ValueTuple.dll",
-        "ref/net47/System.ValueTuple.dll",
-        "ref/netcoreapp2.0/_._",
-        "ref/netstandard2.0/_._",
-        "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
-        "ref/uap10.0.16299/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.valuetuple.4.5.0.nupkg.sha512",
-        "system.valuetuple.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Json.Net >= 1.0.33",
-      "Newtonsoft.Json >= 13.0.1",
-      "Serilog.Formatting.Compact >= 1.1.1-dev-00944",
-      "SmartFormat.Extensions.Newtonsoft.Json >= 3.0.0"
+      "Newtonsoft.Json >= 13.0.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\verio\\.nuget\\packages\\": {}
+    "C:\\Users\\alex1\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\verio\\Repo\\Healthy-Catering\\progetto\\Healthy Catering\\Assets\\C# Script\\prova serializza\\prova serializza.csproj",
+      "projectUniqueName": "C:\\Users\\alex1\\Desktop\\Healthy-Catering\\progetto\\Healthy Catering\\Assets\\Script\\prova serializza\\prova serializza.csproj",
       "projectName": "prova serializza",
-      "projectPath": "C:\\Users\\verio\\Repo\\Healthy-Catering\\progetto\\Healthy Catering\\Assets\\C# Script\\prova serializza\\prova serializza.csproj",
-      "packagesPath": "C:\\Users\\verio\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\verio\\Repo\\Healthy-Catering\\progetto\\Healthy Catering\\Assets\\C# Script\\prova serializza\\obj\\",
+      "projectPath": "C:\\Users\\alex1\\Desktop\\Healthy-Catering\\progetto\\Healthy Catering\\Assets\\Script\\prova serializza\\prova serializza.csproj",
+      "packagesPath": "C:\\Users\\alex1\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\alex1\\Desktop\\Healthy-Catering\\progetto\\Healthy Catering\\Assets\\Script\\prova serializza\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\verio\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\alex1\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -324,21 +84,9 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
-          "Json.Net": {
-            "target": "Package",
-            "version": "[1.0.33, )"
-          },
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.1, )"
-          },
-          "Serilog.Formatting.Compact": {
-            "target": "Package",
-            "version": "[1.1.1-dev-00944, )"
-          },
-          "SmartFormat.Extensions.Newtonsoft.Json": {
-            "target": "Package",
-            "version": "[3.0.0, )"
           }
         },
         "imports": [

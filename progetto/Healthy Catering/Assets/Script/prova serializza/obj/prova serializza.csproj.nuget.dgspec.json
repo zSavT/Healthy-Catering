@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\verio\\Repo\\Healthy-Catering\\progetto\\Healthy Catering\\Assets\\C# Script\\prova serializza\\prova serializza.csproj": {}
+    "C:\\Users\\alex1\\Desktop\\Healthy-Catering\\progetto\\Healthy Catering\\Assets\\Script\\prova serializza\\prova serializza.csproj": {}
   },
   "projects": {
-    "C:\\Users\\verio\\Repo\\Healthy-Catering\\progetto\\Healthy Catering\\Assets\\C# Script\\prova serializza\\prova serializza.csproj": {
+    "C:\\Users\\alex1\\Desktop\\Healthy-Catering\\progetto\\Healthy Catering\\Assets\\Script\\prova serializza\\prova serializza.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\verio\\Repo\\Healthy-Catering\\progetto\\Healthy Catering\\Assets\\C# Script\\prova serializza\\prova serializza.csproj",
+        "projectUniqueName": "C:\\Users\\alex1\\Desktop\\Healthy-Catering\\progetto\\Healthy Catering\\Assets\\Script\\prova serializza\\prova serializza.csproj",
         "projectName": "prova serializza",
-        "projectPath": "C:\\Users\\verio\\Repo\\Healthy-Catering\\progetto\\Healthy Catering\\Assets\\C# Script\\prova serializza\\prova serializza.csproj",
-        "packagesPath": "C:\\Users\\verio\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\verio\\Repo\\Healthy-Catering\\progetto\\Healthy Catering\\Assets\\C# Script\\prova serializza\\obj\\",
+        "projectPath": "C:\\Users\\alex1\\Desktop\\Healthy-Catering\\progetto\\Healthy Catering\\Assets\\Script\\prova serializza\\prova serializza.csproj",
+        "packagesPath": "C:\\Users\\alex1\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alex1\\Desktop\\Healthy-Catering\\progetto\\Healthy Catering\\Assets\\Script\\prova serializza\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\verio\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\alex1\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -38,21 +38,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Json.Net": {
-              "target": "Package",
-              "version": "[1.0.33, )"
-            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
-            },
-            "Serilog.Formatting.Compact": {
-              "target": "Package",
-              "version": "[1.1.1-dev-00944, )"
-            },
-            "SmartFormat.Extensions.Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[3.0.0, )"
             }
           },
           "imports": [
