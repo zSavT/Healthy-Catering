@@ -1,0 +1,17 @@
+C:\Users\alex1\Desktop\Healthy-Catering\esempio scrittura e lettura oggetti in json\obj\Debug\net6.0\esempio scrittura e lettura oggetti in json.csproj.AssemblyReference.cache
+C:\Users\alex1\Desktop\Healthy-Catering\esempio scrittura e lettura oggetti in json\obj\Debug\net6.0\esempio scrittura e lettura oggetti in json.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alex1\Desktop\Healthy-Catering\esempio scrittura e lettura oggetti in json\obj\Debug\net6.0\esempio scrittura e lettura oggetti in json.AssemblyInfoInputs.cache
+C:\Users\alex1\Desktop\Healthy-Catering\esempio scrittura e lettura oggetti in json\obj\Debug\net6.0\esempio scrittura e lettura oggetti in json.AssemblyInfo.cs
+C:\Users\alex1\Desktop\Healthy-Catering\esempio scrittura e lettura oggetti in json\obj\Debug\net6.0\esempio scrittura e lettura oggetti in json.csproj.CoreCompileInputs.cache
+C:\Users\alex1\Desktop\Healthy-Catering\esempio scrittura e lettura oggetti in json\bin\Debug\net6.0\esempio scrittura e lettura oggetti in json.exe
+C:\Users\alex1\Desktop\Healthy-Catering\esempio scrittura e lettura oggetti in json\bin\Debug\net6.0\esempio scrittura e lettura oggetti in json.deps.json
+C:\Users\alex1\Desktop\Healthy-Catering\esempio scrittura e lettura oggetti in json\bin\Debug\net6.0\esempio scrittura e lettura oggetti in json.runtimeconfig.json
+C:\Users\alex1\Desktop\Healthy-Catering\esempio scrittura e lettura oggetti in json\bin\Debug\net6.0\esempio scrittura e lettura oggetti in json.dll
+C:\Users\alex1\Desktop\Healthy-Catering\esempio scrittura e lettura oggetti in json\bin\Debug\net6.0\esempio scrittura e lettura oggetti in json.pdb
+C:\Users\alex1\Desktop\Healthy-Catering\esempio scrittura e lettura oggetti in json\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\alex1\Desktop\Healthy-Catering\esempio scrittura e lettura oggetti in json\obj\Debug\net6.0\esempio scrittura e lettura oggetti in json.csproj.CopyComplete
+C:\Users\alex1\Desktop\Healthy-Catering\esempio scrittura e lettura oggetti in json\obj\Debug\net6.0\esempio scrittura e lettura oggetti in json.dll
+C:\Users\alex1\Desktop\Healthy-Catering\esempio scrittura e lettura oggetti in json\obj\Debug\net6.0\refint\esempio scrittura e lettura oggetti in json.dll
+C:\Users\alex1\Desktop\Healthy-Catering\esempio scrittura e lettura oggetti in json\obj\Debug\net6.0\esempio scrittura e lettura oggetti in json.pdb
+C:\Users\alex1\Desktop\Healthy-Catering\esempio scrittura e lettura oggetti in json\obj\Debug\net6.0\esempio scrittura e lettura oggetti in json.genruntimeconfig.cache
+C:\Users\alex1\Desktop\Healthy-Catering\esempio scrittura e lettura oggetti in json\obj\Debug\net6.0\ref\esempio scrittura e lettura oggetti in json.dll

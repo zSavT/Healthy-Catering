@@ -1,0 +1,22 @@
+<?xml version = "1.0"?>
+<ingredienti>
+   <ingrediente1>
+      <idItem>0</idItem>
+      <nome>Banana</nome>
+      <descrizione>La polpa della banana, essendo ricca di vitamina A, vitamina B1, vitamina B2, vitamina C, vitamina PP e, seppur in misura minore, di vitamina E, di sali minerali (calcio, fosforo, ferro e potassio) e di carboidrati, ha proprietà nutrienti, ri-mineralizzanti e stimolanti per la pelle. La banana contiene anche la vitamina B6, che favorisce il metabolismo delle proteine. È opinione comune che la banana sia un cibo particolarmente ricco di potassio, in realtà il contenuto medio di potassio della banana è di circa 350 mg per ogni 100 g di parte edibile, molto inferiore ad esempio ai 570 mg di una patata lessa o al forno.</descrizione>
+      <costo>0.20</costo>
+      <costoEco>1</costoEco>
+      <nutriScore>1</nutriScore>
+      <dieta></dieta>
+   </ingrediente1>
+	
+   <ingrediente2>
+      <idItem></idItem>
+      <nome></nome>
+      <descrizione></descrizione>
+      <costo></costo>
+      <costoEco></costoEco>
+      <nutriScore></nutriScore>
+      <dieta></dieta>
+   </ingrediente2>
+</ingredienti>

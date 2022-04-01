@@ -1,6 +1,6 @@
 public class Dieta
 {
-    string nome = "";
+    public string nome = "";
     string descrizione = "";
 
     public Dieta(string nome, string descrizione)
