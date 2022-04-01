@@ -1,5 +1,5 @@
 public class Dieta
 {
-    string nome = "";
+    public string nome = "";
     string descrizione = "";
 }

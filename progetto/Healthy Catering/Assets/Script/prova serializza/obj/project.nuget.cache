@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "i5b2zPoC8NNsRU2wb5ToMzQLIgGGlXMKdP6fRILlEMIzFbOUUR5uxAUC/1VhiHMUX6+qE4fcH8ZATMwNH1n8kA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\alex1\\Desktop\\Healthy-Catering\\progetto\\Healthy Catering\\Assets\\Script\\prova serializza\\prova serializza.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\alex1\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

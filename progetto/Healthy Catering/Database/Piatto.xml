@@ -1,0 +1,29 @@
+<?xml version = "1.0"?>
+<Piatto>
+   <Piatto0>
+      <nome></nome>
+      <descrizione></descrizione>
+      <costo></costo>
+      <costoEco></costoEco>
+      <nutriScore></nutriScore>
+      <ingredienti></ingredienti>
+   </Piatto0>
+
+   <Piatto1>
+    <nome></nome>
+    <descrizione></descrizione>
+    <costo></costo>
+    <costoEco></costoEco>
+    <nutriScore></nutriScore>
+    <ingredienti></ingredienti>
+ </Piatto1>
+	
+   <Piatto2>
+    <nome></nome>
+    <descrizione></descrizione>
+    <costo></costo>
+    <costoEco></costoEco>
+    <nutriScore></nutriScore>
+    <ingredienti></ingredienti>
+   </Piatto2>
+</Piatto>
