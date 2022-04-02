@@ -5,29 +5,82 @@ public class Serializza
 {
     public static void Main(string[] args)
     {
-        /*
-        List <Ingrediente> temp = new List<Ingrediente> ();
-        Ingrediente temp1 = new Ingrediente (-1, "", "", 0, 0, 0, 0);
-        Ingrediente temp2 = new Ingrediente (0, "", "", 0, 0, 0, 0);
-        temp.Add(temp1);
-        temp.Add(temp2);
-        Console.WriteLine (temp1.ToString());
+        Serializza.creaDatabaseBase ();
+    }
 
-        Serializza.salvaOggettiSuFile <Ingrediente> (temp);
-        */
-        /*
-        List <int> ciao = new List<int> ();
-        ciao.Add(0);
-        ciao.Add(1);
+    private static void creaDatabaseBase (){
+        //Cliente
+        List <Cliente> tempCliente = new List<Cliente> ();
         
-        List <Cliente> temp = new List<Cliente> ();
-        temp.Add(new Cliente ("ale", 0, ciao));
-        temp.Add(new Cliente ("sav", 0, ciao));
+        List <int> tempClienteListaIdPatologie = new List<int> ();
+        tempClienteListaIdPatologie.Add(0);
+        tempClienteListaIdPatologie.Add(1);
+        
+        tempCliente.Add(new Cliente ("", 0, tempClienteListaIdPatologie));
+        tempCliente.Add(new Cliente ("", 0, tempClienteListaIdPatologie));
 
-        Console.WriteLine (temp[0].ToString());
+        Serializza.salvaOggettiSuFile <Cliente> (tempCliente);
 
-        Serializza.salvaOggettiSuFile <Cliente> (temp);
-        */
+        //Dieta
+        List <Dieta> tempDieta = new List<Dieta> ();
+        
+        tempDieta.Add(new Dieta ("", ""));
+        tempDieta.Add(new Dieta ("", ""));
+
+        Serializza.salvaOggettiSuFile <Dieta> (tempDieta);
+
+        //Ingrediente
+        List <Ingrediente> tempIngrediente = new List<Ingrediente> ();
+        
+        tempIngrediente.Add(new Ingrediente (-1, "", "", 0, 0, 0, 0));
+        tempIngrediente.Add(new Ingrediente (-1, "", "", 0, 0, 0, 0));
+
+        Serializza.salvaOggettiSuFile <Ingrediente> (tempIngrediente);
+
+        //Patologia
+        List <Patologia> tempPatologia = new List<Patologia> ();
+        
+        tempPatologia.Add(new Patologia (-1, "", ""));
+        tempPatologia.Add(new Patologia (-1, "", ""));
+
+        Serializza.salvaOggettiSuFile <Patologia> (tempPatologia);
+
+        //Piatto
+        List <Piatto> tempPiatto = new List<Piatto> ();
+        
+        List <OggettoQuantita <Ingrediente>> tempPiattoListaIngredienti = new List<OggettoQuantita<Ingrediente>> ();
+        
+        tempPiattoListaIngredienti.Add (new OggettoQuantita<Ingrediente> (new Ingrediente (-1, "", "", 0, 0, 0, 0), 0));
+        tempPiattoListaIngredienti.Add (new OggettoQuantita<Ingrediente> (new Ingrediente (-1, "", "", 0, 0, 0, 0), 0));
+        
+        tempPiatto.Add(new Piatto ("", "", 0, 0, 0, tempPiattoListaIngredienti));
+        tempPiatto.Add(new Piatto ("", "", 0, 0, 0, tempPiattoListaIngredienti));
+
+        Serializza.salvaOggettiSuFile <Piatto> (tempPiatto);
+
+        //Player
+        List <Player> tempPlayer = new List<Player> ();
+        
+        List <OggettoQuantita<Item>> tempPlayerInventario = new List <OggettoQuantita<Item>> ();
+        tempPlayerInventario.Add(new OggettoQuantita<Item> (new Item (-1, "", ""), 0));
+        tempPlayerInventario.Add(new OggettoQuantita<Item> (new Item (-1, "", ""), 0));
+        
+        tempPlayer.Add(new Player ("", 0, tempPlayerInventario));
+        tempPlayer.Add(new Player ("", 0, tempPlayerInventario));
+
+        Serializza.salvaOggettiSuFile <Player> (tempPlayer);
+
+        //Ristorante
+        List <Ristorante> tempRistorante = new List<Ristorante> ();
+        
+        List <OggettoQuantita <Ingrediente>> tempRistorateMagazzinoIngredienti = new List<OggettoQuantita<Ingrediente>> ();
+        tempRistorateMagazzinoIngredienti.Add (new OggettoQuantita<Ingrediente> (new Ingrediente (-1, "", "", 0, 0, 0, 0), 0));
+        tempRistorateMagazzinoIngredienti.Add (new OggettoQuantita<Ingrediente> (new Ingrediente (-1, "", "", 0, 0, 0, 0), 0));
+        
+        tempRistorante.Add(new Ristorante ("", 0, tempRistorateMagazzinoIngredienti));
+        tempRistorante.Add(new Ristorante ("", 0, tempRistorateMagazzinoIngredienti));
+
+        Serializza.salvaOggettiSuFile <Ristorante> (tempRistorante);
     }
 
     public static void salvaOggettiSuFile <Oggetto> (List <Oggetto> oggetti)
