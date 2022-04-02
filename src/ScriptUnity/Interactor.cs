@@ -1,11 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Interazione : MonoBehaviour
+public class Interactor : MonoBehaviour
 {
 
     public LayerMask layerUnity = 6;
+    UnityEvent onInteract;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +19,17 @@ public class Interazione : MonoBehaviour
         RaycastHit colpito;
         if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out colpito, 2, layerUnity))
         {
-            Debug.Log(colpito.collider.name);
+            if(colpito.collider.GetComponent<Interactable>() != false)
+            {
+                onInteract = colpito.collider.GetComponent<Interactable>().onInteract;
+                if(Input.GetKeyDown(KeyCode.E))
+                {
+                    onInteract.Invoke();
+                    Debug.Log(colpito.collider.name);
+                }
+            }
+            
         }
-        
         
     }
 }
