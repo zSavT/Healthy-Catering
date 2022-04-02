@@ -1,18 +1,39 @@
 ﻿using System;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 public class Serializza
 {
     public static void Main(string[] args)
     {
+        /*
+        List <Ingrediente> temp = new List<Ingrediente> ();
+        Ingrediente temp1 = new Ingrediente (-1, "", "", 0, 0, 0, 0);
+        Ingrediente temp2 = new Ingrediente (0, "", "", 0, 0, 0, 0);
+        temp.Add(temp1);
+        temp.Add(temp2);
+        Console.WriteLine (temp1.ToString());
+
+        Serializza.salvaOggettiSuFile <Ingrediente> (temp);
+        */
+        /*
+        List <int> ciao = new List<int> ();
+        ciao.Add(0);
+        ciao.Add(1);
         
+        List <Cliente> temp = new List<Cliente> ();
+        temp.Add(new Cliente ("ale", 0, ciao));
+        temp.Add(new Cliente ("sav", 0, ciao));
+
+        Console.WriteLine (temp[0].ToString());
+
+        Serializza.salvaOggettiSuFile <Cliente> (temp);
+        */
     }
 
     public static void salvaOggettiSuFile <Oggetto> (List <Oggetto> oggetti)
     {
         if (oggetti.Count > 0){
-            string pathJson = Directory.GetCurrentDirectory() + @"..\Database\" + oggetti[0].GetType().Name + ".json";
+            string pathJson = Directory.GetCurrentDirectory() + @"\..\Database\" + oggetti[0].GetType().Name + ".json";
             using (StreamWriter file = File.CreateText(@pathJson))
             {
                 JsonSerializer serializer = new JsonSerializer();

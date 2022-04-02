@@ -1,11 +1,11 @@
 using System.Reflection.Emit;
 public class Player
 {
-    string nome = "";
+    public string nome = "";
     
-    int soldi = 0;
+    public int soldi = 0;
 
-    List <OggettoQuantita<Item>> inventario = null;
+    public List <OggettoQuantita<Item>> inventario = null;
 
     public Player(string nome, int soldi, List<OggettoQuantita<Item>> inventario)
     {

@@ -1,9 +1,9 @@
 public class Item
 {
-    protected int idItem = -1;
+    public  int idItem = -1;
 
-    protected string nome = "";
-    protected string descrizione = "";
+    public  string nome = "";
+    public  string descrizione = "";
 
     public Item(int idItem, string nome, string descrizione)
     {

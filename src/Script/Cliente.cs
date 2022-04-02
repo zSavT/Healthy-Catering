@@ -1,9 +1,9 @@
 public class Cliente
 {
-    string nome = "";
+    public string nome = "";
     
-    int dieta = 0;
-    List <int> listaIdPatologie = null;
+    public int dieta = 0;
+    public List <int> listaIdPatologie = null;
 
     //costruttore
     public Cliente(string nome, int dieta, List<int> listaIdPatologie)

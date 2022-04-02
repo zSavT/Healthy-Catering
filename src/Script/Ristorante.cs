@@ -1,10 +1,10 @@
 public class Ristorante
 {
-    string nome = "";
+    public string nome = "";
     
-    int punteggio = 0;
+    public int punteggio = 0;
 
-    List <OggettoQuantita<Ingrediente>> magazzinoIngredienti = null;
+    public List <OggettoQuantita<Ingrediente>> magazzinoIngredienti = null;
 
     public Ristorante(string nome, int punteggio, List<OggettoQuantita<Ingrediente>> magazzinoIngredienti)
     {

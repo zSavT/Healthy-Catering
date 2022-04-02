@@ -1,11 +1,11 @@
 public class Piatto
 {
-    string nome = "";
-    string descrizione = "";
+    public string nome = "";
+    public string descrizione = "";
 
-    float costo = 0;
-    float costoEco = 0;
-    int nutriScore = 0; //media fra i nutriscore degli ingredienti ma approssimata per difetto all'intero più vicino
+    public float costo = 0;
+    public float costoEco = 0;
+    public int nutriScore = 0; //media fra i nutriscore degli ingredienti ma approssimata per difetto all'intero più vicino
 
     List <OggettoQuantita <Ingrediente>> ingredienti = null;
 
