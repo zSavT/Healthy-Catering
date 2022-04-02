@@ -5,7 +5,14 @@ public class Serializza
 {
     public static void Main(string[] args)
     {
-
+        /*test da rimuovere
+        List <Piatto> var = Serializza.leggiOggettiDaFile<Piatto> (@"C:\Users\alex1\Desktop\Healthy-Catering\src\Database\Piatto.json");
+        Console.WriteLine (var[0].nome);
+        foreach (OggettoQuantita<int> i in var [0].ingredienti){
+            Console.WriteLine (i.oggetto); //poi ci sarebbe da chiamare la funzione da idIngrediente a ingrediente ma vabz 
+        }
+        */
+        
     }
 
     public static void salvaOggettiSuFile <Oggetto> (List <Oggetto> oggetti)
