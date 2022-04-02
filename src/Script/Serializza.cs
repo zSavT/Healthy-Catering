@@ -8,81 +8,6 @@ public class Serializza
         Serializza.creaDatabaseBase ();
     }
 
-    private static void creaDatabaseBase (){
-        //Cliente
-        List <Cliente> tempCliente = new List<Cliente> ();
-        
-        List <int> tempClienteListaIdPatologie = new List<int> ();
-        tempClienteListaIdPatologie.Add(0);
-        tempClienteListaIdPatologie.Add(1);
-        
-        tempCliente.Add(new Cliente ("", 0, tempClienteListaIdPatologie));
-        tempCliente.Add(new Cliente ("", 0, tempClienteListaIdPatologie));
-
-        Serializza.salvaOggettiSuFile <Cliente> (tempCliente);
-
-        //Dieta
-        List <Dieta> tempDieta = new List<Dieta> ();
-        
-        tempDieta.Add(new Dieta ("", ""));
-        tempDieta.Add(new Dieta ("", ""));
-
-        Serializza.salvaOggettiSuFile <Dieta> (tempDieta);
-
-        //Ingrediente
-        List <Ingrediente> tempIngrediente = new List<Ingrediente> ();
-        
-        tempIngrediente.Add(new Ingrediente (-1, "", "", 0, 0, 0, 0));
-        tempIngrediente.Add(new Ingrediente (-1, "", "", 0, 0, 0, 0));
-
-        Serializza.salvaOggettiSuFile <Ingrediente> (tempIngrediente);
-
-        //Patologia
-        List <Patologia> tempPatologia = new List<Patologia> ();
-        
-        tempPatologia.Add(new Patologia (-1, "", ""));
-        tempPatologia.Add(new Patologia (-1, "", ""));
-
-        Serializza.salvaOggettiSuFile <Patologia> (tempPatologia);
-
-        //Piatto
-        List <Piatto> tempPiatto = new List<Piatto> ();
-        
-        List <OggettoQuantita <Ingrediente>> tempPiattoListaIngredienti = new List<OggettoQuantita<Ingrediente>> ();
-        
-        tempPiattoListaIngredienti.Add (new OggettoQuantita<Ingrediente> (new Ingrediente (-1, "", "", 0, 0, 0, 0), 0));
-        tempPiattoListaIngredienti.Add (new OggettoQuantita<Ingrediente> (new Ingrediente (-1, "", "", 0, 0, 0, 0), 0));
-        
-        tempPiatto.Add(new Piatto ("", "", 0, 0, 0, tempPiattoListaIngredienti));
-        tempPiatto.Add(new Piatto ("", "", 0, 0, 0, tempPiattoListaIngredienti));
-
-        Serializza.salvaOggettiSuFile <Piatto> (tempPiatto);
-
-        //Player
-        List <Player> tempPlayer = new List<Player> ();
-        
-        List <OggettoQuantita<Item>> tempPlayerInventario = new List <OggettoQuantita<Item>> ();
-        tempPlayerInventario.Add(new OggettoQuantita<Item> (new Item (-1, "", ""), 0));
-        tempPlayerInventario.Add(new OggettoQuantita<Item> (new Item (-1, "", ""), 0));
-        
-        tempPlayer.Add(new Player ("", 0, tempPlayerInventario));
-        tempPlayer.Add(new Player ("", 0, tempPlayerInventario));
-
-        Serializza.salvaOggettiSuFile <Player> (tempPlayer);
-
-        //Ristorante
-        List <Ristorante> tempRistorante = new List<Ristorante> ();
-        
-        List <OggettoQuantita <Ingrediente>> tempRistorateMagazzinoIngredienti = new List<OggettoQuantita<Ingrediente>> ();
-        tempRistorateMagazzinoIngredienti.Add (new OggettoQuantita<Ingrediente> (new Ingrediente (-1, "", "", 0, 0, 0, 0), 0));
-        tempRistorateMagazzinoIngredienti.Add (new OggettoQuantita<Ingrediente> (new Ingrediente (-1, "", "", 0, 0, 0, 0), 0));
-        
-        tempRistorante.Add(new Ristorante ("", 0, tempRistorateMagazzinoIngredienti));
-        tempRistorante.Add(new Ristorante ("", 0, tempRistorateMagazzinoIngredienti));
-
-        Serializza.salvaOggettiSuFile <Ristorante> (tempRistorante);
-    }
-
     public static void salvaOggettiSuFile <Oggetto> (List <Oggetto> oggetti)
     {
         if (oggetti.Count > 0){
@@ -153,4 +78,101 @@ public class Serializza
             }
         }
     */
+
+    private static void creaDatabaseBase (){
+        Serializza.creaDatabaseBaseCliente ();
+        Serializza.creaDatabaseBaseDieta ();
+        Serializza.creaDatabaseBaseIngrediente ();
+        Serializza.creaDatabaseBasePatologia ();
+        Serializza.creaDatabaseBasePiatto ();
+        Serializza.creaDatabaseBasePlayer ();
+        Serializza.creaDatabaseBaseRistorante ();
+    }
+
+    private static void creaDatabaseBaseCliente (){
+        //Cliente
+        List <Cliente> tempCliente = new List<Cliente> ();
+        
+        List <int> tempClienteListaIdPatologie = new List<int> ();
+        tempClienteListaIdPatologie.Add(0);
+        tempClienteListaIdPatologie.Add(1);
+        
+        tempCliente.Add(new Cliente ("", 0, tempClienteListaIdPatologie));
+        tempCliente.Add(new Cliente ("", 0, tempClienteListaIdPatologie));
+
+        Serializza.salvaOggettiSuFile <Cliente> (tempCliente);
+    }
+
+    private static void creaDatabaseBaseDieta (){
+        //Dieta
+        List <Dieta> tempDieta = new List<Dieta> ();
+        
+        tempDieta.Add(new Dieta ("", ""));
+        tempDieta.Add(new Dieta ("", ""));
+
+        Serializza.salvaOggettiSuFile <Dieta> (tempDieta);
+    }
+
+    private static void creaDatabaseBaseIngrediente (){
+        //Ingrediente
+        List <Ingrediente> tempIngrediente = new List<Ingrediente> ();
+        
+        tempIngrediente.Add(new Ingrediente (-1, "", "", 0, 0, 0, 0));
+        tempIngrediente.Add(new Ingrediente (-1, "", "", 0, 0, 0, 0));
+
+        Serializza.salvaOggettiSuFile <Ingrediente> (tempIngrediente);
+    }
+
+    private static void creaDatabaseBasePatologia (){
+        //Patologia
+        List <Patologia> tempPatologia = new List<Patologia> ();
+        
+        tempPatologia.Add(new Patologia (-1, "", ""));
+        tempPatologia.Add(new Patologia (-1, "", ""));
+
+        Serializza.salvaOggettiSuFile <Patologia> (tempPatologia);
+    }
+
+    private static void creaDatabaseBasePiatto (){
+        //Piatto
+        List <Piatto> tempPiatto = new List<Piatto> ();
+        
+        List <OggettoQuantita <Ingrediente>> tempPiattoListaIngredienti = new List<OggettoQuantita<Ingrediente>> ();
+        
+        tempPiattoListaIngredienti.Add (new OggettoQuantita<Ingrediente> (new Ingrediente (-1, "", "", 0, 0, 0, 0), 0));
+        tempPiattoListaIngredienti.Add (new OggettoQuantita<Ingrediente> (new Ingrediente (-1, "", "", 0, 0, 0, 0), 0));
+        
+        tempPiatto.Add(new Piatto ("", "", 0, 0, 0, tempPiattoListaIngredienti));
+        tempPiatto.Add(new Piatto ("", "", 0, 0, 0, tempPiattoListaIngredienti));
+
+        Serializza.salvaOggettiSuFile <Piatto> (tempPiatto);
+    }
+
+    private static void creaDatabaseBasePlayer (){
+        //Player
+        List <Player> tempPlayer = new List<Player> ();
+        
+        List <OggettoQuantita<Item>> tempPlayerInventario = new List <OggettoQuantita<Item>> ();
+        tempPlayerInventario.Add(new OggettoQuantita<Item> (new Item (-1, "", ""), 0));
+        tempPlayerInventario.Add(new OggettoQuantita<Item> (new Item (-1, "", ""), 0));
+        
+        tempPlayer.Add(new Player ("", 0, tempPlayerInventario));
+        tempPlayer.Add(new Player ("", 0, tempPlayerInventario));
+
+        Serializza.salvaOggettiSuFile <Player> (tempPlayer);
+    }
+
+    private static void creaDatabaseBaseRistorante (){
+    //Ristorante
+        List <Ristorante> tempRistorante = new List<Ristorante> ();
+        
+        List <OggettoQuantita <Ingrediente>> tempRistorateMagazzinoIngredienti = new List<OggettoQuantita<Ingrediente>> ();
+        tempRistorateMagazzinoIngredienti.Add (new OggettoQuantita<Ingrediente> (new Ingrediente (-1, "", "", 0, 0, 0, 0), 0));
+        tempRistorateMagazzinoIngredienti.Add (new OggettoQuantita<Ingrediente> (new Ingrediente (-1, "", "", 0, 0, 0, 0), 0));
+        
+        tempRistorante.Add(new Ristorante ("", 0, tempRistorateMagazzinoIngredienti));
+        tempRistorante.Add(new Ristorante ("", 0, tempRistorateMagazzinoIngredienti));
+
+        Serializza.salvaOggettiSuFile <Ristorante> (tempRistorante);
+    }
 }
