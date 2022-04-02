@@ -56,22 +56,22 @@ public class Serializza
             }
         */
     }
+
+    /*
+    La classe Cliente utilizzata negli esempi:
+        public class Dieta
+        {
+            public string nome = "";
+
+            public Dieta(string nome)
+            {
+                this.nome = nome;
+            }
+
+            public override string ToString()
+            {
+                return nome;
+            }
+        }
+    */
 }
-
-/*
-La classe Cliente utilizzata negli esempi:
-    public class Dieta
-    {
-        public string nome = "";
-
-        public Dieta(string nome)
-        {
-            this.nome = nome;
-        }
-
-        public override string ToString()
-        {
-            return nome;
-        }
-    }
-*/
