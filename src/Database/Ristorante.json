@@ -1,0 +1,62 @@
+[
+  {
+    "nome": "",
+    "punteggio": 0,
+    "magazzinoIngredienti": [
+      {
+        "oggetto": {
+          "costo": 0.0,
+          "costoEco": 0,
+          "nutriScore": 0,
+          "dieta": 0,
+          "idItem": -1,
+          "nome": "",
+          "descrizione": ""
+        },
+        "quantita": 0
+      },
+      {
+        "oggetto": {
+          "costo": 0.0,
+          "costoEco": 0,
+          "nutriScore": 0,
+          "dieta": 0,
+          "idItem": -1,
+          "nome": "",
+          "descrizione": ""
+        },
+        "quantita": 0
+      }
+    ]
+  },
+  {
+    "nome": "",
+    "punteggio": 0,
+    "magazzinoIngredienti": [
+      {
+        "oggetto": {
+          "costo": 0.0,
+          "costoEco": 0,
+          "nutriScore": 0,
+          "dieta": 0,
+          "idItem": -1,
+          "nome": "",
+          "descrizione": ""
+        },
+        "quantita": 0
+      },
+      {
+        "oggetto": {
+          "costo": 0.0,
+          "costoEco": 0,
+          "nutriScore": 0,
+          "dieta": 0,
+          "idItem": -1,
+          "nome": "",
+          "descrizione": ""
+        },
+        "quantita": 0
+      }
+    ]
+  }
+]

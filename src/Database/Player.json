@@ -1,0 +1,46 @@
+[
+  {
+    "nome": "",
+    "soldi": 0,
+    "inventario": [
+      {
+        "oggetto": {
+          "idItem": -1,
+          "nome": "",
+          "descrizione": ""
+        },
+        "quantita": 0
+      },
+      {
+        "oggetto": {
+          "idItem": -1,
+          "nome": "",
+          "descrizione": ""
+        },
+        "quantita": 0
+      }
+    ]
+  },
+  {
+    "nome": "",
+    "soldi": 0,
+    "inventario": [
+      {
+        "oggetto": {
+          "idItem": -1,
+          "nome": "",
+          "descrizione": ""
+        },
+        "quantita": 0
+      },
+      {
+        "oggetto": {
+          "idItem": -1,
+          "nome": "",
+          "descrizione": ""
+        },
+        "quantita": 0
+      }
+    ]
+  }
+]
