@@ -17,6 +17,7 @@ public class Patologia
         
     }
 
+    /* TODO commentato perché non finito
     public static List <Patologia> idToPatologia(int idPatologia) 
     {
         int max; //max che dovrà diventare della dimensione delle patologie
@@ -31,4 +32,5 @@ public class Patologia
         }
         return temp;
     }
+    */
 }

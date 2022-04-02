@@ -6,13 +6,13 @@ public class Serializza
 {
     public static void Main(string[] args)
     {
-        Console.Write(Directory.GetCurrentDirectory());
+        
     }
 
     public static void salvaOggettiSuFile <Oggetto> (List <Oggetto> oggetti)
     {
         if (oggetti.Count > 0){
-            string pathJson = Directory.GetCurrentDirectory() + @"\" + oggetti[0].GetType().Name + ".json";
+            string pathJson = Directory.GetCurrentDirectory() + @"..\Database\" + oggetti[0].GetType().Name + ".json";
             using (StreamWriter file = File.CreateText(@pathJson))
             {
                 JsonSerializer serializer = new JsonSerializer();

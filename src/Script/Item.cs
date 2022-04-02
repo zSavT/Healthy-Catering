@@ -1,4 +1,4 @@
-class Item
+public class Item
 {
     protected int idItem = -1;
 
