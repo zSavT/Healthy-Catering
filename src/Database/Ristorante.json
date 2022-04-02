@@ -9,6 +9,10 @@
           "costoEco": 0,
           "nutriScore": 0,
           "dieta": 0,
+          "listaIdPatologieCompatibili": [
+            -1,
+            -1
+          ],
           "idItem": -1,
           "nome": "",
           "descrizione": ""
@@ -21,6 +25,10 @@
           "costoEco": 0,
           "nutriScore": 0,
           "dieta": 0,
+          "listaIdPatologieCompatibili": [
+            -1,
+            -1
+          ],
           "idItem": -1,
           "nome": "",
           "descrizione": ""
@@ -39,6 +47,10 @@
           "costoEco": 0,
           "nutriScore": 0,
           "dieta": 0,
+          "listaIdPatologieCompatibili": [
+            -1,
+            -1
+          ],
           "idItem": -1,
           "nome": "",
           "descrizione": ""
@@ -51,6 +63,10 @@
           "costoEco": 0,
           "nutriScore": 0,
           "dieta": 0,
+          "listaIdPatologieCompatibili": [
+            -1,
+            -1
+          ],
           "idItem": -1,
           "nome": "",
           "descrizione": ""

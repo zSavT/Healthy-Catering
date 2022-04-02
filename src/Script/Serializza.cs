@@ -5,7 +5,7 @@ public class Serializza
 {
     public static void Main(string[] args)
     {
-        Serializza.creaDatabaseBase ();
+
     }
 
     public static void salvaOggettiSuFile <Oggetto> (List <Oggetto> oggetti)
@@ -116,9 +116,13 @@ public class Serializza
     private static void creaDatabaseBaseIngrediente (){
         //Ingrediente
         List <Ingrediente> tempIngrediente = new List<Ingrediente> ();
-        
-        tempIngrediente.Add(new Ingrediente (-1, "", "", 0, 0, 0, 0));
-        tempIngrediente.Add(new Ingrediente (-1, "", "", 0, 0, 0, 0));
+
+        List <int> listaIdPatologieCompatibili = new List <int> ();
+        listaIdPatologieCompatibili.Add(-1);
+        listaIdPatologieCompatibili.Add(-1);        
+
+        tempIngrediente.Add(new Ingrediente (-1, "", "", 0, 0, 0, 0, listaIdPatologieCompatibili));
+        tempIngrediente.Add(new Ingrediente (-1, "", "", 0, 0, 0, 0, listaIdPatologieCompatibili));
 
         Serializza.salvaOggettiSuFile <Ingrediente> (tempIngrediente);
     }
@@ -137,10 +141,9 @@ public class Serializza
         //Piatto
         List <Piatto> tempPiatto = new List<Piatto> ();
         
-        List <OggettoQuantita <Ingrediente>> tempPiattoListaIngredienti = new List<OggettoQuantita<Ingrediente>> ();
-        
-        tempPiattoListaIngredienti.Add (new OggettoQuantita<Ingrediente> (new Ingrediente (-1, "", "", 0, 0, 0, 0), 0));
-        tempPiattoListaIngredienti.Add (new OggettoQuantita<Ingrediente> (new Ingrediente (-1, "", "", 0, 0, 0, 0), 0));
+        List <OggettoQuantita <int>> tempPiattoListaIngredienti = new List<OggettoQuantita<int>> ();
+        tempPiattoListaIngredienti.Add (new OggettoQuantita<int> (-1, 0));
+        tempPiattoListaIngredienti.Add (new OggettoQuantita<int> (-1, 0));
         
         tempPiatto.Add(new Piatto ("", "", 0, 0, 0, tempPiattoListaIngredienti));
         tempPiatto.Add(new Piatto ("", "", 0, 0, 0, tempPiattoListaIngredienti));
@@ -166,9 +169,13 @@ public class Serializza
     //Ristorante
         List <Ristorante> tempRistorante = new List<Ristorante> ();
         
+        List <int> listaIdPatologieCompatibili = new List <int> ();
+        listaIdPatologieCompatibili.Add(-1);
+        listaIdPatologieCompatibili.Add(-1);   
+
         List <OggettoQuantita <Ingrediente>> tempRistorateMagazzinoIngredienti = new List<OggettoQuantita<Ingrediente>> ();
-        tempRistorateMagazzinoIngredienti.Add (new OggettoQuantita<Ingrediente> (new Ingrediente (-1, "", "", 0, 0, 0, 0), 0));
-        tempRistorateMagazzinoIngredienti.Add (new OggettoQuantita<Ingrediente> (new Ingrediente (-1, "", "", 0, 0, 0, 0), 0));
+        tempRistorateMagazzinoIngredienti.Add (new OggettoQuantita<Ingrediente> (new Ingrediente (-1, "", "", 0, 0, 0, 0, listaIdPatologieCompatibili), 0));
+        tempRistorateMagazzinoIngredienti.Add (new OggettoQuantita<Ingrediente> (new Ingrediente (-1, "", "", 0, 0, 0, 0, listaIdPatologieCompatibili), 0));
         
         tempRistorante.Add(new Ristorante ("", 0, tempRistorateMagazzinoIngredienti));
         tempRistorante.Add(new Ristorante ("", 0, tempRistorateMagazzinoIngredienti));

@@ -3,13 +3,13 @@ public class Piatto
     public string nome = "";
     public string descrizione = "";
 
-    public float costo = 0;
-    public float costoEco = 0;
-    public int nutriScore = 0; //media fra i nutriscore degli ingredienti ma approssimata per difetto all'intero più vicino
+    private float costo = 0;
+    private float costoEco = 0;
+    private int nutriScore = 0; //media fra i nutriscore degli ingredienti ma approssimata per difetto all'intero più vicino
 
-    List <OggettoQuantita <Ingrediente>> ingredienti = null;
+    public List <OggettoQuantita <int>> ingredienti = null;
 
-    public Piatto(string nome, string descrizione, float costo, float costoEco, int nutriScore, List<OggettoQuantita<Ingrediente>> ingredienti)
+    public Piatto(string nome, string descrizione, float costo, float costoEco, int nutriScore, List<OggettoQuantita<int>> ingredienti)
     {
         this.nome = nome;
         this.descrizione = descrizione;
