@@ -4,8 +4,8 @@ using UnityEngine.Events;
 
 public class Interactor : MonoBehaviour
 {
-    [SerializeField] private LayerMask layerUnity = 6;
-    private UnityEvent onInteract;
+    [SerializeField] private LayerMask layerUnity = 6;              //layer utilizzato da Unity per le categorie di oggetto
+    private UnityEvent onInteract;                                  //attributo per l'invocazione di eventi all'interno di Unity            
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +23,10 @@ public class Interactor : MonoBehaviour
                 onInteract = colpito.collider.GetComponent<Interactable>().onInteract;
                 if(Input.GetKeyDown(KeyCode.E))
                 {
-                    Debug.Log(colpito.collider.name);
+                    /*
+                        Quello che c'è qui dentro viene eseguito quando il player inquadra l'oggetto e preme il comando.
+                        Debug.Log(colpito.collider.name);
+                    */
                     onInteract.Invoke();
                 }
             }
