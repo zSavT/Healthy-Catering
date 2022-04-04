@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
-    Questo script va inserito nell'oggetto camera.
-*/
-
+ *   Questo script va inserito nell'oggetto camera.
+ */
 
 public class CameraGiocatore : MonoBehaviour
 {
     [Header("Sensibilità Mouse")]
-    [SerializeField] public float sensX;                     //sensibilit� mouse asse x
-    [SerializeField] public float sensY;                     //sensibilit� mouse asse y
+    [SerializeField] public float sensX;                     //sensibilità mouse asse x
+    [SerializeField] public float sensY;                     //sensibilità mouse asse y
 
     [Header("Campo visuale")]
     public float campoVisualeNegativo = -30f;
     public float campoVisualePositivo = 30f;
-
 
     public Transform orientamento;                          //per l'orientazione del player in game (Va aggiunto al collegamento dell'oggetto orientamento in Unity)
 
@@ -33,11 +31,8 @@ public class CameraGiocatore : MonoBehaviour
     {
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
-
         yRotation += mouseX;
-
         xRotation -= mouseY;
-
         xRotation = Mathf.Clamp(xRotation, campoVisualeNegativo, campoVisualePositivo);                          //permette di muovere la visuale solo di 90 grandi in su e in gi�
 
         //movimento camera
