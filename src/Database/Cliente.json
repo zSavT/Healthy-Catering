@@ -1,18 +1,16 @@
 [
   {
-    "nome": "",
-    "dieta": 0,
+    "nome": "ciao",
+    "dieta": 1,
     "listaIdPatologie": [
-      0,
-      1
+      0
     ]
   },
   {
-    "nome": "",
+    "nome": "sav",
     "dieta": 0,
     "listaIdPatologie": [
-      0,
-      1
+      0
     ]
   }
 ]

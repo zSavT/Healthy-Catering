@@ -1,31 +1,46 @@
+using System;
+
 public class Database {
     
     public Database (){}
 
-    public static void salvaNuoviOggettiSuFile <Oggetto> (List <Oggetto> oggetti){   
-        if (oggetti.Count > 0){
-            string pathJson = Serializza.getJsonPath (oggetti [0]);
-            List <Oggetto> oggettiVecchi = Serializza.leggiOggettiDaFile <Oggetto> (pathJson);
-            foreach (Oggetto nuovoOggetto in oggetti){
-                if (!(oggettiVecchi.Contains (nuovoOggetto))){
-                    oggettiVecchi.Add (nuovoOggetto);
-                }
-            }
-            Serializza.salvaOggettiSuFile (oggettiVecchi);
+    public static void Main(string[] args)
+    {
+        List <int> patologie = new List <int> ();
+        aggiungiCliente (new Cliente ("sav", 0, patologie));
+
+    }
+
+    public static void aggiungiCliente (Cliente cliente){
+        while (cliente.nome.Equals("")){
+            cliente.getNewNomeClienteFromUtente ();
         }
-        else{
-            throw new InvalidOperationException("Lista passata vuota, progressi non salvati (?)");
+        while (cliente.dieta != 0 && cliente.dieta != 1 && cliente.dieta != 2){
+            cliente.getNewDietaClienteFromUtente ();
         }
+        while (cliente.listaIdPatologie.Count == 0){
+            cliente.getNewListaIdPatologieFromUtente ();
+        }
+        Database.salvaNuovoOggettoSuFile (cliente);
+    }
+
+    public static void salvaNuovoOggettoSuFile <Oggetto> (Oggetto oggetto){   
+        string pathJson = Serializza.getJsonPath (oggetto);
+        List <Oggetto> oggettiVecchi = Serializza.leggiOggettiDaFile <Oggetto> (pathJson);
+        if (!(oggettiVecchi.Contains (oggetto))){
+            oggettiVecchi.Add (oggetto);
+        }
+        Serializza.salvaOggettiSuFile (oggettiVecchi);
     }
 
     private static void creaDatabaseBase (){
-        Serializza.creaDatabaseBaseCliente ();
-        Serializza.creaDatabaseBaseDieta ();
-        Serializza.creaDatabaseBaseIngrediente ();
-        Serializza.creaDatabaseBasePatologia ();
-        Serializza.creaDatabaseBasePiatto ();
-        Serializza.creaDatabaseBasePlayer ();
-        Serializza.creaDatabaseBaseRistorante ();
+        Database.creaDatabaseBaseCliente ();
+        Database.creaDatabaseBaseDieta ();
+        Database.creaDatabaseBaseIngrediente ();
+        Database.creaDatabaseBasePatologia ();
+        Database.creaDatabaseBasePiatto ();
+        Database.creaDatabaseBasePlayer ();
+        Database.creaDatabaseBaseRistorante ();
     }
 
     private static void creaDatabaseBaseCliente (){

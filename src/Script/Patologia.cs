@@ -1,3 +1,4 @@
+using System;
 public class Patologia
 {
     public int idPatologia = -1;
@@ -10,6 +11,13 @@ public class Patologia
         this.idPatologia = idPatologia;
         this.nome = nome;
         this.descrizione = descrizione;
+    }
+
+    public static int patologiaStringToIdPatologia (string patologia){
+        if (patologia == "diabete")
+            return 0;
+        else
+            throw new InvalidOperationException ("Nome patologia non valido");
     }
 
     ~Patologia()
