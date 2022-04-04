@@ -17,7 +17,8 @@ public class Interactor : MonoBehaviour
     void Update()
     {
         RaycastHit colpito;
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out colpito, 2, layerUnity))  //se inquadrato dal player(tramite l'ausilio della camera)
+         //se inquadrato dal player(tramite l'ausilio della camera)
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out colpito, 2, layerUnity)) 
         {
             if(colpito.collider.GetComponent<Interactable>() != false)
             {
