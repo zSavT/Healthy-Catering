@@ -8,6 +8,15 @@ public class Database {
     {
     }
 
+    public static aggiungiDieta (Dieta dieta){
+        while (dieta.nome.Equals("")){
+            dieta.getNewNomeDietaFromUtente ();
+        }
+        while (dieta.descrizione.Equals("")){
+            cliente.getNewDescrizioneDietaFromUtente ();
+        }
+    }
+
     public static void aggiungiCliente (Cliente cliente){
         while (cliente.nome.Equals("")){
             cliente.getNewNomeClienteFromUtente ();
