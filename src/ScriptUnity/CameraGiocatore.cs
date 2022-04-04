@@ -9,8 +9,14 @@ using UnityEngine;
 
 public class CameraGiocatore : MonoBehaviour
 {
+    [Header("Sensibilità Mouse")]
     [SerializeField] public float sensX;                     //sensibilit� mouse asse x
     [SerializeField] public float sensY;                     //sensibilit� mouse asse y
+
+    [Header("Campo visuale")]
+    public float campoVisualeNegativo = -30f;
+    public float campoVisualePositivo = 30f;
+
 
     public Transform orientamento;                          //per l'orientazione del player in game (Va aggiunto al collegamento dell'oggetto orientamento in Unity)
 
@@ -32,7 +38,7 @@ public class CameraGiocatore : MonoBehaviour
 
         xRotation -= mouseY;
 
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);                          //permette di muovere la visuale solo di 90 grandi in su e in gi�
+        xRotation = Mathf.Clamp(xRotation, campoVisualeNegativo, campoVisualePositivo);                          //permette di muovere la visuale solo di 90 grandi in su e in gi�
 
         //movimento camera
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);

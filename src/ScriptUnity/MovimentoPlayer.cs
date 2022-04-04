@@ -4,19 +4,25 @@ using UnityEngine;
 
 /*
  * Va aggiunto all'oggetto che contiene la struttura del giocatore
- * 
  */
 public class MovimentoPlayer : MonoBehaviour
 {
-    [Header("Movement")]
-    public float velocitaMovimento;
+    [Header("Movemento")]
+    public float velocitaMovimento = 7;
+    public float resistenzaAlSuolo = 2;
 
-    public float groundDrag;
+    [Header("Salto")]
+    public KeyCode tastoSalto = KeyCode.Space;
+    public float forzaSalto = 12;
+    public float timerSalto = 0.5f;
+    public float molltiplicatoreVelocitaSalto = 0.2f;
+    bool prontoASaltare;
 
-    [Header("Groud Check")]
-    public float altezzaGiocatore;
+
+    [Header("Controllo pavimento")]
+    public float altezzaGiocatore = 2;
     public LayerMask isGround;
-    bool grounded;
+    bool perTerra;
 
     public Transform orientamento;              //da aggiungere su Unity con l'oggetto l'orientamento 
 
@@ -31,16 +37,17 @@ public class MovimentoPlayer : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        prontoASaltare = true;
     }
 
     private void Update()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, altezzaGiocatore * 0.5f + 0.2f, isGround);
-        MyInput();
+        perTerra = Physics.Raycast(transform.position, Vector3.down, altezzaGiocatore * 0.5f + 0.2f, isGround);
+        controlloInputGiocatore();
         controlloVelocita();
-        if (grounded)
+        if (perTerra)
         {
-            rb.drag = groundDrag;
+            rb.drag = resistenzaAlSuolo;
         } else {
             rb.drag = 0;
         }
@@ -51,16 +58,29 @@ public class MovimentoPlayer : MonoBehaviour
         Movimento();
     }
 
-    private void MyInput()
+    private void controlloInputGiocatore()
     {
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
+        if(Input.GetKey(tastoSalto) && prontoASaltare && perTerra)
+        {
+            prontoASaltare = false;
+            salto();
+            Invoke(nameof(resetSalto), timerSalto);
+        }
     }
 
     private void Movimento()
     {
         moveDirection = orientamento.forward * yInput + orientamento.right * xInput;
-        rb.AddForce(moveDirection.normalized * velocitaMovimento * 10f, ForceMode.Force);
+        if(perTerra)
+        {
+            rb.AddForce(moveDirection.normalized * velocitaMovimento * 10f, ForceMode.Force);
+        } else if (!perTerra)
+        {
+            rb.AddForce(moveDirection.normalized * velocitaMovimento * 10f * molltiplicatoreVelocitaSalto, ForceMode.Force);
+        }
+ 
     }
 
     private void controlloVelocita()
@@ -71,5 +91,16 @@ public class MovimentoPlayer : MonoBehaviour
             Vector3 limiteVelocita = flatVel.normalized * velocitaMovimento;
             rb.velocity = new Vector3(limiteVelocita.x, rb.velocity.y, limiteVelocita.z);
         }
+    }
+
+    private void salto()
+    {
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.AddForce(transform.up * forzaSalto, ForceMode.Impulse);
+    }
+
+    private void resetSalto()
+    {
+        prontoASaltare = true;
     }
 }
