@@ -6,7 +6,21 @@ public class Database {
 
     public static void Main(string[] args)
     {
-        aggiungiIngrediente (new Ingrediente (0, "idk", "idk", 1, 1, 1, 0, new List<int>()));
+        aggiungiPatologia (new Patologia (-1, "", ""));
+    }
+
+    public static void aggiungiPatologia (Patologia patologia){
+        patologia.idPatologia = Patologia.getNewIdDatabasePatologia(patologia);
+
+        while (patologia.nome.Equals("")){
+            patologia.nome = getNewStringaFromUtente ("Inserisci il nome della patologia");
+        }
+        
+        while (patologia.descrizione.Equals("")){
+            patologia.descrizione = getNewStringaFromUtente ("Inserisci la descrizione della patologia");
+        }
+
+        salvaNuovoOggettoSuFile (patologia);
     }
 
     public static void aggiungiIngrediente (Ingrediente ingrediente){

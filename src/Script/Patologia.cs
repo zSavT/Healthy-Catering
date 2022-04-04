@@ -60,6 +60,11 @@ public class Patologia
         return patologieInput;
     }
 
+    public static int getNewIdDatabasePatologia (Patologia oggetto){
+        List <Patologia> databaseOggetto = Database.getDatabaseOggetto (oggetto);
+        return databaseOggetto [databaseOggetto.Count - 1].idPatologia + 1;
+    }
+
     ~Patologia()
     {
         
