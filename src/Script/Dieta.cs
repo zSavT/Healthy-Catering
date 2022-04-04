@@ -9,16 +9,41 @@ public class Dieta
         this.descrizione = descrizione;
     }
 
-    public void getNewNomeDietaFromUtente (){
-        Console.WriteLine ("Inserisci il nome della dieta");
-        this.nome = Console.ReadLine();
+    public string getNewNomeDietaFromUtente (string output){
+        Console.WriteLine (output);
+        return Console.ReadLine();
     }
     
-    public void getNewDescrizioneDietaFromUtente (){
-        Console.WriteLine ("Inserisci la descrizione della dieta");
-        this.descrizione = Console.ReadLine();
+    public string getNewDescrizioneDietaFromUtente (string output){
+        Console.WriteLine ();
+        return Console.ReadLine();
     }
     
+    public static int getNewDietaFromUtente (string output){
+        string dietaTemp;
+        int dietaTempInt;
+        Console.WriteLine ();
+        dietaTemp = Console.ReadLine();
+        try{
+            dietaTempInt = this.dietaStringToIdDieta(dietaTemp);
+            return dietaTempInt;
+        }
+        catch (InvalidOperationException e){
+            Console.WriteLine (e.Message);
+        }
+    }
+
+     public int dietaStringToIdDieta (string dieta){
+        if (dieta.ToLower () == "vegana")
+            return 0;
+        else if (dieta.ToLower () == "vegetariana")
+            return 1;
+        else if (dieta.ToLower () == "onnivora")
+            return 2;
+        else
+            throw new InvalidOperationException ("Dieta inserita non valida");
+    } 
+
     ~Dieta()
     {
         

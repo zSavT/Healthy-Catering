@@ -13,32 +13,9 @@ public class Cliente
         this.listaIdPatologie = listaIdPatologie;
     }
 
-    public int dietaStringToIdDieta (string dieta){
-        if (dieta.ToLower () == "vegana")
-            return 0;
-        else if (dieta.ToLower () == "vegetariana")
-            return 1;
-        else if (dieta.ToLower () == "onnivora")
-            return 2;
-        else
-            throw new InvalidOperationException ("Dieta inserita non valida");
-    } 
-
-    public void getNewNomeClienteFromUtente (){
-        Console.WriteLine ("Inserisci il nome del cliente");
-        this.nome = Console.ReadLine();
-    }
-
-    public void getNewDietaClienteFromUtente (){
-        string dietaTemp;
-        Console.WriteLine ("Inserisci il nome della dieta del cliente");
-        dietaTemp = Console.ReadLine();
-        try{
-            this.dieta = this.dietaStringToIdDieta(dietaTemp);
-        }
-        catch (InvalidOperationException e){
-            Console.WriteLine (e.Message);
-        }
+    public void getNewNomeClienteFromUtente (string output){
+        Console.WriteLine (output);
+        return Console.ReadLine();
     }
 
     public void getNewListaIdPatologieFromUtente (){

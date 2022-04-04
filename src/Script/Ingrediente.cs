@@ -1,9 +1,11 @@
+using Internal;
+using System;
 public class Ingrediente : Item
 {
     public float costo = 0;
     public int costoEco = 0;
     public int nutriScore = 0;
-    public int dieta = 0;
+    public int dieta = -1;
 
     public List <int> listaIdPatologieCompatibili = null;
 
@@ -18,6 +20,20 @@ public class Ingrediente : Item
         this.nutriScore = nutriScore;
         this.dieta = dieta;
         this.listaIdPatologieCompatibili = listaIdPatologieCompatibili;
+    }
+
+    public static Tipo getNewNumeroIngredienteFromUtente <Tipo> (string output, string outputError){
+        bool numeroValido = false
+        while (!(numeroValido)){
+            Console.WriteLine (output);
+            try{
+                Tipo temp = Tipo.Parse (Console.ReadLine ());
+                return temp;
+            }
+            catch (Exception e){
+                Console.WriteLine(e.Message + "\n" + outputError);
+            }
+        }
     }
 
     ~Ingrediente()

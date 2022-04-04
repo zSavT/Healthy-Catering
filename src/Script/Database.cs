@@ -6,23 +6,40 @@ public class Database {
 
     public static void Main(string[] args)
     {
+        
     }
 
-    public static aggiungiDieta (Dieta dieta){
+    public static void aggiungiIngrediente (Ingrediente ingrediente){
+        while (ingrediente.costo <= 0.0){
+            ingrediente.costo = ingrediente.getNewNumeroIngredienteFromUtente <float> ("Inserisci il costo dell'ingrediente", "Non hai inserito un numero valido, inserisci un numero a cifra decimale (con .)");
+        }
+        while (ingrediente.costoEco <= 0.0){
+            ingrediente.costoEco = ingrediente.getNewNumeroIngredienteFromUtente <int> ("Inserisci il costo eco dell'ingrediente", "Non hai inserito un numero valido, inserisci un numero intero");
+        }
+        while (ingrediente.nutriScore <= 0.0){
+            ingrediente.nutriscore = ingrediente.getNewNumeroIngredienteFromUtente <int> ("Inserisci il nutriscore dell'ingrediente", "Non hai inserito un numero valido, inserisci un numero intero");
+        }
+        while ((ingrediente.dieta < 0) || (ingrediente.dieta > 2)){
+            ingrediente.dieta = Dieta.getNewDietaFromUtente ("Inserisci la dieta minima con la quale è compatibile l'ingrediente");
+        }
+
+    }
+
+    public static void aggiungiDieta (Dieta dieta){
         while (dieta.nome.Equals("")){
-            dieta.getNewNomeDietaFromUtente ();
+            dieta.nome = dieta.getNewStringaFromUtente ("Inserisci il nome della dieta");
         }
         while (dieta.descrizione.Equals("")){
-            cliente.getNewDescrizioneDietaFromUtente ();
+            dieta.descrizione = dieta.getNewStringaFromUtente ("Inserisci la descrizione della dieta");
         }
     }
 
     public static void aggiungiCliente (Cliente cliente){
         while (cliente.nome.Equals("")){
-            cliente.getNewNomeClienteFromUtente ();
+            cliente.nome = cliente.getNewNomeClienteFromUtente ("Inserisci il nome del cliente");
         }
-        while (cliente.dieta != 0 && cliente.dieta != 1 && cliente.dieta != 2){
-            cliente.getNewDietaClienteFromUtente ();
+        while ((cliente.dieta != 0) && (cliente.dieta != 1) && (cliente.dieta != 2)){
+            cliente.dieta = Dieta.getNewDietaFromUtente ("Inserisci il nome della dieta del cliente");
         }
         while (cliente.listaIdPatologie.Count == 0){
             cliente.getNewListaIdPatologieFromUtente ();
