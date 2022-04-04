@@ -79,10 +79,6 @@ public class Cliente
             patologieInput.Add (patologiaTemp);
         }
 
-        foreach (string pat in patologieInput){
-            Console.WriteLine (pat);
-        }
-
         return patologieInput;
     }
 

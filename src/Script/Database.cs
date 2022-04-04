@@ -6,9 +6,6 @@ public class Database {
 
     public static void Main(string[] args)
     {
-        List <int> patologie = new List <int> ();
-        aggiungiCliente (new Cliente ("sav", 0, patologie));
-
     }
 
     public static void aggiungiCliente (Cliente cliente){
@@ -136,5 +133,4 @@ public class Database {
 
         Serializza.salvaOggettiSuFile <Ristorante> (tempRistorante);
     }
-
 }
