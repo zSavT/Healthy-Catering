@@ -6,54 +6,87 @@ public class Database {
 
     public static void Main(string[] args)
     {
-        
+        aggiungiIngrediente (new Ingrediente (0, "idk", "idk", 1, 1, 1, 0, new List<int>()));
     }
 
     public static void aggiungiIngrediente (Ingrediente ingrediente){
+        ingrediente.idItem = Item.getNewIdDatabaseItem (ingrediente);
+
+        while (ingrediente.nome.Equals("")){
+            ingrediente.nome = getNewStringaFromUtente ("Inserisci il nome dell'ingrediente");
+        }
+        
+        while (ingrediente.descrizione.Equals("")){
+            ingrediente.descrizione = getNewStringaFromUtente ("Inserisci la descrizione dell'ingrediente");
+        }
+
         while (ingrediente.costo <= 0.0){
-            ingrediente.costo = ingrediente.getNewNumeroIngredienteFromUtente <float> ("Inserisci il costo dell'ingrediente", "Non hai inserito un numero valido, inserisci un numero a cifra decimale (con .)");
+            ingrediente.costo = ingrediente.getNewNumeroIngredienteFromUtente ("Inserisci il costo dell'ingrediente", "Non hai inserito un numero valido, inserisci un numero a cifra decimale (con .)");
         }
+
         while (ingrediente.costoEco <= 0.0){
-            ingrediente.costoEco = ingrediente.getNewNumeroIngredienteFromUtente <int> ("Inserisci il costo eco dell'ingrediente", "Non hai inserito un numero valido, inserisci un numero intero");
+            ingrediente.costoEco = (int) ingrediente.getNewNumeroIngredienteFromUtente ("Inserisci il costo eco dell'ingrediente", "Non hai inserito un numero valido, inserisci un numero intero");
         }
+
         while (ingrediente.nutriScore <= 0.0){
-            ingrediente.nutriscore = ingrediente.getNewNumeroIngredienteFromUtente <int> ("Inserisci il nutriscore dell'ingrediente", "Non hai inserito un numero valido, inserisci un numero intero");
+            ingrediente.nutriScore = (int) ingrediente.getNewNumeroIngredienteFromUtente ("Inserisci il nutriscore dell'ingrediente", "Non hai inserito un numero valido, inserisci un numero intero");
         }
+
         while ((ingrediente.dieta < 0) || (ingrediente.dieta > 2)){
             ingrediente.dieta = Dieta.getNewDietaFromUtente ("Inserisci la dieta minima con la quale è compatibile l'ingrediente");
         }
 
+        if (ingrediente.listaIdPatologieCompatibili.Count == 0){
+            ingrediente.listaIdPatologieCompatibili = Patologia.getNewListaIdPatologieFromUtente ("Inserisci le patologie compatibili con l'ingrediente e la keyword 'fine' quando hai finito l'inserimento");
+        }
+
+        Database.salvaNuovoOggettoSuFile (ingrediente);
     }
 
     public static void aggiungiDieta (Dieta dieta){
         while (dieta.nome.Equals("")){
-            dieta.nome = dieta.getNewStringaFromUtente ("Inserisci il nome della dieta");
+            dieta.nome = getNewStringaFromUtente ("Inserisci il nome della dieta");
         }
+        
         while (dieta.descrizione.Equals("")){
-            dieta.descrizione = dieta.getNewStringaFromUtente ("Inserisci la descrizione della dieta");
+            dieta.descrizione = getNewStringaFromUtente ("Inserisci la descrizione della dieta");
         }
+
+        Database.salvaNuovoOggettoSuFile (dieta);
     }
 
     public static void aggiungiCliente (Cliente cliente){
         while (cliente.nome.Equals("")){
             cliente.nome = cliente.getNewNomeClienteFromUtente ("Inserisci il nome del cliente");
         }
+        
         while ((cliente.dieta != 0) && (cliente.dieta != 1) && (cliente.dieta != 2)){
             cliente.dieta = Dieta.getNewDietaFromUtente ("Inserisci il nome della dieta del cliente");
         }
+        
         while (cliente.listaIdPatologie.Count == 0){
-            cliente.getNewListaIdPatologieFromUtente ();
+            cliente.listaIdPatologie = Patologia.getNewListaIdPatologieFromUtente ("Inserisci le patologie del cliente e la keyword 'fine' quando hai finito l'inserimento");
         }
+        
         Database.salvaNuovoOggettoSuFile (cliente);
     }
 
     public static void salvaNuovoOggettoSuFile <Oggetto> (Oggetto oggetto){   
-        string pathJson = Serializza.getJsonPath (oggetto);
-        List <Oggetto> oggettiVecchi = Serializza.leggiOggettiDaFile <Oggetto> (pathJson);
+        List <Oggetto> oggettiVecchi = getDatabaseOggetto (oggetto);
         if (!(oggettiVecchi.Contains (oggetto))){
             oggettiVecchi.Add (oggetto);
         }
         Serializza.salvaOggettiSuFile (oggettiVecchi);
+    }
+
+    public static string getNewStringaFromUtente (string output){
+        Console.WriteLine (output);
+        return Console.ReadLine();
+    }
+
+    public static List <Oggetto> getDatabaseOggetto <Oggetto> (Oggetto oggetto){
+        string pathJson = Serializza.getJsonPath (oggetto);
+        return Serializza.leggiOggettiDaFile <Oggetto> (pathJson);
     }
 
     private static void creaDatabaseBase (){

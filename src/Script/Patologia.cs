@@ -20,6 +20,46 @@ public class Patologia
             throw new InvalidOperationException ("Nome patologia non valido");
     }
 
+     public static List <int> getNewListaIdPatologieFromUtente (string output){
+        List <string> patologieInput = Patologia.fillListaPatologieStringhe (output);
+        //returna una lista vuota di interi (id) se la lista data dall'utente è vuota
+        if (patologieInput.Count == 0){
+            return new List <int> ();
+        }
+        return convertiListaPatologieStringToIdPatologia (patologieInput);
+    }
+
+    private static List <int> convertiListaPatologieStringToIdPatologia (List <string> listaPatolgie){
+        List <int> patologieConvertite = new List <int> ();
+        int patologiaConvertitaTemp;
+        foreach (string patologiaString in listaPatolgie){
+            try{
+                patologiaConvertitaTemp = Patologia.patologiaStringToIdPatologia (patologiaString);
+                patologieConvertite.Add (patologiaConvertitaTemp);
+            }
+            catch (InvalidOperationException e){
+                Console.WriteLine (e.Message);
+            }
+        }
+        return patologieConvertite;
+    }
+
+    private static List <string> fillListaPatologieStringhe (string output){
+        Console.WriteLine (output);
+        
+        string patologiaTemp = "";
+        List <string> patologieInput = new List <string> ();
+        
+        while (true){
+            patologiaTemp = Console.ReadLine ();
+            if (patologiaTemp.Equals("no") || patologiaTemp.Equals ("fine"))
+                break;
+            patologieInput.Add (patologiaTemp);
+        }
+
+        return patologieInput;
+    }
+
     ~Patologia()
     {
         

@@ -8,32 +8,22 @@ public class Dieta
         this.nome = nome;
         this.descrizione = descrizione;
     }
-
-    public string getNewNomeDietaFromUtente (string output){
-        Console.WriteLine (output);
-        return Console.ReadLine();
-    }
-    
-    public string getNewDescrizioneDietaFromUtente (string output){
-        Console.WriteLine ();
-        return Console.ReadLine();
-    }
     
     public static int getNewDietaFromUtente (string output){
         string dietaTemp;
-        int dietaTempInt;
-        Console.WriteLine ();
+        int dietaTempInt = -1;
+        Console.WriteLine (output);
         dietaTemp = Console.ReadLine();
         try{
-            dietaTempInt = this.dietaStringToIdDieta(dietaTemp);
-            return dietaTempInt;
+            dietaTempInt = Dieta.dietaStringToIdDieta(dietaTemp);
         }
         catch (InvalidOperationException e){
             Console.WriteLine (e.Message);
         }
+        return dietaTempInt;
     }
 
-     public int dietaStringToIdDieta (string dieta){
+    public static int dietaStringToIdDieta (string dieta){
         if (dieta.ToLower () == "vegana")
             return 0;
         else if (dieta.ToLower () == "vegetariana")

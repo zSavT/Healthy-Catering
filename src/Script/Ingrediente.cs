@@ -1,4 +1,3 @@
-using Internal;
 using System;
 public class Ingrediente : Item
 {
@@ -22,18 +21,20 @@ public class Ingrediente : Item
         this.listaIdPatologieCompatibili = listaIdPatologieCompatibili;
     }
 
-    public static Tipo getNewNumeroIngredienteFromUtente <Tipo> (string output, string outputError){
-        bool numeroValido = false
-        while (!(numeroValido)){
+    public float getNewNumeroIngredienteFromUtente (string output, string outputError){
+        bool numeroValido = false;
+        float temp = -1;
+        while ((!(numeroValido)) && (temp == -1)){
             Console.WriteLine (output);
             try{
-                Tipo temp = Tipo.Parse (Console.ReadLine ());
-                return temp;
+                temp = float.Parse (Console.ReadLine ());
+                numeroValido = true;
             }
             catch (Exception e){
                 Console.WriteLine(e.Message + "\n" + outputError);
             }
         }
+        return temp;
     }
 
     ~Ingrediente()
