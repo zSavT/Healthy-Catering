@@ -3,7 +3,7 @@ public class Player
 {
     public string nome = "";
     
-    public int soldi = 0;
+    public float soldi = 0;
 
     public List <OggettoQuantita<Item>> inventario = null;
 

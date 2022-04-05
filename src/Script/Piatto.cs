@@ -6,7 +6,7 @@ public class Piatto
     private float costo = 0;
     private float costoEco = 0;
     private int nutriScore = 0; //media fra i nutriscore degli ingredienti ma approssimata per difetto all'intero più vicino
-
+    //                          int al posto di ingredienti perché sono gli id degli ingredienti
     public List <OggettoQuantita <int>> ingredienti = null;
 
     public Piatto(string nome, string descrizione, float costo, float costoEco, int nutriScore, List<OggettoQuantita<int>> ingredienti)
