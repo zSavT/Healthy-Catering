@@ -2,29 +2,6 @@
   {
     "nome": "",
     "descrizione": "",
-    "idIngredienti": [
-      {
-        "oggetto": -1,
-        "quantita": 0
-      },
-      {
-        "oggetto": -1,
-        "quantita": 0
-      }
-    ]
-  },
-  {
-    "nome": "",
-    "descrizione": "",
-    "idIngredienti": [
-      {
-        "oggetto": -1,
-        "quantita": 0
-      },
-      {
-        "oggetto": -1,
-        "quantita": 0
-      }
-    ]
+    "idIngredienti": []
   }
 ]

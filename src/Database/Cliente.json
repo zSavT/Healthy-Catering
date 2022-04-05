@@ -1,23 +1,7 @@
 [
   {
-    "nome": "ciao",
-    "dieta": 1,
-    "listaIdPatologie": [
-      0
-    ]
-  },
-  {
-    "nome": "sav",
-    "dieta": 0,
-    "listaIdPatologie": [
-      0
-    ]
-  },
-  {
-    "nome": "ale",
-    "dieta": 0,
-    "listaIdPatologie": [
-      0
-    ]
+    "nome": "",
+    "dieta": -1,
+    "listaIdPatologie": []
   }
 ]

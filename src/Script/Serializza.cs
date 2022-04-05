@@ -38,8 +38,7 @@ public class Serializza
         /*
         Esempio di utilizzo:
             List <Dieta> diete = new List<Dieta> ();
-            diete.Add (new Dieta ("1"));
-            diete.Add (new Dieta ("2"));
+            diete.Add (new Dieta ());
             try{
                 Serializza.salvaOggettiSuFile<Dieta> (diete);
             }
