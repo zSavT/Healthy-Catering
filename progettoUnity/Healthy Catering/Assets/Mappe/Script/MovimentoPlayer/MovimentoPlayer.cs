@@ -8,20 +8,20 @@ using UnityEngine;
 public class MovimentoPlayer : MonoBehaviour
 {
     [Header("Movemento")]
-    public float velocitaMovimento = 7;
-    public float resistenzaAlSuolo = 2;
+    public float velocitaMovimento = 5;
+    public float attritoAlSuolo = 2;
 
 
     [Header("Salto")]
     public KeyCode tastoSalto = KeyCode.Space;
-    public float forzaSalto = 12;
+    public float forzaSalto = 7;
     public float timerSalto = 0.5f;
     public float molltiplicatoreVelocitaSalto = 0.2f;
     bool prontoASaltare;
 
 
     [Header("Controllo pavimento")]
-    public float altezzaGiocatore = 2;
+    public float altezzaGiocatore = 1;
     public LayerMask isGround;
     bool perTerra;
 
@@ -48,7 +48,7 @@ public class MovimentoPlayer : MonoBehaviour
         controlloVelocita();
         if (perTerra)
         {
-            rb.drag = resistenzaAlSuolo;
+            rb.drag = attritoAlSuolo;
         } else {
             rb.drag = 0;
         }
