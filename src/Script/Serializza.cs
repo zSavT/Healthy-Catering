@@ -3,6 +3,10 @@ using Newtonsoft.Json;
 
 public class Serializza
 {
+    public Serializza (){
+        
+    }
+
     /*
     public static void Main(string[] args)
     {

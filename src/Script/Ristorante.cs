@@ -13,6 +13,12 @@ public class Ristorante
         this.magazzinoIngredienti = magazzinoIngredienti;
     }
 
+    public Ristorante (){
+        this.nome = "";
+        this.punteggio = -1;
+        this.magazzinoIngredienti = new List<OggettoQuantita<Ingrediente>> ();
+    }
+
     ~Ristorante()
     {
         

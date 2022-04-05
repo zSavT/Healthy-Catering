@@ -13,6 +13,12 @@ public class Patologia
         this.descrizione = descrizione;
     }
 
+    public Patologia (){
+        this.idPatologia = -1;
+        this.nome = "";
+        this.descrizione = "";
+    }
+
     public static int patologiaStringToIdPatologia (string patologia){
         if (patologia == "diabete")
             return 0;

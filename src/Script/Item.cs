@@ -12,6 +12,12 @@ public class Item
         this.descrizione = descrizione;
     }
 
+    public Item (){
+        this.idItem = -1;
+        this.nome = "";
+        this.descrizione = "";
+    }
+
     public static int getNewIdDatabaseItem (Item oggetto){
         List <Item> databaseOggetto = Database.getDatabaseOggetto (oggetto);
         return databaseOggetto [databaseOggetto.Count - 1].idItem + 1;

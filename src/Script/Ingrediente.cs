@@ -21,6 +21,14 @@ public class Ingrediente : Item
         this.listaIdPatologieCompatibili = listaIdPatologieCompatibili;
     }
 
+    public Ingrediente ():base (){
+        this.costo = -1;
+        this.costoEco = -1;
+        this.nutriScore = -1;
+        this.dieta = -1;
+        this.listaIdPatologieCompatibili = new List <int> ();    
+    }
+
     public float getNewNumeroIngredienteFromUtente (string output, string outputError){
         bool numeroValido = false;
         float temp = -1;

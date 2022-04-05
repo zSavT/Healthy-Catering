@@ -8,6 +8,11 @@ public class Dieta
         this.nome = nome;
         this.descrizione = descrizione;
     }
+
+    public Dieta (){
+        this.nome = "";
+        this.descrizione = "";
+    }
     
     public static int getNewDietaFromUtente (string output){
         string dietaTemp;

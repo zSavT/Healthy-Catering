@@ -13,6 +13,12 @@ public class Cliente
         this.listaIdPatologie = listaIdPatologie;
     }
 
+    public Cliente (){
+        this.nome = "";
+        this.dieta = -1;
+        this.listaIdPatologie = new List <int> ();
+    }
+
     public string getNewNomeClienteFromUtente (string output){
         Console.WriteLine (output);
         return Console.ReadLine();

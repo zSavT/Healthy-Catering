@@ -14,6 +14,12 @@ public class Player
         this.inventario = inventario;
     }
 
+    public Player (){
+        this.nome = "";
+        this.soldi = -1;
+        this.inventario = new List<OggettoQuantita<Item>> ();
+    }
+
     ~Player()
     {
         

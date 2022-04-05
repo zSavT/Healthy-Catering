@@ -1,12 +1,11 @@
 using System;
 
 public class Database {
-    
     public Database (){}
 
     public static void Main(string[] args)
     {
-        aggiungiPatologia (new Patologia (-1, "", ""));
+        //salvaNuovoOggettoSuFile (new Piatto ("", "", -1, ));
     }
 
     public static void aggiungiPatologia (Patologia patologia){
