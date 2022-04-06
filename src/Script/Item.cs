@@ -28,21 +28,25 @@ public class Item
         return databaseOggetto [databaseOggetto.Count - 1].idItem + 1;
     }
 
-    public static Item creaNuovoItem (string nome = null, string tipoItem = null){
-        tipoItem ??= getTipoItemFromUtente ();
+    public static Item creaNuovoItem (string nome = null /*@Deprecated ,string tipoItem = null*/){
+        //tipoItem ??= getTipoItemFromUtente (); // @Deprecated 
         nome ??= Database.getNewStringaFromUtente ("Inserisci il nome dell'item che vuoi aggiungere");
 
-        if (tipoItem.Equals ("ingrediente")){
+        //if (tipoItem.Equals ("ingrediente")){ //@Deprecated 
             Database.aggiungiIngrediente (new Ingrediente (nome));
             return Database.getUltimoOggettoAggiuntoAlDatabase (new Ingrediente ());
+        /*//@Deprecated 
         }
         else{
             Item nuovoItem = getNewItemGenerico (nome);
             Database.salvaNuovoOggettoSuFile (nuovoItem);
             return nuovoItem;
         }
+        */
     }
 
+    //@Deprecated 
+    /*
     private static Item getNewItemGenerico (string nome){
         Item output = new Item (nome);
         while (output.descrizione.Equals("")){
@@ -51,7 +55,10 @@ public class Item
 
         return output;
     }
+    */
 
+    //@Deprecated 
+    /*
     private static string getTipoItemFromUtente (){
         Console.WriteLine ("Che tipo di Item vuoi aggiungere ('ingrediente', 'item generico')");
         string input = "";
@@ -62,6 +69,7 @@ public class Item
             Console.WriteLine ("Non hai inserito un input valido");
         }
     }
+    */
 
     ~Item()
     {

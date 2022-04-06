@@ -1,6 +1,14 @@
 using System.Reflection.Emit;
 public class Player
 {
+    /*
+    tutti i metodi e gli attributi e le variabili dichiarate nei metodi di questa classe con il nome 'Item' al loro interno sono in verità Ingredienti (o id di Ingredienti)
+    reference: discussione relativa a questa cosa a partire dal commento che inizia con questa stringa:
+    "
+    @zSavT l'ultimo commit ha un problema bello grande ovvero che quando aggiungo un item al player, siccome può essere sia un Item generico che un Ingrediente non si possono distinguere gli id degli Item e gli id degli ingredienti, in quanto hanno 2 database diversi.
+    " 
+    nella Pull Request chiamata PR issue#18
+    */
     public string nome = "";
     
     public float soldi = 0;

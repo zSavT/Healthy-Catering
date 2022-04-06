@@ -7,7 +7,7 @@ public class Database {
 
     public static void Main(string[] args)
     {
-        aggiungiRistorante (new Ristorante ());
+        
     }
 
     public static void aggiungiRistorante (Ristorante ristorante){
