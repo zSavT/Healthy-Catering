@@ -32,9 +32,45 @@ public class Piatto
         this.listaIdIngredientiQuantita = new List<OggettoQuantita<int>> ();
     }
 
+    public Piatto (string nomePiatto):base (){
+        this.nome = nomePiatto;
+    }
+
     ~Piatto()
     {
         
+    }
+
+    public static Piatto checkPiattoOnonimoGiaPresente (string nomePiatto){
+        List <Piatto> piattiConNomeSimileInDatabase = getPiattiConNomeSimileInDatabase (nomePiatto);
+        if (piattiConNomeSimileInDatabase.Count > 0){
+            stampaPiattiConNomeSimilePerSceltaUtente (nomePiatto, piattiConNomeSimileInDatabase);
+            int scelta = scegliPiattoSimile ();
+            if (scelta != -1)
+                return piattiConNomeSimileInDatabase [scelta];
+        }
+        return null;
+    }
+
+    private static void stampaPiattiConNomeSimilePerSceltaUtente (string nomePiatto, List <Piatto> piattiConNomeSimileInDatabase){
+        Console.WriteLine ("Il nome del piatto che hai inserito (" + nomePiatto + ") non è stato trovato ma sono stati trovati piatti con nomi simili, intendi uno di questi? Inserisci 'no' per uscire da questo menu");
+        int i = 1;
+        foreach (Piatto piatto in piattiConNomeSimileInDatabase){
+            Console.WriteLine (i.ToString () + ") " + piatto.nome);
+        }
+    }
+
+    private static int scegliPiattoSimile (){
+        string input = Console.ReadLine ();
+        int numeroInput;
+        try{ 
+            numeroInput = Int32.Parse (input);
+            return numeroInput - 1;
+        } 
+        catch (Exception ex){
+            //se non viene inserito un numero (quindi anche se viene inserito 'no')
+            return -1;
+        }
     }
 
     public static List <Piatto> getPiattiConNomeSimileInDatabase (string nomePiatto, List<Piatto> databasePiatti = null){
@@ -59,8 +95,8 @@ public class Piatto
         List <Ingrediente> databaseIngredienti = Database.getDatabaseOggetto (new Ingrediente ());
         foreach (string nomeIngrediente in inputUtente){
             Ingrediente ingredienteTemp = new Ingrediente ();
-            if (nomeIngredientePresenteNelDatabase (nomeIngrediente, databaseIngredienti)){ //TODO senza databaseIngredienti in input
-                ingredienteTemp = getIngredienteByNome (nomeIngrediente, databaseIngredienti); //TODO senza databaseIngredienti in input
+            if (nomeIngredientePresenteNelDatabase (nomeIngrediente, databaseIngredienti)){
+                ingredienteTemp = getIngredienteByNome (nomeIngrediente, databaseIngredienti);
             }
             else{
                 List <Ingrediente> ingredientiConNomeSimile = Ingrediente.getIngredientiConNomeSimileInDatabase (nomeIngrediente, databaseIngredienti);
@@ -96,7 +132,7 @@ public class Piatto
             return ingredientiConNomeSimile [numeroInput - 1];
         } 
         catch (Exception ex){
-            //se non viene inserito un numero
+            //se non viene inserito un numero (quindi anche se viene inserito 'no')
             return null;
         }
     }
@@ -133,7 +169,8 @@ public class Piatto
         return false;
     }
 
-    public static Ingrediente getIngredienteByNome (string nomeIngrediente, List <Ingrediente> databaseIngredienti){
+    public static Ingrediente getIngredienteByNome (string nomeIngrediente, List <Ingrediente> databaseIngredienti = null){
+        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
         foreach (Ingrediente ingrediente in databaseIngredienti){
             if (nomeIngrediente.ToLower ().Equals (ingrediente.nome.ToLower ()))
                 return ingrediente;

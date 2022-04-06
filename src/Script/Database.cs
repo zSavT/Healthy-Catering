@@ -5,7 +5,6 @@ public class Database {
 
     public static void Main(string[] args)
     {
-        aggiungiPiatto (new Piatto ());
     }
 
     public static void aggiungiPiatto (Piatto piatto){
@@ -13,19 +12,23 @@ public class Database {
             piatto.nome = getNewStringaFromUtente ("Inserisci il nome del piatto");
         }
         
-        while (piatto.descrizione.Equals("")){
-            piatto.descrizione = getNewStringaFromUtente ("Inserisci la descrizione del piatto");
+        Piatto piattoGiaPresente = Piatto.checkPiattoOnonimoGiaPresente (piatto.nome);
+        if (piattoGiaPresente == null){
+            while (piatto.descrizione.Equals("")){
+                piatto.descrizione = getNewStringaFromUtente ("Inserisci la descrizione del piatto");
+            }
+
+            while (piatto.listaIdIngredientiQuantita.Count == 0){
+                piatto.listaIdIngredientiQuantita = Piatto.getListaIdIngredientiQuantitaPiattoFromUtente (piatto.nome);
+            }
+
+            piatto.calcolaCosto ();
+            piatto.calcolaCostoEco ();
+            piatto.calcolaNutriScore ();
+
+            salvaNuovoOggettoSuFile (piatto);    
         }
-
-        while (piatto.listaIdIngredientiQuantita.Count == 0){
-            piatto.listaIdIngredientiQuantita = Piatto.getListaIdIngredientiQuantitaPiattoFromUtente (piatto.nome);
-        }
-
-        piatto.calcolaCosto ();
-        piatto.calcolaCostoEco ();
-        piatto.calcolaNutriScore ();
-
-        salvaNuovoOggettoSuFile (piatto);    
+        
     }
 
     public static void aggiungiPatologia (Patologia patologia){
