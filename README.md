@@ -1,6 +1,6 @@
 # Healthy Catering
 
-
+![Logo](doc/img/Logo.png "Logo Gioco")
 
 Corso Unity 1: https://www.gamedev.tv/ <br>
 Email: verioc3@gmail.com<br>
