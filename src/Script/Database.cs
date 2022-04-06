@@ -46,37 +46,40 @@ public class Database {
     }
 
     public static void aggiungiIngrediente (Ingrediente ingrediente){
-        ingrediente.idItem = Item.getNewIdDatabaseItem (ingrediente);
-
         while (ingrediente.nome.Equals("")){
             ingrediente.nome = getNewStringaFromUtente ("Inserisci il nome dell'ingrediente");
         }
-        
-        while (ingrediente.descrizione.Equals("")){
-            ingrediente.descrizione = getNewStringaFromUtente ("Inserisci la descrizione dell'ingrediente " + ingrediente.nome);
-        }
 
-        while (ingrediente.costo <= 0.0){
-            ingrediente.costo = ingrediente.getNewNumeroIngredienteFromUtente ("Inserisci il costo dell'ingrediente " + ingrediente.nome, "Non hai inserito un numero valido, inserisci un numero a cifra decimale (con .)");
-        }
+        Ingrediente ingredienteGiaPresente = Ingrediente.checkIngredienteOnonimoGiaPresente (ingrediente.nome);
+        if (ingredienteGiaPresente == null){
+            ingrediente.idItem = Item.getNewIdDatabaseItem (ingrediente);
+            
+            while (ingrediente.descrizione.Equals("")){
+                ingrediente.descrizione = getNewStringaFromUtente ("Inserisci la descrizione dell'ingrediente " + ingrediente.nome);
+            }
 
-        while (ingrediente.costoEco <= 0.0){
-            ingrediente.costoEco = (int) ingrediente.getNewNumeroIngredienteFromUtente ("Inserisci il costo eco dell'ingrediente " + ingrediente.nome, "Non hai inserito un numero valido, inserisci un numero intero");
-        }
+            while (ingrediente.costo <= 0.0){
+                ingrediente.costo = ingrediente.getNewNumeroIngredienteFromUtente ("Inserisci il costo dell'ingrediente " + ingrediente.nome, "Non hai inserito un numero valido, inserisci un numero a cifra decimale (con .)");
+            }
 
-        while (ingrediente.nutriScore <= 0.0){
-            ingrediente.nutriScore = (int) ingrediente.getNewNumeroIngredienteFromUtente ("Inserisci il nutriscore dell'ingrediente " + ingrediente.nome, "Non hai inserito un numero valido, inserisci un numero intero");
-        }
+            while (ingrediente.costoEco <= 0.0){
+                ingrediente.costoEco = (int) ingrediente.getNewNumeroIngredienteFromUtente ("Inserisci il costo eco dell'ingrediente " + ingrediente.nome, "Non hai inserito un numero valido, inserisci un numero intero");
+            }
 
-        while ((ingrediente.dieta < 0) || (ingrediente.dieta > 2)){
-            ingrediente.dieta = Dieta.getNewDietaFromUtente ("Inserisci la dieta minima con la quale è compatibile l'ingrediente " + ingrediente.nome);
-        }
+            while (ingrediente.nutriScore <= 0.0){
+                ingrediente.nutriScore = (int) ingrediente.getNewNumeroIngredienteFromUtente ("Inserisci il nutriscore dell'ingrediente " + ingrediente.nome, "Non hai inserito un numero valido, inserisci un numero intero");
+            }
 
-        if (ingrediente.listaIdPatologieCompatibili.Count == 0){
-            ingrediente.listaIdPatologieCompatibili = Patologia.getNewListaIdPatologieFromUtente ("Inserisci le patologie compatibili con l'ingrediente " + ingrediente.nome + " e la keyword 'fine' quando hai finito l'inserimento");
-        }
+            while ((ingrediente.dieta < 0) || (ingrediente.dieta > 2)){
+                ingrediente.dieta = Dieta.getNewDietaFromUtente ("Inserisci la dieta minima con la quale è compatibile l'ingrediente " + ingrediente.nome);
+            }
 
-        salvaNuovoOggettoSuFile (ingrediente);
+            if (ingrediente.listaIdPatologieCompatibili.Count == 0){
+                ingrediente.listaIdPatologieCompatibili = Patologia.getNewListaIdPatologieFromUtente ("Inserisci le patologie compatibili con l'ingrediente " + ingrediente.nome + " e la keyword 'fine' quando hai finito l'inserimento");
+            }
+
+            salvaNuovoOggettoSuFile (ingrediente);
+        }
     }
 
     public static void aggiungiDieta (Dieta dieta){

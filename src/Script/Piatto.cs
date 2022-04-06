@@ -101,7 +101,7 @@ public class Piatto
             else{
                 List <Ingrediente> ingredientiConNomeSimile = Ingrediente.getIngredientiConNomeSimileInDatabase (nomeIngrediente, databaseIngredienti);
                 if (ingredientiConNomeSimile.Count > 0){
-                    Ingrediente ingredienteScelto = scegliIngredienteConNomeSimile (nomeIngrediente, ingredientiConNomeSimile);
+                    Ingrediente ingredienteScelto = Ingrediente.scegliIngredienteConNomeSimile (nomeIngrediente, ingredientiConNomeSimile);
                     if (ingredienteScelto == null){
                         Database.aggiungiIngrediente (new Ingrediente (nomeIngrediente));
                         ingredienteTemp = Database.getUltimoOggettoAggiuntoAlDatabase (new Ingrediente ());
@@ -120,30 +120,6 @@ public class Piatto
         }
         
         return listaIdIngredientiQuantitaPiatto;
-    }
-
-    private static Ingrediente scegliIngredienteConNomeSimile (string nomeIngrediente, List <Ingrediente> ingredientiConNomeSimile){
-        stampaIngredientiSimiliPerSceltaUtente (nomeIngrediente, ingredientiConNomeSimile);
-
-        string input = Console.ReadLine ();
-        int numeroInput;
-        try{ 
-            numeroInput = Int32.Parse (input);
-            return ingredientiConNomeSimile [numeroInput - 1];
-        } 
-        catch (Exception ex){
-            //se non viene inserito un numero (quindi anche se viene inserito 'no')
-            return null;
-        }
-    }
-
-    private static void stampaIngredientiSimiliPerSceltaUtente (string nomeIngrediente, List <Ingrediente> ingredientiConNomeSimile){
-        Console.WriteLine ("Il nome dell'ingrediente che hai inserito (" + nomeIngrediente + ") non è stato trovato ma sono stati trovati ingredienti con nomi simili, intendi uno di questi? Inserisci 'no' per uscire da questo menu");
-                    
-        int i = 1;
-        foreach (Ingrediente ingredienteSimile in ingredientiConNomeSimile){
-            Console.WriteLine (i.ToString () + ") " + ingredienteSimile.nome);
-        }
     }
 
     private static List <string> getNomeIngredientiFromUtente (string nomePiatto){

@@ -34,6 +34,13 @@ public class Ingrediente : Item
         this.nome = nomeIngrediente;
     }
 
+    public static Ingrediente checkIngredienteOnonimoGiaPresente (string nomeIngrediente){
+        List <Ingrediente> ingredientiConNomeSimileInDatabase = getIngredientiConNomeSimileInDatabase (nomeIngrediente);
+        if (ingredientiConNomeSimileInDatabase.Count > 0)
+            return scegliIngredienteConNomeSimile (nomeIngrediente, ingredientiConNomeSimileInDatabase);
+        else return null;
+    }
+
     public static List <Ingrediente> getIngredientiConNomeSimileInDatabase (string nomeIngrediente, List<Ingrediente> databaseIngredienti = null){
         databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
         
@@ -46,6 +53,30 @@ public class Ingrediente : Item
         }
 
         return output;
+    }
+
+    public static Ingrediente scegliIngredienteConNomeSimile (string nomeIngrediente, List <Ingrediente> ingredientiConNomeSimile){
+        stampaIngredientiSimiliPerSceltaUtente (nomeIngrediente, ingredientiConNomeSimile);
+
+        string input = Console.ReadLine ();
+        int numeroInput;
+        try{ 
+            numeroInput = Int32.Parse (input);
+            return ingredientiConNomeSimile [numeroInput - 1];
+        } 
+        catch (Exception ex){
+            //se non viene inserito un numero (quindi anche se viene inserito 'no')
+            return null;
+        }
+    }
+
+    private static void stampaIngredientiSimiliPerSceltaUtente (string nomeIngrediente, List <Ingrediente> ingredientiConNomeSimile){
+        Console.WriteLine ("Il nome dell'ingrediente che hai inserito (" + nomeIngrediente + ") non è stato trovato ma sono stati trovati ingredienti con nomi simili, intendi uno di questi? Inserisci 'no' per uscire da questo menu");
+                    
+        int i = 1;
+        foreach (Ingrediente ingredienteSimile in ingredientiConNomeSimile){
+            Console.WriteLine (i.ToString () + ") " + ingredienteSimile.nome);
+        }
     }
 
     public float getNewNumeroIngredienteFromUtente (string output, string outputError){
