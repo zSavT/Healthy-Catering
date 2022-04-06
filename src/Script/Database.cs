@@ -5,7 +5,7 @@ public class Database {
 
     public static void Main(string[] args)
     {
-        salvaNuovoOggettoSuFile (new Piatto ());
+        //salvaNuovoOggettoSuFile (new Piatto ());
     }
 
     public static void aggiungiPatologia (Patologia patologia){

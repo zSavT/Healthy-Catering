@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 public class Piatto
 {
     public string nome = "";
@@ -33,8 +34,40 @@ public class Piatto
         
     }
 
-    //TODO metodo che trova patologie compatibili in base agli ingredienti
-    //TODO metodo che trova diete compatibili in base agli ingredienti
+    public List <Ingrediente> getIngredientiPiatto (){
+        List <Ingrediente> databaseIngredienti = Database.getDatabaseOggetto (new Ingrediente ());
+        List <Ingrediente> ingredientiPiatto = new List <Ingrediente> ();
+        int i = 0;
+        foreach (int id in this.idIngredienti [i]){
+            foreach (Ingrediente ingrediente in databaseIngredienti){
+                if (id == ingrediente.idItem){
+                    ingredientiPiatto.Add (ingrediente);
+                } 
+            }
+            i++;
+        }
+    }
 
+    public List <int> getPatologieCompatibili (){
+        List <Ingrediente> ingredientiPiatto = this.getIngredientiPiatto ();
+        List <int> IdtutteLePatologie = Patologia.getListIdTutteLePatologie ();
+        foreach (Ingrediente ingrediente in ingredientiPiatto){
+            foreach (int id in IdtutteLePatologie){
+                if (!(ingrediente.listaIdPatologie.Contains (id))){
+                    IdtutteLePatologie.remove (id);
+                }
+            }
+        }
+        return IdtutteLePatologie;
+    }
 
+    public int getDietaMinimaCompatibile (){
+        List <Ingrediente> ingredientiPiatto = this.getIngredientiPiatto ();
+        int output = -1;
+        foreach (Ingrediente ingrediente in ingredientiPiatto){
+            if (output < ingrediente.dieta)
+                output = ingrediente.dieta;
+        }
+        return output;
+    }
 }
