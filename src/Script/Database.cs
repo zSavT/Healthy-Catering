@@ -5,7 +5,7 @@ public class Database {
 
     public static void Main(string[] args)
     {
-    
+        aggiungiPiatto (new Piatto ());
     }
 
     public static void aggiungiPiatto (Piatto piatto){
@@ -18,7 +18,7 @@ public class Database {
         }
 
         while (piatto.listaIdIngredientiQuantita.Count == 0){
-            //piatto.listaIdIngredientiQuantita = Ingrediente.getListaIdIngredientiQuantitaPiattoFromUtente (piatto.nome);
+            piatto.listaIdIngredientiQuantita = Piatto.getListaIdIngredientiQuantitaPiattoFromUtente (piatto.nome);
         }
 
         piatto.calcolaCosto ();

@@ -85,7 +85,7 @@ public class Piatto
 
     public static Ingrediente getIngredienteByNome (string nomeIngrediente, List <Ingrediente> databaseIngredienti){
         foreach (Ingrediente ingrediente in databaseIngredienti){
-            if (nomeIngrediente.Equals (ingrediente.nome))
+            if (nomeIngrediente.ToLower ().Equals (ingrediente.nome.ToLower ()))
                 return ingrediente;
         }
         throw new Exception ("Ingrediente non trovato");

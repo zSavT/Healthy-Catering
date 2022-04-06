@@ -1,7 +1,36 @@
 [
   {
-    "nome": "",
-    "descrizione": "",
-    "idIngredienti": []
+    "nome": "Spaghetti all'assassina",
+    "descrizione": "State tranquilli, gli spaghetti all'assassina non si ispirano ai classici del cinema horror! Si tratta di un primo piatto che è entrato di recente a far parte della tradizione barese, oltre che un modo appetitoso per utilizzare il sugo avanzato. Il significato del suo nome non è ben chiaro, ma quel che è certo è che il suo gusto ha conquistato tutti: grazie alla cottura degli spaghetti direttamente in padella, infatti, otterrete una consistenza croccante e saporita particolarmente apprezzata dagli amanti della crosticina!",
+    "listaIdIngredientiQuantita": [
+      {
+        "oggetto": 0,
+        "quantita": 1
+      },
+      {
+        "oggetto": 1,
+        "quantita": 1
+      },
+      {
+        "oggetto": 2,
+        "quantita": 1
+      },
+      {
+        "oggetto": 3,
+        "quantita": 1
+      },
+      {
+        "oggetto": 4,
+        "quantita": 1
+      },
+      {
+        "oggetto": 5,
+        "quantita": 1
+      },
+      {
+        "oggetto": 6,
+        "quantita": 1
+      }
+    ]
   }
 ]
