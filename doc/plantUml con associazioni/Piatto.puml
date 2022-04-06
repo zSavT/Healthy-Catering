@@ -1,0 +1,31 @@
+@startuml
+class Piatto {
+    + nome : string = ""
+    + descrizione : string = ""
+    - costo : float = 0
+    - costoEco : float = 0
+    - nutriScore : int = 0
+    - percentualeGuadagnoSulPiatto : int = 10
+    + Piatto(nome:string, descrizione:string, costo:float, costoEco:float, nutriScore:int, listaIdIngredientiQuantita:List<OggettoQuantita<int>>)
+    + Piatto()
+    + Piatto(nomePiatto:string)
+    + {static} checkPiattoOnonimoGiaPresente(nomePiatto:string) : Piatto
+    - {static} stampaPiattiConNomeSimilePerSceltaUtente(nomePiatto:string, piattiConNomeSimileInDatabase:List <Piatto>) : void
+    - {static} scegliPiattoSimile() : int
+    + {static} getPiattiConNomeSimileInDatabase(nomePiatto:string, databasePiatti:List<Piatto>) : List <Piatto>
+    + {static} getListaIdIngredientiQuantitaPiattoFromUtente(nomePiatto:string) : List <OggettoQuantita <int>>
+    - {static} getNomeIngredientiFromUtente(nomePiatto:string) : List <string>
+    + {static} nomeIngredientePresenteNelDatabase(nomeIngrediente:string, databaseIngredienti:List <Ingrediente>) : bool
+    + {static} getIngredienteByNome(nomeIngrediente:string, databaseIngredienti:List <Ingrediente>) : Ingrediente
+    - {static} getQuantitaIngredienteNelPiattoFromUtente(nomeIngrediente:string, nomePiatto:string) : int
+    + calcolaCosto() : float
+    + calcolaCostoEco() : float
+    + calcolaNutriScore() : int
+    + getIngredientiPiatto() : List <Ingrediente>
+    + getPatologieCompatibili() : List <int>
+    + getDietaMinimaCompatibile() : int
+}
+class "List`1"<T> {
+}
+Piatto o-> "listaIdIngredientiQuantita<OggettoQuantita <int>>" "List`1"
+@enduml

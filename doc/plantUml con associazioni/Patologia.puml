@@ -1,0 +1,16 @@
+@startuml
+class Patologia {
+    + idPatologia : int
+    + nome : string = ""
+    + descrizione : string = ""
+    + Patologia(idPatologia:int, nome:string, descrizione:string)
+    + Patologia()
+    + {static} patologiaStringToIdPatologia(patologia:string) : int
+    + {static} getNewListaIdPatologieFromUtente(output:string) : List <int>
+    - {static} convertiListaPatologieStringToListaIdPatologia(listaPatolgie:List <string>) : List <int>
+    - {static} fillListaPatologieStringhe(output:string) : List <string>
+    + {static} getNewIdDatabasePatologia(oggetto:Patologia) : int
+    - {static} idListToPatologieList(idList:List <int>) : List <Patologia>
+    + {static} getListIdTutteLePatologie() : List <int>
+}
+@enduml

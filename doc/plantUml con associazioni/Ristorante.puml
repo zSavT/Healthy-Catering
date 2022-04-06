@@ -1,0 +1,13 @@
+@startuml
+class Ristorante {
+    + nome : string = ""
+    + punteggio : int
+    + Ristorante(nome:string, punteggio:int, magazzinoIngredienti:List<OggettoQuantita<int>>)
+    + Ristorante()
+    + {static} getNewPunteggioFromUtente() : int
+    + {static} fillMagazzinoIngredienti() : List<OggettoQuantita<int>>
+}
+class "List`1"<T> {
+}
+Ristorante o-> "magazzinoIngredienti<OggettoQuantita<int>>" "List`1"
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+class Item {
+    + idItem : int
+    + nome : string = ""
+    + descrizione : string = ""
+    + Item(idItem:int, nome:string, descrizione:string)
+    + Item()
+    + Item(nome:string)
+    + {static} getNewIdDatabaseItem(oggetto:Item) : int
+    + {static} creaNuovoItem(nome:string) : Item
+}
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+class Cliente {
+    + nome : string = ""
+    + dieta : int = 0
+    + listaIdPatologie : List <int> = null
+    + Cliente(nome:string, dieta:int, listaIdPatologie:List<int>)
+    + Cliente()
+    + getNewNomeClienteFromUtente(output:string) : string
+}
+@enduml

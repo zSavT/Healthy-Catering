@@ -1,0 +1,8 @@
+@startuml
+class "OggettoQuantita`1"<Oggetto> {
+    + oggetto : Oggetto
+    + quantita : int
+    + OggettoQuantita(oggetto:Oggetto, quantita:int)
+    + OggettoQuantita()
+}
+@enduml
