@@ -38,14 +38,15 @@ public class Piatto
         List <Ingrediente> databaseIngredienti = Database.getDatabaseOggetto (new Ingrediente ());
         List <Ingrediente> ingredientiPiatto = new List <Ingrediente> ();
         int i = 0;
-        foreach (int id in this.idIngredienti [i]){
+        foreach (OggettoQuantita <int> ingredienteQuantita in this.idIngredienti){
             foreach (Ingrediente ingrediente in databaseIngredienti){
-                if (id == ingrediente.idItem){
+                if (ingredienteQuantita.oggetto == ingrediente.idItem){
                     ingredientiPiatto.Add (ingrediente);
                 } 
             }
             i++;
         }
+        return ingredientiPiatto;
     }
 
     public List <int> getPatologieCompatibili (){
@@ -53,8 +54,8 @@ public class Piatto
         List <int> IdtutteLePatologie = Patologia.getListIdTutteLePatologie ();
         foreach (Ingrediente ingrediente in ingredientiPiatto){
             foreach (int id in IdtutteLePatologie){
-                if (!(ingrediente.listaIdPatologie.Contains (id))){
-                    IdtutteLePatologie.remove (id);
+                if (!(ingrediente.listaIdPatologieCompatibili.Contains (id))){
+                    IdtutteLePatologie.Remove (id);
                 }
             }
         }

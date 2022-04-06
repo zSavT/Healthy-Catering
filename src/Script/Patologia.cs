@@ -92,7 +92,7 @@ public class Patologia
     }
 
     public static List <int> getListIdTutteLePatologie (){
-        List <Patologie> databasePatologie = Database.getDatabaseOggetto (new Patologia ());
+        List <Patologia> databasePatologie = Database.getDatabaseOggetto (new Patologia ());
         List <int> output = new List <int> ();
         foreach (Patologia patologia in databasePatologie){
             output.Add (patologia.idPatologia);
