@@ -37,6 +37,20 @@ public class Piatto
         
     }
 
+    public static List <Piatto> getPiattiConNomeSimileInDatabase (string nomePiatto, List<Piatto> databasePiatti = null){
+        databasePiatti ??= Database.getDatabaseOggetto (new Piatto ());
+        
+        List <Piatto> output = new List<Piatto> ();
+        string nomePiattoPerConfronto = nomePiatto.ToLower ();
+        foreach (Piatto piattoTemp in databasePiatti){
+            if ((piattoTemp.nome.ToLower ().Contains (nomePiattoPerConfronto)) || (nomePiattoPerConfronto.Contains (piattoTemp.nome.ToLower ()))){
+                output.Add (piattoTemp);
+            }
+        }
+
+        return output;
+    }
+
     public static List <OggettoQuantita <int>> getListaIdIngredientiQuantitaPiattoFromUtente (string nomePiatto){
         List <OggettoQuantita <int>> listaIdIngredientiQuantitaPiatto = new List<OggettoQuantita<int>> ();
         
@@ -59,7 +73,6 @@ public class Piatto
         return listaIdIngredientiQuantitaPiatto;
     }
 
-    
     private static List <string> getNomeIngredientiFromUtente (string nomePiatto){
         Console.WriteLine ("Inserisci il nome degli ingredienti del piatto " + nomePiatto + " e la keyword 'fine' quando vuoi finire l'inserimento");
         List <string> nomiIngredienti = new List<string> ();

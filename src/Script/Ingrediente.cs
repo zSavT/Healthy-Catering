@@ -34,6 +34,20 @@ public class Ingrediente : Item
         this.nome = nomeIngrediente;
     }
 
+    public static List <Ingrediente> getIngredientiConNomeSimileInDatabase (string nomeIngrediente, List<Ingrediente> databaseIngredienti = null){
+        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
+        
+        List <Ingrediente> output = new List<Ingrediente> ();
+        string nomeIngredientePerConfronto = nomeIngrediente.ToLower ();
+        foreach (Ingrediente ingredienteTemp in databaseIngredienti){
+            if ((ingredienteTemp.nome.ToLower ().Contains (nomeIngredientePerConfronto)) || (nomeIngredientePerConfronto.Contains (ingredienteTemp.nome.ToLower ()))){
+                output.Add (ingredienteTemp);
+            }
+        }
+
+        return output;
+    }
+
     public float getNewNumeroIngredienteFromUtente (string output, string outputError){
         bool numeroValido = false;
         float temp = -1;

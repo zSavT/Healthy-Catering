@@ -5,7 +5,7 @@ public class Database {
 
     public static void Main(string[] args)
     {
-        aggiungiPiatto (new Piatto ());
+    
     }
 
     public static void aggiungiPiatto (Piatto piatto){
