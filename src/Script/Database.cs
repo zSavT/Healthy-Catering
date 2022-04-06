@@ -5,7 +5,7 @@ public class Database {
 
     public static void Main(string[] args)
     {
-        //salvaNuovoOggettoSuFile (new Piatto ());
+        salvaNuovoOggettoSuFile (new Piatto ());
     }
 
     public static void aggiungiPatologia (Patologia patologia){
@@ -53,7 +53,7 @@ public class Database {
             ingrediente.listaIdPatologieCompatibili = Patologia.getNewListaIdPatologieFromUtente ("Inserisci le patologie compatibili con l'ingrediente e la keyword 'fine' quando hai finito l'inserimento");
         }
 
-        Database.salvaNuovoOggettoSuFile (ingrediente);
+        salvaNuovoOggettoSuFile (ingrediente);
     }
 
     public static void aggiungiDieta (Dieta dieta){
@@ -65,7 +65,7 @@ public class Database {
             dieta.descrizione = getNewStringaFromUtente ("Inserisci la descrizione della dieta");
         }
 
-        Database.salvaNuovoOggettoSuFile (dieta);
+        salvaNuovoOggettoSuFile (dieta);
     }
 
     public static void aggiungiCliente (Cliente cliente){
@@ -81,7 +81,7 @@ public class Database {
             cliente.listaIdPatologie = Patologia.getNewListaIdPatologieFromUtente ("Inserisci le patologie del cliente e la keyword 'fine' quando hai finito l'inserimento");
         }
         
-        Database.salvaNuovoOggettoSuFile (cliente);
+        salvaNuovoOggettoSuFile (cliente);
     }
 
     public static void salvaNuovoOggettoSuFile <Oggetto> (Oggetto oggetto){   
@@ -103,13 +103,13 @@ public class Database {
     }
 
     private static void creaDatabaseBase (){
-        Database.creaDatabaseBaseCliente ();
-        Database.creaDatabaseBaseDieta ();
-        //TODO commentato perche ingrediente sta è gia stato fillato in parte Database.creaDatabaseBaseIngrediente ();
-        Database.creaDatabaseBasePatologia ();
-        Database.creaDatabaseBasePiatto ();
-        Database.creaDatabaseBasePlayer ();
-        Database.creaDatabaseBaseRistorante ();
+        creaDatabaseBaseCliente ();
+        creaDatabaseBaseDieta ();
+        creaDatabaseBaseIngrediente ();
+        creaDatabaseBasePatologia ();
+        creaDatabaseBasePiatto ();
+        creaDatabaseBasePlayer ();
+        creaDatabaseBaseRistorante ();
     }
 
     private static void creaDatabaseBaseCliente (){

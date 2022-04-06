@@ -1,6 +1,6 @@
 public class OggettoQuantita <Oggetto>
 {
-    public Oggetto oggetto;//TODO non si fa cosi: = null;
+    public Oggetto oggetto;
 
     public int quantita;
 

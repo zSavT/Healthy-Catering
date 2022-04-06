@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System;
 public class Patologia
 {
@@ -26,16 +27,16 @@ public class Patologia
             throw new InvalidOperationException ("Nome patologia non valido");
     }
 
-     public static List <int> getNewListaIdPatologieFromUtente (string output){
+    public static List <int> getNewListaIdPatologieFromUtente (string output){
         List <string> patologieInput = Patologia.fillListaPatologieStringhe (output);
         //returna una lista vuota di interi (id) se la lista data dall'utente è vuota
         if (patologieInput.Count == 0){
             return new List <int> ();
         }
-        return convertiListaPatologieStringToIdPatologia (patologieInput);
+        return convertiListaPatologieStringToListaIdPatologia (patologieInput);
     }
 
-    private static List <int> convertiListaPatologieStringToIdPatologia (List <string> listaPatolgie){
+    private static List <int> convertiListaPatologieStringToListaIdPatologia (List <string> listaPatolgie){
         List <int> patologieConvertite = new List <int> ();
         int patologiaConvertitaTemp;
         foreach (string patologiaString in listaPatolgie){
@@ -76,20 +77,17 @@ public class Patologia
         
     }
 
-    /* TODO commentato perché non finito
-    public static List <Patologia> idToPatologia(int idPatologia) 
-    {
-        int max; //max che dovrà diventare della dimensione delle patologie
-        List<Patologia> temp = new List<Patologia>();
-        List<Patologia> pato = new List<Patologia>();   //variabile contenente tutte le patologie
-        for(int i = 0; i<max; i++) 
-        {
-            if (idPatologia = pato.idPatologia) {
-                temp.Add(pato.Get(i));
+    private static List <Patologia> idListToPatologieList (List <int> idList){
+        idList = idList.Distinct().ToList(); //rimuove eventuali duplicati
+        List <Patologia> databasePatologie = Database.getDatabaseOggetto (new Patologia ());
+        List <Patologia> listaPatologie = new List <Patologia> ();
+        foreach (int id in idList){
+            foreach (Patologia patologia in databasePatologie){
+                if (id == patologia.idPatologia){
+                    listaPatologie.Add (patologia);
+                }
             }
-            pato.Next();
         }
-        return temp;
+        return listaPatologie;
     }
-    */
 }
