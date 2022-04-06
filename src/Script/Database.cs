@@ -1,10 +1,36 @@
 using System;
 
+//TODO creare un metodo per chiedere gli interi e sostituire tutte le richieste per interi fatte fino ad ora, in tutti i file
+
 public class Database {
     public Database (){}
 
     public static void Main(string[] args)
     {
+        creaDatabaseBasePlayer ();
+    }
+
+    public static void aggiungiPlayer (Player player){
+        while (player.nome.Equals("")){
+            player.nome = getNewStringaFromUtente ("Inserisci il nome del player");
+        }
+
+        while (player.soldi == -1){
+            try{
+                Console.WriteLine ("Inserisci i soldi del player " + player.nome);
+                int soldi = Int32.Parse (Console.ReadLine ());
+                if (soldi >= 0){
+                    player.soldi = soldi;
+                }
+            }
+            catch (Exception e){
+                Console.WriteLine ("Non hai inserito un numero valido");
+            }
+        }
+        
+        while (player.inventario == null){
+            player.inventario = Player.popolaInventario ();
+        }
     }
 
     public static void aggiungiPiatto (Piatto piatto){
