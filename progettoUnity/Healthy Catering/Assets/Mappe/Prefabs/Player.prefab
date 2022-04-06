@@ -1849,10 +1849,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27be8b93bb1d5b4b99d2dcef960d3e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocitaMovimento: 5
-  attritoAlSuolo: 8.5
+  velocitaMovimento: 7
+  attritoAlSuolo: 8.8
   tastoSalto: 32
-  forzaSalto: 3
+  forzaSalto: 5
   timerSalto: 0.6
   molltiplicatoreVelocitaSalto: 0.2
   altezzaGiocatore: 0

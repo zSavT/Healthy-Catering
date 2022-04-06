@@ -8,13 +8,13 @@ using UnityEngine;
 public class MovimentoPlayer : MonoBehaviour
 {
     [Header("Movemento")]
-    public float velocitaMovimento = 5;
-    public float attritoAlSuolo = 8.5f;
+    public float velocitaMovimento = 7;
+    public float attritoAlSuolo = 8.8f;
 
 
     [Header("Salto")]
     public KeyCode tastoSalto = KeyCode.Space;
-    public float forzaSalto = 4;
+    public float forzaSalto = 5;
     public float timerSalto = 0.5f;
     public float molltiplicatoreVelocitaSalto = 0.2f;
     bool prontoASaltare;
@@ -39,7 +39,9 @@ public class MovimentoPlayer : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         prontoASaltare = true;
+        velocitaMovimento = 7;
         attritoAlSuolo = 8.5f;
+        forzaSalto = 5;
     }
 
     private void Update()
