@@ -5,7 +5,27 @@ public class Database {
 
     public static void Main(string[] args)
     {
-        //salvaNuovoOggettoSuFile (new Piatto ());
+        aggiungiPiatto (new Piatto ());
+    }
+
+    public static void aggiungiPiatto (Piatto piatto){
+        while (piatto.nome.Equals("")){
+            piatto.nome = getNewStringaFromUtente ("Inserisci il nome del piatto");
+        }
+        
+        while (piatto.descrizione.Equals("")){
+            piatto.descrizione = getNewStringaFromUtente ("Inserisci la descrizione del piatto");
+        }
+
+        while (piatto.listaIdIngredientiQuantita.Count == 0){
+            //popola la lista degli ingredienti
+        }
+
+        piatto.calcolaCosto ();
+        piatto.calcolaCostoEco ();
+        piatto.calcolaNutriScore ();
+
+        salvaNuovoOggettoSuFile (piatto);    
     }
 
     public static void aggiungiPatologia (Patologia patologia){

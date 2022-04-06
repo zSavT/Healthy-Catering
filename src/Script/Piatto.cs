@@ -6,18 +6,21 @@ public class Piatto
 
     private float costo = 0;
     private float costoEco = 0;
-    private int nutriScore = 0; //media fra i nutriscore degli ingredienti ma approssimata per difetto all'intero più vicino
+    private int nutriScore = 0; //media fra i nutriScore degli ingredienti ma approssimata per difetto all'intero più vicino
+    
     //                          int al posto di ingredienti perché sono gli id degli ingredienti
-    public List <OggettoQuantita <int>> idIngredienti = null;
+    public List <OggettoQuantita <int>> listaIdIngredientiQuantita = null;
 
-    public Piatto(string nome, string descrizione, float costo, float costoEco, int nutriScore, List<OggettoQuantita<int>> idIngredienti)
+    private int percentualeGuadagnoSulPiatto = 10;
+    
+    public Piatto(string nome, string descrizione, float costo, float costoEco, int nutriScore, List<OggettoQuantita<int>> listaIdIngredientiQuantita)
     {
         this.nome = nome;
         this.descrizione = descrizione;
         this.costo = costo;
         this.costoEco = costoEco;
         this.nutriScore = nutriScore;
-        this.idIngredienti = idIngredienti;
+        this.listaIdIngredientiQuantita = listaIdIngredientiQuantita;
     }
 
     public Piatto (){
@@ -26,7 +29,7 @@ public class Piatto
         this.costo = -1;
         this.costoEco = -1;
         this.nutriScore = -1;
-        this.idIngredienti = new List<OggettoQuantita<int>> ();
+        this.listaIdIngredientiQuantita = new List<OggettoQuantita<int>> ();
     }
 
     ~Piatto()
@@ -34,11 +37,38 @@ public class Piatto
         
     }
 
+    public float calcolaCosto (){
+        float costo = 0;
+        foreach (OggettoQuantita<int> ingredienteQuantita in this.listaIdIngredientiQuantita){
+            costo = costo + (Ingrediente.IdToIngrediente (ingredienteQuantita.oggetto).costo * ingredienteQuantita.quantita);
+        }
+        return costo + ((costo * percentualeGuadagnoSulPiatto) / 100);
+    }
+
+    public float calcolaCostoEco (){
+        float costoEco = 0;
+        foreach (OggettoQuantita<int> ingredienteQuantita in this.listaIdIngredientiQuantita){
+            costoEco = costoEco + (Ingrediente.IdToIngrediente (ingredienteQuantita.oggetto).costoEco * ingredienteQuantita.quantita);
+        }
+        return costoEco;
+    }
+
+    public int calcolaNutriScore (){
+        int sommanutriScore = 0;
+        int numeroIngredienti = 0;
+        foreach (OggettoQuantita<int> ingredienteQuantita in this.listaIdIngredientiQuantita){
+            sommanutriScore = sommanutriScore + (Ingrediente.IdToIngrediente (ingredienteQuantita.oggetto).nutriScore * ingredienteQuantita.quantita);
+            numeroIngredienti = numeroIngredienti + ingredienteQuantita.quantita;
+        }
+        int nutriScore = (int) (sommanutriScore / numeroIngredienti);
+        return nutriScore;
+    }
+
     public List <Ingrediente> getIngredientiPiatto (){
         List <Ingrediente> databaseIngredienti = Database.getDatabaseOggetto (new Ingrediente ());
         List <Ingrediente> ingredientiPiatto = new List <Ingrediente> ();
         int i = 0;
-        foreach (OggettoQuantita <int> ingredienteQuantita in this.idIngredienti){
+        foreach (OggettoQuantita <int> ingredienteQuantita in this.listaIdIngredientiQuantita){
             foreach (Ingrediente ingrediente in databaseIngredienti){
                 if (ingredienteQuantita.oggetto == ingrediente.idItem){
                     ingredientiPiatto.Add (ingrediente);
