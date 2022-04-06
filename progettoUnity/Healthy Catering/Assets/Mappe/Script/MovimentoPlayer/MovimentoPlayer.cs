@@ -14,7 +14,7 @@ public class MovimentoPlayer : MonoBehaviour
 
     [Header("Salto")]
     public KeyCode tastoSalto = KeyCode.Space;
-    public float forzaSalto = 7;
+    public float forzaSalto = 4;
     public float timerSalto = 0.5f;
     public float molltiplicatoreVelocitaSalto = 0.2f;
     bool prontoASaltare;

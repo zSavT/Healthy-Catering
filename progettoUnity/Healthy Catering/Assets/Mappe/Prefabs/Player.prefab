@@ -104,7 +104,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292043299463951636}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 3
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -1849,10 +1849,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27be8b93bb1d5b4b99d2dcef960d3e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocitaMovimento: 10
+  velocitaMovimento: 5
   attritoAlSuolo: 2
   tastoSalto: 32
-  forzaSalto: 7
+  forzaSalto: 3
   timerSalto: 0.6
   molltiplicatoreVelocitaSalto: 0.2
   altezzaGiocatore: 0
