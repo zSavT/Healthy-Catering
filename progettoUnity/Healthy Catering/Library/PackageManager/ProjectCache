@@ -5,29 +5,29 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637847943303970012
-    m_Hash: 2635942507
+      ticks: 637848677966429857
+    m_Hash: 3521293456
   m_LockFileStatus:
     m_FilePath: C:/Users/verio/Repo/Healthy-Catering/progettoUnity/Healthy Catering/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637847943304030004
-    m_Hash: 2772143164
+      ticks: 637848678238359872
+    m_Hash: 2797659484
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
   m_LocalFileStatus: []
 m_ProjectPath: C:/Users/verio/Repo/Healthy-Catering/progettoUnity/Healthy Catering/Packages
-m_EditorVersion: 2021.2.18f1 (0c6e675195cf)
+m_EditorVersion: 2021.2.19f1 (602ecdbb2fb0)
 m_ResolvedPackages:
-- packageId: com.unity.collab-proxy@1.15.13
+- packageId: com.unity.collab-proxy@1.15.15
   testable: 0
   isDirectDependency: 1
-  version: 1.15.13
+  version: 1.15.15
   source: 1
-  resolvedPath: C:\Users\verio\Repo\Healthy-Catering\progettoUnity\Healthy Catering\Library\PackageCache\com.unity.collab-proxy@1.15.13
+  resolvedPath: C:\Users\verio\Repo\Healthy-Catering\progettoUnity\Healthy Catering\Library\PackageCache\com.unity.collab-proxy@1.15.15
   assetPath: Packages/com.unity.collab-proxy
   name: com.unity.collab-proxy
   displayName: Version Control
@@ -97,7 +97,6 @@ m_ResolvedPackages:
     - 2.1.0-preview.5
     - 2.1.0-preview.6
     compatible:
-    - 1.15.13
     - 1.15.15
     - 2.0.0-preview.6
     - 2.0.0-preview.8
@@ -141,16 +140,16 @@ m_ResolvedPackages:
     capabilities: 7
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637807003040000000
+  datePublishedTicks: 637828649420000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
-    revision: 825774911ad2d1440ac844c9be1ae2c9b5dc7966
+    revision: abf10445fb869983dbe4f8f87ec63c58f4cd36e0
     path: 
   unityLifecycle:
-    version: 1.15.13
+    version: 1.15.15
     nextVersion: 
 - packageId: com.unity.feature.development@1.0.1
   testable: 0
@@ -206,7 +205,7 @@ m_ResolvedPackages:
   - name: com.unity.modules.jsonserialize
     version: 1.0.0
   - name: com.unity.ide.rider
-    version: 3.0.12
+    version: 3.0.13
   - name: com.unity.ide.vscode
     version: 1.2.5
   - name: com.unity.editorcoroutines
@@ -238,12 +237,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 1.0.1
     nextVersion: 
-- packageId: com.unity.ide.rider@3.0.12
+- packageId: com.unity.ide.rider@3.0.13
   testable: 0
   isDirectDependency: 1
-  version: 3.0.12
+  version: 3.0.13
   source: 1
-  resolvedPath: C:\Users\verio\Repo\Healthy-Catering\progettoUnity\Healthy Catering\Library\PackageCache\com.unity.ide.rider@3.0.12
+  resolvedPath: C:\Users\verio\Repo\Healthy-Catering\progettoUnity\Healthy Catering\Library\PackageCache\com.unity.ide.rider@3.0.13
   assetPath: Packages/com.unity.ide.rider
   name: com.unity.ide.rider
   displayName: JetBrains Rider Editor
@@ -290,7 +289,6 @@ m_ResolvedPackages:
     - 3.0.12
     - 3.0.13
     compatible:
-    - 3.0.12
     - 3.0.13
     verified: 3.0.13
   dependencies:
@@ -309,16 +307,16 @@ m_ResolvedPackages:
     capabilities: 7
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637789697420000000
+  datePublishedTicks: 637837345400000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.rider.git
-    revision: 453b1e1578da65dafbc7ad6fb71a95ca6b8730f7
+    revision: 26f15837ac7ebf5038274dcc39e2b79da5fcdc93
     path: 
   unityLifecycle:
-    version: 3.0.12
+    version: 3.0.13
     nextVersion: 
 - packageId: com.unity.ide.visualstudio@2.0.14
   testable: 0
