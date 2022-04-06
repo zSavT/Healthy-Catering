@@ -89,5 +89,15 @@
     "idItem": 6,
     "nome": "Acqua",
     "descrizione": "L'acqua è un ingrediente fondamentale in cucina. Il suo sapore determina il gusto di bevande come tè e caffè. La qualità dell'acqua utilizzata per cucinare condiziona anche la riuscita del processo di lievitazione così come la stessa ebollizione."
+  },
+  {
+    "costo": 1.0,
+    "costoEco": 1,
+    "nutriScore": 1,
+    "dieta": 0,
+    "listaIdPatologieCompatibili": [],
+    "idItem": 7,
+    "nome": "idk",
+    "descrizione": "rpwihg"
   }
 ]

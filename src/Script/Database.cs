@@ -7,7 +7,23 @@ public class Database {
 
     public static void Main(string[] args)
     {
-        aggiungiPlayer (new Player ());
+        aggiungiRistorante (new Ristorante ());
+    }
+
+    public static void aggiungiRistorante (Ristorante ristorante){
+        while (ristorante.nome.Equals("")){
+            ristorante.nome = getNewStringaFromUtente ("Inserisci il nome del ristorante");
+        }
+
+        while (ristorante.punteggio < 0){
+            ristorante.punteggio = Ristorante.getNewPunteggioFromUtente ();
+        }
+
+        while (ristorante.magazzinoIngredienti.Count == 0){
+            ristorante.magazzinoIngredienti = Ristorante.fillMagazzinoIngredienti ();
+        }
+
+        salvaNuovoOggettoSuFile (ristorante);
     }
 
     public static void aggiungiPlayer (Player player){
