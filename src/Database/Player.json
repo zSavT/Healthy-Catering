@@ -1,7 +1,26 @@
 [
   {
-    "nome": "",
-    "soldi": -1.0,
-    "inventario": []
+    "nome": "idk",
+    "soldi": 4.0,
+    "inventario": [
+      {
+        "oggetto": 0,
+        "quantita": 1
+      }
+    ]
+  },
+  {
+    "nome": "idk",
+    "soldi": 4.0,
+    "inventario": [
+      {
+        "oggetto": 1,
+        "quantita": 1
+      },
+      {
+        "oggetto": 7,
+        "quantita": 1
+      }
+    ]
   }
 ]

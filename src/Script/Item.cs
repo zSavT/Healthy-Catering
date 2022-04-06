@@ -19,7 +19,7 @@ public class Item
     }
 
     public Item (string nome):base (){
-        this.idItem = getNewIdDatabaseItem (this);
+        this.idItem = getNewIdDatabaseItem (this); 
         this.nome = nome;
     }
 
@@ -37,13 +37,14 @@ public class Item
             return Database.getUltimoOggettoAggiuntoAlDatabase (new Ingrediente ());
         }
         else{
-            return getNewItemGenerico (nome);
+            Item nuovoItem = getNewItemGenerico (nome);
+            Database.salvaNuovoOggettoSuFile (nuovoItem);
+            return nuovoItem;
         }
     }
 
     private static Item getNewItemGenerico (string nome){
-        Item output = new Item (nome); 
-        
+        Item output = new Item (nome);
         while (output.descrizione.Equals("")){
             output.descrizione = Database.getNewStringaFromUtente ("Inserisci la descrizione dell'item " + nome);
         }

@@ -7,7 +7,7 @@ public class Database {
 
     public static void Main(string[] args)
     {
-        creaDatabaseBasePlayer ();
+        aggiungiPlayer (new Player ());
     }
 
     public static void aggiungiPlayer (Player player){
@@ -28,9 +28,11 @@ public class Database {
             }
         }
         
-        while (player.inventario == null){
+        while (player.inventario.Count == 0){
             player.inventario = Player.popolaInventario ();
         }
+
+        salvaNuovoOggettoSuFile (player);
     }
 
     public static void aggiungiPiatto (Piatto piatto){
@@ -163,6 +165,7 @@ public class Database {
         creaDatabaseBaseCliente ();
         creaDatabaseBaseDieta ();
         creaDatabaseBaseIngrediente ();
+        creaDatabaseBaseItem ();
         creaDatabaseBasePatologia ();
         creaDatabaseBasePiatto ();
         creaDatabaseBasePlayer ();
@@ -191,6 +194,14 @@ public class Database {
         tempIngrediente.Add(new Ingrediente ());
 
         Serializza.salvaOggettiSuFile <Ingrediente> (tempIngrediente);
+    }
+
+    private static void creaDatabaseBaseItem (){
+        //Item
+        List <Item> tempItem = new List<Item> ();
+        tempItem.Add(new Item ());
+
+        Serializza.salvaOggettiSuFile <Item> (tempItem);
     }
 
     private static void creaDatabaseBasePatologia (){

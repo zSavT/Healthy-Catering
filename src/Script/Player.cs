@@ -5,7 +5,7 @@ public class Player
     
     public float soldi = 0;
 
-    public List <OggettoQuantita<int>> inventario = null;
+    public List <OggettoQuantita<int>> inventario = new List<OggettoQuantita<int>> ();
 
     public Player(string nome, int soldi, List<OggettoQuantita<int>> inventario)
     {
