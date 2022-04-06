@@ -37,6 +37,77 @@ public class Piatto
         
     }
 
+    public static List <OggettoQuantita <int>> getListaIdIngredientiQuantitaPiattoFromUtente (string nomePiatto){
+        List <OggettoQuantita <int>> listaIdIngredientiQuantitaPiatto = new List<OggettoQuantita<int>> ();
+        
+        List <string> inputUtente = getNomeIngredientiFromUtente (nomePiatto);
+        
+        List <Ingrediente> databaseIngredienti = Database.getDatabaseOggetto (new Ingrediente ());
+        foreach (string nomeIngrediente in inputUtente){
+            Ingrediente ingredienteTemp;
+            if (nomeIngredientePresenteNelDatabase (nomeIngrediente, databaseIngredienti)){ //TODO senza databaseIngredienti in input
+                ingredienteTemp = getIngredienteByNome (nomeIngrediente, databaseIngredienti); //TODO senza databaseIngredienti in input
+            }
+            else{
+                Database.aggiungiIngrediente (new Ingrediente (nomeIngrediente));
+                ingredienteTemp = Database.getUltimoOggettoAggiuntoAlDatabase (new Ingrediente ());
+            }
+            int quantita = getQuantitaIngredienteNelPiattoFromUtente (ingredienteTemp.nome, nomePiatto);
+            listaIdIngredientiQuantitaPiatto.Add (new OggettoQuantita<int> (ingredienteTemp.idItem, quantita));
+        }
+        
+        return listaIdIngredientiQuantitaPiatto;
+    }
+
+    
+    private static List <string> getNomeIngredientiFromUtente (string nomePiatto){
+        Console.WriteLine ("Inserisci il nome degli ingredienti del piatto " + nomePiatto + " e la keyword 'fine' quando vuoi finire l'inserimento");
+        List <string> nomiIngredienti = new List<string> ();
+        string input = "";
+        while (true){
+            input = Console.ReadLine ();
+            if (input.Equals ("fine")) 
+                break;
+            nomiIngredienti.Add (input);
+        }
+        return nomiIngredienti;
+    }
+
+    //                                                                             se non viene passato il databaseIngrediente gli assegna il valore null
+    public static bool nomeIngredientePresenteNelDatabase (string nomeIngrediente, List <Ingrediente> databaseIngredienti = null){
+        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ()); //check se il valore del database è nullo, nel caso la crea
+        foreach (Ingrediente ingrediente in databaseIngredienti){
+            if (nomeIngrediente.ToLower ().Equals (ingrediente.nome.ToLower ()))
+                return true;
+        }
+        return false;
+    }
+
+    public static Ingrediente getIngredienteByNome (string nomeIngrediente, List <Ingrediente> databaseIngredienti){
+        foreach (Ingrediente ingrediente in databaseIngredienti){
+            if (nomeIngrediente.Equals (ingrediente.nome))
+                return ingrediente;
+        }
+        throw new Exception ("Ingrediente non trovato");
+    }
+
+    private static int getQuantitaIngredienteNelPiattoFromUtente (string nomeIngrediente, string nomePiatto){
+        while (true){
+            Console.WriteLine ("Qual'è la quantita di " + nomeIngrediente + " nel piatto " + nomePiatto);
+            string input = Console.ReadLine ();
+            int numero = 0;
+            try{
+                numero = Int32.Parse (input);
+            }
+            catch (Exception e){
+                Console.WriteLine ("Input non valido, eccezzione = " + e.Message);
+            }
+
+            if (numero > 0)
+                return numero;
+        }
+    }
+
     public float calcolaCosto (){
         float costo = 0;
         foreach (OggettoQuantita<int> ingredienteQuantita in this.listaIdIngredientiQuantita){

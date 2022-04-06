@@ -29,6 +29,11 @@ public class Ingrediente : Item
         this.listaIdPatologieCompatibili = new List <int> ();    
     }
 
+    //                                          chiamata al costruttore vuoto
+    public Ingrediente (string nomeIngrediente):this (){
+        this.nome = nomeIngrediente;
+    }
+
     public float getNewNumeroIngredienteFromUtente (string output, string outputError){
         bool numeroValido = false;
         float temp = -1;
