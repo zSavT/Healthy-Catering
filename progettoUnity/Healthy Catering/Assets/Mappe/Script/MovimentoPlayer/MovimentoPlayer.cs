@@ -9,7 +9,7 @@ public class MovimentoPlayer : MonoBehaviour
 {
     [Header("Movemento")]
     public float velocitaMovimento = 5;
-    public float attritoAlSuolo = 2;
+    public float attritoAlSuolo = 8.5f;
 
 
     [Header("Salto")]
@@ -32,9 +32,6 @@ public class MovimentoPlayer : MonoBehaviour
 
     Vector3 moveDirection;
 
-
-    CapsuleCollider hitBox;
-
     Rigidbody rb;
 
     private void Start()
@@ -42,7 +39,7 @@ public class MovimentoPlayer : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         prontoASaltare = true;
-        hitBox = GetComponent<CapsuleCollider>();
+        attritoAlSuolo = 8.5f;
     }
 
     private void Update()
@@ -78,14 +75,14 @@ public class MovimentoPlayer : MonoBehaviour
     private void Movimento()
     {
         moveDirection = orientamento.forward * yInput + orientamento.right * xInput;
-        if(perTerra)
+        if (perTerra)
         {
             rb.AddForce(moveDirection.normalized * velocitaMovimento * 10f, ForceMode.Force);
-        } else if (!perTerra)
+        }
+        else if (!perTerra)
         {
             rb.AddForce(moveDirection.normalized * velocitaMovimento * 10f * molltiplicatoreVelocitaSalto, ForceMode.Force);
         }
- 
     }
 
     private void controlloVelocita()

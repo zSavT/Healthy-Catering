@@ -1850,7 +1850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocitaMovimento: 5
-  attritoAlSuolo: 2
+  attritoAlSuolo: 8.5
   tastoSalto: 32
   forzaSalto: 3
   timerSalto: 0.6
