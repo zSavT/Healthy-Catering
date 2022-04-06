@@ -21,7 +21,7 @@ public class MovimentoPlayer : MonoBehaviour
 
 
     [Header("Controllo pavimento")]
-    public float altezzaGiocatore = 1;
+    public float altezzaGiocatore = 0;
     public LayerMask isGround;
     bool perTerra;
 
@@ -32,6 +32,9 @@ public class MovimentoPlayer : MonoBehaviour
 
     Vector3 moveDirection;
 
+
+    CapsuleCollider hitBox;
+
     Rigidbody rb;
 
     private void Start()
@@ -39,11 +42,11 @@ public class MovimentoPlayer : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         prontoASaltare = true;
+        hitBox = GetComponent<CapsuleCollider>();
     }
 
     private void Update()
     {
-        perTerra = Physics.Raycast(transform.position, Vector3.down, altezzaGiocatore * 0.5f + 0.2f, isGround);
         controlloInputGiocatore();
         controlloVelocita();
         if (perTerra)
@@ -57,6 +60,7 @@ public class MovimentoPlayer : MonoBehaviour
     private void FixedUpdate()
     {
         Movimento();
+        perTerra = Physics.Raycast(transform.position, Vector3.down, altezzaGiocatore * 0.5f + 0.01f, isGround);
     }
 
     private void controlloInputGiocatore()

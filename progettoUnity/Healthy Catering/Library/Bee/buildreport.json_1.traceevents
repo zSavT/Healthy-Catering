@@ -1,0 +1,453 @@
+﻿{ "pid": 0, "tid": -1, "ph": "M", "name": "process_name", "args": { "name": "BeeDriver" } },
+{ "pid": 0, "tid": -1, "ph": "M", "name": "process_sort_index", "args": { "sort_index": "-2" } },
+{ "pid": 0, "tid": 1, "ph": "M", "name": "thread_name", "args": { "name": "" } },
+{ "pid": 0, "tid": 1, "ts": 1649254707138777, "dur": 922337203685477580, "ph": "X", "name": "Build ScriptAssemblies", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1649254707140446, "dur": 23864, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1649254707164574, "dur": 72226, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1649254707236833, "dur": 338845, "ph": "X", "name": "BuildProgram", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1649254707575679, "dur": 414935, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1649254707990635, "dur": 10486, "ph": "X", "name": "Finish", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1649254715066604, "dur": 922337203685477580, "ph": "X", "name": "Build Player", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1649254715066865, "dur": 4859, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1649254715071726, "dur": 53038, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1649254715124765, "dur": 293941, "ph": "X", "name": "BuildProgram", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1649254715418708, "dur": 2074836, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1649254717493546, "dur": 1942, "ph": "X", "name": "Finish", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1649254717496013, "dur": 22, "ph": "X", "name": "", "args": {} },
+{ "pid": 35942, "tid": -1, "ph": "M", "name": "process_name", "args": { "name": "netcorerun.dll" } },
+{ "pid": 35942, "tid": -1, "ph": "M", "name": "process_sort_index", "args": { "sort_index": "-1" } },
+{ "pid": 35942, "tid": 1, "ph": "M", "name": "thread_name", "args": { "name": "" } },
+{ "pid": 35942, "tid": 1, "ts": 1649254715266332, "dur": 133269, "ph": "X", "name": "BuildProgram", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1649254715267405, "dur": 54281, "ph": "X", "name": "BuildProgramContextConstructor", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1649254715380043, "dur": 6881, "ph": "X", "name": "OutputData.Write", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1649254715386928, "dur": 12664, "ph": "X", "name": "Backend.Write", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1649254715387807, "dur": 10847, "ph": "X", "name": "JsonToString", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1649254715406832, "dur": 1503, "ph": "X", "name": "", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1649254715405769, "dur": 2595, "ph": "X", "name": "Write chrome-trace events", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1649254717496141, "dur": 250, "ph": "X", "name": "buildprogram0.traceevents", "args": {} },
+{ "cat":"", "pid":12345, "tid":0, "ts":0, "ph":"M", "name":"process_name", "args": { "name":"bee_backend" } }
+,{ "pid":12345, "tid":0, "ts":1649254715484563, "dur":1538, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1649254715486108, "dur":36, "ph":"X", "name": "Tundra",  "args": { "detail":"RemoveStaleOutputs" }}
+,{ "pid":12345, "tid":0, "ts":1649254715486164, "dur":14, "ph":"X", "name": "Tundra",  "args": { "detail":"PrepareNodes" }}
+,{ "pid":12345, "tid":0, "ts":1649254715486180, "dur":199, "ph":"X", "name": "Tundra",  "args": { "detail":"BuildQueueInit" }}
+,{ "pid":12345, "tid":0, "ts":1649254715486408, "dur":512, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1649254715486920, "dur":2, "ph":"X", "name": "SortWorkingStack",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1649254717479629, "dur":112, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1649254717479741, "dur":15, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1649254717479756, "dur":3, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1649254717479759, "dur":6, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1649254717479765, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1649254717479768, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1649254717479773, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1649254717479775, "dur":6, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1649254717479781, "dur":0, "ph":"X", "name": "SharedResourceDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1649254717479795, "dur":1, "ph":"X", "name": "BuildQueueDestroyTail",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1649254717479859, "dur":1725, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
+,{ "pid":12345, "tid":1, "ts":1649254715486782, "dur":148, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254715486932, "dur":7088, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254715494032, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1649254715494034, "dur":65, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254715494103, "dur":2, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1649254715494108, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254715495050, "dur":2735, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1649254715497787, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":1, "ts":1649254715497845, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254715497851, "dur":1246, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":1, "ts":1649254715499180, "dur":111, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":1, "ts":1649254715499293, "dur":6, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254715499396, "dur":940, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":1, "ts":1649254715500392, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":1, "ts":1649254715500451, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254715500455, "dur":1477, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":1, "ts":1649254715501985, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":1, "ts":1649254715502040, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254715502044, "dur":1557, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":1, "ts":1649254715503658, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":1, "ts":1649254715503714, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254715503719, "dur":3539, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":1, "ts":1649254715507318, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254715507378, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254715507382, "dur":137515, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254715644957, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254715645014, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254715645020, "dur":98673, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254715743745, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254715743805, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254715743810, "dur":25042, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254715768907, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254715768963, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254715768985, "dur":60871, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254715829912, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254715829966, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254715829972, "dur":129593, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254715959733, "dur":60, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254715959795, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254715959801, "dur":90708, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716050565, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716050622, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254716050628, "dur":26324, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716077007, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716077066, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254716077072, "dur":36012, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716113141, "dur":125, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716113269, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254716113274, "dur":15175, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716128505, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716128561, "dur":5, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254716128571, "dur":27147, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716155793, "dur":331, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716156127, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254716156133, "dur":28220, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716184456, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716184512, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254716184518, "dur":79536, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716264106, "dur":376, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716264486, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254716264491, "dur":82575, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716347140, "dur":138, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716347281, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254716347286, "dur":36565, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716383904, "dur":60474, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.Flow.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716444383, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254716444404, "dur":3768, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.Flow.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716448228, "dur":229271, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716677503, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254716677510, "dur":1873, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716679440, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716679496, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254716679502, "dur":173581, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716853137, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716853381, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254716853387, "dur":27326, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716880781, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716880841, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254716880846, "dur":89606, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716970526, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254716970585, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254716970591, "dur":224696, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254717195344, "dur":8541, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254717203979, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254717203988, "dur":3658, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":1, "ts":1649254717207706, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":1, "ts":1649254717207763, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254717207817, "dur":1324, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":1, "ts":1649254717209195, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":1, "ts":1649254717209247, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254717209252, "dur":27625, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":1, "ts":1649254717236938, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/level0" }}
+,{ "pid":12345, "tid":1, "ts":1649254717236995, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1649254717237000, "dur":12597, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/level0" }}
+,{ "pid":12345, "tid":1, "ts":1649254717249654, "dur":229976, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715486812, "dur":123, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715486935, "dur":7094, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715494033, "dur":95, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":2, "ts":1649254715494131, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715496318, "dur":1897, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":2, "ts":1649254715498269, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":2, "ts":1649254715498325, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715498736, "dur":1322, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":2, "ts":1649254715500121, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":2, "ts":1649254715500178, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715500183, "dur":869, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":2, "ts":1649254715501102, "dur":91, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":2, "ts":1649254715501214, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715501289, "dur":933, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":2, "ts":1649254715502279, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":2, "ts":1649254715502333, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715502337, "dur":1303, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":2, "ts":1649254715503695, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715503750, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715503970, "dur":2615, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715506651, "dur":59, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715506713, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715506798, "dur":7192, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715514049, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":2, "ts":1649254715514109, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715514426, "dur":4935, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":2, "ts":1649254715519431, "dur":64, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715519498, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715519756, "dur":223869, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715743680, "dur":60, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715743743, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715743748, "dur":25261, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715769059, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715769113, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715769117, "dur":17311, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715786484, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715786538, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715786544, "dur":16864, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715803488, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715803543, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715803547, "dur":41443, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715845046, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715845101, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715845107, "dur":23214, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715868378, "dur":92774, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715961156, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715961162, "dur":1667, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715962883, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715962938, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715962944, "dur":33991, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715997065, "dur":110, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254715997177, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254715997182, "dur":47647, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716044890, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716044948, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254716044956, "dur":29073, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716074085, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716074205, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254716074212, "dur":29057, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716103324, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716103381, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254716103387, "dur":92388, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716195835, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716195890, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254716195896, "dur":47271, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716243224, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716243278, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254716243284, "dur":19941, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716263287, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716263343, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254716263349, "dur":19158, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716282561, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716282614, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254716282620, "dur":83040, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716365716, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716365772, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254716365796, "dur":17628, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716383481, "dur":32608, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.State.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716416093, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254716416101, "dur":24550, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.State.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716440816, "dur":61, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716440880, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254716440887, "dur":43409, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716484385, "dur":61, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716484449, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254716484455, "dur":78317, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716562831, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716562887, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254716562894, "dur":140113, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716703063, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716703122, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254716703127, "dur":45109, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716748294, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716748348, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254716748353, "dur":52824, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716801233, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716801287, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254716801293, "dur":135401, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716936779, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254716936837, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254716936843, "dur":177516, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254717114421, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254717114478, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1649254717114484, "dur":365057, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":2, "ts":1649254717479600, "dur":2, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"Player" }}
+,{ "pid":12345, "tid":2, "ts":1649254717479602, "dur":0, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254715486838, "dur":103, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254715486941, "dur":7101, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254715494043, "dur":88, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":3, "ts":1649254715494134, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254715496402, "dur":1508, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":3, "ts":1649254715497977, "dur":83, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":3, "ts":1649254715498063, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254715498067, "dur":2435, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":3, "ts":1649254715500556, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":3, "ts":1649254715500613, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254715500618, "dur":1341, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":3, "ts":1649254715502014, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":3, "ts":1649254715502071, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254715502075, "dur":23687, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":3, "ts":1649254715525827, "dur":74, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254715525904, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254715525960, "dur":217720, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254715743737, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254715743791, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254715743795, "dur":25288, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254715769134, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254715769193, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254715769197, "dur":32644, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254715801897, "dur":321, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254715802226, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254715802233, "dur":43027, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254715845316, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254715845368, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254715845372, "dur":175207, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716020637, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716020691, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254716021820, "dur":24757, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716046633, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716046689, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254716046695, "dur":15690, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716062442, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716062497, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254716062504, "dur":35326, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716097943, "dur":62, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716098007, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254716098013, "dur":15297, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716113362, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716113416, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254716113438, "dur":50420, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716163916, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716163975, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254716163981, "dur":20630, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716184667, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716184728, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254716184733, "dur":17815, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716202606, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716202663, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254716202669, "dur":16455, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716219259, "dur":90, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716219352, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254716219358, "dur":71714, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716291128, "dur":73, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716291203, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254716291209, "dur":16872, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716308187, "dur":85, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716308275, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254716308281, "dur":19179, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716327516, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716327572, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254716327578, "dur":35965, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716363609, "dur":73, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716363685, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254716363690, "dur":54028, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716417776, "dur":64128, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.Core.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716481909, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254716481916, "dur":38083, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.Core.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716520061, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716520119, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254716520125, "dur":230246, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716750424, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716750477, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254716750483, "dur":72838, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716823378, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254716823435, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254716823441, "dur":389830, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":3, "ts":1649254717213330, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":3, "ts":1649254717213389, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254717213395, "dur":4448, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":3, "ts":1649254717218079, "dur":328, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":3, "ts":1649254717218410, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254717218417, "dur":1255, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":3, "ts":1649254717219728, "dur":24356, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":3, "ts":1649254717244088, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254717244095, "dur":1227, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":3, "ts":1649254717245414, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":3, "ts":1649254717245474, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254717245479, "dur":1042, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":3, "ts":1649254717246574, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":3, "ts":1649254717246626, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254717246631, "dur":1050, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":3, "ts":1649254717247734, "dur":141, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/boot.config" }}
+,{ "pid":12345, "tid":3, "ts":1649254717247878, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1649254717247883, "dur":1032, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/boot.config" }}
+,{ "pid":12345, "tid":3, "ts":1649254717248981, "dur":230643, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254715486860, "dur":89, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254715486949, "dur":7087, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254715494039, "dur":82, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":4, "ts":1649254715494124, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254715496460, "dur":1642, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":4, "ts":1649254715498174, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":4, "ts":1649254715498230, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254715498234, "dur":2424, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":4, "ts":1649254715500716, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":4, "ts":1649254715500775, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254715501235, "dur":1797, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":4, "ts":1649254715503090, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":4, "ts":1649254715503145, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254715503152, "dur":4142, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":4, "ts":1649254715507357, "dur":59, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":4, "ts":1649254715507418, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254715507421, "dur":2720, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":4, "ts":1649254715510236, "dur":88, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering.exe" }}
+,{ "pid":12345, "tid":4, "ts":1649254715510328, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254715510333, "dur":88382, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering.exe" }}
+,{ "pid":12345, "tid":4, "ts":1649254715598767, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254715598823, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254715598829, "dur":19014, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254715617898, "dur":81, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254715617982, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254715617987, "dur":125676, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254715743715, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254715743767, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254715743771, "dur":42722, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254715786546, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254715786606, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254715786611, "dur":16529, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254715803228, "dur":64, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254715803295, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254715803300, "dur":41912, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254715845268, "dur":69, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254715845339, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254715845344, "dur":30596, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254715875995, "dur":320, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254715876318, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254715876324, "dur":29804, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254715906340, "dur":70, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254715906413, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254715906419, "dur":28650, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254715935123, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254715935183, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254715935189, "dur":61650, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254715996951, "dur":81, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254715997035, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254715997042, "dur":50159, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716047260, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716047318, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254716047323, "dur":56052, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716103428, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716103482, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254716103486, "dur":45387, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716148928, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716148983, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254716148989, "dur":16644, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716165689, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716165742, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254716165748, "dur":31363, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716197185, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716197243, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254716197248, "dur":56592, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716253897, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716253954, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254716253980, "dur":38388, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716292424, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716292484, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254716292489, "dur":17059, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716309605, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716309662, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254716309669, "dur":37070, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716346794, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716346850, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254716346856, "dur":15947, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716362860, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716362918, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254716362924, "dur":83046, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716446033, "dur":87441, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716533479, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254716533486, "dur":1198, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716534744, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716534796, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254716534801, "dur":71807, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716606676, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716606733, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254716606740, "dur":141856, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716748648, "dur":133, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716748784, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254716748788, "dur":52384, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716801230, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716801286, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254716801293, "dur":51773, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716853130, "dur":60, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254716853210, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254716853216, "dur":191175, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254717044451, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254717044511, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254717044517, "dur":74340, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254717119263, "dur":92, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254717119358, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1649254717119364, "dur":303144, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":4, "ts":1649254717422572, "dur":57065, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1649254717483423, "dur":1625, "ph":"X", "name": "ProfilerWriteOutput" }
+,{ "pid": 0, "tid": 1, "ts": 1649254717496460, "dur": 858, "ph": "X", "name": "backend_profiler1.traceevents", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1649254717496003, "dur": 1337, "ph": "X", "name": "Write chrome-trace events", "args": {} },
