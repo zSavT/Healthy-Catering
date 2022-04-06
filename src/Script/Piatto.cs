@@ -58,19 +58,56 @@ public class Piatto
         
         List <Ingrediente> databaseIngredienti = Database.getDatabaseOggetto (new Ingrediente ());
         foreach (string nomeIngrediente in inputUtente){
-            Ingrediente ingredienteTemp;
+            Ingrediente ingredienteTemp = new Ingrediente ();
             if (nomeIngredientePresenteNelDatabase (nomeIngrediente, databaseIngredienti)){ //TODO senza databaseIngredienti in input
                 ingredienteTemp = getIngredienteByNome (nomeIngrediente, databaseIngredienti); //TODO senza databaseIngredienti in input
             }
             else{
-                Database.aggiungiIngrediente (new Ingrediente (nomeIngrediente));
-                ingredienteTemp = Database.getUltimoOggettoAggiuntoAlDatabase (new Ingrediente ());
+                List <Ingrediente> ingredientiConNomeSimile = Ingrediente.getIngredientiConNomeSimileInDatabase (nomeIngrediente, databaseIngredienti);
+                if (ingredientiConNomeSimile.Count > 0){
+                    Ingrediente ingredienteScelto = scegliIngredienteConNomeSimile (nomeIngrediente, ingredientiConNomeSimile);
+                    if (ingredienteScelto == null){
+                        Database.aggiungiIngrediente (new Ingrediente (nomeIngrediente));
+                        ingredienteTemp = Database.getUltimoOggettoAggiuntoAlDatabase (new Ingrediente ());
+                    }
+                    else{
+                        ingredienteTemp = ingredienteScelto;
+                    }
+                }
+                else{
+                    Database.aggiungiIngrediente (new Ingrediente (nomeIngrediente));
+                    ingredienteTemp = Database.getUltimoOggettoAggiuntoAlDatabase (new Ingrediente ());
+                }
             }
             int quantita = getQuantitaIngredienteNelPiattoFromUtente (ingredienteTemp.nome, nomePiatto);
             listaIdIngredientiQuantitaPiatto.Add (new OggettoQuantita<int> (ingredienteTemp.idItem, quantita));
         }
         
         return listaIdIngredientiQuantitaPiatto;
+    }
+
+    private static Ingrediente scegliIngredienteConNomeSimile (string nomeIngrediente, List <Ingrediente> ingredientiConNomeSimile){
+        stampaIngredientiSimiliPerSceltaUtente (nomeIngrediente, ingredientiConNomeSimile);
+
+        string input = Console.ReadLine ();
+        int numeroInput;
+        try{ 
+            numeroInput = Int32.Parse (input);
+            return ingredientiConNomeSimile [numeroInput - 1];
+        } 
+        catch (Exception ex){
+            //se non viene inserito un numero
+            return null;
+        }
+    }
+
+    private static void stampaIngredientiSimiliPerSceltaUtente (string nomeIngrediente, List <Ingrediente> ingredientiConNomeSimile){
+        Console.WriteLine ("Il nome dell'ingrediente che hai inserito (" + nomeIngrediente + ") non è stato trovato ma sono stati trovati ingredienti con nomi simili, intendi uno di questi? Inserisci 'no' per uscire da questo menu");
+                    
+        int i = 1;
+        foreach (Ingrediente ingredienteSimile in ingredientiConNomeSimile){
+            Console.WriteLine (i.ToString () + ") " + ingredienteSimile.nome);
+        }
     }
 
     private static List <string> getNomeIngredientiFromUtente (string nomePiatto){
@@ -101,7 +138,7 @@ public class Piatto
             if (nomeIngrediente.ToLower ().Equals (ingrediente.nome.ToLower ()))
                 return ingrediente;
         }
-        throw new Exception ("Ingrediente non trovato");
+        throw new Exception ("Ingrediente non trovato getIngredienteByNome");
     }
 
     private static int getQuantitaIngredienteNelPiattoFromUtente (string nomeIngrediente, string nomePiatto){

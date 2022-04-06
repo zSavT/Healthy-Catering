@@ -71,7 +71,8 @@ public class Ingrediente : Item
                 return ingrediente;
             }
         }
-        throw new Exception ("Ingrediente non trovato");
+        Console.WriteLine (id);
+        throw new Exception ("Ingrediente non trovato IdToIngrediente");
     }
 
     ~Ingrediente()
