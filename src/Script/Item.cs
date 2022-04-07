@@ -12,15 +12,15 @@ public class Item
         this.descrizione = descrizione;
     }
 
+    public Item (string nome):base (){
+        this.idItem = getNewIdItem (this); 
+        this.nome = nome;
+    }
+
     public Item (){
         this.idItem = -1;
         this.nome = "";
         this.descrizione = "";
-    }
-
-    public Item (string nome):base (){
-        this.idItem = getNewIdDatabaseItem (this); 
-        this.nome = nome;
     }
 
     public override bool Equals(object obj)
@@ -38,42 +38,54 @@ public class Item
             && (this.descrizione.Equals(((Ingrediente)obj).descrizione));
     }
 
-    public static int getNewIdDatabaseItem (Item oggetto){
+    public override string ToString()
+    {
+        return "Item:" + "\n" + this.nome + "\n" + "Descrizione: " + this.descrizione + "\n" + "Fine item" + this.nome;
+    }
+    
+    ~Item()
+    {
+        
+    }
+
+    public static int getNewIdItem (Item oggetto){
         List <Item> databaseOggetto = Database.getDatabaseOggetto (oggetto);
+        //prendo l'id dell'ultimo oggetto aggiunto al database(quindi all'indice dimensioneLista - 1) e gli aggiungo 1
         return databaseOggetto [databaseOggetto.Count - 1].idItem + 1;
     }
 
     public static Item creaNuovoItem (string nome = null /*@Deprecated ,string tipoItem = null*/){
-        //tipoItem ??= getTipoItemFromUtente (); // @Deprecated 
+        nome ??= Database.getNewStringaFromUtente ("Inserisci il nome dell'item che vuoi aggiungere");
+        
+        Database.aggiungiIngrediente (new Ingrediente (nome));
+        return Database.getUltimoOggettoAggiuntoAlDatabase (new Ingrediente ());
+    }
+
+    //@Deprecated 
+    /*
+    public static Item creaNuovoItem (string nome = null, string tipoItem = null){
+        tipoItem ??= getTipoItemFromUtente (); 
         nome ??= Database.getNewStringaFromUtente ("Inserisci il nome dell'item che vuoi aggiungere");
 
-        //if (tipoItem.Equals ("ingrediente")){ //@Deprecated 
+        if (tipoItem.Equals ("ingrediente")){ 
             Database.aggiungiIngrediente (new Ingrediente (nome));
             return Database.getUltimoOggettoAggiuntoAlDatabase (new Ingrediente ());
-        /*//@Deprecated 
         }
         else{
             Item nuovoItem = getNewItemGenerico (nome);
             Database.salvaNuovoOggettoSuFile (nuovoItem);
             return nuovoItem;
         }
-        */
     }
 
-    //@Deprecated 
-    /*
     private static Item getNewItemGenerico (string nome){
         Item output = new Item (nome);
         while (output.descrizione.Equals("")){
             output.descrizione = Database.getNewStringaFromUtente ("Inserisci la descrizione dell'item " + nome);
         }
-
         return output;
     }
-    */
-
-    //@Deprecated 
-    /*
+    
     private static string getTipoItemFromUtente (){
         Console.WriteLine ("Che tipo di Item vuoi aggiungere ('ingrediente', 'item generico')");
         string input = "";
@@ -85,9 +97,4 @@ public class Item
         }
     }
     */
-
-    ~Item()
-    {
-        
-    }
 }

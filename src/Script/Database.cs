@@ -191,7 +191,7 @@ public class Database {
 
         Ingrediente ingredienteGiaPresente = Ingrediente.checkIngredienteOnonimoGiaPresente (ingrediente.nome);
         if (ingredienteGiaPresente == null){
-            ingrediente.idItem = Item.getNewIdDatabaseItem (ingrediente);
+            ingrediente.idItem = Item.getNewIdItem (ingrediente);
             
             while (ingrediente.descrizione.Equals("")){
                 ingrediente.descrizione = getNewStringaFromUtente ("Inserisci la descrizione dell'ingrediente " + ingrediente.nome);

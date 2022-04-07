@@ -31,7 +31,7 @@ public class Dieta
 
     public override string ToString()
     {
-        return "Dieta:" + "\n" + this.nome + "\n" + "descrizione" + "\n" + "fine dieta" + this.nome;
+        return "Dieta: " + this.nome + "\n" + "Descrizione: " + this.descrizione + "\n" + "Fine dieta " + this.nome;
     }
 
     ~Dieta()
