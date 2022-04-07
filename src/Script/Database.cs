@@ -111,7 +111,7 @@ public class Database {
         }
 
         while (ristorante.punteggio < 0){
-            ristorante.punteggio = Ristorante.getNewPunteggioFromUtente ();
+            ristorante.punteggio = Database.getNewIntFromUtente ("Inserisci il punteggio del ristorante");
         }
 
         while (ristorante.magazzinoIngredienti.Count == 0){

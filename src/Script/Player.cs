@@ -49,20 +49,20 @@ public class Player
     {
         string listaIdItemString = "";
         
-        if (this.listaIdIngredienti.Count > 0){
+        if (inventario.Count > 0){
             //se non lo prendo prima viene ricreato ogni volta che viene chiamato il metodo idToIngrediente
             List <Ingrediente> databaseIngredienti = Database.getDatabaseOggetto (new Ingrediente ()); 
-            foreach (int id in listaIdIngredienti){
+            foreach (int id in inventario){
                 Ingrediente temp = Ingrediente.idToIngrediente(id, databasePatalogie).nome;
                 if (temp.idIngrediente != -1)
-                    listaIdIngredientiString = listaIdIngredientiString + "\t" + Ingrediente.idToIngrediente(id).nome + "\n";
+                    inventarioString = inventarioString + "\n\t" + Ingrediente.idToIngrediente(id).nome + "\n";
             }
         }
 
         string output = "Player:" + "\n\t" + this.nome + "\n" + "Soldi:" + "\n\t" + this.soldi + "\n";
         
-        if (!(listaIdIngredientiString.Equals ("")))
-            output = output + "Ingredienti:"+ "\n" + listaIdIngredientiString + "\n";
+        if (!(inventarioString.Equals ("")))
+            output = output + "Inventario:" + inventarioString + "\n";
         
         return output + "Fine player " + this.nome;
     }
@@ -100,11 +100,10 @@ public class Player
     private static List <int> chiediQuantitaItem (List <Item> itemGiaPresenti){
         List <int> quantita = new List<int> ();
         foreach (Item item in itemGiaPresenti){
-            quantita.Add(
-                Database.getNewIntFromUtente (
-                    "Quanti " + item.ToString() + "\n" + " devono essere presenti nell'inventario?"
-                )
-            );
+            int numero = -1;
+            while (numero < 0)
+                numero = Database.getNewIntFromUtente ("Quanti " + item.ToString() + "\n" + " devono essere presenti nell'inventario?");
+            quantita.Add(numero);
         }
         return quantita;
     }

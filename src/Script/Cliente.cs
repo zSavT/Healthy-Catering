@@ -45,14 +45,14 @@ public class Cliente
             foreach (int id in listaIdPatologie){
                 Patologia temp = Patologia.idToPatologia(id, databasePatalogie).nome;
                 if (temp.idPatologia != -1)
-                    listaIdPatologieString = listaIdPatologieString + "\t" + Patologia.IdToPatologia(id).nome + "\n";
+                    listaIdPatologieString = listaIdPatologieString + "\n\t" + Patologia.IdToPatologia(id).nome + "\n";
             }
         }
 
         string output = "Cliente:" + "\n\t" + this.nome + "\n" + "Dieta:" + "\n\t" + this.dieta + "\n";
         
         if (!(listaIdPatologieString.Equals ("")))
-            output = output + "Patologie:"+ "\n" + listaIdPatologieString + "\n";
+            output = output + "Patologie:" + listaIdPatologieString + "\n";
         
         return output + "Fine cliente " + this.nome;
     }

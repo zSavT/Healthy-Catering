@@ -35,23 +35,30 @@ public class Ristorante
             && OggettoQuantita<int>.listeIdQuantitaUguali (this.magazzinoIngredienti, ((Ristorante)obj).magazzinoIngredienti);
     }
 
-    public static int getNewPunteggioFromUtente (){
-        Console.WriteLine ("Inserisci il punteggio del ristorante");
+    public override string ToString(){
+        string listaIdItemString = "";
         
-        int numeroInput;
-        string input;
-
-        input = Console.ReadLine();
-
-        try{
-            numeroInput = Int32.Parse(input);
-            if (numeroInput >= 0) 
-                return numeroInput;
+        if (this.magazzinoIngredienti.Count > 0){
+            //se non lo prendo prima viene ricreato ogni volta che viene chiamato il metodo idToIngrediente
+            List <Ingrediente> databaseIngredienti = Database.getDatabaseOggetto (new Ingrediente ()); 
+            foreach (int id in magazzinoIngredienti){
+                Ingrediente temp = Ingrediente.idToIngrediente(id, databasePatalogie).nome;
+                if (temp.idIngrediente != -1)
+                    magazzinoIngredientiString = magazzinoIngredientiString + "\n\t" + Ingrediente.idToIngrediente(id).nome + "\n";
+            }
         }
-        catch (Exception e){}
-        Console.WriteLine ("Il numero inserito non è valido");
+
+        string output = "Ristorante:" + "\n\t" + this.nome + "\n" + "Punteggio:" + "\n\t" + this.punteggio + "\n";
         
-        return -1;
+        if (!(magazzinoIngredientiString.Equals ("")))
+            output = output + "Magazzino ingredienti:" + magazzinoIngredientiString + "\n";
+        
+        return output + "Fine Ristorante " + this.nome;
+    }
+
+    ~Ristorante()
+    {
+        
     }
 
     public static List<OggettoQuantita<int>> fillMagazzinoIngredienti (){
@@ -59,11 +66,6 @@ public class Ristorante
         Console.WriteLine ("Questo siccome la procedura è esattamente la stessa");
         Console.WriteLine ("Gli ingredienti e le relative quantità verranno comunque ovviamente aggiunte al database del ristorante");
         
-        return Piatto.getListaIdIngredientiQuantitaPiattoFromUtente ("'ristorante'");
-    }
-
-    ~Ristorante()
-    {
-        
+        return Piatto.getmagazzinoIngredietiQuantitaPiattoFromUtente ("\"ristorante\"");
     }
 }
