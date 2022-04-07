@@ -39,14 +39,16 @@ public class Cliente
     {
         string listaIdPatologieString = "";
         
-        if (this.listaIdPatologie.Count > 0)
-            List <Patologia> databasePatologie = Database.getDatabaseOggetto (new Patologia ());
+        if (this.listaIdPatologie.Count > 0){
+            //se non lo prendo prima viene ricreato ogni volta che viene chiamato il metodo idToPatologia
+            List <Patologia> databasePatologie = Database.getDatabaseOggetto (new Patologia ()); 
             foreach (int id in listaIdPatologie){
-                Patologia temp = Patologia.IdToPatologia(id, databasePatalogie).nome;
+                Patologia temp = Patologia.idToPatologia(id, databasePatalogie).nome;
                 if (temp.idPatologia != -1)
                     listaIdPatologieString = listaIdPatologieString + "\t" + Patologia.IdToPatologia(id).nome + "\n";
             }
-        
+        }
+
         string output = "Cliente: " + "\n" + this.nome + "\n" + this.dieta + "\n";
         
         if (!(listaIdPatologieString.Equals ("")))

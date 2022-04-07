@@ -14,6 +14,31 @@ public class Dieta
         this.descrizione = "";
     }
     
+    public override bool Equals(object obj)
+    {
+        // If the passed object is null
+        if (obj == null)
+        {
+            return false;
+        }
+        if (!(obj is Dieta))
+        {
+            return false;
+        }
+        return (this.nome.Equals(((Dieta)obj).nome))
+            && (this.descrizione.Equals(((Dieta)obj).descrizione));
+    }
+
+    public override string ToString()
+    {
+        return "Dieta:" + "\n" + this.nome + "\n" + "descrizione" + "\n" + "fine dieta" + this.nome;
+    }
+
+    ~Dieta()
+    {
+        
+    }
+
     public static int getNewDietaFromUtente (string output){
         string dietaTemp;
         int dietaTempInt = -1;
@@ -38,24 +63,4 @@ public class Dieta
         else
             throw new InvalidOperationException ("Dieta inserita non valida");
     } 
-
-    public override bool Equals(object obj)
-    {
-        // If the passed object is null
-        if (obj == null)
-        {
-            return false;
-        }
-        if (!(obj is Dieta))
-        {
-            return false;
-        }
-        return (this.nome.Equals(((Dieta)obj).nome))
-            && (this.descrizione.Equals(((Dieta)obj).descrizione));
-    }
-
-    ~Dieta()
-    {
-        
-    }
 }

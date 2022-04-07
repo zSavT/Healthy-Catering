@@ -92,7 +92,7 @@ public class Patologia
         
     }
 
-    public static Patologia IdToPatologia (int id, List <Patologia> databasePatalogie = null){
+    public static Patologia idToPatologia (int id, List <Patologia> databasePatalogie = null){
         databasePatologie ??= Database.getDatabaseOggetto (new Patologia ());
         
         foreach (Patologia patologia in databasePatologie){
