@@ -49,7 +49,7 @@ public class Cliente
             }
         }
 
-        string output = "Cliente: " + this.nome + "\n" + "Dieta: " + this.dieta + "\n";
+        string output = "Cliente:" + "\n\t" + this.nome + "\n" + "Dieta:" + "\n\t" + this.dieta + "\n";
         
         if (!(listaIdPatologieString.Equals ("")))
             output = output + "Patologie:"+ "\n" + listaIdPatologieString + "\n";

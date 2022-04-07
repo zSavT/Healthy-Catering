@@ -40,7 +40,7 @@ public class Item
 
     public override string ToString()
     {
-        return "Item:" + "\n" + this.nome + "\n" + "Descrizione: " + this.descrizione + "\n" + "Fine item" + this.nome;
+        return "Item:" + "\n\t" + this.nome + "\n" + "Descrizione:" + "\n\t" + this.descrizione + "\n" + "Fine item" + this.nome;
     }
     
     ~Item()
