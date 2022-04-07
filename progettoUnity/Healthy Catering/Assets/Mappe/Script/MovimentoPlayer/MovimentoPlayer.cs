@@ -19,6 +19,11 @@ public class MovimentoPlayer : MonoBehaviour
     public float molltiplicatoreVelocitaSalto = 0.2f;
     bool prontoASaltare;
 
+    [Header("Sprint")]
+    public KeyCode tastoSprint = KeyCode.LeftShift;
+    private float velocitaBase;
+    public float velocitaSprint = 10f;
+
 
     [Header("Controllo pavimento")]
     public float altezzaGiocatore = 0;
@@ -42,6 +47,7 @@ public class MovimentoPlayer : MonoBehaviour
         velocitaMovimento = 7;
         attritoAlSuolo = 8.5f;
         forzaSalto = 5;
+        velocitaBase = velocitaMovimento;
     }
 
     private void Update()
@@ -66,6 +72,13 @@ public class MovimentoPlayer : MonoBehaviour
     {
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
+        if (Input.GetKey(tastoSprint))
+        {
+            velocitaMovimento = velocitaSprint;
+        } else
+        {
+            velocitaMovimento = velocitaBase;
+        }
         if(Input.GetKey(tastoSalto) && prontoASaltare && perTerra)
         {
             prontoASaltare = false;
