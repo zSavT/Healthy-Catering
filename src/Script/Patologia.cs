@@ -93,14 +93,17 @@ public class Patologia
     }
 
     public static Patologia idToPatologia (int id, List <Patologia> databasePatalogie = null){
+        if (id == -1)
+            return new Patologia();
+
         databasePatologie ??= Database.getDatabaseOggetto (new Patologia ());
         
         foreach (Patologia patologia in databasePatologie){
-                if (id == patologia.idPatologia)
-                    return patologia;
+            if (id == patologia.idPatologia)
+                return patologia;
         }
-        
-        return new Patologia();
+
+        throw new Exception ("Patologia non trovata idToPatologia");
     }
 
     private static List <Patologia> idListToPatologieList (List <int> idList){

@@ -115,17 +115,19 @@ public class Ingrediente : Item
         return temp;
     }
 
-    public static Ingrediente IdToIngrediente (int id){
+    public static Ingrediente idToIngrediente (int id, List <Ingrediente> databaseIngredienti){
         if (id == -1)
             return new Ingrediente ();
-        List <Ingrediente> databaseIngredienti = Database.getDatabaseOggetto (new Ingrediente ());
+        
+        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
+        
         foreach (Ingrediente ingrediente in databaseIngredienti){
             if (id == ingrediente.idItem){
                 return ingrediente;
             }
         }
         
-        throw new Exception ("Ingrediente non trovato IdToIngrediente");
+        throw new Exception ("Ingrediente non trovato idToIngrediente");
     }
 
     ~Ingrediente()

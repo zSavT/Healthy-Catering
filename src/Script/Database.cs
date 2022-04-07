@@ -292,6 +292,20 @@ public class Database {
         return Console.ReadLine();
     }
 
+    public static int getNewIntFromUtente (string output){
+        Console.WriteLine (output);
+        
+        bool numeroValido = false;
+
+        while (!numeroValido){
+            string input = Console.ReadLine();
+            numeroValido = int.TryParse(input, out int numero);
+            if (numeroValido) 
+                return numero;
+            Console.WriteLine($"{input} non è un numero");
+        }
+    }
+
     public static Oggetto getUltimoOggettoAggiuntoAlDatabase <Oggetto> (Oggetto oggetto){
         List <Oggetto> databaseOggetto = getDatabaseOggetto (oggetto);
         return databaseOggetto [databaseOggetto.Count - 1];

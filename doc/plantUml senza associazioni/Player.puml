@@ -6,7 +6,7 @@ class Player {
     + Player(nome:string, soldi:int, inventario:List<OggettoQuantita<int>>)
     + Player()
     + {static} popolaInventario(itemGiaPresenti:List <Item>) : List<OggettoQuantita<int>>
-    - {static} aggiungiAltriItem(itemGiaPresenti:List <Item>) : List <Item>
+    - {static} getNewItem(itemGiaPresenti:List <Item>) : List <Item>
     - {static} chiediQuantitaItem(itemGiaPresenti:List <Item>) : List <int>
     - {static} creaInventarioFromListaItemEQuantita(itemGiaPresenti:List <Item>, quantitaItemGiaPresenti:List <int>) : List<OggettoQuantita<int>>
 }

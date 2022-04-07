@@ -63,7 +63,7 @@ public class Piatto
     public float calcolaCosto (){
         float costo = 0;
         foreach (OggettoQuantita<int> ingredienteQuantita in this.listaIdIngredientiQuantita){
-            costo = costo + (Ingrediente.IdToIngrediente (ingredienteQuantita.oggetto).costo * ingredienteQuantita.quantita);
+            costo = costo + (Ingrediente.idToIngrediente (ingredienteQuantita.oggetto).costo * ingredienteQuantita.quantita);
         }
         return costo + ((costo * percentualeGuadagnoSulPiatto) / 100);
     }
@@ -71,7 +71,7 @@ public class Piatto
     public float calcolaCostoEco (){
         float costoEco = 0;
         foreach (OggettoQuantita<int> ingredienteQuantita in this.listaIdIngredientiQuantita){
-            costoEco = costoEco + (Ingrediente.IdToIngrediente (ingredienteQuantita.oggetto).costoEco * ingredienteQuantita.quantita);
+            costoEco = costoEco + (Ingrediente.idToIngrediente (ingredienteQuantita.oggetto).costoEco * ingredienteQuantita.quantita);
         }
         return costoEco;
     }
@@ -80,7 +80,7 @@ public class Piatto
         int sommanutriScore = 0;
         int numeroIngredienti = 0;
         foreach (OggettoQuantita<int> ingredienteQuantita in this.listaIdIngredientiQuantita){
-            sommanutriScore = sommanutriScore + (Ingrediente.IdToIngrediente (ingredienteQuantita.oggetto).nutriScore * ingredienteQuantita.quantita);
+            sommanutriScore = sommanutriScore + (Ingrediente.idToIngrediente (ingredienteQuantita.oggetto).nutriScore * ingredienteQuantita.quantita);
             numeroIngredienti = numeroIngredienti + ingredienteQuantita.quantita;
         }
         int nutriScore = (int) (sommanutriScore / numeroIngredienti);
