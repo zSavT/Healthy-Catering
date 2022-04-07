@@ -116,7 +116,6 @@ public class Ingrediente : Item
     }
 
     public static Ingrediente IdToIngrediente (int id){
-        Console.WriteLine (id);
         if (id == -1)
             return new Ingrediente ();
         List <Ingrediente> databaseIngredienti = Database.getDatabaseOggetto (new Ingrediente ());
@@ -125,7 +124,6 @@ public class Ingrediente : Item
                 return ingrediente;
             }
         }
-        Console.WriteLine (id);
         
         throw new Exception ("Ingrediente non trovato IdToIngrediente");
     }

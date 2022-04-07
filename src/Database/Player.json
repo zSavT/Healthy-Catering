@@ -178,5 +178,71 @@
         "quantita": 1
       }
     ]
+  },
+  {
+    "nome": "Gianni",
+    "soldi": 4.0,
+    "inventario": [
+      {
+        "oggetto": 7,
+        "quantita": 1
+      },
+      {
+        "oggetto": 9,
+        "quantita": 1
+      },
+      {
+        "oggetto": 10,
+        "quantita": 1
+      },
+      {
+        "oggetto": 11,
+        "quantita": 1
+      }
+    ]
+  },
+  {
+    "nome": "Gianni",
+    "soldi": 4.0,
+    "inventario": [
+      {
+        "oggetto": 7,
+        "quantita": 1
+      },
+      {
+        "oggetto": 9,
+        "quantita": 1
+      },
+      {
+        "oggetto": 10,
+        "quantita": 1
+      },
+      {
+        "oggetto": 11,
+        "quantita": 1
+      }
+    ]
+  },
+  {
+    "nome": "Gianni",
+    "soldi": 4.0,
+    "inventario": [
+      {
+        "oggetto": 7,
+        "quantita": 1
+      },
+      {
+        "oggetto": 9,
+        "quantita": 1
+      },
+      {
+        "oggetto": 10,
+        "quantita": 1
+      },
+      {
+        "oggetto": 11,
+        "quantita": 1
+      }
+    ]
   }
 ]

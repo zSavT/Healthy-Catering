@@ -10,7 +10,6 @@ public class Serializza
     public static void salvaOggettiSuFile <Oggetto> (List <Oggetto> oggetti)
     {
         string pathJson = getJsonPath (oggetti);
-        Console.WriteLine (pathJson);
         using (StreamWriter file = File.CreateText(@pathJson))
         {
             JsonSerializer serializer = new JsonSerializer();

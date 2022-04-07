@@ -32,5 +32,41 @@
         "quantita": 1
       }
     ]
+  },
+  {
+    "nome": "Panino con il pollo",
+    "descrizione": "Panino tagliato a meta con carne di pollo al centro dei due bun",
+    "listaIdIngredientiQuantita": [
+      {
+        "oggetto": 7,
+        "quantita": 1
+      },
+      {
+        "oggetto": 8,
+        "quantita": 1
+      }
+    ]
+  },
+  {
+    "nome": "Pane, mango, spinaci e philadelphia",
+    "descrizione": "Ricetta dal sito ufficiale di philadelphia italia rielaborata",
+    "listaIdIngredientiQuantita": [
+      {
+        "oggetto": 7,
+        "quantita": 1
+      },
+      {
+        "oggetto": 9,
+        "quantita": 1
+      },
+      {
+        "oggetto": 10,
+        "quantita": 1
+      },
+      {
+        "oggetto": 11,
+        "quantita": 1
+      }
+    ]
   }
 ]

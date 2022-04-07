@@ -178,5 +178,71 @@
         "quantita": 1
       }
     ]
+  },
+  {
+    "nome": "Da Gianni",
+    "punteggio": 0,
+    "magazzinoIngredienti": [
+      {
+        "oggetto": 7,
+        "quantita": 1
+      },
+      {
+        "oggetto": 9,
+        "quantita": 1
+      },
+      {
+        "oggetto": 10,
+        "quantita": 1
+      },
+      {
+        "oggetto": 11,
+        "quantita": 1
+      }
+    ]
+  },
+  {
+    "nome": "Da Gianni",
+    "punteggio": 0,
+    "magazzinoIngredienti": [
+      {
+        "oggetto": 7,
+        "quantita": 1
+      },
+      {
+        "oggetto": 9,
+        "quantita": 1
+      },
+      {
+        "oggetto": 10,
+        "quantita": 1
+      },
+      {
+        "oggetto": 11,
+        "quantita": 1
+      }
+    ]
+  },
+  {
+    "nome": "Da Gianni",
+    "punteggio": 0,
+    "magazzinoIngredienti": [
+      {
+        "oggetto": 7,
+        "quantita": 1
+      },
+      {
+        "oggetto": 9,
+        "quantita": 1
+      },
+      {
+        "oggetto": 10,
+        "quantita": 1
+      },
+      {
+        "oggetto": 11,
+        "quantita": 1
+      }
+    ]
   }
 ]

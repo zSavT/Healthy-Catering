@@ -36,6 +36,10 @@ public class Database {
         
         //ingredienti
         List <int> listaIdPatologieCompatibili = new List <int> ();
+        listaIdPatologieCompatibili.Add (0);
+        listaIdPatologieCompatibili.Add (1);
+        listaIdPatologieCompatibili.Add (2);
+        listaIdPatologieCompatibili.Add (3);
         //id, nome, descrizione, 
         //costo, costoEco, nutriScore, dieta, listaIdPatologieCompatibili
         
@@ -55,11 +59,24 @@ public class Database {
         aggiungiIngrediente (new Ingrediente (6, "Acqua", "L'acqua è un ingrediente fondamentale in cucina. Il suo sapore determina il gusto di bevande come tè e caffè. La qualità dell'acqua utilizzata per cucinare condiziona anche la riuscita del processo di lievitazione così come la stessa ebollizione.",
          1, 1, 1, 0, listaIdPatologieCompatibili));
 
+        aggiungiIngrediente (new Ingrediente (7, "Pane", "Il pane è un prodotto alimentare ottenuto dalla fermentazione, dalla formatura a cui segue una lievitazione, e successiva cottura in forno di un impasto a base di farina (normale o integrale), cereali e acqua, confezionato con diverse modalità, arricchito e caratterizzato frequentemente da ingredienti che si differenziano seguendo le tradizioni locali.",
+         1, 1, 1, 0, listaIdPatologieCompatibili));
+        aggiungiIngrediente (new Ingrediente (8, "Carne di pollo", "La carne di pollo è la carne ricavata dalla macellazione del pollo.",
+         1, 1, 1, 2, listaIdPatologieCompatibili));
+
+        aggiungiIngrediente (new Ingrediente (9, "Philadelphia", "Philadelphia è il nome commerciale di un formaggio spalmabile di tipo quark prodotto dalla Kraft Foods negli Stati Uniti d'America e venduto in molti stati. In Italia è commercializzato dal 1971.",
+         1, 1, 1, 1, listaIdPatologieCompatibili));
+        aggiungiIngrediente (new Ingrediente (10, "Mango", "Mango è il nome comune di un frutto tropicale e della pianta indiana che lo produce (Genere Mangifera); la specie più diffusa è senz'altro la M. indica, anche nota come mango comune o mango indiano.",
+         1, 1, 1, 0, listaIdPatologieCompatibili));
+        aggiungiIngrediente (new Ingrediente (11, "Spinaci", "Lo spinacio è una pianta erbacea della famiglia delle Amaranthaceae, sottofamiglia delle Chenopodioideae.",
+         1, 1, 1, 0, listaIdPatologieCompatibili));
+        
         
         //patologie gia aggiunte per cliente
         
 
         //piatti
+        //ricetta vegana
         List <OggettoQuantita<int>> ingredientiQuantita = new List <OggettoQuantita<int>> ();
         ingredientiQuantita.Add (new OggettoQuantita<int> (0,1));
         ingredientiQuantita.Add (new OggettoQuantita<int> (1,1));
@@ -69,6 +86,20 @@ public class Database {
         ingredientiQuantita.Add (new OggettoQuantita<int> (5,1));
         ingredientiQuantita.Add (new OggettoQuantita<int> (6,1));
         aggiungiPiatto (new Piatto ("Spaghetti all'assassina", "State tranquilli, gli spaghetti all'assassina non si ispirano ai classici del cinema horror! Si tratta di un primo piatto che è entrato di recente a far parte della tradizione barese, oltre che un modo appetitoso per utilizzare il sugo avanzato. Il significato del suo nome non è ben chiaro, ma quel che è certo è che il suo gusto ha conquistato tutti: grazie alla cottura degli spaghetti direttamente in padella, infatti, otterrete una consistenza croccante e saporita particolarmente apprezzata dagli amanti della crosticina!", ingredientiQuantita));
+        
+        ingredientiQuantita = new List <OggettoQuantita<int>> ();
+        ingredientiQuantita.Add (new OggettoQuantita<int> (7,1));
+        ingredientiQuantita.Add (new OggettoQuantita<int> (8,1));
+        aggiungiPiatto (new Piatto ("Panino con il pollo", "Panino tagliato a meta con carne di pollo al centro dei due bun", ingredientiQuantita));
+
+        //ricetta onnivora
+        ingredientiQuantita = new List <OggettoQuantita<int>> ();
+        ingredientiQuantita.Add (new OggettoQuantita<int> (7,1));
+        ingredientiQuantita.Add (new OggettoQuantita<int> (9,1));
+        ingredientiQuantita.Add (new OggettoQuantita<int> (10,1));
+        ingredientiQuantita.Add (new OggettoQuantita<int> (11,1));
+        aggiungiPiatto (new Piatto ("Pane, mango, spinaci e philadelphia", "Ricetta dal sito ufficiale di philadelphia italia rielaborata", ingredientiQuantita));
+        
         
         //player
         aggiungiPlayer (new Player ("Gianni", 4, ingredientiQuantita));
