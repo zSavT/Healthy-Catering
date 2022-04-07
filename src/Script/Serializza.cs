@@ -3,12 +3,11 @@ using Newtonsoft.Json;
 
 public class Serializza
 {
-    public Serializza (){
-        
-    }
-
     public static void salvaOggettiSuFile <Oggetto> (List <Oggetto> oggetti)
     {
+        if (oggetti.Count < 0)
+            throw new InvalidOperationException("Lista passata vuota, progressi non salvati (?)");
+
         string pathJson = getJsonPath (oggetti);
         using (StreamWriter file = File.CreateText(@pathJson))
         {
@@ -16,42 +15,32 @@ public class Serializza
             serializer.Formatting = Formatting.Indented;
             serializer.Serialize(file, oggetti);
         }
-        if (oggetti.Count < 0){
-            //throw new InvalidOperationException("Lista passata vuota, progressi non salvati (?)");
-            Console.WriteLine("Lista passata vuota, sto salvando dei progressi vuoti");
-        }
     }
 
     public static string getJsonPath <Oggetto> (Oggetto oggetto){
-        string jsonPath = Directory.GetCurrentDirectory(); 
-        jsonPath = jsonPath + @"\..\Database\";
+        string jsonPath = Directory.GetCurrentDirectory() + @"\..\Database\";
         
         string tipoOggetto = oggetto.GetType().Name;
-        if (tipoOggetto.ToLower ().Contains ("list"))
-            tipoOggetto = oggetto.GetType().GetGenericArguments().Single().ToString();
+        if (tipoOggetto.ToLower ().Contains ("list")) //se è una lista
+            tipoOggetto = oggetto.GetType().GetGenericArguments().Single().ToString(); //il tipoOggetto sarà il tipo degli oggetti nella lista
         
-        jsonPath = jsonPath + tipoOggetto;
-        
-        jsonPath = jsonPath + ".json";
-        return jsonPath;
+        return jsonPath + tipoOggetto + ".json";
     }
 
     public static List<Oggetto> leggiOggettiDaFile <Oggetto> (string filePath)
     {
-        if (File.Exists(filePath)){
-            string json = File.ReadAllText(@filePath);
-            return JsonConvert.DeserializeObject<List<Oggetto>>(json);
+        if (File.Exists(filePath))
+            return JsonConvert.DeserializeObject <List<Oggetto>> (File.ReadAllText (@filePath));
+        
+        try{
+            Console.WriteLine ("File non trovato, provo a crearlo");
+            File.Create (@filePath);
+            salvaOggettiSuFile <Oggetto> (new List <Oggetto> ());
+            return leggiOggettiDaFile <Oggetto> (@filePath);
         }
-        else{
-            try{
-                Console.WriteLine ("File non trovato, provo a crearlo");
-                File.Create (@filePath);
-                salvaOggettiSuFile <Oggetto> (new List <Oggetto> ());
-                return leggiOggettiDaFile <Oggetto> (@filePath);
-            }
-            catch (Exception e){
-                throw new FileNotFoundException ("File non trovato e non riesco a crearlo, crea un salvataggio di una lista della classe che mi stai passando per leggerla!");
-            }
+        catch (Exception e){
+            throw new FileNotFoundException ("File non trovato e non riesco a crearlo, crea un file .json con la stringa \"[]\" per farmi leggere una lista vuota oppure popola il json a mano");
         }
+        
     }
 }
