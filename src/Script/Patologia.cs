@@ -92,6 +92,17 @@ public class Patologia
         
     }
 
+    public static Patologia IdToPatologia (int id, List <Patologia> databasePatalogie = null){
+        databasePatologie ??= Database.getDatabaseOggetto (new Patologia ());
+        
+        foreach (Patologia patologia in databasePatologie){
+                if (id == patologia.idPatologia)
+                    return patologia;
+        }
+        
+        return new Patologia();
+    }
+
     private static List <Patologia> idListToPatologieList (List <int> idList){
         idList = idList.Distinct().ToList(); //rimuove eventuali duplicati
         List <Patologia> databasePatologie = Database.getDatabaseOggetto (new Patologia ());

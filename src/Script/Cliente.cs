@@ -19,11 +19,6 @@ public class Cliente
         this.listaIdPatologie = new List <int> ();
     }
 
-    public string getNewNomeClienteFromUtente (string output){
-        Console.WriteLine (output);
-        return Console.ReadLine();
-    }
-
     public override bool Equals(object obj)
     {
         // If the passed object is null
@@ -38,6 +33,26 @@ public class Cliente
         return (this.nome.Equals(((Cliente)obj).nome))
             && (this.dieta == ((Cliente)obj).dieta)
             && (Enumerable.SequenceEqual(this.listaIdPatologie, ((Cliente)obj).listaIdPatologie));
+    }
+
+    public override string ToString()
+    {
+        string listaIdPatologieString = "";
+        
+        if (this.listaIdPatologie.Count > 0)
+            List <Patologia> databasePatologie = Database.getDatabaseOggetto (new Patologia ());
+            foreach (int id in listaIdPatologie){
+                Patologia temp = Patologia.IdToPatologia(id, databasePatalogie).nome;
+                if (temp.idPatologia != -1)
+                    listaIdPatologieString = listaIdPatologieString + "\t" + Patologia.IdToPatologia(id).nome + "\n";
+            }
+        
+        string output = "Cliente: " + "\n" + this.nome + "\n" + this.dieta + "\n";
+        
+        if (!(listaIdPatologieString.Equals ("")))
+            output = output + "Patologie:\n" + listaIdPatologieString + "\n";
+        
+        return output + "fine cliente " + this.nome;
     }
 
     //distruttore
