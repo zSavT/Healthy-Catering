@@ -6,11 +6,6 @@ using System;
 public class Database {
     public Database (){}
 
-    public static void Main (string[] args)
-    {
-        creaDatabase ();
-    }
-
     private static void creaDatabase (){
         //patologie
         aggiungiPatologia (new Patologia (0, "Diabete", "Malattia cronica, inquadrabile nel gruppo delle patologie note come diabete mellito, caratterizzata da un'elevata concentrazione di glucosio nel sangue, che viene a sua volta causata da una carenza (assoluta o relativa) di insulina nell'organismo umano, o da un'alterata funzionalità dell'insulina stessa, ormone che stimolando l'assunzione del glucosio nelle cellule muscolari e adipose ne diminuisce la concentrazione nel sangue."));
