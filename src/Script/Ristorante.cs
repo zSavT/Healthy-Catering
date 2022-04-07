@@ -19,6 +19,22 @@ public class Ristorante
         this.magazzinoIngredienti = new List<OggettoQuantita<int>> ();
     }
 
+    public override bool Equals(object obj)
+    {
+        // If the passed object is null
+        if (obj == null)
+        {
+            return false;
+        }
+        if (!(obj is Ristorante))
+        {
+            return false;
+        }
+        return (this.nome.Equals (((Ristorante)obj).nome))
+            && (this.punteggio == ((Ristorante)obj).punteggio)
+            && OggettoQuantita<int>.listaIdItemQuantitaUguali (this.magazzinoIngredienti, ((Ristorante)obj).magazzinoIngredienti);
+    }
+
     public static int getNewPunteggioFromUtente (){
         Console.WriteLine ("Inserisci il punteggio del ristorante");
         

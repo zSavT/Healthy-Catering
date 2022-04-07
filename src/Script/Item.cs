@@ -23,6 +23,21 @@ public class Item
         this.nome = nome;
     }
 
+    public override bool Equals(object obj)
+    {
+        // If the passed object is null
+        if (obj == null)
+        {
+            return false;
+        }
+        if (!(obj is Item))
+        {
+            return false;
+        }
+        return (this.nome.Equals(((Ingrediente)obj).nome))
+            && (this.descrizione.Equals(((Ingrediente)obj).descrizione));
+    }
+
     public static int getNewIdDatabaseItem (Item oggetto){
         List <Item> databaseOggetto = Database.getDatabaseOggetto (oggetto);
         return databaseOggetto [databaseOggetto.Count - 1].idItem + 1;

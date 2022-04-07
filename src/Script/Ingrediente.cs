@@ -34,6 +34,26 @@ public class Ingrediente : Item
         this.nome = nomeIngrediente;
     }
 
+    public override bool Equals(object obj)
+    {
+        // If the passed object is null
+        if (obj == null)
+        {
+            return false;
+        }
+        if (!(obj is Ingrediente))
+        {
+            return false;
+        }
+        return (this.nome.Equals(((Ingrediente)obj).nome))
+            && (this.descrizione.Equals(((Ingrediente)obj).descrizione))
+            && (this.costo == ((Ingrediente)obj).costo)
+            && (this.costoEco == ((Ingrediente)obj).costoEco)
+            && (this.nutriScore == ((Ingrediente)obj).nutriScore)
+            && (this.dieta == ((Ingrediente)obj).dieta)
+            && (Enumerable.SequenceEqual(this.listaIdPatologieCompatibili, ((Ingrediente)obj).listaIdPatologieCompatibili));
+    }
+
     public static Ingrediente checkIngredienteOnonimoGiaPresente (string nomeIngrediente){
         List <Ingrediente> ingredientiConNomeSimileInDatabase = getIngredientiConNomeSimileInDatabase (nomeIngrediente);
         if (ingredientiConNomeSimileInDatabase.Count > 0)
@@ -47,7 +67,7 @@ public class Ingrediente : Item
         List <Ingrediente> output = new List<Ingrediente> ();
         string nomeIngredientePerConfronto = nomeIngrediente.ToLower ();
         foreach (Ingrediente ingredienteTemp in databaseIngredienti){
-            if ((ingredienteTemp.nome.ToLower ().Contains (nomeIngredientePerConfronto)) || (nomeIngredientePerConfronto.Contains (ingredienteTemp.nome.ToLower ()))){
+            if ((ingredienteTemp.nome.ToLower ().Contains (nomeIngredientePerConfronto))){
                 output.Add (ingredienteTemp);
             }
         }
@@ -96,6 +116,9 @@ public class Ingrediente : Item
     }
 
     public static Ingrediente IdToIngrediente (int id){
+        Console.WriteLine (id);
+        if (id == -1)
+            return new Ingrediente ();
         List <Ingrediente> databaseIngredienti = Database.getDatabaseOggetto (new Ingrediente ());
         foreach (Ingrediente ingrediente in databaseIngredienti){
             if (id == ingrediente.idItem){
@@ -103,6 +126,7 @@ public class Ingrediente : Item
             }
         }
         Console.WriteLine (id);
+        
         throw new Exception ("Ingrediente non trovato IdToIngrediente");
     }
 

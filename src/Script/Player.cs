@@ -28,6 +28,22 @@ public class Player
         this.inventario = new List<OggettoQuantita<int>> (); //int perchè sono gli id degli item e non gli item veri e propri
     }
 
+    public override bool Equals(object obj)
+    {
+        // If the passed object is null
+        if (obj == null)
+        {
+            return false;
+        }
+        if (!(obj is Player))
+        {
+            return false;
+        }
+        return (this.nome.Equals (((Player)obj).nome))
+            && (this.soldi == ((Player)obj).soldi)
+            && OggettoQuantita<int>.listaIdItemQuantitaUguali (this.inventario, ((Player)obj).inventario);
+    }
+
     public static List<OggettoQuantita<int>> popolaInventario (List <Item> itemGiaPresenti = null){
         itemGiaPresenti ??= new List<Item> ();
 

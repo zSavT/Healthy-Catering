@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System;
 
 //TODO creare un metodo per chiedere gli interi e sostituire tutte le richieste per interi fatte fino ad ora, in tutti i file
@@ -5,10 +6,78 @@ using System;
 public class Database {
     public Database (){}
 
-    public static void Main(string[] args)
+    public static void Main (string[] args)
     {
-        
+        creaDatabase ();
     }
+
+    private static void creaDatabase (){
+        //patologie
+        aggiungiPatologia (new Patologia (0, "Diabete", "Malattia cronica, inquadrabile nel gruppo delle patologie note come diabete mellito, caratterizzata da un'elevata concentrazione di glucosio nel sangue, che viene a sua volta causata da una carenza (assoluta o relativa) di insulina nell'organismo umano, o da un'alterata funzionalità dell'insulina stessa, ormone che stimolando l'assunzione del glucosio nelle cellule muscolari e adipose ne diminuisce la concentrazione nel sangue."));
+        aggiungiPatologia (new Patologia (1, "Reflusso gastroesofageo", "La malattia da reflusso gastroesofageo è una malattia di interesse gastroenterologico, causata da complicanze patologiche del reflusso gastroesofageo: si parla di malattia quando il reflusso causa sintomi o quando, con la gastroscopia, si evidenziano lesioni infiammatorie a carico dell'esofago, o ulcere, o trasformazione metaplastica della mucosa."));
+        aggiungiPatologia (new Patologia (2, "Allergia al nichel", "L'allergia alimentare è una reazione avversa che si sviluppa per una risposta immunitaria specifica e riproducibile all’ingestione di un determinato alimento"));
+        aggiungiPatologia (new Patologia (3, "Malattia di Crohn", "La malattia di Crohn o morbo di Crohn, nota anche come enterite regionale, è una malattia infiammatoria cronica dell'intestino che può colpire qualsiasi parte del tratto gastrointestinale, provocando una vasta gamma di sintomi."));
+
+        //clienti
+        List <int> patologieCliente = new List <int> ();
+        aggiungiCliente (new Cliente ("alessandro", 0, patologieCliente));
+        patologieCliente.Add (0);
+        aggiungiCliente (new Cliente ("giorgio", 1, patologieCliente));
+        patologieCliente.Add (1);
+        aggiungiCliente (new Cliente ("marco", 1, patologieCliente));
+        patologieCliente.Add (2);
+        patologieCliente.Add (3);
+        aggiungiCliente (new Cliente ("saverio", 2, patologieCliente));
+        
+        //diete
+        aggiungiDieta (new Dieta ("Vegana", "La dieta vegana è un regime alimentare che prevede l'esclusione di tutti i cibi di origine animale e, di conseguenza, l'assunzione esclusiva di alimenti vegetali"));
+        aggiungiDieta (new Dieta ("Vegetariana", "La dieta vegetariana è un regime alimentare che prevede l'assunzione di cibi di origine animale, tranne per quanto riguarda la loro carne (quindi latte, uova, ...), oltre ai cibi di origine vegetale"));
+        aggiungiDieta (new Dieta ("Onnivora", "La dieta onnivora è un regime alimentare che non esclude l'assunzione di nessun tipo di alimento"));
+        
+        //ingredienti
+        List <int> listaIdPatologieCompatibili = new List <int> ();
+        //id, nome, descrizione, 
+        //costo, costoEco, nutriScore, dieta, listaIdPatologieCompatibili
+        
+        //TODO modificare i valori costo, costoEco, nutriScore, dieta e listaIdPatologieCompatibili
+        aggiungiIngrediente (new Ingrediente (0, "Spaghetti", "Gli spaghetti sono un particolare formato di pasta prodotta esclusivamente con semole di grano duro e acqua, dalla forma lunga e sottile e di sezione tonda.",
+         1, 1, 1, 0, listaIdPatologieCompatibili));
+        aggiungiIngrediente (new Ingrediente (1, "Aglio", "L'aglio (Allium sativum L.) è una pianta bulbosa della famiglia Amaryllidaceae (sottofamiglia Allioideae).",
+         1, 1, 1, 0, listaIdPatologieCompatibili));
+        aggiungiIngrediente (new Ingrediente (2, "Olio extravergine d'oliva", "L'olio di oliva è un olio alimentare estratto dalle olive, ovvero i frutti dell'olivo (Olea europaea). Il tipo vergine si ricava dalla spremitura meccanica delle olive.",
+         1, 1, 1, 0, listaIdPatologieCompatibili));
+        aggiungiIngrediente (new Ingrediente (3, "Basilico", "Il basilico (Ocimum basilicum, L., 1753) è una pianta erbacea annuale, appartenente alla famiglia delle Lamiaceae, normalmente coltivata come pianta aromatica.",
+         1, 1, 1, 0, listaIdPatologieCompatibili));
+        aggiungiIngrediente (new Ingrediente (4, "Sugo di pomodoro", "La salsa di pomodoro, o sugo di pomodoro, è un sugo ottenuto dalla cottura della polpa dei pomodori nell'olio di oliva e utilizzato nella cucina italiana come condimento per la pasta.",
+         1, 1, 1, 0, listaIdPatologieCompatibili));
+        aggiungiIngrediente (new Ingrediente (5, "Peperoncino secco", "Il peperoncino è il nome comune dato alla bacca ottenuta da alcune varietà piccanti del genere di piante Capsicum utilizzata principalmente come condimento.",
+         1, 1, 1, 0, listaIdPatologieCompatibili));
+        aggiungiIngrediente (new Ingrediente (6, "Acqua", "L'acqua è un ingrediente fondamentale in cucina. Il suo sapore determina il gusto di bevande come tè e caffè. La qualità dell'acqua utilizzata per cucinare condiziona anche la riuscita del processo di lievitazione così come la stessa ebollizione.",
+         1, 1, 1, 0, listaIdPatologieCompatibili));
+
+        
+        //patologie gia aggiunte per cliente
+        
+
+        //piatti
+        List <OggettoQuantita<int>> ingredientiQuantita = new List <OggettoQuantita<int>> ();
+        ingredientiQuantita.Add (new OggettoQuantita<int> (0,1));
+        ingredientiQuantita.Add (new OggettoQuantita<int> (1,1));
+        ingredientiQuantita.Add (new OggettoQuantita<int> (2,1));
+        ingredientiQuantita.Add (new OggettoQuantita<int> (3,1));
+        ingredientiQuantita.Add (new OggettoQuantita<int> (4,1));
+        ingredientiQuantita.Add (new OggettoQuantita<int> (5,1));
+        ingredientiQuantita.Add (new OggettoQuantita<int> (6,1));
+        aggiungiPiatto (new Piatto ("Spaghetti all'assassina", "State tranquilli, gli spaghetti all'assassina non si ispirano ai classici del cinema horror! Si tratta di un primo piatto che è entrato di recente a far parte della tradizione barese, oltre che un modo appetitoso per utilizzare il sugo avanzato. Il significato del suo nome non è ben chiaro, ma quel che è certo è che il suo gusto ha conquistato tutti: grazie alla cottura degli spaghetti direttamente in padella, infatti, otterrete una consistenza croccante e saporita particolarmente apprezzata dagli amanti della crosticina!", ingredientiQuantita));
+        
+        //player
+        aggiungiPlayer (new Player ("Gianni", 4, ingredientiQuantita));
+
+        //ristorante
+        aggiungiRistorante (new Ristorante ("Da Gianni", 0, ingredientiQuantita));
+
+        pulisciDatabase ();
+    } 
 
     public static void aggiungiRistorante (Ristorante ristorante){
         while (ristorante.nome.Equals("")){
@@ -147,19 +216,49 @@ public class Database {
             cliente.dieta = Dieta.getNewDietaFromUtente ("Inserisci il nome della dieta del cliente " + cliente.nome);
         }
         
-        while (cliente.listaIdPatologie.Count == 0){
+        if (cliente.listaIdPatologie.Count == 0){
             cliente.listaIdPatologie = Patologia.getNewListaIdPatologieFromUtente ("Inserisci le patologie del cliente " + cliente.nome + " e la keyword 'fine' quando hai finito l'inserimento");
         }
-        
+
         salvaNuovoOggettoSuFile (cliente);
     }
 
-    public static void salvaNuovoOggettoSuFile <Oggetto> (Oggetto oggetto){   
-        List <Oggetto> oggettiVecchi = getDatabaseOggetto (oggetto);
-        if (!(oggettiVecchi.Contains (oggetto))){
-            oggettiVecchi.Add (oggetto);
+    private static void pulisciDatabase (){
+        List <Ingrediente> temp = getDatabaseOggetto (new Ingrediente ());
+        if (temp.Count > 0)
+            if (temp[0].idItem == -1){
+                temp.RemoveAt(0);
+                Serializza.salvaOggettiSuFile (temp);
+            }
+
+        List <Patologia> temp1 = getDatabaseOggetto (new Patologia ());
+        if (temp1.Count > 0)
+            if (temp1[0].idPatologia == -1){
+                temp1.RemoveAt(0);
+                Serializza.salvaOggettiSuFile (temp1);
+            }
+    }
+
+    public static bool oggettoGiaPresente <Oggetto> (Oggetto oggetto){
+        List <Oggetto> databaseOggetto = getDatabaseOggetto (oggetto);
+        if (databaseOggetto.Count > 0){
+            foreach (Oggetto singoloOggetto in databaseOggetto){
+                if (singoloOggetto.Equals (oggetto)){
+                    return true;
+                }
+            }
         }
-        Serializza.salvaOggettiSuFile (oggettiVecchi);
+        return false;
+    }
+
+    public static void salvaNuovoOggettoSuFile <Oggetto> (Oggetto oggetto){   
+        if (!(oggettoGiaPresente (oggetto))){
+            List <Oggetto> oggettiVecchi = getDatabaseOggetto (oggetto);
+            if (!(oggettiVecchi.Contains (oggetto))){
+                oggettiVecchi.Add (oggetto);
+            }
+            Serializza.salvaOggettiSuFile (oggettiVecchi);
+        }
     }
 
     public static string getNewStringaFromUtente (string output){
@@ -177,34 +276,34 @@ public class Database {
         return Serializza.leggiOggettiDaFile <Oggetto> (pathJson);
     }
 
-    private static void creaDatabaseBase (){
-        creaDatabaseBaseCliente ();
-        creaDatabaseBaseDieta ();
-        creaDatabaseBaseIngrediente ();
-        creaDatabaseBaseItem ();
-        creaDatabaseBasePatologia ();
-        creaDatabaseBasePiatto ();
-        creaDatabaseBasePlayer ();
-        creaDatabaseBaseRistorante ();
+    private static void creaDatabaseVuoto (){
+        creaDatabaseVuotoCliente ();
+        creaDatabaseVuotoDieta ();
+        creaDatabaseVuotoIngrediente ();
+        creaDatabaseVuotoItem ();
+        creaDatabaseVuotoPatologia ();
+        creaDatabaseVuotoPiatto ();
+        creaDatabaseVuotoPlayer ();
+        creaDatabaseVuotoRistorante ();
     }
 
-    private static void creaDatabaseBaseCliente (){
+    private static void creaDatabaseVuotoCliente (){
         //Cliente
         List <Cliente> tempCliente = new List<Cliente> ();
-        tempCliente.Add(new Cliente ());
+        //tempCliente.Add(new Cliente ());
     
         Serializza.salvaOggettiSuFile <Cliente> (tempCliente);
     }
 
-    private static void creaDatabaseBaseDieta (){
+    private static void creaDatabaseVuotoDieta (){
         //Dieta
         List <Dieta> tempDieta = new List<Dieta> ();
-        tempDieta.Add(new Dieta ());
+        //tempDieta.Add(new Dieta ());
 
         Serializza.salvaOggettiSuFile <Dieta> (tempDieta);
     }
 
-    private static void creaDatabaseBaseIngrediente (){
+    private static void creaDatabaseVuotoIngrediente (){
         //Ingrediente
         List <Ingrediente> tempIngrediente = new List<Ingrediente> ();
         tempIngrediente.Add(new Ingrediente ());
@@ -212,7 +311,7 @@ public class Database {
         Serializza.salvaOggettiSuFile <Ingrediente> (tempIngrediente);
     }
 
-    private static void creaDatabaseBaseItem (){
+    private static void creaDatabaseVuotoItem (){
         //Item
         List <Item> tempItem = new List<Item> ();
         tempItem.Add(new Item ());
@@ -220,7 +319,7 @@ public class Database {
         Serializza.salvaOggettiSuFile <Item> (tempItem);
     }
 
-    private static void creaDatabaseBasePatologia (){
+    private static void creaDatabaseVuotoPatologia (){
         //Patologia
         List <Patologia> tempPatologia = new List<Patologia> ();
         tempPatologia.Add(new Patologia ());
@@ -228,26 +327,26 @@ public class Database {
         Serializza.salvaOggettiSuFile <Patologia> (tempPatologia);
     }
 
-    private static void creaDatabaseBasePiatto (){
+    private static void creaDatabaseVuotoPiatto (){
         //Piatto
         List <Piatto> tempPiatto = new List<Piatto> ();
-        tempPiatto.Add(new Piatto ());
+        //tempPiatto.Add(new Piatto ());
 
         Serializza.salvaOggettiSuFile <Piatto> (tempPiatto);
     }
 
-    private static void creaDatabaseBasePlayer (){
+    private static void creaDatabaseVuotoPlayer (){
         //Player
         List <Player> tempPlayer = new List<Player> ();
-        tempPlayer.Add(new Player ());
+        //tempPlayer.Add(new Player ());
 
         Serializza.salvaOggettiSuFile <Player> (tempPlayer);
     }
 
-    private static void creaDatabaseBaseRistorante (){
+    private static void creaDatabaseVuotoRistorante (){
     //Ristorante
         List <Ristorante> tempRistorante = new List<Ristorante> ();
-        tempRistorante.Add(new Ristorante ());
+        //tempRistorante.Add(new Ristorante ());
         
         Serializza.salvaOggettiSuFile <Ristorante> (tempRistorante);
     }

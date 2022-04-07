@@ -20,6 +20,21 @@ public class Patologia
         this.descrizione = "";
     }
 
+    public override bool Equals(object obj)
+    {
+        // If the passed object is null
+        if (obj == null)
+        {
+            return false;
+        }
+        if (!(obj is Patologia))
+        {
+            return false;
+        }
+        return (this.nome.Equals(((Patologia)obj).nome))
+            && (this.descrizione.Equals(((Patologia)obj).descrizione));
+    }
+
     public static int patologiaStringToIdPatologia (string patologia){
         if (patologia == "diabete")
             return 0;

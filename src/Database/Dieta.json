@@ -1,6 +1,14 @@
 [
   {
-    "nome": "",
-    "descrizione": ""
+    "nome": "Vegana",
+    "descrizione": "La dieta vegana è un regime alimentare che prevede l'esclusione di tutti i cibi di origine animale e, di conseguenza, l'assunzione esclusiva di alimenti vegetali"
+  },
+  {
+    "nome": "Vegetariana",
+    "descrizione": "La dieta vegetariana è un regime alimentare che prevede l'assunzione di cibi di origine animale, tranne per quanto riguarda la loro carne (quindi latte, uova, ...), oltre ai cibi di origine vegetale"
+  },
+  {
+    "nome": "Onnivora",
+    "descrizione": "La dieta onnivora è un regime alimentare che non esclude l'assunzione di nessun tipo di alimento"
   }
 ]

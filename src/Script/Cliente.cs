@@ -24,6 +24,22 @@ public class Cliente
         return Console.ReadLine();
     }
 
+    public override bool Equals(object obj)
+    {
+        // If the passed object is null
+        if (obj == null)
+        {
+            return false;
+        }
+        if (!(obj is Cliente))
+        {
+            return false;
+        }
+        return (this.nome.Equals(((Cliente)obj).nome))
+            && (this.dieta == ((Cliente)obj).dieta)
+            && (Enumerable.SequenceEqual(this.listaIdPatologie, ((Cliente)obj).listaIdPatologie));
+    }
+
     //distruttore
     ~Cliente() 
     {

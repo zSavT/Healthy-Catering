@@ -39,6 +39,21 @@ public class Dieta
             throw new InvalidOperationException ("Dieta inserita non valida");
     } 
 
+    public override bool Equals(object obj)
+    {
+        // If the passed object is null
+        if (obj == null)
+        {
+            return false;
+        }
+        if (!(obj is Dieta))
+        {
+            return false;
+        }
+        return (this.nome.Equals(((Dieta)obj).nome))
+            && (this.descrizione.Equals(((Dieta)obj).descrizione));
+    }
+
     ~Dieta()
     {
         

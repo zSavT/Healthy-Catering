@@ -7,51 +7,32 @@ public class Serializza
         
     }
 
-    /*
-    public static void Main(string[] args)
-    {
-        test da rimuovere
-        List <Piatto> var = Serializza.leggiOggettiDaFile<Piatto> (@"C:\Users\alex1\Desktop\Healthy-Catering\src\Database\Piatto.json");
-        Console.WriteLine (var[0].nome);
-        foreach (OggettoQuantita<int> i in var [0].ingredienti){
-            Console.WriteLine (i.oggetto); //poi ci sarebbe da chiamare la funzione da idIngrediente a ingrediente ma vabz 
-        }
-        
-    }
-    */
-
     public static void salvaOggettiSuFile <Oggetto> (List <Oggetto> oggetti)
     {
-        if (oggetti.Count > 0){
-            string pathJson = getJsonPath (oggetti [0]);
-            using (StreamWriter file = File.CreateText(@pathJson))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                serializer.Formatting = Formatting.Indented;
-                serializer.Serialize(file, oggetti);
-            }
+        string pathJson = getJsonPath (oggetti);
+        Console.WriteLine (pathJson);
+        using (StreamWriter file = File.CreateText(@pathJson))
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            serializer.Formatting = Formatting.Indented;
+            serializer.Serialize(file, oggetti);
         }
-        else{
-            throw new InvalidOperationException("Lista passata vuota, progressi non salvati (?)");
+        if (oggetti.Count < 0){
+            //throw new InvalidOperationException("Lista passata vuota, progressi non salvati (?)");
+            Console.WriteLine("Lista passata vuota, sto salvando dei progressi vuoti");
         }
-
-        /*
-        Esempio di utilizzo:
-            List <Dieta> diete = new List<Dieta> ();
-            diete.Add (new Dieta ());
-            try{
-                Serializza.salvaOggettiSuFile<Dieta> (diete);
-            }
-            catch (InvalidOperationException e){
-                Console.WriteLine (e.Message);
-            }
-        */
     }
 
     public static string getJsonPath <Oggetto> (Oggetto oggetto){
         string jsonPath = Directory.GetCurrentDirectory(); 
         jsonPath = jsonPath + @"\..\Database\";
-        jsonPath = jsonPath + oggetto.GetType().Name; 
+        
+        string tipoOggetto = oggetto.GetType().Name;
+        if (tipoOggetto.ToLower ().Contains ("list"))
+            tipoOggetto = oggetto.GetType().GetGenericArguments().Single().ToString();
+        
+        jsonPath = jsonPath + tipoOggetto;
+        
         jsonPath = jsonPath + ".json";
         return jsonPath;
     }
@@ -63,38 +44,15 @@ public class Serializza
             return JsonConvert.DeserializeObject<List<Oggetto>>(json);
         }
         else{
-            throw new FileNotFoundException ("File non trovato, salva un salvataggio di una lista della classe che mi stai passando per leggerla!");
-        }
-
-        /*
-        Esempio di utilizzo:
             try{
-                List <Dieta> idk = Serializza.leggiOggettiDaFile<Dieta> (@"C:\Users\alex1\Desktop\Healthy-Catering\progetto\Healthy Catering\Assets\Script\prova serializza\Dieta.json");
-                foreach (var dieta in idk){
-                    Console.WriteLine (dieta);
-                }
+                Console.WriteLine ("File non trovato, provo a crearlo");
+                File.Create (@filePath);
+                salvaOggettiSuFile <Oggetto> (new List <Oggetto> ());
+                return leggiOggettiDaFile <Oggetto> (@filePath);
             }
-            catch (FileNotFoundException e){
-                Console.WriteLine (e.Message);
-            }
-        */
-    }
-
-    /*
-    La classe Cliente utilizzata negli esempi:
-        public class Dieta
-        {
-            public string nome = "";
-
-            public Dieta(string nome)
-            {
-                this.nome = nome;
-            }
-
-            public override string ToString()
-            {
-                return nome;
+            catch (Exception e){
+                throw new FileNotFoundException ("File non trovato e non riesco a crearlo, crea un salvataggio di una lista della classe che mi stai passando per leggerla!");
             }
         }
-    */
+    }
 }
