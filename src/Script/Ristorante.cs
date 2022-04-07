@@ -32,7 +32,7 @@ public class Ristorante
         }
         return (this.nome.Equals (((Ristorante)obj).nome))
             && (this.punteggio == ((Ristorante)obj).punteggio)
-            && OggettoQuantita<int>.listaIdItemQuantitaUguali (this.magazzinoIngredienti, ((Ristorante)obj).magazzinoIngredienti);
+            && OggettoQuantita<int>.listeIdQuantitaUguali (this.magazzinoIngredienti, ((Ristorante)obj).magazzinoIngredienti);
     }
 
     public static int getNewPunteggioFromUtente (){

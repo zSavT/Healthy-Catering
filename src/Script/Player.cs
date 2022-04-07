@@ -41,7 +41,7 @@ public class Player
         }
         return (this.nome.Equals (((Player)obj).nome))
             && (this.soldi == ((Player)obj).soldi)
-            && OggettoQuantita<int>.listaIdItemQuantitaUguali (this.inventario, ((Player)obj).inventario);
+            && OggettoQuantita<int>.listeIdQuantitaUguali (this.inventario, ((Player)obj).inventario);
     }
 
     public static List<OggettoQuantita<int>> popolaInventario (List <Item> itemGiaPresenti = null){

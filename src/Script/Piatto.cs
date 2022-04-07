@@ -52,7 +52,7 @@ public class Piatto
             && (this.costo == ((Piatto)obj).costo)
             && (this.costoEco == ((Piatto)obj).costoEco)
             && (this.nutriScore == ((Piatto)obj).nutriScore)
-            && OggettoQuantita <int>.listaIdItemQuantitaUguali (this.listaIdIngredientiQuantita, ((Piatto)obj).listaIdIngredientiQuantita);
+            && OggettoQuantita <int>.listeIdQuantitaUguali (this.listaIdIngredientiQuantita, ((Piatto)obj).listaIdIngredientiQuantita);
     }
 
     ~Piatto()
