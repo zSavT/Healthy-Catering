@@ -37,17 +37,7 @@ public class Cliente
 
     public override string ToString()
     {
-        string listaIdPatologieString = "";
-        
-        if (this.listaIdPatologie.Count > 0){
-            //se non lo prendo prima viene ricreato ogni volta che viene chiamato il metodo idToPatologia
-            List <Patologia> databasePatologie = Database.getDatabaseOggetto (new Patologia ()); 
-            foreach (int id in listaIdPatologie){
-                Patologia temp = Patologia.idToPatologia(id, databasePatalogie).nome;
-                if (temp.idPatologia != -1)
-                    listaIdPatologieString = listaIdPatologieString + "\n\t" + Patologia.IdToPatologia(id).nome + "\n";
-            }
-        }
+        string listaIdPatologieString = Patologia.listIdToListPatologie(this.listaIdPatologie);
 
         string output = "Cliente:" + "\n\t" + this.nome + "\n" + "Dieta:" + "\n\t" + this.dieta + "\n";
         

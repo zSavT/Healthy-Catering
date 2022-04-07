@@ -63,4 +63,15 @@ public class Dieta
         else
             throw new InvalidOperationException ("Dieta inserita non valida");
     } 
+
+    public static string IdDietaToDietaString (int id){
+        if (id == 0)
+            return "Vegana";
+        else if (id == 1)
+            return "Vegetariana";
+        else if (id == 2)
+            return "Onnivora";
+        else
+            throw new InvalidOperationException ("Id dieta inserito non valido");
+    }
 }

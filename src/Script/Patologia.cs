@@ -92,7 +92,23 @@ public class Patologia
         
     }
 
-    public static Patologia idToPatologia (int id, List <Patologia> databasePatalogie = null){
+    public static string listIdToListPatologie (List <int> ids, List <Patologia> databasePatalogie = null){
+        string idsString = "";
+
+        if (this.ids.Count > 0){
+            //se non lo prendo prima viene ricreato ogni volta che viene chiamato il metodo idToPatologia
+            DatabasePatologie ??= Database.getDatabaseOggetto (new Patologia ()); 
+
+            foreach (int id in ids){
+                Patologia temp = Patologia.idToPatologia(id, databasePatalogie).nome;
+                if (temp.idPatologia != -1)
+                    idsString = idsString + "\n\t" + Patologia.IdToPatologia(id).nome + "\n";
+            }
+        }
+        return idsString;
+    }
+
+    private static Patologia idToPatologia (int id, List <Patologia> databasePatalogie = null){
         if (id == -1)
             return new Patologia();
 

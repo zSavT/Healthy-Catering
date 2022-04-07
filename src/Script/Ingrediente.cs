@@ -29,8 +29,7 @@ public class Ingrediente : Item
         this.listaIdPatologieCompatibili = new List <int> ();    
     }
 
-    //                                          chiamata al costruttore vuoto
-    public Ingrediente (string nomeIngrediente):this (){
+    public Ingrediente (string nomeIngrediente):this (){ //this () = chiamata al costruttore vuoto
         this.nome = nomeIngrediente;
     }
 
@@ -54,6 +53,37 @@ public class Ingrediente : Item
             && (Enumerable.SequenceEqual(this.listaIdPatologieCompatibili, ((Ingrediente)obj).listaIdPatologieCompatibili));
     }
 
+    public override string ToString()
+    {
+        string output = "Ingrediente:" + "\n\t" + this.nome + "\n" + 
+        "Descrizione:" + "\n\t" + this.descrizione + "\n" + 
+        "Costo:" + "\n\t" + this.costo + "\n" + 
+        "Costo eco:" + "\n\t" + this.costoEco + "\n" + 
+        "Nutriscore:" + "\n\t" + this.nutriScore + "\n" + 
+        "Dieta compatibile:" + "\n\t" + Dieta.IdDietaToDietaString(this.dieta) + "\n" +
+        "Patologie compatibili:" + Patologia.listIdToListPatologie (this.listaIdPatologieCompatibili);
+    }
+
+    ~Ingrediente()
+    {
+        
+    }
+
+    private idNutriScoreToString (int id){
+        if (id == 0)
+            return "A";
+        if (id == 1)
+            return "B";
+        if (id == 2)
+            return "C";
+        if (id == 3)
+            return "D";
+        if (id == 4)
+            return "E";
+        else
+            throw new InvalidOperationException ("Id nutriscore inserito non valido");
+    }
+
     public static Ingrediente checkIngredienteOnonimoGiaPresente (string nomeIngrediente){
         List <Ingrediente> ingredientiConNomeSimileInDatabase = getIngredientiConNomeSimileInDatabase (nomeIngrediente);
         if (ingredientiConNomeSimileInDatabase.Count > 0)
@@ -65,9 +95,8 @@ public class Ingrediente : Item
         databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
         
         List <Ingrediente> output = new List<Ingrediente> ();
-        string nomeIngredientePerConfronto = nomeIngrediente.ToLower ();
         foreach (Ingrediente ingredienteTemp in databaseIngredienti){
-            if ((ingredienteTemp.nome.ToLower ().Contains (nomeIngredientePerConfronto))){
+            if ((ingredienteTemp.nome.ToLower ().Contains (nomeIngrediente.ToLower ()))){
                 output.Add (ingredienteTemp);
             }
         }
@@ -76,43 +105,23 @@ public class Ingrediente : Item
     }
 
     public static Ingrediente scegliIngredienteConNomeSimile (string nomeIngrediente, List <Ingrediente> ingredientiConNomeSimile){
-        stampaIngredientiSimiliPerSceltaUtente (nomeIngrediente, ingredientiConNomeSimile);
-
-        string input = Console.ReadLine ();
-        int numeroInput;
-        try{ 
-            numeroInput = Int32.Parse (input);
-            return ingredientiConNomeSimile [numeroInput - 1];
-        } 
-        catch (Exception ex){
-            //se non viene inserito un numero (quindi anche se viene inserito 'no')
-            return null;
+        int numero = -1;
+        while ((numero < 0) || (numero >= ingredientiConNomeSimile.Count)){
+            numero = Database.getNewIntFromUtente (getStampaIngredientiSimiliPerSceltaUtente (nomeIngrediente, ingredientiConNomeSimile));
+            if (numero == 0)
+                return null;
         }
+        return ingredientiConNomeSimile [numero -1];
     }
 
     private static void stampaIngredientiSimiliPerSceltaUtente (string nomeIngrediente, List <Ingrediente> ingredientiConNomeSimile){
-        Console.WriteLine ("Il nome dell'ingrediente che hai inserito (" + nomeIngrediente + ") non è stato trovato ma sono stati trovati ingredienti con nomi simili, intendi uno di questi? Inserisci 'no' per uscire da questo menu");
+        string output = "Il nome dell'ingrediente che hai inserito (" + nomeIngrediente + ") non è stato trovato ma sono stati trovati ingredienti con nomi simili, intendi uno di questi? Inserisci '0' per uscire da questo menu";
                     
         int i = 1;
-        foreach (Ingrediente ingredienteSimile in ingredientiConNomeSimile){
-            Console.WriteLine (i.ToString () + ") " + ingredienteSimile.nome);
-        }
-    }
+        foreach (Ingrediente ingredienteSimile in ingredientiConNomeSimile)
+            output = "\n" + i.ToString () + ") " + ingredienteSimile.nome;
 
-    public float getNewNumeroIngredienteFromUtente (string output, string outputError){
-        bool numeroValido = false;
-        float temp = -1;
-        while ((!(numeroValido)) && (temp == -1)){
-            Console.WriteLine (output);
-            try{
-                temp = float.Parse (Console.ReadLine ());
-                numeroValido = true;
-            }
-            catch (Exception e){
-                Console.WriteLine(e.Message + "\n" + outputError);
-            }
-        }
-        return temp;
+        return output;
     }
 
     public static Ingrediente idToIngrediente (int id, List <Ingrediente> databaseIngredienti){
@@ -128,10 +137,5 @@ public class Ingrediente : Item
         }
         
         throw new Exception ("Ingrediente non trovato idToIngrediente");
-    }
-
-    ~Ingrediente()
-    {
-        
     }
 }
