@@ -1,15 +1,15 @@
-Meccaniche di gioco base:
-Gestione inventario negozio
-Gestione punteggio player.
-Gestione richieste cliente.
-Gestione elaborazione piatto del cliente.
-Gestione consegna piatto cliente.
-Gestione economia
+Meccaniche di gioco base:<p>
+Gestione inventario negozio<br>
+Gestione punteggio player.<br>
+Gestione richieste cliente.<br>
+Gestione elaborazione piatto del cliente.<br>
+Gestione consegna piatto cliente.<br>
+Gestione economia<br>
 
-![Schema ER](img/schema_er_base.jpg "Schema ER base progetto")
+![Schema ER](img/UML.png "Schema ER base progetto")
 
 
-Meccaniche di gioco avanzate:
-Inventario player
-compra/vendita
-Competizione ristoranti
+Meccaniche di gioco avanzate:<p>
+Inventario player<br>
+compra/vendita<br>
+Competizione ristoranti<br>

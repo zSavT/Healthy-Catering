@@ -1,0 +1,152 @@
+@startuml
+class Cliente {
+    + nome : string = ""
+    + dieta : int = 0
+    + Cliente(nome:string, dieta:int, listaIdPatologie:List<int>)
+    + Cliente()
+    + getNewNomeClienteFromUtente(output:string) : string
+}
+class "List`1"<T> {
+}
+Cliente o-> "listaIdPatologie<int>" "List`1"
+class Database {
+    + Database()
+    + {static} Main(args:string[]) : void
+    + {static} aggiungiRistorante(ristorante:Ristorante) : void
+    + {static} aggiungiPlayer(player:Player) : void
+    + {static} aggiungiPiatto(piatto:Piatto) : void
+    + {static} aggiungiPatologia(patologia:Patologia) : void
+    + {static} aggiungiIngrediente(ingrediente:Ingrediente) : void
+    + {static} aggiungiDieta(dieta:Dieta) : void
+    + {static} aggiungiCliente(cliente:Cliente) : void
+    + {static} salvaNuovoOggettoSuFile(oggetto:Oggetto) : void
+    + {static} getNewStringaFromUtente(output:string) : string
+    + {static} getUltimoOggettoAggiuntoAlDatabase(oggetto:Oggetto) : Oggetto
+    + {static} getDatabaseOggetto(oggetto:Oggetto) : List <Oggetto>
+    - {static} creaDatabaseBase() : void
+    - {static} creaDatabaseBaseCliente() : void
+    - {static} creaDatabaseBaseDieta() : void
+    - {static} creaDatabaseBaseIngrediente() : void
+    - {static} creaDatabaseBaseItem() : void
+    - {static} creaDatabaseBasePatologia() : void
+    - {static} creaDatabaseBasePiatto() : void
+    - {static} creaDatabaseBasePlayer() : void
+    - {static} creaDatabaseBaseRistorante() : void
+}
+class Dieta {
+    + nome : string = ""
+    + descrizione : string = ""
+    + Dieta(nome:string, descrizione:string)
+    + Dieta()
+    + {static} getNewDietaFromUtente(output:string) : int
+    + {static} dietaStringToIdDieta(dieta:string) : int
+}
+class Ingrediente {
+    + costo : float = 0
+    + costoEco : int = 0
+    + nutriScore : int = 0
+    + dieta : int
+    + Ingrediente(idItem:int, nome:string, descrizione:string, costo:float, costoEco:int, nutriScore:int, dieta:int, listaIdPatologieCompatibili:List <int>)
+    + Ingrediente()
+    + Ingrediente(nomeIngrediente:string)
+    + {static} checkIngredienteOnonimoGiaPresente(nomeIngrediente:string) : Ingrediente
+    + {static} getIngredientiConNomeSimileInDatabase(nomeIngrediente:string, databaseIngredienti:List<Ingrediente>) : List <Ingrediente>
+    + {static} scegliIngredienteConNomeSimile(nomeIngrediente:string, ingredientiConNomeSimile:List <Ingrediente>) : Ingrediente
+    - {static} stampaIngredientiSimiliPerSceltaUtente(nomeIngrediente:string, ingredientiConNomeSimile:List <Ingrediente>) : void
+    + getNewNumeroIngredienteFromUtente(output:string, outputError:string) : float
+    + {static} IdToIngrediente(id:int) : Ingrediente
+}
+class "List`1"<T> {
+}
+Item <|-- Ingrediente
+Ingrediente o-> "listaIdPatologieCompatibili<int>" "List`1"
+class Item {
+    + idItem : int
+    + nome : string = ""
+    + descrizione : string = ""
+    + Item(idItem:int, nome:string, descrizione:string)
+    + Item()
+    + Item(nome:string)
+    + {static} getNewIdDatabaseItem(oggetto:Item) : int
+    + {static} creaNuovoItem(nome:string) : Item
+}
+class "OggettoQuantita`1"<Oggetto> {
+    + oggetto : Oggetto
+    + quantita : int
+    + OggettoQuantita(oggetto:Oggetto, quantita:int)
+    + OggettoQuantita()
+}
+class Patologia {
+    + idPatologia : int
+    + nome : string = ""
+    + descrizione : string = ""
+    + Patologia(idPatologia:int, nome:string, descrizione:string)
+    + Patologia()
+    + {static} patologiaStringToIdPatologia(patologia:string) : int
+    + {static} getNewListaIdPatologieFromUtente(output:string) : List <int>
+    - {static} convertiListaPatologieStringToListaIdPatologia(listaPatolgie:List <string>) : List <int>
+    - {static} fillListaPatologieStringhe(output:string) : List <string>
+    + {static} getNewIdDatabasePatologia(oggetto:Patologia) : int
+    - {static} idListToPatologieList(idList:List <int>) : List <Patologia>
+    + {static} getListIdTutteLePatologie() : List <int>
+}
+class Piatto {
+    + nome : string = ""
+    + descrizione : string = ""
+    - costo : float = 0
+    - costoEco : float = 0
+    - nutriScore : int = 0
+    - percentualeGuadagnoSulPiatto : int = 10
+    + Piatto(nome:string, descrizione:string, costo:float, costoEco:float, nutriScore:int, listaIdIngredientiQuantita:List<OggettoQuantita<int>>)
+    + Piatto()
+    + Piatto(nomePiatto:string)
+    + {static} checkPiattoOnonimoGiaPresente(nomePiatto:string) : Piatto
+    - {static} stampaPiattiConNomeSimilePerSceltaUtente(nomePiatto:string, piattiConNomeSimileInDatabase:List <Piatto>) : void
+    - {static} scegliPiattoSimile() : int
+    + {static} getPiattiConNomeSimileInDatabase(nomePiatto:string, databasePiatti:List<Piatto>) : List <Piatto>
+    + {static} getListaIdIngredientiQuantitaPiattoFromUtente(nomePiatto:string) : List <OggettoQuantita <int>>
+    - {static} getNomeIngredientiFromUtente(nomePiatto:string) : List <string>
+    + {static} nomeIngredientePresenteNelDatabase(nomeIngrediente:string, databaseIngredienti:List <Ingrediente>) : bool
+    + {static} getIngredienteByNome(nomeIngrediente:string, databaseIngredienti:List <Ingrediente>) : Ingrediente
+    - {static} getQuantitaIngredienteNelPiattoFromUtente(nomeIngrediente:string, nomePiatto:string) : int
+    + calcolaCosto() : float
+    + calcolaCostoEco() : float
+    + calcolaNutriScore() : int
+    + getIngredientiPiatto() : List <Ingrediente>
+    + getPatologieCompatibili() : List <int>
+    + getDietaMinimaCompatibile() : int
+}
+class "List`1"<T> {
+}
+Piatto o-> "listaIdIngredientiQuantita<OggettoQuantita <int>>" "List`1"
+class Player {
+    + nome : string = ""
+    + soldi : float = 0
+    + Player(nome:string, soldi:int, inventario:List<OggettoQuantita<int>>)
+    + Player()
+    + {static} popolaInventario(itemGiaPresenti:List <Item>) : List<OggettoQuantita<int>>
+    - {static} aggiungiAltriItem(itemGiaPresenti:List <Item>) : List <Item>
+    - {static} chiediQuantitaItem(itemGiaPresenti:List <Item>) : List <int>
+    - {static} creaInventarioFromListaItemEQuantita(itemGiaPresenti:List <Item>, quantitaItemGiaPresenti:List <int>) : List<OggettoQuantita<int>>
+}
+class "List`1"<T> {
+}
+Player o-> "inventario<OggettoQuantita<int>>" "List`1"
+class Ristorante {
+    + nome : string = ""
+    + punteggio : int
+    + Ristorante(nome:string, punteggio:int, magazzinoIngredienti:List<OggettoQuantita<int>>)
+    + Ristorante()
+    + {static} getNewPunteggioFromUtente() : int
+    + {static} fillMagazzinoIngredienti() : List<OggettoQuantita<int>>
+}
+class "List`1"<T> {
+}
+Ristorante o-> "magazzinoIngredienti<OggettoQuantita<int>>" "List`1"
+class Serializza {
+    + Serializza()
+    + {static} salvaOggettiSuFile(oggetti:List <Oggetto>) : void
+    + {static} getJsonPath(oggetto:Oggetto) : string
+    + {static} leggiOggettiDaFile(filePath:string) : List<Oggetto>
+}
+@enduml

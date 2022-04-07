@@ -1,0 +1,26 @@
+@startuml
+class Database {
+    + Database()
+    + {static} Main(args:string[]) : void
+    + {static} aggiungiRistorante(ristorante:Ristorante) : void
+    + {static} aggiungiPlayer(player:Player) : void
+    + {static} aggiungiPiatto(piatto:Piatto) : void
+    + {static} aggiungiPatologia(patologia:Patologia) : void
+    + {static} aggiungiIngrediente(ingrediente:Ingrediente) : void
+    + {static} aggiungiDieta(dieta:Dieta) : void
+    + {static} aggiungiCliente(cliente:Cliente) : void
+    + {static} salvaNuovoOggettoSuFile(oggetto:Oggetto) : void
+    + {static} getNewStringaFromUtente(output:string) : string
+    + {static} getUltimoOggettoAggiuntoAlDatabase(oggetto:Oggetto) : Oggetto
+    + {static} getDatabaseOggetto(oggetto:Oggetto) : List <Oggetto>
+    - {static} creaDatabaseBase() : void
+    - {static} creaDatabaseBaseCliente() : void
+    - {static} creaDatabaseBaseDieta() : void
+    - {static} creaDatabaseBaseIngrediente() : void
+    - {static} creaDatabaseBaseItem() : void
+    - {static} creaDatabaseBasePatologia() : void
+    - {static} creaDatabaseBasePiatto() : void
+    - {static} creaDatabaseBasePlayer() : void
+    - {static} creaDatabaseBaseRistorante() : void
+}
+@enduml
