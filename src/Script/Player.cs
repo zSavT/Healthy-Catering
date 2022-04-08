@@ -53,9 +53,9 @@ public class Player
             //se non lo prendo prima viene ricreato ogni volta che viene chiamato il metodo idToIngrediente
             List <Ingrediente> databaseIngredienti = Database.getDatabaseOggetto (new Ingrediente ()); 
             foreach (int id in inventario){
-                Ingrediente temp = Ingrediente.idToIngrediente(id, databasePatalogie).nome;
+                Ingrediente temp = Ingrediente.idToIngrediente(id, databaseIngredienti);
                 if (temp.idIngrediente != -1)
-                    inventarioString = inventarioString + "\n\t" + Ingrediente.idToIngrediente(id).nome + "\n";
+                    inventarioString = inventarioString + "\n\t" + temp.nome + "\n";
             }
         }
 
