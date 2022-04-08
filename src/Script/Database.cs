@@ -1,11 +1,90 @@
 using System.Collections.Generic;
 using System;
 
-//TODO creare un metodo per chiedere gli interi e sostituire tutte le richieste per interi fatte fino ad ora, in tutti i file
-
 public class Database {
-    public Database (){}
+    //Get database e oggetti
+    public static List <Oggetto> getDatabaseOggetto <Oggetto> (Oggetto oggetto){
+        return Serializza.leggiOggettiDaFile <Oggetto> (Serializza.getJsonPath (oggetto));
+    }
 
+    public static Oggetto getUltimoOggettoAggiuntoAlDatabase <Oggetto> (Oggetto oggetto, List <Oggetto> databaseOggetto = null){
+        List <Oggetto> databaseOggetto ??= getDatabaseOggetto (oggetto);
+        return databaseOggetto [databaseOggetto.Count - 1];
+    }  
+
+    //Check e salva oggetti
+    public static bool oggettoGiaPresente <Oggetto> (Oggetto oggetto, List <Oggetto> databaseOggetto = null){
+        databaseOggetto ??= getDatabaseOggetto (oggetto);
+        
+        if (databaseOggetto.Count > 0)
+            foreach (Oggetto singoloOggetto in databaseOggetto)
+                if (singoloOggetto.Equals (oggetto))
+                    return true;
+            
+        return false;
+    }
+
+    public static void salvaNuovoOggettoSuFile <Oggetto> (Oggetto oggetto, List <Oggetto> databaseOggetto = null){   
+        databaseOggetto ??= getDatabaseOggetto (oggetto);
+        
+        if (!(oggettoGiaPresente (oggetto))){
+            if (!(databaseOggetto.Contains (oggetto)))
+                databaseOggetto.Add (oggetto);
+            
+            Serializza.salvaOggettiSuFile (databaseOggetto);
+        }
+    }
+
+    //Get nuovi valori
+    public static int getNewId <Oggetto> (Oggetto oggetto){
+        List <Oggetto> databaseOggetto = getDatabaseOggetto (oggetto);
+        
+        string nomeTipoOggetto = Serializza.getNomeTipo (databaseOggetto).ToLower ();
+        
+        //prendo l'id dell'ultimo oggetto aggiunto al database(quindi all'indice dimensioneLista - 1) e gli aggiungo 1
+        if ((nomeTipoOggetto.Equals ("item")) || (nomeTipoOggetto.Equals ("ingrediente")))
+            return databaseOggetto [databaseOggetto.Count - 1].idItem + 1;
+        else if (nomeTipoOggetto.Equals ("patologia"))
+            return databaseOggetto [databaseOggetto.Count - 1].idPatologia + 1;
+        else
+            throw new Exception ("La classe dell'oggetto che mi hai passato non ha una propietà id");         
+    }
+
+    public static string getNewStringaFromUtente (string output){
+        Console.WriteLine (output);
+        return Console.ReadLine();
+    }
+
+    public static int getNewIntFromUtente (string output){
+        Console.WriteLine (output);
+        
+        bool numeroValido = false;
+
+        while (!numeroValido){
+            string input = Console.ReadLine();
+            numeroValido = int.TryParse(input, out int numero);
+            if (numeroValido) 
+                return numero;
+            Console.WriteLine($"{input} non è un numero");
+        }
+    }
+
+    public static float getNewFloatFromUtente (string output){
+        Console.WriteLine (output);
+        
+        bool numeroValido = false;
+
+        while (!numeroValido){
+            string input = Console.ReadLine();
+            numeroValido = Double.TryParse(input, out double numero);
+            if (numeroValido) 
+                return (float) numero;
+            Console.WriteLine($"{input} non è un numero reale");
+        }
+    }
+
+    //Modifiche database
+    //TODO dividere
     private static void creaDatabase (){
         //patologie
         aggiungiPatologia (new Patologia (0, "Diabete", "Malattia cronica, inquadrabile nel gruppo delle patologie note come diabete mellito, caratterizzata da un'elevata concentrazione di glucosio nel sangue, che viene a sua volta causata da una carenza (assoluta o relativa) di insulina nell'organismo umano, o da un'alterata funzionalità dell'insulina stessa, ormone che stimolando l'assunzione del glucosio nelle cellule muscolari e adipose ne diminuisce la concentrazione nel sangue."));
@@ -105,303 +184,229 @@ public class Database {
         pulisciDatabase ();
     } 
 
-    public static void aggiungiRistorante (Ristorante ristorante){
-        while (ristorante.nome.Equals("")){
-            ristorante.nome = getNewStringaFromUtente ("Inserisci il nome del ristorante");
-        }
-
-        while (ristorante.punteggio < 0){
-            ristorante.punteggio = Database.getNewIntFromUtente ("Inserisci il punteggio del ristorante");
-        }
-
-        while (ristorante.magazzinoIngredienti.Count == 0){
-            ristorante.magazzinoIngredienti = Ristorante.fillMagazzinoIngredienti ();
-        }
-
-        salvaNuovoOggettoSuFile (ristorante);
-    }
-
-    public static void aggiungiPlayer (Player player){
-        while (player.nome.Equals("")){
-            player.nome = getNewStringaFromUtente ("Inserisci il nome del player");
-        }
-
-        while (player.soldi == -1){
-            try{
-                Console.WriteLine ("Inserisci i soldi del player " + player.nome);
-                int soldi = Int32.Parse (Console.ReadLine ());
-                if (soldi >= 0){
-                    player.soldi = soldi;
-                }
-            }
-            catch (Exception e){
-                Console.WriteLine ("Non hai inserito un numero valido");
-            }
-        }
-        
-        while (player.inventario.Count == 0){
-            player.inventario = Player.popolaInventario ();
-        }
-
-        salvaNuovoOggettoSuFile (player);
-    }
-
-    public static void aggiungiPiatto (Piatto piatto){
-        while (piatto.nome.Equals("")){
-            piatto.nome = getNewStringaFromUtente ("Inserisci il nome del piatto");
-        }
-        
-        Piatto piattoGiaPresente = Piatto.checkPiattoOnonimoGiaPresente (piatto.nome);
-        if (piattoGiaPresente == null){
-            while (piatto.descrizione.Equals("")){
-                piatto.descrizione = getNewStringaFromUtente ("Inserisci la descrizione del piatto");
-            }
-
-            while (piatto.listaIdIngredientiQuantita.Count == 0){
-                piatto.listaIdIngredientiQuantita = Piatto.getListaIdIngredientiQuantitaPiattoFromUtente (piatto.nome);
-            }
-
-            piatto.calcolaCosto ();
-            piatto.calcolaCostoEco ();
-            piatto.calcolaNutriScore ();
-
-            salvaNuovoOggettoSuFile (piatto);    
-        }
-        
-    }
-
-    public static void aggiungiPatologia (Patologia patologia){
-        patologia.idPatologia = Database.getNewId <Patologia> (patologia);
-
-        while (patologia.nome.Equals("")){
-            patologia.nome = getNewStringaFromUtente ("Inserisci il nome della patologia");
-        }
-        
-        while (patologia.descrizione.Equals("")){
-            patologia.descrizione = getNewStringaFromUtente ("Inserisci la descrizione della patologia");
-        }
-
-        salvaNuovoOggettoSuFile (patologia);
-    }
-
-    public static void aggiungiIngrediente (Ingrediente ingrediente){
-        while (ingrediente.nome.Equals("")){
-            ingrediente.nome = getNewStringaFromUtente ("Inserisci il nome dell'ingrediente");
-        }
-
-        Ingrediente ingredienteGiaPresente = Ingrediente.checkIngredienteOnonimoGiaPresente (ingrediente.nome);
-        if (ingredienteGiaPresente == null){
-            ingrediente.idItem = getNewId <Item>(ingrediente);
-            
-            while (ingrediente.descrizione.Equals("")){
-                ingrediente.descrizione = getNewStringaFromUtente ("Inserisci la descrizione dell'ingrediente " + ingrediente.nome);
-            }
-
-            while (ingrediente.costo <= 0.0){
-                ingrediente.costo = ingrediente.getNewNumeroIngredienteFromUtente ("Inserisci il costo dell'ingrediente " + ingrediente.nome, "Non hai inserito un numero valido, inserisci un numero a cifra decimale (con .)");
-            }
-
-            while (ingrediente.costoEco <= 0.0){
-                ingrediente.costoEco = (int) ingrediente.getNewNumeroIngredienteFromUtente ("Inserisci il costo eco dell'ingrediente " + ingrediente.nome, "Non hai inserito un numero valido, inserisci un numero intero");
-            }
-
-            while (ingrediente.nutriScore <= 0.0){
-                ingrediente.nutriScore = (int) ingrediente.getNewNumeroIngredienteFromUtente ("Inserisci il nutriscore dell'ingrediente " + ingrediente.nome, "Non hai inserito un numero valido, inserisci un numero intero");
-            }
-
-            while ((ingrediente.dieta < 0) || (ingrediente.dieta > 2)){
-                ingrediente.dieta = Dieta.getNewDietaFromUtente ("Inserisci la dieta minima con la quale è compatibile l'ingrediente " + ingrediente.nome);
-            }
-
-            if (ingrediente.listaIdPatologieCompatibili.Count == 0){
-                ingrediente.listaIdPatologieCompatibili = Patologia.getNewListaIdPatologieFromUtente ("Inserisci le patologie compatibili con l'ingrediente " + ingrediente.nome + " e la keyword 'fine' quando hai finito l'inserimento");
-            }
-
-            salvaNuovoOggettoSuFile (ingrediente);
-        }
-    }
-
-    public static void aggiungiDieta (Dieta dieta){
-        while (dieta.nome.Equals("")){
-            dieta.nome = getNewStringaFromUtente ("Inserisci il nome della dieta");
-        }
-        
-        while (dieta.descrizione.Equals("")){
-            dieta.descrizione = getNewStringaFromUtente ("Inserisci la descrizione della dieta " + dieta.nome);
-        }
-
-        salvaNuovoOggettoSuFile (dieta);
-    }
-
-    public static void aggiungiCliente (Cliente cliente){
-        while (cliente.nome.Equals("")){
-            cliente.nome = cliente.getNewNomeClienteFromUtente ("Inserisci il nome del cliente");
-        }
-        
-        while ((cliente.dieta != 0) && (cliente.dieta != 1) && (cliente.dieta != 2)){
-            cliente.dieta = Dieta.getNewDietaFromUtente ("Inserisci il nome della dieta del cliente " + cliente.nome);
-        }
-        
-        if (cliente.listaIdPatologie.Count == 0){
-            cliente.listaIdPatologie = Patologia.getNewListaIdPatologieFromUtente ("Inserisci le patologie del cliente " + cliente.nome + " e la keyword 'fine' quando hai finito l'inserimento");
-        }
-
-        salvaNuovoOggettoSuFile (cliente);
-    }
-
     private static void pulisciDatabase (){
-        List <Ingrediente> temp = getDatabaseOggetto (new Ingrediente ());
-        if (temp.Count > 0)
-            if (temp[0].idItem == -1){
-                temp.RemoveAt(0);
-                Serializza.salvaOggettiSuFile (temp);
+        List <Ingrediente> databaseIngredienti = getDatabaseOggetto (new Ingrediente ());
+        if (databaseIngredienti.Count > 0)
+            if (databaseIngredienti[0].idItem == -1){
+                databaseIngredienti.RemoveAt(0);
+                Serializza.salvaOggettiSuFile (databaseIngredienti);
             }
 
-        List <Patologia> temp1 = getDatabaseOggetto (new Patologia ());
-        if (temp1.Count > 0)
-            if (temp1[0].idPatologia == -1){
-                temp1.RemoveAt(0);
-                Serializza.salvaOggettiSuFile (temp1);
+        List <Ingrediente> databaseItem = getDatabaseOggetto (new Item ());
+        if (databaseItem.Count > 0)
+            if (databaseItem[0].idItem == -1){
+                databaseItem.RemoveAt(0);
+                Serializza.salvaOggettiSuFile (databaseItem);
+            }
+
+        List <Patologia> databasePatologie = getDatabaseOggetto (new Patologia ());
+        if (databasePatologie.Count > 0)
+            if (databasePatologie[0].idPatologia == -1){
+                databasePatologie.RemoveAt(0);
+                Serializza.salvaOggettiSuFile (databasePatologie);
             }
     }
 
-    public static bool oggettoGiaPresente <Oggetto> (Oggetto oggetto){
-        List <Oggetto> databaseOggetto = getDatabaseOggetto (oggetto);
-        if (databaseOggetto.Count > 0){
-            foreach (Oggetto singoloOggetto in databaseOggetto){
-                if (singoloOggetto.Equals (oggetto)){
-                    return true;
+        //Database vuoto
+        private static void creaDatabaseVuoto (){
+            creaDatabaseVuotoCliente ();
+            creaDatabaseVuotoDieta ();
+            creaDatabaseVuotoIngrediente ();
+            creaDatabaseVuotoItem ();
+            creaDatabaseVuotoPatologia ();
+            creaDatabaseVuotoPiatto ();
+            creaDatabaseVuotoPlayer ();
+            creaDatabaseVuotoRistorante ();
+        }
+
+        private static void creaDatabaseVuotoCliente (){
+            List <Cliente> tempCliente = new List<Cliente> ();
+            tempCliente.Add(new Cliente ());
+
+            Serializza.salvaOggettiSuFile <Cliente> (tempCliente);
+        }
+
+        private static void creaDatabaseVuotoDieta (){
+            List <Dieta> tempDieta = new List<Dieta> ();
+            tempDieta.Add(new Dieta ());
+
+            Serializza.salvaOggettiSuFile <Dieta> (tempDieta);
+        }
+
+        private static void creaDatabaseVuotoIngrediente (){
+            List <Ingrediente> tempIngrediente = new List<Ingrediente> ();
+            tempIngrediente.Add(new Ingrediente ());
+
+            Serializza.salvaOggettiSuFile <Ingrediente> (tempIngrediente);
+        }
+
+        private static void creaDatabaseVuotoItem (){
+            List <Item> tempItem = new List<Item> ();
+            tempItem.Add(new Item ());
+
+            Serializza.salvaOggettiSuFile <Item> (tempItem);
+        }
+
+        private static void creaDatabaseVuotoPatologia (){
+            List <Patologia> tempPatologia = new List<Patologia> ();
+            tempPatologia.Add(new Patologia ());
+
+            Serializza.salvaOggettiSuFile <Patologia> (tempPatologia);
+        }
+
+        private static void creaDatabaseVuotoPiatto (){
+            List <Piatto> tempPiatto = new List<Piatto> ();
+            tempPiatto.Add(new Piatto ());
+
+            Serializza.salvaOggettiSuFile <Piatto> (tempPiatto);
+        }
+
+        private static void creaDatabaseVuotoPlayer (){
+            List <Player> tempPlayer = new List<Player> ();
+            tempPlayer.Add(new Player ());
+
+            Serializza.salvaOggettiSuFile <Player> (tempPlayer);
+        }
+
+        private static void creaDatabaseVuotoRistorante (){
+            List <Ristorante> tempRistorante = new List<Ristorante> ();
+            tempRistorante.Add(new Ristorante ());
+            
+            Serializza.salvaOggettiSuFile <Ristorante> (tempRistorante);
+        }
+
+        //Aggiungi X
+        public static void aggiungiRistorante (Ristorante ristorante){
+            while (ristorante.nome.Equals("")){
+                ristorante.nome = getNewStringaFromUtente ("Inserisci il nome del ristorante");
+            }
+
+            while (ristorante.punteggio < 0){
+                ristorante.punteggio = Database.getNewIntFromUtente ("Inserisci il punteggio del ristorante " + ristorante.nome);
+            }
+
+            while (ristorante.magazzinoIngredienti.Count == 0){
+                ristorante.magazzinoIngredienti = Ristorante.fillMagazzinoIngredienti ();
+            }
+
+            salvaNuovoOggettoSuFile (ristorante);
+        }
+
+        public static void aggiungiPlayer (Player player){
+            while (player.nome.Equals("")){
+                player.nome = getNewStringaFromUtente ("Inserisci il nome del player");
+            }
+
+            while (player.soldi == -1){
+                player.soldi = getNewIntFromUtente ("Inserisci i soldi del player " + player.nome);
+            }
+            
+            while (player.inventario.Count == 0){
+                player.inventario = Player.popolaInventario ();
+            }
+
+            salvaNuovoOggettoSuFile (player);
+        }
+
+        public static void aggiungiPiatto (Piatto piatto){
+            while (piatto.nome.Equals("")){
+                piatto.nome = getNewStringaFromUtente ("Inserisci il nome del piatto");
+            }
+            
+            Piatto piattoGiaPresente = Piatto.checkPiattoOnonimoGiaPresente (piatto.nome);
+            if (piattoGiaPresente == null){ //se il player non ha scelto nessuno dei piatti gia presenti o non ce ne sono proprio glielo faccio aggiungere
+                while (piatto.descrizione.Equals("")){
+                    piatto.descrizione = getNewStringaFromUtente ("Inserisci la descrizione del piatto " + piatto.nome);
                 }
+
+                while (piatto.listaIdIngredientiQuantita.Count == 0){
+                    piatto.listaIdIngredientiQuantita = Piatto.getListaIdIngredientiQuantitaPiattoFromUtente (piatto.nome);
+                }
+
+                piatto.calcolaCosto ();
+                piatto.calcolaCostoEco ();
+                piatto.calcolaNutriScore ();
+
+                salvaNuovoOggettoSuFile (piatto);    
             }
         }
-        return false;
-    }
 
-    public static void salvaNuovoOggettoSuFile <Oggetto> (Oggetto oggetto){   
-        if (!(oggettoGiaPresente (oggetto))){
-            List <Oggetto> oggettiVecchi = getDatabaseOggetto (oggetto);
-            if (!(oggettiVecchi.Contains (oggetto))){
-                oggettiVecchi.Add (oggetto);
+        public static void aggiungiPatologia (Patologia patologia){
+            patologia.idPatologia = Database.getNewId <Patologia> (patologia);
+
+            while (patologia.nome.Equals("")){
+                patologia.nome = getNewStringaFromUtente ("Inserisci il nome della patologia");
             }
-            Serializza.salvaOggettiSuFile (oggettiVecchi);
+            
+            while (patologia.descrizione.Equals("")){
+                patologia.descrizione = getNewStringaFromUtente ("Inserisci la descrizione della patologia " + patologia.nome);
+            }
+
+            salvaNuovoOggettoSuFile (patologia);
         }
-    }
 
-    public static string getNewStringaFromUtente (string output){
-        Console.WriteLine (output);
-        return Console.ReadLine();
-    }
+        public static void aggiungiIngrediente (Ingrediente ingrediente){
+            while (ingrediente.nome.Equals("")){
+                ingrediente.nome = getNewStringaFromUtente ("Inserisci il nome dell'ingrediente");
+            }
 
-    public static int getNewId <Oggetto> (Oggetto oggetto){
-        List <Oggetto> databaseOggetto = getDatabaseOggetto (oggetto);
-        
-        string nomeTipoOggetto = Serializza.getNomeTipo (databaseOggetto).ToLower ();
-        
-        //prendo l'id dell'ultimo oggetto aggiunto al database(quindi all'indice dimensioneLista - 1) e gli aggiungo 1
-        if ((nomeTipoOggetto.Equals ("item")) || (nomeTipoOggetto.Equals ("ingrediente")))
-            return databaseOggetto [databaseOggetto.Count - 1].idItem + 1;
-        else if (nomeTipoOggetto.Equals ("patologia"))
-            return databaseOggetto [databaseOggetto.Count - 1].idPatologia + 1;
-        else
-            throw new Exception ("La classe dell'oggetto che mi hai passato non ha una propietà id");         
-    }
+            Ingrediente ingredienteGiaPresente = Ingrediente.checkIngredienteOnonimoGiaPresente (ingrediente.nome);
+            if (ingredienteGiaPresente == null){
+                ingrediente.idItem = getNewId <Ingrediente> (ingrediente);
+                
+                while (ingrediente.descrizione.Equals("")){
+                    ingrediente.descrizione = getNewStringaFromUtente ("Inserisci la descrizione dell'ingrediente " + ingrediente.nome);
+                }
 
-    public static int getNewIntFromUtente (string output){
-        Console.WriteLine (output);
-        
-        bool numeroValido = false;
+                while (ingrediente.costo <= 0.0){
+                    ingrediente.costo = getNewFloatFromUtente ("Inserisci il costo dell'ingrediente " + ingrediente.nome);
+                }
 
-        while (!numeroValido){
-            string input = Console.ReadLine();
-            numeroValido = int.TryParse(input, out int numero);
-            if (numeroValido) 
-                return numero;
-            Console.WriteLine($"{input} non è un numero");
+                while (ingrediente.costoEco <= 0){
+                    ingrediente.costoEco = getNewIntFromUtente ("Inserisci il costo eco dell'ingrediente " + ingrediente.nome);
+                }
+
+                while (ingrediente.nutriScore <= 0){
+                    ingrediente.nutriScore = getNewIntFromUtente ("Inserisci il nutriscore dell'ingrediente " + ingrediente.nome);
+                }
+
+                while ((ingrediente.dieta < 0) || (ingrediente.dieta > 2)){
+                    ingrediente.dieta = Dieta.getNewDietaFromUtente ("Inserisci la dieta minima con la quale è compatibile l'ingrediente " + ingrediente.nome);
+                }
+
+                if (ingrediente.listaIdPatologieCompatibili.Count == 0){
+                    ingrediente.listaIdPatologieCompatibili = Patologia.getNewListaIdPatologieFromUtente ("Inserisci le patologie compatibili con l'ingrediente " + ingrediente.nome + " e la keyword 'fine' quando hai finito l'inserimento");
+                }
+
+                salvaNuovoOggettoSuFile (ingrediente);
+            }
         }
-    }
 
-    public static Oggetto getUltimoOggettoAggiuntoAlDatabase <Oggetto> (Oggetto oggetto){
-        List <Oggetto> databaseOggetto = getDatabaseOggetto (oggetto);
-        return databaseOggetto [databaseOggetto.Count - 1];
-    }
+        public static void aggiungiDieta (Dieta dieta){
+            while (dieta.nome.Equals("")){
+                dieta.nome = getNewStringaFromUtente ("Inserisci il nome della dieta");
+            }
+            
+            while (dieta.descrizione.Equals("")){
+                dieta.descrizione = getNewStringaFromUtente ("Inserisci la descrizione della dieta " + dieta.nome);
+            }
 
-    public static List <Oggetto> getDatabaseOggetto <Oggetto> (Oggetto oggetto){
-        string pathJson = Serializza.getJsonPath (oggetto);
-        return Serializza.leggiOggettiDaFile <Oggetto> (pathJson);
-    }
+            salvaNuovoOggettoSuFile (dieta);
+        }
 
-    private static void creaDatabaseVuoto (){
-        creaDatabaseVuotoCliente ();
-        creaDatabaseVuotoDieta ();
-        creaDatabaseVuotoIngrediente ();
-        creaDatabaseVuotoItem ();
-        creaDatabaseVuotoPatologia ();
-        creaDatabaseVuotoPiatto ();
-        creaDatabaseVuotoPlayer ();
-        creaDatabaseVuotoRistorante ();
-    }
+        public static void aggiungiCliente (Cliente cliente){
+            while (cliente.nome.Equals("")){
+                cliente.nome = cliente.getNewNomeClienteFromUtente ("Inserisci il nome del cliente");
+            }
+            
+            while ((cliente.dieta != 0) && (cliente.dieta != 1) && (cliente.dieta != 2)){
+                cliente.dieta = Dieta.getNewDietaFromUtente ("Inserisci il nome della dieta del cliente " + cliente.nome);
+            }
+            
+            if (cliente.listaIdPatologie.Count == 0){
+                cliente.listaIdPatologie = Patologia.getNewListaIdPatologieFromUtente ("Inserisci le patologie del cliente " + cliente.nome + " e la keyword 'fine' quando hai finito l'inserimento");
+            }
 
-    private static void creaDatabaseVuotoCliente (){
-        //Cliente
-        List <Cliente> tempCliente = new List<Cliente> ();
-        //tempCliente.Add(new Cliente ());
-    
-        Serializza.salvaOggettiSuFile <Cliente> (tempCliente);
-    }
-
-    private static void creaDatabaseVuotoDieta (){
-        //Dieta
-        List <Dieta> tempDieta = new List<Dieta> ();
-        //tempDieta.Add(new Dieta ());
-
-        Serializza.salvaOggettiSuFile <Dieta> (tempDieta);
-    }
-
-    private static void creaDatabaseVuotoIngrediente (){
-        //Ingrediente
-        List <Ingrediente> tempIngrediente = new List<Ingrediente> ();
-        tempIngrediente.Add(new Ingrediente ());
-
-        Serializza.salvaOggettiSuFile <Ingrediente> (tempIngrediente);
-    }
-
-    private static void creaDatabaseVuotoItem (){
-        //Item
-        List <Item> tempItem = new List<Item> ();
-        tempItem.Add(new Item ());
-
-        Serializza.salvaOggettiSuFile <Item> (tempItem);
-    }
-
-    private static void creaDatabaseVuotoPatologia (){
-        //Patologia
-        List <Patologia> tempPatologia = new List<Patologia> ();
-        tempPatologia.Add(new Patologia ());
-
-        Serializza.salvaOggettiSuFile <Patologia> (tempPatologia);
-    }
-
-    private static void creaDatabaseVuotoPiatto (){
-        //Piatto
-        List <Piatto> tempPiatto = new List<Piatto> ();
-        //tempPiatto.Add(new Piatto ());
-
-        Serializza.salvaOggettiSuFile <Piatto> (tempPiatto);
-    }
-
-    private static void creaDatabaseVuotoPlayer (){
-        //Player
-        List <Player> tempPlayer = new List<Player> ();
-        //tempPlayer.Add(new Player ());
-
-        Serializza.salvaOggettiSuFile <Player> (tempPlayer);
-    }
-
-    private static void creaDatabaseVuotoRistorante (){
-    //Ristorante
-        List <Ristorante> tempRistorante = new List<Ristorante> ();
-        //tempRistorante.Add(new Ristorante ());
-        
-        Serializza.salvaOggettiSuFile <Ristorante> (tempRistorante);
-    }
+            salvaNuovoOggettoSuFile (cliente);
+        }
 }
