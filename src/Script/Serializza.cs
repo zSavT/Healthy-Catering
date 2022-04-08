@@ -20,11 +20,18 @@ public class Serializza
     public static string getJsonPath <Oggetto> (Oggetto oggetto){
         string jsonPath = Directory.GetCurrentDirectory() + @"\..\Database\";
         
-        string tipoOggetto = oggetto.GetType().Name;
+        string tipoOggetto = ;
         if (tipoOggetto.ToLower ().Contains ("list")) //se è una lista
-            tipoOggetto = oggetto.GetType().GetGenericArguments().Single().ToString(); //il tipoOggetto sarà il tipo degli oggetti nella lista
+            tipoOggetto = getNomeTipoOggettoInLista (oggetto);
         
         return jsonPath + tipoOggetto + ".json";
+    }
+
+    public static string getNomeTipoOggettoInLista <Oggetto> (Oggetto oggetto){
+        return oggetto.GetType().GetGenericArguments().Single().ToString(); 
+    }
+    public static string getNomeTipo <Oggetto> (Oggetto oggetto){
+        return oggetto.GetType().Name;
     }
 
     public static List<Oggetto> leggiOggettiDaFile <Oggetto> (string filePath)

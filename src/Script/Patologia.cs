@@ -35,56 +35,9 @@ public class Patologia
             && (this.descrizione.Equals(((Patologia)obj).descrizione));
     }
 
-    public static int patologiaStringToIdPatologia (string patologia){
-        if (patologia == "diabete")
-            return 0;
-        else
-            throw new InvalidOperationException ("Nome patologia non valido");
-    }
-
-    public static List <int> getNewListaIdPatologieFromUtente (string output){
-        List <string> patologieInput = Patologia.fillListaPatologieStringhe (output);
-        //returna una lista vuota di interi (id) se la lista data dall'utente è vuota
-        if (patologieInput.Count == 0){
-            return new List <int> ();
-        }
-        return convertiListaPatologieStringToListaIdPatologia (patologieInput);
-    }
-
-    private static List <int> convertiListaPatologieStringToListaIdPatologia (List <string> listaPatolgie){
-        List <int> patologieConvertite = new List <int> ();
-        int patologiaConvertitaTemp;
-        foreach (string patologiaString in listaPatolgie){
-            try{
-                patologiaConvertitaTemp = Patologia.patologiaStringToIdPatologia (patologiaString);
-                patologieConvertite.Add (patologiaConvertitaTemp);
-            }
-            catch (InvalidOperationException e){
-                Console.WriteLine (e.Message);
-            }
-        }
-        return patologieConvertite;
-    }
-
-    private static List <string> fillListaPatologieStringhe (string output){
-        Console.WriteLine (output);
-        
-        string patologiaTemp = "";
-        List <string> patologieInput = new List <string> ();
-        
-        while (true){
-            patologiaTemp = Console.ReadLine ();
-            if (patologiaTemp.Equals("no") || patologiaTemp.Equals ("fine"))
-                break;
-            patologieInput.Add (patologiaTemp);
-        }
-
-        return patologieInput;
-    }
-
-    public static int getNewIdDatabasePatologia (Patologia oggetto){
-        List <Patologia> databaseOggetto = Database.getDatabaseOggetto (oggetto);
-        return databaseOggetto [databaseOggetto.Count - 1].idPatologia + 1;
+    public override string ToString()
+    {
+        return "Patologia:" + "\n\t" + this.nome + "\n" + "Descrizione: " + "\n\t" + this.descrizione + "\n" + "Fine patologia " + this.nome;
     }
 
     ~Patologia()
@@ -92,17 +45,63 @@ public class Patologia
         
     }
 
+    public static List <int> getNewListaIdPatologieFromUtente (string output){
+        List <string> patologieInput = fillListaPatologieStringhe (output);
+        //returna una lista vuota di interi (id) se la lista data dall'utente è vuota
+        if (patologieInput.Count == 0){
+            return new List <int> ();
+        }
+        return convertiListaPatologieStringToListaIdPatologia (patologieInput);
+    }
+
+    private static List <string> fillListaPatologieStringhe (string output){
+        Console.WriteLine (output);
+
+        List <string> patologieInput = new List <string> ();
+        while (true){
+            string patologiaTemp = Console.ReadLine ();
+            if ((patologiaTemp.ToLower ().Equals("no")) || (patologiaTemp.ToLower ().Equals ("fine")))
+                break;
+            patologieInput.Add (patologiaTemp);
+        }
+
+        return patologieInput;
+    }
+
+    private static List <int> convertiListaPatologieStringToListaIdPatologia (List <string> listaPatolgie){
+        List <int> patologieConvertite = new List <int> ();
+ 
+        foreach (string patologiaString in listaPatolgie){
+            try{
+                patologieConvertite.Add (Patologia.patologiaStringToIdPatologia (patologiaString));
+            }
+            catch (InvalidOperationException e){
+                Console.WriteLine (e.Message);
+            }
+        }
+        
+        return patologieConvertite;
+    }
+
+    public static int patologiaStringToIdPatologia (string patologia){
+        if (patologia == "diabete")
+            return 0;
+        //TODO aggiungere altre patologie
+        else
+            throw new InvalidOperationException ("Nome patologia non valido");
+    }
+
     public static string listIdToListPatologie (List <int> ids, List <Patologia> databasePatalogie = null){
         string idsString = "";
 
-        if (this.ids.Count > 0){
+        if (ids.Count > 0){
             //se non lo prendo prima viene ricreato ogni volta che viene chiamato il metodo idToPatologia
             DatabasePatologie ??= Database.getDatabaseOggetto (new Patologia ()); 
 
             foreach (int id in ids){
                 Patologia temp = Patologia.idToPatologia(id, databasePatalogie).nome;
                 if (temp.idPatologia != -1)
-                    idsString = idsString + "\n\t" + Patologia.IdToPatologia(id).nome + "\n";
+                    idsString = idsString + "\n\t" + temp.nome + "\n";
             }
         }
         return idsString;
@@ -114,34 +113,35 @@ public class Patologia
 
         databasePatologie ??= Database.getDatabaseOggetto (new Patologia ());
         
-        foreach (Patologia patologia in databasePatologie){
+        foreach (Patologia patologia in databasePatologie)
             if (id == patologia.idPatologia)
                 return patologia;
-        }
 
         throw new Exception ("Patologia non trovata idToPatologia");
     }
 
-    private static List <Patologia> idListToPatologieList (List <int> idList){
+    private static List <Patologia> idListToPatologieList (List <int> idList, List <Patologia> databasePatologie){
+        databasePatologie ??= Database.getDatabaseOggetto (new Patologia ());
+        
         idList = idList.Distinct().ToList(); //rimuove eventuali duplicati
-        List <Patologia> databasePatologie = Database.getDatabaseOggetto (new Patologia ());
         List <Patologia> listaPatologie = new List <Patologia> ();
-        foreach (int id in idList){
-            foreach (Patologia patologia in databasePatologie){
-                if (id == patologia.idPatologia){
+        
+        foreach (int id in idList)
+            foreach (Patologia patologia in databasePatologie)
+                if (id == patologia.idPatologia)
                     listaPatologie.Add (patologia);
-                }
-            }
-        }
+            
         return listaPatologie;
     }
 
-    public static List <int> getListIdTutteLePatologie (){
-        List <Patologia> databasePatologie = Database.getDatabaseOggetto (new Patologia ());
+    public static List <int> getListIdTutteLePatologie (List <Patologia> databasePatologie = null){
+        databasePatologie ??= Database.getDatabaseOggetto (new Patologia ());
+        
         List <int> output = new List <int> ();
-        foreach (Patologia patologia in databasePatologie){
+        
+        foreach (Patologia patologia in databasePatologie)
             output.Add (patologia.idPatologia);
-        }
+        
         return output;
     }
 }

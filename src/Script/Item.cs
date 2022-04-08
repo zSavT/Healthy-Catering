@@ -13,7 +13,7 @@ public class Item
     }
 
     public Item (string nome):base (){
-        this.idItem = getNewIdItem (this); 
+        this.idItem = Database.getNewId <Item> (this); 
         this.nome = nome;
     }
 
@@ -46,12 +46,6 @@ public class Item
     ~Item()
     {
         
-    }
-
-    public static int getNewIdItem (Item oggetto){
-        List <Item> databaseOggetto = Database.getDatabaseOggetto (oggetto);
-        //prendo l'id dell'ultimo oggetto aggiunto al database(quindi all'indice dimensioneLista - 1) e gli aggiungo 1
-        return databaseOggetto [databaseOggetto.Count - 1].idItem + 1;
     }
 
     public static Item creaNuovoItem (string nome = null /*@Deprecated ,string tipoItem = null*/){

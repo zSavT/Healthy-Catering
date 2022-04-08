@@ -171,7 +171,7 @@ public class Database {
     }
 
     public static void aggiungiPatologia (Patologia patologia){
-        patologia.idPatologia = Patologia.getNewIdDatabasePatologia(patologia);
+        patologia.idPatologia = Database.getNewId <Patologia> (patologia);
 
         while (patologia.nome.Equals("")){
             patologia.nome = getNewStringaFromUtente ("Inserisci il nome della patologia");
@@ -191,7 +191,7 @@ public class Database {
 
         Ingrediente ingredienteGiaPresente = Ingrediente.checkIngredienteOnonimoGiaPresente (ingrediente.nome);
         if (ingredienteGiaPresente == null){
-            ingrediente.idItem = Item.getNewIdItem (ingrediente);
+            ingrediente.idItem = getNewId <Item>(ingrediente);
             
             while (ingrediente.descrizione.Equals("")){
                 ingrediente.descrizione = getNewStringaFromUtente ("Inserisci la descrizione dell'ingrediente " + ingrediente.nome);
@@ -290,6 +290,20 @@ public class Database {
     public static string getNewStringaFromUtente (string output){
         Console.WriteLine (output);
         return Console.ReadLine();
+    }
+
+    public static int getNewId <Oggetto> (Oggetto oggetto){
+        List <Oggetto> databaseOggetto = getDatabaseOggetto (oggetto);
+        
+        string nomeTipoOggetto = Serializza.getNomeTipo (databaseOggetto).ToLower ();
+        
+        //prendo l'id dell'ultimo oggetto aggiunto al database(quindi all'indice dimensioneLista - 1) e gli aggiungo 1
+        if ((nomeTipoOggetto.Equals ("item")) || (nomeTipoOggetto.Equals ("ingrediente")))
+            return databaseOggetto [databaseOggetto.Count - 1].idItem + 1;
+        else if (nomeTipoOggetto.Equals ("patologia"))
+            return databaseOggetto [databaseOggetto.Count - 1].idPatologia + 1;
+        else
+            throw new Exception ("La classe dell'oggetto che mi hai passato non ha una propietà id");         
     }
 
     public static int getNewIntFromUtente (string output){
