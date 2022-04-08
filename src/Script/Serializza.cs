@@ -21,7 +21,7 @@ public class Serializza
     {
         string jsonPath = Directory.GetCurrentDirectory() + @"\..\Database\";
 
-        string tipoOggetto = ;
+        string tipoOggetto = getNomeTipo (oggetto);
         if (tipoOggetto.ToLower().Contains("list")) //se è una lista
             tipoOggetto = getNomeTipoOggettoInLista(oggetto);
 
@@ -32,6 +32,7 @@ public class Serializza
     {
         return oggetto.GetType().GetGenericArguments().Single().ToString();
     }
+
     public static string getNomeTipo<Oggetto>(Oggetto oggetto)
     {
         return oggetto.GetType().Name;

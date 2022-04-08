@@ -38,16 +38,17 @@ public class Ristorante
 
     public override string ToString()
     {
-        string listaIdItemString = "";
+        string magazzinoIngredientiString = "";
 
         if (this.magazzinoIngredienti.Count > 0)
         {
             //se non lo prendo prima viene ricreato ogni volta che viene chiamato il metodo idToIngrediente
             List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
-            foreach (int id in magazzinoIngredienti)
+            foreach (OggettoQuantita<int> temp in magazzinoIngredienti)
             {
-                Ingrediente temp = Ingrediente.idToIngrediente(id, databasePatalogie).nome;
-                if (temp.idIngrediente != -1)
+                int id = temp.quantita;
+                Ingrediente ingredienteTemp = Ingrediente.idToIngrediente(id, databaseIngredienti);
+                if (ingredienteTemp.idItem != -1)
                     magazzinoIngredientiString = magazzinoIngredientiString + "\n\t" + Ingrediente.idToIngrediente(id).nome + "\n";
             }
         }
@@ -71,6 +72,6 @@ public class Ristorante
         Console.WriteLine("Questo siccome la procedura è esattamente la stessa");
         Console.WriteLine("Gli ingredienti e le relative quantità verranno comunque ovviamente aggiunte al database del ristorante");
 
-        return Piatto.getmagazzinoIngredietiQuantitaPiattoFromUtente("\"ristorante\"");
+        return Piatto.getListaIdIngredientiQuantitaPiattoFromUtente("\"ristorante\"");
     }
 }

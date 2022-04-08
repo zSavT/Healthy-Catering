@@ -57,7 +57,7 @@ public class Ingrediente : Item
 
     public override string ToString()
     {
-        string output = "Ingrediente:" + "\n\t" + this.nome + "\n" +
+        return "Ingrediente:" + "\n\t" + this.nome + "\n" +
         "Descrizione:" + "\n\t" + this.descrizione + "\n" +
         "Costo:" + "\n\t" + this.costo + "\n" +
         "Costo eco:" + "\n\t" + this.costoEco + "\n" +
@@ -71,18 +71,18 @@ public class Ingrediente : Item
 
     }
 
-    private idNutriScoreToString(int id)
+    private char idNutriScoreToString(int id)
     {
         if (id == 0)
-            return "A";
+            return 'A';
         if (id == 1)
-            return "B";
+            return 'B';
         if (id == 2)
-            return "C";
+            return 'C';
         if (id == 3)
-            return "D";
+            return 'D';
         if (id == 4)
-            return "E";
+            return 'E';
         else
             throw new InvalidOperationException("Id nutriscore inserito non valido");
     }
@@ -123,7 +123,7 @@ public class Ingrediente : Item
         return ingredientiConNomeSimile[numero - 1];
     }
 
-    private static void stampaIngredientiSimiliPerSceltaUtente(string nomeIngrediente, List<Ingrediente> ingredientiConNomeSimile)
+    private static string getStampaIngredientiSimiliPerSceltaUtente(string nomeIngrediente, List<Ingrediente> ingredientiConNomeSimile)
     {
         string output = "Il nome dell'ingrediente che hai inserito (" + nomeIngrediente + ") non è stato trovato ma sono stati trovati ingredienti con nomi simili, intendi uno di questi? Inserisci '0' per uscire da questo menu";
 
@@ -134,7 +134,7 @@ public class Ingrediente : Item
         return output;
     }
 
-    public static Ingrediente idToIngrediente(int id, List<Ingrediente> databaseIngredienti)
+    public static Ingrediente idToIngrediente(int id, List<Ingrediente> databaseIngredienti = null)
     {
         if (id == -1)
             return new Ingrediente();

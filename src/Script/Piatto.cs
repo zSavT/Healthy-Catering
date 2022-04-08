@@ -67,14 +67,14 @@ public class Piatto
 
         if (listaIdIngredientiQuantita.Count > 0)
         {
-            string ingredientiQuantitaString;
+            string ingredientiQuantitaString = "";
             //se non lo prendo prima viene ricreato ogni volta che viene chiamato il metodo idToIngrediente
             List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
 
             foreach (OggettoQuantita<int> ingredienteQuantita in listaIdIngredientiQuantita)
             {
-                Ingrediente temp = Ingrediente.idToIngrediente(ingredienteQuantita.id, databaseIngredienti);
-                if (temp.idIngrediente != -1)
+                Ingrediente temp = Ingrediente.idToIngrediente(ingredienteQuantita.oggetto, databaseIngredienti);
+                if (temp.idItem != -1)
                     ingredientiQuantitaString = ingredientiQuantitaString + "\n\t" + temp.nome + " in quantita: " + ingredienteQuantita.quantita.ToString() + "\n";
             }
 
@@ -149,7 +149,7 @@ public class Piatto
         return output;
     }
 
-    private static void getStringaStampaPiattiConNomeSimilePerSceltaUtente(string nomePiatto, List<Piatto> piattiConNomeSimileInDatabase)
+    private static string getStringaStampaPiattiConNomeSimilePerSceltaUtente(string nomePiatto, List<Piatto> piattiConNomeSimileInDatabase)
     {
         string output = "Il nome del piatto che hai inserito (" + nomePiatto + ") non è stato trovato ma sono stati trovati piatti con nomi simili, intendi uno di questi? Inserisci 'no' per uscire da questo menu\n";
 
@@ -160,7 +160,7 @@ public class Piatto
         return output;
     }
 
-    public static List<OggettoQuantita<int>> getListaIdIngredientiQuantitaPiattoFromUtente(string nomePiatto, List<Ingrediente> databaseIngredienti)
+    public static List<OggettoQuantita<int>> getListaIdIngredientiQuantitaPiattoFromUtente(string nomePiatto, List<Ingrediente> databaseIngredienti = null)
     {
         databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
 
@@ -251,7 +251,7 @@ public class Piatto
     {
         while (true)
         {
-            numero = Database.getNewIntFromUtente("Qual'è la quantita di " + nomeIngrediente + " nel piatto " + nomePiatto);
+            int numero = Database.getNewIntFromUtente("Qual'è la quantita di " + nomeIngrediente + " nel piatto " + nomePiatto);
 
             if (numero > 0)
                 return numero;

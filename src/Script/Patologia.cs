@@ -101,7 +101,7 @@ public class Patologia
             throw new InvalidOperationException("Nome patologia non valido");
     }
 
-    public static string listIdToListPatologie(List<int> ids, List<Patologia> databasePatalogie = null)
+    public static string listIdToListPatologie(List<int> ids, List<Patologia> DatabasePatologie = null)
     {
         string idsString = "";
 
@@ -112,7 +112,7 @@ public class Patologia
 
             foreach (int id in ids)
             {
-                Patologia temp = Patologia.idToPatologia(id, databasePatalogie).nome;
+                Patologia temp = idToPatologia(id, DatabasePatologie);
                 if (temp.idPatologia != -1)
                     idsString = idsString + "\n\t" + temp.nome + "\n";
             }
@@ -120,7 +120,7 @@ public class Patologia
         return idsString;
     }
 
-    private static Patologia idToPatologia(int id, List<Patologia> databasePatalogie = null)
+    private static Patologia idToPatologia(int id, List<Patologia> databasePatologie = null)
     {
         if (id == -1)
             return new Patologia();

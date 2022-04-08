@@ -3,6 +3,8 @@ using System;
 
 public class Database
 {
+    public static void Main (){}
+
     //Get database e oggetti
     public static List<Oggetto> getDatabaseOggetto<Oggetto>(Oggetto oggetto)
     {
@@ -49,14 +51,14 @@ public class Database
         string nomeTipoOggetto = Serializza.getNomeTipo(databaseOggetto).ToLower();
 
         //prendo l'id dell'ultimo oggetto aggiunto al database(quindi all'indice dimensioneLista - 1) e gli aggiungo 1
-        if ((nomeTipoOggetto.Equals("item")) || (nomeTipoOggetto.Equals("ingrediente")))
+        if ((nomeTipoOggetto.Equals("item")) || (nomeTipoOggetto.Equals("ingrediente"))){
             Item temp = (Item) Convert.ChangeType (databaseOggetto[databaseOggetto.Count - 1], typeof (Item));
             return temp.idItem + 1;
-
-        else if (nomeTipoOggetto.Equals("patologia"))
+        }
+        else if (nomeTipoOggetto.Equals("patologia")){
             Patologia temp = (Patologia) Convert.ChangeType (databaseOggetto[databaseOggetto.Count - 1], typeof (Patologia));
             return temp.idPatologia + 1;
-
+        }
         else
             throw new Exception("La classe dell'oggetto che mi hai passato non ha una propietà id");
     }
@@ -214,7 +216,7 @@ public class Database
                 Serializza.salvaOggettiSuFile(databaseIngredienti);
             }
 
-        List<Ingrediente> databaseItem = getDatabaseOggetto(new Item());
+        List<Item> databaseItem = getDatabaseOggetto(new Item());
         if (databaseItem.Count > 0)
             if (databaseItem[0].idItem == -1)
             {

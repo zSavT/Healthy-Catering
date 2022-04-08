@@ -48,17 +48,18 @@ public class Player
 
     public override string ToString()
     {
-        string listaIdItemString = "";
+        string inventarioString = "";
 
         if (inventario.Count > 0)
         {
             //se non lo prendo prima viene ricreato ogni volta che viene chiamato il metodo idToIngrediente
             List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
-            foreach (int id in inventario)
+            foreach (OggettoQuantita<int> temp in inventario)
             {
-                Ingrediente temp = Ingrediente.idToIngrediente(id, databaseIngredienti);
-                if (temp.idIngrediente != -1)
-                    inventarioString = inventarioString + "\n\t" + temp.nome + "\n";
+                int id = temp.oggetto;
+                Ingrediente ingredienteTemp = Ingrediente.idToIngrediente(id, databaseIngredienti);
+                if (ingredienteTemp.idItem != -1)
+                    inventarioString = inventarioString + "\n\t" + ingredienteTemp.nome + "\n";
             }
         }
 
@@ -77,7 +78,7 @@ public class Player
 
     public static List<OggettoQuantita<int>> popolaInventario()
     {
-        List<Item> itemNuovi = getNewItem(itemGiaPresenti);
+        List<Item> itemNuovi = getNewItem();
 
         List<int> quantitaItemNuovi = new List<int>();
 
@@ -86,8 +87,10 @@ public class Player
         return creaInventarioFromListaItemEQuantita(itemNuovi, quantitaItemNuovi);
     }
 
-    private static List<Item> getNewItem(List<Item> itemGiaPresenti)
+    private static List<Item> getNewItem()
     {
+        List<Item> itemGiaPresenti = new List<Item> ();
+
         while (true)
         {
             Console.WriteLine("Inserisci la keyword 'inizia' o la keyword 'continua' per inserire un nuovo item e la parola 'fine' per concludere l'inserimento");
@@ -116,13 +119,13 @@ public class Player
         return quantita;
     }
 
-    private static List<OggettoQuantita<int>> creaInventarioFromListaItemEQuantita(List<Item> itemNuovi, List<int> quantitaItemNuovi)
+    private static List<OggettoQuantita<int>> creaInventarioFromListaItemEQuantita(List<Item> itemGiaPresenti, List<int> quantitaItemNuovi)
     {
-        if (itemGiaPresenti.Count == quantitaItemGiaPresenti.Count)
+        if (itemGiaPresenti.Count == quantitaItemNuovi.Count)
         {
             List<OggettoQuantita<int>> output = new List<OggettoQuantita<int>>();
             for (int i = 0; i < itemGiaPresenti.Count; i++)
-                output.Add(new OggettoQuantita<int>(itemGiaPresenti[i].idItem, quantitaItemGiaPresenti[i]));
+                output.Add(new OggettoQuantita<int>(itemGiaPresenti[i].idItem, quantitaItemNuovi[i]));
             return output;
         }
         throw new Exception("Le dimensioni della lista contente gli item e le quantita di essi non corrispondo");
