@@ -92,7 +92,7 @@ public class Patologia
         return patologieConvertite;
     }
 
-    public static int patologiaStringToIdPatologia(string patologia)
+    private static int patologiaStringToIdPatologia(string patologia)
     {
         if (patologia == "diabete")
             return 0;
@@ -134,7 +134,7 @@ public class Patologia
         throw new Exception("Patologia non trovata idToPatologia");
     }
 
-    private static List<Patologia> idListToPatologieList(List<int> idList, List<Patologia> databasePatologie)
+    private List<Patologia> idListToPatologieList(List<int> idList, List<Patologia> databasePatologie)
     {
         databasePatologie ??= Database.getDatabaseOggetto(new Patologia());
 

@@ -135,7 +135,7 @@ public class Piatto
         return null;
     }
 
-    public static List<Piatto> getPiattiConNomeSimileInDatabase(string nomePiatto, List<Piatto> databasePiatti = null)
+    private static List<Piatto> getPiattiConNomeSimileInDatabase(string nomePiatto, List<Piatto> databasePiatti = null)
     {
         databasePiatti ??= Database.getDatabaseOggetto(new Piatto());
 
@@ -225,7 +225,7 @@ public class Piatto
         return nomiIngredienti;
     }
 
-    public static bool nomeIngredientePresenteNelDatabase(string nomeIngrediente, List<Ingrediente> databaseIngredienti = null)
+    private static bool nomeIngredientePresenteNelDatabase(string nomeIngrediente, List<Ingrediente> databaseIngredienti = null)
     {
         databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente()); //check se il valore del database è nullo, nel caso la crea
 
@@ -236,7 +236,7 @@ public class Piatto
         return false;
     }
 
-    public static Ingrediente getIngredienteByNome(string nomeIngrediente, List<Ingrediente> databaseIngredienti = null)
+    private static Ingrediente getIngredienteByNome(string nomeIngrediente, List<Ingrediente> databaseIngredienti = null)
     {
         databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
 
@@ -258,7 +258,7 @@ public class Piatto
         }
     }
 
-    public List<int> getPatologieCompatibili()
+    private List<int> getPatologieCompatibili()
     {
         List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto();
         List<int> IdtutteLePatologie = Patologia.getListIdTutteLePatologie();
@@ -271,7 +271,7 @@ public class Piatto
         return IdtutteLePatologie;
     }
 
-    public int getDietaMinimaCompatibile()
+    private int getDietaMinimaCompatibile()
     {
         List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto();
         int output = -1;
@@ -283,7 +283,7 @@ public class Piatto
         return output;
     }
 
-    public List<Ingrediente> getIngredientiPiatto(List<Ingrediente> databaseIngredienti = null)
+    private List<Ingrediente> getIngredientiPiatto(List<Ingrediente> databaseIngredienti = null)
     {
         databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
 

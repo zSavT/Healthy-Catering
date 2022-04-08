@@ -71,7 +71,7 @@ public class Ingrediente : Item
 
     }
 
-    private char idNutriScoreToString(int id)
+    private static char idNutriScoreToString(int id)
     {
         if (id == 0)
             return 'A';

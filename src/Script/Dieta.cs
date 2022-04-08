@@ -57,7 +57,7 @@ public class Dieta
         return dietaTempInt;
     }
 
-    public static int dietaStringToIdDieta(string dieta)
+    private static int dietaStringToIdDieta(string dieta)
     {
         if (dieta.ToLower() == "vegana")
             return 0;

@@ -18,7 +18,7 @@ public class Database
     }
 
     //Check e salva oggetti
-    public static bool oggettoGiaPresente<Oggetto>(Oggetto oggetto, List<Oggetto> databaseOggetto = null)
+    protected static bool oggettoGiaPresente<Oggetto>(Oggetto oggetto, List<Oggetto> databaseOggetto = null)
     {
         databaseOggetto ??= getDatabaseOggetto(oggetto);
 
@@ -30,7 +30,7 @@ public class Database
         return false;
     }
 
-    public static void salvaNuovoOggettoSuFile<Oggetto>(Oggetto oggetto, List<Oggetto> databaseOggetto = null)
+    protected static void salvaNuovoOggettoSuFile<Oggetto>(Oggetto oggetto, List<Oggetto> databaseOggetto = null)
     {
         databaseOggetto ??= getDatabaseOggetto(oggetto);
 
@@ -87,7 +87,7 @@ public class Database
         return 0;
     }
 
-    public static float getNewFloatFromUtente(string output)
+    protected static float getNewFloatFromUtente(string output)
     {
         Console.WriteLine(output);
 
@@ -311,7 +311,7 @@ public class Database
     }
 
     //Aggiungi X
-    public static void aggiungiRistorante(Ristorante ristorante)
+    private static void aggiungiRistorante(Ristorante ristorante)
     {
         while (ristorante.nome.Equals(""))
         {
@@ -331,7 +331,7 @@ public class Database
         salvaNuovoOggettoSuFile(ristorante);
     }
 
-    public static void aggiungiPlayer(Player player)
+    private static void aggiungiPlayer(Player player)
     {
         while (player.nome.Equals(""))
         {
@@ -351,7 +351,7 @@ public class Database
         salvaNuovoOggettoSuFile(player);
     }
 
-    public static void aggiungiPiatto(Piatto piatto)
+    private static void aggiungiPiatto(Piatto piatto)
     {
         while (piatto.nome.Equals(""))
         {
@@ -379,7 +379,7 @@ public class Database
         }
     }
 
-    public static void aggiungiPatologia(Patologia patologia)
+    private static void aggiungiPatologia(Patologia patologia)
     {
         patologia.idPatologia = Database.getNewId<Patologia>(patologia);
 
@@ -442,7 +442,7 @@ public class Database
         }
     }
 
-    public static void aggiungiDieta(Dieta dieta)
+    private static void aggiungiDieta(Dieta dieta)
     {
         while (dieta.nome.Equals(""))
         {
@@ -457,7 +457,7 @@ public class Database
         salvaNuovoOggettoSuFile(dieta);
     }
 
-    public static void aggiungiCliente(Cliente cliente)
+    private static void aggiungiCliente(Cliente cliente)
     {
         while (cliente.nome.Equals(""))
         {

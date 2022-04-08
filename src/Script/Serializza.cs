@@ -28,7 +28,7 @@ public class Serializza
         return jsonPath + tipoOggetto + ".json";
     }
 
-    public static string getNomeTipoOggettoInLista<Oggetto>(Oggetto oggetto)
+    private static string getNomeTipoOggettoInLista<Oggetto>(Oggetto oggetto)
     {
         return oggetto.GetType().GetGenericArguments().Single().ToString();
     }
