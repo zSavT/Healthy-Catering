@@ -1,4 +1,4 @@
-public class OggettoQuantita <Oggetto>
+public class OggettoQuantita<Oggetto>
 {
     public Oggetto oggetto;
 
@@ -18,7 +18,7 @@ public class OggettoQuantita <Oggetto>
     }
     */
 
-    public override bool Equals (object obj) //funziona solo con gli int
+    public override bool Equals(object obj) //funziona solo con gli int
     {
         // If the passed object is null
         if (obj == null)
@@ -35,22 +35,23 @@ public class OggettoQuantita <Oggetto>
 
     public override string ToString()
     {
-        return "OggettoQuantita" + "\n\t" + "Valore oggetto: " + this.oggetto.ToString () + "\n\t" + "Quantità oggetto: " + this.quantita + "\n" + "Fine oggetto quantità";
+        return "OggettoQuantita" + "\n\t" + "Valore oggetto: " + this.oggetto.ToString() + "\n\t" + "Quantità oggetto: " + this.quantita + "\n" + "Fine oggetto quantità";
     }
 
     ~OggettoQuantita()
     {
-        
+
     }
 
-    public static bool listeIdQuantitaUguali (List <OggettoQuantita <int>> lista1, List <OggettoQuantita <int>> lista2){
+    public static bool listeIdQuantitaUguali(List<OggettoQuantita<int>> lista1, List<OggettoQuantita<int>> lista2)
+    {
         if (lista1.Count != lista2.Count)
             return false;
-        
+
         for (int i = 0; i < lista1.Count; i++)
             for (int j = i; j < lista2.Count; j++)
-                if (!(lista1 [i].Equals (lista2 [j])));
-                    return false;
+                if (!(lista1[i].Equals(lista2[j]))) ;
+        return false;
         return true;
     }
 }

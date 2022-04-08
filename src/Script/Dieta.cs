@@ -9,11 +9,12 @@ public class Dieta
         this.descrizione = descrizione;
     }
 
-    public Dieta (){
+    public Dieta()
+    {
         this.nome = "";
         this.descrizione = "";
     }
-    
+
     public override bool Equals(object obj)
     {
         // If the passed object is null
@@ -36,35 +37,40 @@ public class Dieta
 
     ~Dieta()
     {
-        
+
     }
 
-    public static int getNewDietaFromUtente (string output){
+    public static int getNewDietaFromUtente(string output)
+    {
         string dietaTemp;
         int dietaTempInt = -1;
-        Console.WriteLine (output);
+        Console.WriteLine(output);
         dietaTemp = Console.ReadLine();
-        try{
+        try
+        {
             dietaTempInt = Dieta.dietaStringToIdDieta(dietaTemp);
         }
-        catch (InvalidOperationException e){
-            Console.WriteLine (e.Message);
+        catch (InvalidOperationException e)
+        {
+            Console.WriteLine(e.Message);
         }
         return dietaTempInt;
     }
 
-    public static int dietaStringToIdDieta (string dieta){
-        if (dieta.ToLower () == "vegana")
+    public static int dietaStringToIdDieta(string dieta)
+    {
+        if (dieta.ToLower() == "vegana")
             return 0;
-        else if (dieta.ToLower () == "vegetariana")
+        else if (dieta.ToLower() == "vegetariana")
             return 1;
-        else if (dieta.ToLower () == "onnivora")
+        else if (dieta.ToLower() == "onnivora")
             return 2;
         else
-            throw new InvalidOperationException ("Dieta inserita non valida");
-    } 
+            throw new InvalidOperationException("Dieta inserita non valida");
+    }
 
-    public static string IdDietaToDietaString (int id){
+    public static string IdDietaToDietaString(int id)
+    {
         if (id == 0)
             return "Vegana";
         else if (id == 1)
@@ -72,6 +78,6 @@ public class Dieta
         else if (id == 2)
             return "Onnivora";
         else
-            throw new InvalidOperationException ("Id dieta inserito non valido");
+            throw new InvalidOperationException("Id dieta inserito non valido");
     }
 }
