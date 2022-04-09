@@ -1,8 +1,9 @@
 @startuml
 class Serializza {
-    + Serializza()
-    + {static} salvaOggettiSuFile(oggetti:List <Oggetto>) : void
+    + {static} salvaOggettiSuFile(oggetti:List<Oggetto>) : void
     + {static} getJsonPath(oggetto:Oggetto) : string
+    - {static} getNomeTipoOggettoInLista(oggetto:Oggetto) : string
+    + {static} getNomeTipo(oggetto:Oggetto) : string
     + {static} leggiOggettiDaFile(filePath:string) : List<Oggetto>
 }
 @enduml

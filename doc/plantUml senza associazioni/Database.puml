@@ -1,26 +1,31 @@
 @startuml
 class Database {
-    + Database()
-    + {static} Main(args:string[]) : void
-    + {static} aggiungiRistorante(ristorante:Ristorante) : void
-    + {static} aggiungiPlayer(player:Player) : void
-    + {static} aggiungiPiatto(piatto:Piatto) : void
-    + {static} aggiungiPatologia(patologia:Patologia) : void
-    + {static} aggiungiIngrediente(ingrediente:Ingrediente) : void
-    + {static} aggiungiDieta(dieta:Dieta) : void
-    + {static} aggiungiCliente(cliente:Cliente) : void
-    + {static} salvaNuovoOggettoSuFile(oggetto:Oggetto) : void
+    + {static} Main() : void
+    + {static} getDatabaseOggetto(oggetto:Oggetto) : List<Oggetto>
+    + {static} getUltimoOggettoAggiuntoAlDatabase(oggetto:Oggetto, databaseOggetto:List<Oggetto>) : Oggetto
+    # {static} oggettoGiaPresente(oggetto:Oggetto, databaseOggetto:List<Oggetto>) : bool
+    # {static} salvaNuovoOggettoSuFile(oggetto:Oggetto, databaseOggetto:List<Oggetto>) : void
+    + {static} getNewId(oggetto:Oggetto) : int
     + {static} getNewStringaFromUtente(output:string) : string
-    + {static} getUltimoOggettoAggiuntoAlDatabase(oggetto:Oggetto) : Oggetto
-    + {static} getDatabaseOggetto(oggetto:Oggetto) : List <Oggetto>
-    - {static} creaDatabaseBase() : void
-    - {static} creaDatabaseBaseCliente() : void
-    - {static} creaDatabaseBaseDieta() : void
-    - {static} creaDatabaseBaseIngrediente() : void
-    - {static} creaDatabaseBaseItem() : void
-    - {static} creaDatabaseBasePatologia() : void
-    - {static} creaDatabaseBasePiatto() : void
-    - {static} creaDatabaseBasePlayer() : void
-    - {static} creaDatabaseBaseRistorante() : void
+    + {static} getNewIntFromUtente(output:string) : int
+    # {static} getNewFloatFromUtente(output:string) : float
+    - {static} creaDatabase() : void
+    - {static} pulisciDatabase() : void
+    - {static} creaDatabaseVuoto() : void
+    - {static} creaDatabaseVuotoCliente() : void
+    - {static} creaDatabaseVuotoDieta() : void
+    - {static} creaDatabaseVuotoIngrediente() : void
+    - {static} creaDatabaseVuotoItem() : void
+    - {static} creaDatabaseVuotoPatologia() : void
+    - {static} creaDatabaseVuotoPiatto() : void
+    - {static} creaDatabaseVuotoPlayer() : void
+    - {static} creaDatabaseVuotoRistorante() : void
+    - {static} aggiungiRistorante(ristorante:Ristorante) : void
+    - {static} aggiungiPlayer(player:Player) : void
+    - {static} aggiungiPiatto(piatto:Piatto) : void
+    - {static} aggiungiPatologia(patologia:Patologia) : void
+    + {static} aggiungiIngrediente(ingrediente:Ingrediente) : void
+    - {static} aggiungiDieta(dieta:Dieta) : void
+    - {static} aggiungiCliente(cliente:Cliente) : void
 }
 @enduml

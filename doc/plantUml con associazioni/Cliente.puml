@@ -4,7 +4,8 @@ class Cliente {
     + dieta : int = 0
     + Cliente(nome:string, dieta:int, listaIdPatologie:List<int>)
     + Cliente()
-    + getNewNomeClienteFromUtente(output:string) : string
+    + <<override>> Equals(obj:object) : bool
+    + <<override>> ToString() : string
 }
 class "List`1"<T> {
 }

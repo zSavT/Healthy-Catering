@@ -6,13 +6,13 @@ public class Ingrediente : Item
     public int nutriScore = 0;
     public int dieta = -1;
 
-    public List <int> listaIdPatologieCompatibili = null;
+    public List<int> listaIdPatologieCompatibili = null;
 
     //base sarebbe, più o meno, il super di java
     public Ingrediente(
         int idItem, string nome, string descrizione,
-        float costo, int costoEco, int nutriScore, int dieta, List <int> listaIdPatologieCompatibili) 
-        : base (idItem, nome, descrizione)
+        float costo, int costoEco, int nutriScore, int dieta, List<int> listaIdPatologieCompatibili)
+        : base(idItem, nome, descrizione)
     {
         this.costo = costo;
         this.costoEco = costoEco;
@@ -21,16 +21,17 @@ public class Ingrediente : Item
         this.listaIdPatologieCompatibili = listaIdPatologieCompatibili;
     }
 
-    public Ingrediente ():base (){
+    public Ingrediente() : base()
+    {
         this.costo = -1;
         this.costoEco = -1;
         this.nutriScore = -1;
         this.dieta = -1;
-        this.listaIdPatologieCompatibili = new List <int> ();    
+        this.listaIdPatologieCompatibili = new List<int>();
     }
 
-    //                                          chiamata al costruttore vuoto
-    public Ingrediente (string nomeIngrediente):this (){
+    public Ingrediente(string nomeIngrediente) : this()
+    { //this () = chiamata al costruttore vuoto
         this.nome = nomeIngrediente;
     }
 
@@ -54,82 +55,100 @@ public class Ingrediente : Item
             && (Enumerable.SequenceEqual(this.listaIdPatologieCompatibili, ((Ingrediente)obj).listaIdPatologieCompatibili));
     }
 
-    public static Ingrediente checkIngredienteOnonimoGiaPresente (string nomeIngrediente){
-        List <Ingrediente> ingredientiConNomeSimileInDatabase = getIngredientiConNomeSimileInDatabase (nomeIngrediente);
+    public override string ToString()
+    {
+        return "Ingrediente:" + "\n\t" + this.nome + "\n" +
+        "Descrizione:" + "\n\t" + this.descrizione + "\n" +
+        "Costo:" + "\n\t" + this.costo + "\n" +
+        "Costo eco:" + "\n\t" + this.costoEco + "\n" +
+        "Nutriscore:" + "\n\t" + this.nutriScore + "\n" +
+        "Dieta compatibile:" + "\n\t" + Dieta.IdDietaToDietaString(this.dieta) + "\n" +
+        "Patologie compatibili:" + Patologia.listIdToListPatologie(this.listaIdPatologieCompatibili);
+    }
+
+    ~Ingrediente()
+    {
+
+    }
+
+    private static char idNutriScoreToString(int id)
+    {
+        if (id == 0)
+            return 'A';
+        if (id == 1)
+            return 'B';
+        if (id == 2)
+            return 'C';
+        if (id == 3)
+            return 'D';
+        if (id == 4)
+            return 'E';
+        else
+            throw new InvalidOperationException("Id nutriscore inserito non valido");
+    }
+
+    public static Ingrediente checkIngredienteOnonimoGiaPresente(string nomeIngrediente)
+    {
+        List<Ingrediente> ingredientiConNomeSimileInDatabase = getIngredientiConNomeSimileInDatabase(nomeIngrediente);
         if (ingredientiConNomeSimileInDatabase.Count > 0)
-            return scegliIngredienteConNomeSimile (nomeIngrediente, ingredientiConNomeSimileInDatabase);
+            return scegliIngredienteConNomeSimile(nomeIngrediente, ingredientiConNomeSimileInDatabase);
         else return null;
     }
 
-    public static List <Ingrediente> getIngredientiConNomeSimileInDatabase (string nomeIngrediente, List<Ingrediente> databaseIngredienti = null){
-        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
-        
-        List <Ingrediente> output = new List<Ingrediente> ();
-        string nomeIngredientePerConfronto = nomeIngrediente.ToLower ();
-        foreach (Ingrediente ingredienteTemp in databaseIngredienti){
-            if ((ingredienteTemp.nome.ToLower ().Contains (nomeIngredientePerConfronto))){
-                output.Add (ingredienteTemp);
+    public static List<Ingrediente> getIngredientiConNomeSimileInDatabase(string nomeIngrediente, List<Ingrediente> databaseIngredienti = null)
+    {
+        databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
+
+        List<Ingrediente> output = new List<Ingrediente>();
+        foreach (Ingrediente ingredienteTemp in databaseIngredienti)
+        {
+            if ((ingredienteTemp.nome.ToLower().Contains(nomeIngrediente.ToLower())))
+            {
+                output.Add(ingredienteTemp);
             }
         }
 
         return output;
     }
 
-    public static Ingrediente scegliIngredienteConNomeSimile (string nomeIngrediente, List <Ingrediente> ingredientiConNomeSimile){
-        stampaIngredientiSimiliPerSceltaUtente (nomeIngrediente, ingredientiConNomeSimile);
-
-        string input = Console.ReadLine ();
-        int numeroInput;
-        try{ 
-            numeroInput = Int32.Parse (input);
-            return ingredientiConNomeSimile [numeroInput - 1];
-        } 
-        catch (Exception ex){
-            //se non viene inserito un numero (quindi anche se viene inserito 'no')
-            return null;
+    public static Ingrediente scegliIngredienteConNomeSimile(string nomeIngrediente, List<Ingrediente> ingredientiConNomeSimile)
+    {
+        int numero = -1;
+        while ((numero < 0) || (numero >= ingredientiConNomeSimile.Count))
+        {
+            numero = Database.getNewIntFromUtente(getStampaIngredientiSimiliPerSceltaUtente(nomeIngrediente, ingredientiConNomeSimile));
+            if (numero == 0)
+                return null;
         }
+        return ingredientiConNomeSimile[numero - 1];
     }
 
-    private static void stampaIngredientiSimiliPerSceltaUtente (string nomeIngrediente, List <Ingrediente> ingredientiConNomeSimile){
-        Console.WriteLine ("Il nome dell'ingrediente che hai inserito (" + nomeIngrediente + ") non è stato trovato ma sono stati trovati ingredienti con nomi simili, intendi uno di questi? Inserisci 'no' per uscire da questo menu");
-                    
+    private static string getStampaIngredientiSimiliPerSceltaUtente(string nomeIngrediente, List<Ingrediente> ingredientiConNomeSimile)
+    {
+        string output = "Il nome dell'ingrediente che hai inserito (" + nomeIngrediente + ") non è stato trovato ma sono stati trovati ingredienti con nomi simili, intendi uno di questi? Inserisci '0' per uscire da questo menu";
+
         int i = 1;
-        foreach (Ingrediente ingredienteSimile in ingredientiConNomeSimile){
-            Console.WriteLine (i.ToString () + ") " + ingredienteSimile.nome);
-        }
+        foreach (Ingrediente ingredienteSimile in ingredientiConNomeSimile)
+            output = "\n" + i.ToString() + ") " + ingredienteSimile.nome;
+
+        return output;
     }
 
-    public float getNewNumeroIngredienteFromUtente (string output, string outputError){
-        bool numeroValido = false;
-        float temp = -1;
-        while ((!(numeroValido)) && (temp == -1)){
-            Console.WriteLine (output);
-            try{
-                temp = float.Parse (Console.ReadLine ());
-                numeroValido = true;
-            }
-            catch (Exception e){
-                Console.WriteLine(e.Message + "\n" + outputError);
-            }
-        }
-        return temp;
-    }
-
-    public static Ingrediente IdToIngrediente (int id){
+    public static Ingrediente idToIngrediente(int id, List<Ingrediente> databaseIngredienti = null)
+    {
         if (id == -1)
-            return new Ingrediente ();
-        List <Ingrediente> databaseIngredienti = Database.getDatabaseOggetto (new Ingrediente ());
-        foreach (Ingrediente ingrediente in databaseIngredienti){
-            if (id == ingrediente.idItem){
+            return new Ingrediente();
+
+        databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
+
+        foreach (Ingrediente ingrediente in databaseIngredienti)
+        {
+            if (id == ingrediente.idItem)
+            {
                 return ingrediente;
             }
         }
-        
-        throw new Exception ("Ingrediente non trovato IdToIngrediente");
-    }
 
-    ~Ingrediente()
-    {
-        
+        throw new Exception("Ingrediente non trovato idToIngrediente");
     }
 }
