@@ -4,16 +4,18 @@ class Ingrediente {
     + costoEco : int = 0
     + nutriScore : int = 0
     + dieta : int
-    + listaIdPatologieCompatibili : List <int> = null
-    + Ingrediente(idItem:int, nome:string, descrizione:string, costo:float, costoEco:int, nutriScore:int, dieta:int, listaIdPatologieCompatibili:List <int>)
+    + listaIdPatologieCompatibili : List<int> = null
+    + Ingrediente(idItem:int, nome:string, descrizione:string, costo:float, costoEco:int, nutriScore:int, dieta:int, listaIdPatologieCompatibili:List<int>)
     + Ingrediente()
     + Ingrediente(nomeIngrediente:string)
+    + <<override>> Equals(obj:object) : bool
+    + <<override>> ToString() : string
+    - {static} idNutriScoreToString(id:int) : char
     + {static} checkIngredienteOnonimoGiaPresente(nomeIngrediente:string) : Ingrediente
-    + {static} getIngredientiConNomeSimileInDatabase(nomeIngrediente:string, databaseIngredienti:List<Ingrediente>) : List <Ingrediente>
-    + {static} scegliIngredienteConNomeSimile(nomeIngrediente:string, ingredientiConNomeSimile:List <Ingrediente>) : Ingrediente
-    - {static} stampaIngredientiSimiliPerSceltaUtente(nomeIngrediente:string, ingredientiConNomeSimile:List <Ingrediente>) : void
-    + getNewNumeroIngredienteFromUtente(output:string, outputError:string) : float
-    + {static} idToIngrediente(id:int) : Ingrediente
+    + {static} getIngredientiConNomeSimileInDatabase(nomeIngrediente:string, databaseIngredienti:List<Ingrediente>) : List<Ingrediente>
+    + {static} scegliIngredienteConNomeSimile(nomeIngrediente:string, ingredientiConNomeSimile:List<Ingrediente>) : Ingrediente
+    - {static} getStampaIngredientiSimiliPerSceltaUtente(nomeIngrediente:string, ingredientiConNomeSimile:List<Ingrediente>) : string
+    + {static} idToIngrediente(id:int, databaseIngredienti:List<Ingrediente>) : Ingrediente
 }
 Item <|-- Ingrediente
 @enduml
