@@ -18,9 +18,11 @@ public class Piatto
         this.nome = nome;
         this.descrizione = descrizione;
         this.listaIdIngredientiQuantita = listaIdIngredientiQuantita;
-        this.costo = calcolaCosto();
-        this.costoEco = calcolaCostoEco();
-        this.nutriScore = calcolaNutriScore();
+        
+        List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto (new Ingrediente ());
+        this.costo = calcolaCosto(databaseIngredienti);
+        this.costoEco = calcolaCostoEco(databaseIngredienti);
+        this.nutriScore = calcolaNutriScore(databaseIngredienti);
     }
 
     public Piatto()
@@ -89,32 +91,38 @@ public class Piatto
 
     }
 
-    public float calcolaCosto()
+    public float calcolaCosto(List <Ingrediente> databaseIngredienti = null)
     {
+        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
+
         float costo = 0;
         foreach (OggettoQuantita<int> ingredienteQuantita in this.listaIdIngredientiQuantita)
-            costo = costo + (Ingrediente.idToIngrediente(ingredienteQuantita.oggetto).costo * ingredienteQuantita.quantita);
+            costo = costo + (Ingrediente.idToIngrediente(ingredienteQuantita.oggetto, databaseIngredienti).costo * ingredienteQuantita.quantita);
 
         return costo + ((costo * percentualeGuadagnoSulPiatto) / 100);
     }
 
-    public float calcolaCostoEco()
+    public float calcolaCostoEco(List <Ingrediente> databaseIngredienti = null)
     {
+        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
+        
         float costoEco = 0;
         foreach (OggettoQuantita<int> ingredienteQuantita in this.listaIdIngredientiQuantita)
-            costoEco = costoEco + (Ingrediente.idToIngrediente(ingredienteQuantita.oggetto).costoEco * ingredienteQuantita.quantita);
+            costoEco = costoEco + (Ingrediente.idToIngrediente(ingredienteQuantita.oggetto, databaseIngredienti).costoEco * ingredienteQuantita.quantita);
 
         return costoEco;
     }
 
-    public int calcolaNutriScore()
+    public int calcolaNutriScore(List <Ingrediente> databaseIngredienti = null)
     {
+        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
+        
         int sommanutriScore = 0;
         int numeroIngredienti = 0;
 
         foreach (OggettoQuantita<int> ingredienteQuantita in this.listaIdIngredientiQuantita)
         {
-            sommanutriScore = sommanutriScore + (Ingrediente.idToIngrediente(ingredienteQuantita.oggetto).nutriScore * ingredienteQuantita.quantita);
+            sommanutriScore = sommanutriScore + (Ingrediente.idToIngrediente(ingredienteQuantita.oggetto, databaseIngredienti).nutriScore * ingredienteQuantita.quantita);
             numeroIngredienti = numeroIngredienti + ingredienteQuantita.quantita;
         }
 
@@ -186,7 +194,7 @@ public class Piatto
                     if (ingredienteScelto == null)
                     {
                         Database.aggiungiIngrediente(new Ingrediente(nomeIngrediente));
-                        ingredienteTemp = Database.getUltimoOggettoAggiuntoAlDatabase(new Ingrediente());
+                        ingredienteTemp = Database.getUltimoOggettoAggiuntoAlDatabase(new Ingrediente(), databaseIngredienti);
                     }
                     else
                     {
@@ -196,7 +204,7 @@ public class Piatto
                 else
                 {
                     Database.aggiungiIngrediente(new Ingrediente(nomeIngrediente));
-                    ingredienteTemp = Database.getUltimoOggettoAggiuntoAlDatabase(new Ingrediente());
+                    ingredienteTemp = Database.getUltimoOggettoAggiuntoAlDatabase(new Ingrediente(), databaseIngredienti);
                 }
             }
 
@@ -258,9 +266,11 @@ public class Piatto
         }
     }
 
-    private List<int> getPatologieCompatibili()
+    private List<int> getPatologieCompatibili(List<Ingrediente> databaseIngredienti = null)
     {
-        List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto();
+        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
+
+        List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto(databaseIngredienti);
         List<int> IdtutteLePatologie = Patologia.getListIdTutteLePatologie();
 
         foreach (Ingrediente ingrediente in ingredientiPiatto)
@@ -271,9 +281,11 @@ public class Piatto
         return IdtutteLePatologie;
     }
 
-    private int getDietaMinimaCompatibile()
+    private int getDietaMinimaCompatibile(List<Ingrediente> databaseIngredienti = null)
     {
-        List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto();
+        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
+
+        List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto(databaseIngredienti);
         int output = -1;
 
         foreach (Ingrediente ingrediente in ingredientiPiatto)

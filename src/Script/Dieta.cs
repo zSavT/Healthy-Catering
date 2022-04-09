@@ -48,7 +48,7 @@ public class Dieta
         dietaTemp = Console.ReadLine();
         try
         {
-            dietaTempInt = Dieta.dietaStringToIdDieta(dietaTemp);
+            dietaTempInt = dietaStringToIdDieta(dietaTemp);
         }
         catch (InvalidOperationException e)
         {

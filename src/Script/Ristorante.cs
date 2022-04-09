@@ -49,7 +49,7 @@ public class Ristorante
                 int id = temp.quantita;
                 Ingrediente ingredienteTemp = Ingrediente.idToIngrediente(id, databaseIngredienti);
                 if (ingredienteTemp.idItem != -1)
-                    magazzinoIngredientiString = magazzinoIngredientiString + "\n\t" + Ingrediente.idToIngrediente(id).nome + "\n";
+                    magazzinoIngredientiString = magazzinoIngredientiString + "\n\t" + Ingrediente.idToIngrediente(id, databaseIngredienti).nome + "\n";
             }
         }
 

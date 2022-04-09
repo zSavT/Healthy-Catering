@@ -81,7 +81,7 @@ public class Patologia
         {
             try
             {
-                patologieConvertite.Add(Patologia.patologiaStringToIdPatologia(patologiaString));
+                patologieConvertite.Add(patologiaStringToIdPatologia(patologiaString));
             }
             catch (InvalidOperationException e)
             {

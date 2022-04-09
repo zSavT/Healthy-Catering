@@ -34,7 +34,7 @@ public class Database
     {
         databaseOggetto ??= getDatabaseOggetto(oggetto);
 
-        if (!(oggettoGiaPresente(oggetto)))
+        if (!(oggettoGiaPresente(oggetto, databaseOggetto)))
         {
             if (!(databaseOggetto.Contains(oggetto)))
                 databaseOggetto.Add(oggetto);
@@ -320,7 +320,7 @@ public class Database
 
         while (ristorante.punteggio < 0)
         {
-            ristorante.punteggio = Database.getNewIntFromUtente("Inserisci il punteggio del ristorante " + ristorante.nome);
+            ristorante.punteggio = getNewIntFromUtente("Inserisci il punteggio del ristorante " + ristorante.nome);
         }
 
         while (ristorante.magazzinoIngredienti.Count == 0)
@@ -358,7 +358,11 @@ public class Database
             piatto.nome = getNewStringaFromUtente("Inserisci il nome del piatto");
         }
 
-        Piatto piattoGiaPresente = Piatto.checkPiattoOnonimoGiaPresente(piatto.nome);
+        List <Piatto> databasePiatti = getDatabaseOggetto (piatto);
+        List <Ingrediente> databaseIngredienti = getDatabaseOggetto (new Ingrediente ());
+        
+        Piatto piattoGiaPresente = Piatto.checkPiattoOnonimoGiaPresente(piatto.nome, databasePiatti);
+        
         if (piattoGiaPresente == null)
         { //se il player non ha scelto nessuno dei piatti gia presenti o non ce ne sono proprio glielo faccio aggiungere
             while (piatto.descrizione.Equals(""))
@@ -368,20 +372,20 @@ public class Database
 
             while (piatto.listaIdIngredientiQuantita.Count == 0)
             {
-                piatto.listaIdIngredientiQuantita = Piatto.getListaIdIngredientiQuantitaPiattoFromUtente(piatto.nome);
+                piatto.listaIdIngredientiQuantita = Piatto.getListaIdIngredientiQuantitaPiattoFromUtente(piatto.nome, databaseIngredienti);
             }
 
-            piatto.calcolaCosto();
-            piatto.calcolaCostoEco();
-            piatto.calcolaNutriScore();
+            piatto.calcolaCosto(databaseIngredienti);
+            piatto.calcolaCostoEco(databaseIngredienti);
+            piatto.calcolaNutriScore(databaseIngredienti);
 
-            salvaNuovoOggettoSuFile(piatto);
+            salvaNuovoOggettoSuFile(piatto, databasePiatti);
         }
     }
 
     private static void aggiungiPatologia(Patologia patologia)
     {
-        patologia.idPatologia = Database.getNewId<Patologia>(patologia);
+        patologia.idPatologia = getNewId<Patologia>(patologia);
 
         while (patologia.nome.Equals(""))
         {
