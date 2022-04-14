@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Interactor : MonoBehaviour
 {
@@ -8,9 +9,13 @@ public class Interactor : MonoBehaviour
     private UnityEvent onInteract;                                  //attributo per l'invocazione di eventi all'interno di Unity    
     [SerializeField] private KeyCode tastoInterazione;              //tasto da premere per invocare l'azione
     // Start is called before the first frame update
+    [Header("CrossHair")]
+    public RawImage crossHair;                                      //riferimento allo sprit del crossHair
+    public Color32 coloreNormale;                                   //colore base del crossHair
+    public Color32 coloreInterazione;                               //colore del crossHair quando viene in contatto con un entità interagibile
     void Start()
     {
-        
+        crossHair.color = coloreNormale;
     }
 
     // Update is called once per frame
@@ -23,7 +28,8 @@ public class Interactor : MonoBehaviour
             if(colpito.collider.GetComponent<Interactable>() != false)
             {
                 onInteract = colpito.collider.GetComponent<Interactable>().onInteract;
-                if(Input.GetKeyDown(tastoInterazione))
+                crossHair.color = coloreInterazione;
+                if (Input.GetKeyDown(tastoInterazione))
                 {
                     /*
                         Quello che c'è qui dentro viene eseguito quando il player inquadra l'oggetto e preme il comando.
@@ -32,6 +38,9 @@ public class Interactor : MonoBehaviour
                     onInteract.Invoke();
                 }
             }
+        } else
+        {
+            crossHair.color = coloreNormale;
         }
     }
 }
