@@ -68,7 +68,7 @@ ScriptsOnlyBuild:
     methodName: chiudi
   - assembly: Assembly-CSharp
     fullTypeName: Menu
-    methodName: PlayGame
+    methodName: playGame
   - assembly: Assembly-CSharp
     fullTypeName: Menu
     methodName: menuOpzioni
