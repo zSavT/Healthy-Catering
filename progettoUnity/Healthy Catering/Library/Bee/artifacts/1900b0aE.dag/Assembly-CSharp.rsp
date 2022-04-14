@@ -351,7 +351,7 @@
 "Assets/Mappe/Script/MovimentoPlayer/CameraGiocatore.cs"
 "Assets/Mappe/Script/MovimentoPlayer/MovimentoCamera.cs"
 "Assets/Mappe/Script/MovimentoPlayer/MovimentoPlayer.cs"
-"Assets/Mappe/Script/Slider.cs"
+"Assets/Mappe/Script/SliderValueToText.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"
