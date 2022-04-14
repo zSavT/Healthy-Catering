@@ -10,9 +10,9 @@ public class Interactor : MonoBehaviour
     [SerializeField] private KeyCode tastoInterazione;              //tasto da premere per invocare l'azione
     // Start is called before the first frame update
     [Header("CrossHair")]
-    public RawImage crossHair;
-    public Color32 coloreNormale;
-    public Color32 coloreInterazione;
+    public RawImage crossHair;                                      //riferimento allo sprit del crossHair
+    public Color32 coloreNormale;                                   //colore base del crossHair
+    public Color32 coloreInterazione;                               //colore del crossHair quando viene in contatto con un entità interagibile
     void Start()
     {
         crossHair.color = coloreNormale;
