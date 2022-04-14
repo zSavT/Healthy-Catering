@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class SliderValueToText : MonoBehaviour
 {
@@ -12,11 +13,19 @@ public class SliderValueToText : MonoBehaviour
     void Start()
     {
         textSliderValue = GetComponent<TextMeshProUGUI>();
-        ShowSliderValue();
     }
 
-    public void ShowSliderValue()
+    public void aggiornaValore()
     {
         textSliderValue.text = sliderUI.value.ToString();
     }
+
+    public void aggiornaValorePercentuale()
+    {
+        float valoreCaricamento = sliderUI.value * 100f;
+        Debug.Log(valoreCaricamento.ToString());
+        textSliderValue.text = valoreCaricamento + "%";
+    }
+
+
 }

@@ -2,10 +2,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-
+    public Slider sliderCaricamento;
     public UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
 
 
@@ -25,7 +26,7 @@ public class Menu : MonoBehaviour
         while (!caricamento.isDone)
         {
             float progresso = Mathf.Clamp01(caricamento.progress / .9f);
-            Debug.Log(caricamento.progress);
+            sliderCaricamento.value = progresso;
             yield return null;
         }
     }
