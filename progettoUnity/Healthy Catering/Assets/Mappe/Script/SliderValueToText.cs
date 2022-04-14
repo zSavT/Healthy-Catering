@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using TMPro;
-using System;
 
 public class SliderValueToText : MonoBehaviour
 {
