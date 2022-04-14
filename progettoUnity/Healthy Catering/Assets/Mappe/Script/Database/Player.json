@@ -1,0 +1,248 @@
+[
+  {
+    "nome": "Gianni",
+    "soldi": 4.0,
+    "inventario": [
+      {
+        "oggetto": 0,
+        "quantita": 1
+      },
+      {
+        "oggetto": 1,
+        "quantita": 1
+      },
+      {
+        "oggetto": 2,
+        "quantita": 1
+      },
+      {
+        "oggetto": 3,
+        "quantita": 1
+      },
+      {
+        "oggetto": 4,
+        "quantita": 1
+      },
+      {
+        "oggetto": 5,
+        "quantita": 1
+      },
+      {
+        "oggetto": 6,
+        "quantita": 1
+      }
+    ]
+  },
+  {
+    "nome": "Gianni",
+    "soldi": 4.0,
+    "inventario": [
+      {
+        "oggetto": 0,
+        "quantita": 1
+      },
+      {
+        "oggetto": 1,
+        "quantita": 1
+      },
+      {
+        "oggetto": 2,
+        "quantita": 1
+      },
+      {
+        "oggetto": 3,
+        "quantita": 1
+      },
+      {
+        "oggetto": 4,
+        "quantita": 1
+      },
+      {
+        "oggetto": 5,
+        "quantita": 1
+      },
+      {
+        "oggetto": 6,
+        "quantita": 1
+      }
+    ]
+  },
+  {
+    "nome": "Gianni",
+    "soldi": 4.0,
+    "inventario": [
+      {
+        "oggetto": 0,
+        "quantita": 1
+      }
+    ]
+  },
+  {
+    "nome": "Gianni",
+    "soldi": 4.0,
+    "inventario": [
+      {
+        "oggetto": 0,
+        "quantita": 1
+      },
+      {
+        "oggetto": 1,
+        "quantita": 1
+      },
+      {
+        "oggetto": 2,
+        "quantita": 1
+      },
+      {
+        "oggetto": 3,
+        "quantita": 1
+      },
+      {
+        "oggetto": 4,
+        "quantita": 1
+      },
+      {
+        "oggetto": 5,
+        "quantita": 1
+      },
+      {
+        "oggetto": 6,
+        "quantita": 1
+      }
+    ]
+  },
+  {
+    "nome": "Gianni",
+    "soldi": 4.0,
+    "inventario": [
+      {
+        "oggetto": 0,
+        "quantita": 1
+      },
+      {
+        "oggetto": 1,
+        "quantita": 1
+      },
+      {
+        "oggetto": 2,
+        "quantita": 1
+      },
+      {
+        "oggetto": 3,
+        "quantita": 1
+      },
+      {
+        "oggetto": 4,
+        "quantita": 1
+      },
+      {
+        "oggetto": 5,
+        "quantita": 1
+      },
+      {
+        "oggetto": 6,
+        "quantita": 1
+      }
+    ]
+  },
+  {
+    "nome": "Gianni",
+    "soldi": 4.0,
+    "inventario": [
+      {
+        "oggetto": 0,
+        "quantita": 1
+      },
+      {
+        "oggetto": 1,
+        "quantita": 1
+      },
+      {
+        "oggetto": 2,
+        "quantita": 1
+      },
+      {
+        "oggetto": 3,
+        "quantita": 1
+      },
+      {
+        "oggetto": 4,
+        "quantita": 1
+      },
+      {
+        "oggetto": 5,
+        "quantita": 1
+      },
+      {
+        "oggetto": 6,
+        "quantita": 1
+      }
+    ]
+  },
+  {
+    "nome": "Gianni",
+    "soldi": 4.0,
+    "inventario": [
+      {
+        "oggetto": 7,
+        "quantita": 1
+      },
+      {
+        "oggetto": 9,
+        "quantita": 1
+      },
+      {
+        "oggetto": 10,
+        "quantita": 1
+      },
+      {
+        "oggetto": 11,
+        "quantita": 1
+      }
+    ]
+  },
+  {
+    "nome": "Gianni",
+    "soldi": 4.0,
+    "inventario": [
+      {
+        "oggetto": 7,
+        "quantita": 1
+      },
+      {
+        "oggetto": 9,
+        "quantita": 1
+      },
+      {
+        "oggetto": 10,
+        "quantita": 1
+      },
+      {
+        "oggetto": 11,
+        "quantita": 1
+      }
+    ]
+  },
+  {
+    "nome": "Gianni",
+    "soldi": 4.0,
+    "inventario": [
+      {
+        "oggetto": 7,
+        "quantita": 1
+      },
+      {
+        "oggetto": 9,
+        "quantita": 1
+      },
+      {
+        "oggetto": 10,
+        "quantita": 1
+      },
+      {
+        "oggetto": 11,
+        "quantita": 1
+      }
+    ]
+  }
+]

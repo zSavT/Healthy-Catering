@@ -1,0 +1,77 @@
+[33mcommit 8a553b851adc16f764bb070e735ecdcb722e422d[m
+Author: zSavT <verioc3@gmail.com>
+Date:   Thu Apr 14 15:07:39 2022 +0200
+
+    Aggiornata build
+
+[33mcommit bd2ab89c0b9f9ff8fdccb7a300e1754a34a07761[m
+Author: zSavT <verioc3@gmail.com>
+Date:   Thu Apr 14 14:59:52 2022 +0200
+
+    Fix visualizzazione slider caricamento
+
+[33mcommit 59237e9d4074d3e70d421159cc1ccfd5be95b9cb[m[33m ([m[1;31morigin/issue#51[m[33m, [m[1;32missue#51[m[33m)[m
+Author: zSavT <verioc3@gmail.com>
+Date:   Thu Apr 14 14:34:35 2022 +0200
+
+    Aggiunti commenti ed aggiornato prefabs
+
+[33mcommit 07fa2e458c5a0a76c6a112d98c3c2ed3b570b8ed[m
+Author: zSavT <verioc3@gmail.com>
+Date:   Thu Apr 14 14:23:54 2022 +0200
+
+    Sistemati nome metodi e formattazione
+
+[33mcommit f23525e0eca858422b252a57031a5887f93d6ec8[m
+Author: zSavT <verioc3@gmail.com>
+Date:   Thu Apr 14 14:17:49 2022 +0200
+
+    Fix slider
+
+[33mcommit cb832149cfb7e082dc3a6ea45a340339538842c8[m
+Author: zSavT <verioc3@gmail.com>
+Date:   Thu Apr 14 13:39:18 2022 +0200
+
+    Finita schermata di caricamento
+
+[33mcommit 88653eead92a1ebbb87f83d4429da4d4cf71233f[m
+Author: zSavT <verioc3@gmail.com>
+Date:   Thu Apr 14 13:09:27 2022 +0200
+
+    Aggiunta bozza caricamento e scomparsa bottoni
+
+[33mcommit 8b90fcb2f8622a0910cc08c3a34121b65e4add0a[m
+Author: zSavT <verioc3@gmail.com>
+Date:   Thu Apr 14 12:34:13 2022 +0200
+
+    Fix bug slider
+
+[33mcommit 66d9f020d0cc7f73b485203c907baa0683e27fc2[m
+Author: zSavT <verioc3@gmail.com>
+Date:   Thu Apr 14 11:07:57 2022 +0200
+
+    Fix bug ed aggiunta di bozza script slider
+
+[33mcommit 1b84bfd6dd7f43e0570f841624f1fe0c099fd829[m
+Author: zSavT <f.cassano45@studenti.uniba.it>
+Date:   Wed Apr 13 18:50:47 2022 +0200
+
+    Aggiunto menu Opzioni
+
+[33mcommit 78e5bbb6f77b49ec9af378bad7723f4b371b4589[m
+Author: zSavT <f.cassano45@studenti.uniba.it>
+Date:   Wed Apr 13 18:28:03 2022 +0200
+
+    Aggiunto tasto quit e interazione visiva
+
+[33mcommit 3685e934c35baaf2a8cafa5759bc4a3b86683eb2[m
+Author: zSavT <f.cassano45@studenti.uniba.it>
+Date:   Wed Apr 13 18:11:31 2022 +0200
+
+    Creata bozza menu
+
+[33mcommit f5576cb6585d82948df2cd3b87bc44d995191f0d[m
+Author: zSavT <f.cassano45@studenti.uniba.it>
+Date:   Wed Apr 13 17:18:45 2022 +0200
+
+    Aggiunto crossHair semplice con cambio colore
