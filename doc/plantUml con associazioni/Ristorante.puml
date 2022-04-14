@@ -4,7 +4,8 @@ class Ristorante {
     + punteggio : int
     + Ristorante(nome:string, punteggio:int, magazzinoIngredienti:List<OggettoQuantita<int>>)
     + Ristorante()
-    + {static} getNewPunteggioFromUtente() : int
+    + <<override>> Equals(obj:object) : bool
+    + <<override>> ToString() : string
     + {static} fillMagazzinoIngredienti() : List<OggettoQuantita<int>>
 }
 class "List`1"<T> {

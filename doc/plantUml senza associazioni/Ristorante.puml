@@ -2,10 +2,11 @@
 class Ristorante {
     + nome : string = ""
     + punteggio : int
-    + magazzinoIngredienti : List <OggettoQuantita<int>>
+    + magazzinoIngredienti : List<OggettoQuantita<int>>
     + Ristorante(nome:string, punteggio:int, magazzinoIngredienti:List<OggettoQuantita<int>>)
     + Ristorante()
-    + {static} getNewPunteggioFromUtente() : int
+    + <<override>> Equals(obj:object) : bool
+    + <<override>> ToString() : string
     + {static} fillMagazzinoIngredienti() : List<OggettoQuantita<int>>
 }
 @enduml

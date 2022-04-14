@@ -1,9 +1,9 @@
 public class Cliente
 {
     public string nome = "";
-    
+
     public int dieta = 0;
-    public List <int> listaIdPatologie = null;
+    public List<int> listaIdPatologie = null;
 
     //costruttore
     public Cliente(string nome, int dieta, List<int> listaIdPatologie)
@@ -13,15 +13,11 @@ public class Cliente
         this.listaIdPatologie = listaIdPatologie;
     }
 
-    public Cliente (){
+    public Cliente()
+    {
         this.nome = "";
         this.dieta = -1;
-        this.listaIdPatologie = new List <int> ();
-    }
-
-    public string getNewNomeClienteFromUtente (string output){
-        Console.WriteLine (output);
-        return Console.ReadLine();
+        this.listaIdPatologie = new List<int>();
     }
 
     public override bool Equals(object obj)
@@ -40,9 +36,21 @@ public class Cliente
             && (Enumerable.SequenceEqual(this.listaIdPatologie, ((Cliente)obj).listaIdPatologie));
     }
 
-    //distruttore
-    ~Cliente() 
+    public override string ToString()
     {
-    
+        string listaIdPatologieString = Patologia.listIdToListPatologie(this.listaIdPatologie);
+
+        string output = "Cliente:" + "\n\t" + this.nome + "\n" + "Dieta:" + "\n\t" + this.dieta + "\n";
+
+        if (!(listaIdPatologieString.Equals("")))
+            output = output + "Patologie:" + listaIdPatologieString + "\n";
+
+        return output + "Fine cliente " + this.nome;
+    }
+
+    //distruttore
+    ~Cliente()
+    {
+
     }
 }

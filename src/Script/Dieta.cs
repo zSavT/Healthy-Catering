@@ -9,35 +9,11 @@ public class Dieta
         this.descrizione = descrizione;
     }
 
-    public Dieta (){
+    public Dieta()
+    {
         this.nome = "";
         this.descrizione = "";
     }
-    
-    public static int getNewDietaFromUtente (string output){
-        string dietaTemp;
-        int dietaTempInt = -1;
-        Console.WriteLine (output);
-        dietaTemp = Console.ReadLine();
-        try{
-            dietaTempInt = Dieta.dietaStringToIdDieta(dietaTemp);
-        }
-        catch (InvalidOperationException e){
-            Console.WriteLine (e.Message);
-        }
-        return dietaTempInt;
-    }
-
-    public static int dietaStringToIdDieta (string dieta){
-        if (dieta.ToLower () == "vegana")
-            return 0;
-        else if (dieta.ToLower () == "vegetariana")
-            return 1;
-        else if (dieta.ToLower () == "onnivora")
-            return 2;
-        else
-            throw new InvalidOperationException ("Dieta inserita non valida");
-    } 
 
     public override bool Equals(object obj)
     {
@@ -54,8 +30,54 @@ public class Dieta
             && (this.descrizione.Equals(((Dieta)obj).descrizione));
     }
 
+    public override string ToString()
+    {
+        return "Dieta:" + "\n\t" + this.nome + "\n" + "Descrizione: " + "\n\t" + this.descrizione + "\n" + "Fine dieta " + this.nome;
+    }
+
     ~Dieta()
     {
-        
+
+    }
+
+    public static int getNewDietaFromUtente(string output)
+    {
+        string dietaTemp;
+        int dietaTempInt = -1;
+        Console.WriteLine(output);
+        dietaTemp = Console.ReadLine();
+        try
+        {
+            dietaTempInt = dietaStringToIdDieta(dietaTemp);
+        }
+        catch (InvalidOperationException e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        return dietaTempInt;
+    }
+
+    private static int dietaStringToIdDieta(string dieta)
+    {
+        if (dieta.ToLower() == "vegana")
+            return 0;
+        else if (dieta.ToLower() == "vegetariana")
+            return 1;
+        else if (dieta.ToLower() == "onnivora")
+            return 2;
+        else
+            throw new InvalidOperationException("Dieta inserita non valida");
+    }
+
+    public static string IdDietaToDietaString(int id)
+    {
+        if (id == 0)
+            return "Vegana";
+        else if (id == 1)
+            return "Vegetariana";
+        else if (id == 2)
+            return "Onnivora";
+        else
+            throw new InvalidOperationException("Id dieta inserito non valido");
     }
 }

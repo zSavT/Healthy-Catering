@@ -2,13 +2,15 @@
 
 ![Logo](doc/img/Logo.png "Logo Gioco")
 
-Corso Unity 1: https://www.gamedev.tv/ <br>
-Email: verioc3@gmail.com<br>
+Healthy Catering è un Serius Games che ha come scopo primario insegnare agli studenti delle materie in ambito medico, quali sono i migliori piatti da mangiare per i pazienti che hannno patologie particolari.
 
-Versione Unity: 2021 <p>
+## Immagini di gioco
 
-Estensioni Code: C# - Unity Code Snippets <br>
- 
- Per qualche motivo l'ultima versione dell'estensione per C# di Microsoft è buggata, per questo motivo bisogna installare la versione precedente. 
-  <br>
-  Assicurarsi anche che sia installato dotnet di Microsoft.
+![HUD](doc/img/Bozza_HUD_game.png "HUD in Game")
+
+![HUD](doc/img/Bozza_HUD_Ristorante.jpg "HUD in Game")
+
+---
+
+Cassano Francesco Saverio<br>
+Carella Alessandro

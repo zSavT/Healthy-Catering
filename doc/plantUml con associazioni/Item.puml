@@ -4,9 +4,10 @@ class Item {
     + nome : string = ""
     + descrizione : string = ""
     + Item(idItem:int, nome:string, descrizione:string)
-    + Item()
     + Item(nome:string)
-    + {static} getNewIdDatabaseItem(oggetto:Item) : int
+    + Item()
+    + <<override>> Equals(obj:object) : bool
+    + <<override>> ToString() : string
     + {static} creaNuovoItem(nome:string) : Item
 }
 @enduml
