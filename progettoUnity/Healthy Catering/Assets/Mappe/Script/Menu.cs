@@ -6,20 +6,17 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    public Slider sliderCaricamento;
+    public Slider sliderCaricamento;        //slider del caricamento della partita
     public UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
 
-
-
-
-    public void PlayGame(int sceneIndex)
+    public void playGame(int sceneIndex)
     {
         allAvvio.Invoke();
-        StartCoroutine(CaricamentoAsincrono(sceneIndex));
+        StartCoroutine(caricamentoAsincrono(sceneIndex));
         allAvvio.Invoke();
     }
 
-    IEnumerator CaricamentoAsincrono(int sceneIndex)
+    IEnumerator caricamentoAsincrono(int sceneIndex)
     {
         AsyncOperation caricamento = SceneManager.LoadSceneAsync(sceneIndex);
 

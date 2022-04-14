@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 
@@ -8,7 +7,6 @@ public class SliderValueToText : MonoBehaviour
     public Slider sliderUI;
     private TextMeshProUGUI textSliderValue;
     
-
     void Start()
     {
         textSliderValue = GetComponent<TextMeshProUGUI>();
@@ -25,6 +23,5 @@ public class SliderValueToText : MonoBehaviour
         Debug.Log(valoreCaricamento.ToString());
         textSliderValue.text = valoreCaricamento + "%";
     }
-
 
 }
