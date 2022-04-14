@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637848745551368315
+      ticks: 637849128298295625
     m_Hash: 3521293456
   m_LockFileStatus:
     m_FilePath: C:/Users/verio/Repo/Healthy-Catering/progettoUnity/Healthy Catering/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637848745551478317
+      ticks: 637849128298395626
     m_Hash: 2797659484
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}

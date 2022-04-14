@@ -14,6 +14,6 @@ public class Animazione : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        anim.SetFloat("vertical", Input.GetAxis("Vertical"));
+       // anim.SetFloat("vertical", Input.GetAxis("Vertical"));
     }
 }
