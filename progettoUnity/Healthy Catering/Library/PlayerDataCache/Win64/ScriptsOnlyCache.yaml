@@ -48,6 +48,7 @@ ScriptsOnlyBuild:
     - UnityEngine.Events.ArgumentCache
     - UnityEngine.Events.PersistentCallGroup
     - UnityEngine.Events.PersistentListenerMode
+    - UnityEngine.Events.UnityEvent
     UnityEngine.TextCoreFontEngineModule:
     - UnityEngine.TextCore.FaceInfo
     - UnityEngine.TextCore.Glyph
@@ -72,14 +73,47 @@ ScriptsOnlyBuild:
     fullTypeName: Menu
     methodName: menuOpzioni
   - assembly: Assembly-CSharp
+    fullTypeName: SliderValueToText
+    methodName: aggiornaValorePercentuale
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.Behaviour
+    methodName: set_enabled
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.Behaviour
+    methodName: set_enabled
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.Behaviour
+    methodName: set_enabled
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.Behaviour
+    methodName: set_enabled
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.Behaviour
+    methodName: set_enabled
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.Behaviour
+    methodName: set_enabled
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.Behaviour
+    methodName: set_enabled
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.Behaviour
+    methodName: set_enabled
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.Behaviour
+    methodName: set_enabled
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.Behaviour
+    methodName: set_enabled
+  - assembly: Assembly-CSharp
     fullTypeName: Menu
     methodName: menuPrincipale
   - assembly: Assembly-CSharp
     fullTypeName: SliderValueToText
-    methodName: ShowSliderValue
+    methodName: aggiornaValore
   - assembly: Assembly-CSharp
     fullTypeName: SliderValueToText
-    methodName: ShowSliderValue
+    methodName: aggiornaValore
   sceneClasses:
     Assets/Mappe/Citta.unity:
     - Class: 1
@@ -188,7 +222,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4424}
     - Class: 114
+      Script: {instanceID: 5070}
+    - Class: 114
       Script: {instanceID: 5154}
+    - Class: 114
+      Script: {instanceID: 5266}
     - Class: 114
       Script: {instanceID: 5732}
     - Class: 114
@@ -1195,7 +1233,7 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 739281790f7c9a498bd52b66177369c8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Menu

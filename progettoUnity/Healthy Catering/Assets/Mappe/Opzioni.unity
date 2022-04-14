@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 38735336}
   - component: {fileID: 38735335}
   m_Layer: 5
-  m_Name: Sensibilita
+  m_Name: SensibilitaValore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,17 +149,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 38735333}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1988159437}
-  m_RootOrder: 9
+  m_Father: {fileID: 1893535363}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 199.4, y: -53.1}
+  m_AnchoredPosition: {x: 195.4, y: -5.810005}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &38735335
@@ -526,17 +526,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 510533492}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1988159437}
-  m_RootOrder: 7
+  m_Father: {fileID: 1893535363}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -165.1, y: -45.4}
+  m_AnchoredPosition: {x: -169.1, y: 1.890007}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &510533494
@@ -1346,12 +1346,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1988159437}
-  m_RootOrder: 6
+  m_Father: {fileID: 1060960640}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 198, y: 12.576767}
+  m_AnchoredPosition: {x: 194, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &795170712
@@ -1572,12 +1572,14 @@ RectTransform:
   - {fileID: 1865940205}
   - {fileID: 789049972}
   - {fileID: 1665561527}
+  - {fileID: 795170711}
+  - {fileID: 1756475565}
   m_Father: {fileID: 1988159437}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: 12.576767}
+  m_AnchoredPosition: {x: 4, y: 12.576752}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1060960641
@@ -1633,7 +1635,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 795170714}
         m_TargetAssemblyTypeName: SliderValueToText, Assembly-CSharp
-        m_MethodName: ShowSliderValue
+        m_MethodName: aggiornaValore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1977,7 +1979,7 @@ GameObject:
   - component: {fileID: 1756475567}
   - component: {fileID: 1756475566}
   m_Layer: 5
-  m_Name: Fov
+  m_Name: FovScritta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1995,12 +1997,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1988159437}
+  m_Father: {fileID: 1060960640}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -49, y: 12.576782}
+  m_AnchoredPosition: {x: -53, y: 0.000030517578}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1756475566
@@ -2246,7 +2248,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 38735335}
         m_TargetAssemblyTypeName: SliderValueToText, Assembly-CSharp
-        m_MethodName: ShowSliderValue
+        m_MethodName: aggiornaValore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2271,8 +2273,10 @@ RectTransform:
   - {fileID: 893832610}
   - {fileID: 1539184571}
   - {fileID: 1148367692}
+  - {fileID: 510533493}
+  - {fileID: 38735334}
   m_Father: {fileID: 1988159437}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2460,12 +2464,8 @@ RectTransform:
   - {fileID: 1515120247}
   - {fileID: 526829877}
   - {fileID: 612184460}
-  - {fileID: 1756475565}
   - {fileID: 1060960640}
-  - {fileID: 795170711}
-  - {fileID: 510533493}
   - {fileID: 1893535363}
-  - {fileID: 38735334}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2486,3 +2486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a371dd11763cb4eb6ba9d3db4062e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliderCaricamento: {fileID: 0}
+  allAvvio:
+    m_PersistentCalls:
+      m_Calls: []

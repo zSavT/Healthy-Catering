@@ -148,7 +148,82 @@
         140,
         141,
         142,
-        143
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218
       ],
       "AllowUnexpectedOutput": true,
       "DebugActionIndex": 0
@@ -385,6 +460,17 @@
       "DebugActionIndex": 21
     },
     {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Assembly-CSharp.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/Assembly-CSharp.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Assembly-CSharp.pdb"
+      ],
+      "DebugActionIndex": 22
+    },
+    {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Mono.Security.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
@@ -393,7 +479,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Mono.Security.dll"
       ],
-      "DebugActionIndex": 22
+      "DebugActionIndex": 23
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/mscorlib.dll",
@@ -404,7 +490,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/mscorlib.dll"
       ],
-      "DebugActionIndex": 23
+      "DebugActionIndex": 24
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/netstandard.dll",
@@ -415,7 +501,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/netstandard.dll"
       ],
-      "DebugActionIndex": 24
+      "DebugActionIndex": 25
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.ComponentModel.Composition.dll",
@@ -426,7 +512,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.ComponentModel.Composition.dll"
       ],
-      "DebugActionIndex": 25
+      "DebugActionIndex": 26
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Configuration.dll",
@@ -437,7 +523,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Configuration.dll"
       ],
-      "DebugActionIndex": 26
+      "DebugActionIndex": 27
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Core.dll",
@@ -448,7 +534,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Core.dll"
       ],
-      "DebugActionIndex": 27
+      "DebugActionIndex": 28
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Data.DataSetExtensions.dll",
@@ -459,7 +545,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Data.DataSetExtensions.dll"
       ],
-      "DebugActionIndex": 28
+      "DebugActionIndex": 29
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Data.dll",
@@ -470,7 +556,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Data.dll"
       ],
-      "DebugActionIndex": 29
+      "DebugActionIndex": 30
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.dll",
@@ -481,7 +567,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.dll"
       ],
-      "DebugActionIndex": 30
+      "DebugActionIndex": 31
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Drawing.dll",
@@ -492,7 +578,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Drawing.dll"
       ],
-      "DebugActionIndex": 31
+      "DebugActionIndex": 32
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.EnterpriseServices.dll",
@@ -503,7 +589,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.EnterpriseServices.dll"
       ],
-      "DebugActionIndex": 32
+      "DebugActionIndex": 33
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.IO.Compression.dll",
@@ -514,7 +600,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.IO.Compression.dll"
       ],
-      "DebugActionIndex": 33
+      "DebugActionIndex": 34
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.IO.Compression.FileSystem.dll",
@@ -525,7 +611,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.IO.Compression.FileSystem.dll"
       ],
-      "DebugActionIndex": 34
+      "DebugActionIndex": 35
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Net.Http.dll",
@@ -536,7 +622,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Net.Http.dll"
       ],
-      "DebugActionIndex": 35
+      "DebugActionIndex": 36
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Numerics.dll",
@@ -547,7 +633,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Numerics.dll"
       ],
-      "DebugActionIndex": 36
+      "DebugActionIndex": 37
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Runtime.Serialization.dll",
@@ -558,7 +644,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Runtime.Serialization.dll"
       ],
-      "DebugActionIndex": 37
+      "DebugActionIndex": 38
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Security.dll",
@@ -569,7 +655,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Security.dll"
       ],
-      "DebugActionIndex": 38
+      "DebugActionIndex": 39
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.ServiceModel.Internals.dll",
@@ -580,7 +666,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.ServiceModel.Internals.dll"
       ],
-      "DebugActionIndex": 39
+      "DebugActionIndex": 40
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Transactions.dll",
@@ -591,7 +677,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Transactions.dll"
       ],
-      "DebugActionIndex": 40
+      "DebugActionIndex": 41
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Xml.dll",
@@ -602,7 +688,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Xml.dll"
       ],
-      "DebugActionIndex": 41
+      "DebugActionIndex": 42
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Xml.Linq.dll",
@@ -613,7 +699,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/System.Xml.Linq.dll"
       ],
-      "DebugActionIndex": 42
+      "DebugActionIndex": 43
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.TextMeshPro.dll",
@@ -624,7 +710,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.TextMeshPro.dll"
       ],
-      "DebugActionIndex": 43
+      "DebugActionIndex": 44
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.TextMeshPro.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/Unity.TextMeshPro.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.TextMeshPro.pdb"
+      ],
+      "DebugActionIndex": 45
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.Timeline.dll",
@@ -635,7 +732,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.Timeline.dll"
       ],
-      "DebugActionIndex": 44
+      "DebugActionIndex": 46
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.Timeline.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/Unity.Timeline.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.Timeline.pdb"
+      ],
+      "DebugActionIndex": 47
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll",
@@ -646,7 +754,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll"
       ],
-      "DebugActionIndex": 45
+      "DebugActionIndex": 48
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.Core.dll",
@@ -657,7 +765,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.Core.dll"
       ],
-      "DebugActionIndex": 46
+      "DebugActionIndex": 49
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.Core.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/Unity.VisualScripting.Core.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.Core.pdb"
+      ],
+      "DebugActionIndex": 50
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.Flow.dll",
@@ -668,7 +787,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.Flow.dll"
       ],
-      "DebugActionIndex": 47
+      "DebugActionIndex": 51
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.Flow.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/Unity.VisualScripting.Flow.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.Flow.pdb"
+      ],
+      "DebugActionIndex": 52
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.State.dll",
@@ -679,7 +809,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.State.dll"
       ],
-      "DebugActionIndex": 48
+      "DebugActionIndex": 53
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.State.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/Unity.VisualScripting.State.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/Unity.VisualScripting.State.pdb"
+      ],
+      "DebugActionIndex": 54
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AccessibilityModule.dll",
@@ -690,7 +831,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AccessibilityModule.dll"
       ],
-      "DebugActionIndex": 49
+      "DebugActionIndex": 55
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AccessibilityModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.AccessibilityModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AccessibilityModule.pdb"
+      ],
+      "DebugActionIndex": 56
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AIModule.dll",
@@ -701,7 +853,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AIModule.dll"
       ],
-      "DebugActionIndex": 50
+      "DebugActionIndex": 57
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AIModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.AIModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AIModule.pdb"
+      ],
+      "DebugActionIndex": 58
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AndroidJNIModule.dll",
@@ -712,7 +875,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AndroidJNIModule.dll"
       ],
-      "DebugActionIndex": 51
+      "DebugActionIndex": 59
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AndroidJNIModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.AndroidJNIModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AndroidJNIModule.pdb"
+      ],
+      "DebugActionIndex": 60
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AnimationModule.dll",
@@ -723,7 +897,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AnimationModule.dll"
       ],
-      "DebugActionIndex": 52
+      "DebugActionIndex": 61
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AnimationModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.AnimationModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AnimationModule.pdb"
+      ],
+      "DebugActionIndex": 62
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ARModule.dll",
@@ -734,7 +919,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ARModule.dll"
       ],
-      "DebugActionIndex": 53
+      "DebugActionIndex": 63
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ARModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.ARModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ARModule.pdb"
+      ],
+      "DebugActionIndex": 64
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AssetBundleModule.dll",
@@ -745,7 +941,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AssetBundleModule.dll"
       ],
-      "DebugActionIndex": 54
+      "DebugActionIndex": 65
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AssetBundleModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.AssetBundleModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AssetBundleModule.pdb"
+      ],
+      "DebugActionIndex": 66
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AudioModule.dll",
@@ -756,7 +963,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AudioModule.dll"
       ],
-      "DebugActionIndex": 55
+      "DebugActionIndex": 67
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AudioModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.AudioModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.AudioModule.pdb"
+      ],
+      "DebugActionIndex": 68
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ClothModule.dll",
@@ -767,7 +985,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ClothModule.dll"
       ],
-      "DebugActionIndex": 56
+      "DebugActionIndex": 69
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ClothModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.ClothModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ClothModule.pdb"
+      ],
+      "DebugActionIndex": 70
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ClusterInputModule.dll",
@@ -778,7 +1007,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ClusterInputModule.dll"
       ],
-      "DebugActionIndex": 57
+      "DebugActionIndex": 71
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ClusterInputModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.ClusterInputModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ClusterInputModule.pdb"
+      ],
+      "DebugActionIndex": 72
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ClusterRendererModule.dll",
@@ -789,7 +1029,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ClusterRendererModule.dll"
       ],
-      "DebugActionIndex": 58
+      "DebugActionIndex": 73
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ClusterRendererModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.ClusterRendererModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ClusterRendererModule.pdb"
+      ],
+      "DebugActionIndex": 74
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.CoreModule.dll",
@@ -800,7 +1051,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.CoreModule.dll"
       ],
-      "DebugActionIndex": 59
+      "DebugActionIndex": 75
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.CoreModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.CoreModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.CoreModule.pdb"
+      ],
+      "DebugActionIndex": 76
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.CrashReportingModule.dll",
@@ -811,7 +1073,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.CrashReportingModule.dll"
       ],
-      "DebugActionIndex": 60
+      "DebugActionIndex": 77
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.CrashReportingModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.CrashReportingModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.CrashReportingModule.pdb"
+      ],
+      "DebugActionIndex": 78
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.DirectorModule.dll",
@@ -822,7 +1095,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.DirectorModule.dll"
       ],
-      "DebugActionIndex": 61
+      "DebugActionIndex": 79
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.DirectorModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.DirectorModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.DirectorModule.pdb"
+      ],
+      "DebugActionIndex": 80
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.dll",
@@ -833,7 +1117,7 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.dll"
       ],
-      "DebugActionIndex": 62
+      "DebugActionIndex": 81
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.DSPGraphModule.dll",
@@ -844,7 +1128,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.DSPGraphModule.dll"
       ],
-      "DebugActionIndex": 63
+      "DebugActionIndex": 82
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.DSPGraphModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.DSPGraphModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.DSPGraphModule.pdb"
+      ],
+      "DebugActionIndex": 83
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.GameCenterModule.dll",
@@ -855,7 +1150,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.GameCenterModule.dll"
       ],
-      "DebugActionIndex": 64
+      "DebugActionIndex": 84
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.GameCenterModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.GameCenterModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.GameCenterModule.pdb"
+      ],
+      "DebugActionIndex": 85
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.GIModule.dll",
@@ -866,7 +1172,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.GIModule.dll"
       ],
-      "DebugActionIndex": 65
+      "DebugActionIndex": 86
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.GIModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.GIModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.GIModule.pdb"
+      ],
+      "DebugActionIndex": 87
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.GridModule.dll",
@@ -877,7 +1194,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.GridModule.dll"
       ],
-      "DebugActionIndex": 66
+      "DebugActionIndex": 88
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.GridModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.GridModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.GridModule.pdb"
+      ],
+      "DebugActionIndex": 89
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.HotReloadModule.dll",
@@ -888,7 +1216,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.HotReloadModule.dll"
       ],
-      "DebugActionIndex": 67
+      "DebugActionIndex": 90
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.HotReloadModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.HotReloadModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.HotReloadModule.pdb"
+      ],
+      "DebugActionIndex": 91
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ImageConversionModule.dll",
@@ -899,7 +1238,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ImageConversionModule.dll"
       ],
-      "DebugActionIndex": 68
+      "DebugActionIndex": 92
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ImageConversionModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.ImageConversionModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ImageConversionModule.pdb"
+      ],
+      "DebugActionIndex": 93
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.IMGUIModule.dll",
@@ -910,7 +1260,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.IMGUIModule.dll"
       ],
-      "DebugActionIndex": 69
+      "DebugActionIndex": 94
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.IMGUIModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.IMGUIModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.IMGUIModule.pdb"
+      ],
+      "DebugActionIndex": 95
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.InputLegacyModule.dll",
@@ -921,7 +1282,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.InputLegacyModule.dll"
       ],
-      "DebugActionIndex": 70
+      "DebugActionIndex": 96
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.InputLegacyModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.InputLegacyModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.InputLegacyModule.pdb"
+      ],
+      "DebugActionIndex": 97
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.InputModule.dll",
@@ -932,7 +1304,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.InputModule.dll"
       ],
-      "DebugActionIndex": 71
+      "DebugActionIndex": 98
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.InputModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.InputModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.InputModule.pdb"
+      ],
+      "DebugActionIndex": 99
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.JSONSerializeModule.dll",
@@ -943,7 +1326,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.JSONSerializeModule.dll"
       ],
-      "DebugActionIndex": 72
+      "DebugActionIndex": 100
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.JSONSerializeModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.JSONSerializeModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.JSONSerializeModule.pdb"
+      ],
+      "DebugActionIndex": 101
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.LocalizationModule.dll",
@@ -954,7 +1348,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.LocalizationModule.dll"
       ],
-      "DebugActionIndex": 73
+      "DebugActionIndex": 102
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.LocalizationModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.LocalizationModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.LocalizationModule.pdb"
+      ],
+      "DebugActionIndex": 103
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.NVIDIAModule.dll",
@@ -965,7 +1370,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.NVIDIAModule.dll"
       ],
-      "DebugActionIndex": 74
+      "DebugActionIndex": 104
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.NVIDIAModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.NVIDIAModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.NVIDIAModule.pdb"
+      ],
+      "DebugActionIndex": 105
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ParticleSystemModule.dll",
@@ -976,7 +1392,29 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ParticleSystemModule.dll"
       ],
-      "DebugActionIndex": 75
+      "DebugActionIndex": 106
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ParticleSystemModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.ParticleSystemModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ParticleSystemModule.pdb"
+      ],
+      "DebugActionIndex": 107
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.pdb"
+      ],
+      "DebugActionIndex": 108
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.PerformanceReportingModule.dll",
@@ -987,7 +1425,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.PerformanceReportingModule.dll"
       ],
-      "DebugActionIndex": 76
+      "DebugActionIndex": 109
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.PerformanceReportingModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.PerformanceReportingModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.PerformanceReportingModule.pdb"
+      ],
+      "DebugActionIndex": 110
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.Physics2DModule.dll",
@@ -998,7 +1447,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.Physics2DModule.dll"
       ],
-      "DebugActionIndex": 77
+      "DebugActionIndex": 111
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.Physics2DModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.Physics2DModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.Physics2DModule.pdb"
+      ],
+      "DebugActionIndex": 112
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.PhysicsModule.dll",
@@ -1009,7 +1469,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.PhysicsModule.dll"
       ],
-      "DebugActionIndex": 78
+      "DebugActionIndex": 113
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.PhysicsModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.PhysicsModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.PhysicsModule.pdb"
+      ],
+      "DebugActionIndex": 114
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ProfilerModule.dll",
@@ -1020,7 +1491,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ProfilerModule.dll"
       ],
-      "DebugActionIndex": 79
+      "DebugActionIndex": 115
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ProfilerModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.ProfilerModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ProfilerModule.pdb"
+      ],
+      "DebugActionIndex": 116
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll",
@@ -1031,7 +1513,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll"
       ],
-      "DebugActionIndex": 80
+      "DebugActionIndex": 117
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.pdb"
+      ],
+      "DebugActionIndex": 118
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ScreenCaptureModule.dll",
@@ -1042,7 +1535,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ScreenCaptureModule.dll"
       ],
-      "DebugActionIndex": 81
+      "DebugActionIndex": 119
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ScreenCaptureModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.ScreenCaptureModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.ScreenCaptureModule.pdb"
+      ],
+      "DebugActionIndex": 120
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SharedInternalsModule.dll",
@@ -1053,7 +1557,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SharedInternalsModule.dll"
       ],
-      "DebugActionIndex": 82
+      "DebugActionIndex": 121
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SharedInternalsModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.SharedInternalsModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SharedInternalsModule.pdb"
+      ],
+      "DebugActionIndex": 122
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SpriteMaskModule.dll",
@@ -1064,7 +1579,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SpriteMaskModule.dll"
       ],
-      "DebugActionIndex": 83
+      "DebugActionIndex": 123
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SpriteMaskModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.SpriteMaskModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SpriteMaskModule.pdb"
+      ],
+      "DebugActionIndex": 124
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SpriteShapeModule.dll",
@@ -1075,7 +1601,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SpriteShapeModule.dll"
       ],
-      "DebugActionIndex": 84
+      "DebugActionIndex": 125
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SpriteShapeModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.SpriteShapeModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SpriteShapeModule.pdb"
+      ],
+      "DebugActionIndex": 126
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.StreamingModule.dll",
@@ -1086,7 +1623,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.StreamingModule.dll"
       ],
-      "DebugActionIndex": 85
+      "DebugActionIndex": 127
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.StreamingModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.StreamingModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.StreamingModule.pdb"
+      ],
+      "DebugActionIndex": 128
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SubstanceModule.dll",
@@ -1097,7 +1645,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SubstanceModule.dll"
       ],
-      "DebugActionIndex": 86
+      "DebugActionIndex": 129
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SubstanceModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.SubstanceModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SubstanceModule.pdb"
+      ],
+      "DebugActionIndex": 130
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SubsystemsModule.dll",
@@ -1108,7 +1667,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SubsystemsModule.dll"
       ],
-      "DebugActionIndex": 87
+      "DebugActionIndex": 131
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SubsystemsModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.SubsystemsModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.SubsystemsModule.pdb"
+      ],
+      "DebugActionIndex": 132
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TerrainModule.dll",
@@ -1119,7 +1689,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TerrainModule.dll"
       ],
-      "DebugActionIndex": 88
+      "DebugActionIndex": 133
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TerrainModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.TerrainModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TerrainModule.pdb"
+      ],
+      "DebugActionIndex": 134
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TerrainPhysicsModule.dll",
@@ -1130,7 +1711,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TerrainPhysicsModule.dll"
       ],
-      "DebugActionIndex": 89
+      "DebugActionIndex": 135
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TerrainPhysicsModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.TerrainPhysicsModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TerrainPhysicsModule.pdb"
+      ],
+      "DebugActionIndex": 136
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll",
@@ -1141,7 +1733,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll"
       ],
-      "DebugActionIndex": 90
+      "DebugActionIndex": 137
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TextCoreFontEngineModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.TextCoreFontEngineModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TextCoreFontEngineModule.pdb"
+      ],
+      "DebugActionIndex": 138
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll",
@@ -1152,7 +1755,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll"
       ],
-      "DebugActionIndex": 91
+      "DebugActionIndex": 139
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TextCoreTextEngineModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.TextCoreTextEngineModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TextCoreTextEngineModule.pdb"
+      ],
+      "DebugActionIndex": 140
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TextRenderingModule.dll",
@@ -1163,7 +1777,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TextRenderingModule.dll"
       ],
-      "DebugActionIndex": 92
+      "DebugActionIndex": 141
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TextRenderingModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.TextRenderingModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TextRenderingModule.pdb"
+      ],
+      "DebugActionIndex": 142
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TilemapModule.dll",
@@ -1174,7 +1799,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TilemapModule.dll"
       ],
-      "DebugActionIndex": 93
+      "DebugActionIndex": 143
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TilemapModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.TilemapModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TilemapModule.pdb"
+      ],
+      "DebugActionIndex": 144
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TLSModule.dll",
@@ -1185,7 +1821,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TLSModule.dll"
       ],
-      "DebugActionIndex": 94
+      "DebugActionIndex": 145
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TLSModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.TLSModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.TLSModule.pdb"
+      ],
+      "DebugActionIndex": 146
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UI.dll",
@@ -1196,7 +1843,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UI.dll"
       ],
-      "DebugActionIndex": 95
+      "DebugActionIndex": 147
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UI.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.UI.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UI.pdb"
+      ],
+      "DebugActionIndex": 148
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UIElementsModule.dll",
@@ -1207,7 +1865,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UIElementsModule.dll"
       ],
-      "DebugActionIndex": 96
+      "DebugActionIndex": 149
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UIElementsModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.UIElementsModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UIElementsModule.pdb"
+      ],
+      "DebugActionIndex": 150
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UIElementsNativeModule.dll",
@@ -1218,7 +1887,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UIElementsNativeModule.dll"
       ],
-      "DebugActionIndex": 97
+      "DebugActionIndex": 151
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UIElementsNativeModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.UIElementsNativeModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UIElementsNativeModule.pdb"
+      ],
+      "DebugActionIndex": 152
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UIModule.dll",
@@ -1229,7 +1909,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UIModule.dll"
       ],
-      "DebugActionIndex": 98
+      "DebugActionIndex": 153
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UIModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.UIModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UIModule.pdb"
+      ],
+      "DebugActionIndex": 154
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UmbraModule.dll",
@@ -1240,7 +1931,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UmbraModule.dll"
       ],
-      "DebugActionIndex": 99
+      "DebugActionIndex": 155
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UmbraModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.UmbraModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UmbraModule.pdb"
+      ],
+      "DebugActionIndex": 156
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UNETModule.dll",
@@ -1251,7 +1953,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UNETModule.dll"
       ],
-      "DebugActionIndex": 100
+      "DebugActionIndex": 157
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UNETModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.UNETModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UNETModule.pdb"
+      ],
+      "DebugActionIndex": 158
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityAnalyticsModule.dll",
@@ -1262,7 +1975,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityAnalyticsModule.dll"
       ],
-      "DebugActionIndex": 101
+      "DebugActionIndex": 159
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityAnalyticsModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.UnityAnalyticsModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityAnalyticsModule.pdb"
+      ],
+      "DebugActionIndex": 160
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityConnectModule.dll",
@@ -1273,7 +1997,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityConnectModule.dll"
       ],
-      "DebugActionIndex": 102
+      "DebugActionIndex": 161
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityConnectModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.UnityConnectModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityConnectModule.pdb"
+      ],
+      "DebugActionIndex": 162
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityCurlModule.dll",
@@ -1284,7 +2019,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityCurlModule.dll"
       ],
-      "DebugActionIndex": 103
+      "DebugActionIndex": 163
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityCurlModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.UnityCurlModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityCurlModule.pdb"
+      ],
+      "DebugActionIndex": 164
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityTestProtocolModule.dll",
@@ -1295,7 +2041,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityTestProtocolModule.dll"
       ],
-      "DebugActionIndex": 104
+      "DebugActionIndex": 165
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityTestProtocolModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.UnityTestProtocolModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityTestProtocolModule.pdb"
+      ],
+      "DebugActionIndex": 166
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll",
@@ -1306,7 +2063,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll"
       ],
-      "DebugActionIndex": 105
+      "DebugActionIndex": 167
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.pdb"
+      ],
+      "DebugActionIndex": 168
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll",
@@ -1317,7 +2085,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll"
       ],
-      "DebugActionIndex": 106
+      "DebugActionIndex": 169
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestAudioModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.UnityWebRequestAudioModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestAudioModule.pdb"
+      ],
+      "DebugActionIndex": 170
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestModule.dll",
@@ -1328,7 +2107,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestModule.dll"
       ],
-      "DebugActionIndex": 107
+      "DebugActionIndex": 171
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.UnityWebRequestModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestModule.pdb"
+      ],
+      "DebugActionIndex": 172
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll",
@@ -1339,7 +2129,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll"
       ],
-      "DebugActionIndex": 108
+      "DebugActionIndex": 173
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestTextureModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.UnityWebRequestTextureModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestTextureModule.pdb"
+      ],
+      "DebugActionIndex": 174
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll",
@@ -1350,7 +2151,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll"
       ],
-      "DebugActionIndex": 109
+      "DebugActionIndex": 175
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestWWWModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.UnityWebRequestWWWModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.UnityWebRequestWWWModule.pdb"
+      ],
+      "DebugActionIndex": 176
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VehiclesModule.dll",
@@ -1361,7 +2173,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VehiclesModule.dll"
       ],
-      "DebugActionIndex": 110
+      "DebugActionIndex": 177
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VehiclesModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.VehiclesModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VehiclesModule.pdb"
+      ],
+      "DebugActionIndex": 178
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VFXModule.dll",
@@ -1372,7 +2195,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VFXModule.dll"
       ],
-      "DebugActionIndex": 111
+      "DebugActionIndex": 179
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VFXModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.VFXModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VFXModule.pdb"
+      ],
+      "DebugActionIndex": 180
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VideoModule.dll",
@@ -1383,7 +2217,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VideoModule.dll"
       ],
-      "DebugActionIndex": 112
+      "DebugActionIndex": 181
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VideoModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.VideoModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VideoModule.pdb"
+      ],
+      "DebugActionIndex": 182
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VirtualTexturingModule.dll",
@@ -1394,7 +2239,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VirtualTexturingModule.dll"
       ],
-      "DebugActionIndex": 113
+      "DebugActionIndex": 183
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VirtualTexturingModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.VirtualTexturingModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VirtualTexturingModule.pdb"
+      ],
+      "DebugActionIndex": 184
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VRModule.dll",
@@ -1405,7 +2261,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VRModule.dll"
       ],
-      "DebugActionIndex": 114
+      "DebugActionIndex": 185
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VRModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.VRModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.VRModule.pdb"
+      ],
+      "DebugActionIndex": 186
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.WindModule.dll",
@@ -1416,7 +2283,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.WindModule.dll"
       ],
-      "DebugActionIndex": 115
+      "DebugActionIndex": 187
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.WindModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.WindModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.WindModule.pdb"
+      ],
+      "DebugActionIndex": 188
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.XRModule.dll",
@@ -1427,7 +2305,18 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.XRModule.dll"
       ],
-      "DebugActionIndex": 116
+      "DebugActionIndex": 189
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.XRModule.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/UnityEngine.XRModule.pdb"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Managed/UnityEngine.XRModule.pdb"
+      ],
+      "DebugActionIndex": 190
     },
     {
       "Annotation": "WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info",
@@ -1438,7 +2327,7 @@
         "Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info"
       ],
       "AllowUnwrittenOutputFiles": true,
-      "DebugActionIndex": 117
+      "DebugActionIndex": 191
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/app.info",
@@ -1450,20 +2339,20 @@
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/app.info"
       ],
       "ToBuildDependencies": [
-        117
+        191
       ],
-      "DebugActionIndex": 118
+      "DebugActionIndex": 192
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Resources/unity default resources",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/Data/Resources/unity default resources"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/Data/Resources/unity default resources"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering_Data/Resources/unity default resources"
       ],
-      "DebugActionIndex": 119
+      "DebugActionIndex": 193
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/Healthy Catering.exe",
@@ -1474,249 +2363,260 @@
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/Healthy Catering.exe"
       ],
-      "DebugActionIndex": 120
+      "DebugActionIndex": 194
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/UnityCrashHandler64.exe",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/UnityCrashHandler64.exe"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/UnityCrashHandler64.exe"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/UnityCrashHandler64.exe"
       ],
-      "DebugActionIndex": 121
+      "DebugActionIndex": 195
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/UnityPlayer.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/UnityPlayer.dll"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/UnityPlayer.dll"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/UnityPlayer.dll"
       ],
-      "DebugActionIndex": 122
+      "DebugActionIndex": 196
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/WinPixEventRuntime.dll",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/WinPixEventRuntime.dll"
+      ],
+      "Outputs": [
+        "C:/Users/verio/Desktop/Gioco/WinPixEventRuntime.dll"
+      ],
+      "DebugActionIndex": 197
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll"
       ],
-      "DebugActionIndex": 123
+      "DebugActionIndex": 198
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll"
       ],
-      "DebugActionIndex": 124
+      "DebugActionIndex": 199
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/browscap.ini",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/etc/mono/browscap.ini"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/etc/mono/browscap.ini"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/browscap.ini"
       ],
-      "DebugActionIndex": 125
+      "DebugActionIndex": 200
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/config",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/etc/mono/config"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/etc/mono/config"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/config"
       ],
-      "DebugActionIndex": 126
+      "DebugActionIndex": 201
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx"
       ],
-      "DebugActionIndex": 127
+      "DebugActionIndex": 202
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/machine.config",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/etc/mono/2.0/machine.config"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/etc/mono/2.0/machine.config"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/machine.config"
       ],
-      "DebugActionIndex": 128
+      "DebugActionIndex": 203
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/settings.map",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/etc/mono/2.0/settings.map"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/etc/mono/2.0/settings.map"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/settings.map"
       ],
-      "DebugActionIndex": 129
+      "DebugActionIndex": 204
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/web.config",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/etc/mono/2.0/web.config"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/etc/mono/2.0/web.config"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/web.config"
       ],
-      "DebugActionIndex": 130
+      "DebugActionIndex": 205
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser"
       ],
-      "DebugActionIndex": 131
+      "DebugActionIndex": 206
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx"
       ],
-      "DebugActionIndex": 132
+      "DebugActionIndex": 207
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/machine.config",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/etc/mono/4.0/machine.config"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/etc/mono/4.0/machine.config"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/machine.config"
       ],
-      "DebugActionIndex": 133
+      "DebugActionIndex": 208
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/settings.map",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/etc/mono/4.0/settings.map"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/etc/mono/4.0/settings.map"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/settings.map"
       ],
-      "DebugActionIndex": 134
+      "DebugActionIndex": 209
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/web.config",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/etc/mono/4.0/web.config"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/etc/mono/4.0/web.config"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/web.config"
       ],
-      "DebugActionIndex": 135
+      "DebugActionIndex": 210
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser"
       ],
-      "DebugActionIndex": 136
+      "DebugActionIndex": 211
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx"
       ],
-      "DebugActionIndex": 137
+      "DebugActionIndex": 212
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/machine.config",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/etc/mono/4.5/machine.config"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/etc/mono/4.5/machine.config"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/machine.config"
       ],
-      "DebugActionIndex": 138
+      "DebugActionIndex": 213
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/settings.map",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/etc/mono/4.5/settings.map"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/etc/mono/4.5/settings.map"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/settings.map"
       ],
-      "DebugActionIndex": 139
+      "DebugActionIndex": 214
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/web.config",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/etc/mono/4.5/web.config"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/etc/mono/4.5/web.config"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/web.config"
       ],
-      "DebugActionIndex": 140
+      "DebugActionIndex": 215
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser"
       ],
-      "DebugActionIndex": 141
+      "DebugActionIndex": 216
     },
     {
       "Annotation": "CopyFiles C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/mconfig/config.xml",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/MonoBleedingEdge/etc/mono/mconfig/config.xml"
+        "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/MonoBleedingEdge/etc/mono/mconfig/config.xml"
       ],
       "Outputs": [
         "C:/Users/verio/Desktop/Gioco/MonoBleedingEdge/etc/mono/mconfig/config.xml"
       ],
-      "DebugActionIndex": 142
+      "DebugActionIndex": 217
     },
     {
       "Annotation": "Player",
@@ -1840,6 +2740,7 @@
         114,
         115,
         116,
+        117,
         118,
         119,
         120,
@@ -1864,10 +2765,84 @@
         139,
         140,
         141,
-        142
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217
       ],
       "AllowUnexpectedOutput": true,
-      "DebugActionIndex": 143
+      "DebugActionIndex": 218
     }
   ],
   "FileSignatures": [
@@ -1991,10 +2966,10 @@
       "File": "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport"
     },
     {
-      "File": "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono"
+      "File": "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono"
     },
     {
-      "File": "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/Data/Resources"
+      "File": "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/Data/Resources"
     },
     {
       "File": "C:/Users/verio/Desktop/Gioco/GameAssembly.dll"
@@ -2018,11 +2993,11 @@
       "Path": "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport"
     },
     {
-      "Path": "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono",
+      "Path": "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono",
       "Recurse": 1
     },
     {
-      "Path": "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/Data/Resources",
+      "Path": "C:/Program Files/Unity/Hub/Editor/2021.2.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_development_mono/Data/Resources",
       "Recurse": 1
     },
     {
@@ -2070,7 +3045,7 @@
   "EmitDataForBeeWhy": 0,
         "NamedNodes": {
           "all_tundra_nodes": 0,
-          "Player": 143
+          "Player": 218
         }
 ,  "DefaultNodes": [
     0
