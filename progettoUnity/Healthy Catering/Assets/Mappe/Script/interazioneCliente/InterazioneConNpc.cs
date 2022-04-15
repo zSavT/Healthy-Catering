@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Events;
+
 public class InterazioneConNpc : MonoBehaviour
 {
     private GameObject triggeringNpc;
@@ -10,6 +12,9 @@ public class InterazioneConNpc : MonoBehaviour
 
     //testo che deve apparire per l'interazione
     public GameObject npcText;
+
+    public UnityEvent premutoF;
+    public UnityEvent uscitaMenu;
 
 
     private void Start()
@@ -21,14 +26,17 @@ public class InterazioneConNpc : MonoBehaviour
     {
         if (triggering)
         {
+            //!npcText.activeSelf
             npcText.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
             {
-                print("oke"); // qui devo mettere lo script per far apparire i pannelli con menu e dati cliente
+                print("oke"); // qui devo mettere lo script per far apparire i pannelli con menu e dati cliente+
+                premutoF.Invoke();
             }
         }
         else
         {
+            uscitaMenu.Invoke();
             npcText.SetActive(false);
         }
     }
