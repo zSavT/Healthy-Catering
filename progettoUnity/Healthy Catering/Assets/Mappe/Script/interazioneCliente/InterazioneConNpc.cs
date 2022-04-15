@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class InterazioneConNpc : MonoBehaviour
 {
-    //
     private GameObject triggeringNpc;
     //check se il player è nell'area per il trigger
     private bool triggering;
+
+    //testo che deve apparire per l'interazione
+    public GameObject npcText;
+
 
     private void Start()
     {
@@ -18,7 +21,15 @@ public class InterazioneConNpc : MonoBehaviour
     {
         if (triggering)
         {
-            print("Player is triggering with " + triggeringNpc);
+            npcText.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                print("oke"); // qui devo mettere lo script per far apparire i pannelli con menu e dati cliente
+            }
+        }
+        else
+        {
+            npcText.SetActive(false);
         }
     }
 
