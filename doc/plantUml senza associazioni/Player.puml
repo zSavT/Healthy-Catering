@@ -2,12 +2,14 @@
 class Player {
     + nome : string = ""
     + soldi : float = 0
-    + inventario : List <OggettoQuantita<int>>
+    + inventario : List<OggettoQuantita<int>>
     + Player(nome:string, soldi:int, inventario:List<OggettoQuantita<int>>)
     + Player()
-    + {static} popolaInventario(itemGiaPresenti:List <Item>) : List<OggettoQuantita<int>>
-    - {static} aggiungiAltriItem(itemGiaPresenti:List <Item>) : List <Item>
-    - {static} chiediQuantitaItem(itemGiaPresenti:List <Item>) : List <int>
-    - {static} creaInventarioFromListaItemEQuantita(itemGiaPresenti:List <Item>, quantitaItemGiaPresenti:List <int>) : List<OggettoQuantita<int>>
+    + <<override>> Equals(obj:object) : bool
+    + <<override>> ToString() : string
+    + {static} popolaInventario() : List<OggettoQuantita<int>>
+    - {static} getNewItem() : List<Item>
+    - {static} chiediQuantitaItem(itemGiaPresenti:List<Item>) : List<int>
+    - {static} creaInventarioFromListaItemEQuantita(itemGiaPresenti:List<Item>, quantitaItemNuovi:List<int>) : List<OggettoQuantita<int>>
 }
 @enduml

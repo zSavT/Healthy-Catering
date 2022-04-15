@@ -5,12 +5,15 @@ class Patologia {
     + descrizione : string = ""
     + Patologia(idPatologia:int, nome:string, descrizione:string)
     + Patologia()
-    + {static} patologiaStringToIdPatologia(patologia:string) : int
-    + {static} getNewListaIdPatologieFromUtente(output:string) : List <int>
-    - {static} convertiListaPatologieStringToListaIdPatologia(listaPatolgie:List <string>) : List <int>
-    - {static} fillListaPatologieStringhe(output:string) : List <string>
-    + {static} getNewIdDatabasePatologia(oggetto:Patologia) : int
-    - {static} idListToPatologieList(idList:List <int>) : List <Patologia>
-    + {static} getListIdTutteLePatologie() : List <int>
+    + <<override>> Equals(obj:object) : bool
+    + <<override>> ToString() : string
+    + {static} getNewListaIdPatologieFromUtente(output:string) : List<int>
+    - {static} fillListaPatologieStringhe(output:string) : List<string>
+    - {static} convertiListaPatologieStringToListaIdPatologia(listaPatolgie:List<string>) : List<int>
+    - {static} patologiaStringToIdPatologia(patologia:string) : int
+    + {static} listIdToListPatologie(ids:List<int>, DatabasePatologie:List<Patologia>) : string
+    - {static} idToPatologia(id:int, databasePatologie:List<Patologia>) : Patologia
+    - idListToPatologieList(idList:List<int>, databasePatologie:List<Patologia>) : List<Patologia>
+    + {static} getListIdTutteLePatologie(databasePatologie:List<Patologia>) : List<int>
 }
 @enduml
