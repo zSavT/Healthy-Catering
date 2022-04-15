@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class InterazioneConNpc : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class InterazioneConNpc : MonoBehaviour
     public UnityEvent premutoF;
     public UnityEvent uscitaMenu;
 
+    public RawImage crossHair;
 
     private void Start()
     {
@@ -26,7 +28,6 @@ public class InterazioneConNpc : MonoBehaviour
     {
         if (triggering)
         {
-            //!npcText.activeSelf
             npcText.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
             {
