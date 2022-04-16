@@ -7,7 +7,7 @@ using UnityEngine;
  */
 public class MovimentoPlayer : MonoBehaviour
 {
-    [Header("Movemento")]
+    [Header("Movimento")]
     public float velocitaMovimento = 7;
     public float attritoAlSuolo = 8.8f;
 
@@ -39,6 +39,8 @@ public class MovimentoPlayer : MonoBehaviour
 
     Rigidbody rb;
 
+    public bool puoMuoversi;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -48,17 +50,21 @@ public class MovimentoPlayer : MonoBehaviour
         attritoAlSuolo = 8.5f;
         forzaSalto = 5;
         velocitaBase = velocitaMovimento;
+
+        puoMuoversi = true;
     }
 
     private void Update()
     {
-        controlloInputGiocatore();
-        controlloVelocita();
-        if (perTerra)
-        {
-            rb.drag = attritoAlSuolo;
-        } else {
-            rb.drag = 0;
+        if (puoMuoversi) {
+            controlloInputGiocatore();
+            controlloVelocita();
+            if (perTerra)
+            {
+                rb.drag = attritoAlSuolo;
+            } else {
+                rb.drag = 0;
+            }
         }
     }
 
@@ -119,5 +125,19 @@ public class MovimentoPlayer : MonoBehaviour
     private void resetSalto()
     {
         prontoASaltare = true;
+    }
+
+    public void stopMovimento()
+    {
+        this.puoMuoversi = false;
+        this.velocitaMovimento = 0;
+        this.attritoAlSuolo = 1000f;
+}
+
+    public void riprendiMovimento()
+    {
+        this.puoMuoversi = true;
+        this.velocitaMovimento = 7;
+        this.attritoAlSuolo = 8.8f;
     }
 }
