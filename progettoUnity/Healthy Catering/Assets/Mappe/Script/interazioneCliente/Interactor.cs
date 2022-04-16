@@ -28,9 +28,12 @@ public class Interactor : MonoBehaviour
 
     public Transform posizioneCamera;
 
+    public GameObject pannelloCliente;
+
     void Start()
     {
         crossHair.color = coloreNormale;
+        chiudiPannello();
     }
 
     // Update is called once per frame
@@ -68,6 +71,8 @@ public class Interactor : MonoBehaviour
                 print("ok");
                 playerRiprendiMovimento.Invoke();
 
+                chiudiPannello();
+
                 var nuovaPosizione = posizioneCamera.position;
                 nuovaPosizione = nuovaPosizione + (Vector3.up * 1.47f);//TODO sostituire il 1.47f con il valore dell'altezza della camera alla partenza
                 mainCamera.transform.position = nuovaPosizione;
@@ -83,7 +88,7 @@ public class Interactor : MonoBehaviour
 
         playerStop.Invoke();
 
-
+        apriPannello();
         
 
 
@@ -103,5 +108,24 @@ public class Interactor : MonoBehaviour
 
         //cambio la posizione della camera
         mainCamera.transform.position = Vector3.Lerp(playerPos, newDestination, 100f);
+    }
+
+    private void apriPannello()
+    {
+        if (pannelloCliente != null)
+        {
+            Vector3 newDestination = NPC.transform.position;
+            pannelloCliente.transform.position = newDestination;
+
+            pannelloCliente.SetActive(true);
+        }
+    }
+
+    private void chiudiPannello()
+    {
+        if (pannelloCliente != null)
+        {
+            pannelloCliente.SetActive(false);
+        }
     }
 }
