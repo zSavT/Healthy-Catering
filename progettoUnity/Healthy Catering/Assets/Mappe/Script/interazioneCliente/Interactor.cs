@@ -26,6 +26,8 @@ public class Interactor : MonoBehaviour
     public UnityEvent playerStop;
     public UnityEvent playerRiprendiMovimento;
 
+    public Transform posizioneCamera;
+
     void Start()
     {
         crossHair.color = coloreNormale;
@@ -55,11 +57,8 @@ public class Interactor : MonoBehaviour
                 if (Input.GetKeyDown(tastoInterazione))
                 { 
                     print("premuto tasto interazione");
-                    interazioneCliente(/*Cliente.nomeClienteToCliente (NPC.tag)//ora gli passo solo un numero*/0, Player, NPC);
-                    
+                    interazioneCliente(/*Cliente.nomeClienteToCliente (NPC.tag)//ora gli passo solo un numero*/0, Player, NPC);      
                 }
-
-
             }
         }
         else
@@ -68,6 +67,10 @@ public class Interactor : MonoBehaviour
             {
                 print("ok");
                 playerRiprendiMovimento.Invoke();
+
+                var nuovaPosizione = posizioneCamera.position;
+                nuovaPosizione = nuovaPosizione + (Vector3.up * 1.47f);//TODO sostituire il 1.47f con il valore dell'altezza della camera alla partenza
+                mainCamera.transform.position = nuovaPosizione;
             }
             crossHair.color = coloreNormale;
             uscitaRangeMenu.Invoke();
