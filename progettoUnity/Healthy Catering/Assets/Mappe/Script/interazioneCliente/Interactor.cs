@@ -21,7 +21,7 @@ public class Interactor : MonoBehaviour
 
     public GameObject NPC;
     public GameObject Player;
-    public Camera mainCamera;
+    public CameraGiocatore mainCamera;
 
     public UnityEvent playerStop;
     public UnityEvent playerRiprendiMovimento;
@@ -76,6 +76,9 @@ public class Interactor : MonoBehaviour
                 var nuovaPosizione = posizioneCamera.position;
                 nuovaPosizione = nuovaPosizione + (Vector3.up * 1.47f);//TODO sostituire il 1.47f con il valore dell'altezza della camera alla partenza
                 mainCamera.transform.position = nuovaPosizione;
+
+                disabilitaCursore();
+                mainCamera.lockVisuale();
             }
             crossHair.color = coloreNormale;
             uscitaRangeMenu.Invoke();
@@ -89,6 +92,9 @@ public class Interactor : MonoBehaviour
         playerStop.Invoke();
 
         apriPannello();
+
+        mainCamera.lockVisuale();
+        abilitaCursore();
         
 
 
@@ -127,5 +133,17 @@ public class Interactor : MonoBehaviour
         {
             pannelloCliente.SetActive(false);
         }
+    }
+
+    private void abilitaCursore()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+    }
+
+    private void disabilitaCursore()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = false;
     }
 }
