@@ -46,7 +46,7 @@ public class CameraGiocatore : MonoBehaviour
         }
     }
 
-    public void lockVisuale()
+    public void lockUnlockVisuale()
     {
         this.puoCambiareVisuale = !puoCambiareVisuale;
     }

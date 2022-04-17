@@ -7,7 +7,6 @@ public class Interactor : MonoBehaviour
 {
     [SerializeField] private LayerMask layerUnityNPC = 6;              //layer utilizzato da Unity per le categorie di oggetto
 
-    private UnityEvent onInteract;                                  //attributo per l'invocazione di eventi all'interno di Unity    
     [SerializeField] private KeyCode tastoInterazione;              //tasto da premere per invocare l'azione
 
     [Header("CrossHair")]
@@ -44,45 +43,59 @@ public class Interactor : MonoBehaviour
 
     private void interazioneUtenteNPC()
     {
-        RaycastHit NPCpuntato;
-        //se inquadrato dal player(tramite l'ausilio della camera)
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out NPCpuntato, 2, layerUnityNPC))
+        if (NPCInteragibilePuntato ())
         {
-            //  l'oggetto visualizzato ha è interagibile
-            if (NPCpuntato.collider.GetComponent<Interactable>() != false)
+            inquadratoNPC.Invoke();
+            crossHair.color = coloreInterazione;//cambia colore crosshair
+
+            if (Input.GetKeyDown(tastoInterazione))
             {
-                onInteract = NPCpuntato.collider.GetComponent<Interactable>().onInteract; //richiama l'evento
-
-                crossHair.color = coloreInterazione;//cambia colore crosshar
-
-                inquadratoNPC.Invoke();
-
-                if (Input.GetKeyDown(tastoInterazione))
-                { 
-                    print("premuto tasto interazione");
-                    interazioneCliente(/*Cliente.nomeClienteToCliente (NPC.tag)//ora gli passo solo un numero*/0, Player, NPC);      
-                }
+                interazioneCliente(/*Cliente.nomeClienteToCliente (NPC.tag)//ora gli passo solo un numero*/0, Player, NPC);      
             }
         }
+
         else
         {
+            uscitaRangeMenu.Invoke();
+            crossHair.color = coloreNormale;
+            
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                print("ok");
-                playerRiprendiMovimento.Invoke();
-
-                chiudiPannello();
-
-                var nuovaPosizione = posizioneCamera.position;
-                nuovaPosizione = nuovaPosizione + (Vector3.up * 1.47f);//TODO sostituire il 1.47f con il valore dell'altezza della camera alla partenza
-                mainCamera.transform.position = nuovaPosizione;
-
-                disabilitaCursore();
-                mainCamera.lockVisuale();
+                esciDaInterazioneCliente();
             }
-            crossHair.color = coloreNormale;
-            uscitaRangeMenu.Invoke();
         }
+    }
+
+    private bool NPCInteragibilePuntato()
+    {
+        RaycastHit NPCpuntato;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out NPCpuntato, 2, layerUnityNPC))
+        {
+            // se l'oggetto visualizzato è interagibile
+            if (NPCpuntato.collider.GetComponent<Interactable>() != false)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    private void esciDaInterazioneCliente()
+    {
+        playerRiprendiMovimento.Invoke();
+        chiudiPannello();
+
+        ritornaAllaPosizioneNormale();
+
+        disabilitaCursore();
+        mainCamera.lockUnlockVisuale();
+        attivaDisattivaPuntatore();
+    }
+
+    private void ritornaAllaPosizioneNormale()
+    {
+        var nuovaPosizione = posizioneCamera.position;
+        nuovaPosizione = nuovaPosizione + (Vector3.up * 1.47f);//TODO sostituire il 1.47f con il valore dell'altezza della camera alla partenza
+        mainCamera.transform.position = nuovaPosizione;
     }
 
     private void interazioneCliente(/*Cliente clienteTemp*/ int clienteTemp, GameObject Player, GameObject NPC)
@@ -93,11 +106,9 @@ public class Interactor : MonoBehaviour
 
         apriPannello();
 
-        mainCamera.lockVisuale();
+        mainCamera.lockUnlockVisuale();
         abilitaCursore();
-        
-
-
+        attivaDisattivaPuntatore();
     }
 
     private void muoviCameraPerInterazioneCliente()
@@ -145,5 +156,10 @@ public class Interactor : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = false;
+    }
+
+    private void attivaDisattivaPuntatore()
+    {
+        crossHair.enabled = !crossHair.enabled;
     }
 }
