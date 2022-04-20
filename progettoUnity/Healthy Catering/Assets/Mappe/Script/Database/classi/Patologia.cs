@@ -1,5 +1,7 @@
-using System.Collections.Generic;
 using System;
+using System.Linq;
+using System.Collections.Generic;
+
 public class Patologia
 {
     public int idPatologia = -1;
