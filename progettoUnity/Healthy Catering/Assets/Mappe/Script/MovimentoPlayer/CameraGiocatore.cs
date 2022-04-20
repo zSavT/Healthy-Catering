@@ -21,23 +21,34 @@ public class CameraGiocatore : MonoBehaviour
     float xRotation;
     float yRotation;
 
+    bool puoCambiareVisuale;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        this.puoCambiareVisuale = true;
     }
 
     private void Update()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
-        yRotation += mouseX;
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, campoVisualeNegativo, campoVisualePositivo);                          //permette di muovere la visuale solo di 90 grandi in su e in gi�
+        if (puoCambiareVisuale)
+        {
+            float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
+            float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+            yRotation += mouseX;
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, campoVisualeNegativo, campoVisualePositivo);                          //permette di muovere la visuale solo di 90 grandi in su e in gi�
 
-        //movimento camera
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientamento.rotation = Quaternion.Euler(0, yRotation, 0);
+            //movimento camera
+            transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+            orientamento.rotation = Quaternion.Euler(0, yRotation, 0);
+        }
+    }
+
+    public void lockUnlockVisuale()
+    {
+        this.puoCambiareVisuale = !puoCambiareVisuale;
     }
 }
 
