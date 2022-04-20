@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+
 public class Ingrediente : Item
 {
     public float costo = 0;

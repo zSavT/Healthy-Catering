@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class OggettoQuantita<Oggetto>
 {
     public Oggetto oggetto;
