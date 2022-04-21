@@ -36,12 +36,12 @@ public class MenuInGame : MonoBehaviour
                 if (giocoInPausa)
                 {
                     resumeGame();
-                    disabilitaCursore();
+                    Miscellaneous.disabilitaCursore();
                 }
                 else
                 {
                     pauseGame();
-                    abilitaCursore();
+                    Miscellaneous.abilitaCursore();
                 }
             }
         }
@@ -61,18 +61,6 @@ public class MenuInGame : MonoBehaviour
         menuPausa.SetActive(true);
         Time.timeScale = 0f; //blocca il tempo
         giocoInPausa = true;
-    }
-
-        private void abilitaCursore()
-    {
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
-    }
-
-    private void disabilitaCursore()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = false;
     }
 
     public void menuPricipale()

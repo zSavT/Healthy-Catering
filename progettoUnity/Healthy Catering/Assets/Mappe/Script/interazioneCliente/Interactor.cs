@@ -90,7 +90,7 @@ public class Interactor : MonoBehaviour
 
         ritornaAllaPosizioneNormale();
 
-        disabilitaCursore();
+        Miscellaneous.disabilitaCursore();
         mainCamera.lockUnlockVisuale();
         attivaDisattivaPuntatore();
     }
@@ -117,7 +117,7 @@ public class Interactor : MonoBehaviour
 
 
         mainCamera.lockUnlockVisuale();
-        abilitaCursore();
+        Miscellaneous.abilitaCursore();
         attivaDisattivaPuntatore();
     }
 
@@ -156,18 +156,6 @@ public class Interactor : MonoBehaviour
             pannelloCliente.SetActive(false);
         }
         pannelloApertoChiuso();
-    }
-
-    private void abilitaCursore()
-    {
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
-    }
-
-    private void disabilitaCursore()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = false;
     }
 
     private void attivaDisattivaPuntatore()
