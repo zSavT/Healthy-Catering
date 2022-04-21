@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuInGame : MonoBehaviour
 {
@@ -72,5 +73,10 @@ public class MenuInGame : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = false;
+    }
+
+    public void menuPricipale()
+    {
+        SceneManager.LoadScene(0);
     }
 }
