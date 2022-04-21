@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class MenuInGame : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class MenuInGame : MonoBehaviour
 
     private bool giocoInPausa = false;
     [SerializeField] public GameObject menuPausa;
+    public UnityEvent aperturaMenuGioco;
+    public UnityEvent chiusuraMenuGioco;
+
 
 
 
@@ -50,6 +54,7 @@ public class MenuInGame : MonoBehaviour
 
     void resumeGame()
     {
+        chiusuraMenuGioco.Invoke();
         menuPausa.SetActive(false);
         Time.timeScale = 1f; //sblocca il tempo
         giocoInPausa = false;
@@ -58,6 +63,7 @@ public class MenuInGame : MonoBehaviour
 
     void pauseGame()
     {
+        aperturaMenuGioco.Invoke();
         menuPausa.SetActive(true);
         Time.timeScale = 0f; //blocca il tempo
         giocoInPausa = true;
