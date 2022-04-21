@@ -26,19 +26,22 @@ public class MenuInGame : MonoBehaviour
         checkTastoMenu();
     }
 
-    private bool checkTastoMenu()
+    private void checkTastoMenu()
     {
         if(Input.GetKeyDown(tastoMenu))
         {
-            if(giocoInPausa)
+            if (!Interactor.pannelloAperto)
             {
-                resumeGame();
-            } else
-            {
-                pauseGame();
+                if (giocoInPausa)
+                {
+                    resumeGame();
+                }
+                else
+                {
+                    pauseGame();
+                }
             }
         }
-        return true;
     }
 
 

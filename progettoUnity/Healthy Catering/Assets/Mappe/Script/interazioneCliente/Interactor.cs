@@ -26,7 +26,7 @@ public class Interactor : MonoBehaviour
     public UnityEvent playerRiprendiMovimento;
 
     public Transform posizioneCamera;
-    private bool pannelloAperto;
+    public static bool pannelloAperto;
 
     public GameObject pannelloCliente;
 
