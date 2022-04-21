@@ -26,6 +26,7 @@ public class Interactor : MonoBehaviour
     public UnityEvent playerRiprendiMovimento;
 
     public Transform posizioneCamera;
+    private bool pannelloAperto;
 
     public GameObject pannelloCliente;
 
@@ -33,6 +34,7 @@ public class Interactor : MonoBehaviour
     {
         crossHair.color = coloreNormale;
         chiudiPannello();
+        pannelloAperto = false;
     }
 
     // Update is called once per frame
@@ -58,10 +60,12 @@ public class Interactor : MonoBehaviour
         {
             uscitaRangeMenu.Invoke();
             crossHair.color = coloreNormale;
-            
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (pannelloAperto)
             {
-                esciDaInterazioneCliente();
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    esciDaInterazioneCliente();
+                }
             }
         }
     }
@@ -98,6 +102,11 @@ public class Interactor : MonoBehaviour
         mainCamera.transform.position = nuovaPosizione;
     }
 
+    private void pannelloApertoChiuso()
+    {
+        pannelloAperto = !pannelloAperto;
+    }
+
     private void interazioneCliente(/*Cliente clienteTemp*/ int clienteTemp, GameObject Player, GameObject NPC)
     {
         muoviCameraPerInterazioneCliente();
@@ -105,6 +114,7 @@ public class Interactor : MonoBehaviour
         playerStop.Invoke();
 
         apriPannello();
+
 
         mainCamera.lockUnlockVisuale();
         abilitaCursore();
@@ -136,6 +146,7 @@ public class Interactor : MonoBehaviour
 
             pannelloCliente.SetActive(true);
         }
+        pannelloApertoChiuso();
     }
 
     private void chiudiPannello()
@@ -144,6 +155,7 @@ public class Interactor : MonoBehaviour
         {
             pannelloCliente.SetActive(false);
         }
+        pannelloApertoChiuso();
     }
 
     private void abilitaCursore()
