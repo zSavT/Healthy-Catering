@@ -9,11 +9,6 @@ public class Interactor : MonoBehaviour
 
     [SerializeField] private KeyCode tastoInterazione;              //tasto da premere per invocare l'azione
 
-    [Header("CrossHair")]
-    public RawImage crossHair;                                      //riferimento allo sprit del crossHair
-    public Color32 coloreNormale;                                   //colore base del crossHair
-    public Color32 coloreInterazione;                               //colore del crossHair quando viene in contatto con un entità interagibile
-
     //trigger per la scritta dell'interazione
     public UnityEvent inquadratoNPC;
     public UnityEvent uscitaRangeMenu;
@@ -32,7 +27,6 @@ public class Interactor : MonoBehaviour
 
     void Start()
     {
-        crossHair.color = coloreNormale;
         chiudiPannello();
         pannelloAperto = false;
     }
@@ -48,7 +42,7 @@ public class Interactor : MonoBehaviour
         if (NPCInteragibilePuntato ())
         {
             inquadratoNPC.Invoke();
-            crossHair.color = coloreInterazione;//cambia colore crosshair
+            
 
             if (Input.GetKeyDown(tastoInterazione))
             {
@@ -59,7 +53,6 @@ public class Interactor : MonoBehaviour
         else
         {
             uscitaRangeMenu.Invoke();
-            crossHair.color = coloreNormale;
             if (pannelloAperto)
             {
                 if (Input.GetKeyDown(KeyCode.Escape))
@@ -90,9 +83,8 @@ public class Interactor : MonoBehaviour
 
         ritornaAllaPosizioneNormale();
 
-        Miscellaneous.disabilitaCursore();
+        PuntatoreMouse.disabilitaCursore();
         mainCamera.lockUnlockVisuale();
-        attivaDisattivaPuntatore();
     }
 
     private void ritornaAllaPosizioneNormale()
@@ -117,8 +109,7 @@ public class Interactor : MonoBehaviour
 
 
         mainCamera.lockUnlockVisuale();
-        Miscellaneous.abilitaCursore();
-        attivaDisattivaPuntatore();
+        PuntatoreMouse.abilitaCursore();
     }
 
     private void muoviCameraPerInterazioneCliente()
@@ -156,10 +147,5 @@ public class Interactor : MonoBehaviour
             pannelloCliente.SetActive(false);
         }
         pannelloApertoChiuso();
-    }
-
-    private void attivaDisattivaPuntatore()
-    {
-        crossHair.enabled = !crossHair.enabled;
     }
 }

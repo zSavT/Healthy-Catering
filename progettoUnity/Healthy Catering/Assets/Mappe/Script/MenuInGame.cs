@@ -40,12 +40,12 @@ public class MenuInGame : MonoBehaviour
                 if (giocoInPausa)
                 {
                     resumeGame();
-                    Miscellaneous.disabilitaCursore();
+                    PuntatoreMouse.disabilitaCursore();
                 }
                 else
                 {
                     pauseGame();
-                    Miscellaneous.abilitaCursore();
+                    PuntatoreMouse.abilitaCursore();
                 }
             }
         }

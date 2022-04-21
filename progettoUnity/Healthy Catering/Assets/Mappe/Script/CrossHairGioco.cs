@@ -18,6 +18,17 @@ public class CrossHairGioco : MonoBehaviour
     }
 
  
+    public void cambioColoreInterazione()
+    {
+        crossHair.color = coloreInterazione;    //cambia colore crosshair
+    }
 
-
+    public void cambioColoreNormale()
+    {
+        crossHair.color = coloreNormale;
+    }
+    public void attivaDisattivaPuntatore()
+    {
+        crossHair.enabled = !crossHair.enabled;
+    }
 }
