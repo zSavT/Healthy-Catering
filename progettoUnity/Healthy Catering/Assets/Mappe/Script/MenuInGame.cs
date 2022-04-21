@@ -77,6 +77,7 @@ public class MenuInGame : MonoBehaviour
 
     public void menuPricipale()
     {
+        resumeGame();
         SceneManager.LoadScene(0);
     }
 }
