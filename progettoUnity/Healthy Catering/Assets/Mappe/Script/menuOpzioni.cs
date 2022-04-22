@@ -14,6 +14,7 @@ public class MenuOpzioni : MonoBehaviour
     public TMP_Dropdown risoluzioniDisponibili;
 
     public TMP_Dropdown livelloGrafica;
+    public Toggle schermoIntero;
 
     public Resolution[] risoluzioni;
 
@@ -37,6 +38,7 @@ public class MenuOpzioni : MonoBehaviour
         risoluzioniDisponibili.value = indiceRisoluzioneCorrente; ;
         risoluzioniDisponibili.RefreshShownValue();
         livelloGrafica.value = QualitySettings.GetQualityLevel();
+        schermoIntero.isOn = Screen.fullScreen;
     }
 
     public void setVolume(float volume)

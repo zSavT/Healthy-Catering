@@ -6556,6 +6556,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 7e80b91a87fa18a4dac7cec66de33ef3, type: 2}
   risoluzioniDisponibili: {fileID: 1961824172}
+  livelloGrafica: {fileID: 1555884324}
+  schermoIntero: {fileID: 1237080155}
 --- !u!1 &2010211029
 GameObject:
   m_ObjectHideFlags: 0
