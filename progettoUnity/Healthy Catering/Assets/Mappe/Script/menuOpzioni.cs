@@ -13,6 +13,8 @@ public class MenuOpzioni : MonoBehaviour
 
     public TMP_Dropdown risoluzioniDisponibili;
 
+    public TMP_Dropdown livelloGrafica;
+
     public Resolution[] risoluzioni;
 
     void Start()
@@ -34,6 +36,7 @@ public class MenuOpzioni : MonoBehaviour
         risoluzioniDisponibili.AddOptions(opzioni);
         risoluzioniDisponibili.value = indiceRisoluzioneCorrente; ;
         risoluzioniDisponibili.RefreshShownValue();
+        livelloGrafica.value = QualitySettings.GetQualityLevel();
     }
 
     public void setVolume(float volume)
