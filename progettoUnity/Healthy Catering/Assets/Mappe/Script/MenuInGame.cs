@@ -69,9 +69,4 @@ public class MenuInGame : MonoBehaviour
         giocoInPausa = true;
     }
 
-    public void menuPricipale()
-    {
-        resumeGame();
-        SceneManager.LoadScene(0);
-    }
 }

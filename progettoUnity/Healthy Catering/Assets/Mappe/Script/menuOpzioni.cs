@@ -56,6 +56,10 @@ public class MenuOpzioni : MonoBehaviour
 
     public void menuPrincipale()
     {
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1f; //sblocca il tempo
+        }
         SceneManager.LoadScene(0);
     }
 
