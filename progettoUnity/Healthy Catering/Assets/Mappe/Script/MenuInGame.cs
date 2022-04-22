@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.Events;
-using TMPro;
-using UnityEngine.UI;
 
 public class MenuInGame : MonoBehaviour
 {
@@ -15,9 +10,6 @@ public class MenuInGame : MonoBehaviour
     [SerializeField] public GameObject menuPausa;
     public UnityEvent aperturaMenuGioco;
     public UnityEvent chiusuraMenuGioco;
-
-
-
 
 
     // Start is called before the first frame update
@@ -53,7 +45,6 @@ public class MenuInGame : MonoBehaviour
         }
     }
 
-
     void resumeGame()
     {
         chiusuraMenuGioco.Invoke();
@@ -61,8 +52,6 @@ public class MenuInGame : MonoBehaviour
         Time.timeScale = 1f; //sblocca il tempo
         giocoInPausa = false;
     }
-
-
     void pauseGame()
     {
         aperturaMenuGioco.Invoke();

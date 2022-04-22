@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,14 +8,11 @@ public class CrossHairGioco : MonoBehaviour
     public Color32 coloreNormale;                                   //colore base del crossHair
     public Color32 coloreInterazione;                               //colore del crossHair quando viene in contatto con un entità interagibile
 
-
-
     void Start()
     {
         crossHair.color = coloreNormale;
     }
 
- 
     public void cambioColoreInterazione()
     {
         crossHair.color = coloreInterazione;    //cambia colore crosshair
