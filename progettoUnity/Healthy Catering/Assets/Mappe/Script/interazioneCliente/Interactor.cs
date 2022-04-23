@@ -13,7 +13,7 @@ public class Interactor : MonoBehaviour
 
     public GameObject NPC;
     public GameObject Player;
-    public CameraGiocatore mainCamera;
+    public GameObject mainCamera;
 
     public UnityEvent playerStop;
     public UnityEvent playerRiprendiMovimento;
@@ -22,11 +22,13 @@ public class Interactor : MonoBehaviour
     public static bool pannelloAperto;
 
     public GameObject pannelloCliente;
+    private Vector3 posizioneCameraOriginale;
 
     void Start()
     {
         chiudiPannello();
         pannelloAperto = false;
+        posizioneCameraOriginale = mainCamera.transform.position;
     }
 
     // Update is called once per frame
@@ -82,14 +84,11 @@ public class Interactor : MonoBehaviour
         ritornaAllaPosizioneNormale();
 
         PuntatoreMouse.disabilitaCursore();
-        mainCamera.lockUnlockVisuale();
     }
 
     private void ritornaAllaPosizioneNormale()
     {
-        var nuovaPosizione = posizioneCamera.position;
-        nuovaPosizione = nuovaPosizione + (Vector3.up * 1.47f);//TODO sostituire il 1.47f con il valore dell'altezza della camera alla partenza
-        mainCamera.transform.position = nuovaPosizione;
+        mainCamera.transform.position = posizioneCamera.position;
     }
 
     private void pannelloApertoChiuso()
@@ -106,7 +105,6 @@ public class Interactor : MonoBehaviour
         apriPannello();
 
 
-        mainCamera.lockUnlockVisuale();
         PuntatoreMouse.abilitaCursore();
     }
 
@@ -146,4 +144,5 @@ public class Interactor : MonoBehaviour
         }
         pannelloApertoChiuso();
     }
+
 }
