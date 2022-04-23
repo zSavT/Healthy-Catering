@@ -4,15 +4,13 @@ using UnityEngine.Events;
 public class MovimentoPlayer : MonoBehaviour
 {
     [SerializeField] private CharacterController controller;
-
-
+    
     [Header("Movimento")]
     [SerializeField] private float velocitaBase = 5f;
     [SerializeField] private float velocitaSprint = 8f;
     [SerializeField] private KeyCode tastoSprint;
     private float velocitaAttuale = 0;
     
-
 
     [Header("Salto")]
     [SerializeField] private KeyCode tastoSalto;
@@ -29,13 +27,14 @@ public class MovimentoPlayer : MonoBehaviour
     private Vector3 movimento;
     private bool puoMuoversi;
     public UnityEvent lockUnlockMovimento;
-
+    private Animator controllerAnimazione;
 
 
     // Start is called before the first frame update
     void Start()
     {
         puoMuoversi = true;
+        controllerAnimazione = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -73,6 +72,9 @@ public class MovimentoPlayer : MonoBehaviour
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
         movimento = transform.right * x + transform.forward * z;
+        controllerAnimazione.SetBool("fermo", false);
+        controllerAnimazione.SetBool("cammina", true);
+        controllerAnimazione.SetBool("corre", false);
     }
 
     private void controlloVelocita()
@@ -92,6 +94,7 @@ public class MovimentoPlayer : MonoBehaviour
     private void controlloCollisionePavimento()
     {
         perTerra = Physics.CheckSphere(controlloPavimento.position, distanzaPavimento, pavimentoMask);
+        controllerAnimazione.SetBool("salta", false);
     }
 
     private void controlloComandi()
@@ -118,11 +121,15 @@ public class MovimentoPlayer : MonoBehaviour
     private void sprint()
     {
         velocitaAttuale = velocitaSprint;
+        controllerAnimazione.SetBool("fermo", false);
+        controllerAnimazione.SetBool("cammina", false);
+        controllerAnimazione.SetBool("corre", true);
     }
 
     private void salto()
     {
         velocita.y = Mathf.Sqrt(altezzaSalto * -2f * gravita);
+        controllerAnimazione.SetBool("salta", true);
     }
 
     private bool isFermo()
@@ -135,7 +142,9 @@ public class MovimentoPlayer : MonoBehaviour
 
     private void idle()
     {
-
+        controllerAnimazione.SetBool("fermo", true);
+        controllerAnimazione.SetBool("cammina", false);
+        controllerAnimazione.SetBool("corre", false);
     }
 
 }
