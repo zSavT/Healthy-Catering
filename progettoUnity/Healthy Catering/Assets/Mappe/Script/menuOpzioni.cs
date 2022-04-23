@@ -64,7 +64,7 @@ public class MenuOpzioni : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-     public void setRisoluzione(int risoluzioneSelezionata)
+    public void setRisoluzione(int risoluzioneSelezionata)
     {
         Resolution risoluzione = risoluzioni[risoluzioneSelezionata];
         Screen.SetResolution(risoluzione.width, risoluzione.height, Screen.fullScreen);
