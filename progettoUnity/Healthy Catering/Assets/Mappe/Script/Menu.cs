@@ -8,6 +8,13 @@ public class Menu : MonoBehaviour
 {
     public Slider sliderCaricamento;        //slider del caricamento della partita
     public UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
+    public UnityEvent clickCrediti;             //serve per eliminare altri elementi in visualilzzazione
+
+    public void menuPrincipale()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 
     public void playGame(int sceneIndex)
     {
@@ -28,18 +35,17 @@ public class Menu : MonoBehaviour
         }
     }
 
-    public void chiudi()
+    public void crediti()
     {
-        Application.Quit();
+        clickCrediti.Invoke();
     }
 
     public void menuOpzioni()
     {
         SceneManager.LoadScene(1);
     }
-
-    public void menuPrincipale()
+    public void chiudi()
     {
-        SceneManager.LoadScene(0);
+        Application.Quit();
     }
 }

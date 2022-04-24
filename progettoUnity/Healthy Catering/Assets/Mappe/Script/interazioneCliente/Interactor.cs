@@ -1,18 +1,11 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class Interactor : MonoBehaviour
 {
     [SerializeField] private LayerMask layerUnityNPC = 6;              //layer utilizzato da Unity per le categorie di oggetto
 
     [SerializeField] private KeyCode tastoInterazione;              //tasto da premere per invocare l'azione
-
-    [Header("CrossHair")]
-    public RawImage crossHair;                                      //riferimento allo sprit del crossHair
-    public Color32 coloreNormale;                                   //colore base del crossHair
-    public Color32 coloreInterazione;                               //colore del crossHair quando viene in contatto con un entità interagibile
 
     //trigger per la scritta dell'interazione
     public UnityEvent inquadratoNPC;
@@ -26,13 +19,14 @@ public class Interactor : MonoBehaviour
     public UnityEvent playerRiprendiMovimento;
 
     public Transform posizioneCamera;
+    public static bool pannelloAperto;
 
     public GameObject pannelloCliente;
 
     void Start()
     {
-        crossHair.color = coloreNormale;
         chiudiPannello();
+        pannelloAperto = false;
     }
 
     // Update is called once per frame
@@ -46,7 +40,7 @@ public class Interactor : MonoBehaviour
         if (NPCInteragibilePuntato ())
         {
             inquadratoNPC.Invoke();
-            crossHair.color = coloreInterazione;//cambia colore crosshair
+            
 
             if (Input.GetKeyDown(tastoInterazione))
             {
@@ -57,11 +51,12 @@ public class Interactor : MonoBehaviour
         else
         {
             uscitaRangeMenu.Invoke();
-            crossHair.color = coloreNormale;
-            
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (pannelloAperto)
             {
-                esciDaInterazioneCliente();
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    esciDaInterazioneCliente();
+                }
             }
         }
     }
@@ -86,9 +81,8 @@ public class Interactor : MonoBehaviour
 
         ritornaAllaPosizioneNormale();
 
-        disabilitaCursore();
+        PuntatoreMouse.disabilitaCursore();
         mainCamera.lockUnlockVisuale();
-        attivaDisattivaPuntatore();
     }
 
     private void ritornaAllaPosizioneNormale()
@@ -96,6 +90,11 @@ public class Interactor : MonoBehaviour
         var nuovaPosizione = posizioneCamera.position;
         nuovaPosizione = nuovaPosizione + (Vector3.up * 1.47f);//TODO sostituire il 1.47f con il valore dell'altezza della camera alla partenza
         mainCamera.transform.position = nuovaPosizione;
+    }
+
+    private void pannelloApertoChiuso()
+    {
+        pannelloAperto = !pannelloAperto;
     }
 
     private void interazioneCliente(/*Cliente clienteTemp*/ int clienteTemp, GameObject Player, GameObject NPC)
@@ -106,9 +105,9 @@ public class Interactor : MonoBehaviour
 
         apriPannello();
 
+
         mainCamera.lockUnlockVisuale();
-        abilitaCursore();
-        attivaDisattivaPuntatore();
+        PuntatoreMouse.abilitaCursore();
     }
 
     private void muoviCameraPerInterazioneCliente()
@@ -136,6 +135,7 @@ public class Interactor : MonoBehaviour
 
             pannelloCliente.SetActive(true);
         }
+        pannelloApertoChiuso();
     }
 
     private void chiudiPannello()
@@ -144,22 +144,6 @@ public class Interactor : MonoBehaviour
         {
             pannelloCliente.SetActive(false);
         }
-    }
-
-    private void abilitaCursore()
-    {
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
-    }
-
-    private void disabilitaCursore()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = false;
-    }
-
-    private void attivaDisattivaPuntatore()
-    {
-        crossHair.enabled = !crossHair.enabled;
+        pannelloApertoChiuso();
     }
 }
