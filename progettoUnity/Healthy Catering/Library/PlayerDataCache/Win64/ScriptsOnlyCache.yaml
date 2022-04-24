@@ -8,8 +8,8 @@ ScriptsOnlyBuild:
     - Interactor
     - Menu
     - MenuInGame
-    - MenuOpzioni
     - MovimentoPlayer
+    - OpzioniMenu
     - SliderValueToText
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -118,7 +118,7 @@ ScriptsOnlyBuild:
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
   - assembly: Assembly-CSharp
-    fullTypeName: MenuOpzioni
+    fullTypeName: OpzioniMenu
     methodName: menuPrincipale
   - assembly: Assembly-CSharp
     fullTypeName: CambioColoreScritta
@@ -136,9 +136,6 @@ ScriptsOnlyBuild:
     fullTypeName: SliderValueToText
     methodName: aggiornaValore
   - assembly: Assembly-CSharp
-    fullTypeName: MenuOpzioni
-    methodName: setFullscreen
-  - assembly: Assembly-CSharp
     fullTypeName: CambioColoreScritta
     methodName: cambioColoreNonCliccato
   - assembly: Assembly-CSharp
@@ -153,12 +150,6 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: SliderValueToText
     methodName: aggiornaValore
-  - assembly: Assembly-CSharp
-    fullTypeName: MenuOpzioni
-    methodName: setRisoluzione
-  - assembly: Assembly-CSharp
-    fullTypeName: MenuOpzioni
-    methodName: setVolume
   - assembly: Assembly-CSharp
     fullTypeName: ControlloMouse
     methodName: lockUnlockVisuale
@@ -199,23 +190,11 @@ ScriptsOnlyBuild:
     fullTypeName: UnityEngine.Behaviour
     methodName: set_enabled
   - assembly: Assembly-CSharp
-    fullTypeName: MenuOpzioni
+    fullTypeName: OpzioniMenu
     methodName: menuPrincipale
   - assembly: Assembly-CSharp
     fullTypeName: SliderValueToText
     methodName: aggiornaValore
-  - assembly: Assembly-CSharp
-    fullTypeName: MenuOpzioni
-    methodName: setFullscreen
-  - assembly: Assembly-CSharp
-    fullTypeName: MenuOpzioni
-    methodName: setQualita
-  - assembly: Assembly-CSharp
-    fullTypeName: MenuOpzioni
-    methodName: setRisoluzione
-  - assembly: Assembly-CSharp
-    fullTypeName: MenuOpzioni
-    methodName: setVolume
   - assembly: Assembly-CSharp
     fullTypeName: SliderValueToText
     methodName: aggiornaValore
@@ -284,59 +263,59 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9604}
+      Script: {instanceID: 1540}
     - Class: 114
-      Script: {instanceID: 9786}
+      Script: {instanceID: 1542}
     - Class: 114
-      Script: {instanceID: 10340}
+      Script: {instanceID: 1544}
     - Class: 114
-      Script: {instanceID: 10636}
+      Script: {instanceID: 1768}
     - Class: 114
-      Script: {instanceID: 10644}
+      Script: {instanceID: 2624}
     - Class: 114
-      Script: {instanceID: 10850}
+      Script: {instanceID: 2632}
     - Class: 114
-      Script: {instanceID: 10990}
+      Script: {instanceID: 3032}
     - Class: 114
-      Script: {instanceID: 11040}
+      Script: {instanceID: 3128}
     - Class: 114
-      Script: {instanceID: 11136}
+      Script: {instanceID: 3306}
     - Class: 114
-      Script: {instanceID: 11310}
+      Script: {instanceID: 3518}
     - Class: 114
-      Script: {instanceID: 11518}
+      Script: {instanceID: 3940}
     - Class: 114
-      Script: {instanceID: 11936}
+      Script: {instanceID: 4614}
     - Class: 114
-      Script: {instanceID: 12598}
+      Script: {instanceID: 5034}
     - Class: 114
-      Script: {instanceID: 13010}
+      Script: {instanceID: 5088}
     - Class: 114
-      Script: {instanceID: 13062}
+      Script: {instanceID: 5172}
     - Class: 114
-      Script: {instanceID: 13144}
+      Script: {instanceID: 5284}
     - Class: 114
-      Script: {instanceID: 13252}
+      Script: {instanceID: 5442}
     - Class: 114
-      Script: {instanceID: 13408}
+      Script: {instanceID: 5644}
     - Class: 114
-      Script: {instanceID: 13608}
+      Script: {instanceID: 5752}
     - Class: 114
-      Script: {instanceID: 13716}
+      Script: {instanceID: 5904}
     - Class: 114
-      Script: {instanceID: 13866}
+      Script: {instanceID: 6230}
     - Class: 114
-      Script: {instanceID: 14192}
+      Script: {instanceID: 6240}
     - Class: 114
-      Script: {instanceID: 14202}
+      Script: {instanceID: 6652}
     - Class: 114
-      Script: {instanceID: 14614}
+      Script: {instanceID: 7262}
     - Class: 114
-      Script: {instanceID: 15220}
+      Script: {instanceID: 7276}
     - Class: 114
-      Script: {instanceID: 15234}
+      Script: {instanceID: 7320}
     - Class: 114
-      Script: {instanceID: 15278}
+      Script: {instanceID: 23614}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -393,35 +372,35 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9604}
+      Script: {instanceID: 1542}
     - Class: 114
-      Script: {instanceID: 10208}
+      Script: {instanceID: 1544}
     - Class: 114
-      Script: {instanceID: 10636}
+      Script: {instanceID: 2192}
     - Class: 114
-      Script: {instanceID: 10850}
+      Script: {instanceID: 2624}
     - Class: 114
-      Script: {instanceID: 11136}
+      Script: {instanceID: 3128}
     - Class: 114
-      Script: {instanceID: 12054}
+      Script: {instanceID: 4066}
     - Class: 114
-      Script: {instanceID: 12164}
+      Script: {instanceID: 4178}
     - Class: 114
-      Script: {instanceID: 12426}
+      Script: {instanceID: 4440}
     - Class: 114
-      Script: {instanceID: 13062}
+      Script: {instanceID: 5088}
     - Class: 114
-      Script: {instanceID: 13144}
+      Script: {instanceID: 5172}
     - Class: 114
-      Script: {instanceID: 13252}
+      Script: {instanceID: 5284}
     - Class: 114
-      Script: {instanceID: 13716}
+      Script: {instanceID: 5752}
     - Class: 114
-      Script: {instanceID: 13866}
+      Script: {instanceID: 5904}
     - Class: 114
-      Script: {instanceID: 14192}
+      Script: {instanceID: 6230}
     - Class: 114
-      Script: {instanceID: 15384}
+      Script: {instanceID: 7426}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -460,43 +439,43 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9604}
+      Script: {instanceID: 1542}
     - Class: 114
-      Script: {instanceID: 9786}
+      Script: {instanceID: 1544}
     - Class: 114
-      Script: {instanceID: 10636}
+      Script: {instanceID: 1768}
     - Class: 114
-      Script: {instanceID: 10644}
+      Script: {instanceID: 2624}
     - Class: 114
-      Script: {instanceID: 10850}
+      Script: {instanceID: 2632}
     - Class: 114
-      Script: {instanceID: 10990}
+      Script: {instanceID: 3128}
     - Class: 114
-      Script: {instanceID: 11136}
+      Script: {instanceID: 3940}
     - Class: 114
-      Script: {instanceID: 11936}
+      Script: {instanceID: 4066}
     - Class: 114
-      Script: {instanceID: 12054}
+      Script: {instanceID: 5034}
     - Class: 114
-      Script: {instanceID: 13010}
+      Script: {instanceID: 5088}
     - Class: 114
-      Script: {instanceID: 13062}
+      Script: {instanceID: 5172}
     - Class: 114
-      Script: {instanceID: 13144}
+      Script: {instanceID: 5284}
     - Class: 114
-      Script: {instanceID: 13252}
+      Script: {instanceID: 5442}
     - Class: 114
-      Script: {instanceID: 13408}
+      Script: {instanceID: 5752}
     - Class: 114
-      Script: {instanceID: 13716}
+      Script: {instanceID: 5904}
     - Class: 114
-      Script: {instanceID: 13866}
+      Script: {instanceID: 6230}
     - Class: 114
-      Script: {instanceID: 14192}
+      Script: {instanceID: 6240}
     - Class: 114
-      Script: {instanceID: 14202}
+      Script: {instanceID: 7320}
     - Class: 114
-      Script: {instanceID: 15278}
+      Script: {instanceID: 23614}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -522,16 +501,28 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: c1d728126ff1918728036c59106d32b2
     assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UIElements
-    className: PanelRaycaster
+    namespaceName: UnityEngine.UI
+    className: RawImage
   - hash:
       serializedVersion: 2
       Hash: a6e561615949734e9f12f9b61661f43e
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: ae83e830e7a90c0aff918c4c2e520825
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: GraphicRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UIElements
+    className: PanelRaycaster
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -630,12 +621,6 @@ ScriptsOnlyBuild:
     className: UnityOnJointBreakMessageListener
   - hash:
       serializedVersion: 2
-      Hash: c1d728126ff1918728036c59106d32b2
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: RawImage
-  - hash:
-      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
@@ -702,12 +687,6 @@ ScriptsOnlyBuild:
     className: TestRunCallbackListener
   - hash:
       serializedVersion: 2
-      Hash: ae83e830e7a90c0aff918c4c2e520825
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: GraphicRaycaster
-  - hash:
-      serializedVersion: 2
       Hash: f40fedccd4adbc76605bea6d67537e4b
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -742,12 +721,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: TestResultRendererCallback
-  - hash:
-      serializedVersion: 2
-      Hash: 30fc83370b73c5810e2f28eccabcb80b
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: MenuOpzioni
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1564,9 +1537,15 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 30fc83370b73c5810e2f28eccabcb80b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: OpzioniMenu
   platform: 19
   scenePathNames:
   - Assets/Mappe/Menu.unity
   - Assets/Mappe/Opzioni.unity
   - Assets/Mappe/Citta.unity
-  playerPath: C:/Users/verio/Desktop/Gioco/Healthy Catering.exe
+  playerPath: C:/Users/verio/Desktop/Nuova cartella/Healthy Catering.exe

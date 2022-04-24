@@ -5,17 +5,18 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Audio;
 
-public class MenuOpzioni : MonoBehaviour
+public class OpzioniMenu : MonoBehaviour
 {
 
-    public AudioMixer audioMixer;
+    [SerializeField] private AudioMixer audioMixer;
 
-    public TMP_Dropdown risoluzioniDisponibili;
+    [SerializeField] private TMP_Dropdown risoluzioniDisponibili;
 
-    public TMP_Dropdown livelloGrafica;
-    public Toggle schermoIntero;
+    [SerializeField] private TMP_Dropdown livelloGrafica;
+    [SerializeField] private Toggle schermoIntero;
+    [SerializeField] private Slider sliderVolume;
 
-    public Resolution[] risoluzioni;
+    [SerializeField] private Resolution[] risoluzioni;
 
     void Start()
     {
@@ -38,7 +39,11 @@ public class MenuOpzioni : MonoBehaviour
         risoluzioniDisponibili.RefreshShownValue();
         livelloGrafica.value = QualitySettings.GetQualityLevel();
         schermoIntero.isOn = Screen.fullScreen;
+        float valoreAudioAperturaScena = 0f;
+        audioMixer.GetFloat("volume", out valoreAudioAperturaScena);
+        sliderVolume.value = valoreAudioAperturaScena;
     }
+
 
     public void setVolume(float volume)
     {

@@ -1844,7 +1844,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1988159438}
-        m_TargetAssemblyTypeName: MenuOpzioni, Assembly-CSharp
+        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
         m_MethodName: menuPrincipale
         m_Mode: 1
         m_Arguments:
@@ -4422,7 +4422,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1988159438}
-        m_TargetAssemblyTypeName: MenuOpzioni, Assembly-CSharp
+        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
         m_MethodName: setFullscreen
         m_Mode: 0
         m_Arguments:
@@ -5050,8 +5050,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuOpzioni, Assembly-CSharp
+      - m_Target: {fileID: 1988159438}
+        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
         m_MethodName: setQualita
         m_Mode: 0
         m_Arguments:
@@ -6383,7 +6383,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1988159438}
-        m_TargetAssemblyTypeName: MenuOpzioni, Assembly-CSharp
+        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
         m_MethodName: setRisoluzione
         m_Mode: 0
         m_Arguments:
@@ -6551,13 +6551,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1988159433}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f03e1ea1d30031499780a1cbd4f8b80, type: 3}
+  m_Script: {fileID: 11500000, guid: 98291a72b1c8140448a74bdb5cb204f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 7e80b91a87fa18a4dac7cec66de33ef3, type: 2}
   risoluzioniDisponibili: {fileID: 1961824172}
   livelloGrafica: {fileID: 1555884324}
   schermoIntero: {fileID: 1237080155}
+  sliderVolume: {fileID: 2036615889}
 --- !u!1 &2010211029
 GameObject:
   m_ObjectHideFlags: 0
@@ -6688,7 +6689,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1988159438}
-        m_TargetAssemblyTypeName: MenuOpzioni, Assembly-CSharp
+        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
         m_MethodName: setVolume
         m_Mode: 0
         m_Arguments:
