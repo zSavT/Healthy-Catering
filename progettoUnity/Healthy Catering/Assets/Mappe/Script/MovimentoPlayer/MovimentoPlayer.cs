@@ -1,143 +1,141 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-/*
- * Va aggiunto all'oggetto che contiene la struttura del giocatore
- */
 public class MovimentoPlayer : MonoBehaviour
 {
+    [SerializeField] private CharacterController controller;
+
+
     [Header("Movimento")]
-    public float velocitaMovimento = 7;
-    public float attritoAlSuolo = 8.8f;
+    [SerializeField] private float velocitaBase = 5f;
+    [SerializeField] private float velocitaSprint = 8f;
+    [SerializeField] private KeyCode tastoSprint;
+    private float velocitaAttuale = 0;
+    
 
 
     [Header("Salto")]
-    public KeyCode tastoSalto = KeyCode.Space;
-    public float forzaSalto = 5;
-    public float timerSalto = 0.5f;
-    public float molltiplicatoreVelocitaSalto = 0.2f;
-    bool prontoASaltare;
+    [SerializeField] private KeyCode tastoSalto;
+    [SerializeField] private float altezzaSalto = 0.35f;
+    [SerializeField] private Transform controlloPavimento;
+    [SerializeField] private float distanzaPavimento = 0.4f;
+    [SerializeField] private LayerMask pavimentoMask;
+    [SerializeField] private float gravita = -9.8f;
+    private bool perTerra;
 
-    [Header("Sprint")]
-    public KeyCode tastoSprint = KeyCode.LeftShift;
-    private float velocitaBase;
-    public float velocitaSprint = 10f;
+    private Vector3 velocita;
+    private float x;
+    private float z;
+    private Vector3 movimento;
+    private bool puoMuoversi;
+    public UnityEvent lockUnlockMovimento;
 
 
-    [Header("Controllo pavimento")]
-    public float altezzaGiocatore = 0;
-    public LayerMask isGround;
-    bool perTerra;
 
-    public Transform orientamento;              //da aggiungere su Unity con l'oggetto l'orientamento 
-
-    float xInput;
-    float yInput;
-
-    Vector3 moveDirection;
-
-    Rigidbody rb;
-
-    public bool puoMuoversi;
-
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
-        prontoASaltare = true;
-        velocitaMovimento = 7;
-        attritoAlSuolo = 8.5f;
-        forzaSalto = 5;
-        velocitaBase = velocitaMovimento;
-
         puoMuoversi = true;
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        if (puoMuoversi) {
-            controlloInputGiocatore();
+        if(puoMuoversi)
+        {
+            controlloCollisionePavimento();
+
             controlloVelocita();
-            if (perTerra)
-            {
-                rb.drag = attritoAlSuolo;
-            } else {
-                rb.drag = 0;
-            }
+
+            controlloTastiMovimento();
+
+            controlloComandi();
+
+            movimentoEffettivo();
+
+            controlloGravita();
         }
     }
 
-    private void FixedUpdate()
+    public void lockUnlockVisuale()
     {
-        Movimento();
-        perTerra = Physics.Raycast(transform.position, Vector3.down, altezzaGiocatore * 0.5f + 0.01f, isGround);
+        this.puoMuoversi = !puoMuoversi;
+        lockUnlockMovimento.Invoke();
     }
 
-    private void controlloInputGiocatore()
+    private void movimentoEffettivo()
     {
-        xInput = Input.GetAxisRaw("Horizontal");
-        yInput = Input.GetAxisRaw("Vertical");
-        if (Input.GetKey(tastoSprint))
-        {
-            velocitaMovimento = velocitaSprint;
-        } else
-        {
-            velocitaMovimento = velocitaBase;
-        }
-        if(Input.GetKey(tastoSalto) && prontoASaltare && perTerra)
-        {
-            prontoASaltare = false;
-            salto();
-            Invoke(nameof(resetSalto), timerSalto);
-        }
+        controller.Move(movimento * velocitaAttuale * Time.deltaTime);
     }
 
-    private void Movimento()
+    private void controlloTastiMovimento()
     {
-        moveDirection = orientamento.forward * yInput + orientamento.right * xInput;
-        if (perTerra)
-        {
-            rb.AddForce(moveDirection.normalized * velocitaMovimento * 10f, ForceMode.Force);
-        }
-        else if (!perTerra)
-        {
-            rb.AddForce(moveDirection.normalized * velocitaMovimento * 10f * molltiplicatoreVelocitaSalto, ForceMode.Force);
-        }
+        x = Input.GetAxis("Horizontal");
+        z = Input.GetAxis("Vertical");
+        movimento = transform.right * x + transform.forward * z;
     }
 
     private void controlloVelocita()
     {
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        if (flatVel.magnitude > velocitaMovimento)
+        if (perTerra && velocita.y < 0)
         {
-            Vector3 limiteVelocita = flatVel.normalized * velocitaMovimento;
-            rb.velocity = new Vector3(limiteVelocita.x, rb.velocity.y, limiteVelocita.z);
+            velocita.y = -2f;
         }
+    }
+
+    private void controlloGravita()
+    {
+        velocita.y += gravita * Time.deltaTime;
+        controller.Move(velocita * Time.deltaTime);
+    }
+
+    private void controlloCollisionePavimento()
+    {
+        perTerra = Physics.CheckSphere(controlloPavimento.position, distanzaPavimento, pavimentoMask);
+    }
+
+    private void controlloComandi()
+    {
+        if (Input.GetKey(tastoSprint) && perTerra)
+        {
+            sprint();
+        }
+        else
+        {
+            velocitaAttuale = velocitaBase;
+        }
+        if (Input.GetKeyDown(tastoSalto) && perTerra)
+        {
+            salto();
+        }
+        if (isFermo())
+        {
+            idle();
+        }
+    }
+
+
+    private void sprint()
+    {
+        velocitaAttuale = velocitaSprint;
     }
 
     private void salto()
     {
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        rb.AddForce(transform.up * forzaSalto, ForceMode.Impulse);
+        velocita.y = Mathf.Sqrt(altezzaSalto * -2f * gravita);
     }
 
-    private void resetSalto()
+    private bool isFermo()
     {
-        prontoASaltare = true;
+        if (x == 0 && z == 0)
+            return true;
+        else
+            return false;
     }
 
-    public void stopMovimento()
+    private void idle()
     {
-        this.puoMuoversi = false;
-        this.velocitaMovimento = 0;
-        this.attritoAlSuolo = 1000f;
-}
 
-    public void riprendiMovimento()
-    {
-        this.puoMuoversi = true;
-        this.velocitaMovimento = 7;
-        this.attritoAlSuolo = 8.8f;
     }
+
 }
