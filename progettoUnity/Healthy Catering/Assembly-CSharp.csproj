@@ -64,6 +64,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Mappe\Script\Database\classi\Player.cs" />
+    <Compile Include="Assets\Mappe\Script\OpzioniMenu.cs" />
     <Compile Include="Assets\Mappe\Script\interazioneCliente\Interactor.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
@@ -111,7 +112,6 @@
     <Compile Include="Assets\Mappe\Script\PuntatoreMouse.cs" />
     <Compile Include="Assets\Mappe\Script\Database\classi\Ristorante.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-    <Compile Include="Assets\Mappe\Script\OpzioniMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
