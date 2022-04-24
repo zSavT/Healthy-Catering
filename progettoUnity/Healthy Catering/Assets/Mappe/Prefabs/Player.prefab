@@ -1212,7 +1212,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 20855ee27a275fd49943f43007782aa0, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -2310,7 +2310,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 2091812149}
-  controllerAnimazione: {fileID: 0}
   velocitaBase: 5
   velocitaSprint: 8
   tastoSprint: 304
