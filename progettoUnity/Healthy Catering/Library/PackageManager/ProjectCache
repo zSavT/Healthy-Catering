@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637864206780010276
-    m_Hash: 3521293456
+      ticks: 637864798664255311
+    m_Hash: 3884128742
   m_LockFileStatus:
     m_FilePath: C:/Users/verio/Repo/Healthy-Catering/progettoUnity/Healthy Catering/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637864206780070271
-    m_Hash: 2797659484
+      ticks: 637864798664375321
+    m_Hash: 3816873278
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -22,12 +22,12 @@ m_LocalPackages:
 m_ProjectPath: C:/Users/verio/Repo/Healthy-Catering/progettoUnity/Healthy Catering/Packages
 m_EditorVersion: 2021.2.19f1 (602ecdbb2fb0)
 m_ResolvedPackages:
-- packageId: com.unity.collab-proxy@1.15.15
+- packageId: com.unity.collab-proxy@1.15.16
   testable: 0
   isDirectDependency: 1
-  version: 1.15.15
+  version: 1.15.16
   source: 1
-  resolvedPath: C:\Users\verio\Repo\Healthy-Catering\progettoUnity\Healthy Catering\Library\PackageCache\com.unity.collab-proxy@1.15.15
+  resolvedPath: C:\Users\verio\Repo\Healthy-Catering\progettoUnity\Healthy Catering\Library\PackageCache\com.unity.collab-proxy@1.15.16
   assetPath: Packages/com.unity.collab-proxy
   name: com.unity.collab-proxy
   displayName: Version Control
@@ -143,13 +143,13 @@ m_ResolvedPackages:
     capabilities: 7
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637828649420000000
+  datePublishedTicks: 637847776260000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
-    revision: abf10445fb869983dbe4f8f87ec63c58f4cd36e0
+    revision: 714a2838c2d55add3d0accf539488f96caa757b2
     path: 
   unityLifecycle:
     version: 1.15.15
@@ -198,7 +198,7 @@ m_ResolvedPackages:
     version: default
   resolvedDependencies:
   - name: com.unity.ide.visualstudio
-    version: 2.0.14
+    version: 2.0.15
   - name: com.unity.test-framework
     version: 1.1.31
   - name: com.unity.ext.nunit
@@ -208,7 +208,7 @@ m_ResolvedPackages:
   - name: com.unity.modules.jsonserialize
     version: 1.0.0
   - name: com.unity.ide.rider
-    version: 3.0.13
+    version: 3.0.14
   - name: com.unity.ide.vscode
     version: 1.2.5
   - name: com.unity.editorcoroutines
@@ -240,12 +240,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 1.0.1
     nextVersion: 
-- packageId: com.unity.ide.rider@3.0.13
+- packageId: com.unity.ide.rider@3.0.14
   testable: 0
   isDirectDependency: 1
-  version: 3.0.13
+  version: 3.0.14
   source: 1
-  resolvedPath: C:\Users\verio\Repo\Healthy-Catering\progettoUnity\Healthy Catering\Library\PackageCache\com.unity.ide.rider@3.0.13
+  resolvedPath: C:\Users\verio\Repo\Healthy-Catering\progettoUnity\Healthy Catering\Library\PackageCache\com.unity.ide.rider@3.0.14
   assetPath: Packages/com.unity.ide.rider
   name: com.unity.ide.rider
   displayName: JetBrains Rider Editor
@@ -312,23 +312,23 @@ m_ResolvedPackages:
     capabilities: 7
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637837345400000000
+  datePublishedTicks: 637861245770000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.rider.git
-    revision: 26f15837ac7ebf5038274dcc39e2b79da5fcdc93
+    revision: e6bfc84a08a0876a2c20ec2ee0883b5ece331dfd
     path: 
   unityLifecycle:
     version: 3.0.13
     nextVersion: 
-- packageId: com.unity.ide.visualstudio@2.0.14
+- packageId: com.unity.ide.visualstudio@2.0.15
   testable: 0
   isDirectDependency: 1
-  version: 2.0.14
+  version: 2.0.15
   source: 1
-  resolvedPath: C:\Users\verio\Repo\Healthy-Catering\progettoUnity\Healthy Catering\Library\PackageCache\com.unity.ide.visualstudio@2.0.14
+  resolvedPath: C:\Users\verio\Repo\Healthy-Catering\progettoUnity\Healthy Catering\Library\PackageCache\com.unity.ide.visualstudio@2.0.15
   assetPath: Packages/com.unity.ide.visualstudio
   name: com.unity.ide.visualstudio
   displayName: Visual Studio Editor
@@ -389,13 +389,13 @@ m_ResolvedPackages:
     capabilities: 7
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637782923640000000
+  datePublishedTicks: 637841884840000000
   documentationUrl: 
-  hasRepository: 0
+  hasRepository: 1
   repository:
-    type: 
-    url: 
-    revision: 
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.visualstudio.git
+    revision: ca1ece42f5a2c5484ba15a15bb975ccc1f6a1a3c
     path: 
   unityLifecycle:
     version: 2.0.14
@@ -931,12 +931,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 1.0.0
     nextVersion: 
-- packageId: com.unity.visualscripting@1.7.6
+- packageId: com.unity.visualscripting@1.7.7
   testable: 0
   isDirectDependency: 1
-  version: 1.7.6
+  version: 1.7.7
   source: 1
-  resolvedPath: C:\Users\verio\Repo\Healthy-Catering\progettoUnity\Healthy Catering\Library\PackageCache\com.unity.visualscripting@1.7.6
+  resolvedPath: C:\Users\verio\Repo\Healthy-Catering\progettoUnity\Healthy Catering\Library\PackageCache\com.unity.visualscripting@1.7.7
   assetPath: Packages/com.unity.visualscripting
   name: com.unity.visualscripting
   displayName: Visual Scripting
@@ -1005,13 +1005,13 @@ m_ResolvedPackages:
     capabilities: 7
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637722460580000000
+  datePublishedTicks: 637798354510000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.visualscripting.git
-    revision: 64599611822e37717efdd2fa1a0576e1984155fc
+    revision: 21e90c37a6500e62ae5a293cadf995e74d5f6905
     path: 
   unityLifecycle:
     version: 1.7.6
@@ -1477,6 +1477,54 @@ m_ResolvedPackages:
   type: module
   description: 'The JSONSerialize module provides the JsonUtility class which lets
     you serialize Unity Objects to JSON format. Scripting API: https://docs.unity3d.com/ScriptReference/UnityEngine.JSONSerializeModule.html'
+  status: 4
+  errors: []
+  versions:
+    all:
+    - 1.0.0
+    compatible:
+    - 1.0.0
+    verified: 1.0.0
+  dependencies: []
+  resolvedDependencies: []
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
+  hasRepository: 0
+  repository:
+    type: 
+    url: 
+    revision: 
+    path: 
+  unityLifecycle:
+    version: 1.0.0
+    nextVersion: 
+- packageId: com.unity.modules.nvidia@1.0.0
+  testable: 0
+  isDirectDependency: 1
+  version: 1.0.0
+  source: 2
+  resolvedPath: C:\Users\verio\Repo\Healthy-Catering\progettoUnity\Healthy Catering\Library\PackageCache\com.unity.modules.nvidia@1.0.0
+  assetPath: Packages/com.unity.modules.nvidia
+  name: com.unity.modules.nvidia
+  displayName: NVIDIA
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: module
+  description: 'A module that contains API you can use to interact with NVIDIA graphics
+    cards. Scripting API: https://docs.unity3d.com/ScriptReference/UnityEngine.NVIDIAModule.html'
   status: 4
   errors: []
   versions:

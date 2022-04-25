@@ -61,6 +61,7 @@ Library\Bee\artifacts\mvdfrm\UnityEngine.InputLegacyModule.dll_9ADE11854DA308D2.
 Library\Bee\artifacts\mvdfrm\UnityEngine.InputModule.dll_EA69051F670A3C29.mvfrm
 Library\Bee\artifacts\mvdfrm\UnityEngine.JSONSerializeModule.dll_85379086C53C0877.mvfrm
 Library\Bee\artifacts\mvdfrm\UnityEngine.LocalizationModule.dll_F1A8E7015D72AEBE.mvfrm
+Library\Bee\artifacts\mvdfrm\UnityEngine.NVIDIAModule.dll_D9E09CA918B55BE0.mvfrm
 Library\Bee\artifacts\mvdfrm\UnityEngine.ParticleSystemModule.dll_D51895C45072009A.mvfrm
 Library\Bee\artifacts\mvdfrm\UnityEngine.PerformanceReportingModule.dll_6575E2260AD349B3.mvfrm
 Library\Bee\artifacts\mvdfrm\UnityEngine.Physics2DModule.dll_7CAC7BDFBBC73AE8.mvfrm
@@ -102,4 +103,4 @@ Library\Bee\artifacts\mvdfrm\UnityEngine.VirtualTexturingModule.dll_6B370E7A0974
 Library\Bee\artifacts\mvdfrm\UnityEngine.VRModule.dll_E424256ADDC75021.mvfrm
 Library\Bee\artifacts\mvdfrm\UnityEngine.WindModule.dll_2F518C3577DC3F5D.mvfrm
 Library\Bee\artifacts\mvdfrm\UnityEngine.XRModule.dll_16E2E86F67019D7F.mvfrm
-Library\Bee\artifacts\mvdfrm\Unity.VisualScripting.Antlr3.Runtime.dll_3C2A338C61938A09.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.VisualScripting.Antlr3.Runtime.dll_F1D3605205FAFBD8.mvfrm
