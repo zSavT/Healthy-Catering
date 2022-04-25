@@ -20,7 +20,6 @@ public class SliderValueToText : MonoBehaviour
     public void aggiornaValorePercentuale()
     {
         float valoreCaricamento = sliderUI.value * 100f;
-        Debug.Log(valoreCaricamento.ToString("N0"));
         textSliderValue.text = valoreCaricamento + "%";
     }
 
