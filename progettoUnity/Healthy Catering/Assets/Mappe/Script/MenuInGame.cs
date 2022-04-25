@@ -4,12 +4,12 @@ using UnityEngine.Events;
 public class MenuInGame : MonoBehaviour
 {
     [Header("Menu Opzioni")]
-    public KeyCode tastoMenu;
+    [SerializeField] private KeyCode tastoMenu;
 
     private bool giocoInPausa = false;
     [SerializeField] private GameObject menuPausa;
-    public UnityEvent aperturaMenuGioco;
-    public UnityEvent chiusuraMenuGioco;
+    [SerializeField] private UnityEvent aperturaMenuGioco;
+    [SerializeField] private UnityEvent chiusuraMenuGioco;
     private bool menuApribile;
 
 

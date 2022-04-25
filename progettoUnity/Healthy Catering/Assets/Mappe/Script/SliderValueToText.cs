@@ -4,7 +4,7 @@ using TMPro;
 
 public class SliderValueToText : MonoBehaviour
 {
-    public Slider sliderUI;
+    [SerializeField] private Slider sliderUI;
     private TextMeshProUGUI textSliderValue;
     
     void Start()

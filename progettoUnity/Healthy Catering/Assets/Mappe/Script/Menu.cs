@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    public Slider sliderCaricamento;        //slider del caricamento della partita
-    public UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
-    public UnityEvent clickCrediti;             //serve per eliminare altri elementi in visualilzzazione
+    [SerializeField] private Slider sliderCaricamento;        //slider del caricamento della partita
+    [SerializeField] private UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
+    [SerializeField] private UnityEvent clickCrediti;             //serve per eliminare altri elementi in visualilzzazione
 
     public void menuPrincipale()
     {

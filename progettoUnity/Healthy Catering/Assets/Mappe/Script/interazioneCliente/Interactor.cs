@@ -3,25 +3,26 @@ using UnityEngine.Events;
 
 public class Interactor : MonoBehaviour
 {
+    [Header("Interazione NPC")]
     [SerializeField] private LayerMask layerUnityNPC = 6;              //layer utilizzato da Unity per le categorie di oggetto
 
     [SerializeField] private KeyCode tastoInterazione;              //tasto da premere per invocare l'azione
 
     //trigger per la scritta dell'interazione
-    public UnityEvent inquadratoNPC;
-    public UnityEvent uscitaRangeMenu;
+    [SerializeField] private UnityEvent inquadratoNPC;
+    [SerializeField] private UnityEvent uscitaRangeMenu;
 
-    public GameObject NPC;
-    public GameObject Player;
-    public GameObject mainCamera;
+    [SerializeField] private GameObject NPC;
+    [SerializeField] private GameObject Player;
+    [SerializeField] private GameObject mainCamera;
 
-    public UnityEvent playerStop;
-    public UnityEvent playerRiprendiMovimento;
+    [SerializeField] private UnityEvent playerStop;
+    [SerializeField] private UnityEvent playerRiprendiMovimento;
 
-    public Transform posizioneCamera;
+    [SerializeField] private Transform posizioneCamera;
     public static bool pannelloAperto;
 
-    public GameObject pannelloCliente;
+    [SerializeField] private GameObject pannelloCliente;
     private Vector3 posizioneCameraOriginale;
     private bool menuApribile;
 
