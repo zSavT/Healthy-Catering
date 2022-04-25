@@ -7,15 +7,17 @@ public class MenuInGame : MonoBehaviour
     public KeyCode tastoMenu;
 
     private bool giocoInPausa = false;
-    [SerializeField] public GameObject menuPausa;
+    [SerializeField] private GameObject menuPausa;
     public UnityEvent aperturaMenuGioco;
     public UnityEvent chiusuraMenuGioco;
+    private bool menuApribile;
 
 
     // Start is called before the first frame update
     void Start()
     {
         giocoInPausa = false;
+        menuApribile = true;
         menuPausa.SetActive(false);
     }
 
@@ -27,19 +29,22 @@ public class MenuInGame : MonoBehaviour
 
     private void checkTastoMenu()
     {
-        if(Input.GetKeyDown(tastoMenu))
+        if (Input.GetKeyDown(tastoMenu))
         {
-            if (!Interactor.pannelloAperto)
+            if(menuApribile)
             {
-                if (giocoInPausa)
+                if (!Interactor.pannelloAperto)
                 {
-                    resumeGame();
-                    PuntatoreMouse.disabilitaCursore();
-                }
-                else
-                {
-                    pauseGame();
-                    PuntatoreMouse.abilitaCursore();
+                    if (giocoInPausa)
+                    {
+                        resumeGame();
+                        PuntatoreMouse.disabilitaCursore();
+                    }
+                    else
+                    {
+                        pauseGame();
+                        PuntatoreMouse.abilitaCursore();
+                    }
                 }
             }
         }
@@ -58,6 +63,16 @@ public class MenuInGame : MonoBehaviour
         menuPausa.SetActive(true);
         Time.timeScale = 0f; //blocca il tempo
         giocoInPausa = true;
+    }
+
+    public void menuAttivo()
+    {
+        menuApribile = true;
+    }
+
+    public void menuDisattivo()
+    {
+        menuApribile = false;
     }
 
 }
