@@ -4,9 +4,9 @@ using UnityEngine.UI;
 public class CrossHairGioco : MonoBehaviour
 {
     [Header("CrossHair")]
-    public RawImage crossHair;                                      //riferimento allo sprit del crossHair
-    public Color32 coloreNormale;                                   //colore base del crossHair
-    public Color32 coloreInterazione;                               //colore del crossHair quando viene in contatto con un entità interagibile
+    [SerializeField] private RawImage crossHair;                                      //riferimento allo sprit del crossHair
+    [SerializeField] private Color32 coloreNormale;                                   //colore base del crossHair
+    [SerializeField] private Color32 coloreInterazione;                               //colore del crossHair quando viene in contatto con un entità interagibile
 
     void Start()
     {

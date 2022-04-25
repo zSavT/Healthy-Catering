@@ -3,32 +3,35 @@ using UnityEngine.Events;
 
 public class Interactor : MonoBehaviour
 {
+    [Header("Interazione NPC")]
     [SerializeField] private LayerMask layerUnityNPC = 6;              //layer utilizzato da Unity per le categorie di oggetto
 
     [SerializeField] private KeyCode tastoInterazione;              //tasto da premere per invocare l'azione
 
     //trigger per la scritta dell'interazione
-    public UnityEvent inquadratoNPC;
-    public UnityEvent uscitaRangeMenu;
+    [SerializeField] private UnityEvent inquadratoNPC;
+    [SerializeField] private UnityEvent uscitaRangeMenu;
 
-    public GameObject NPC;
-    public GameObject Player;
-    public GameObject mainCamera;
+    [SerializeField] private GameObject NPC;
+    [SerializeField] private GameObject Player;
+    [SerializeField] private GameObject mainCamera;
 
-    public UnityEvent playerStop;
-    public UnityEvent playerRiprendiMovimento;
+    [SerializeField] private UnityEvent playerStop;
+    [SerializeField] private UnityEvent playerRiprendiMovimento;
 
-    public Transform posizioneCamera;
+    [SerializeField] private Transform posizioneCamera;
     public static bool pannelloAperto;
 
-    public GameObject pannelloCliente;
+    [SerializeField] private GameObject pannelloCliente;
     private Vector3 posizioneCameraOriginale;
+    private bool menuApribile;
 
     void Start()
     {
         chiudiPannello();
         pannelloAperto = false;
         posizioneCameraOriginale = mainCamera.transform.position;
+        menuApribile = true;
     }
 
     // Update is called once per frame
@@ -37,27 +40,35 @@ public class Interactor : MonoBehaviour
         interazioneUtenteNPC();
     }
 
+    public void menuApribileOnOff()
+    {
+        menuApribile = !menuApribile;
+    }
+
     private void interazioneUtenteNPC()
     {
-        if (NPCInteragibilePuntato ())
+        if (menuApribile)
         {
-            inquadratoNPC.Invoke();
-            
-
-            if (Input.GetKeyDown(tastoInterazione))
+            if (NPCInteragibilePuntato())
             {
-                interazioneCliente(/*Cliente.nomeClienteToCliente (NPC.tag)//ora gli passo solo un numero*/0, Player, NPC);      
-            }
-        }
+                inquadratoNPC.Invoke();
 
-        else
-        {
-            uscitaRangeMenu.Invoke();
-            if (pannelloAperto)
-            {
-                if (Input.GetKeyDown(KeyCode.Escape))
+
+                if (Input.GetKeyDown(tastoInterazione))
                 {
-                    esciDaInterazioneCliente();
+                    interazioneCliente(/*Cliente.nomeClienteToCliente (NPC.tag)//ora gli passo solo un numero*/0, Player, NPC);
+                }
+            }
+
+            else
+            {
+                uscitaRangeMenu.Invoke();
+                if (pannelloAperto)
+                {
+                    if (Input.GetKeyDown(KeyCode.Escape))
+                    {
+                        esciDaInterazioneCliente();
+                    }
                 }
             }
         }
@@ -78,8 +89,9 @@ public class Interactor : MonoBehaviour
     }
     private void esciDaInterazioneCliente()
     {
-        playerRiprendiMovimento.Invoke();
         chiudiPannello();
+        playerRiprendiMovimento.Invoke();
+        
 
         ritornaAllaPosizioneNormale();
 

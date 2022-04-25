@@ -99,7 +99,7 @@ public class MovimentoPlayer : MonoBehaviour
 
     private void controlloComandi()
     {
-        if (Input.GetKey(tastoSprint) && perTerra)
+        if (Input.GetKey(tastoSprint))
         {
             sprint();
         }
@@ -120,7 +120,10 @@ public class MovimentoPlayer : MonoBehaviour
 
     private void sprint()
     {
-        velocitaAttuale = velocitaSprint;
+        if(perTerra)
+        {
+            velocitaAttuale = velocitaSprint;
+        }
         controllerAnimazione.SetBool("fermo", false);
         controllerAnimazione.SetBool("cammina", false);
         controllerAnimazione.SetBool("corre", true);

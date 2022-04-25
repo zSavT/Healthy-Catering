@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.25
-  m_ScrollSensitivity: 5
+  m_ScrollSensitivity: 10
   m_Viewport: {fileID: 171420387}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 617679750}
@@ -1796,7 +1796,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 52, y: -507}
+  m_AnchoredPosition: {x: 52, y: -430}
   m_SizeDelta: {x: 160, y: 41.0443}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &526829878
@@ -1844,7 +1844,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1988159438}
-        m_TargetAssemblyTypeName: MenuOpzioni, Assembly-CSharp
+        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
         m_MethodName: menuPrincipale
         m_Mode: 1
         m_Arguments:
@@ -2280,7 +2280,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40, y: 412}
+  m_AnchoredPosition: {x: 40, y: 323}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &612184461
@@ -3397,7 +3397,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 670, y: 380}
+  m_AnchoredPosition: {x: 670, y: 318.99994}
   m_SizeDelta: {x: 373.899, y: 39.7228}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &971469187
@@ -4422,7 +4422,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1988159438}
-        m_TargetAssemblyTypeName: MenuOpzioni, Assembly-CSharp
+        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
         m_MethodName: setFullscreen
         m_Mode: 0
         m_Arguments:
@@ -4562,7 +4562,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -530, y: 382}
+  m_AnchoredPosition: {x: -530, y: 321}
   m_SizeDelta: {x: 519.7393, y: 39.7228}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1369948339
@@ -4730,7 +4730,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -34, y: 488}
+  m_AnchoredPosition: {x: -34, y: 427}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1515120248
@@ -5050,8 +5050,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuOpzioni, Assembly-CSharp
+      - m_Target: {fileID: 1988159438}
+        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
         m_MethodName: setQualita
         m_Mode: 0
         m_Arguments:
@@ -6383,7 +6383,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1988159438}
-        m_TargetAssemblyTypeName: MenuOpzioni, Assembly-CSharp
+        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
         m_MethodName: setRisoluzione
         m_Mode: 0
         m_Arguments:
@@ -6551,13 +6551,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1988159433}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f03e1ea1d30031499780a1cbd4f8b80, type: 3}
+  m_Script: {fileID: 11500000, guid: 98291a72b1c8140448a74bdb5cb204f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 7e80b91a87fa18a4dac7cec66de33ef3, type: 2}
   risoluzioniDisponibili: {fileID: 1961824172}
   livelloGrafica: {fileID: 1555884324}
   schermoIntero: {fileID: 1237080155}
+  sliderVolume: {fileID: 2036615889}
 --- !u!1 &2010211029
 GameObject:
   m_ObjectHideFlags: 0
@@ -6582,7 +6583,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010211029}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 398, y: 80, z: -15.152833}
+  m_LocalPosition: {x: 398, y: 60, z: -15.152833}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6688,7 +6689,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1988159438}
-        m_TargetAssemblyTypeName: MenuOpzioni, Assembly-CSharp
+        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
         m_MethodName: setVolume
         m_Mode: 0
         m_Arguments:

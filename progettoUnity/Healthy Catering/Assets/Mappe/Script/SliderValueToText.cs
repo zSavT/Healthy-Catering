@@ -4,7 +4,7 @@ using TMPro;
 
 public class SliderValueToText : MonoBehaviour
 {
-    public Slider sliderUI;
+    [SerializeField] private Slider sliderUI;
     private TextMeshProUGUI textSliderValue;
     
     void Start()
@@ -20,7 +20,6 @@ public class SliderValueToText : MonoBehaviour
     public void aggiornaValorePercentuale()
     {
         float valoreCaricamento = sliderUI.value * 100f;
-        Debug.Log(valoreCaricamento.ToString("N0"));
         textSliderValue.text = valoreCaricamento + "%";
     }
 

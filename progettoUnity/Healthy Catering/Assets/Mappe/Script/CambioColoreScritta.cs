@@ -5,7 +5,7 @@ using TMPro;
 
 public class CambioColoreScritta : MonoBehaviour
 {
-    public TextMeshProUGUI testo;
+    [SerializeField] private TextMeshProUGUI testo;
 
     // Start is called before the first frame update
     void Start()
