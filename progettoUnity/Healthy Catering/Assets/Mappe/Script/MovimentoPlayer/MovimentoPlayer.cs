@@ -72,6 +72,16 @@ public class MovimentoPlayer : MonoBehaviour
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
         movimento = transform.right * x + transform.forward * z;
+        if(z > 0 )
+        {
+            controllerAnimazione.SetBool("camminaIndietro", false);
+        } else if (z < 0)
+        {
+            controllerAnimazione.SetBool("camminaIndietro", true);
+        } else
+        {
+            controllerAnimazione.SetBool("camminaIndietro", false);
+        }
         controllerAnimazione.SetBool("fermo", false);
         controllerAnimazione.SetBool("cammina", true);
         controllerAnimazione.SetBool("corre", false);
