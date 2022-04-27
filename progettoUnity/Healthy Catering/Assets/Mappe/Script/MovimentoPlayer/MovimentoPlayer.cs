@@ -72,6 +72,7 @@ public class MovimentoPlayer : MonoBehaviour
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
         movimento = transform.right * x + transform.forward * z;
+        print(x + " " + z);
         if(z > 0 )
         {
             controllerAnimazione.SetBool("camminaIndietro", false);
@@ -81,6 +82,19 @@ public class MovimentoPlayer : MonoBehaviour
         } else
         {
             controllerAnimazione.SetBool("camminaIndietro", false);
+        }
+        if (x > 0)
+        {
+            controllerAnimazione.SetBool("camminaDestra", true);
+            controllerAnimazione.SetBool("camminaSinistra", false);
+        } else if (x < 0)
+        {
+            controllerAnimazione.SetBool("camminaSinistra", true);
+            controllerAnimazione.SetBool("camminaDestra", false);
+        } else
+        {
+            controllerAnimazione.SetBool("camminaSinistra", false);
+            controllerAnimazione.SetBool("camminaDestra", false);
         }
         controllerAnimazione.SetBool("fermo", false);
         controllerAnimazione.SetBool("cammina", true);
