@@ -21,11 +21,6 @@ public class MovimentoPlayer : MonoBehaviour
     [SerializeField] private float gravita = -9.8f;
     private bool perTerra;
 
-    [Header("Muri Invisibili")]
-    [SerializeField] private LayerMask oceano;
-    [SerializeField] private Transform posizioneReset;
-    [SerializeField] private GameObject player;
-
 
     private Vector3 velocita;
     private float x;
@@ -59,8 +54,6 @@ public class MovimentoPlayer : MonoBehaviour
             movimentoEffettivo();
 
             controlloGravita();
-
-            controlloCollisioneAcqua();
         }
     }
 
@@ -126,16 +119,6 @@ public class MovimentoPlayer : MonoBehaviour
     {
         perTerra = Physics.CheckSphere(controlloPavimento.position, distanzaPavimento, pavimentoMask);
         controllerAnimazione.SetBool("salta", false);
-    }
-
-    private void controlloCollisioneAcqua()
-    {
-        bool sulMare;
-        sulMare = Physics.CheckSphere(controlloPavimento.position, distanzaPavimento, oceano);
-        if (sulMare)
-        {
-            player.transform.position = posizioneReset.transform.position;
-        }
     }
 
     private void controlloComandi()
