@@ -35,7 +35,7 @@ public class OpzioniMenu : MonoBehaviour
             }
         }
         risoluzioniDisponibili.AddOptions(opzioni);
-        risoluzioniDisponibili.value = indiceRisoluzioneCorrente; ;
+        risoluzioniDisponibili.value = indiceRisoluzioneCorrente;
         risoluzioniDisponibili.RefreshShownValue();
         livelloGrafica.value = QualitySettings.GetQualityLevel();
         schermoIntero.isOn = Screen.fullScreen;
