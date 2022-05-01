@@ -26,7 +26,7 @@ public class OpzioniMenu : MonoBehaviour
         int indiceRisoluzioneCorrente = 0;
         for (int i = 0; i < risoluzioni.Length; i++)
         {
-            string risoluzione = risoluzioni[i].width + " x " + risoluzioni[i].height;
+            string risoluzione = risoluzioni[i].width + " x " + risoluzioni[i].height + " (" + risoluzioni [i].refreshRate + ")";
             opzioni.Add(risoluzione);
             if (risoluzioni[i].width == Screen.currentResolution.width &&
                 risoluzioni[i].height == Screen.currentResolution.height)
