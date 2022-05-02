@@ -1,6 +1,58 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * 
+ *      RICORDATI DI METTE LE NOTE PER LE ANIMAZIONI!
+ * 
+ * 
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public class Interactor : MonoBehaviour
 {
     [Header("Interazione NPC")]

@@ -15,6 +15,7 @@ public class OpzioniMenu : MonoBehaviour
     [SerializeField] private TMP_Dropdown livelloGrafica;
     [SerializeField] private Toggle schermoIntero;
     [SerializeField] private Slider sliderVolume;
+    [SerializeField] private Toggle vSynch;
 
     [SerializeField] private Resolution[] risoluzioni;
     private bool aspectRatioStandard;                       //se true l'aspect ratio è 16:9, se false è 4:3
@@ -30,12 +31,19 @@ public class OpzioniMenu : MonoBehaviour
         float valoreAudioAperturaScena = 0f;
         audioMixer.GetFloat("volume", out valoreAudioAperturaScena);
         sliderVolume.value = valoreAudioAperturaScena;
+        int vSyncVal = QualitySettings.vSyncCount;
+        if (vSyncVal == 0)
+        {
+            vSynch.isOn = false;
+        } else if (vSyncVal == 1)
+        {
+            vSynch.isOn = true;
+        }
     }
 
     private List<string> setRisoluzioni()
     {
         risoluzioni = Screen.resolutions;
-       // print("Lista risoluzioni\n" + risoluzioni);
         risoluzioniDisponibili.ClearOptions();      //svuota le scelte
         List<string> opzioni = new List<string>();
         int indiceRisoluzioneCorrente = 0;
@@ -53,6 +61,18 @@ public class OpzioniMenu : MonoBehaviour
             }
         }
         return opzioni;
+    }
+
+
+    public void setVSync(bool isActive)
+    {
+        if (isActive == true)
+        {
+            QualitySettings.vSyncCount = 1;
+        } else
+        {
+            QualitySettings.vSyncCount = 0;
+        }
     }
 
 
