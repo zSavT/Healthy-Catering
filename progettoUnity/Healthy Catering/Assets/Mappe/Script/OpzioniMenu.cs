@@ -17,24 +17,12 @@ public class OpzioniMenu : MonoBehaviour
     [SerializeField] private Slider sliderVolume;
 
     [SerializeField] private Resolution[] risoluzioni;
+    private bool aspectRatioStandard;                       //se true l'aspect ratio è 16:9, se false è 4:3
+    private int indiceRisoluzioneCorrente;
 
     void Start()
     {
-        risoluzioni = Screen.resolutions;
-        risoluzioniDisponibili.ClearOptions();      //svuota le scelte
-        List<string> opzioni = new List<string>();
-        int indiceRisoluzioneCorrente = 0;
-        for (int i = 0; i < risoluzioni.Length; i++)
-        {
-            string risoluzione = risoluzioni[i].width + " x " + risoluzioni[i].height + " (" + risoluzioni [i].refreshRate + ")";
-            opzioni.Add(risoluzione);
-            if (risoluzioni[i].width == Screen.currentResolution.width &&
-                risoluzioni[i].height == Screen.currentResolution.height)
-            {
-                indiceRisoluzioneCorrente = i;
-            }
-        }
-        risoluzioniDisponibili.AddOptions(opzioni);
+        risoluzioniDisponibili.AddOptions(setRisoluzioni());
         risoluzioniDisponibili.value = indiceRisoluzioneCorrente;
         risoluzioniDisponibili.RefreshShownValue();
         livelloGrafica.value = QualitySettings.GetQualityLevel();
@@ -42,6 +30,29 @@ public class OpzioniMenu : MonoBehaviour
         float valoreAudioAperturaScena = 0f;
         audioMixer.GetFloat("volume", out valoreAudioAperturaScena);
         sliderVolume.value = valoreAudioAperturaScena;
+    }
+
+    private List<string> setRisoluzioni()
+    {
+        risoluzioni = Screen.resolutions;
+       // print("Lista risoluzioni\n" + risoluzioni);
+        risoluzioniDisponibili.ClearOptions();      //svuota le scelte
+        List<string> opzioni = new List<string>();
+        int indiceRisoluzioneCorrente = 0;
+        string risoluzione = null;
+        float valoreQuattroTerzi = (float)4 / 3;
+        print(valoreQuattroTerzi);
+        for (int i = 0; i < risoluzioni.Length; i++)
+        {
+            risoluzione = risoluzioni[i].width + " x " + risoluzioni[i].height + " (" + risoluzioni[i].refreshRate + ")";
+            print(aspectRatioStandard);
+            opzioni.Add(risoluzione);
+            if (risoluzioni[i].width == Screen.currentResolution.width && risoluzioni[i].height == Screen.currentResolution.height)
+            {
+                indiceRisoluzioneCorrente = i;
+            }
+        }
+        return opzioni;
     }
 
 
