@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Audio;
+using Wilberforce;
 
 public class OpzioniMenu : MonoBehaviour
 {
@@ -18,9 +19,20 @@ public class OpzioniMenu : MonoBehaviour
     [SerializeField] private Toggle vSynch;
 
     [SerializeField] private Resolution[] risoluzioni;
-   
+    [SerializeField] private TMP_Dropdown daltonismo;
+    private Colorblind colorblind;
+    public Camera camera;
+
+
     void Start()
     {
+        
+        colorblind = camera.GetComponent<Colorblind>();
+        //DALTONISMO
+        daltonismo.value = colorblind.getType();
+        print(colorblind.getType());
+
+
         //RISOLUZIONE
         risoluzioni = Screen.resolutions;
         risoluzioniDisponibili.ClearOptions();      //svuota le scelte
@@ -58,8 +70,6 @@ public class OpzioniMenu : MonoBehaviour
             vSynch.isOn = true;
         }
     }
-
-
 
     public void setVSync(bool isActive)
     {
@@ -102,4 +112,5 @@ public class OpzioniMenu : MonoBehaviour
         Resolution risoluzione = risoluzioni[risoluzioneSelezionata];
         Screen.SetResolution(risoluzione.width, risoluzione.height, Screen.fullScreen);
     }
+
 }
