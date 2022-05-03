@@ -18,11 +18,11 @@ public class OpzioniMenu : MonoBehaviour
     [SerializeField] private Toggle vSynch;
 
     [SerializeField] private Resolution[] risoluzioni;
-    private bool aspectRatioStandard;                       //se true l'aspect ratio è 16:9, se false è 4:3
-    private int indiceRisoluzioneCorrente;
+    public int indiceRisoluzioneCorrente;
 
     void Start()
     {
+        indiceRisoluzioneCorrente = 0;                          //inizializza
         risoluzioniDisponibili.AddOptions(setRisoluzioni());
         risoluzioniDisponibili.value = indiceRisoluzioneCorrente;
         risoluzioniDisponibili.RefreshShownValue();
@@ -46,14 +46,9 @@ public class OpzioniMenu : MonoBehaviour
         risoluzioni = Screen.resolutions;
         risoluzioniDisponibili.ClearOptions();      //svuota le scelte
         List<string> opzioni = new List<string>();
-        int indiceRisoluzioneCorrente = 0;
-        string risoluzione = null;
-        float valoreQuattroTerzi = (float)4 / 3;
-        print(valoreQuattroTerzi);
         for (int i = 0; i < risoluzioni.Length; i++)
         {
-            risoluzione = risoluzioni[i].width + " x " + risoluzioni[i].height + " (" + risoluzioni[i].refreshRate + ")";
-            print(aspectRatioStandard);
+            string risoluzione = risoluzioni[i].width + " x " + risoluzioni[i].height + " (" + risoluzioni[i].refreshRate + ")";
             opzioni.Add(risoluzione);
             if (risoluzioni[i].width == Screen.currentResolution.width && risoluzioni[i].height == Screen.currentResolution.height)
             {
