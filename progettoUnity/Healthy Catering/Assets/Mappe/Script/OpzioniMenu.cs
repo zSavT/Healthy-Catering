@@ -22,6 +22,7 @@ public class OpzioniMenu : MonoBehaviour
     void Start()
     {
         risoluzioni = Screen.resolutions;
+        print("RISOLUZIONE CORRENTE: " + Screen.currentResolution);
         risoluzioniDisponibili.ClearOptions();      //svuota le scelte
         List<string> opzioni = new List<string>();
         int indiceRisoluzioneCorrente = 0;
@@ -29,8 +30,7 @@ public class OpzioniMenu : MonoBehaviour
         {
             string risoluzione = risoluzioni[i].width + " x " + risoluzioni[i].height + " (" + risoluzioni[i].refreshRate + ")";
             opzioni.Add(risoluzione);
-            if (risoluzioni[i].width == Screen.currentResolution.width &&
-                risoluzioni[i].height == Screen.currentResolution.height)
+            if (risoluzioni[i].width == Screen.currentResolution.width && risoluzioni[i].height == Screen.currentResolution.height)
             {
                 indiceRisoluzioneCorrente = i;
             }
