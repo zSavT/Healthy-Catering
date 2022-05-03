@@ -18,12 +18,24 @@ public class OpzioniMenu : MonoBehaviour
     [SerializeField] private Toggle vSynch;
 
     [SerializeField] private Resolution[] risoluzioni;
-    public int indiceRisoluzioneCorrente;
-
+   
     void Start()
     {
-        indiceRisoluzioneCorrente = 0;                          //inizializza
-        risoluzioniDisponibili.AddOptions(setRisoluzioni());
+        risoluzioni = Screen.resolutions;
+        risoluzioniDisponibili.ClearOptions();      //svuota le scelte
+        List<string> opzioni = new List<string>();
+        int indiceRisoluzioneCorrente = 0;
+        for (int i = 0; i < risoluzioni.Length; i++)
+        {
+            string risoluzione = risoluzioni[i].width + " x " + risoluzioni[i].height + " (" + risoluzioni[i].refreshRate + ")";
+            opzioni.Add(risoluzione);
+            if (risoluzioni[i].width == Screen.currentResolution.width &&
+                risoluzioni[i].height == Screen.currentResolution.height)
+            {
+                indiceRisoluzioneCorrente = i;
+            }
+        }
+        risoluzioniDisponibili.AddOptions(opzioni);
         risoluzioniDisponibili.value = indiceRisoluzioneCorrente;
         risoluzioniDisponibili.RefreshShownValue();
         livelloGrafica.value = QualitySettings.GetQualityLevel();
@@ -41,22 +53,6 @@ public class OpzioniMenu : MonoBehaviour
         }
     }
 
-    private List<string> setRisoluzioni()
-    {
-        risoluzioni = Screen.resolutions;
-        risoluzioniDisponibili.ClearOptions();      //svuota le scelte
-        List<string> opzioni = new List<string>();
-        for (int i = 0; i < risoluzioni.Length; i++)
-        {
-            string risoluzione = risoluzioni[i].width + " x " + risoluzioni[i].height + " (" + risoluzioni[i].refreshRate + ")";
-            opzioni.Add(risoluzione);
-            if (risoluzioni[i].width == Screen.currentResolution.width && risoluzioni[i].height == Screen.currentResolution.height)
-            {
-                indiceRisoluzioneCorrente = i;
-            }
-        }
-        return opzioni;
-    }
 
 
     public void setVSync(bool isActive)
