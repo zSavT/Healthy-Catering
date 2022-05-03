@@ -22,27 +22,29 @@ public class OpzioniMenu : MonoBehaviour
     void Start()
     {
         risoluzioni = Screen.resolutions;
-        print("RISOLUZIONE CORRENTE: " + Screen.currentResolution);
         risoluzioniDisponibili.ClearOptions();      //svuota le scelte
         List<string> opzioni = new List<string>();
         int indiceRisoluzioneCorrente = 0;
         for (int i = 0; i < risoluzioni.Length; i++)
         {
-            string risoluzione = risoluzioni[i].width + " x " + risoluzioni[i].height + " (" + risoluzioni[i].refreshRate + ")";
+            string risoluzione = risoluzioni[i].width + " x " + risoluzioni[i].height;
             opzioni.Add(risoluzione);
-            if (risoluzioni[i].width == Screen.currentResolution.width && risoluzioni[i].height == Screen.currentResolution.height)
+            if (risoluzioni[i].width == Screen.currentResolution.width &&
+                risoluzioni[i].height == Screen.currentResolution.height)
             {
                 indiceRisoluzioneCorrente = i;
             }
         }
         risoluzioniDisponibili.AddOptions(opzioni);
-        risoluzioniDisponibili.value = indiceRisoluzioneCorrente;
+        risoluzioniDisponibili.value = indiceRisoluzioneCorrente; ;
         risoluzioniDisponibili.RefreshShownValue();
         livelloGrafica.value = QualitySettings.GetQualityLevel();
         schermoIntero.isOn = Screen.fullScreen;
         float valoreAudioAperturaScena = 0f;
         audioMixer.GetFloat("volume", out valoreAudioAperturaScena);
         sliderVolume.value = valoreAudioAperturaScena;
+
+        //VSYNCH
         int vSyncVal = QualitySettings.vSyncCount;
         if (vSyncVal == 0)
         {
