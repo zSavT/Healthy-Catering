@@ -21,7 +21,7 @@ public class OpzioniMenu : MonoBehaviour
     [SerializeField] private Resolution[] risoluzioni;
     [SerializeField] private TMP_Dropdown daltonismo;
     private Colorblind colorblind;
-    public Camera camera;
+    [SerializeField] private Camera camera;
 
 
     void Start()
@@ -49,7 +49,7 @@ public class OpzioniMenu : MonoBehaviour
             }
         }
         risoluzioniDisponibili.AddOptions(opzioni);
-        risoluzioniDisponibili.value = indiceRisoluzioneCorrente; ;
+        risoluzioniDisponibili.value = caricaImpostazioniRisoluzione();
         risoluzioniDisponibili.RefreshShownValue();
 
         //SCHERMO INTERO
@@ -69,6 +69,17 @@ public class OpzioniMenu : MonoBehaviour
         {
             vSynch.isOn = true;
         }
+    }
+
+
+    public void salvaImpostazioniRisoluzione(int indiceRisoluzione)
+    {
+        PlayerPrefs.SetInt("risoluzione", indiceRisoluzione);
+    }
+
+    public int caricaImpostazioniRisoluzione()
+    {
+        return PlayerPrefs.GetInt("risoluzione");
     }
 
     public void setVSync(bool isActive)
