@@ -56,9 +56,11 @@ public class OpzioniMenu : MonoBehaviour
         risoluzioniDisponibili.RefreshShownValue();
         risoluzioniDisponibili.value = caricaImpostazioniRisoluzione();
 
-        //SCHERMO INTERO
+        //GRAFICA
         livelloGrafica.value = QualitySettings.GetQualityLevel();
-        schermoIntero.isOn = Screen.fullScreen;
+
+        //SCHERMO INTERO
+        schermoIntero.isOn = caricaImpostazioniFullScreen();
 
         //AUDIO
         sliderVolume.value = caricaImpostazioniVolume();
@@ -74,6 +76,28 @@ public class OpzioniMenu : MonoBehaviour
         }
     }
 
+    private void salvaImpostazioniFullScreen(bool fullScreen)
+    {
+        if (fullScreen)
+        {
+            PlayerPrefs.SetInt("fullScreen", 0);        //attivo
+        } else
+        {
+            PlayerPrefs.SetInt("fullScreen", 1);            //disattivo
+        }
+        
+    }
+
+    private bool caricaImpostazioniFullScreen()
+    {
+        if (PlayerPrefs.GetInt("fullScreen") == 0)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
 
     private void salvaImpostazioniRisoluzione(int indiceRisoluzione)
     {
@@ -131,6 +155,7 @@ public class OpzioniMenu : MonoBehaviour
     public void setFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
+        salvaImpostazioniFullScreen(isFullscreen);
     }
 
     public void menuPrincipale()
