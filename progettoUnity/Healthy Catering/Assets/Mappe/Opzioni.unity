@@ -2324,6 +2324,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1988159438}
+        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
+        m_MethodName: salvaImpostazioniDaltonismo
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &541497965
 MonoBehaviour:
@@ -4507,9 +4519,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 640473989}
   m_Direction: 0
   m_MinValue: 60
-  m_MaxValue: 90
-  m_WholeNumbers: 1
-  m_Value: 60
+  m_MaxValue: 100
+  m_WholeNumbers: 0
+  m_Value: 90
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -4523,6 +4535,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Value
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1988159438}
+        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
+        m_MethodName: salvaImpostazioniFov
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1089676390
@@ -7803,9 +7827,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1539560361}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 500
   m_WholeNumbers: 1
-  m_Value: 0
+  m_Value: 250
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -7819,6 +7843,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Value
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1988159438}
+        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
+        m_MethodName: salvaImpostazioniSensibilita
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!224 &1893535363
@@ -8052,18 +8088,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1988159438}
-        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
-        m_MethodName: salvaImpostazioniRisoluzione
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1961824173
 MonoBehaviour:
@@ -8231,7 +8255,8 @@ MonoBehaviour:
   sliderVolume: {fileID: 2036615889}
   vSynch: {fileID: 1843281677}
   daltonismo: {fileID: 541497964}
-  camera: {fileID: 1949538935}
+  sliderFov: {fileID: 0}
+  sliderSensibilita: {fileID: 0}
 --- !u!1 &2010211029
 GameObject:
   m_ObjectHideFlags: 0

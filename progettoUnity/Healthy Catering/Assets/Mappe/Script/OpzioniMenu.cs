@@ -20,18 +20,21 @@ public class OpzioniMenu : MonoBehaviour
 
     [SerializeField] private Resolution[] risoluzioni;
     [SerializeField] private TMP_Dropdown daltonismo;
-    private Colorblind colorblind;
-    [SerializeField] private Camera camera;
+
+    [SerializeField] private Slider sliderFov;
+    [SerializeField] private Slider sliderSensibilita;
 
 
     void Start()
     {
-        
-        colorblind = camera.GetComponent<Colorblind>();
         //DALTONISMO
-        daltonismo.value = colorblind.getType();
-        print(colorblind.getType());
+        daltonismo.value = caricaImpostazioniDaltonismo();
 
+
+        //IMPOSTAZIONI CONTROLLI
+
+        //sliderFov.value = caricaImpostazioniFov();
+        //sliderSensibilita.value = caricaImpostazioniSensibilita();
 
         //RISOLUZIONE
         risoluzioni = Screen.resolutions;
@@ -49,16 +52,16 @@ public class OpzioniMenu : MonoBehaviour
             }
         }
         risoluzioniDisponibili.AddOptions(opzioni);
-        risoluzioniDisponibili.value = caricaImpostazioniRisoluzione();
+        risoluzioniDisponibili.value = indiceRisoluzioneCorrente;
         risoluzioniDisponibili.RefreshShownValue();
+        risoluzioniDisponibili.value = caricaImpostazioniRisoluzione();
 
         //SCHERMO INTERO
         livelloGrafica.value = QualitySettings.GetQualityLevel();
         schermoIntero.isOn = Screen.fullScreen;
 
         //AUDIO
-        audioMixer.GetFloat("volume", out float valoreAudioAperturaScena);
-        sliderVolume.value = valoreAudioAperturaScena;
+        sliderVolume.value = caricaImpostazioniVolume();
 
         //VSYNCH
         int vSyncVal = QualitySettings.vSyncCount;
@@ -72,14 +75,34 @@ public class OpzioniMenu : MonoBehaviour
     }
 
 
-    public void salvaImpostazioniRisoluzione(int indiceRisoluzione)
+    private void salvaImpostazioniRisoluzione(int indiceRisoluzione)
     {
         PlayerPrefs.SetInt("risoluzione", indiceRisoluzione);
     }
 
-    public int caricaImpostazioniRisoluzione()
+    private int caricaImpostazioniRisoluzione()
     {
         return PlayerPrefs.GetInt("risoluzione");
+    }
+
+    public void salvaImpostazioniDaltonismo(int indiceDaltonismo)
+    {
+        PlayerPrefs.SetInt("daltonismo", indiceDaltonismo);
+    }
+
+    private int caricaImpostazioniDaltonismo()
+    {
+        return PlayerPrefs.GetInt("daltonismo");
+    }
+
+    private void salvaImpostazioniVolume(float volume)
+    {
+        PlayerPrefs.SetFloat("volume", volume);
+    }
+
+    private float caricaImpostazioniVolume()
+    {
+        return PlayerPrefs.GetFloat("volume");
     }
 
     public void setVSync(bool isActive)
@@ -97,6 +120,7 @@ public class OpzioniMenu : MonoBehaviour
     public void setVolume(float volume)
     {
         audioMixer.SetFloat("volume", volume);
+        salvaImpostazioniVolume(volume);
     }
 
     public void setQualita(int indiceQualita)
@@ -122,6 +146,27 @@ public class OpzioniMenu : MonoBehaviour
     {
         Resolution risoluzione = risoluzioni[risoluzioneSelezionata];
         Screen.SetResolution(risoluzione.width, risoluzione.height, Screen.fullScreen);
+        salvaImpostazioniRisoluzione(risoluzioneSelezionata);
+    }
+
+    public void salvaImpostazioniFov(float fov)
+    {
+        PlayerPrefs.SetFloat("fov", fov);
+    }
+
+    public void salvaImpostazioniSensibilita(float sensibilita)
+    {
+        PlayerPrefs.SetFloat("sensibilita", sensibilita);
+    }
+
+    private float caricaImpostazioniFov()
+    {
+        return PlayerPrefs.GetFloat("fov");
+    }
+
+    private float caricaImpostazioniSensibilita()
+    {
+        return PlayerPrefs.GetFloat("sensibilita");
     }
 
 }

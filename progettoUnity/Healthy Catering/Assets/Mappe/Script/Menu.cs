@@ -3,12 +3,21 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Wilberforce;
 
 public class Menu : MonoBehaviour
 {
     [SerializeField] private Slider sliderCaricamento;        //slider del caricamento della partita
     [SerializeField] private UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
     [SerializeField] private UnityEvent clickCrediti;             //serve per eliminare altri elementi in visualilzzazione
+    [SerializeField] private Camera camera;
+
+
+    void Start()
+    {
+        camera.GetComponent<Colorblind>().Type  = PlayerPrefs.GetInt("daltonismo");
+    }
+
 
     public void menuPrincipale()
     {

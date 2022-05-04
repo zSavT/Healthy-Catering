@@ -23,7 +23,9 @@ public class ControlloMouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(puoCambiareVisuale)
+        //sensibilitaMouse = caricaImpostazioniSensibilita();
+        //rangeVisuale = caricaImpostazioniFov();
+        if (puoCambiareVisuale)
         {
             mouseX = Input.GetAxis("Mouse X") * sensibilitaMouse * Time.deltaTime;
             mouseY = Input.GetAxis("Mouse Y") * sensibilitaMouse * Time.deltaTime;
@@ -37,4 +39,18 @@ public class ControlloMouse : MonoBehaviour
     {
         this.puoCambiareVisuale = !puoCambiareVisuale;
     }
+
+    private float caricaImpostazioniFov()
+    {
+        return PlayerPrefs.GetFloat("fov");
+    }
+
+    private float caricaImpostazioniSensibilita()
+    {
+        return PlayerPrefs.GetFloat("sensibilita");
+    }
+
+
+
+
 }
