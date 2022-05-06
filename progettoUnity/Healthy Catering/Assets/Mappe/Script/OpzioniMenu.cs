@@ -170,7 +170,7 @@ public class OpzioniMenu : MonoBehaviour
     public void setRisoluzione(int risoluzioneSelezionata)
     {
         Resolution risoluzione = risoluzioni[risoluzioneSelezionata];
-        Screen.SetResolution(risoluzione.width, risoluzione.height, schermoIntero.isOn);
+        Screen.SetResolution(risoluzione.width, risoluzione.height, schermoIntero.isOn, risoluzione.refreshRate);
         salvaImpostazioniRisoluzione(risoluzioneSelezionata);
     }
 
