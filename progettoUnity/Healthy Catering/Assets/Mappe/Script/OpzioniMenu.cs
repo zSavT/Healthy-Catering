@@ -171,6 +171,7 @@ public class OpzioniMenu : MonoBehaviour
     {
         Resolution risoluzione = risoluzioni[risoluzioneSelezionata];
         Screen.SetResolution(risoluzione.width, risoluzione.height, schermoIntero.isOn, risoluzione.refreshRate);
+        Application.targetFrameRate = risoluzione.refreshRate;
         salvaImpostazioniRisoluzione(risoluzioneSelezionata);
     }
 
