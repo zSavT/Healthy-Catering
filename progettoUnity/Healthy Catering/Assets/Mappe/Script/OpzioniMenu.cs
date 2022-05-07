@@ -17,6 +17,7 @@ public class OpzioniMenu : MonoBehaviour
     [SerializeField] private Toggle schermoIntero;
     [SerializeField] private Slider sliderVolume;
     [SerializeField] private Toggle vSynch;
+    [SerializeField] private Toggle framerateLibero;
 
     [SerializeField] private Resolution[] risoluzioni;
     [SerializeField] private TMP_Dropdown daltonismo;
@@ -74,6 +75,8 @@ public class OpzioniMenu : MonoBehaviour
         {
             vSynch.isOn = true;
         }
+
+        framerateLibero.isOn = caricaImpostazioniFramerateLibero();
     }
 
     private void salvaImpostazioniFullScreen(bool fullScreen)
@@ -85,7 +88,6 @@ public class OpzioniMenu : MonoBehaviour
         {
             PlayerPrefs.SetInt("fullScreen", 1);            //disattivo
         }
-        
     }
 
     private bool caricaImpostazioniFullScreen()
@@ -94,6 +96,30 @@ public class OpzioniMenu : MonoBehaviour
         {
             return true;
         } else
+        {
+            return false;
+        }
+    }
+
+    private void salvaImpostazioniFramerateLibero(bool fullScreen)
+    {
+        if (fullScreen)
+        {
+            PlayerPrefs.SetInt("framerateLibero", 0);        //attivo
+        }
+        else
+        {
+            PlayerPrefs.SetInt("framerateLibero", 1);            //disattivo
+        }
+
+    }
+    private bool caricaImpostazioniFramerateLibero()
+    {
+        if (PlayerPrefs.GetInt("framerateLibero") == 0)
+        {
+            return true;
+        }
+        else
         {
             return false;
         }
@@ -140,6 +166,18 @@ public class OpzioniMenu : MonoBehaviour
         }
     }
 
+    public void setFramerateLibero(bool isActive)
+    {
+        if (isActive)
+            Application.targetFrameRate = -1;
+        else
+            setRefreshRateToScelta (Screen.currentResolution.refreshRate);
+    }
+
+    void setRefreshRateToScelta(int value)
+    {
+        Application.targetFrameRate = value;
+    }
 
     public void setVolume(float volume)
     {
@@ -171,7 +209,7 @@ public class OpzioniMenu : MonoBehaviour
     {
         Resolution risoluzione = risoluzioni[risoluzioneSelezionata];
         Screen.SetResolution(risoluzione.width, risoluzione.height, schermoIntero.isOn, risoluzione.refreshRate);
-        Application.targetFrameRate = risoluzione.refreshRate;
+        setRefreshRateToScelta (risoluzione.refreshRate);
         salvaImpostazioniRisoluzione(risoluzioneSelezionata);
     }
 
