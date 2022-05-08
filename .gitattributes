@@ -1,1 +1,2 @@
-*.anim filter=lfs diff=lfs merge=lfs -text
+AnimazioneFurgone.anim filter=lfs diff=lfs merge=lfs -text
+AnimazioneLunga.anim filter=lfs diff=lfs merge=lfs -text
