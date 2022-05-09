@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.Audio;
 using Wilberforce;
 
+
 public class OpzioniMenu : MonoBehaviour
 {
 
@@ -24,7 +25,6 @@ public class OpzioniMenu : MonoBehaviour
 
     [SerializeField] private Slider sliderFov;
     [SerializeField] private Slider sliderSensibilita;
-
 
     void Start()
     {
@@ -53,7 +53,7 @@ public class OpzioniMenu : MonoBehaviour
             }
         }
         risoluzioniDisponibili.AddOptions(opzioni);
-        risoluzioniDisponibili.value = indiceRisoluzioneCorrente;
+        risoluzioniDisponibili.value = caricaImpostazioniRisoluzione ();
         risoluzioniDisponibili.RefreshShownValue();
         risoluzioniDisponibili.value = caricaImpostazioniRisoluzione();
 
@@ -62,9 +62,6 @@ public class OpzioniMenu : MonoBehaviour
 
         //SCHERMO INTERO
         schermoIntero.isOn = caricaImpostazioniFullScreen();
-
-        //AUDIO
-        sliderVolume.value = caricaImpostazioniVolume();
 
         //VSYNCH
         int vSyncVal = QualitySettings.vSyncCount;
@@ -77,6 +74,10 @@ public class OpzioniMenu : MonoBehaviour
         }
 
         framerateLibero.isOn = caricaImpostazioniFramerateLibero();
+
+        //AUDIO
+        sliderVolume.value = caricaImpostazioniVolume();
+
     }
 
     private void salvaImpostazioniFullScreen(bool fullScreen)
@@ -101,9 +102,9 @@ public class OpzioniMenu : MonoBehaviour
         }
     }
 
-    private void salvaImpostazioniFramerateLibero(bool fullScreen)
+    private void salvaImpostazioniFramerateLibero(bool framerateLibero)
     {
-        if (fullScreen)
+        if (framerateLibero)
         {
             PlayerPrefs.SetInt("framerateLibero", 0);        //attivo
         }
@@ -113,6 +114,7 @@ public class OpzioniMenu : MonoBehaviour
         }
 
     }
+    
     private bool caricaImpostazioniFramerateLibero()
     {
         if (PlayerPrefs.GetInt("framerateLibero") == 0)
@@ -123,6 +125,15 @@ public class OpzioniMenu : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void setFramerateLibero(bool isActive)
+    {
+        if (isActive)
+            Application.targetFrameRate = -1;
+        else
+            setRefreshRateToScelta(Screen.currentResolution.refreshRate);
+        salvaImpostazioniFramerateLibero(isActive);
     }
 
     private void salvaImpostazioniRisoluzione(int indiceRisoluzione)
@@ -164,14 +175,6 @@ public class OpzioniMenu : MonoBehaviour
         {
             QualitySettings.vSyncCount = 0;
         }
-    }
-
-    public void setFramerateLibero(bool isActive)
-    {
-        if (isActive)
-            Application.targetFrameRate = -1;
-        else
-            setRefreshRateToScelta (Screen.currentResolution.refreshRate);
     }
 
     void setRefreshRateToScelta(int value)
@@ -232,5 +235,4 @@ public class OpzioniMenu : MonoBehaviour
     {
         return PlayerPrefs.GetFloat("sensibilita");
     }
-
 }
