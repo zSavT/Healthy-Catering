@@ -3,7 +3,9 @@ using System.Collections.Generic;
 
 public class Database
 {
-    public static void Main (){}
+    public static void Main (){
+        creaDatabase ();
+    }
 
     //Get database e oggetti
     public static List<Oggetto> getDatabaseOggetto<Oggetto>(Oggetto oggetto)

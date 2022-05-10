@@ -188,7 +188,7 @@ public class Interactor : MonoBehaviour
             GameObject bottoneTemp = (Instantiate(bottonePiatto) as Button).gameObject;
             bottoneTemp.transform.SetParent(pannelloPiatti.transform);
             bottoneTemp.GetComponent<Button>().onClick.AddListener(OnClick);
-            bottoneTemp.transform.GetChild(0).GetComponent<Text>().text = "idk";
+            //bottoneTemp.transform.GetChild(0).GetComponent<Text>().text = "idk";
         }
     }
 
