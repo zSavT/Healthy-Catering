@@ -22,6 +22,8 @@ public class MuroInvisibile : MonoBehaviour
         controlloCollisioneAcqua();
     }
 
+    
+
     private void controlloCollisioneAcqua()
     {
         toccato = Physics.CheckSphere(triggerTocco.position, tolleranzaAltezzaContatto, oceano);
