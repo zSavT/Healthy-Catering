@@ -18,26 +18,14 @@ public class SelezioneLivelli : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //  PlayerPrefs.SetInt("livello1", 0);
-        // PlayerPrefs.SetInt("livello2", 0);
         camera.GetComponent<Colorblind>().Type = PlayerPrefs.GetInt("daltonismo");
-        if (PlayerPrefs.GetInt("livello1") == 0)
+        if (PlayerPrefs.GetInt("livello1") == 1)
         {
-            var colors = bottoneLivello1.colors;
-            colors.normalColor = Color.grey;
-            colors.highlightedColor = Color.grey;
-            colors.pressedColor = Color.grey;
-            colors.selectedColor = Color.grey;
-            bottoneLivello1.colors = colors;
+            bottoneLivello1.interactable = true;                
         }
-        if (PlayerPrefs.GetInt("livello2") == 0)
+        if (PlayerPrefs.GetInt("livello2") == 1)
         {
-            var colors = bottoneLivello2.colors;
-            colors.normalColor = Color.grey;
-            colors.highlightedColor = Color.grey;
-            colors.pressedColor = Color.grey;
-            colors.selectedColor = Color.grey;
-            bottoneLivello2.colors = colors;
+            bottoneLivello2.interactable = true;
         }
     }
 
