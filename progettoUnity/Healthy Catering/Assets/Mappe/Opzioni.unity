@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2456,9 +2456,9 @@ MonoBehaviour:
     m_Options:
     - m_Text: Normale
       m_Image: {fileID: 0}
-    - m_Text: Protonopia
+    - m_Text: Protanopia
       m_Image: {fileID: 0}
-    - m_Text: Deuteronopia
+    - m_Text: Deuteranopia
       m_Image: {fileID: 0}
     - m_Text: Tritanopia
       m_Image: {fileID: 0}
