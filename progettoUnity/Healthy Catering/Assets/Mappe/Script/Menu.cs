@@ -16,6 +16,40 @@ public class Menu : MonoBehaviour
         camera.GetComponent<Colorblind>().Type  = PlayerPrefs.GetInt("daltonismo");
     }
 
+    void Update()
+    {
+        attivaDisattivaLivelli();
+    }
+
+    private void attivaDisattivaLivelli()
+    {
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            if(PlayerPrefs.GetInt("livello1") == 0)
+            {
+                PlayerPrefs.SetInt("livello1", 1);
+                print("livello 1 attivato");
+            } else
+            {
+                print("livello 1 disattivato");
+                PlayerPrefs.SetInt("livello1", 0);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            if (PlayerPrefs.GetInt("livello2") == 0)
+            {
+                PlayerPrefs.SetInt("livello2", 1);
+                print("livello 2 attivato");
+            }
+            else
+            {
+                print("livello 2 disattivato");
+                PlayerPrefs.SetInt("livello2", 0);
+            }
+        }
+
+    }
 
     public void menuPrincipale()
     {
