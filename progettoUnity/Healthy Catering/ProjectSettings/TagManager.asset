@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - NPC
+  - PannelloPiatti
+  - BottonePiatto
   layers:
   - Default
   - TransparentFX

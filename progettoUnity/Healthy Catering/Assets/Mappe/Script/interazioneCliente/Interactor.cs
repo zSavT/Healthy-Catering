@@ -1,16 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
-
-
-
-
-
-
-
-
-
-
-
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 /*
  * 
@@ -18,41 +9,6 @@ using UnityEngine.Events;
  * 
  * 
  */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 public class Interactor : MonoBehaviour
 {
     [Header("Interazione NPC")]
@@ -197,6 +153,8 @@ public class Interactor : MonoBehaviour
 
             pannelloCliente.SetActive(true);
         }
+        generaBottoniPiatti();
+
         pannelloApertoChiuso();
     }
 
@@ -208,5 +166,41 @@ public class Interactor : MonoBehaviour
         }
         pannelloApertoChiuso();
     }
+    
+    private void generaBottoniPiatti()
+    {
+        Button bottonePiattoPrefab = GameObject.FindGameObjectWithTag("BottonePiatto").GetComponent <Button>();
+        //Destroy (bottonePiattoPrefab.gameObject); //deattivo il bottone cosi che non si veda e non sia interagibile
 
+        GameObject pannelloPiatti = GameObject.FindGameObjectWithTag("PannelloPiatti");
+        List <Button> bottoniPiatti = new List<Button> ();
+
+        List<Piatto> piatti = Database.getDatabaseOggetto(new Piatto());
+
+        foreach (Piatto piatto in piatti)
+        {
+            bottoniPiatti.Add(generaBottonePiatto(piatto, bottonePiattoPrefab));
+            print(piatto.nome);
+        }
+
+        foreach (Button bottonePiatto in bottoniPiatti)
+        {
+            GameObject bottoneTemp = (Instantiate(bottonePiatto) as Button).gameObject;
+            bottoneTemp.transform.SetParent(pannelloPiatti.transform);
+            bottoneTemp.GetComponent<Button>().onClick.AddListener(OnClick);
+            bottoneTemp.transform.GetChild(0).GetComponent<Text>().text = "idk";
+        }
+    }
+
+    void OnClick()
+    {
+        Debug.Log("clicked!");
+    }
+
+    private Button generaBottonePiatto(Piatto piatto, Button bottonePiattoPrefab) 
+    {
+        Button output = bottonePiattoPrefab;
+
+        return output;
+    }
 }
