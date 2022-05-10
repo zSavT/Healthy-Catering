@@ -2,8 +2,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using System.Collections.Generic;
 using System.Collections;
+using Wilberforce;
 
 public class SelezioneLivelli : MonoBehaviour
 {
@@ -12,13 +12,15 @@ public class SelezioneLivelli : MonoBehaviour
     [SerializeField] private Button bottoneLivello2;
     [SerializeField] private Slider sliderCaricamento;        //slider del caricamento della partita
     [SerializeField] private UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
+    [SerializeField] private Camera camera;
 
 
     // Start is called before the first frame update
     void Start()
     {
-      //  PlayerPrefs.SetInt("livello1", 0);
-       // PlayerPrefs.SetInt("livello2", 0);
+        //  PlayerPrefs.SetInt("livello1", 0);
+        // PlayerPrefs.SetInt("livello2", 0);
+        camera.GetComponent<Colorblind>().Type = PlayerPrefs.GetInt("daltonismo");
         if (PlayerPrefs.GetInt("livello1") == 0)
         {
             var colors = bottoneLivello1.colors;
