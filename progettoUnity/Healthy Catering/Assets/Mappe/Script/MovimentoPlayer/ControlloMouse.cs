@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ControlloMouse : MonoBehaviour
 {
+    private Camera cameraGioco;
     public Transform modelloPlayer;
     [Header("Impostazioni Mouse")]
     public float sensibilitaMouse = 250f;
@@ -15,16 +16,22 @@ public class ControlloMouse : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(PlayerPrefs.GetInt("primoAvvio") == 0)
+        {
+            PlayerPrefs.SetInt("primoAvvio", 1);
+            PlayerPrefs.SetFloat("sensibilita", 250f);
+        }
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         this.puoCambiareVisuale = true;
+        cameraGioco = GetComponent<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //sensibilitaMouse = caricaImpostazioniSensibilita();
-        //rangeVisuale = caricaImpostazioniFov();
+        sensibilitaMouse = caricaImpostazioniSensibilita();
+        cameraGioco.fieldOfView = caricaImpostazioniFov();
         if (puoCambiareVisuale)
         {
             mouseX = Input.GetAxis("Mouse X") * sensibilitaMouse * Time.deltaTime;

@@ -47,6 +47,8 @@ public class MovimentoPlayer : MonoBehaviour
 
             controlloVelocita();
 
+            Physics.SyncTransforms();
+
             controlloTastiMovimento();
 
             controlloComandi();
