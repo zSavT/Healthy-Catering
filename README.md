@@ -4,6 +4,19 @@
 
 Lo scopo del videogioco è di consolidare le conoscenze di coloro che hanno intrapreso uno studio presso un istituto Alberghiero o un corso concernente le Scienze della Nutrizione e/o corsi simili mirati alla sensibilizzazione sul tema della corretta alimentazione per lo più indirizzata a individui caratterizzati da un certo quadro patologico, con annesso accenno all’argomento ‘’sostenibilità ambientale’’. In più il gioco permetterà al giocatore di imparare a gestire al meglio il proprio denaro, come aspetto secondario del gioco.
 
+## Caratteristiche Gioco
+
+- Gioco in prima persona.
+- Gestionale ristorante.
+- Sistema di classificazione dei piatti in base agli ingredienti ed alle loro caratteristiche.
+  - Piatti classificati per nutriScore ed ecoScore.
+- Grafica polygon.
+- Open Map.
+- 3 livelli di gioco.
+  - Livello 0: Tutorial di gioco.
+  - Livello 1: Patologia x.
+  - Livello 2: Patologia y.
+
 ## Requisiti di Sistema
 
 I requisiti Hardware e Software del gioco:
