@@ -180,16 +180,16 @@ public class Interactor : MonoBehaviour
         foreach (Piatto piatto in piatti)
         {
             bottoniPiatti.Add(generaBottonePiatto(piatto, bottonePiattoPrefab));
-            print(piatto.nome);
         }
 
         foreach (Button bottonePiatto in bottoniPiatti)
         {
-            GameObject bottoneTemp = (Instantiate(bottonePiatto) as Button).gameObject;
+            GameObject bottoneTemp = (Instantiate(bottonePiatto, pannelloPiatti.transform, false) as Button).gameObject;
             bottoneTemp.transform.SetParent(pannelloPiatti.transform);
             bottoneTemp.GetComponent<Button>().onClick.AddListener(OnClick);
             //bottoneTemp.transform.GetChild(0).GetComponent<Text>().text = "idk";
         }
+        
     }
 
     void OnClick()
