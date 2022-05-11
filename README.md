@@ -14,8 +14,8 @@ Lo scopo del videogioco è di consolidare le conoscenze di coloro che hanno intr
 - Open Map.
 - 3 livelli di gioco.
   - Livello 0: Tutorial di gioco.
-  - Livello 1: Patologia x.
-  - Livello 2: Patologia y.
+  - Livello 1: Patologia reflusso.
+  - Livello 2: Patologia diabete.
 
 ## Requisiti di Sistema
 
