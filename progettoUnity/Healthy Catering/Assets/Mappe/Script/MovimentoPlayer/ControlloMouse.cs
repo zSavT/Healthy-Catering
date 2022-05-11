@@ -16,7 +16,11 @@ public class ControlloMouse : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sensibilitaMouse = 250f;
+        if(PlayerPrefs.GetInt("primoAvvio") == 0)
+        {
+            PlayerPrefs.SetInt("primoAvvio", 1);
+            PlayerPrefs.SetFloat("sensibilita", 250f);
+        }
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         this.puoCambiareVisuale = true;
