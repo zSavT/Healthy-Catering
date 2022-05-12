@@ -207,10 +207,11 @@ public class Interactor : MonoBehaviour
         GameObject outputGameObject = (GameObject)Instantiate(bottonePiattoPrefab);
         Button output = outputGameObject.GetComponent<Button>();
 
-        print(output.GetComponentsInChildren<TextMeshProUGUI>().Length.ToString ());
-
         output.GetComponentsInChildren<TextMeshProUGUI>() [0].text = piatto.nome;
         output.GetComponentsInChildren<TextMeshProUGUI>() [1].text = piatto.calcolaCosto().ToString();
+
+        Sprite nuovaImmagine = Resources.Load<Sprite>("ImmaginePiatto1");
+        output.GetComponentsInChildren<Image>()[1].sprite = nuovaImmagine;
 
         return output;
     }
