@@ -9,6 +9,9 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
 
     [SerializeField] private GameObject elementiGenereNeutro;
     private string nomeGiocatoreScritto;
+    private int sceltaGenere;
+    private int sceltaColorePelle;
+    private int sceltaModelloPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +22,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // print(nomeGiocatoreScritto);
+        print(nomeGiocatoreScritto);
     }
 
     public void leggiInputNomeScritto(string testo)
@@ -27,16 +30,27 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         nomeGiocatoreScritto = testo;
     }
 
+    public void salvaImpostazioni()
+    {
+        salvaNomeGiocatore(nomeGiocatoreScritto);
+        salvaGenereGiocatore(nomeGiocatoreScritto, sceltaGenere);
+        salvaColorePelle(nomeGiocatoreScritto, sceltaColorePelle);
+        salvaGenereModello(nomeGiocatoreScritto, sceltaModelloPlayer);
+    }
+
     public void dropdownGenere(int indiceScelta)
     {
         if(indiceScelta == 2)
         {
             elementiGenereNeutro.active = true;
+            PlayerPrefs.SetInt(nomeGiocatoreScritto + "_genere", indiceScelta);
         } else
         {
             elementiGenereNeutro.active = false;
         }
     }
+
+
 
     public void salvaGenereModello(string nomeGiocatore, int scelta)
     {
@@ -59,7 +73,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         }
     }
 
-    public void saltaColorePelle(string nomeGiocatore, int scelta)
+    public void salvaColorePelle(string nomeGiocatore, int scelta)
     {
         if (PlayerPrefs.HasKey(nomeGiocatore + "_pelle"))
         {
@@ -78,6 +92,10 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         if(PlayerPrefs.HasKey(nomeGiocatore + "_genere"))
         {
             PlayerPrefs.SetInt(nomeGiocatore + "_genere", scelta);
+            if (scelta == 0 || scelta == 1)
+            {
+                PlayerPrefs.SetInt(nomeGiocatore + "_modello", scelta);
+            }
         }
     }
 
