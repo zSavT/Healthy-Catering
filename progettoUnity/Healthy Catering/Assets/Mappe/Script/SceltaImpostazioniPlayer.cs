@@ -1,25 +1,30 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SceltaImpostazioniPlayer : MonoBehaviour
 {
 
     [SerializeField] private GameObject elementiGenereNeutro;
+    [SerializeField] private Dropdown dropDownGenereModello;
     private string nomeGiocatoreScritto;
     private int sceltaGenere;
     private int sceltaColorePelle;
     private int sceltaModelloPlayer;
+    bool genereNeutroScelto = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        genereNeutroScelto = false;
         elementiGenereNeutro.active = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        print(nomeGiocatoreScritto);
+        //print(nomeGiocatoreScritto);
+        //dropDownGenereModello.value = caricaGenereModello(nomeGiocatoreScritto);
     }
 
     public void menuPrincipale()
@@ -37,29 +42,42 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         salvaNomeGiocatore(nomeGiocatoreScritto);
         salvaGenereGiocatore(nomeGiocatoreScritto, sceltaGenere);
         salvaColorePelle(nomeGiocatoreScritto, sceltaColorePelle);
-        salvaGenereModello(nomeGiocatoreScritto, sceltaModelloPlayer);
+        print(caricaGenereGiocatore(nomeGiocatoreScritto));
+        print(caricaGenereModello(nomeGiocatoreScritto));
+        if (genereNeutroScelto)
+        {
+            salvaGenereModello(nomeGiocatoreScritto, sceltaModelloPlayer);
+        }
+        print(caricaGenereGiocatore(nomeGiocatoreScritto));
+        print(caricaGenereModello(nomeGiocatoreScritto));
     }
 
     public void dropdownGenere(int indiceScelta)
     {
         if(indiceScelta == 2)
         {
+            genereNeutroScelto = true;
             elementiGenereNeutro.active = true;
-            PlayerPrefs.SetInt(nomeGiocatoreScritto + "_genere", indiceScelta);
         } else
         {
+            genereNeutroScelto = false;
+            salvaGenereGiocatore(nomeGiocatoreScritto, indiceScelta);
             elementiGenereNeutro.active = false;
         }
+    }
+
+    public void setSceltaModello(int scelta)
+    {
+        sceltaModelloPlayer = scelta;
     }
 
 
 
     public void salvaGenereModello(string nomeGiocatore, int scelta)
     {
-        if (PlayerPrefs.HasKey(nomeGiocatore + "_modello"))
-        {
-            PlayerPrefs.SetInt(nomeGiocatore + "_modello", scelta);
-        }
+
+                PlayerPrefs.SetInt(nomeGiocatore + "_modello", scelta);
+
     }
 
     public int caricaGenereModello(string nomeGiocatore)
@@ -69,18 +87,16 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
 
     public void salvaNomeGiocatore(string nomeInserito)
     {
-        if (PlayerPrefs.HasKey("PlayerName_" + nomeInserito))
-        {
+
             PlayerPrefs.SetString("PlayerName_" + nomeInserito, nomeInserito);
-        }
+
     }
 
     public void salvaColorePelle(string nomeGiocatore, int scelta)
     {
-        if (PlayerPrefs.HasKey(nomeGiocatore + "_pelle"))
-        {
+
             PlayerPrefs.SetInt(nomeGiocatore + "_pelle", scelta);
-        }
+
     }
 
 
@@ -91,14 +107,11 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
 
     public void salvaGenereGiocatore(string nomeGiocatore, int scelta)
     {
-        if(PlayerPrefs.HasKey(nomeGiocatore + "_genere"))
-        {
             PlayerPrefs.SetInt(nomeGiocatore + "_genere", scelta);
             if (scelta == 0 || scelta == 1)
             {
-                PlayerPrefs.SetInt(nomeGiocatore + "_modello", scelta);
+                salvaGenereModello(nomeGiocatore, scelta);
             }
-        }
     }
 
     public int caricaGenereGiocatore(string nomeGiocatore)

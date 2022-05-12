@@ -5067,6 +5067,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1988159438}
+        m_TargetAssemblyTypeName: SceltaImpostazioniPlayer, Assembly-CSharp
+        m_MethodName: setSceltaModello
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1795986373
 MonoBehaviour:
@@ -6151,6 +6163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elementiGenereNeutro: {fileID: 125662381}
+  dropDownGenereModello: {fileID: 0}
 --- !u!1 &2045322638
 GameObject:
   m_ObjectHideFlags: 0
