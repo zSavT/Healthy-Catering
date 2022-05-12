@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class SceltaImpostazioniPlayer : MonoBehaviour
 {
@@ -23,6 +20,11 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     void Update()
     {
         print(nomeGiocatoreScritto);
+    }
+
+    public void menuPrincipale()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void leggiInputNomeScritto(string testo)
