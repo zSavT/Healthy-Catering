@@ -186,18 +186,14 @@ public class Interactor : MonoBehaviour
             bottoniPiatti.Add(generaBottonePiatto(piatto, bottonePiattoPrefab));
         }
 
-        int i = 0;
         foreach (Button bottonePiatto in bottoniPiatti)
         { 
             GameObject bottoneTemp = new GameObject();
             bottoneTemp = (Instantiate(bottonePiatto, pannelloPiatti.transform, false) as Button).gameObject;
             bottoneTemp.transform.SetParent(pannelloPiatti.transform);
             
-            Piatto temp = new Piatto();
             bottoneTemp.GetComponent<Button>().onClick.AddListener(() => {
-                selezionaPiatto(piatti [i]); 
-                i++;//deve stare qui perché questa funzione viene chiamata solo quando viene
-                //premuto il bottone
+                selezionaPiatto(bottoneTemp, piatti);
             });
 
         }
@@ -205,9 +201,19 @@ public class Interactor : MonoBehaviour
         Destroy(bottonePiattoPrefab);
     }
 
-    void selezionaPiatto(Piatto selezionato)
+    void selezionaPiatto(GameObject bottone, List <Piatto> piatti)
     {
-        print(selezionato.nome);
+        Piatto piattoSelezionato = new Piatto ();
+        foreach (Piatto piatto in piatti)
+        {
+            if (bottone.name.Contains(piatto.nome))//contains perché viene aggiunta la stringa "(Clone)" nel gameobject
+            {
+                piattoSelezionato = piatto;
+                break;
+            }
+        }
+
+        print(piattoSelezionato.nome);
     }
 
     private Button generaBottonePiatto(Piatto piatto, GameObject bottonePiattoPrefab) 
@@ -220,6 +226,8 @@ public class Interactor : MonoBehaviour
 
         Sprite nuovaImmagine = Resources.Load<Sprite>("ImmaginePiatto1");
         output.GetComponentsInChildren<Image>()[1].sprite = nuovaImmagine;
+
+        output.name = piatto.nome;
 
         return output;
     }
