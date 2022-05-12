@@ -186,20 +186,28 @@ public class Interactor : MonoBehaviour
             bottoniPiatti.Add(generaBottonePiatto(piatto, bottonePiattoPrefab));
         }
 
+        int i = 0;
         foreach (Button bottonePiatto in bottoniPiatti)
         { 
             GameObject bottoneTemp = new GameObject();
             bottoneTemp = (Instantiate(bottonePiatto, pannelloPiatti.transform, false) as Button).gameObject;
             bottoneTemp.transform.SetParent(pannelloPiatti.transform);
-            bottoneTemp.GetComponent<Button>().onClick.AddListener(OnClick);  
+            
+            Piatto temp = new Piatto();
+            bottoneTemp.GetComponent<Button>().onClick.AddListener(() => {
+                selezionaPiatto(piatti [i]); 
+                i++;//deve stare qui perché questa funzione viene chiamata solo quando viene
+                //premuto il bottone
+            });
+
         }
 
         Destroy(bottonePiattoPrefab);
     }
 
-    void OnClick()
+    void selezionaPiatto(Piatto selezionato)
     {
-        Debug.Log("clicked!");
+        print(selezionato.nome);
     }
 
     private Button generaBottonePiatto(Piatto piatto, GameObject bottonePiattoPrefab) 
