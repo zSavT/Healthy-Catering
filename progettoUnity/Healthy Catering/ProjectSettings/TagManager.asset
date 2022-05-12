@@ -7,6 +7,7 @@ TagManager:
   - NPC
   - PannelloPiatti
   - BottonePiatto
+  - PannelloCliente
   layers:
   - Default
   - TransparentFX

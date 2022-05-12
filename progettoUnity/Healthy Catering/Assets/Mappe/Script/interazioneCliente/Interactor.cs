@@ -155,6 +155,7 @@ public class Interactor : MonoBehaviour
             pannelloCliente.SetActive(true);
         }
         generaBottoniPiatti();
+        caricaClienteInPanello();
 
         pannelloApertoChiuso();
     }
@@ -185,7 +186,6 @@ public class Interactor : MonoBehaviour
             bottoniPiatti.Add(generaBottonePiatto(piatto, bottonePiattoPrefab));
         }
 
-
         foreach (Button bottonePiatto in bottoniPiatti)
         { 
             GameObject bottoneTemp = new GameObject();
@@ -214,5 +214,16 @@ public class Interactor : MonoBehaviour
         output.GetComponentsInChildren<Image>()[1].sprite = nuovaImmagine;
 
         return output;
+    }
+
+    private void caricaClienteInPanello()
+    {
+        List<Cliente> clienti = Database.getDatabaseOggetto(new Cliente());
+        
+        GameObject pannelloCliente = GameObject.FindGameObjectWithTag("PannelloCliente");
+
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>() [0].text = clienti[1].nome;
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>() [1].text = "Dieta: " + Dieta.IdDietaToDietaString(clienti[1].dieta);
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>() [2].text = Patologia.listIdToListPatologie(clienti[1].listaIdPatologie);
     }
 }
