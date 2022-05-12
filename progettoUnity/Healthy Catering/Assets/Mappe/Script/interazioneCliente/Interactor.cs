@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 
 /*
  * 
@@ -169,8 +170,10 @@ public class Interactor : MonoBehaviour
     
     private void generaBottoniPiatti()
     {
-        Button bottonePiattoPrefab = GameObject.FindGameObjectWithTag("BottonePiatto").GetComponent <Button>();
-        //Destroy (bottonePiattoPrefab.gameObject); //deattivo il bottone cosi che non si veda e non sia interagibile
+        //Button bottonePiattoPrefab = GameObject.FindGameObjectWithTag("BottonePiatto").GetComponent <Button>();
+        GameObject bottonePiattoPrefab = GameObject.FindGameObjectWithTag("BottonePiatto");
+
+        //bottonePiattoPrefab.gameObject.SetActive(false);
 
         GameObject pannelloPiatti = GameObject.FindGameObjectWithTag("PannelloPiatti");
         List <Button> bottoniPiatti = new List<Button> ();
@@ -182,14 +185,16 @@ public class Interactor : MonoBehaviour
             bottoniPiatti.Add(generaBottonePiatto(piatto, bottonePiattoPrefab));
         }
 
+
         foreach (Button bottonePiatto in bottoniPiatti)
-        {
-            GameObject bottoneTemp = (Instantiate(bottonePiatto, pannelloPiatti.transform, false) as Button).gameObject;
+        { 
+            GameObject bottoneTemp = new GameObject();
+            bottoneTemp = (Instantiate(bottonePiatto, pannelloPiatti.transform, false) as Button).gameObject;
             bottoneTemp.transform.SetParent(pannelloPiatti.transform);
-            bottoneTemp.GetComponent<Button>().onClick.AddListener(OnClick);
-            //bottoneTemp.transform.GetChild(0).GetComponent<Text>().text = "idk";
+            bottoneTemp.GetComponent<Button>().onClick.AddListener(OnClick);  
         }
-        
+
+        Destroy(bottonePiattoPrefab);
     }
 
     void OnClick()
@@ -197,9 +202,15 @@ public class Interactor : MonoBehaviour
         Debug.Log("clicked!");
     }
 
-    private Button generaBottonePiatto(Piatto piatto, Button bottonePiattoPrefab) 
+    private Button generaBottonePiatto(Piatto piatto, GameObject bottonePiattoPrefab) 
     {
-        Button output = bottonePiattoPrefab;
+        GameObject outputGameObject = (GameObject)Instantiate(bottonePiattoPrefab);
+        Button output = outputGameObject.GetComponent<Button>();
+
+        print(output.GetComponentsInChildren<TextMeshProUGUI>().Length.ToString ());
+
+        output.GetComponentsInChildren<TextMeshProUGUI>() [0].text = piatto.nome;
+        output.GetComponentsInChildren<TextMeshProUGUI>() [1].text = piatto.calcolaCosto().ToString();
 
         return output;
     }
