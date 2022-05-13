@@ -43,9 +43,7 @@ public class Player
         {
             return false;
         }
-        return (this.nome.Equals(((Player)obj).nome))
-            && (this.soldi == ((Player)obj).soldi)
-            && OggettoQuantita<int>.listeIdQuantitaUguali(this.inventario, ((Player)obj).inventario);
+        return (this.nome.Equals(((Player)obj).nome)));
     }
 
     public override string ToString()
