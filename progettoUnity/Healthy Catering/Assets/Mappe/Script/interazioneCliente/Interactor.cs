@@ -35,12 +35,15 @@ public class Interactor : MonoBehaviour
     private Vector3 posizioneCameraOriginale;
     private bool menuApribile;
 
+    private bool bottoniGenerati;
+
     void Start()
     {
         chiudiPannello();
         pannelloAperto = false;
         posizioneCameraOriginale = mainCamera.transform.position;
         menuApribile = true;
+        bottoniGenerati = false;
     }
 
     // Update is called once per frame
@@ -154,7 +157,10 @@ public class Interactor : MonoBehaviour
 
             pannelloCliente.SetActive(true);
         }
-        generaBottoniPiatti();
+        if (!bottoniGenerati) { 
+            generaBottoniPiatti();
+            bottoniGenerati = true;
+        }
         caricaClienteInPanello();
 
         pannelloApertoChiuso();
