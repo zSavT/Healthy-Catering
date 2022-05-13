@@ -47,16 +47,10 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         salvaNomeGiocatore(nomeGiocatoreScritto);
         salvaGenereGiocatore(nomeGiocatoreScritto, sceltaGenere);
         salvaColorePelle(nomeGiocatoreScritto, sceltaColorePelle);
-        print(caricaGenereGiocatore(nomeGiocatoreScritto));
-        print(caricaGenereModello(nomeGiocatoreScritto));
         if (genereNeutroScelto)
         {
             salvaGenereModello(nomeGiocatoreScritto, sceltaModelloPlayer);
         }
-        print(caricaGenereGiocatore(nomeGiocatoreScritto));
-        print(caricaGenereModello(nomeGiocatoreScritto));
-        print(nomeGiocatoreScritto);
-        print(PlayerPrefs.HasKey(nomeGiocatoreScritto + "_mod"));
     }
 
     public void dropdownGenere(int indiceScelta)

@@ -18,12 +18,6 @@ public class ModelloPlayer : MonoBehaviour
         setTexturePelle();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        print(PlayerPrefs.GetInt(nomeGiocatore + "_pelle"));
-    }
-
     private void attivaModelloGenere()
     {
         print(PlayerPrefs.GetInt(nomeGiocatore + "_modello"));
