@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2456,9 +2456,9 @@ MonoBehaviour:
     m_Options:
     - m_Text: Normale
       m_Image: {fileID: 0}
-    - m_Text: Protonopia
+    - m_Text: Protanopia
       m_Image: {fileID: 0}
-    - m_Text: Deuteronopia
+    - m_Text: Deuteranopia
       m_Image: {fileID: 0}
     - m_Text: Tritanopia
       m_Image: {fileID: 0}
@@ -2650,7 +2650,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3351,8 +3351,8 @@ RectTransform:
   m_Father: {fileID: 1665561527}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.75, y: 0}
+  m_AnchorMax: {x: 0.75, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3504,7 +3504,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.75, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4907,27 +4907,27 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 60
   m_MaxValue: 100
-  m_WholeNumbers: 0
-  m_Value: 90
+  m_WholeNumbers: 1
+  m_Value: 60
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 795170714}
-        m_TargetAssemblyTypeName: SliderValueToText, Assembly-CSharp
-        m_MethodName: aggiornaValore
-        m_Mode: 1
+      - m_Target: {fileID: 1988159438}
+        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
+        m_MethodName: salvaImpostazioniFov
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Value
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1988159438}
         m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
-        m_MethodName: salvaImpostazioniFov
-        m_Mode: 0
+        m_MethodName: aggiornaValoreScrittaFov
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6336,8 +6336,8 @@ RectTransform:
   m_Father: {fileID: 1148367692}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8213,29 +8213,29 @@ MonoBehaviour:
   m_FillRect: {fileID: 560204046}
   m_HandleRect: {fileID: 1539560361}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 1
   m_MaxValue: 500
   m_WholeNumbers: 1
-  m_Value: 250
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 38735335}
-        m_TargetAssemblyTypeName: SliderValueToText, Assembly-CSharp
-        m_MethodName: aggiornaValore
-        m_Mode: 1
+      - m_Target: {fileID: 1988159438}
+        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
+        m_MethodName: salvaImpostazioniSensibilita
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Value
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1988159438}
         m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
-        m_MethodName: salvaImpostazioniSensibilita
-        m_Mode: 0
+        m_MethodName: aggiornaValoreScrittaSensibilita
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8643,8 +8643,10 @@ MonoBehaviour:
   vSynch: {fileID: 1843281677}
   framerateLibero: {fileID: 592033082}
   daltonismo: {fileID: 541497964}
-  sliderFov: {fileID: 0}
-  sliderSensibilita: {fileID: 0}
+  sliderFov: {fileID: 1060960641}
+  sliderSensibilita: {fileID: 1893535362}
+  sliderFovTesto: {fileID: 795170712}
+  sliderSensibilitaTesto: {fileID: 38735336}
 --- !u!1 &2010211029
 GameObject:
   m_ObjectHideFlags: 0

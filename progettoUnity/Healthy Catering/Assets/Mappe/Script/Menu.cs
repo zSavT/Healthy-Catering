@@ -7,8 +7,6 @@ using Wilberforce;
 
 public class Menu : MonoBehaviour
 {
-    [SerializeField] private Slider sliderCaricamento;        //slider del caricamento della partita
-    [SerializeField] private UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
     [SerializeField] private UnityEvent clickCrediti;             //serve per eliminare altri elementi in visualilzzazione
     [SerializeField] private Camera camera;
 
@@ -18,6 +16,40 @@ public class Menu : MonoBehaviour
         camera.GetComponent<Colorblind>().Type  = PlayerPrefs.GetInt("daltonismo");
     }
 
+    void Update()
+    {
+        attivaDisattivaLivelli();
+    }
+
+    private void attivaDisattivaLivelli()
+    {
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            if(PlayerPrefs.GetInt("livello1") == 0)
+            {
+                PlayerPrefs.SetInt("livello1", 1);
+                print("livello 1 attivato");
+            } else
+            {
+                print("livello 1 disattivato");
+                PlayerPrefs.SetInt("livello1", 0);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            if (PlayerPrefs.GetInt("livello2") == 0)
+            {
+                PlayerPrefs.SetInt("livello2", 1);
+                print("livello 2 attivato");
+            }
+            else
+            {
+                print("livello 2 disattivato");
+                PlayerPrefs.SetInt("livello2", 0);
+            }
+        }
+
+    }
 
     public void menuPrincipale()
     {
@@ -25,28 +57,14 @@ public class Menu : MonoBehaviour
     }
 
 
-    public void playGame(int sceneIndex)
-    {
-        allAvvio.Invoke();
-        StartCoroutine(caricamentoAsincrono(sceneIndex));
-        allAvvio.Invoke();
-    }
-
-    IEnumerator caricamentoAsincrono(int sceneIndex)
-    {
-        AsyncOperation caricamento = SceneManager.LoadSceneAsync(sceneIndex);
-
-        while (!caricamento.isDone)
-        {
-            float progresso = Mathf.Clamp01(caricamento.progress / .9f);
-            sliderCaricamento.value = progresso;
-            yield return null;
-        }
-    }
-
     public void crediti()
     {
         clickCrediti.Invoke();
+    }
+
+    public void menuSelezioneLivelli()
+    {
+        SceneManager.LoadScene(3);
     }
 
     public void menuOpzioni()
