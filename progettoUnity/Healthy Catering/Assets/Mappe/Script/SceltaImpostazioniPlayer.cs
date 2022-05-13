@@ -37,6 +37,11 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         nomeGiocatoreScritto = testo;
     }
 
+    public void setPellePlayer(int indice)
+    {
+        sceltaColorePelle = indice;
+    }
+
     public void salvaImpostazioni()
     {
         salvaNomeGiocatore(nomeGiocatoreScritto);

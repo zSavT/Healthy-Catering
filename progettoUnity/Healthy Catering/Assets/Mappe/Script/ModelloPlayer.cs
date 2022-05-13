@@ -15,12 +15,13 @@ public class ModelloPlayer : MonoBehaviour
     void Start()
     {
         attivaModelloGenere();
+        setTexturePelle();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        print(PlayerPrefs.GetInt(nomeGiocatore + "_pelle"));
     }
 
     private void attivaModelloGenere()
@@ -42,14 +43,14 @@ public class ModelloPlayer : MonoBehaviour
     {
         if(PlayerPrefs.GetInt(nomeGiocatore + "_pelle") == 0)
         {
-            //material.mainTexture = textureBianco;
+            GetComponentInChildren<Renderer>().material = textureBianco; 
         } else if (PlayerPrefs.GetInt(nomeGiocatore + "_pelle") == 1 )
         {
-            //material.mainTexture = textureNero;
+            GetComponentInChildren<Renderer>().material = textureNero;
         }
         else if (PlayerPrefs.GetInt(nomeGiocatore + "_pelle") == 2)
         {
-            //material.mainTexture = textureMulatto;
+            GetComponentInChildren<Renderer>().material =  textureMulatto;
         }
     }
 }
