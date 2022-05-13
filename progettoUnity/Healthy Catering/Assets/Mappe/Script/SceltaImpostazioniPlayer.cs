@@ -50,33 +50,30 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         }
         print(caricaGenereGiocatore(nomeGiocatoreScritto));
         print(caricaGenereModello(nomeGiocatoreScritto));
+        print(nomeGiocatoreScritto);
+        print(PlayerPrefs.HasKey(nomeGiocatoreScritto + "_mod"));
     }
 
     public void dropdownGenere(int indiceScelta)
     {
-        if(indiceScelta == 2)
+        sceltaGenere = indiceScelta;
+        if (indiceScelta == 2)
         {
             genereNeutroScelto = true;
-            elementiGenereNeutro.active = true;
-        } else
+            elementiGenereNeutro.SetActive(true);
+        }
+        else
         {
             genereNeutroScelto = false;
-            salvaGenereGiocatore(nomeGiocatoreScritto, indiceScelta);
-            elementiGenereNeutro.active = false;
+            elementiGenereNeutro.SetActive(false);
         }
     }
-
-    public void setSceltaModello(int scelta)
-    {
-        sceltaModelloPlayer = scelta;
-    }
-
 
 
     public void salvaGenereModello(string nomeGiocatore, int scelta)
     {
 
-                PlayerPrefs.SetInt(nomeGiocatore + "_modello", scelta);
+        PlayerPrefs.SetInt(nomeGiocatore + "_modello", scelta);
 
     }
 
@@ -88,14 +85,14 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     public void salvaNomeGiocatore(string nomeInserito)
     {
 
-            PlayerPrefs.SetString("PlayerName_" + nomeInserito, nomeInserito);
+        PlayerPrefs.SetString("PlayerName_" + nomeInserito, nomeInserito);
 
     }
 
     public void salvaColorePelle(string nomeGiocatore, int scelta)
     {
 
-            PlayerPrefs.SetInt(nomeGiocatore + "_pelle", scelta);
+        PlayerPrefs.SetInt(nomeGiocatore + "_pelle", scelta);
 
     }
 
@@ -107,16 +104,21 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
 
     public void salvaGenereGiocatore(string nomeGiocatore, int scelta)
     {
-            PlayerPrefs.SetInt(nomeGiocatore + "_genere", scelta);
-            if (scelta == 0 || scelta == 1)
-            {
-                salvaGenereModello(nomeGiocatore, scelta);
-            }
+        PlayerPrefs.SetInt(nomeGiocatore + "_genere", scelta);
+        if (scelta == 0 || scelta == 1)
+        {
+            salvaGenereModello(nomeGiocatore, scelta);
+        }
     }
 
     public int caricaGenereGiocatore(string nomeGiocatore)
     {
-         return PlayerPrefs.GetInt(nomeGiocatore + "_genere");
+        return PlayerPrefs.GetInt(nomeGiocatore + "_genere");
+    }
+
+    public void setSceltaModelloGiocatore(int indice)
+    {
+        sceltaModelloPlayer = indice;
     }
 
 }
