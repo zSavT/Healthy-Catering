@@ -7,6 +7,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
 
     [SerializeField] private GameObject elementiGenereNeutro;
     [SerializeField] private Dropdown dropDownGenereModello;
+    [SerializeField] private GameObject tastoIndietro;
     private string nomeGiocatoreScritto;
     private int sceltaGenere;
     private int sceltaColorePelle;
@@ -17,7 +18,8 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     void Start()
     {
         genereNeutroScelto = false;
-        elementiGenereNeutro.active = false;
+        elementiGenereNeutro.SetActive(false);
+        controlloEsistenzaProfiliPlayer();
     }
 
     // Update is called once per frame
@@ -25,6 +27,30 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     {
         //print(nomeGiocatoreScritto);
         //dropDownGenereModello.value = caricaGenereModello(nomeGiocatoreScritto);
+    }
+
+
+    private void controlloEsistenzaProfiliPlayer()
+    {
+        /*
+        if(presente)
+        {
+            attivaTastoIndietro();
+        } else
+        {
+            disattivaTastoIndietro();
+        }
+        */
+    }
+
+    private void attivaTastoIndietro()
+    {
+        tastoIndietro.SetActive(true);
+    }
+
+    private void disattivaTastoIndietro()
+    {
+        tastoIndietro.SetActive(false);
     }
 
     public void menuPrincipale()
