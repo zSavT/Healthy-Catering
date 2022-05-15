@@ -14,9 +14,9 @@ public class ModelloPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        nomeGiocatore = caricaNomePlayerGiocante();
         attivaModelloGenere();
         setTexturePelle();
-        nomeGiocatore = caricaNomePlayerGiocante();
     }
 
     private void attivaModelloGenere()
