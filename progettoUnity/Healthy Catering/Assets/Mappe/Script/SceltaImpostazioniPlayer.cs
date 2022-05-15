@@ -40,9 +40,6 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         controlloNomeEsistente();
     }
 
-
-
-
     private void controlloNomeEsistente()
     {
         nomiPlayerPresenti.Add("pippo");
@@ -68,7 +65,6 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         }
     }
 
-
     private void controlloEsistenzaProfiliPlayer()
     {
         letturaNomiUtenti();
@@ -87,11 +83,9 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     {
         if (player.Count > 0)
         {
-            print("pieno");
             return true;
         } else
         {
-            print("vuoto");
             return false;
         }
     }
@@ -117,6 +111,17 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void salvaImpostazioni()
+    {
+        salvaNomePlayerGiocante(nomeGiocatoreScritto);
+        salvaGenereGiocatore(nomeGiocatoreScritto, sceltaGenere);
+        salvaColorePelle(nomeGiocatoreScritto, sceltaColorePelle);
+        if (genereNeutroScelto)
+        {
+            salvaGenereModello(nomeGiocatoreScritto, sceltaModelloPlayer);
+        }
+    }
+
     public void leggiInputNomeScritto(string testo)
     {
         nomeGiocatoreScritto = testo;
@@ -127,15 +132,9 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         sceltaColorePelle = indice;
     }
 
-    public void salvaImpostazioni()
+    public void setSceltaModelloGiocatore(int indice)
     {
-        salvaNomePlayerGiocante(nomeGiocatoreScritto);
-        salvaGenereGiocatore(nomeGiocatoreScritto, sceltaGenere);
-        salvaColorePelle(nomeGiocatoreScritto, sceltaColorePelle);
-        if (genereNeutroScelto)
-        {
-            salvaGenereModello(nomeGiocatoreScritto, sceltaModelloPlayer);
-        }
+        sceltaModelloPlayer = indice;
     }
 
     public void dropdownGenere(int indiceScelta)
@@ -152,7 +151,6 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
             elementiGenereNeutro.SetActive(false);
         }
     }
-
 
     public void salvaGenereModello(string nomeGiocatore, int scelta)
     {
@@ -180,7 +178,6 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
 
     }
 
-
     public int caricaColorePelle(string nomeGiocatore)
     {
         return PlayerPrefs.GetInt(nomeGiocatore + "_pelle");
@@ -198,11 +195,6 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     public int caricaGenereGiocatore(string nomeGiocatore)
     {
         return PlayerPrefs.GetInt(nomeGiocatore + "_genere");
-    }
-
-    public void setSceltaModelloGiocatore(int indice)
-    {
-        sceltaModelloPlayer = indice;
     }
 
 }

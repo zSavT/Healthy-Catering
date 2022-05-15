@@ -4,25 +4,20 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Audio;
-using Wilberforce;
 
 
 public class OpzioniMenu : MonoBehaviour
 {
 
     [SerializeField] private AudioMixer audioMixer;
-
     [SerializeField] private TMP_Dropdown risoluzioniDisponibili;
-
     [SerializeField] private TMP_Dropdown livelloGrafica;
     [SerializeField] private Toggle schermoIntero;
     [SerializeField] private Slider sliderVolume;
     [SerializeField] private Toggle vSynch;
     [SerializeField] private Toggle framerateLibero;
-
     [SerializeField] private Resolution[] risoluzioni;
     [SerializeField] private TMP_Dropdown daltonismo;
-
     [SerializeField] private Slider sliderFov;
     [SerializeField] private Slider sliderSensibilita;
     [SerializeField] private TextMeshProUGUI sliderFovTesto;
@@ -33,12 +28,10 @@ public class OpzioniMenu : MonoBehaviour
         //DALTONISMO
         daltonismo.value = caricaImpostazioniDaltonismo();
 
-
         //IMPOSTAZIONI CONTROLLI
         sliderFov.value = caricaImpostazioniFov();
         sliderSensibilita.value = caricaImpostazioniSensibilita();
         
-
         //RISOLUZIONE
         risoluzioni = Screen.resolutions;
         risoluzioniDisponibili.ClearOptions();      //svuota le scelte

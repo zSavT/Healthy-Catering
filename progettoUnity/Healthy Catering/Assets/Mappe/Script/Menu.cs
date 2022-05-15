@@ -10,7 +10,6 @@ public class Menu : MonoBehaviour
     [SerializeField] private Camera camera;
     private List<Player> player;
 
-
     void Start()
     {
         camera.GetComponent<Colorblind>().Type = PlayerPrefs.GetInt("daltonismo");
@@ -39,15 +38,12 @@ public class Menu : MonoBehaviour
     {
         if (player.Count > 0)
         {
-            print("pieno");
             return true;
         }
         else
         {
-            print("vuoto");
             return false;
         }
-        print("ue");
     }
 
     public void caricaSelezioneModificaProfilo()
@@ -94,7 +90,6 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-
 
     public void crediti()
     {

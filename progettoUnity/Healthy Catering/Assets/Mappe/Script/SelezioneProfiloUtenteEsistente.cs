@@ -55,6 +55,42 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+
+    private void letturaNomiUtenti()
+    {
+        player = Database.getDatabaseOggetto<Player>(new Player());
+    }
+
+
+    private bool presentePlayer()
+    {
+        if (player.Count > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private void aggiuntaNomiDropdown()
+    {
+        /*
+        if(presentePlayer())
+        {
+            for (int i = 0; i < player.Count; i++)
+            {
+                nomiPlayerPresenti.Add(player[i].nome);
+            }
+        }
+        */
+        nomiPlayerPresenti.Add("sav");
+        nomiPlayerPresenti.Add("pippo");
+        nomiPlayerPresenti.Add("nicola");
+        dropDownListaPlayer.AddOptions(nomiPlayerPresenti);
+    }
+
     public void setSceltaModelloGiocatore(int indice)
     {
         sceltaModelloPlayer = indice;
@@ -80,6 +116,10 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         sceltaColorePelle = indice;
     }
 
+    public void indiceSceltaNomeUtente(int indice)
+    {
+        nomeSelezionato = dropDownListaPlayer.options[dropDownListaPlayer.value].text;
+    }
 
     public void salvaGenereModello(string nomeGiocatore, int scelta)
     {
@@ -128,49 +168,5 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     {
         return PlayerPrefs.GetInt(nomeGiocatore + "_genere");
     }
-
-    public void indiceSceltaNomeUtente(int indice)
-    {
-        nomeSelezionato = dropDownListaPlayer.options[dropDownListaPlayer.value].text;
-    }
-
-    private void letturaNomiUtenti()
-    {
-        player = Database.getDatabaseOggetto<Player>(new Player());
-    }
-
-
-    private bool presentePlayer()
-    {
-        if (player.Count > 0)
-        {
-            print("pieno");
-            return true;
-        }
-        else
-        {
-            print("vuoto");
-            return false;
-        }
-        print("ue");
-    }
-
-    private void aggiuntaNomiDropdown()
-    {
-        /*
-        if(presentePlayer())
-        {
-            for (int i = 0; i < player.Count; i++)
-            {
-                nomiPlayerPresenti.Add(player[i].nome);
-            }
-        }
-        */
-        nomiPlayerPresenti.Add("sav");
-        nomiPlayerPresenti.Add("pippo");
-        nomiPlayerPresenti.Add("nicola");
-        dropDownListaPlayer.AddOptions(nomiPlayerPresenti);
-    }
-
 
 }
