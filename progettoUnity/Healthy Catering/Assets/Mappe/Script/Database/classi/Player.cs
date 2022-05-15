@@ -43,7 +43,7 @@ public class Player
         {
             return false;
         }
-        return (this.nome.Equals(((Player)obj).nome)));
+        return (this.nome.Equals(((Player)obj).nome));
     }
 
     public override string ToString()
