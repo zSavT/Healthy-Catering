@@ -1,13 +1,21 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 
 public class SceltaImpostazioniPlayer : MonoBehaviour
 {
 
     [SerializeField] private GameObject elementiGenereNeutro;
-    [SerializeField] private Dropdown dropDownGenereModello;
+    [SerializeField] private TMP_Dropdown dropDownGenereModello;
     [SerializeField] private GameObject tastoIndietro;
+    [SerializeField] private TMP_InputField inputFieldNomeGiocatore;
+    [SerializeField] private GameObject nomeGiaPreso;
+    [SerializeField] private Button bottoneSalva;
+    private List<Player> player;
+    private List<string> nomiPlayerPresenti;
     private string nomeGiocatoreScritto;
     private int sceltaGenere;
     private int sceltaColorePelle;
@@ -17,7 +25,10 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = new List<Player>();
+        nomiPlayerPresenti = new List<string>();
         genereNeutroScelto = false;
+        nomeGiaPreso.SetActive(false);
         elementiGenereNeutro.SetActive(false);
         controlloEsistenzaProfiliPlayer();
     }
@@ -25,22 +36,71 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        controlloNomeEsistente();
         //print(nomeGiocatoreScritto);
         //dropDownGenereModello.value = caricaGenereModello(nomeGiocatoreScritto);
     }
 
 
+
+
+    private void controlloNomeEsistente()
+    {
+        nomiPlayerPresenti.Add("pippo");
+        if (nomeGiocatoreScritto != "")
+        {
+            if (nomiPlayerPresenti.Contains(nomeGiocatoreScritto))
+            {
+                nomeGiaPreso.SetActive(true);
+                bottoneSalva.interactable = false; 
+            } else
+            {
+                nomeGiaPreso.SetActive(false);
+                bottoneSalva.interactable = true;
+            }
+        }
+    }
+
+    private void aggiuntaNomiPresentiInLista()
+    {
+        for (int i = 0; i < player.Count; i++)
+        {
+            nomiPlayerPresenti.Add(player[i].nome);
+        }
+    }
+
+
     private void controlloEsistenzaProfiliPlayer()
     {
-        /*
-        if(presente)
+        letturaNomiUtenti();
+        if (presentePlayer())
         {
+            aggiuntaNomiPresentiInLista();
             attivaTastoIndietro();
+
         } else
         {
             disattivaTastoIndietro();
         }
-        */
+    }
+
+    private bool presentePlayer()
+    {
+        if (player.Count > 0)
+        {
+            print("pieno");
+            return true;
+        } else
+        {
+            print("vuoto");
+            return false;
+        }
+    }
+
+    private void letturaNomiUtenti()
+    {
+        player = Database.getDatabaseOggetto<Player>(new Player());
+        
     }
 
     private void attivaTastoIndietro()
