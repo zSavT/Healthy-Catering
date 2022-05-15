@@ -1,24 +1,53 @@
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using Wilberforce;
 
 public class Menu : MonoBehaviour
 {
     [SerializeField] private UnityEvent clickCrediti;             //serve per eliminare altri elementi in visualilzzazione
     [SerializeField] private Camera camera;
+    private List<Player> player;
 
 
     void Start()
     {
-        camera.GetComponent<Colorblind>().Type  = PlayerPrefs.GetInt("daltonismo");
+        camera.GetComponent<Colorblind>().Type = PlayerPrefs.GetInt("daltonismo");
+        /*
+        letturaNomiUtenti();
+        if (!presentePlayer())
+        {
+            caricaCreazioneProfilo();
+        }
+        */
     }
 
     void Update()
     {
         attivaDisattivaLivelli();
+    }
+
+
+    private void letturaNomiUtenti()
+    {
+        player = Database.getDatabaseOggetto<Player>(new Player());
+    }
+
+
+    private bool presentePlayer()
+    {
+        if (player.Count > 0)
+        {
+            print("pieno");
+            return true;
+        }
+        else
+        {
+            print("vuoto");
+            return false;
+        }
+        print("ue");
     }
 
     public void caricaSelezioneModificaProfilo()

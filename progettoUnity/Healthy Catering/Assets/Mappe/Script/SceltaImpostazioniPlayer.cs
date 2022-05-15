@@ -1,19 +1,19 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Wilberforce;
 
 public class SceltaImpostazioniPlayer : MonoBehaviour
 {
 
     [SerializeField] private GameObject elementiGenereNeutro;
-    [SerializeField] private TMP_Dropdown dropDownGenereModello;
     [SerializeField] private GameObject tastoIndietro;
     [SerializeField] private TMP_InputField inputFieldNomeGiocatore;
     [SerializeField] private GameObject nomeGiaPreso;
     [SerializeField] private Button bottoneSalva;
+    [SerializeField] private Camera camera;
     private List<Player> player;
     private List<string> nomiPlayerPresenti;
     private string nomeGiocatoreScritto;
@@ -25,6 +25,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        camera.GetComponent<Colorblind>().Type = PlayerPrefs.GetInt("daltonismo");
         player = new List<Player>();
         nomiPlayerPresenti = new List<string>();
         genereNeutroScelto = false;

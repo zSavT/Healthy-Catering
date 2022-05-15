@@ -1,8 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine;
+using Wilberforce;
 
 public class SelezioneProfiloUtenteEsistente : MonoBehaviour
 {
@@ -12,6 +12,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     [SerializeField] private TMP_Dropdown dropDownGenere;
     [SerializeField] private TMP_Dropdown dropDownColorePelle;
     [SerializeField] private TMP_Dropdown dropDownModello3D;
+    [SerializeField] private Camera camera;
     private List<Player> player;
     private List<string> nomiPlayerPresenti;
     private string nomeSelezionato = "";
@@ -24,6 +25,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        camera.GetComponent<Colorblind>().Type = PlayerPrefs.GetInt("daltonismo");
         player = new List<Player>();
         nomiPlayerPresenti = new List<string>();
         // letturaNomiUtenti();
