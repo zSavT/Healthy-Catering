@@ -37,8 +37,6 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     void Update()
     {
         controlloNomeEsistente();
-        //print(nomeGiocatoreScritto);
-        //dropDownGenereModello.value = caricaGenereModello(nomeGiocatoreScritto);
     }
 
 
@@ -130,7 +128,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
 
     public void salvaImpostazioni()
     {
-        salvaNomeGiocatore(nomeGiocatoreScritto);
+        salvaNomePlayerGiocante(nomeGiocatoreScritto);
         salvaGenereGiocatore(nomeGiocatoreScritto, sceltaGenere);
         salvaColorePelle(nomeGiocatoreScritto, sceltaColorePelle);
         if (genereNeutroScelto)
@@ -167,10 +165,10 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         return PlayerPrefs.GetInt(nomeGiocatore + "_modello");
     }
 
-    public void salvaNomeGiocatore(string nomeInserito)
+    public void salvaNomePlayerGiocante(string nomeInserito)
     {
 
-        PlayerPrefs.SetString("PlayerName_" + nomeInserito, nomeInserito);
+        PlayerPrefs.SetString("PlayerName" , nomeInserito);
 
     }
 

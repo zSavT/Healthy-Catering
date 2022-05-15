@@ -19,6 +19,14 @@ public class Menu : MonoBehaviour
     void Update()
     {
         attivaDisattivaLivelli();
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            SceneManager.LoadScene(4);
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            SceneManager.LoadScene(5);
+        }
     }
 
     private void attivaDisattivaLivelli()

@@ -8,7 +8,7 @@ public class ModelloPlayer : MonoBehaviour
     [SerializeField] private Material textureBianco;
     [SerializeField] private Material textureNero;
     [SerializeField] private Material textureMulatto;
-    string nomeGiocatore = "sav";           //inzializata così solo per test
+    string nomeGiocatore = "";           
 
 
     // Start is called before the first frame update
@@ -16,6 +16,7 @@ public class ModelloPlayer : MonoBehaviour
     {
         attivaModelloGenere();
         setTexturePelle();
+        nomeGiocatore = caricaNomePlayerGiocante();
     }
 
     private void attivaModelloGenere()
@@ -46,5 +47,10 @@ public class ModelloPlayer : MonoBehaviour
         {
             GetComponentInChildren<Renderer>().material =  textureMulatto;
         }
+    }
+
+    private string caricaNomePlayerGiocante()
+    {
+        return PlayerPrefs.GetString("PlayerName");
     }
 }
