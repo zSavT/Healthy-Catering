@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2568,11 +2568,11 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Bianco
+    - m_Text: Caucasico
       m_Image: {fileID: 21300000, guid: 923e9bdf97be9554fb21ecf951144890, type: 3}
-    - m_Text: Mulatto
+    - m_Text: Asiatico
       m_Image: {fileID: 21300000, guid: f1473baf0d34f864485eb818b35b217b, type: 3}
-    - m_Text: Nero
+    - m_Text: Afro
       m_Image: {fileID: 21300000, guid: 9db6045c7a8cf8f428a9603b9d72e356, type: 3}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3714,7 +3714,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Bianco
+  m_text: Caucasico
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
