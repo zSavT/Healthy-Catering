@@ -12,7 +12,7 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
-        camera.GetComponent<Colorblind>().Type = PlayerPrefs.GetInt("daltonismo");
+        camera.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         /*
         letturaNomiUtenti();
         if (!presentePlayer())
@@ -60,27 +60,27 @@ public class Menu : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.L))
         {
-            if(PlayerPrefs.GetInt("livello1") == 0)
+            if(PlayerSettings.caricaProgressoLivello1() == 0)
             {
-                PlayerPrefs.SetInt("livello1", 1);
+                PlayerSettings.salvaProgressoLivello1(true);
                 print("livello 1 attivato");
             } else
             {
                 print("livello 1 disattivato");
-                PlayerPrefs.SetInt("livello1", 0);
+                PlayerSettings.salvaProgressoLivello1(false);
             }
         }
         if (Input.GetKeyDown(KeyCode.K))
         {
-            if (PlayerPrefs.GetInt("livello2") == 0)
+            if (PlayerSettings.caricaProgressoLivello2() == 0)
             {
-                PlayerPrefs.SetInt("livello2", 1);
+                PlayerSettings.salvaProgressoLivello2(true);
                 print("livello 2 attivato");
             }
             else
             {
                 print("livello 2 disattivato");
-                PlayerPrefs.SetInt("livello2", 0);
+                PlayerSettings.salvaProgressoLivello2(false);
             }
         }
 

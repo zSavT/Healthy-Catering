@@ -25,7 +25,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        camera.GetComponent<Colorblind>().Type = PlayerPrefs.GetInt("daltonismo");
+        camera.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         player = new List<Player>();
         nomiPlayerPresenti = new List<string>();
         genereNeutroScelto = false;
@@ -113,12 +113,12 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
 
     public void salvaImpostazioni()
     {
-        salvaNomePlayerGiocante(nomeGiocatoreScritto);
-        salvaGenereGiocatore(nomeGiocatoreScritto, sceltaGenere);
-        salvaColorePelle(nomeGiocatoreScritto, sceltaColorePelle);
+        PlayerSettings.salvaNomePlayerGiocante(nomeGiocatoreScritto);
+        PlayerSettings.salvaGenereGiocatore(nomeGiocatoreScritto, sceltaGenere);
+        PlayerSettings.salvaColorePelle(nomeGiocatoreScritto, sceltaColorePelle);
         if (genereNeutroScelto)
         {
-            salvaGenereModello(nomeGiocatoreScritto, sceltaModelloPlayer);
+            PlayerSettings.salvaGenereModello3D(nomeGiocatoreScritto, sceltaModelloPlayer);
         }
     }
 
@@ -150,51 +150,6 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
             genereNeutroScelto = false;
             elementiGenereNeutro.SetActive(false);
         }
-    }
-
-    public void salvaGenereModello(string nomeGiocatore, int scelta)
-    {
-
-        PlayerPrefs.SetInt(nomeGiocatore + "_modello", scelta);
-
-    }
-
-    public int caricaGenereModello(string nomeGiocatore)
-    {
-        return PlayerPrefs.GetInt(nomeGiocatore + "_modello");
-    }
-
-    public void salvaNomePlayerGiocante(string nomeInserito)
-    {
-
-        PlayerPrefs.SetString("PlayerName" , nomeInserito);
-
-    }
-
-    public void salvaColorePelle(string nomeGiocatore, int scelta)
-    {
-
-        PlayerPrefs.SetInt(nomeGiocatore + "_pelle", scelta);
-
-    }
-
-    public int caricaColorePelle(string nomeGiocatore)
-    {
-        return PlayerPrefs.GetInt(nomeGiocatore + "_pelle");
-    }
-
-    public void salvaGenereGiocatore(string nomeGiocatore, int scelta)
-    {
-        PlayerPrefs.SetInt(nomeGiocatore + "_genere", scelta);
-        if (scelta == 0 || scelta == 1)
-        {
-            salvaGenereModello(nomeGiocatore, scelta);
-        }
-    }
-
-    public int caricaGenereGiocatore(string nomeGiocatore)
-    {
-        return PlayerPrefs.GetInt(nomeGiocatore + "_genere");
     }
 
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSettings : MonoBehaviour
@@ -7,6 +5,7 @@ public class PlayerSettings : MonoBehaviour
 
 
     //PROFILO UTENTE
+
 
     //GENERE MODELLO
     public static void salvaGenereModello3D(string nomeGiocatore, int scelta)
@@ -29,9 +28,41 @@ public class PlayerSettings : MonoBehaviour
 
     }
 
-    public string caricaNomePlayerGiocante()
+    public static string caricaNomePlayerGiocante()
     {
         return PlayerPrefs.GetString("PlayerName");
+    }
+    
+    //PROGRESSI LIVELLI
+
+    //LIVELLO 1
+
+    public static void salvaProgressoLivello1(bool completato)
+    {
+        if (completato)
+            PlayerPrefs.SetInt(caricaNomePlayerGiocante() + "_livello1", 1);
+        else
+            PlayerPrefs.SetInt(caricaNomePlayerGiocante() + "_livello1", 0);
+    }
+
+    public static int caricaProgressoLivello1()
+    {
+        return PlayerPrefs.GetInt(caricaNomePlayerGiocante() + "_livello1");
+    }
+
+    //LIVELLO 2
+
+    public static void salvaProgressoLivello2(bool completato)
+    {
+        if (completato)
+            PlayerPrefs.SetInt(caricaNomePlayerGiocante() + "_livello2", 1);
+        else
+            PlayerPrefs.SetInt(caricaNomePlayerGiocante() + "_livello2", 0);
+    }
+
+    public static int caricaProgressoLivello2()
+    {
+        return PlayerPrefs.GetInt(caricaNomePlayerGiocante() + "_livello2");
     }
 
     //COLORE PELLE GIOCATORE
@@ -64,6 +95,8 @@ public class PlayerSettings : MonoBehaviour
 
     //IMPOSTAZIONI GIOCO
 
+
+
     //FOV
     public static void salvaImpostazioniFov(float fov)
     {
@@ -88,7 +121,7 @@ public class PlayerSettings : MonoBehaviour
     }
 
     //RISOLUZIONE
-    public void salvaImpostazioniRisoluzione(int indiceRisoluzione)
+    public static void salvaImpostazioniRisoluzione(int indiceRisoluzione)
     {
         PlayerPrefs.SetInt("risoluzione", indiceRisoluzione);
     }

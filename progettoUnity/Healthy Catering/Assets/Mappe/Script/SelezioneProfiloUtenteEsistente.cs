@@ -25,32 +25,32 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        camera.GetComponent<Colorblind>().Type = PlayerPrefs.GetInt("daltonismo");
+        camera.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         player = new List<Player>();
         nomiPlayerPresenti = new List<string>();
         // letturaNomiUtenti();
         aggiuntaNomiDropdown();
         nomeSelezionato = dropDownListaPlayer.options[dropDownListaPlayer.value].text;
-        dropDownGenere.value = caricaGenereGiocatore(nomeSelezionato);
-        dropDownColorePelle.value = caricaColorePelle(nomeSelezionato);
-        dropDownModello3D.value = caricaGenereModello(nomeSelezionato);
+        dropDownGenere.value = PlayerSettings.caricaGenereGiocatore(nomeSelezionato);
+        dropDownColorePelle.value = PlayerSettings.caricaColorePelle(nomeSelezionato);
+        dropDownModello3D.value = PlayerSettings.caricaGenereModello3D(nomeSelezionato);
     }
 
     public void refreshValori()
     {
-        dropDownGenere.value = caricaGenereGiocatore(nomeSelezionato);
-        dropDownColorePelle.value = caricaColorePelle(nomeSelezionato);
-        dropDownModello3D.value = caricaGenereModello(nomeSelezionato);
+        dropDownGenere.value = PlayerSettings.caricaGenereGiocatore(nomeSelezionato);
+        dropDownColorePelle.value = PlayerSettings.caricaColorePelle(nomeSelezionato);
+        dropDownModello3D.value = PlayerSettings.caricaGenereModello3D(nomeSelezionato);
     }
 
     public void salvaImpostazioni()
     {
-        salvaNomePlayerGiocante(nomeSelezionato);
-        salvaGenereGiocatore(nomeSelezionato, sceltaGenere);
-        salvaColorePelle(nomeSelezionato, sceltaColorePelle);
+        PlayerSettings.salvaNomePlayerGiocante(nomeSelezionato);
+        PlayerSettings.salvaGenereGiocatore(nomeSelezionato, sceltaGenere);
+        PlayerSettings.salvaColorePelle(nomeSelezionato, sceltaColorePelle);
         if (genereNeutroScelto)
         {
-            salvaGenereModello(nomeSelezionato, sceltaModelloPlayer);
+            PlayerSettings.salvaGenereModello3D(nomeSelezionato, sceltaModelloPlayer);
         }
         SceneManager.LoadScene(0);
     }
@@ -119,54 +119,6 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     public void indiceSceltaNomeUtente(int indice)
     {
         nomeSelezionato = dropDownListaPlayer.options[dropDownListaPlayer.value].text;
-    }
-
-    public void salvaGenereModello(string nomeGiocatore, int scelta)
-    {
-
-        PlayerPrefs.SetInt(nomeGiocatore + "_modello", scelta);
-
-    }
-
-    public void salvaNomePlayerGiocante(string nomeInserito)
-    {
-
-        PlayerPrefs.SetString("PlayerName", nomeInserito);
-
-    }
-
-    public void salvaColorePelle(string nomeGiocatore, int scelta)
-    {
-
-        PlayerPrefs.SetInt(nomeGiocatore + "_pelle", scelta);
-
-    }
-
-    public void salvaGenereGiocatore(string nomeGiocatore, int scelta)
-    {
-        PlayerPrefs.SetInt(nomeGiocatore + "_genere", scelta);
-        if (scelta == 0 || scelta == 1)
-        {
-            salvaGenereModello(nomeGiocatore, scelta);
-        }
-    }
-
-
-    public int caricaGenereModello(string nomeGiocatore)
-    {
-        return PlayerPrefs.GetInt(nomeGiocatore + "_modello");
-    }
-
-
-    public int caricaColorePelle(string nomeGiocatore)
-    {
-        return PlayerPrefs.GetInt(nomeGiocatore + "_pelle");
-    }
-
-
-    public int caricaGenereGiocatore(string nomeGiocatore)
-    {
-        return PlayerPrefs.GetInt(nomeGiocatore + "_genere");
     }
 
 }

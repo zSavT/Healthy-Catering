@@ -26,11 +26,11 @@ public class OpzioniMenu : MonoBehaviour
     void Start()
     {
         //DALTONISMO
-        daltonismo.value = caricaImpostazioniDaltonismo();
+        daltonismo.value = PlayerSettings.caricaImpostazioniDaltonismo();
 
         //IMPOSTAZIONI CONTROLLI
-        sliderFov.value = caricaImpostazioniFov();
-        sliderSensibilita.value = caricaImpostazioniSensibilita();
+        sliderFov.value = PlayerSettings.caricaImpostazioniFov();
+        sliderSensibilita.value = PlayerSettings.caricaImpostazioniSensibilita();
         
         //RISOLUZIONE
         risoluzioni = Screen.resolutions;
@@ -48,15 +48,15 @@ public class OpzioniMenu : MonoBehaviour
             }
         }
         risoluzioniDisponibili.AddOptions(opzioni);
-        risoluzioniDisponibili.value = caricaImpostazioniRisoluzione ();
+        risoluzioniDisponibili.value = PlayerSettings.caricaImpostazioniRisoluzione ();
         risoluzioniDisponibili.RefreshShownValue();
-        risoluzioniDisponibili.value = caricaImpostazioniRisoluzione();
+        risoluzioniDisponibili.value = PlayerSettings.caricaImpostazioniRisoluzione();
 
         //GRAFICA
         livelloGrafica.value = QualitySettings.GetQualityLevel();
 
         //SCHERMO INTERO
-        schermoIntero.isOn = caricaImpostazioniFullScreen();
+        schermoIntero.isOn = PlayerSettings.caricaImpostazioniFullScreen();
 
         //VSYNCH
         int vSyncVal = QualitySettings.vSyncCount;
@@ -68,58 +68,11 @@ public class OpzioniMenu : MonoBehaviour
             vSynch.isOn = true;
         }
 
-        framerateLibero.isOn = caricaImpostazioniFramerateLibero();
+        framerateLibero.isOn = PlayerSettings.caricaImpostazioniFramerateLibero();
 
         //AUDIO
-        sliderVolume.value = caricaImpostazioniVolume();
+        sliderVolume.value = PlayerSettings.caricaImpostazioniVolume();
 
-    }
-
-    private void salvaImpostazioniFullScreen(bool fullScreen)
-    {
-        if (fullScreen)
-        {
-            PlayerPrefs.SetInt("fullScreen", 0);        //attivo
-        } else
-        {
-            PlayerPrefs.SetInt("fullScreen", 1);            //disattivo
-        }
-    }
-
-    private bool caricaImpostazioniFullScreen()
-    {
-        if (PlayerPrefs.GetInt("fullScreen") == 0)
-        {
-            return true;
-        } else
-        {
-            return false;
-        }
-    }
-
-    private void salvaImpostazioniFramerateLibero(bool framerateLibero)
-    {
-        if (framerateLibero)
-        {
-            PlayerPrefs.SetInt("framerateLibero", 0);        //attivo
-        }
-        else
-        {
-            PlayerPrefs.SetInt("framerateLibero", 1);            //disattivo
-        }
-
-    }
-    
-    private bool caricaImpostazioniFramerateLibero()
-    {
-        if (PlayerPrefs.GetInt("framerateLibero") == 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
     }
 
     public void setFramerateLibero(bool isActive)
@@ -128,37 +81,7 @@ public class OpzioniMenu : MonoBehaviour
             Application.targetFrameRate = -1;
         else
             setRefreshRateToScelta(Screen.currentResolution.refreshRate);
-        salvaImpostazioniFramerateLibero(isActive);
-    }
-
-    private void salvaImpostazioniRisoluzione(int indiceRisoluzione)
-    {
-        PlayerPrefs.SetInt("risoluzione", indiceRisoluzione);
-    }
-
-    private int caricaImpostazioniRisoluzione()
-    {
-        return PlayerPrefs.GetInt("risoluzione");
-    }
-
-    public void salvaImpostazioniDaltonismo(int indiceDaltonismo)
-    {
-        PlayerPrefs.SetInt("daltonismo", indiceDaltonismo);
-    }
-
-    private int caricaImpostazioniDaltonismo()
-    {
-        return PlayerPrefs.GetInt("daltonismo");
-    }
-
-    private void salvaImpostazioniVolume(float volume)
-    {
-        PlayerPrefs.SetFloat("volume", volume);
-    }
-
-    private float caricaImpostazioniVolume()
-    {
-        return PlayerPrefs.GetFloat("volume");
+        PlayerSettings.salvaImpostazioniFramerateLibero(isActive);
     }
 
     public void setVSync(bool isActive)
@@ -180,7 +103,7 @@ public class OpzioniMenu : MonoBehaviour
     public void setVolume(float volume)
     {
         audioMixer.SetFloat("volume", volume);
-        salvaImpostazioniVolume(volume);
+        PlayerSettings.salvaImpostazioniVolume(volume);
     }
 
     public void setQualita(int indiceQualita)
@@ -191,7 +114,7 @@ public class OpzioniMenu : MonoBehaviour
     public void setFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
-        salvaImpostazioniFullScreen(isFullscreen);
+        PlayerSettings.salvaImpostazioniFullScreen(isFullscreen);
     }
 
     public void menuPrincipale()
@@ -208,27 +131,7 @@ public class OpzioniMenu : MonoBehaviour
         Resolution risoluzione = risoluzioni[risoluzioneSelezionata];
         Screen.SetResolution(risoluzione.width, risoluzione.height, schermoIntero.isOn, risoluzione.refreshRate);
         setRefreshRateToScelta (risoluzione.refreshRate);
-        salvaImpostazioniRisoluzione(risoluzioneSelezionata);
-    }
-
-    public void salvaImpostazioniFov(float fov)
-    {
-        PlayerPrefs.SetFloat("fov", fov);
-    }
-
-    public void salvaImpostazioniSensibilita(float sensibilita)
-    {
-        PlayerPrefs.SetFloat("sensibilita", sensibilita);
-    }
-
-    private float caricaImpostazioniFov()
-    {
-        return PlayerPrefs.GetFloat("fov");
-    }
-
-    private float caricaImpostazioniSensibilita()
-    {
-        return PlayerPrefs.GetFloat("sensibilita");
+        PlayerSettings.salvaImpostazioniRisoluzione(risoluzioneSelezionata);
     }
 
     public void aggiornaValoreScrittaFov()

@@ -2874,7 +2874,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1988159438}
         m_TargetAssemblyTypeName: SelezioneLivelli, Assembly-CSharp
-        m_MethodName: menuPrincipale
+        m_MethodName: caricaMenuPrincipale
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

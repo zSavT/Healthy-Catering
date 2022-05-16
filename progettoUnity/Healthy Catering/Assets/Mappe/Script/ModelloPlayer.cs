@@ -14,19 +14,19 @@ public class ModelloPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nomeGiocatore = caricaNomePlayerGiocante();
+        nomeGiocatore = PlayerSettings.caricaNomePlayerGiocante();
         attivaModelloGenere();
         setTexturePelle();
     }
 
     private void attivaModelloGenere()
     {
-        if (caricaModelloGenereGiocatore() == 0)
+        if (PlayerSettings.caricaGenereModello3D(nomeGiocatore) == 0)
         {
             modelloFemminile.SetActive(false);
             modelloMaschile.SetActive(true);
         }
-        else if (caricaModelloGenereGiocatore() == 1)
+        else if (PlayerSettings.caricaGenereModello3D(nomeGiocatore) == 1)
         {
             modelloFemminile.SetActive(true);
             modelloMaschile.SetActive(false);
@@ -35,31 +35,17 @@ public class ModelloPlayer : MonoBehaviour
 
     private void setTexturePelle()
     {
-        if(caricaColorePelleGiocatore() == 0)
+        if(PlayerSettings.caricaColorePelle(nomeGiocatore) == 0)
         {
             GetComponentInChildren<Renderer>().material = textureBianco; 
-        } else if (caricaColorePelleGiocatore() == 1 )
+        } else if (PlayerSettings.caricaColorePelle(nomeGiocatore) == 1 )
         {
             GetComponentInChildren<Renderer>().material = textureNero;
         }
-        else if (caricaColorePelleGiocatore() == 2)
+        else if (PlayerSettings.caricaColorePelle(nomeGiocatore) == 2)
         {
             GetComponentInChildren<Renderer>().material =  textureMulatto;
         }
     }
 
-    private int caricaModelloGenereGiocatore()
-    {
-        return PlayerPrefs.GetInt(nomeGiocatore + "_modello");
-    }
-
-    private int caricaColorePelleGiocatore()
-    {
-        return PlayerPrefs.GetInt(nomeGiocatore + "_pelle");
-    }
-
-    private string caricaNomePlayerGiocante()
-    {
-        return PlayerPrefs.GetString("PlayerName");
-    }
 }
