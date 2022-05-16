@@ -29,6 +29,13 @@ public class Database
 
         return false;
     }
+	
+	public static bool isDatabaseOggettoVuoto<Oggetto> (Oggetto oggetto, List<Oggetto> databaseOggetto = null)
+{
+	databaseOggetto ??= Database.getDatabaseOggetto(oggetto)
+
+	return databaseOggetto.Count  == 0
+}
 
     protected static void salvaNuovoOggettoSuFile<Oggetto>(Oggetto oggetto, List<Oggetto> databaseOggetto = null)
     {
