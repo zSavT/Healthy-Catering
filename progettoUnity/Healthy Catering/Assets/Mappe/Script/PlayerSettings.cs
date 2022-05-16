@@ -1,0 +1,173 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerSettings : MonoBehaviour
+{
+
+
+    //PROFILO UTENTE
+
+    //GENERE MODELLO
+    public static void salvaGenereModello3D(string nomeGiocatore, int scelta)
+    {
+
+        PlayerPrefs.SetInt(nomeGiocatore + "_modello", scelta);
+
+    }
+
+    public static int caricaGenereModello3D(string nomeGiocatore)
+    {
+        return PlayerPrefs.GetInt(nomeGiocatore + "_modello");
+    }
+
+    //NOME GIOCATORE
+    public static void salvaNomePlayerGiocante(string nomeInserito)
+    {
+
+        PlayerPrefs.SetString("PlayerName", nomeInserito);
+
+    }
+
+    public string caricaNomePlayerGiocante()
+    {
+        return PlayerPrefs.GetString("PlayerName");
+    }
+
+    //COLORE PELLE GIOCATORE
+    public static void salvaColorePelle(string nomeGiocatore, int scelta)
+    {
+
+        PlayerPrefs.SetInt(nomeGiocatore + "_pelle", scelta);
+
+    }
+
+    public static int caricaColorePelle(string nomeGiocatore)
+    {
+        return PlayerPrefs.GetInt(nomeGiocatore + "_pelle");
+    }
+
+    //GENERE GIOCATORE
+    public static void salvaGenereGiocatore(string nomeGiocatore, int scelta)
+    {
+        PlayerPrefs.SetInt(nomeGiocatore + "_genere", scelta);
+        if (scelta == 0 || scelta == 1)
+        {
+            salvaGenereModello3D(nomeGiocatore, scelta);
+        }
+    }
+
+    public static int caricaGenereGiocatore(string nomeGiocatore)
+    {
+        return PlayerPrefs.GetInt(nomeGiocatore + "_genere");
+    }
+
+    //IMPOSTAZIONI GIOCO
+
+    //FOV
+    public static void salvaImpostazioniFov(float fov)
+    {
+        PlayerPrefs.SetFloat("fov", fov);
+    }
+
+    public static float caricaImpostazioniFov()
+    {
+        return PlayerPrefs.GetFloat("fov");
+    }
+
+    //SENSIBILITA' MOUSE
+    public static void salvaImpostazioniSensibilita(float sensibilita)
+    {
+        PlayerPrefs.SetFloat("sensibilita", sensibilita);
+    }
+
+
+    public static float caricaImpostazioniSensibilita()
+    {
+        return PlayerPrefs.GetFloat("sensibilita");
+    }
+
+    //RISOLUZIONE
+    public void salvaImpostazioniRisoluzione(int indiceRisoluzione)
+    {
+        PlayerPrefs.SetInt("risoluzione", indiceRisoluzione);
+    }
+
+    public static int caricaImpostazioniRisoluzione()
+    {
+        return PlayerPrefs.GetInt("risoluzione");
+    }
+
+    //IMPOSTAZIONI DALTONISMO
+    public static void salvaImpostazioniDaltonismo(int indiceDaltonismo)
+    {
+        PlayerPrefs.SetInt("daltonismo", indiceDaltonismo);
+    }
+
+    public static int caricaImpostazioniDaltonismo()
+    {
+        return PlayerPrefs.GetInt("daltonismo");
+    }
+
+    public static void salvaImpostazioniVolume(float volume)
+    {
+        PlayerPrefs.SetFloat("volume", volume);
+    }
+
+    //VOLUME PRINCIPALE GIOCO
+    public static float caricaImpostazioniVolume()
+    {
+        return PlayerPrefs.GetFloat("volume");
+    }
+
+    //IMPOSTAZIONI FULL SCREEN
+    public static void salvaImpostazioniFullScreen(bool fullScreen)
+    {
+        if (fullScreen)
+        {
+            PlayerPrefs.SetInt("fullScreen", 0);        //attivo
+        }
+        else
+        {
+            PlayerPrefs.SetInt("fullScreen", 1);            //disattivo
+        }
+    }
+
+    public static bool caricaImpostazioniFullScreen()
+    {
+        if (PlayerPrefs.GetInt("fullScreen") == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    //IMPOSTAZIONI FRAMERATE
+    public static void salvaImpostazioniFramerateLibero(bool framerateLibero)
+    {
+        if (framerateLibero)
+        {
+            PlayerPrefs.SetInt("framerateLibero", 0);        //attivo
+        }
+        else
+        {
+            PlayerPrefs.SetInt("framerateLibero", 1);            //disattivo
+        }
+
+    }
+
+    public static bool caricaImpostazioniFramerateLibero()
+    {
+        if (PlayerPrefs.GetInt("framerateLibero") == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
