@@ -125,11 +125,15 @@ public class Interactor : MonoBehaviour
 
     private void interazioneCliente(/*Cliente clienteTemp*/ int clienteTemp, GameObject Player, GameObject NPC)
     {
+        //TODO aggiornare con il cliente vero e rimuovere questa riga
+        //per ora utilizzo lo stesso che carico nel pannello cliente
+        Cliente clienteTemp1 = Database.getDatabaseOggetto(new Cliente())[1];
+
         muoviCameraPerInterazioneCliente();
 
         playerStop.Invoke();
 
-        apriPannello();
+        apriPannello(clienteTemp1);//Riguardo il TODO di sopra, anche qui, ovviamente, va cambiato
 
 
         PuntatoreMouse.abilitaCursore();
@@ -151,7 +155,7 @@ public class Interactor : MonoBehaviour
         mainCamera.transform.position = Vector3.Lerp(playerPos, newDestination, 100f);
     }
 
-    private void apriPannello()
+    private void apriPannello(Cliente cliente)
     {
         if (pannelloCliente != null)
         {
@@ -161,7 +165,7 @@ public class Interactor : MonoBehaviour
             pannelloCliente.SetActive(true);
         }
         if (!bottoniGenerati) { 
-            generaBottoniPiatti();
+            generaBottoniPiatti(cliente);
             bottoniGenerati = true;
         }
         caricaClienteInPanello();
@@ -178,7 +182,7 @@ public class Interactor : MonoBehaviour
         pannelloApertoChiuso();
     }
     
-    private void generaBottoniPiatti()
+    private void generaBottoniPiatti(Cliente cliente)
     {
         //Button bottonePiattoPrefab = GameObject.FindGameObjectWithTag("BottonePiatto").GetComponent <Button>();
         GameObject bottonePiattoPrefab = GameObject.FindGameObjectWithTag("BottonePiatto");
@@ -202,7 +206,7 @@ public class Interactor : MonoBehaviour
             bottoneTemp.transform.SetParent(pannelloPiatti.transform);
             
             bottoneTemp.GetComponent<Button>().onClick.AddListener(() => {
-                selezionaPiatto(bottoneTemp, piatti);
+                selezionaPiatto(bottoneTemp, piatti, cliente);
             });
 
         }
@@ -210,7 +214,7 @@ public class Interactor : MonoBehaviour
         Destroy(bottonePiattoPrefab);
     }
 
-    void selezionaPiatto(GameObject bottone, List <Piatto> piatti)
+    void selezionaPiatto(GameObject bottone, List <Piatto> piatti, Cliente cliente)
     {
         Piatto piattoSelezionato = new Piatto ();
         foreach (Piatto piatto in piatti)
@@ -227,6 +231,10 @@ public class Interactor : MonoBehaviour
             giocatore.guadagna(piattoSelezionato.calcolaCosto());
             esciDaInterazioneCliente();
             print(giocatore.soldi.ToString());
+            print("checkAffinitaPatologiePiatto");
+            print(piattoSelezionato.checkAffinitaPatologiePiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.listaIdPatologie));
+            print("checkAffinitaDietaPiatto"); 
+            print(piattoSelezionato.checkAffinitaDietaPiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.dieta));
         }
     }
 

@@ -131,6 +131,93 @@ public class Piatto
         return (int)(sommanutriScore / numeroIngredienti);
     }
 
+    private List<int> getPatologieCompatibili(List<Ingrediente> databaseIngredienti = null)
+    {
+        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
+
+        List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto(databaseIngredienti);
+        List<int> IdtutteLePatologie = Patologia.getListIdTutteLePatologie();
+
+        foreach (Ingrediente ingrediente in ingredientiPiatto)
+            foreach (int id in IdtutteLePatologie)
+                if (!(ingrediente.listaIdPatologieCompatibili.Contains(id)))
+                    IdtutteLePatologie.Remove(id);
+
+        return IdtutteLePatologie;
+    }
+
+    private int getDietaMinimaCompatibile(List<Ingrediente> databaseIngredienti = null)
+    {
+        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
+
+        List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto(databaseIngredienti);
+        int output = -1;
+
+        foreach (Ingrediente ingrediente in ingredientiPiatto)
+            if (output < ingrediente.dieta)
+                output = ingrediente.dieta;
+
+        return output;
+    }
+
+    private List<Ingrediente> getIngredientiPiatto(List<Ingrediente> databaseIngredienti = null)
+    {
+        databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
+
+        List<Ingrediente> ingredientiPiatto = new List<Ingrediente>();
+
+        int i = 0;
+        foreach (OggettoQuantita<int> ingredienteQuantita in this.listaIdIngredientiQuantita)
+        {
+            foreach (Ingrediente ingrediente in databaseIngredienti)
+                if (ingredienteQuantita.oggetto == ingrediente.idItem)
+                    ingredientiPiatto.Add(ingrediente);
+            i++;
+        }
+
+        return ingredientiPiatto;
+    }
+
+    public bool checkAffinitaConCliente (Cliente cliente)
+    {
+        bool patologieCompatibili = checkAffinitaPatologiePiatto(this.listaIdIngredientiQuantita, cliente.listaIdPatologie);
+        bool dietaCompatibile = checkAffinitaDietaPiatto(this.listaIdIngredientiQuantita, cliente.dieta);
+
+        return (patologieCompatibili && dietaCompatibile);
+    }
+
+    //TODO metti private
+    public bool checkAffinitaPatologiePiatto(List <OggettoQuantita <int>> listaIdIngredientiQuantita, List <int> listaIdPatologieCliente)
+    {
+        foreach (int idPatologiaCliente in listaIdPatologieCliente)
+        {
+            foreach (OggettoQuantita<int> idIngredienteEQuantita in listaIdIngredientiQuantita) 
+            {
+                Ingrediente ingrediente = Ingrediente.idToIngrediente(idIngredienteEQuantita.oggetto);
+                if (!ingrediente.listaIdPatologieCompatibili.Contains (idPatologiaCliente)){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    //TODO metti private
+    public bool checkAffinitaDietaPiatto(List <OggettoQuantita<int>> listaIdIngredientiQuantita, int dietaCliente)
+    {
+        foreach (OggettoQuantita<int> idIngredienteEQuantita in listaIdIngredientiQuantita)
+        {
+            Ingrediente ingrediente = Ingrediente.idToIngrediente(idIngredienteEQuantita.oggetto);
+            Console.WriteLine("ingrediente dieta:" + ingrediente.dieta.ToString());
+            Console.WriteLine("dieta cliente:" + dietaCliente.ToString());
+
+            if (ingrediente.dieta > dietaCliente)
+                return false;
+        }
+        return true;
+    }
+
+    //FUNZIONI PER DATABASE
     public static Piatto checkPiattoOnonimoGiaPresente(string nomePiatto, List<Piatto> piattiConNomeSimileInDatabase = null)
     {
         piattiConNomeSimileInDatabase ??= getPiattiConNomeSimileInDatabase(nomePiatto);
@@ -144,7 +231,7 @@ public class Piatto
 
         return null;
     }
-
+    
     private static List<Piatto> getPiattiConNomeSimileInDatabase(string nomePiatto, List<Piatto> databasePiatti = null)
     {
         databasePiatti ??= Database.getDatabaseOggetto(new Piatto());
@@ -268,50 +355,4 @@ public class Piatto
         }
     }
 
-    private List<int> getPatologieCompatibili(List<Ingrediente> databaseIngredienti = null)
-    {
-        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
-
-        List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto(databaseIngredienti);
-        List<int> IdtutteLePatologie = Patologia.getListIdTutteLePatologie();
-
-        foreach (Ingrediente ingrediente in ingredientiPiatto)
-            foreach (int id in IdtutteLePatologie)
-                if (!(ingrediente.listaIdPatologieCompatibili.Contains(id)))
-                    IdtutteLePatologie.Remove(id);
-
-        return IdtutteLePatologie;
-    }
-
-    private int getDietaMinimaCompatibile(List<Ingrediente> databaseIngredienti = null)
-    {
-        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
-
-        List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto(databaseIngredienti);
-        int output = -1;
-
-        foreach (Ingrediente ingrediente in ingredientiPiatto)
-            if (output < ingrediente.dieta)
-                output = ingrediente.dieta;
-
-        return output;
-    }
-
-    private List<Ingrediente> getIngredientiPiatto(List<Ingrediente> databaseIngredienti = null)
-    {
-        databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
-
-        List<Ingrediente> ingredientiPiatto = new List<Ingrediente>();
-
-        int i = 0;
-        foreach (OggettoQuantita<int> ingredienteQuantita in this.listaIdIngredientiQuantita)
-        {
-            foreach (Ingrediente ingrediente in databaseIngredienti)
-                if (ingredienteQuantita.oggetto == ingrediente.idItem)
-                    ingredientiPiatto.Add(ingrediente);
-            i++;
-        }
-
-        return ingredientiPiatto;
-    }
 }
