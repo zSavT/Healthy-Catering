@@ -36,6 +36,9 @@ public class Interactor : MonoBehaviour
     private bool menuApribile;
 
     private bool bottoniGenerati;
+    
+    //TODO prendere il player che sta giocando al posto del primo nel database
+    [SerializeField] private Player giocatore = Database.getDatabaseOggetto (new Player ())[0];
 
     void Start()
     {
@@ -219,7 +222,12 @@ public class Interactor : MonoBehaviour
             }
         }
 
-        print(piattoSelezionato.nome);
+        if (true)//TODO aggiungere richiesta conferma
+        {
+            giocatore.guadagna(piattoSelezionato.calcolaCosto());
+            esciDaInterazioneCliente();
+            print(giocatore.soldi.ToString());
+        }
     }
 
     private Button generaBottonePiatto(Piatto piatto, GameObject bottonePiattoPrefab) 
@@ -230,7 +238,7 @@ public class Interactor : MonoBehaviour
         output.GetComponentsInChildren<TextMeshProUGUI>() [0].text = piatto.nome;
         output.GetComponentsInChildren<TextMeshProUGUI>() [1].text = piatto.calcolaCosto().ToString();
 
-        Sprite nuovaImmagine = Resources.Load<Sprite>("ImmaginePiatto1");
+        Sprite nuovaImmagine = Resources.Load<Sprite>("ImmaginePiatto1");//TODO aggiungere immagine in base al nome del piatto e nominare gli sprite delle immagini dei piatti con i nomi dei piatti
         output.GetComponentsInChildren<Image>()[1].sprite = nuovaImmagine;
 
         output.name = piatto.nome;

@@ -89,7 +89,7 @@ public class Player
 
     private static List<Item> getNewItem()
     {
-        List<Item> itemGiaPresenti = new List<Item> ();
+        List<Item> itemGiaPresenti = new List<Item>();
 
         while (true)
         {
@@ -129,5 +129,10 @@ public class Player
             return output;
         }
         throw new Exception("Le dimensioni della lista contente gli item e le quantita di essi non corrispondo");
+    }
+
+    public void guadagna(float guadagno)
+    {
+        this.soldi += guadagno; 
     }
 }
