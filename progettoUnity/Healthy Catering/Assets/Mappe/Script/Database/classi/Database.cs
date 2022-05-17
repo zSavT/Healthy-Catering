@@ -16,6 +16,7 @@ public class Database
     public static Oggetto getUltimoOggettoAggiuntoAlDatabase<Oggetto>(Oggetto oggetto, List<Oggetto> databaseOggetto = null)
     {
         databaseOggetto ??= getDatabaseOggetto(oggetto);
+
         return databaseOggetto[databaseOggetto.Count - 1];
     }
 
@@ -33,11 +34,11 @@ public class Database
     }
 	
 	public static bool isDatabaseOggettoVuoto<Oggetto> (Oggetto oggetto, List<Oggetto> databaseOggetto = null)
-{
-	databaseOggetto ??= Database.getDatabaseOggetto(oggetto)
+    {
+        databaseOggetto ??= Database.getDatabaseOggetto(oggetto);
 
-	return databaseOggetto.Count  == 0
-}
+        return databaseOggetto.Count == 0;
+    }
 
     protected static void salvaNuovoOggettoSuFile<Oggetto>(Oggetto oggetto, List<Oggetto> databaseOggetto = null)
     {
