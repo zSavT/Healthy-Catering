@@ -137,11 +137,16 @@ public class OpzioniMenu : MonoBehaviour
     public void aggiornaValoreScrittaFov()
     {
         sliderFovTesto.text = sliderFov.value.ToString();
+        PlayerSettings.salvaImpostazioniFov(sliderFov.value);
     }
     public void aggiornaValoreScrittaSensibilita()
     {
         sliderSensibilitaTesto.text = sliderSensibilita.value.ToString();
+        PlayerSettings.salvaImpostazioniSensibilita(sliderSensibilita.value);
     }
 
-
+    public void setDaltonismo(int scelta)
+    {
+        PlayerSettings.salvaImpostazioniDaltonismo(scelta);
+    }
 }
