@@ -385,7 +385,7 @@ public class Database
                 piatto.listaIdIngredientiQuantita = Piatto.getListaIdIngredientiQuantitaPiattoFromUtente(piatto.nome, databaseIngredienti);
             }
 
-            piatto.calcolaCosto(databaseIngredienti);
+            piatto.calcolaCostoBase(databaseIngredienti);
             piatto.calcolaCostoEco(databaseIngredienti);
             piatto.calcolaNutriScore(databaseIngredienti);
 

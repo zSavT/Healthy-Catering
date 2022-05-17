@@ -22,7 +22,7 @@ public class Piatto
         this.listaIdIngredientiQuantita = listaIdIngredientiQuantita;
         
         List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto (new Ingrediente ());
-        this.costo = calcolaCosto(databaseIngredienti);
+        this.costo = calcolaCostoBase(databaseIngredienti);
         this.costoEco = calcolaCostoEco(databaseIngredienti);
         this.nutriScore = calcolaNutriScore(databaseIngredienti);
     }
@@ -93,7 +93,7 @@ public class Piatto
 
     }
 
-    public float calcolaCosto(List <Ingrediente> databaseIngredienti = null)
+    public float calcolaCostoBase(List <Ingrediente> databaseIngredienti = null)
     {
         databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
 
@@ -102,6 +102,60 @@ public class Piatto
             costo = costo + (Ingrediente.idToIngrediente(ingredienteQuantita.oggetto, databaseIngredienti).costo * ingredienteQuantita.quantita);
 
         return costo + ((costo * percentualeGuadagnoSulPiatto) / 100);
+    }
+
+    public float calcolaCostoConBonus (bool affine, float costoBase){
+        List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
+        
+        if (affine){
+            float output;
+            int posizioneNellaListaMigliori;
+
+            output = costoBase;
+            output += Utility.calcolaCostoPercentuale(costoBase, 5);
+            
+            posizioneNellaListaMigliori = this.getListaAffinitaOrdinata ().IndexOf(this);
+            if (posizioneNellaListaMigliori == 0 ||posizioneNellaListaMigliori == 1 || posizioneNellaListaMigliori == 2){
+                output += Utility.calcolaCostoPercentuale(costoBase, posizioneNellaListaMigliori + 1);
+            }
+            return output;
+        }
+
+        return costoBase - Utility.calcolaCostoPercentuale(costoBase, 5);
+    }
+
+    private List <Piatto> getListaAffinitaOrdinata(List <Piatto> databasePiatti = null){
+        databasePiatti ??= Database.getDatabaseOggetto (this);
+        
+        databasePiatti.Sort (new PiattiComparer());
+        return databasePiatti;
+    }
+
+    private class PiattiComparer : IComparer<Piatto>
+    {
+        //Compare returns -1 (less than), 0 (equal), or 1 (greater)
+        //nutriScore costoEco costo
+        public int Compare(Piatto first, Piatto second)
+        {
+            if (first.nutriScore > second.nutriScore){
+                if (first.costoEco < second.costoEco){   
+                    return 1;
+                }
+            }    
+            else if ((first.nutriScore == second.nutriScore) && (first.costoEco == second.costoEco)){
+                if (first.costo == second.costo){
+                    return 0;
+                }    
+                else if (first.costo < second.costo){
+                    return 1;
+                }
+                else{
+                    return -1;
+                }
+            }
+            
+            return -1;
+        }
     }
 
     public float calcolaCostoEco(List <Ingrediente> databaseIngredienti = null)

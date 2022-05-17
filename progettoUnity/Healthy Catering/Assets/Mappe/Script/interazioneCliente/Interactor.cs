@@ -228,13 +228,13 @@ public class Interactor : MonoBehaviour
 
         if (true)//TODO aggiungere richiesta conferma
         {
-            giocatore.guadagna(piattoSelezionato.calcolaCosto());
+            bool affinitaPatologiePiatto = piattoSelezionato.checkAffinitaPatologiePiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.listaIdPatologie);
+            bool affinitaDietaPiatto = piattoSelezionato.checkAffinitaDietaPiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.dieta);
+            bool affinita = affinitaPatologiePiatto && affinitaDietaPiatto;
+
+            giocatore.guadagna(piattoSelezionato.calcolaCostoConBonus(affinita, piattoSelezionato.calcolaCostoBase()));
+            print(giocatore.soldi);
             esciDaInterazioneCliente();
-            print(giocatore.soldi.ToString());
-            print("checkAffinitaPatologiePiatto");
-            print(piattoSelezionato.checkAffinitaPatologiePiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.listaIdPatologie));
-            print("checkAffinitaDietaPiatto"); 
-            print(piattoSelezionato.checkAffinitaDietaPiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.dieta));
         }
     }
 
@@ -244,7 +244,7 @@ public class Interactor : MonoBehaviour
         Button output = outputGameObject.GetComponent<Button>();
 
         output.GetComponentsInChildren<TextMeshProUGUI>() [0].text = piatto.nome;
-        output.GetComponentsInChildren<TextMeshProUGUI>() [1].text = piatto.calcolaCosto().ToString();
+        output.GetComponentsInChildren<TextMeshProUGUI>() [1].text = piatto.calcolaCostoBase().ToString();
 
         Sprite nuovaImmagine = Resources.Load<Sprite>("ImmaginePiatto1");//TODO aggiungere immagine in base al nome del piatto e nominare gli sprite delle immagini dei piatti con i nomi dei piatti
         output.GetComponentsInChildren<Image>()[1].sprite = nuovaImmagine;
