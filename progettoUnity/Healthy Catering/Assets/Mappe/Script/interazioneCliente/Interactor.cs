@@ -231,11 +231,24 @@ public class Interactor : MonoBehaviour
             bool affinitaPatologiePiatto = piattoSelezionato.checkAffinitaPatologiePiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.listaIdPatologie);
             bool affinitaDietaPiatto = piattoSelezionato.checkAffinitaDietaPiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.dieta);
             bool affinita = affinitaPatologiePiatto && affinitaDietaPiatto;
+            float guadagno = piattoSelezionato.calcolaCostoConBonus(affinita, piattoSelezionato.calcolaCostoBase());
+            
+            giocatore.guadagna(guadagno);
 
-            giocatore.guadagna(piattoSelezionato.calcolaCostoConBonus(affinita, piattoSelezionato.calcolaCostoBase()));
-            print(giocatore.soldi);
+            animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
+
             esciDaInterazioneCliente();
         }
+    }
+
+    void animazioni (bool affinitaPatologiePiatto, bool affinitaDietaPiatto, float guadagno)
+    {
+        //@zSavT qui puoi inserire le animazioni,
+        //la bool affinitaPatologiePiatto è per sapere se il piatto andava bene per la patologia,
+        //l'altra affinità è ovviamente per la dieta,
+        //il guadagno sono i soldi che sta guadagnando il giocatore,
+        //non so se vuoi mettere un'animazione per questa cosa e se nel caso la vuoi regolare per la quantità guadagnata ma nel caso ce l'hai,
+        //se vuoi togliere l'unica chiamata a questo metodo è nel metodo selezionaPiatto quindi ti basta rimuovere il parametro da li
     }
 
     private Button generaBottonePiatto(Piatto piatto, GameObject bottonePiattoPrefab) 
