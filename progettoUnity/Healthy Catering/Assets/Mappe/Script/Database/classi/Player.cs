@@ -18,6 +18,8 @@ public class Player
 
     public List<OggettoQuantita<int>> inventario = new List<OggettoQuantita<int>>();
 
+    public int punteggio = -1;
+
     public Player(string nome, int soldi, List<OggettoQuantita<int>> inventario)
     {
         this.nome = nome;
@@ -135,4 +137,47 @@ public class Player
     {
         this.soldi += guadagno; 
     }
+
+    public void aggiungiDiminuisciPunteggio(bool affine, int nutriScore, float costoEco)
+    {
+        float punteggioDaAggiungere;
+        if (affine)
+            punteggioDaAggiungere = 100;
+        else
+            punteggioDaAggiungere = -10;
+
+        punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Utility.valoreAssoluto (punteggioDaAggiungere), trovaPercentualeNutriScore(nutriScore));
+        punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Utility.valoreAssoluto (punteggioDaAggiungere), trovaPercentualeEcoScore(costoEco));
+
+        this.punteggio += (int) punteggioDaAggiungere;
+    }
+
+    public float trovaPercentualeNutriScore(int nutriScore)
+    {
+        if (nutriScore == 1)
+            return 10;
+        else if (nutriScore == 2)
+            return 5;
+        else if (nutriScore == 3)
+            return 0;
+        else if (nutriScore == 4)
+            return -5;
+        else //nutriscore == 5
+            return -10;
+    }
+    
+    public float trovaPercentualeEcoScore(float costoEco)
+    {
+        if (Utility.compresoFra (costoEco, 0, 10))
+            return 10;
+        else if (Utility.compresoFra (costoEco, 11, 20))
+            return 5;
+        else if (Utility.compresoFra (costoEco, 21, 30))
+            return 0;
+        else if (Utility.compresoFra (costoEco, 31, 40))
+            return -5;
+        else //Utility.compresoFra (costoEco, 41, infinito)
+            return -10;
+    }
+
 }

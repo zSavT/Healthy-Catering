@@ -228,12 +228,24 @@ public class Interactor : MonoBehaviour
 
         if (true)//TODO aggiungere richiesta conferma
         {
+            List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
+
             bool affinitaPatologiePiatto = piattoSelezionato.checkAffinitaPatologiePiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.listaIdPatologie);
             bool affinitaDietaPiatto = piattoSelezionato.checkAffinitaDietaPiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.dieta);
             bool affinita = affinitaPatologiePiatto && affinitaDietaPiatto;
-            float guadagno = piattoSelezionato.calcolaCostoConBonus(affinita, piattoSelezionato.calcolaCostoBase());
-            
+            float guadagno = piattoSelezionato.calcolaCostoConBonus(affinita, piattoSelezionato.calcolaCostoBase(databaseIngredienti));
+
             giocatore.guadagna(guadagno);
+
+            giocatore.aggiungiDiminuisciPunteggio(affinita, piattoSelezionato.calcolaNutriScore(databaseIngredienti), piattoSelezionato.calcolaCostoEco(databaseIngredienti));
+
+            print("soldi giocatore:");
+            print(giocatore.soldi);
+
+            print("punteggio giocatore:");
+            print(giocatore.punteggio);
+
+            print("");
 
             animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
 
