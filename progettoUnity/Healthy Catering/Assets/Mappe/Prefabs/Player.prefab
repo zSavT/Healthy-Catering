@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 424096644822728892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 424096644823217602}
   - {fileID: 424096644823181430}
@@ -2095,8 +2095,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef7777cb6df72f418e2f614eb2ae299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelloFemminile: {fileID: 424096644822735574}
-  modelloMaschile: {fileID: 6450235985480175135}
+  modelloFemminile: {fileID: 424096644822728892}
+  modelloMaschile: {fileID: 6450235984789153494}
   textureBianco: {fileID: 2100000, guid: 62e25ef75a2216f418d06453c9ad15cb, type: 2}
   textureNero: {fileID: 2100000, guid: a8e32d2cd442e564aa46c99f0ae7c0c8, type: 2}
   textureMulatto: {fileID: 2100000, guid: c01b7c8cb1175b54aab24b670c2d58dd, type: 2}
