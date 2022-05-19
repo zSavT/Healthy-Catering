@@ -284,7 +284,7 @@ public class Interactor : MonoBehaviour
         string ingredientiPiatto = piattoSelezionato.getListaIngredientiQuantitaToString();
         
         //piatto
-        pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Ingredienti in " + piattoSelezionato.nome + ":";
+        pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Ingredienti nel piatto " + piattoSelezionato.nome + ":";
         //Ingredienti
         pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Ingredienti:\n" + piattoSelezionato.getListaIngredientiQuantitaToString ();
         /*
@@ -328,9 +328,9 @@ public class Interactor : MonoBehaviour
     {
         GameObject pannelloCliente = GameObject.FindGameObjectWithTag("PannelloCliente");
 
-        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[0].text = cliente.nome;//clienti[1].nome;
-        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>() [1].text = "Dieta: " + Dieta.IdDietaToDietaString(cliente.dieta/*clienti[1].dieta*/);
-        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>() [2].text = Patologia.listIdToListPatologie(cliente.listaIdPatologie/*clienti[1].listaIdPatologie*/);
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Utility.getStringaConCapitalLetterIniziale(cliente.nome);
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>() [1].text = "Dieta: " + Utility.getStringaConCapitalLetterIniziale(Dieta.IdDietaToDietaString(cliente.dieta));
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>() [2].text = Patologia.listIdToListPatologie(cliente.listaIdPatologie);
     }
 
     private void pannelloIngredientiPiattoApertoChiuso()
