@@ -40,10 +40,18 @@ public class Interactor : MonoBehaviour
     //TODO prendere il player che sta giocando al posto del primo nel database
     [SerializeField] private Player giocatore = Database.getDatabaseOggetto (new Player ())[0];
 
+    [SerializeField] private GameObject pannelloIngredientiPiatto;
+    private bool pannelloIngredientiPiattoAperto;
+
+    //TODO aggiornare con il cliente vero
+    private Cliente cliente = Database.getDatabaseOggetto(new Cliente())[1];
+
     void Start()
     {
         chiudiPannello();
         pannelloAperto = false;
+        chiudiPannelloIngredientiPiatto();
+        pannelloIngredientiPiattoAperto = false;
         posizioneCameraOriginale = mainCamera.transform.position;
         menuApribile = true;
         bottoniGenerati = false;
@@ -71,18 +79,28 @@ public class Interactor : MonoBehaviour
 
                 if (Input.GetKeyDown(tastoInterazione))
                 {
-                    interazioneCliente(/*Cliente.nomeClienteToCliente (NPC.tag)//ora gli passo solo un numero*/0, Player, NPC);
+                    interazioneCliente(Player, NPC);
                 }
             }
 
             else
             {
                 uscitaRangeMenu.Invoke();
-                if (pannelloAperto)
+                print("pannello aperto: " + pannelloAperto.ToString());
+                print("pannello ingredienti aperto: " + pannelloIngredientiPiattoAperto.ToString());
+                if (pannelloAperto && !pannelloIngredientiPiattoAperto)
                 {
                     if (Input.GetKeyDown(KeyCode.Escape))
                     {
                         esciDaInterazioneCliente();
+                    }
+                }
+                if (pannelloIngredientiPiattoAperto)
+                {
+                    if (Input.GetKeyDown(KeyCode.Escape))
+                    {
+                        chiudiPannelloIngredientiPiatto();
+                        apriPannello();
                     }
                 }
             }
@@ -123,17 +141,13 @@ public class Interactor : MonoBehaviour
         pannelloAperto = !pannelloAperto;
     }
 
-    private void interazioneCliente(/*Cliente clienteTemp*/ int clienteTemp, GameObject Player, GameObject NPC)
+    private void interazioneCliente(GameObject Player, GameObject NPC)
     {
-        //TODO aggiornare con il cliente vero e rimuovere questa riga
-        //per ora utilizzo lo stesso che carico nel pannello cliente
-        Cliente clienteTemp1 = Database.getDatabaseOggetto(new Cliente())[1];
-
         muoviCameraPerInterazioneCliente();
 
         playerStop.Invoke();
 
-        apriPannello(clienteTemp1);//Riguardo il TODO di sopra, anche qui, ovviamente, va cambiato
+        apriPannello();//Riguardo il TODO di sopra, anche qui, ovviamente, va cambiato
 
 
         PuntatoreMouse.abilitaCursore();
@@ -155,7 +169,7 @@ public class Interactor : MonoBehaviour
         mainCamera.transform.position = Vector3.Lerp(playerPos, newDestination, 100f);
     }
 
-    private void apriPannello(Cliente cliente)
+    private void apriPannello()
     {
         if (pannelloCliente != null)
         {
@@ -163,14 +177,14 @@ public class Interactor : MonoBehaviour
             pannelloCliente.transform.position = newDestination;
 
             pannelloCliente.SetActive(true);
+            pannelloApertoChiuso();
         }
         if (!bottoniGenerati) { 
             generaBottoniPiatti(cliente);
             bottoniGenerati = true;
         }
-        caricaClienteInPanello();
+        caricaClienteInPanello(cliente);
 
-        pannelloApertoChiuso();
     }
 
     private void chiudiPannello()
@@ -178,8 +192,8 @@ public class Interactor : MonoBehaviour
         if (pannelloCliente != null)
         {
             pannelloCliente.SetActive(false);
+            pannelloApertoChiuso();
         }
-        pannelloApertoChiuso();
     }
     
     private void generaBottoniPiatti(Cliente cliente)
@@ -209,6 +223,16 @@ public class Interactor : MonoBehaviour
                 selezionaPiatto(bottoneTemp, piatti, cliente);
             });
 
+
+            //in posizione 0 c'è il bottone per selezionare il piatto
+            //e in posizione 1 c'è il bottone per vedere gli ingredienti
+            Button bottoneMostraIngredienti = bottoneTemp.GetComponentsInChildren<Button>()[1];
+            bottoneMostraIngredienti.onClick.AddListener(() => {
+                chiudiPannello();
+                print("ciao");
+                cambiaPannelloIngredientiPiattoConPiatto(bottoneMostraIngredienti, piatti);
+                apriPannelloIngredientiPiatto();
+            });
         }
 
         Destroy(bottonePiattoPrefab);
@@ -239,18 +263,34 @@ public class Interactor : MonoBehaviour
 
             giocatore.aggiungiDiminuisciPunteggio(affinita, piattoSelezionato.calcolaNutriScore(databaseIngredienti), piattoSelezionato.calcolaCostoEco(databaseIngredienti));
 
-            print("soldi giocatore:");
-            print(giocatore.soldi);
-
-            print("punteggio giocatore:");
-            print(giocatore.punteggio);
-
-            print("");
-
             animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
 
             esciDaInterazioneCliente();
         }
+    }
+
+    void cambiaPannelloIngredientiPiattoConPiatto(Button bottoneMostraIngredienti, List <Piatto> piatti)
+    {
+        Piatto piattoSelezionato = new Piatto();
+        foreach (Piatto piatto in piatti)
+        {
+            if (bottoneMostraIngredienti.name.Contains(piatto.nome))//contains perché viene aggiunta la stringa ingredienti nel nome del bottone
+            {
+                piattoSelezionato = piatto;
+                break;
+            }
+        }
+
+        string ingredientiPiatto = piattoSelezionato.getListaIngredientiQuantitaToString();
+        
+        //piatto
+        pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Ingredienti in " + piattoSelezionato.nome + ":";
+        //Ingredienti
+        pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Ingredienti:\n" + piattoSelezionato.getListaIngredientiQuantitaToString ();
+        /*
+        //esc per uscire
+        print(pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[2].text);
+        */
     }
 
     void animazioni (bool affinitaPatologiePiatto, bool affinitaDietaPiatto, float guadagno)
@@ -276,17 +316,46 @@ public class Interactor : MonoBehaviour
 
         output.name = piatto.nome;
 
+
+        //in posizione 0 c'è il bottone per selezionare il piatto
+        //e in posizione 1 c'è il bottone per vedere gli ingredienti
+        output.GetComponentsInChildren<Button>()[1].name = "Ingredienti " + piatto.nome;
+
         return output;
     }
 
-    private void caricaClienteInPanello()
+    private void caricaClienteInPanello(Cliente cliente)
     {
-        List<Cliente> clienti = Database.getDatabaseOggetto(new Cliente());
-        
         GameObject pannelloCliente = GameObject.FindGameObjectWithTag("PannelloCliente");
 
-        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>() [0].text = clienti[1].nome;
-        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>() [1].text = "Dieta: " + Dieta.IdDietaToDietaString(clienti[1].dieta);
-        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>() [2].text = Patologia.listIdToListPatologie(clienti[1].listaIdPatologie);
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[0].text = cliente.nome;//clienti[1].nome;
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>() [1].text = "Dieta: " + Dieta.IdDietaToDietaString(cliente.dieta/*clienti[1].dieta*/);
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>() [2].text = Patologia.listIdToListPatologie(cliente.listaIdPatologie/*clienti[1].listaIdPatologie*/);
     }
+
+    private void pannelloIngredientiPiattoApertoChiuso()
+    {
+        pannelloIngredientiPiattoAperto = !pannelloIngredientiPiattoAperto;
+    }
+
+    private void apriPannelloIngredientiPiatto()
+    {
+        if (pannelloIngredientiPiatto != null)
+        {
+            pannelloIngredientiPiatto.SetActive(true);
+            pannelloIngredientiPiattoApertoChiuso();
+        }
+        
+    }
+
+    private void chiudiPannelloIngredientiPiatto()
+    {
+        if (pannelloIngredientiPiatto != null)
+        {
+            pannelloIngredientiPiatto.SetActive(false);
+            pannelloIngredientiPiattoApertoChiuso();
+        }
+    }
+
+
 }

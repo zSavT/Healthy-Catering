@@ -8,6 +8,7 @@ TagManager:
   - PannelloPiatti
   - BottonePiatto
   - PannelloCliente
+  - PannelloIngredientiPiatto
   layers:
   - Default
   - TransparentFX

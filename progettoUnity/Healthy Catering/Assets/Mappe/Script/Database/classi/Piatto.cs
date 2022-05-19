@@ -70,22 +70,27 @@ public class Piatto
         "Nutriscore: " + "\n\t" + this.nutriScore + "\n";
 
         if (listaIdIngredientiQuantita.Count > 0)
-        {
-            string ingredientiQuantitaString = "";
-            //se non lo prendo prima viene ricreato ogni volta che viene chiamato il metodo idToIngrediente
-            List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
-
-            foreach (OggettoQuantita<int> ingredienteQuantita in listaIdIngredientiQuantita)
-            {
-                Ingrediente temp = Ingrediente.idToIngrediente(ingredienteQuantita.oggetto, databaseIngredienti);
-                if (temp.idItem != -1)
-                    ingredientiQuantitaString = ingredientiQuantitaString + "\n\t" + temp.nome + " in quantita: " + ingredienteQuantita.quantita.ToString() + "\n";
-            }
-
-            output = output + ingredientiQuantitaString;
+        { 
+            output = output + this.getListaIngredientiQuantitaToString();
         }
 
         return output = output + "Fine piatto " + this.nome;
+    }
+
+    public string getListaIngredientiQuantitaToString()
+    {
+        string ingredientiQuantitaString = "";
+        //se non lo prendo prima viene ricreato ogni volta che viene chiamato il metodo idToIngrediente
+        List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
+
+        foreach (OggettoQuantita<int> ingredienteQuantita in listaIdIngredientiQuantita)
+        {
+            Ingrediente temp = Ingrediente.idToIngrediente(ingredienteQuantita.oggetto, databaseIngredienti);
+            if (temp.idItem != -1)
+                ingredientiQuantitaString = ingredientiQuantitaString + "\n\t" + temp.nome + " in quantita: " + ingredienteQuantita.quantita.ToString() + "\n";
+        }
+
+        return ingredientiQuantitaString;
     }
 
     ~Piatto()
