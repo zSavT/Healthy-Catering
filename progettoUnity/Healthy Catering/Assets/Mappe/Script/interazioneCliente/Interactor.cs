@@ -46,12 +46,22 @@ public class Interactor : MonoBehaviour
     //TODO aggiornare con il cliente vero
     private Cliente cliente = Database.getDatabaseOggetto(new Cliente())[1];
 
+    [SerializeField] GameObject pannelloConfermaPiatto;
+    private bool pannelloConfermaPiattoAperto;
+    private bool confermaSI;
+
+    private Piatto piattoSelezionato;
+
     void Start()
     {
         chiudiPannello();
         pannelloAperto = false;
         chiudiPannelloIngredientiPiatto();
         pannelloIngredientiPiattoAperto = false;
+        chiudiPannelloConfermaPiatto();
+        pannelloConfermaPiattoAperto = false;
+        confermaSI = false;
+
         posizioneCameraOriginale = mainCamera.transform.position;
         menuApribile = true;
         bottoniGenerati = false;
@@ -240,7 +250,8 @@ public class Interactor : MonoBehaviour
 
     void selezionaPiatto(GameObject bottone, List <Piatto> piatti, Cliente cliente)
     {
-        Piatto piattoSelezionato = new Piatto ();
+        chiudiPannello();
+        
         foreach (Piatto piatto in piatti)
         {
             if (bottone.name.Contains(piatto.nome))//contains perché viene aggiunta la stringa "(Clone)" nel gameobject
@@ -250,23 +261,38 @@ public class Interactor : MonoBehaviour
             }
         }
 
-        if (true)//TODO aggiungere richiesta conferma
-        {
-            List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
+        setPannelloConfermaConNomePiatto(piattoSelezionato.nome);
+    }
 
-            bool affinitaPatologiePiatto = piattoSelezionato.checkAffinitaPatologiePiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.listaIdPatologie);
-            bool affinitaDietaPiatto = piattoSelezionato.checkAffinitaDietaPiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.dieta);
-            bool affinita = affinitaPatologiePiatto && affinitaDietaPiatto;
-            float guadagno = piattoSelezionato.calcolaCostoConBonus(affinita, piattoSelezionato.calcolaCostoBase(databaseIngredienti));
+    public void confermaPiattoDaBottone()
+    {
+        confermaSI = true;
+        chiudiPannelloConfermaPiatto();
+        esciDaInterazioneCliente();
 
-            giocatore.guadagna(guadagno);
+        List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
 
-            giocatore.aggiungiDiminuisciPunteggio(affinita, piattoSelezionato.calcolaNutriScore(databaseIngredienti), piattoSelezionato.calcolaCostoEco(databaseIngredienti));
+        bool affinitaPatologiePiatto = piattoSelezionato.checkAffinitaPatologiePiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.listaIdPatologie);
+        bool affinitaDietaPiatto = piattoSelezionato.checkAffinitaDietaPiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.dieta);
+        bool affinita = affinitaPatologiePiatto && affinitaDietaPiatto;
+        float guadagno = piattoSelezionato.calcolaCostoConBonus(affinita, piattoSelezionato.calcolaCostoBase(databaseIngredienti));
 
-            animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
+        giocatore.guadagna(guadagno);
 
-            esciDaInterazioneCliente();
-        }
+        giocatore.aggiungiDiminuisciPunteggio(affinita, piattoSelezionato.calcolaNutriScore(databaseIngredienti), piattoSelezionato.calcolaCostoEco(databaseIngredienti));
+
+        animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
+
+        confermaSI = false;
+
+        print(giocatore.soldi.ToString());
+    }
+
+    void setPannelloConfermaConNomePiatto (string nomePiatto)
+    {
+        //pannelloConfermaPiatto.GetComponentsInChildren<Button>()[0] = bottone si, in posizione 1 c'è quello del no
+        apriPannelloConfermaPiatto();
+        pannelloConfermaPiatto.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Sei sicuro di voler servire il piatto: \n" + nomePiatto;
     }
 
     void cambiaPannelloIngredientiPiattoConPiatto(Button bottoneMostraIngredienti, List <Piatto> piatti)
@@ -357,5 +383,38 @@ public class Interactor : MonoBehaviour
         }
     }
 
+    private void pannelloConfermaPiattoApertoChiuso()
+    {
+        pannelloConfermaPiattoAperto = !pannelloConfermaPiattoAperto;
+    }
+
+    private void apriPannelloConfermaPiatto()
+    {
+        if (pannelloConfermaPiatto != null)
+        {
+            pannelloConfermaPiatto.SetActive(true);
+            pannelloConfermaPiattoApertoChiuso();
+        }
+
+    }
+
+    private void chiudiPannelloConfermaPiatto()
+    {
+        if (pannelloConfermaPiatto != null)
+        {
+            pannelloConfermaPiatto.SetActive(false);
+            pannelloConfermaPiattoApertoChiuso();
+        }
+    }
+
+    public void chiudiPannelloConfermaPiattoDopoNO()
+    {
+        if (pannelloConfermaPiatto != null)
+        {
+            pannelloConfermaPiatto.SetActive(false);
+            pannelloConfermaPiattoApertoChiuso();
+            apriPannello();
+        }
+    }
 
 }
