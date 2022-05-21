@@ -15,20 +15,24 @@ public class PannelloMenu : MonoBehaviour
     [SerializeField] private Player giocatore = Database.getDatabaseOggetto(new Player())[0];
 
     [SerializeField] private GameObject pannelloIngredientiPiatto;
-    private bool pannelloIngredientiPiattoAperto;
+    public static bool pannelloIngredientiPiattoAperto;
 
     //TODO aggiornare con il cliente vero
     private Cliente cliente;
 
     [SerializeField] GameObject pannelloConfermaPiatto;
-    private bool pannelloConfermaPiattoAperto;
+    public static bool pannelloConfermaPiattoAperto;
     private bool confermaSI;
 
     private Piatto piattoSelezionato;
+    [SerializeField] private GameObject pannelloCliente;
+    [SerializeField] private GameObject pannelloMenu;
 
 
     //DA EVENTUALMENTE TOGLIERE
     [SerializeField] private GameObject Player;
+    [SerializeField] private TextMeshProUGUI testoConfermaPiatto;
+    [SerializeField] private GameObject EscPerUscireTesto;              //Lo imposto come GameObject e non come testo, perchè mi interessa solo attivarlo disattivarlo velocemente
 
 
 
@@ -40,18 +44,28 @@ public class PannelloMenu : MonoBehaviour
     {
         pannelloIngredientiPiatto.SetActive(false);
         pannelloConfermaPiatto.SetActive(false);
+        caricaClienteInPanello(cliente);
+        generaBottoniPiatti(cliente);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(pannelloIngredientiPiattoAperto)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                chiudiPannelloIngredientiPiatto();
+            }
+        }
     }
 
 
     public void setIdCliente(int idClientePuntato)
     {
         cliente = Database.getDatabaseOggetto(new Cliente())[idClientePuntato];
+        print(cliente);
+        
     }
 
 
@@ -145,7 +159,7 @@ public class PannelloMenu : MonoBehaviour
     {
         //pannelloConfermaPiatto.GetComponentsInChildren<Button>()[0] = bottone si, in posizione 1 c'è quello del no
         apriPannelloConfermaPiatto();
-        pannelloConfermaPiatto.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Sei sicuro di voler servire il piatto: \n" + nomePiatto;
+        testoConfermaPiatto.text = "Sei sicuro di voler servire il piatto: \n" + nomePiatto;
     }
 
     void cambiaPannelloIngredientiPiattoConPiatto(Button bottoneMostraIngredienti, List<Piatto> piatti)
@@ -205,7 +219,6 @@ private Button generaBottonePiatto(Piatto piatto, GameObject bottonePiattoPrefab
 
 private void caricaClienteInPanello(Cliente cliente)
 {
-    GameObject pannelloCliente = GameObject.FindGameObjectWithTag("PannelloCliente");
 
     pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Utility.getStringaConCapitalLetterIniziale(cliente.nome);
     pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Dieta: " + Utility.getStringaConCapitalLetterIniziale(Dieta.IdDietaToDietaString(cliente.dieta));
@@ -223,6 +236,8 @@ private void apriPannelloIngredientiPiatto()
     {
         pannelloIngredientiPiatto.SetActive(true);
         pannelloIngredientiPiattoApertoChiuso();
+        pannelloMenu.SetActive(false);
+        pannelloCliente.SetActive(false);
     }
 
 }
@@ -233,6 +248,8 @@ private void chiudiPannelloIngredientiPiatto()
     {
         pannelloIngredientiPiatto.SetActive(false);
         pannelloIngredientiPiattoApertoChiuso();
+        pannelloMenu.SetActive(true);
+        pannelloCliente.SetActive(true);
     }
 }
 
@@ -246,7 +263,10 @@ private void apriPannelloConfermaPiatto()
     if (pannelloConfermaPiatto != null)
     {
         pannelloConfermaPiatto.SetActive(true);
+        pannelloMenu.SetActive(false);
+        pannelloCliente.SetActive(false);
         pannelloConfermaPiattoApertoChiuso();
+        EscPerUscireTesto.SetActive(false);
     }
 
 }
@@ -257,6 +277,9 @@ private void chiudiPannelloConfermaPiatto()
     {
         pannelloConfermaPiatto.SetActive(false);
         pannelloConfermaPiattoApertoChiuso();
+        pannelloMenu.SetActive(true);
+        pannelloCliente.SetActive(true);
+        EscPerUscireTesto.SetActive(true);
     }
 }
 
@@ -266,7 +289,9 @@ public void chiudiPannelloConfermaPiattoDopoNO()
     {
         pannelloConfermaPiatto.SetActive(false);
         pannelloConfermaPiattoApertoChiuso();
-        
+        pannelloMenu.SetActive(true);
+        EscPerUscireTesto.SetActive(true);
+        pannelloCliente.SetActive(true);
     }
 }
 

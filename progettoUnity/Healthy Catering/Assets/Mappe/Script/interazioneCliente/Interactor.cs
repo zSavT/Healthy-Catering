@@ -79,9 +79,12 @@ public class Interactor : MonoBehaviour
                 uscitaRangeMenu.Invoke();
                 if (pannelloAperto)
                 {
-                    if (Input.GetKeyDown(KeyCode.Escape))
+                    if(!PannelloMenu.pannelloIngredientiPiattoAperto && !PannelloMenu.pannelloConfermaPiattoAperto)
                     {
-                        esciDaInterazioneCliente();
+                        if (Input.GetKeyDown(KeyCode.Escape))
+                        {
+                            esciDaInterazioneCliente();
+                        }
                     }
                 }
             }
