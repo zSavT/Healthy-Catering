@@ -6,9 +6,6 @@ using TMPro;
 
 public class PannelloMenu : MonoBehaviour
 {
-
-    [SerializeField] private GameObject pannelloIngrediente;
-    [SerializeField] private GameObject pannelloConfermaCliente;
     private Vector3 posizioneCameraOriginale;
     private bool menuApribile;
 
@@ -41,8 +38,8 @@ public class PannelloMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pannelloIngrediente.SetActive(false);
-        pannelloConfermaCliente.SetActive(false);
+        pannelloIngredientiPiatto.SetActive(false);
+        pannelloConfermaPiatto.SetActive(false);
     }
 
     // Update is called once per frame
@@ -94,7 +91,7 @@ public class PannelloMenu : MonoBehaviour
             //e in posizione 1 c'è il bottone per vedere gli ingredienti
             Button bottoneMostraIngredienti = bottoneTemp.GetComponentsInChildren<Button>()[1];
             bottoneMostraIngredienti.onClick.AddListener(() => {
-                chiudiPannello();
+                
                 print("ciao");
                 cambiaPannelloIngredientiPiattoConPiatto(bottoneMostraIngredienti, piatti);
                 apriPannelloIngredientiPiatto();
@@ -106,7 +103,7 @@ public class PannelloMenu : MonoBehaviour
 
     void selezionaPiatto(GameObject bottone, List<Piatto> piatti, Cliente cliente)
     {
-        chiudiPannello();
+        
 
         foreach (Piatto piatto in piatti)
         {
@@ -124,7 +121,7 @@ public class PannelloMenu : MonoBehaviour
     {
         confermaSI = true;
         chiudiPannelloConfermaPiatto();
-        esciDaInterazioneClientePanneloMenu();
+        
 
         List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
 
@@ -269,7 +266,7 @@ public void chiudiPannelloConfermaPiattoDopoNO()
     {
         pannelloConfermaPiatto.SetActive(false);
         pannelloConfermaPiattoApertoChiuso();
-        apriPannello();
+        
     }
 }
 
