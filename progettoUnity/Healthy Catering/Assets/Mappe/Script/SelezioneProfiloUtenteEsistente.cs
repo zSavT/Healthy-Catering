@@ -30,10 +30,27 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         nomiPlayerPresenti = new List<string>();
         // letturaNomiUtenti();
         aggiuntaNomiDropdown();
+        dropDownListaPlayer.value = indiceNomeGiocatoreInLista(PlayerSettings.caricaNomePlayerGiocante());
         nomeSelezionato = dropDownListaPlayer.options[dropDownListaPlayer.value].text;
         dropDownGenere.value = PlayerSettings.caricaGenereGiocatore(nomeSelezionato);
         dropDownColorePelle.value = PlayerSettings.caricaColorePelle(nomeSelezionato);
         dropDownModello3D.value = PlayerSettings.caricaGenereModello3D(nomeSelezionato);
+        attivaDisattivaImpostazioniGenereNeutro();
+        refreshValori();
+    }
+
+    private int indiceNomeGiocatoreInLista(string nome)
+    {
+        int indice = 0;
+        while(indice<dropDownListaPlayer.options.Count)
+        {
+            if(dropDownListaPlayer.options[dropDownListaPlayer.value].text == nome)
+            {
+                break;
+            }
+            indice++;
+        }
+        return indice;
     }
 
     public void refreshValori()
@@ -51,6 +68,9 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         if (genereNeutroScelto)
         {
             PlayerSettings.salvaGenereModello3D(nomeSelezionato, sceltaModelloPlayer);
+        } else
+        {
+            PlayerSettings.salvaGenereModello3D(nomeSelezionato, sceltaGenere);
         }
         SceneManager.LoadScene(0);
     }
@@ -96,10 +116,9 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         sceltaModelloPlayer = indice;
     }
 
-    public void setGenerePlayer(int indiceScelta)
+    private void attivaDisattivaImpostazioniGenereNeutro()
     {
-        sceltaGenere = indiceScelta;
-        if (indiceScelta == 2)
+        if (PlayerSettings.caricaGenereModello3D(nomeSelezionato) == 2)
         {
             genereNeutroScelto = true;
             elementiGenereNeutro.SetActive(true);
@@ -111,6 +130,26 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         }
     }
 
+    private void attivaDisattivaImpostazioniGenereNeutro(int indice)
+    {
+        if (indice == 2)
+        {
+            genereNeutroScelto = true;
+            elementiGenereNeutro.SetActive(true);
+        }
+        else
+        {
+            genereNeutroScelto = false;
+            elementiGenereNeutro.SetActive(false);
+        }
+    }
+
+    public void setGenerePlayer(int indiceScelta)
+    {
+        sceltaGenere = indiceScelta;
+        attivaDisattivaImpostazioniGenereNeutro(sceltaGenere);
+    }
+
     public void setPellePlayer(int indice)
     {
         sceltaColorePelle = indice;
@@ -119,6 +158,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     public void indiceSceltaNomeUtente(int indice)
     {
         nomeSelezionato = dropDownListaPlayer.options[dropDownListaPlayer.value].text;
+        refreshValori();
     }
 
 }

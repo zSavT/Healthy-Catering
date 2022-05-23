@@ -39,7 +39,6 @@ public class SelezioneLivelli : MonoBehaviour
         }
     }
 
-
     public void playGame(int sceneIndex)
     {
         allAvvio.Invoke();
@@ -57,7 +56,6 @@ public class SelezioneLivelli : MonoBehaviour
             yield return null;
         }
     }
-
 
     public static void caricaMenuPrincipale()
     {
