@@ -20,6 +20,6 @@ public class CambioColoreScritta : MonoBehaviour
 
     public void cambioColoreCliccato()
     {
-        testo.color = Color.white;
+        testo.color = Color.black;
     }
 }
