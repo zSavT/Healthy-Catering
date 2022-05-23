@@ -15,7 +15,7 @@ public class CambioColoreScritta : MonoBehaviour
 
     public void cambioColoreNonCliccato()
     {
-        testo.color = Color.gray;
+        testo.color = new Color32(255,255,255,255);
     }
 
     public void cambioColoreCliccato()
