@@ -4,12 +4,6 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 
-/*
- * 
- *      RICORDATI DI METTE LE NOTE PER LE ANIMAZIONI!
- * 
- * 
- */
 public class Interactor : MonoBehaviour
 {
     [Header("Interazione NPC")]
@@ -17,13 +11,12 @@ public class Interactor : MonoBehaviour
 
     [SerializeField] private KeyCode tastoInterazione;              //tasto da premere per invocare l'azione
 
-
     [SerializeField] private GameObject NPC;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform posizioneCamera;
     [SerializeField] private Transform posizioneCameraMenuCliente;
-    [SerializeField] private GameObject pannelloCliente;
-    
+    [SerializeField] private GameObject pannelloMenuCliente;
+
     [Header("Eventi")]
     [SerializeField] private UnityEvent playerStop;
     [SerializeField] private UnityEvent playerRiprendiMovimento;
@@ -31,14 +24,11 @@ public class Interactor : MonoBehaviour
     [SerializeField] private UnityEvent inquadratoNPC;
     [SerializeField] private UnityEvent uscitaRangeMenu;
 
-
     private Vector3 posizioneCameraOriginale;
 
-    
     private bool menuApribile;
     public static bool pannelloAperto;
     private int IDClientePuntato;
-
 
     void Start()
     {
@@ -48,7 +38,6 @@ public class Interactor : MonoBehaviour
         menuApribile = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         interazioneUtenteNPC();
@@ -99,13 +88,12 @@ public class Interactor : MonoBehaviour
             if (NPCpuntato.collider.GetComponent<Interactable>() != false)
             {
                 IDClientePuntato = NPCpuntato.collider.GetComponent<Interactable>().IDCliente;
-                //NPCpuntato.collider.GetComponent<Interactable>().IDCliente = 0; //da qui cambi id cliente dinamicamente
-                print(IDClientePuntato);
                 return true;
             }
         }
         return false;
     }
+
     public void esciDaInterazioneCliente()
     {
         chiudiPannello();
@@ -135,11 +123,14 @@ public class Interactor : MonoBehaviour
 
         apriPannello();
 
-        pannelloCliente.GetComponent<PannelloMenu>().setIdCliente(IDClientePuntato);
+        pannelloMenuCliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato);
 
+        //caricaClienteInPanello(Database.getDatabaseOggetto(new Cliente())[IDClientePuntato]);
 
         PuntatoreMouse.abilitaCursore();
     }
+
+
 
     private void muoviCameraPerInterazioneCliente()
     {
@@ -148,24 +139,22 @@ public class Interactor : MonoBehaviour
 
     private void apriPannello()
     {
-        if (pannelloCliente != null)
+        if (pannelloMenuCliente != null)
         {
             Vector3 newDestination = NPC.transform.position;
-            pannelloCliente.transform.position = newDestination;
+            pannelloMenuCliente.transform.position = newDestination;
 
-            pannelloCliente.SetActive(true);
+            pannelloMenuCliente.SetActive(true);
         }
         pannelloApertoChiuso();
     }
 
     private void chiudiPannello()
     {
-        if (pannelloCliente != null)
+        if (pannelloMenuCliente != null)
         {
-            pannelloCliente.SetActive(false);
+            pannelloMenuCliente.SetActive(false);
         }
         pannelloApertoChiuso();
     }
-
-
 }

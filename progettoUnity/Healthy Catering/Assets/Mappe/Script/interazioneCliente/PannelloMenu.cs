@@ -23,27 +23,18 @@ public class PannelloMenu : MonoBehaviour
     [SerializeField] private GameObject pannelloCliente;
     [SerializeField] private GameObject pannelloMenu;
 
-
     //DA EVENTUALMENTE TOGLIERE
     [SerializeField] private GameObject Player;
     [SerializeField] private TextMeshProUGUI testoConfermaPiatto;
-    [SerializeField] private GameObject EscPerUscireTesto;              //Lo imposto come GameObject e non come testo, perchè mi interessa solo attivarlo disattivarlo velocemente
+    [SerializeField] private GameObject EscPerUscireTesto; //Lo imposto come GameObject e non come testo, perchè mi interessa solo attivarlo disattivarlo velocemente
 
-
-
-
-
-
-    // Start is called before the first frame update
     void Start()
     {
         pannelloIngredientiPiatto.SetActive(false);
         pannelloConfermaPiatto.SetActive(false);
-        caricaClienteInPanello(cliente);
         generaBottoniPiatti(cliente);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(pannelloIngredientiPiattoAperto)
@@ -55,18 +46,11 @@ public class PannelloMenu : MonoBehaviour
         }
     }
 
-
-    public void setIdCliente(int idClientePuntato)
+    public void setCliente(int idClientePuntato)
     {
         cliente = Database.getDatabaseOggetto(new Cliente())[idClientePuntato];
-        print(cliente);
-        
+        caricaClienteInPanello(cliente);
     }
-
-
-
-
-
 
     private void generaBottoniPiatti(Cliente cliente)
     {
@@ -100,8 +84,6 @@ public class PannelloMenu : MonoBehaviour
             //e in posizione 1 c'è il bottone per vedere gli ingredienti
             Button bottoneMostraIngredienti = bottoneTemp.GetComponentsInChildren<Button>()[1];
             bottoneMostraIngredienti.onClick.AddListener(() => {
-                
-                print("ciao");
                 cambiaPannelloIngredientiPiattoConPiatto(bottoneMostraIngredienti, piatti);
                 apriPannelloIngredientiPiatto();
             });
@@ -143,9 +125,6 @@ public class PannelloMenu : MonoBehaviour
         giocatore.aggiungiDiminuisciPunteggio(affinita, piattoSelezionato.calcolaNutriScore(databaseIngredienti), piattoSelezionato.calcolaCostoEco(databaseIngredienti));
 
         animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
-
-
-        print(giocatore.soldi.ToString());
     }
 
     void setPannelloConfermaConNomePiatto(string nomePiatto)
@@ -173,121 +152,113 @@ public class PannelloMenu : MonoBehaviour
         pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Ingredienti nel piatto " + piattoSelezionato.nome + ":";
         //Ingredienti
         pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Ingredienti:\n" + piattoSelezionato.getListaIngredientiQuantitaToString();
-        /*
-        //esc per uscire
-        print(pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[2].text);
-        */
-}
-
-void animazioni(bool affinitaPatologiePiatto, bool affinitaDietaPiatto, float guadagno)
-{
-    //@zSavT qui puoi inserire le animazioni,
-    //la bool affinitaPatologiePiatto è per sapere se il piatto andava bene per la patologia,
-    //l'altra affinità è ovviamente per la dieta,
-    //il guadagno sono i soldi che sta guadagnando il giocatore,
-    //non so se vuoi mettere un'animazione per questa cosa e se nel caso la vuoi regolare per la quantità guadagnata ma nel caso ce l'hai,
-    //se vuoi togliere l'unica chiamata a questo metodo è nel metodo selezionaPiatto quindi ti basta rimuovere il parametro da li
-}
-
-private Button generaBottonePiatto(Piatto piatto, GameObject bottonePiattoPrefab)
-{
-    GameObject outputGameObject = (GameObject)Instantiate(bottonePiattoPrefab);
-    Button output = outputGameObject.GetComponent<Button>();
-
-    output.GetComponentsInChildren<TextMeshProUGUI>()[0].text = piatto.nome;
-    output.GetComponentsInChildren<TextMeshProUGUI>()[1].text = piatto.calcolaCostoBase().ToString();
-
-    Sprite nuovaImmagine = Resources.Load<Sprite>("ImmaginePiatto1");//TODO aggiungere immagine in base al nome del piatto e nominare gli sprite delle immagini dei piatti con i nomi dei piatti
-    output.GetComponentsInChildren<Image>()[1].sprite = nuovaImmagine;
-
-    output.name = piatto.nome;
-
-
-    //in posizione 0 c'è il bottone per selezionare il piatto
-    //e in posizione 1 c'è il bottone per vedere gli ingredienti
-    output.GetComponentsInChildren<Button>()[1].name = "Ingredienti " + piatto.nome;
-
-    return output;
-}
-
-private void caricaClienteInPanello(Cliente cliente)
-{
-
-    pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Utility.getStringaConCapitalLetterIniziale(cliente.nome);
-    pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Dieta: " + Utility.getStringaConCapitalLetterIniziale(Dieta.IdDietaToDietaString(cliente.dieta));
-    pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[2].text = Patologia.listIdToListPatologie(cliente.listaIdPatologie);
-}
-
-private void pannelloIngredientiPiattoApertoChiuso()
-{
-    pannelloIngredientiPiattoAperto = !pannelloIngredientiPiattoAperto;
-}
-
-private void apriPannelloIngredientiPiatto()
-{
-    if (pannelloIngredientiPiatto != null)
-    {
-        pannelloIngredientiPiatto.SetActive(true);
-        pannelloIngredientiPiattoApertoChiuso();
-        pannelloMenu.SetActive(false);
-        pannelloCliente.SetActive(false);
     }
 
-}
-
-private void chiudiPannelloIngredientiPiatto()
-{
-    if (pannelloIngredientiPiatto != null)
+    void animazioni(bool affinitaPatologiePiatto, bool affinitaDietaPiatto, float guadagno)
     {
-        pannelloIngredientiPiatto.SetActive(false);
-        pannelloIngredientiPiattoApertoChiuso();
-        pannelloMenu.SetActive(true);
-        pannelloCliente.SetActive(true);
-    }
-}
-
-private void pannelloConfermaPiattoApertoChiuso()
-{
-    pannelloConfermaPiattoAperto = !pannelloConfermaPiattoAperto;
-}
-
-private void apriPannelloConfermaPiatto()
-{
-    if (pannelloConfermaPiatto != null)
-    {
-        pannelloConfermaPiatto.SetActive(true);
-        pannelloMenu.SetActive(false);
-        pannelloCliente.SetActive(false);
-        pannelloConfermaPiattoApertoChiuso();
-        EscPerUscireTesto.SetActive(false);
+        //@zSavT qui puoi inserire le animazioni,
+        //la bool affinitaPatologiePiatto è per sapere se il piatto andava bene per la patologia,
+        //l'altra affinità è ovviamente per la dieta,
+        //il guadagno sono i soldi che sta guadagnando il giocatore,
+        //non so se vuoi mettere un'animazione per questa cosa e se nel caso la vuoi regolare per la quantità guadagnata ma nel caso ce l'hai,
+        //se vuoi togliere l'unica chiamata a questo metodo è nel metodo selezionaPiatto quindi ti basta rimuovere il parametro da li
     }
 
-}
-
-private void chiudiPannelloConfermaPiatto()
-{
-    if (pannelloConfermaPiatto != null)
+    private Button generaBottonePiatto(Piatto piatto, GameObject bottonePiattoPrefab)
     {
-        pannelloConfermaPiatto.SetActive(false);
-        pannelloConfermaPiattoApertoChiuso();
-        pannelloMenu.SetActive(true);
-        pannelloCliente.SetActive(true);
-        EscPerUscireTesto.SetActive(true);
-    }
-}
+        GameObject outputGameObject = (GameObject)Instantiate(bottonePiattoPrefab);
+        Button output = outputGameObject.GetComponent<Button>();
 
-public void chiudiPannelloConfermaPiattoDopoNO()
-{
-    if (pannelloConfermaPiatto != null)
+        output.GetComponentsInChildren<TextMeshProUGUI>()[0].text = piatto.nome;
+        output.GetComponentsInChildren<TextMeshProUGUI>()[1].text = piatto.calcolaCostoBase().ToString();
+
+        Sprite nuovaImmagine = Resources.Load<Sprite>("ImmaginePiatto1");//TODO aggiungere immagine in base al nome del piatto e nominare gli sprite delle immagini dei piatti con i nomi dei piatti
+        output.GetComponentsInChildren<Image>()[1].sprite = nuovaImmagine;
+
+        output.name = piatto.nome;
+
+
+        //in posizione 0 c'è il bottone per selezionare il piatto
+        //e in posizione 1 c'è il bottone per vedere gli ingredienti
+        output.GetComponentsInChildren<Button>()[1].name = "Ingredienti " + piatto.nome;
+
+        return output;
+    }
+
+    private void caricaClienteInPanello(Cliente cliente)
     {
-        pannelloConfermaPiatto.SetActive(false);
-        pannelloConfermaPiattoApertoChiuso();
-        pannelloMenu.SetActive(true);
-        EscPerUscireTesto.SetActive(true);
-        pannelloCliente.SetActive(true);
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Utility.getStringaConCapitalLetterIniziale(cliente.nome);
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Dieta: " + Utility.getStringaConCapitalLetterIniziale(Dieta.IdDietaToDietaString(cliente.dieta));
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[2].text = Patologia.listIdToListPatologie(cliente.listaIdPatologie);
     }
-}
 
+    private void pannelloIngredientiPiattoApertoChiuso()
+    {
+        pannelloIngredientiPiattoAperto = !pannelloIngredientiPiattoAperto;
+    }
 
+    private void apriPannelloIngredientiPiatto()
+    {
+        if (pannelloIngredientiPiatto != null)
+        {
+            pannelloIngredientiPiatto.SetActive(true);
+            pannelloIngredientiPiattoApertoChiuso();
+            pannelloMenu.SetActive(false);
+            pannelloCliente.SetActive(false);
+        }
 
+    }
+
+    private void chiudiPannelloIngredientiPiatto()
+    {
+        if (pannelloIngredientiPiatto != null)
+        {
+            pannelloIngredientiPiatto.SetActive(false);
+            pannelloIngredientiPiattoApertoChiuso();
+            pannelloMenu.SetActive(true);
+            pannelloCliente.SetActive(true);
+        }
+    }
+
+    private void pannelloConfermaPiattoApertoChiuso()
+    {
+        pannelloConfermaPiattoAperto = !pannelloConfermaPiattoAperto;
+    }
+
+    private void apriPannelloConfermaPiatto()
+    {
+        if (pannelloConfermaPiatto != null)
+        {
+            pannelloConfermaPiatto.SetActive(true);
+            pannelloMenu.SetActive(false);
+            pannelloCliente.SetActive(false);
+            pannelloConfermaPiattoApertoChiuso();
+            EscPerUscireTesto.SetActive(false);
+        }
+
+    }
+
+    private void chiudiPannelloConfermaPiatto()
+    {
+        if (pannelloConfermaPiatto != null)
+        {
+            pannelloConfermaPiatto.SetActive(false);
+            pannelloConfermaPiattoApertoChiuso();
+            pannelloMenu.SetActive(true);
+            pannelloCliente.SetActive(true);
+            EscPerUscireTesto.SetActive(true);
+        }
+    }
+
+    public void chiudiPannelloConfermaPiattoDopoNO()
+    {
+        if (pannelloConfermaPiatto != null)
+        {
+            pannelloConfermaPiatto.SetActive(false);
+            pannelloConfermaPiattoApertoChiuso();
+            pannelloMenu.SetActive(true);
+            EscPerUscireTesto.SetActive(true);
+            pannelloCliente.SetActive(true);
+        }
+    }
 }
