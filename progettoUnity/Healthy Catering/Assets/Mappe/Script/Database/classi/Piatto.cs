@@ -267,13 +267,27 @@ public class Piatto
         foreach (OggettoQuantita<int> idIngredienteEQuantita in listaIdIngredientiQuantita)
         {
             Ingrediente ingrediente = Ingrediente.idToIngrediente(idIngredienteEQuantita.oggetto);
-            Console.WriteLine("ingrediente dieta:" + ingrediente.dieta.ToString());
-            Console.WriteLine("dieta cliente:" + dietaCliente.ToString());
 
             if (ingrediente.dieta > dietaCliente)
                 return false;
         }
         return true;
+    }
+
+    public static Piatto getPiattoFromNomeBottone(string nomePiattoBottone, List <Piatto> databasePiatti = null)
+    {
+        databasePiatti ??= Database.getDatabaseOggetto(new Piatto());
+
+        Piatto piattoSelezionato = new Piatto();
+        foreach (Piatto piatto in databasePiatti)
+        {
+            if (nomePiattoBottone.Contains(piatto.nome))//contains perché viene aggiunta la stringa ingredienti nel nome del bottone
+            {
+                piattoSelezionato = piatto;
+                break;
+            }
+        }
+        return piattoSelezionato;
     }
 
     //FUNZIONI PER DATABASE

@@ -13,6 +13,9 @@ public class PannelloMenu : MonoBehaviour
     [SerializeField] private GameObject pannelloIngredientiPiatto;
     public static bool pannelloIngredientiPiattoAperto;
 
+    [SerializeField] private GameObject pannelloIngredientiGiustiSbagliati;
+    public static bool pannelloIngredientiGiustiSbagliatiAperto;
+
     //TODO aggiornare con il cliente vero
     private Cliente cliente;
 
@@ -27,6 +30,12 @@ public class PannelloMenu : MonoBehaviour
     [SerializeField] private GameObject Player;
     [SerializeField] private TextMeshProUGUI testoConfermaPiatto;
     [SerializeField] private GameObject EscPerUscireTesto; //Lo imposto come GameObject e non come testo, perchè mi interessa solo attivarlo disattivarlo velocemente
+
+    //PannelloIngredientiGiustiSbagliati 
+    [SerializeField] private TextMeshProUGUI titoloIngredientiGiustiSbagliati;
+    [SerializeField] private TextMeshProUGUI testoIngredientiGiusti;
+    [SerializeField] private TextMeshProUGUI testoIngredientiSbagliatiDieta;
+    [SerializeField] private TextMeshProUGUI testoIngredientiSbagliatiPatologia;
 
     void Start()
     {
@@ -124,6 +133,12 @@ public class PannelloMenu : MonoBehaviour
 
         giocatore.aggiungiDiminuisciPunteggio(affinita, piattoSelezionato.calcolaNutriScore(databaseIngredienti), piattoSelezionato.calcolaCostoEco(databaseIngredienti));
 
+        if (!affinita)
+        {
+            caricaIngredientiInPannelloIngredientiGiustiSbagliati(piattoSelezionato, cliente, databaseIngredienti);
+            apriPannelloIngredientiGiustiSbagliati();
+        }
+
         animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
     }
 
@@ -136,22 +151,14 @@ public class PannelloMenu : MonoBehaviour
 
     void cambiaPannelloIngredientiPiattoConPiatto(Button bottoneMostraIngredienti, List<Piatto> piatti)
     {
-        Piatto piattoSelezionato = new Piatto();
-        foreach (Piatto piatto in piatti)
-        {
-            if (bottoneMostraIngredienti.name.Contains(piatto.nome))//contains perché viene aggiunta la stringa ingredienti nel nome del bottone
-            {
-                piattoSelezionato = piatto;
-                break;
-            }
-        }
+        Piatto piattoSelezionato = Piatto.getPiattoFromNomeBottone(bottoneMostraIngredienti.name, piatti);
 
         string ingredientiPiatto = piattoSelezionato.getListaIngredientiQuantitaToString();
 
         //piatto
         pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Ingredienti nel piatto " + piattoSelezionato.nome + ":";
         //Ingredienti
-        pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Ingredienti:\n" + piattoSelezionato.getListaIngredientiQuantitaToString();
+        pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Ingredienti:\n" + ingredientiPiatto;
     }
 
     void animazioni(bool affinitaPatologiePiatto, bool affinitaDietaPiatto, float guadagno)
@@ -258,6 +265,55 @@ public class PannelloMenu : MonoBehaviour
             pannelloConfermaPiattoApertoChiuso();
             pannelloMenu.SetActive(true);
             EscPerUscireTesto.SetActive(true);
+            pannelloCliente.SetActive(true);
+        }
+    }
+
+    private void pannelloIngredientiGiustiSbagliatiApertoChiuso()
+    {
+        pannelloIngredientiGiustiSbagliatiAperto = !pannelloIngredientiGiustiSbagliatiAperto;
+    }
+
+    private void apriPannelloIngredientiGiustiSbagliati()
+    {
+        if (pannelloIngredientiGiustiSbagliati != null)
+        {
+            
+            pannelloIngredientiGiustiSbagliati.SetActive(true);
+            pannelloIngredientiGiustiSbagliatiApertoChiuso();
+            pannelloMenu.SetActive(false);
+            pannelloCliente.SetActive(false);
+        }
+
+    }
+
+    void caricaIngredientiInPannelloIngredientiGiustiSbagliati(Piatto piattoSelezionato, Cliente cliente, List<Ingrediente> databaseIngredienti = null)
+    {
+        databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
+
+        titoloIngredientiGiustiSbagliati.text = "Ingredienti del piatto che vanno bene per la patologia:\n" + piattoSelezionato.nome;
+
+        List<Ingrediente> ingredientiNonCompatibiliPatologia = new List<Ingrediente>();
+        List<Ingrediente> ingredientiNonCompatibiliDieta = new List<Ingrediente>();
+        List<Ingrediente> ingredientiCompatibili = new List<Ingrediente>();
+
+        testoIngredientiGiusti.color = Color.green;
+        testoIngredientiGiusti.text = "ciao\n\tciao";
+
+        testoIngredientiSbagliatiDieta.color = Color.red;
+        testoIngredientiSbagliatiDieta.text = "dieta\n\tciao";
+
+        testoIngredientiSbagliatiPatologia.color = Color.red;
+        testoIngredientiSbagliatiPatologia.text = "patologie\n\tciao";
+    }
+
+    private void chiudiPannelloIngredientiGiustiSbagliati()
+    {
+        if (pannelloIngredientiGiustiSbagliati != null)
+        {
+            pannelloIngredientiGiustiSbagliati.SetActive(false);
+            pannelloIngredientiGiustiSbagliatiApertoChiuso();
+            pannelloMenu.SetActive(true);
             pannelloCliente.SetActive(true);
         }
     }
