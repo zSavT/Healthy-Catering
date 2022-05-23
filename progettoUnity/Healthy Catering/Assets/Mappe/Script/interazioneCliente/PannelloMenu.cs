@@ -6,10 +6,6 @@ using TMPro;
 
 public class PannelloMenu : MonoBehaviour
 {
-    private Vector3 posizioneCameraOriginale;
-    private bool menuApribile;
-
-    private bool bottoniGenerati;
 
     //TODO prendere il player che sta giocando al posto del primo nel database
     [SerializeField] private Player giocatore = Database.getDatabaseOggetto(new Player())[0];
@@ -22,7 +18,6 @@ public class PannelloMenu : MonoBehaviour
 
     [SerializeField] GameObject pannelloConfermaPiatto;
     public static bool pannelloConfermaPiattoAperto;
-    private bool confermaSI;
 
     private Piatto piattoSelezionato;
     [SerializeField] private GameObject pannelloCliente;
@@ -133,7 +128,6 @@ public class PannelloMenu : MonoBehaviour
 
     public void confermaPiattoDaBottone()
     {
-        confermaSI = true;
         chiudiPannelloConfermaPiatto();
         
 
@@ -150,7 +144,6 @@ public class PannelloMenu : MonoBehaviour
 
         animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
 
-        confermaSI = false;
 
         print(giocatore.soldi.ToString());
     }

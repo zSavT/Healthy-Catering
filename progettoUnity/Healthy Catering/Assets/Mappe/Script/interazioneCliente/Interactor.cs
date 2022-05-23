@@ -73,7 +73,6 @@ public class Interactor : MonoBehaviour
                     interazioneCliente(IDClientePuntato);
                 }
             }
-
             else
             {
                 uscitaRangeMenu.Invoke();
@@ -100,12 +99,14 @@ public class Interactor : MonoBehaviour
             if (NPCpuntato.collider.GetComponent<Interactable>() != false)
             {
                 IDClientePuntato = NPCpuntato.collider.GetComponent<Interactable>().IDCliente;
+                //NPCpuntato.collider.GetComponent<Interactable>().IDCliente = 0; //da qui cambi id cliente dinamicamente
+                print(IDClientePuntato);
                 return true;
             }
         }
         return false;
     }
-    private void esciDaInterazioneCliente()
+    public void esciDaInterazioneCliente()
     {
         chiudiPannello();
         playerRiprendiMovimento.Invoke();
