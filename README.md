@@ -46,6 +46,8 @@ I requisiti Hardware e Software del gioco:
 
 ## Immagini di gioco
 
+![Menu Iniziale](doc/img/menuIniziale.png "Menu Iniziale")
+
 ![HUD](doc/img/Bozza_HUD_game.png "HUD in Game")
 
 ![HUD](doc/img/Bozza_HUD_Ristorante.jpg "HUD in Game")
