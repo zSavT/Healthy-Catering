@@ -7,6 +7,16 @@ using Wilberforce;
 
 public class SelezioneLivelli : MonoBehaviour
 {
+
+    /*
+     * Menu Principale = 0
+     * Menu Opzioni = 1
+     * Citta Livello 0 = 2                  
+     * Menu Selezione livello = 3
+     * Menu Selezione Profilo Utente = 4
+     * Menu Creazione Profilo Utente = 5
+     */
+
     [SerializeField] private Button bottoneLivello0;
     [SerializeField] private Button bottoneLivello1;
     [SerializeField] private Button bottoneLivello2;
@@ -18,25 +28,15 @@ public class SelezioneLivelli : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        camera.GetComponent<Colorblind>().Type = PlayerPrefs.GetInt("daltonismo");
-        if (PlayerPrefs.GetInt("livello1") == 1)
+        camera.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
+        if (PlayerSettings.caricaProgressoLivello1() == 1)
         {
             bottoneLivello1.interactable = true;                
         }
-        if (PlayerPrefs.GetInt("livello2") == 1)
+        if (PlayerSettings.caricaProgressoLivello2() == 1)
         {
             bottoneLivello2.interactable = true;
         }
-    }
-
-    public void menuPrincipale()
-    {
-        SceneManager.LoadScene(0);
-    }
-
-    public void caricaLivello0()
-    {
-
     }
 
     public void playGame(int sceneIndex)
@@ -56,4 +56,30 @@ public class SelezioneLivelli : MonoBehaviour
             yield return null;
         }
     }
+
+    public static void caricaMenuPrincipale()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public static void caricaMenuOpzioni()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public static void caricaMenuSelezioneLivello()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    public static void caricaMenuSelezioneProfiloUtente()
+    {
+        SceneManager.LoadScene(4);
+    }
+
+    public static void caricaMenuCreazioneProfiloUtente()
+    {
+        SceneManager.LoadScene(5);
+    }
 }
+

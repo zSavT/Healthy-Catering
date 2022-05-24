@@ -40,7 +40,7 @@ public class Database
         return databaseOggetto.Count == 0;
     }
 
-    protected static void salvaNuovoOggettoSuFile<Oggetto>(Oggetto oggetto, List<Oggetto> databaseOggetto = null)
+    public static void salvaNuovoOggettoSuFile<Oggetto>(Oggetto oggetto, List<Oggetto> databaseOggetto = null)
     {
         databaseOggetto ??= getDatabaseOggetto(oggetto);
 

@@ -27,6 +27,13 @@ public class Player
         this.inventario = inventario;
     }
 
+    public Player(string nome)
+    {
+        this.nome = nome;
+        this.soldi = -1;
+        this.inventario = new List<OggettoQuantita<int>>();
+    }
+
     public Player()
     {
         this.nome = "";

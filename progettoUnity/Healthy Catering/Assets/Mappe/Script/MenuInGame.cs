@@ -5,11 +5,10 @@ public class MenuInGame : MonoBehaviour
 {
     [Header("Menu Opzioni")]
     [SerializeField] private KeyCode tastoMenu;
-
-    private bool giocoInPausa = false;
     [SerializeField] private GameObject menuPausa;
     [SerializeField] private UnityEvent aperturaMenuGioco;
     [SerializeField] private UnityEvent chiusuraMenuGioco;
+    private bool giocoInPausa = false;
     private bool menuApribile;
 
 

@@ -13,8 +13,14 @@ EditorBuildSettings:
     guid: 47ae8ef6368c47f4596fcdf1b9906090
   - enabled: 1
     path: Assets/Mappe/Citta.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    guid: 782fc05060c563444976fa10cee3fa17
   - enabled: 1
     path: Assets/Mappe/SelezioneLivelli.unity
     guid: db8971f933c8b9a408b39ec697fd4c51
+  - enabled: 1
+    path: Assets/Mappe/SelezioneProfiloUtente.unity
+    guid: 67b0a547487948743aaad2c56810f0b9
+  - enabled: 1
+    path: Assets/Mappe/CreazioneProfiloUtente.unity
+    guid: 44b3f06098107ee45ae9d12482c3d28a
   m_configObjects: {}

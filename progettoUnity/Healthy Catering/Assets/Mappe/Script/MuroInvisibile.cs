@@ -14,8 +14,6 @@ public class MuroInvisibile : MonoBehaviour
     [SerializeField] private float tolleranzaAltezzaContatto;
     private bool toccato;
 
-
-
     // Update is called once per frame
     void Update()
     {
@@ -23,7 +21,6 @@ public class MuroInvisibile : MonoBehaviour
     }
 
     
-
     private void controlloCollisioneAcqua()
     {
         toccato = Physics.CheckSphere(triggerTocco.position, tolleranzaAltezzaContatto, oceano);
