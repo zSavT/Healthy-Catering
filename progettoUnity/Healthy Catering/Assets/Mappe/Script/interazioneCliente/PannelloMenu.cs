@@ -291,11 +291,20 @@ public class PannelloMenu : MonoBehaviour
     {
         databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
 
-        titoloIngredientiGiustiSbagliati.text = "Ingredienti del piatto che vanno bene per la patologia:\n" + piattoSelezionato.nome;
+        titoloIngredientiGiustiSbagliati.text = "Ingredienti del piatto " + piattoSelezionato.nome + "\nche vanno bene e non per: " + cliente.nome;
 
-        List<Ingrediente> ingredientiNonCompatibiliPatologia = new List<Ingrediente>();
-        List<Ingrediente> ingredientiNonCompatibiliDieta = new List<Ingrediente>();
-        List<Ingrediente> ingredientiCompatibili = new List<Ingrediente>();
+        List<Ingrediente> ingredientiPiattoSelezionato = piattoSelezionato.getIngredientiPiatto(databaseIngredienti);
+
+        //ogni volta che calcolo gli ingredienti non compatibili li rimuovo dalla lista generale degli ingredienti
+        //in questo modo non vengono aggiunti alle altre liste a prescindere
+        List<Ingrediente> ingredientiNonCompatibiliPatologia = cliente.getListaIngredientiNonCompatibiliPatologie(ingredientiPiattoSelezionato, databaseIngredienti);
+        foreach (Ingrediente item in ingredientiNonCompatibiliPatologia) ingredientiPiattoSelezionato.Remove(item);
+        
+        List<Ingrediente> ingredientiNonCompatibiliDieta = cliente.getListaIngredientiNonCompatibiliDieta(ingredientiPiattoSelezionato, databaseIngredienti);
+        foreach (Ingrediente item in ingredientiNonCompatibiliDieta) ingredientiPiattoSelezionato.Remove(item);
+        
+        //nella lista degli ingredienti piatto selezionato ci sono solo gli ingredienti che vanno bene ora
+        List<Ingrediente> ingredientiCompatibili = ingredientiPiattoSelezionato;
 
         testoIngredientiGiusti.color = Color.green;
         testoIngredientiGiusti.text = "ciao\n\tciao";

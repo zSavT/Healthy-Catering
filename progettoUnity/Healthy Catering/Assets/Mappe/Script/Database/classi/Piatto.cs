@@ -219,7 +219,7 @@ public class Piatto
         return output;
     }
 
-    private List<Ingrediente> getIngredientiPiatto(List<Ingrediente> databaseIngredienti = null)
+    public List<Ingrediente> getIngredientiPiatto(List<Ingrediente> databaseIngredienti = null)
     {
         databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
 
