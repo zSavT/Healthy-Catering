@@ -44,9 +44,12 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     public void nomiPlayer()
     {
         List<Player> listaPlayer = Database.getDatabaseOggetto<Player>(new Player());
-        for(int i=0; i<listaPlayer.Count;i++)
+        if (listaPlayer != null)
         {
-            nomiPlayerPresenti.Add(listaPlayer[i].nome);
+            for (int i = 0; i < listaPlayer.Count; i++)
+            {
+                nomiPlayerPresenti.Add(listaPlayer[i].nome);
+            }
         }
     }
 
@@ -101,7 +104,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
 
     private void letturaNomiUtenti()
     {
-        player = Database.getDatabaseOggetto<Player>(new Player());
+        player = Database.getDatabaseOggetto(new Player());
         
     }
 
@@ -129,6 +132,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         {
             PlayerSettings.salvaGenereModello3D(nomeGiocatoreScritto, sceltaModelloPlayer);
         }
+        Database.salvaNuovoOggettoSuFile(new Player(nomeGiocatoreScritto));
     }
 
     public void leggiInputNomeScritto(string testo)

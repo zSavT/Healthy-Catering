@@ -8,7 +8,7 @@ public class Menu : MonoBehaviour
 {
     [SerializeField] private UnityEvent clickCrediti;             //serve per eliminare altri elementi in visualilzzazione
     [SerializeField] private Camera camera;
-    private List<Player> player;
+    private List<Player> player = new List<Player>();
 
     void Start()
     {
@@ -28,7 +28,7 @@ public class Menu : MonoBehaviour
 
     private void letturaNomiUtenti()
     {
-        player = Database.getDatabaseOggetto<Player>(new Player());
+        player = Database.getDatabaseOggetto(new Player());
     }
 
 
