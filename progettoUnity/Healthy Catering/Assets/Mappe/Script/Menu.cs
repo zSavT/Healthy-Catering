@@ -13,13 +13,11 @@ public class Menu : MonoBehaviour
     void Start()
     {
         camera.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
-        /*
         letturaNomiUtenti();
         if (!presentePlayer())
         {
             caricaCreazioneProfilo();
         }
-        */
     }
 
     void Update()

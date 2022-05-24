@@ -14,8 +14,8 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     [SerializeField] private GameObject nomeGiaPreso;
     [SerializeField] private Button bottoneSalva;
     [SerializeField] private Camera camera;
-    private List<Player> player;
-    private List<string> nomiPlayerPresenti;
+    private List<Player> player = new List<Player>();
+    private List<string> nomiPlayerPresenti = new List<string>();
     private string nomeGiocatoreScritto;
     private int sceltaGenere;
     private int sceltaColorePelle;
@@ -25,9 +25,10 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        nomeGiocatoreScritto = "";
         camera.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         player = new List<Player>();
-        nomiPlayerPresenti = new List<string>();
+        nomiPlayer();
         genereNeutroScelto = false;
         nomeGiaPreso.SetActive(false);
         elementiGenereNeutro.SetActive(false);
@@ -40,9 +41,17 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         controlloNomeEsistente();
     }
 
+    public void nomiPlayer()
+    {
+        List<Player> listaPlayer = Database.getDatabaseOggetto<Player>(new Player());
+        for(int i=0; i<listaPlayer.Count;i++)
+        {
+            nomiPlayerPresenti.Add(listaPlayer[i].nome);
+        }
+    }
+
     private void controlloNomeEsistente()
     {
-        nomiPlayerPresenti.Add("pippo");
         if (nomeGiocatoreScritto != "")
         {
             if (nomiPlayerPresenti.Contains(nomeGiocatoreScritto))

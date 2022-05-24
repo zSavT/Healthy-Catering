@@ -13,8 +13,8 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     [SerializeField] private TMP_Dropdown dropDownColorePelle;
     [SerializeField] private TMP_Dropdown dropDownModello3D;
     [SerializeField] private Camera camera;
-    private List<Player> player;
-    private List<string> nomiPlayerPresenti;
+    private List<Player> player = new List<Player>();
+    private List<string> nomiPlayerPresenti = new List<string>();
     private string nomeSelezionato = "";
     private int sceltaGenere;
     private int sceltaColorePelle;
@@ -26,9 +26,8 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     void Start()
     {
         camera.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
-        player = new List<Player>();
-        nomiPlayerPresenti = new List<string>();
-        // letturaNomiUtenti();
+        letturaNomiUtenti();
+        nomiPlayer();
         aggiuntaNomiDropdown();
         dropDownListaPlayer.value = indiceNomeGiocatoreInLista(PlayerSettings.caricaNomePlayerGiocante());
         nomeSelezionato = dropDownListaPlayer.options[dropDownListaPlayer.value].text;
@@ -94,20 +93,17 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         }
     }
 
+    public void nomiPlayer()
+    {
+        List<Player> listaPlayer = Database.getDatabaseOggetto<Player>(new Player());
+        for (int i = 0; i < listaPlayer.Count; i++)
+        {
+            nomiPlayerPresenti.Add(listaPlayer[i].nome);
+        }
+    }
+
     private void aggiuntaNomiDropdown()
     {
-        /*
-        if(presentePlayer())
-        {
-            for (int i = 0; i < player.Count; i++)
-            {
-                nomiPlayerPresenti.Add(player[i].nome);
-            }
-        }
-        */
-        nomiPlayerPresenti.Add("sav");
-        nomiPlayerPresenti.Add("pippo");
-        nomiPlayerPresenti.Add("nicola");
         dropDownListaPlayer.AddOptions(nomiPlayerPresenti);
     }
 
@@ -118,7 +114,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
 
     private void attivaDisattivaImpostazioniGenereNeutro()
     {
-        if (PlayerSettings.caricaGenereModello3D(nomeSelezionato) == 2)
+        if (dropDownGenere.value == 2)
         {
             genereNeutroScelto = true;
             elementiGenereNeutro.SetActive(true);
