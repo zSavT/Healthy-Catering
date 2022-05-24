@@ -130,8 +130,6 @@ public class Interactor : MonoBehaviour
         PuntatoreMouse.abilitaCursore();
     }
 
-
-
     private void muoviCameraPerInterazioneCliente()
     {
         mainCamera.transform.position = posizioneCameraMenuCliente.transform.position;

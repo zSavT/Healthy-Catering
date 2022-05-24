@@ -41,6 +41,7 @@ public class PannelloMenu : MonoBehaviour
     {
         pannelloIngredientiPiatto.SetActive(false);
         pannelloConfermaPiatto.SetActive(false);
+        pannelloIngredientiGiustiSbagliati.SetActive(false);
         generaBottoniPiatti(cliente);
     }
 
@@ -51,6 +52,14 @@ public class PannelloMenu : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 chiudiPannelloIngredientiPiatto();
+            }
+        }
+
+        if (pannelloIngredientiGiustiSbagliatiAperto)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                chiudiPannelloIngredientiGiustiSbagliati();
             }
         }
     }
@@ -103,8 +112,6 @@ public class PannelloMenu : MonoBehaviour
 
     void selezionaPiatto(GameObject bottone, List<Piatto> piatti, Cliente cliente)
     {
-        
-
         foreach (Piatto piatto in piatti)
         {
             if (bottone.name.Contains(piatto.nome))//contains perché viene aggiunta la stringa "(Clone)" nel gameobject
@@ -120,7 +127,6 @@ public class PannelloMenu : MonoBehaviour
     public void confermaPiattoDaBottone()
     {
         chiudiPannelloConfermaPiatto();
-        
 
         List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
 
