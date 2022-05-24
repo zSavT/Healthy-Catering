@@ -7,11 +7,15 @@ public class Interactable : MonoBehaviour
     public UnityEvent onInteract;   //variabile per trigger dell'evento
     public int IDCliente;
     private Animator controllerAnimazione;
+    [SerializeField] private ParticleSystem effettoPositivo;
+    [SerializeField] private ParticleSystem effettoNegativo;
 
 
     void Start()
     {
         controllerAnimazione = GetComponentInChildren<Animator>();
+        effettoPositivo.Stop();
+        effettoNegativo.Stop();
     }
 
     public void animazioneContenta()
@@ -19,6 +23,7 @@ public class Interactable : MonoBehaviour
         controllerAnimazione.SetBool("servito", true);
         controllerAnimazione.SetBool("affinitaPatologiePiatto", true);
         controllerAnimazione.SetBool("affinitaDietaPiatto", true);
+        effettoPositivo.Play();
     }
 
     public void animazioneScontenta()
@@ -26,6 +31,7 @@ public class Interactable : MonoBehaviour
         controllerAnimazione.SetBool("servito", true);
         controllerAnimazione.SetBool("affinitaPatologiePiatto", false);
         controllerAnimazione.SetBool("affinitaDietaPiatto", false);
+        effettoNegativo.Play();
     }
 
     public void animazioneCamminata()
