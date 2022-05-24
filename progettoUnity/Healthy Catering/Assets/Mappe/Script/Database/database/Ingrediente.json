@@ -4,7 +4,7 @@
     "costoEco": 1,
     "nutriScore": 1,
     "dieta": 0,
-    "listaIdPatologieCompatibili": [],
+    "listaIdPatologieCompatibili": [0],
     "idItem": 0,
     "nome": "Spaghetti",
     "descrizione": "Gli spaghetti sono un particolare formato di pasta prodotta esclusivamente con semole di grano duro e acqua, dalla forma lunga e sottile e di sezione tonda."
@@ -14,7 +14,7 @@
     "costoEco": 1,
     "nutriScore": 1,
     "dieta": 0,
-    "listaIdPatologieCompatibili": [],
+    "listaIdPatologieCompatibili": [0],
     "idItem": 1,
     "nome": "Aglio",
     "descrizione": "L'aglio (Allium sativum L.) è una pianta bulbosa della famiglia Amaryllidaceae (sottofamiglia Allioideae)."
@@ -24,7 +24,7 @@
     "costoEco": 1,
     "nutriScore": 1,
     "dieta": 0,
-    "listaIdPatologieCompatibili": [],
+    "listaIdPatologieCompatibili": [0],
     "idItem": 2,
     "nome": "Olio extravergine d'oliva",
     "descrizione": "L'olio di oliva è un olio alimentare estratto dalle olive, ovvero i frutti dell'olivo (Olea europaea). Il tipo vergine si ricava dalla spremitura meccanica delle olive."
@@ -34,7 +34,7 @@
     "costoEco": 1,
     "nutriScore": 1,
     "dieta": 0,
-    "listaIdPatologieCompatibili": [],
+    "listaIdPatologieCompatibili": [0],
     "idItem": 3,
     "nome": "Basilico",
     "descrizione": "Il basilico (Ocimum basilicum, L., 1753) è una pianta erbacea annuale, appartenente alla famiglia delle Lamiaceae, normalmente coltivata come pianta aromatica."
@@ -44,7 +44,7 @@
     "costoEco": 1,
     "nutriScore": 1,
     "dieta": 0,
-    "listaIdPatologieCompatibili": [],
+    "listaIdPatologieCompatibili": [0],
     "idItem": 4,
     "nome": "Sugo di pomodoro",
     "descrizione": "La salsa di pomodoro, o sugo di pomodoro, è un sugo ottenuto dalla cottura della polpa dei pomodori nell'olio di oliva e utilizzato nella cucina italiana come condimento per la pasta."
@@ -54,7 +54,7 @@
     "costoEco": 1,
     "nutriScore": 1,
     "dieta": 0,
-    "listaIdPatologieCompatibili": [],
+    "listaIdPatologieCompatibili": [0],
     "idItem": 5,
     "nome": "Peperoncino secco",
     "descrizione": "Il peperoncino è il nome comune dato alla bacca ottenuta da alcune varietà piccanti del genere di piante Capsicum utilizzata principalmente come condimento."
@@ -64,7 +64,7 @@
     "costoEco": 1,
     "nutriScore": 1,
     "dieta": 0,
-    "listaIdPatologieCompatibili": [],
+    "listaIdPatologieCompatibili": [0],
     "idItem": 6,
     "nome": "Acqua",
     "descrizione": "L'acqua è un ingrediente fondamentale in cucina. Il suo sapore determina il gusto di bevande come tè e caffè. La qualità dell'acqua utilizzata per cucinare condiziona anche la riuscita del processo di lievitazione così come la stessa ebollizione."

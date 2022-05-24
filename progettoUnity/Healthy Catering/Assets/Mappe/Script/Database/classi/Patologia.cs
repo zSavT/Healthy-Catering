@@ -105,7 +105,7 @@ public class Patologia
 
     public static string listIdToListPatologie(List<int> ids, List<Patologia> DatabasePatologie = null)
     {
-        string idsString = "";
+        string idsString = "Patologie:";
 
         if (ids.Count > 0)
         {
