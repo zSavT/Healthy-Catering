@@ -307,13 +307,13 @@ public class PannelloMenu : MonoBehaviour
         List<Ingrediente> ingredientiCompatibili = ingredientiPiattoSelezionato;
 
         testoIngredientiGiusti.color = Color.green;
-        testoIngredientiGiusti.text = "ciao\n\tciao";
+        testoIngredientiGiusti.text = Ingrediente.listIngredientiToStringa (ingredientiCompatibili);
 
         testoIngredientiSbagliatiDieta.color = Color.red;
-        testoIngredientiSbagliatiDieta.text = "dieta\n\tciao";
+        testoIngredientiSbagliatiDieta.text = Ingrediente.listIngredientiToStringa(ingredientiNonCompatibiliDieta);
 
         testoIngredientiSbagliatiPatologia.color = Color.red;
-        testoIngredientiSbagliatiPatologia.text = "patologie\n\tciao";
+        testoIngredientiSbagliatiPatologia.text = Ingrediente.listIngredientiToStringa(ingredientiNonCompatibiliPatologia);
     }
 
     private void chiudiPannelloIngredientiGiustiSbagliati()

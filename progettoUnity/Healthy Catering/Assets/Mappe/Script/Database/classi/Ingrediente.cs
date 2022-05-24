@@ -165,4 +165,14 @@ public class Ingrediente : Item
 
         throw new Exception("Ingrediente non trovato idToIngrediente");
     }
+
+    public static string listIngredientiToStringa (List <Ingrediente> ingredienti)
+    {
+        string output = "";
+        foreach (Ingrediente ingrediente in ingredienti)
+        {
+            output += "\t" + ingrediente.nome + "\n";
+        }
+        return output;
+    }
 }
