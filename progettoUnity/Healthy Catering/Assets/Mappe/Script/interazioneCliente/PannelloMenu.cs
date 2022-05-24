@@ -333,6 +333,8 @@ public class PannelloMenu : MonoBehaviour
         {
             pannelloIngredientiGiustiSbagliati.SetActive(false);
             pannelloIngredientiGiustiSbagliatiApertoChiuso();
+            pannelloCliente.SetActive(true);
+            pannelloMenu.SetActive(true);
             chiusuraInterazioneCliente.Invoke();
         }
     }
