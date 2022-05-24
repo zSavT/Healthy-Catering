@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "nome": "Sav",
+    "soldi": -1.0,
+    "inventario": [],
+    "punteggio": -1
+  }
+]

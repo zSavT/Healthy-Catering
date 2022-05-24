@@ -3,15 +3,18 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Wilberforce;
+using TMPro;
 
 public class Menu : MonoBehaviour
 {
     [SerializeField] private UnityEvent clickCrediti;             //serve per eliminare altri elementi in visualilzzazione
     [SerializeField] private Camera camera;
+    [SerializeField] private TextMeshProUGUI testoVersioneGioco;
     private List<Player> player = new List<Player>();
 
     void Start()
     {
+        gameVersion();
         camera.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         letturaNomiUtenti();
         if (!presentePlayer())
@@ -106,5 +109,10 @@ public class Menu : MonoBehaviour
     public void chiudi()
     {
         Application.Quit();
+    }
+
+    private void gameVersion()
+    {
+        testoVersioneGioco.text = testoVersioneGioco.text + Application.version;
     }
 }
