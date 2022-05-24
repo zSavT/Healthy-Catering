@@ -30,6 +30,8 @@ public class Interactor : MonoBehaviour
     public static bool pannelloAperto;
     private int IDClientePuntato;
 
+    private Interactable npc;
+
     void Start()
     {
         chiudiPannello();
@@ -88,7 +90,8 @@ public class Interactor : MonoBehaviour
             if (NPCpuntato.collider.GetComponent<Interactable>() != false)
             {
                 IDClientePuntato = NPCpuntato.collider.GetComponent<Interactable>().IDCliente;
-                return true;
+                npc = NPCpuntato.collider.GetComponent<Interactable>();
+;               return true;
             }
         }
         return false;
@@ -123,7 +126,7 @@ public class Interactor : MonoBehaviour
 
         apriPannello();
 
-        pannelloMenuCliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato);
+        pannelloMenuCliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato, npc);
 
         //caricaClienteInPanello(Database.getDatabaseOggetto(new Cliente())[IDClientePuntato]);
 

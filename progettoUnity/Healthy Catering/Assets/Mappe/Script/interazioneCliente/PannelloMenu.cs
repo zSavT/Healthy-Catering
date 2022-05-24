@@ -30,6 +30,7 @@ public class PannelloMenu : MonoBehaviour
     [SerializeField] private GameObject Player;
     [SerializeField] private TextMeshProUGUI testoConfermaPiatto;
     [SerializeField] private GameObject EscPerUscireTesto; //Lo imposto come GameObject e non come testo, perchè mi interessa solo attivarlo disattivarlo velocemente
+    private Interactable controllerAnimazioneCliente;
 
     //PannelloIngredientiGiustiSbagliati 
     [SerializeField] private TextMeshProUGUI titoloIngredientiGiustiSbagliati;
@@ -66,9 +67,10 @@ public class PannelloMenu : MonoBehaviour
         }
     }
 
-    public void setCliente(int idClientePuntato)
+    public void setCliente(int idClientePuntato, Interactable controlleNPCPuntato)
     {
         cliente = Database.getDatabaseOggetto(new Cliente())[idClientePuntato];
+        controllerAnimazioneCliente = controlleNPCPuntato;
         caricaClienteInPanello(cliente);
     }
 
@@ -180,6 +182,14 @@ public class PannelloMenu : MonoBehaviour
         //il guadagno sono i soldi che sta guadagnando il giocatore,
         //non so se vuoi mettere un'animazione per questa cosa e se nel caso la vuoi regolare per la quantità guadagnata ma nel caso ce l'hai,
         //se vuoi togliere l'unica chiamata a questo metodo è nel metodo selezionaPiatto quindi ti basta rimuovere il parametro da li
+        if(affinitaPatologiePiatto && affinitaDietaPiatto)
+        {
+            controllerAnimazioneCliente.animazioneContenta();
+        } else
+        {
+            controllerAnimazioneCliente.animazioneScontenta();
+        }
+        
     }
 
     private Button generaBottonePiatto(Piatto piatto, GameObject bottonePiattoPrefab)
@@ -265,6 +275,7 @@ public class PannelloMenu : MonoBehaviour
             pannelloMenu.SetActive(true);
             pannelloCliente.SetActive(true);
             EscPerUscireTesto.SetActive(true);
+            controllerAnimazioneCliente.animazioneCamminata();
         }
     }
 
@@ -335,6 +346,7 @@ public class PannelloMenu : MonoBehaviour
             pannelloIngredientiGiustiSbagliatiApertoChiuso();
             pannelloCliente.SetActive(true);
             pannelloMenu.SetActive(true);
+            controllerAnimazioneCliente.animazioneCamminata();
             chiusuraInterazioneCliente.Invoke();
         }
     }
