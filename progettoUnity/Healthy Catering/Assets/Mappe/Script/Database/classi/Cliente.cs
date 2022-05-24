@@ -56,4 +56,43 @@ public class Cliente
     {
 
     }
+
+    public List<Ingrediente> getListaIngredientiNonCompatibiliPatologie(List<Ingrediente> ingredientiPiatto, List <Ingrediente> databaseIngrediente = null)
+    {
+        databaseIngrediente ??= Database.getDatabaseOggetto(new Ingrediente());
+
+        List<Ingrediente> ingredientiNonCompatibili = new List<Ingrediente>();
+
+        foreach (int idPatologia in this.listaIdPatologie)
+        {
+            foreach (Ingrediente ingrediente in ingredientiPiatto)
+            {
+                List <int> listaPatologieCompatibiliConIngrediente = ingrediente.listaIdPatologieCompatibili;
+                
+                if (!(listaPatologieCompatibiliConIngrediente.Contains(idPatologia)))
+                {
+                    ingredientiNonCompatibili.Add(ingrediente);
+                }
+            }
+        }
+
+        return ingredientiNonCompatibili;
+    }
+
+    public List<Ingrediente> getListaIngredientiNonCompatibiliDieta(List<Ingrediente> ingredientiPiatto, List<Ingrediente> databaseIngrediente = null)
+    {
+        databaseIngrediente ??= Database.getDatabaseOggetto(new Ingrediente());
+
+        List<Ingrediente> ingredientiNonCompatibili = new List<Ingrediente>();
+
+        foreach (Ingrediente ingrediente in ingredientiPiatto)
+        {
+            if (this.dieta < ingrediente.dieta)
+            {
+                ingredientiNonCompatibili.Add(ingrediente);
+            }
+        }
+        
+        return ingredientiNonCompatibili;
+    }
 }

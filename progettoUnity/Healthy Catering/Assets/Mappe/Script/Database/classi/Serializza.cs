@@ -20,9 +20,8 @@ public class Serializza
         }
     }
 
-    public static string getJsonPath<Oggetto>(Oggetto oggetto)
-    {
-        string jsonPath = Directory.GetCurrentDirectory() + @"\..\Database\";
+    public static string getJsonPath<Oggetto>(Oggetto oggetto){
+        string jsonPath = Directory.GetCurrentDirectory() + @"\Assets\Mappe\Script\Database\database\";
 
         string tipoOggetto = getNomeTipo (oggetto);
         if (tipoOggetto.ToLower().Contains("list")) //se è una lista
@@ -55,7 +54,7 @@ public class Serializza
         }
         catch (Exception e)
         {
-            throw new FileNotFoundException("File non trovato e non riesco a crearlo, crea un file .json con la stringa \"[]\" per farmi leggere una lista vuota oppure popola il json a mano");
+            throw new FileNotFoundException("File non trovato e non riesco a crearlo, crea un file .json con la stringa \"[]\" per farmi leggere una lista vuota oppure popola il json a mano\n" + filePath);
         }
 
     }

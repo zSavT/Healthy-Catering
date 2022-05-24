@@ -3,7 +3,9 @@ using System.Collections.Generic;
 
 public class Database
 {
-    public static void Main (){}
+    public static void Main (){
+        creaDatabase ();
+    }
 
     //Get database e oggetti
     public static List<Oggetto> getDatabaseOggetto<Oggetto>(Oggetto oggetto)
@@ -14,6 +16,7 @@ public class Database
     public static Oggetto getUltimoOggettoAggiuntoAlDatabase<Oggetto>(Oggetto oggetto, List<Oggetto> databaseOggetto = null)
     {
         databaseOggetto ??= getDatabaseOggetto(oggetto);
+
         return databaseOggetto[databaseOggetto.Count - 1];
     }
 
@@ -31,11 +34,11 @@ public class Database
     }
 	
 	public static bool isDatabaseOggettoVuoto<Oggetto> (Oggetto oggetto, List<Oggetto> databaseOggetto = null)
-{
-	databaseOggetto ??= Database.getDatabaseOggetto(oggetto)
+    {
+        databaseOggetto ??= Database.getDatabaseOggetto(oggetto);
 
-	return databaseOggetto.Count  == 0
-}
+        return databaseOggetto.Count == 0;
+    }
 
     protected static void salvaNuovoOggettoSuFile<Oggetto>(Oggetto oggetto, List<Oggetto> databaseOggetto = null)
     {
@@ -382,7 +385,7 @@ public class Database
                 piatto.listaIdIngredientiQuantita = Piatto.getListaIdIngredientiQuantitaPiattoFromUtente(piatto.nome, databaseIngredienti);
             }
 
-            piatto.calcolaCosto(databaseIngredienti);
+            piatto.calcolaCostoBase(databaseIngredienti);
             piatto.calcolaCostoEco(databaseIngredienti);
             piatto.calcolaNutriScore(databaseIngredienti);
 

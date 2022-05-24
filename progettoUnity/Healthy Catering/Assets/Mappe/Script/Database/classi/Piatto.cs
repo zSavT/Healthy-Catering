@@ -22,7 +22,7 @@ public class Piatto
         this.listaIdIngredientiQuantita = listaIdIngredientiQuantita;
         
         List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto (new Ingrediente ());
-        this.costo = calcolaCosto(databaseIngredienti);
+        this.costo = calcolaCostoBase(databaseIngredienti);
         this.costoEco = calcolaCostoEco(databaseIngredienti);
         this.nutriScore = calcolaNutriScore(databaseIngredienti);
     }
@@ -70,22 +70,27 @@ public class Piatto
         "Nutriscore: " + "\n\t" + this.nutriScore + "\n";
 
         if (listaIdIngredientiQuantita.Count > 0)
-        {
-            string ingredientiQuantitaString = "";
-            //se non lo prendo prima viene ricreato ogni volta che viene chiamato il metodo idToIngrediente
-            List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
-
-            foreach (OggettoQuantita<int> ingredienteQuantita in listaIdIngredientiQuantita)
-            {
-                Ingrediente temp = Ingrediente.idToIngrediente(ingredienteQuantita.oggetto, databaseIngredienti);
-                if (temp.idItem != -1)
-                    ingredientiQuantitaString = ingredientiQuantitaString + "\n\t" + temp.nome + " in quantita: " + ingredienteQuantita.quantita.ToString() + "\n";
-            }
-
-            output = output + ingredientiQuantitaString;
+        { 
+            output = output + this.getListaIngredientiQuantitaToString();
         }
 
         return output = output + "Fine piatto " + this.nome;
+    }
+
+    public string getListaIngredientiQuantitaToString()
+    {
+        string ingredientiQuantitaString = "";
+        //se non lo prendo prima viene ricreato ogni volta che viene chiamato il metodo idToIngrediente
+        List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
+
+        foreach (OggettoQuantita<int> ingredienteQuantita in listaIdIngredientiQuantita)
+        {
+            Ingrediente temp = Ingrediente.idToIngrediente(ingredienteQuantita.oggetto, databaseIngredienti);
+            if (temp.idItem != -1)
+                ingredientiQuantitaString = ingredientiQuantitaString + "\n\t" + temp.nome + " in quantita: " + ingredienteQuantita.quantita.ToString() + "\n";
+        }
+
+        return ingredientiQuantitaString;
     }
 
     ~Piatto()
@@ -93,7 +98,7 @@ public class Piatto
 
     }
 
-    public float calcolaCosto(List <Ingrediente> databaseIngredienti = null)
+    public float calcolaCostoBase(List <Ingrediente> databaseIngredienti = null)
     {
         databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
 
@@ -102,6 +107,60 @@ public class Piatto
             costo = costo + (Ingrediente.idToIngrediente(ingredienteQuantita.oggetto, databaseIngredienti).costo * ingredienteQuantita.quantita);
 
         return costo + ((costo * percentualeGuadagnoSulPiatto) / 100);
+    }
+
+    public float calcolaCostoConBonus (bool affine, float costoBase){
+        List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
+        
+        if (affine){
+            float output;
+            int posizioneNellaListaMigliori;
+
+            output = costoBase;
+            output += Utility.calcolaCostoPercentuale(costoBase, 5);
+            
+            posizioneNellaListaMigliori = this.getListaAffinitaOrdinata ().IndexOf(this);
+            if (posizioneNellaListaMigliori == 0 ||posizioneNellaListaMigliori == 1 || posizioneNellaListaMigliori == 2){
+                output += Utility.calcolaCostoPercentuale(costoBase, posizioneNellaListaMigliori + 1);
+            }
+            return output;
+        }
+
+        return costoBase - Utility.calcolaCostoPercentuale(costoBase, 5);
+    }
+
+    private List <Piatto> getListaAffinitaOrdinata(List <Piatto> databasePiatti = null){
+        databasePiatti ??= Database.getDatabaseOggetto (this);
+        
+        databasePiatti.Sort (new PiattiComparer());
+        return databasePiatti;
+    }
+
+    private class PiattiComparer : IComparer<Piatto>
+    {
+        //Compare returns -1 (less than), 0 (equal), or 1 (greater)
+        //nutriScore costoEco costo
+        public int Compare(Piatto first, Piatto second)
+        {
+            if (first.nutriScore > second.nutriScore){
+                if (first.costoEco < second.costoEco){   
+                    return 1;
+                }
+            }    
+            else if ((first.nutriScore == second.nutriScore) && (first.costoEco == second.costoEco)){
+                if (first.costo == second.costo){
+                    return 0;
+                }    
+                else if (first.costo < second.costo){
+                    return 1;
+                }
+                else{
+                    return -1;
+                }
+            }
+            
+            return -1;
+        }
     }
 
     public float calcolaCostoEco(List <Ingrediente> databaseIngredienti = null)
@@ -131,6 +190,107 @@ public class Piatto
         return (int)(sommanutriScore / numeroIngredienti);
     }
 
+    private List<int> getPatologieCompatibili(List<Ingrediente> databaseIngredienti = null)
+    {
+        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
+
+        List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto(databaseIngredienti);
+        List<int> IdtutteLePatologie = Patologia.getListIdTutteLePatologie();
+
+        foreach (Ingrediente ingrediente in ingredientiPiatto)
+            foreach (int id in IdtutteLePatologie)
+                if (!(ingrediente.listaIdPatologieCompatibili.Contains(id)))
+                    IdtutteLePatologie.Remove(id);
+
+        return IdtutteLePatologie;
+    }
+
+    private int getDietaMinimaCompatibile(List<Ingrediente> databaseIngredienti = null)
+    {
+        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
+
+        List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto(databaseIngredienti);
+        int output = -1;
+
+        foreach (Ingrediente ingrediente in ingredientiPiatto)
+            if (output < ingrediente.dieta)
+                output = ingrediente.dieta;
+
+        return output;
+    }
+
+    public List<Ingrediente> getIngredientiPiatto(List<Ingrediente> databaseIngredienti = null)
+    {
+        databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
+
+        List<Ingrediente> ingredientiPiatto = new List<Ingrediente>();
+
+        int i = 0;
+        foreach (OggettoQuantita<int> ingredienteQuantita in this.listaIdIngredientiQuantita)
+        {
+            foreach (Ingrediente ingrediente in databaseIngredienti)
+                if (ingredienteQuantita.oggetto == ingrediente.idItem)
+                    ingredientiPiatto.Add(ingrediente);
+            i++;
+        }
+
+        return ingredientiPiatto;
+    }
+
+    public bool checkAffinitaConCliente (Cliente cliente)
+    {
+        bool patologieCompatibili = checkAffinitaPatologiePiatto(this.listaIdIngredientiQuantita, cliente.listaIdPatologie);
+        bool dietaCompatibile = checkAffinitaDietaPiatto(this.listaIdIngredientiQuantita, cliente.dieta);
+
+        return (patologieCompatibili && dietaCompatibile);
+    }
+
+    //TODO metti private
+    public bool checkAffinitaPatologiePiatto(List <OggettoQuantita <int>> listaIdIngredientiQuantita, List <int> listaIdPatologieCliente)
+    {
+        foreach (int idPatologiaCliente in listaIdPatologieCliente)
+        {
+            foreach (OggettoQuantita<int> idIngredienteEQuantita in listaIdIngredientiQuantita) 
+            {
+                Ingrediente ingrediente = Ingrediente.idToIngrediente(idIngredienteEQuantita.oggetto);
+                if (!ingrediente.listaIdPatologieCompatibili.Contains (idPatologiaCliente)){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    //TODO metti private
+    public bool checkAffinitaDietaPiatto(List <OggettoQuantita<int>> listaIdIngredientiQuantita, int dietaCliente)
+    {
+        foreach (OggettoQuantita<int> idIngredienteEQuantita in listaIdIngredientiQuantita)
+        {
+            Ingrediente ingrediente = Ingrediente.idToIngrediente(idIngredienteEQuantita.oggetto);
+
+            if (ingrediente.dieta > dietaCliente)
+                return false;
+        }
+        return true;
+    }
+
+    public static Piatto getPiattoFromNomeBottone(string nomePiattoBottone, List <Piatto> databasePiatti = null)
+    {
+        databasePiatti ??= Database.getDatabaseOggetto(new Piatto());
+
+        Piatto piattoSelezionato = new Piatto();
+        foreach (Piatto piatto in databasePiatti)
+        {
+            if (nomePiattoBottone.Contains(piatto.nome))//contains perché viene aggiunta la stringa ingredienti nel nome del bottone
+            {
+                piattoSelezionato = piatto;
+                break;
+            }
+        }
+        return piattoSelezionato;
+    }
+
+    //FUNZIONI PER DATABASE
     public static Piatto checkPiattoOnonimoGiaPresente(string nomePiatto, List<Piatto> piattiConNomeSimileInDatabase = null)
     {
         piattiConNomeSimileInDatabase ??= getPiattiConNomeSimileInDatabase(nomePiatto);
@@ -144,7 +304,7 @@ public class Piatto
 
         return null;
     }
-
+    
     private static List<Piatto> getPiattiConNomeSimileInDatabase(string nomePiatto, List<Piatto> databasePiatti = null)
     {
         databasePiatti ??= Database.getDatabaseOggetto(new Piatto());
@@ -268,50 +428,4 @@ public class Piatto
         }
     }
 
-    private List<int> getPatologieCompatibili(List<Ingrediente> databaseIngredienti = null)
-    {
-        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
-
-        List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto(databaseIngredienti);
-        List<int> IdtutteLePatologie = Patologia.getListIdTutteLePatologie();
-
-        foreach (Ingrediente ingrediente in ingredientiPiatto)
-            foreach (int id in IdtutteLePatologie)
-                if (!(ingrediente.listaIdPatologieCompatibili.Contains(id)))
-                    IdtutteLePatologie.Remove(id);
-
-        return IdtutteLePatologie;
-    }
-
-    private int getDietaMinimaCompatibile(List<Ingrediente> databaseIngredienti = null)
-    {
-        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
-
-        List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto(databaseIngredienti);
-        int output = -1;
-
-        foreach (Ingrediente ingrediente in ingredientiPiatto)
-            if (output < ingrediente.dieta)
-                output = ingrediente.dieta;
-
-        return output;
-    }
-
-    private List<Ingrediente> getIngredientiPiatto(List<Ingrediente> databaseIngredienti = null)
-    {
-        databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
-
-        List<Ingrediente> ingredientiPiatto = new List<Ingrediente>();
-
-        int i = 0;
-        foreach (OggettoQuantita<int> ingredienteQuantita in this.listaIdIngredientiQuantita)
-        {
-            foreach (Ingrediente ingrediente in databaseIngredienti)
-                if (ingredienteQuantita.oggetto == ingrediente.idItem)
-                    ingredientiPiatto.Add(ingrediente);
-            i++;
-        }
-
-        return ingredientiPiatto;
-    }
 }
