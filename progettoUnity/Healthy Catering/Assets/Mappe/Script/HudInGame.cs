@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -7,16 +5,27 @@ public class HudInGame : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI soldiTesto;
     [SerializeField] private TextMeshProUGUI punteggioTesto;
+    [SerializeField] private ParticleSystem animazioneSoldi;
+    [SerializeField] private ParticleSystem animazionePunteggio;
 
 
-    private void aggiornaValoreSoldi(string soldi)
+    void Start()
     {
-        soldiTesto.text = soldi;
+        animazioneSoldi.Stop();
+        animazionePunteggio.Stop();
     }
 
-    private void aggiornaValorePunteggio(string punteggio)
+    public void aggiornaValoreSoldi(string soldi)
+    {
+        soldiTesto.text = soldi;
+        animazioneSoldi.Play();
+
+    }
+
+    public void aggiornaValorePunteggio(string punteggio)
     {
         punteggioTesto.text = punteggio;
+        animazionePunteggio.Play();
     }
 
 

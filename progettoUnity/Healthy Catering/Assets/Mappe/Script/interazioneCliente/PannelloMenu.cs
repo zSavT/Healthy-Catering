@@ -27,6 +27,7 @@ public class PannelloMenu : MonoBehaviour
     [SerializeField] private GameObject pannelloMenu;
 
     //DA EVENTUALMENTE TOGLIERE
+    [SerializeField] private HudInGame hud;
     [SerializeField] private GameObject Player;
     [SerializeField] private TextMeshProUGUI testoConfermaPiatto;
     [SerializeField] private GameObject EscPerUscireTesto; //Lo imposto come GameObject e non come testo, perchè mi interessa solo attivarlo disattivarlo velocemente
@@ -138,9 +139,10 @@ public class PannelloMenu : MonoBehaviour
         float guadagno = piattoSelezionato.calcolaCostoConBonus(affinita, piattoSelezionato.calcolaCostoBase(databaseIngredienti));
 
         giocatore.guadagna(guadagno);
+        hud.aggiornaValoreSoldi(giocatore.soldi.ToString());
 
         giocatore.aggiungiDiminuisciPunteggio(affinita, piattoSelezionato.calcolaNutriScore(databaseIngredienti), piattoSelezionato.calcolaCostoEco(databaseIngredienti));
-
+        hud.aggiornaValorePunteggio(giocatore.punteggio.ToString());
         if (!affinita)
         {
             caricaIngredientiInPannelloIngredientiGiustiSbagliati(piattoSelezionato, cliente, databaseIngredienti);
