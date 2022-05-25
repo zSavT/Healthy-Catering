@@ -7,14 +7,41 @@ public class HudInGame : MonoBehaviour
     [SerializeField] private TextMeshProUGUI soldiTesto;
     [SerializeField] private TextMeshProUGUI punteggioTesto;
     [SerializeField] private ParticleSystem animazioneSoldi;
-    [SerializeField] private ParticleSystem animazionePunteggio;
+    [SerializeField] private ParticleSystem animazionePunteggioPositiva;
+    [SerializeField] private ParticleSystem animazionePunteggioNegativa;
     public int CountFPS = 30;
     public float durata = 1f;
     public string formatoNumero = "N0";
     private int valorePrecedentePunteggio;
-    private float valorePrecedenteSoldi;
-
     private Coroutine CountingCoroutine;
+
+    void Start()
+    {
+        animazioneSoldi.Stop();
+        animazionePunteggioPositiva.Stop();
+        animazionePunteggioNegativa.Stop();
+    }
+
+    public void aggiornaValoreSoldi(float soldi)
+    {
+        soldiTesto.text = soldi.ToString("0.00");
+        animazioneSoldi.Play();
+
+    }
+
+    public void aggiornaValorePunteggio(int punteggio)
+    {
+        UpdateText(punteggio, punteggioTesto);
+        if(valorePrecedentePunteggio>punteggio)
+        {
+            animazionePunteggioNegativa.Play();
+        } else
+        {
+            animazionePunteggioPositiva.Play();
+        }
+        valorePrecedentePunteggio = punteggio;
+    }
+
 
     //AGGIORNAMENETO DINAMICO VALORE INT
     private void UpdateText(int newValue, TextMeshProUGUI testo)
@@ -74,29 +101,5 @@ public class HudInGame : MonoBehaviour
         }
     }
 
-
-    void Start()
-    {
-        animazioneSoldi.Stop();
-        animazionePunteggio.Stop();
-    }
-
-    public void aggiornaValoreSoldi(float soldi)
-    {
-        soldiTesto.text = soldi.ToString("0.00");
-        valorePrecedenteSoldi = soldi;
-        animazioneSoldi.Play();
-
-    }
-
-    public void aggiornaValorePunteggio(int punteggio)
-    {
-
-        UpdateText(punteggio, punteggioTesto);
-        valorePrecedentePunteggio = punteggio;
-        animazionePunteggio.Play();
-    }
-
-    
 
 }
