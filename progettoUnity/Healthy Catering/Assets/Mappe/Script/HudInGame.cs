@@ -15,7 +15,8 @@ public class HudInGame : MonoBehaviour
     private int valorePrecedentePunteggio;
     private Coroutine CountingCoroutine;
 
-    void Start()
+
+    void start()
     {
         animazioneSoldi.Stop();
         animazionePunteggioPositiva.Stop();

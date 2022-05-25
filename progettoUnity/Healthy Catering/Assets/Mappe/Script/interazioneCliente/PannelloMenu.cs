@@ -8,7 +8,7 @@ public class PannelloMenu : MonoBehaviour
 {
 
     //TODO prendere il player che sta giocando al posto del primo nel database
-    [SerializeField] private Player giocatore = Database.getDatabaseOggetto(new Player())[0];
+    private Player giocatore;
 
     [SerializeField] private GameObject pannelloIngredientiPiatto;
     public static bool pannelloIngredientiPiattoAperto;
@@ -27,7 +27,7 @@ public class PannelloMenu : MonoBehaviour
     [SerializeField] private GameObject pannelloMenu;
 
     //DA EVENTUALMENTE TOGLIERE
-    [SerializeField] private HudInGame hud;
+
     [SerializeField] private GameObject Player;
     [SerializeField] private TextMeshProUGUI testoConfermaPiatto;
     [SerializeField] private GameObject EscPerUscireTesto; //Lo imposto come GameObject e non come testo, perchè mi interessa solo attivarlo disattivarlo velocemente
@@ -67,9 +67,10 @@ public class PannelloMenu : MonoBehaviour
         }
     }
 
-    public void setCliente(int idClientePuntato)
+    public void setCliente(int idClientePuntato, Player giocatorePartita)
     {
         cliente = Database.getDatabaseOggetto(new Cliente())[idClientePuntato];
+        giocatore = giocatorePartita;
         caricaClienteInPanello(cliente);
     }
 
@@ -139,10 +140,8 @@ public class PannelloMenu : MonoBehaviour
         float guadagno = piattoSelezionato.calcolaCostoConBonus(affinita, piattoSelezionato.calcolaCostoBase(databaseIngredienti));
 
         giocatore.guadagna(guadagno);
-        hud.aggiornaValoreSoldi(giocatore.soldi);
 
         giocatore.aggiungiDiminuisciPunteggio(affinita, piattoSelezionato.calcolaNutriScore(databaseIngredienti), piattoSelezionato.calcolaCostoEco(databaseIngredienti));
-        hud.aggiornaValorePunteggio(giocatore.punteggio);
         if (!affinita)
         {
             caricaIngredientiInPannelloIngredientiGiustiSbagliati(piattoSelezionato, cliente, databaseIngredienti);

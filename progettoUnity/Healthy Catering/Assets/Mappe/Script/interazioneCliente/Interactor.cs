@@ -16,6 +16,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private Transform posizioneCamera;
     [SerializeField] private Transform posizioneCameraMenuCliente;
     [SerializeField] private GameObject pannelloMenuCliente;
+    [SerializeField] private HudInGame hud;
 
     [Header("Eventi")]
     [SerializeField] private UnityEvent playerStop;
@@ -29,6 +30,7 @@ public class Interactor : MonoBehaviour
     private bool menuApribile;
     public static bool pannelloAperto;
     private int IDClientePuntato;
+    private Player giocatore = Database.getDatabaseOggetto(new Player())[0];
 
     void Start()
     {
@@ -103,6 +105,8 @@ public class Interactor : MonoBehaviour
         ritornaAllaPosizioneNormale();
 
         PuntatoreMouse.disabilitaCursore();
+        hud.aggiornaValorePunteggio(giocatore.punteggio);
+        hud.aggiornaValoreSoldi(giocatore.soldi);
     }
 
     private void ritornaAllaPosizioneNormale()
@@ -123,7 +127,7 @@ public class Interactor : MonoBehaviour
 
         apriPannello();
 
-        pannelloMenuCliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato);
+        pannelloMenuCliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato, giocatore);
 
         //caricaClienteInPanello(Database.getDatabaseOggetto(new Cliente())[IDClientePuntato]);
 
