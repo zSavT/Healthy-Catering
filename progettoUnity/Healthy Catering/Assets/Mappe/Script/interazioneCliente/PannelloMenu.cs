@@ -139,7 +139,7 @@ public class PannelloMenu : MonoBehaviour
         float guadagno = piattoSelezionato.calcolaCostoConBonus(affinita, piattoSelezionato.calcolaCostoBase(databaseIngredienti));
 
         giocatore.guadagna(guadagno);
-        hud.aggiornaValoreSoldi(giocatore.soldi.ToString());
+        hud.aggiornaValoreSoldi(giocatore.soldi.ToString("0.00"));
 
         giocatore.aggiungiDiminuisciPunteggio(affinita, piattoSelezionato.calcolaNutriScore(databaseIngredienti), piattoSelezionato.calcolaCostoEco(databaseIngredienti));
         hud.aggiornaValorePunteggio(giocatore.punteggio.ToString());
