@@ -490,4 +490,22 @@ public class Database
 
         salvaNuovoOggettoSuFile(cliente);
     }
+
+    public static Player getPlayerDaNome(string nomePlayer, List<Player> databasePlayer = null)
+    {
+        databasePlayer ??= Database.getDatabaseOggetto(new Player());
+
+        Player temp = null;
+
+        foreach (Player player in databasePlayer)
+        {
+            if (nomePlayer == player.nome)
+            {
+                temp = player;
+                break;
+            }
+        }
+        return temp;
+    }
+
 }

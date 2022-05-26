@@ -30,10 +30,11 @@ public class Interactor : MonoBehaviour
     private bool menuApribile;
     public static bool pannelloAperto;
     private int IDClientePuntato;
-    private Player giocatore = Database.getDatabaseOggetto(new Player())[0];
+    private Player giocatore;
 
     void Start()
     {
+        giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
         chiudiPannello();
         pannelloAperto = false;
         posizioneCameraOriginale = mainCamera.transform.position;
