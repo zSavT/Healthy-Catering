@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using System;
 
 public class HudInGame : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class HudInGame : MonoBehaviour
         if(valorePrecedentePunteggio>punteggio)
         {
             var main = animazionePunteggioNegativa.main;
-            main.maxParticles = punteggio / 5;
+            main.maxParticles = Math.Abs(punteggio/2);               //per ottenere il valore assoluto ed ottenere il numero di particelle corretto
             animazionePunteggioNegativa.Play();
         } else
         {

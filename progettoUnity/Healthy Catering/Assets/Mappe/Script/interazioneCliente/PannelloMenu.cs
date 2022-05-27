@@ -189,7 +189,7 @@ public class PannelloMenu : MonoBehaviour
             controllerAnimazioneCliente.animazioneContenta();
         } else
         {
-            controllerAnimazioneCliente.animazioneScontenta();
+            
         }
         
     }
@@ -350,6 +350,7 @@ public class PannelloMenu : MonoBehaviour
             pannelloMenu.SetActive(true);
             controllerAnimazioneCliente.animazioneCamminata();
             chiusuraInterazioneCliente.Invoke();
+            controllerAnimazioneCliente.animazioneScontenta();
         }
     }
 }
