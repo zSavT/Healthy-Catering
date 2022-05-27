@@ -31,11 +31,11 @@ RectTransform:
   - {fileID: 3613509835128488950}
   - {fileID: 3613509834243355154}
   - {fileID: 3613509835080247029}
-  - {fileID: 3613509834562702016}
-  - {fileID: 2291501506344976867}
-  - {fileID: 3613509834216564745}
   - {fileID: 3613509835865255210}
   - {fileID: 3613509835757879713}
+  - {fileID: 3613509834216564745}
+  - {fileID: 2291501506344976867}
+  - {fileID: 3613509834562702016}
   m_Father: {fileID: 2579303120504699429}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -307,7 +307,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3613509834216564746}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 3
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -382,7 +382,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 3.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -927,7 +927,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 0
+    type: 17
     angle: 19
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -1014,7 +1014,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.0001
+      value: 1.2
       mode: 0
       spread: 0
       speed:
@@ -1072,7 +1072,7 @@ ParticleSystem:
           m_RotationOrder: 4
     arc:
       value: 360
-      mode: 0
+      mode: 2
       spread: 1
       speed:
         serializedVersion: 2
@@ -5113,8 +5113,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -707, y: -427}
-  m_SizeDelta: {x: 161.614, y: 50}
+  m_AnchoredPosition: {x: -707, y: -428.1902}
+  m_SizeDelta: {x: 161.614, y: 60.891}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3613509834243355152
 CanvasRenderer:
@@ -5179,7 +5179,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -5239,16 +5239,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3613509834562702017}
   m_LocalRotation: {x: -0.69789153, y: 0.1137869, z: -0.11378692, w: 0.69789153}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1239322559318533970}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -71.48, y: 90, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -462, y: -404}
+  m_AnchoredPosition: {x: -515, y: -412}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!198 &3613509834562702030
@@ -5259,7 +5259,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3613509834562702017}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -5334,7 +5334,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 3.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5879,7 +5879,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 0
+    type: 17
     angle: 19
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -5966,7 +5966,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.0001
+      value: 1.2
       mode: 0
       spread: 0
       speed:
@@ -6024,7 +6024,7 @@ ParticleSystem:
           m_RotationOrder: 4
     arc:
       value: 360
-      mode: 0
+      mode: 2
       spread: 1
       speed:
         serializedVersion: 2
@@ -10065,8 +10065,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -543.43, y: -427}
-  m_SizeDelta: {x: 165.53, y: 50}
+  m_AnchoredPosition: {x: -543.43, y: -428.19}
+  m_SizeDelta: {x: 165.53, y: 60.893}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3613509835080247027
 CanvasRenderer:
@@ -10131,7 +10131,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 4
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -10231,7 +10231,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8d5b8ad615c979e469b100f971bb17af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a7cf26b1d6850424bab9a72df81e9d8e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10352,12 +10352,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1239322559318533970}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -582.36, y: -262.5}
-  m_SizeDelta: {x: 243.38, y: 50}
+  m_AnchoredPosition: {x: -582.36, y: -264.56}
+  m_SizeDelta: {x: 243.38, y: 60.976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3613509835757879727
 CanvasRenderer:
@@ -10422,7 +10422,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 4
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -10487,12 +10487,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1239322559318533970}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -745.922, y: -262.5}
-  m_SizeDelta: {x: 83.766, y: 50}
+  m_AnchoredPosition: {x: -745.922, y: -264.5583}
+  m_SizeDelta: {x: 83.766, y: 60.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3613509835865255208
 CanvasRenderer:
@@ -10557,7 +10557,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -10622,11 +10622,11 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1239322559318533970}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -71.48, y: 90, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -462, y: -404}
+  m_AnchoredPosition: {x: -515, y: -412}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!198 &8141509783492500944
@@ -10637,7 +10637,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9112230255346034675}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 3
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -10712,7 +10712,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 3.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -11257,7 +11257,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 0
+    type: 17
     angle: 19
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -11344,7 +11344,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.0001
+      value: 1.2
       mode: 0
       spread: 0
       speed:
@@ -11402,7 +11402,7 @@ ParticleSystem:
           m_RotationOrder: 4
     arc:
       value: 360
-      mode: 0
+      mode: 2
       spread: 1
       speed:
         serializedVersion: 2

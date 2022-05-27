@@ -10,7 +10,7 @@ public class HudInGame : MonoBehaviour
     [SerializeField] private ParticleSystem animazionePunteggioPositiva;
     [SerializeField] private ParticleSystem animazionePunteggioNegativa;
     public int CountFPS = 30;
-    public float durata = 1f;
+    public float durata = 3f;
     public string formatoNumero = "N0";
     private int valorePrecedentePunteggio;
     private Coroutine CountingCoroutine;
@@ -26,8 +26,9 @@ public class HudInGame : MonoBehaviour
     public void aggiornaValoreSoldi(float soldi)
     {
         soldiTesto.text = soldi.ToString("0.00");
+        var main = animazioneSoldi.main;
+        main.maxParticles = (int)soldi / 2;
         animazioneSoldi.Play();
-
     }
 
     public void aggiornaValorePunteggio(int punteggio)
@@ -35,9 +36,13 @@ public class HudInGame : MonoBehaviour
         UpdateText(punteggio, punteggioTesto);
         if(valorePrecedentePunteggio>punteggio)
         {
+            var main = animazionePunteggioNegativa.main;
+            main.maxParticles = punteggio / 5;
             animazionePunteggioNegativa.Play();
         } else
         {
+            var main = animazionePunteggioNegativa.main;
+            main.maxParticles = punteggio / 5;
             animazionePunteggioPositiva.Play();
         }
         valorePrecedentePunteggio = punteggio;
@@ -100,6 +105,9 @@ public class HudInGame : MonoBehaviour
                 yield return Wait;
             }
         }
+        animazioneSoldi.Stop();
+        animazionePunteggioPositiva.Stop();
+        animazionePunteggioNegativa.Stop();
     }
 
 
