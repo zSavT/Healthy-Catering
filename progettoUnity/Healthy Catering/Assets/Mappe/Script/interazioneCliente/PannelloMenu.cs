@@ -8,7 +8,7 @@ public class PannelloMenu : MonoBehaviour
 {
 
     //TODO prendere il player che sta giocando al posto del primo nel database
-    [SerializeField] private Player giocatore = Database.getDatabaseOggetto(new Player())[0];
+    private Player giocatore;
 
     [SerializeField] private GameObject pannelloIngredientiPiatto;
     public static bool pannelloIngredientiPiattoAperto;
@@ -27,9 +27,10 @@ public class PannelloMenu : MonoBehaviour
     [SerializeField] private GameObject pannelloMenu;
 
     //DA EVENTUALMENTE TOGLIERE
+
     [SerializeField] private GameObject Player;
     [SerializeField] private TextMeshProUGUI testoConfermaPiatto;
-    [SerializeField] private GameObject EscPerUscireTesto; //Lo imposto come GameObject e non come testo, perchè mi interessa solo attivarlo disattivarlo velocemente
+    [SerializeField] private GameObject EscPerUscireTesto; //Lo imposto come GameObject e non come testo, perchï¿½ mi interessa solo attivarlo disattivarlo velocemente
     private Interactable controllerAnimazioneCliente;
 
     //PannelloIngredientiGiustiSbagliati 
@@ -67,10 +68,12 @@ public class PannelloMenu : MonoBehaviour
         }
     }
 
-    public void setCliente(int idClientePuntato, Interactable controlleNPCPuntato)
+    public void setCliente(int idClientePuntato, Player giocatorePartita, Interactable controlleNPCPuntato)
     {
         cliente = Database.getDatabaseOggetto(new Cliente())[idClientePuntato];
+        giocatore = giocatorePartita;
         controllerAnimazioneCliente = controlleNPCPuntato;
+
         caricaClienteInPanello(cliente);
     }
 
@@ -102,8 +105,8 @@ public class PannelloMenu : MonoBehaviour
             });
 
 
-            //in posizione 0 c'è il bottone per selezionare il piatto
-            //e in posizione 1 c'è il bottone per vedere gli ingredienti
+            //in posizione 0 c'ï¿½ il bottone per selezionare il piatto
+            //e in posizione 1 c'ï¿½ il bottone per vedere gli ingredienti
             Button bottoneMostraIngredienti = bottoneTemp.GetComponentsInChildren<Button>()[1];
             bottoneMostraIngredienti.onClick.AddListener(() => {
                 cambiaPannelloIngredientiPiattoConPiatto(bottoneMostraIngredienti, piatti);
@@ -118,7 +121,7 @@ public class PannelloMenu : MonoBehaviour
     {
         foreach (Piatto piatto in piatti)
         {
-            if (bottone.name.Contains(piatto.nome))//contains perché viene aggiunta la stringa "(Clone)" nel gameobject
+            if (bottone.name.Contains(piatto.nome))//contains perchï¿½ viene aggiunta la stringa "(Clone)" nel gameobject
             {
                 piattoSelezionato = piatto;
                 break;
@@ -142,7 +145,6 @@ public class PannelloMenu : MonoBehaviour
         giocatore.guadagna(guadagno);
 
         giocatore.aggiungiDiminuisciPunteggio(affinita, piattoSelezionato.calcolaNutriScore(databaseIngredienti), piattoSelezionato.calcolaCostoEco(databaseIngredienti));
-
         if (!affinita)
         {
             caricaIngredientiInPannelloIngredientiGiustiSbagliati(piattoSelezionato, cliente, databaseIngredienti);
@@ -157,7 +159,7 @@ public class PannelloMenu : MonoBehaviour
 
     void setPannelloConfermaConNomePiatto(string nomePiatto)
     {
-        //pannelloConfermaPiatto.GetComponentsInChildren<Button>()[0] = bottone si, in posizione 1 c'è quello del no
+        //pannelloConfermaPiatto.GetComponentsInChildren<Button>()[0] = bottone si, in posizione 1 c'ï¿½ quello del no
         apriPannelloConfermaPiatto();
         testoConfermaPiatto.text = "Sei sicuro di voler servire il piatto: \n" + nomePiatto;
     }
@@ -177,11 +179,11 @@ public class PannelloMenu : MonoBehaviour
     void animazioni(bool affinitaPatologiePiatto, bool affinitaDietaPiatto, float guadagno)
     {
         //@zSavT qui puoi inserire le animazioni,
-        //la bool affinitaPatologiePiatto è per sapere se il piatto andava bene per la patologia,
-        //l'altra affinità è ovviamente per la dieta,
+        //la bool affinitaPatologiePiatto ï¿½ per sapere se il piatto andava bene per la patologia,
+        //l'altra affinitï¿½ ï¿½ ovviamente per la dieta,
         //il guadagno sono i soldi che sta guadagnando il giocatore,
-        //non so se vuoi mettere un'animazione per questa cosa e se nel caso la vuoi regolare per la quantità guadagnata ma nel caso ce l'hai,
-        //se vuoi togliere l'unica chiamata a questo metodo è nel metodo selezionaPiatto quindi ti basta rimuovere il parametro da li
+        //non so se vuoi mettere un'animazione per questa cosa e se nel caso la vuoi regolare per la quantitï¿½ guadagnata ma nel caso ce l'hai,
+        //se vuoi togliere l'unica chiamata a questo metodo ï¿½ nel metodo selezionaPiatto quindi ti basta rimuovere il parametro da li
         if(affinitaPatologiePiatto && affinitaDietaPiatto)
         {
             controllerAnimazioneCliente.animazioneContenta();
@@ -206,8 +208,8 @@ public class PannelloMenu : MonoBehaviour
         output.name = piatto.nome;
 
 
-        //in posizione 0 c'è il bottone per selezionare il piatto
-        //e in posizione 1 c'è il bottone per vedere gli ingredienti
+        //in posizione 0 c'ï¿½ il bottone per selezionare il piatto
+        //e in posizione 1 c'ï¿½ il bottone per vedere gli ingredienti
         output.GetComponentsInChildren<Button>()[1].name = "Ingredienti " + piatto.nome;
 
         return output;
