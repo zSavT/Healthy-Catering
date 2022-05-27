@@ -10,6 +10,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private UnityEvent clickCrediti;             //serve per eliminare altri elementi in visualilzzazione
     [SerializeField] private Camera camera;
     [SerializeField] private TextMeshProUGUI testoVersioneGioco;
+    [SerializeField] private TextMeshProUGUI companyName;
     private List<Player> player = new List<Player>();
 
     void Start()
@@ -114,5 +115,6 @@ public class Menu : MonoBehaviour
     private void gameVersion()
     {
         testoVersioneGioco.text = testoVersioneGioco.text + Application.version;
+        companyName.text = companyName.text + " " + Application.companyName;
     }
 }
