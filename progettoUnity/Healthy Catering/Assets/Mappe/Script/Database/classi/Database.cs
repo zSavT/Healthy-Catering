@@ -495,17 +495,15 @@ public class Database
     {
         databasePlayer ??= Database.getDatabaseOggetto(new Player());
 
-        Player temp = null;
-
         foreach (Player player in databasePlayer)
         {
             if (nomePlayer == player.nome)
             {
-                temp = player;
-                break;
+                Player temp = player;
+                return temp;
             }
         }
-        return temp;
+        throw new Exception("Non ho trovato un player chiamato " + nomePlayer);
     }
 
 }

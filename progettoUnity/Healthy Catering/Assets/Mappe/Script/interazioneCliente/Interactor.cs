@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class Interactor : MonoBehaviour
 {
@@ -34,7 +35,15 @@ public class Interactor : MonoBehaviour
 
     void Start()
     {
-        giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
+        try
+        {
+            giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
+        }
+        catch(Exception e)
+        {
+            Debug.Log("Player non trovato.");
+            giocatore = new Player("Utente");
+        }
         chiudiPannello();
         pannelloAperto = false;
         posizioneCameraOriginale = mainCamera.transform.position;
