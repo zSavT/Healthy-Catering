@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class Interactor : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private Transform posizioneCamera;
     [SerializeField] private Transform posizioneCameraMenuCliente;
     [SerializeField] private GameObject pannelloMenuCliente;
+    [SerializeField] private HudInGame hud;
 
     [Header("Eventi")]
     [SerializeField] private UnityEvent playerStop;
@@ -29,9 +31,19 @@ public class Interactor : MonoBehaviour
     private bool menuApribile;
     public static bool pannelloAperto;
     private int IDClientePuntato;
+    private Player giocatore;
 
     void Start()
     {
+        try
+        {
+            giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
+        }
+        catch(Exception e)
+        {
+            Debug.Log("Player non trovato.");
+            SelezioneLivelli.caricaMenuCreazioneProfiloUtente();
+        }
         chiudiPannello();
         pannelloAperto = false;
         posizioneCameraOriginale = mainCamera.transform.position;
@@ -103,6 +115,8 @@ public class Interactor : MonoBehaviour
         ritornaAllaPosizioneNormale();
 
         PuntatoreMouse.disabilitaCursore();
+        hud.aggiornaValorePunteggio(giocatore.punteggio);
+        hud.aggiornaValoreSoldi(giocatore.soldi);
     }
 
     private void ritornaAllaPosizioneNormale()
@@ -123,7 +137,7 @@ public class Interactor : MonoBehaviour
 
         apriPannello();
 
-        pannelloMenuCliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato);
+        pannelloMenuCliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato, giocatore);
 
         //caricaClienteInPanello(Database.getDatabaseOggetto(new Cliente())[IDClientePuntato]);
 
