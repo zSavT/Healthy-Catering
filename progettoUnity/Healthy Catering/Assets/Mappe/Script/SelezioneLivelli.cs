@@ -23,6 +23,7 @@ public class SelezioneLivelli : MonoBehaviour
     [SerializeField] private Slider sliderCaricamento;        //slider del caricamento della partita
     [SerializeField] private UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
     [SerializeField] private Camera camera;
+    [SerializeField] private GameObject elementiDomandaUscita;
 
 
     // Start is called before the first frame update
@@ -37,6 +38,7 @@ public class SelezioneLivelli : MonoBehaviour
         {
             bottoneLivello2.interactable = true;
         }
+        elementiDomandaUscita.SetActive(false);
     }
 
     public void playGame(int sceneIndex)
