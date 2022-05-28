@@ -81,7 +81,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         }
     }
 
-    private void controlloEsistenzaProfiliPlayer()
+    public void controlloEsistenzaProfiliPlayer()
     {
         letturaNomiUtenti();
         if (presentePlayer())
