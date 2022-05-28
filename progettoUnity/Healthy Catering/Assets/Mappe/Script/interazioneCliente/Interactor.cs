@@ -120,8 +120,16 @@ public class Interactor : MonoBehaviour
         ritornaAllaPosizioneNormale();
 
         PuntatoreMouse.disabilitaCursore();
-        hud.aggiornaValorePunteggio(giocatore.punteggio);
-        hud.aggiornaValoreSoldi(giocatore.soldi);
+        if (!PannelloMenu.clienteServito)
+        {
+            Debug.Log(PannelloMenu.clienteServito);
+            hud.bloccaAnimazioniParticellari();
+            PannelloMenu.clienteServito = false; //non si può vare il contrario, perchè in caso di apertura consecuitiva del pannello senza servire, la seconda volta risulterà servito
+        } else
+        {
+            hud.aggiornaValorePunteggio(giocatore.punteggio);
+            hud.aggiornaValoreSoldi(giocatore.soldi);
+        }
     }
 
     private void ritornaAllaPosizioneNormale()

@@ -19,6 +19,11 @@ public class HudInGame : MonoBehaviour
 
     void start()
     {
+        bloccaAnimazioniParticellari();
+    }
+
+    public void bloccaAnimazioniParticellari()
+    {
         animazioneSoldi.Stop();
         animazionePunteggioPositiva.Stop();
         animazionePunteggioNegativa.Stop();
@@ -106,9 +111,7 @@ public class HudInGame : MonoBehaviour
                 yield return Wait;
             }
         }
-        animazioneSoldi.Stop();
-        animazionePunteggioPositiva.Stop();
-        animazionePunteggioNegativa.Stop();
+        bloccaAnimazioniParticellari();
     }
 
 

@@ -40,9 +40,11 @@ public class PannelloMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI testoIngredientiSbagliatiPatologia;
 
     public UnityEvent chiusuraInterazioneCliente;
+    public static bool clienteServito;
 
     void Start()
     {
+        clienteServito = false;
         pannelloIngredientiPiatto.SetActive(false);
         pannelloConfermaPiatto.SetActive(false);
         pannelloIngredientiGiustiSbagliati.SetActive(false);
@@ -151,9 +153,9 @@ public class PannelloMenu : MonoBehaviour
             apriPannelloIngredientiGiustiSbagliati();
         }else
         {
+            clienteServito = true;
             chiusuraInterazioneCliente.Invoke();
         }
-
         animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
     }
 
@@ -349,6 +351,7 @@ public class PannelloMenu : MonoBehaviour
             pannelloCliente.SetActive(true);
             pannelloMenu.SetActive(true);
             controllerAnimazioneCliente.animazioneCamminata();
+            clienteServito = true;
             chiusuraInterazioneCliente.Invoke();
             controllerAnimazioneCliente.animazioneScontenta();
         }
