@@ -46,6 +46,7 @@ public class Interactor : MonoBehaviour
         catch(Exception e)
         {
             Debug.Log("Player non trovato.");
+            PlayerSettings.profiloUtenteCreato = false;
             SelezioneLivelli.caricaMenuCreazioneProfiloUtente();
         }
         chiudiPannello();

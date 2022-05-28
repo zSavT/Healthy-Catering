@@ -83,5 +83,10 @@ public class SelezioneLivelli : MonoBehaviour
     {
         SceneManager.LoadScene(5);
     }
+
+    public static void caricaLivelloCitta()
+    {
+        SceneManager.LoadScene(2);
+    }
 }
 

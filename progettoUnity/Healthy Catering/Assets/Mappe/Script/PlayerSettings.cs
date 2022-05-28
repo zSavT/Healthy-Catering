@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerSettings : MonoBehaviour
 {
-
+    public static bool profiloUtenteCreato = true;
 
     //PROFILO UTENTE
 

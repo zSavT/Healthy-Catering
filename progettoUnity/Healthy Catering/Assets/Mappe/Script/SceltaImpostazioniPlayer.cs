@@ -138,6 +138,14 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
             PlayerSettings.salvaGenereModello3D(nomeGiocatoreScritto, sceltaModelloPlayer);
         }
         Database.salvaNuovoOggettoSuFile(new Player(nomeGiocatoreScritto));
+        if(!PlayerSettings.profiloUtenteCreato)
+        {
+            PlayerSettings.profiloUtenteCreato = true;
+            SelezioneLivelli.caricaLivelloCitta();
+        } else
+        {
+            SelezioneLivelli.caricaMenuPrincipale();
+        }
     }
 
     public void leggiInputNomeScritto(string testo)
