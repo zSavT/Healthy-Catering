@@ -1,14 +1,8 @@
 [
   {
     "nome": "Sav",
-    "soldi": -1.0,
+    "soldi": 0.0,
     "inventario": [],
-    "punteggio": -1
-  },
-  {
-    "nome": "",
-    "soldi": -1.0,
-    "inventario": [],
-    "punteggio": -1
+    "punteggio": 0
   }
 ]

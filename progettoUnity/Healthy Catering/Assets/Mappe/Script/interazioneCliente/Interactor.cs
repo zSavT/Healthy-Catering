@@ -40,6 +40,8 @@ public class Interactor : MonoBehaviour
         try
         {
             giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
+            giocatore.punteggio = 0;
+            giocatore.soldi = 0f;
         }
         catch(Exception e)
         {
