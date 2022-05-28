@@ -11,6 +11,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private Camera camera;
     [SerializeField] private TextMeshProUGUI testoVersioneGioco;
     [SerializeField] private TextMeshProUGUI companyName;
+    [SerializeField] private GameObject elementiCrediti;
     private List<Player> player = new List<Player>();
 
     void Start()
@@ -22,6 +23,8 @@ public class Menu : MonoBehaviour
         {
             caricaCreazioneProfilo();
         }
+        elementiCrediti.SetActive(false);
+        CambioCursore.cambioCursoreNormale();
     }
 
     void Update()

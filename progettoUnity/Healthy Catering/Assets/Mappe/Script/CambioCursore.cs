@@ -22,4 +22,16 @@ public class CambioCursore : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         Cursor.SetCursor(cursoreSuElemento, Vector2.zero, CursorMode.Auto);
     }
+
+
+    public static void cambioCursoreSelezionato()
+    {
+        Cursor.SetCursor(Resources.Load("Puntatore") as Texture2D, Vector2.zero, CursorMode.Auto);
+    }
+
+    public static void cambioCursoreNormale()
+    {
+        Cursor.SetCursor(Resources.Load("Puntatore") as Texture2D, Vector2.zero, CursorMode.Auto);
+    }
+
 }

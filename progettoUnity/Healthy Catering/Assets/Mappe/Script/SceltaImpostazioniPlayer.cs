@@ -12,6 +12,8 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     [SerializeField] private GameObject tastoIndietro;
     [SerializeField] private TMP_InputField inputFieldNomeGiocatore;
     [SerializeField] private GameObject nomeGiaPreso;
+    [SerializeField] private GameObject elementiSalvataggio;
+    [SerializeField] private GameObject elementiConferma;
     [SerializeField] private Button bottoneSalva;
     [SerializeField] private Camera camera;
     private List<Player> player = new List<Player>();
@@ -33,6 +35,8 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         nomeGiaPreso.SetActive(false);
         elementiGenereNeutro.SetActive(false);
         controlloEsistenzaProfiliPlayer();
+        elementiSalvataggio.SetActive(false);
+        elementiConferma.SetActive(false);
     }
 
     // Update is called once per frame
