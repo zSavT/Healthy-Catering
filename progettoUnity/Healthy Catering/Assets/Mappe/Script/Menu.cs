@@ -12,16 +12,20 @@ public class Menu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI testoVersioneGioco;
     [SerializeField] private TextMeshProUGUI companyName;
     [SerializeField] private GameObject elementiCrediti;
+    [SerializeField] private GameObject elementiMenuPrincipale;
+    [SerializeField] private GameObject elementiProfiloNonEsistente;
     private List<Player> player = new List<Player>();
 
     void Start()
     {
         gameVersion();
         camera.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
+        elementiProfiloNonEsistente.SetActive(false);
         letturaNomiUtenti();
         if (!presentePlayer())
         {
-            caricaCreazioneProfilo();
+            elementiProfiloNonEsistente.SetActive(true);
+            elementiMenuPrincipale.SetActive(false);
         }
         elementiCrediti.SetActive(false);
         CambioCursore.cambioCursoreNormale();
