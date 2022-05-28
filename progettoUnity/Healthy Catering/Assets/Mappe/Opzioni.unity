@@ -5827,7 +5827,7 @@ GameObject:
   - component: {fileID: 1369948339}
   m_Layer: 5
   m_Name: TastoGraficaAudio
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8366,6 +8366,7 @@ GameObject:
   - component: {fileID: 1988159435}
   - component: {fileID: 1988159434}
   - component: {fileID: 1988159438}
+  - component: {fileID: 1988159439}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -8485,6 +8486,18 @@ MonoBehaviour:
   sliderSensibilita: {fileID: 1893535362}
   sliderFovTesto: {fileID: 795170712}
   sliderSensibilitaTesto: {fileID: 38735336}
+--- !u!114 &1988159439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988159433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17671f5decb3ba64d875d76b09e18389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2010211029
 GameObject:
   m_ObjectHideFlags: 0
