@@ -118,7 +118,7 @@ public class Interactor : MonoBehaviour
 
 
         ritornaAllaPosizioneNormale();
-
+        CambioCursore.cambioCursoreNormale();
         PuntatoreMouse.disabilitaCursore();
         if (!PannelloMenu.clienteServito)
         {

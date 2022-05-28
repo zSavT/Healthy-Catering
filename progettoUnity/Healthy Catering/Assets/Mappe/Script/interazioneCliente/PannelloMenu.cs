@@ -199,8 +199,9 @@ public class PannelloMenu : MonoBehaviour
     private Button generaBottonePiatto(Piatto piatto, GameObject bottonePiattoPrefab)
     {
         GameObject outputGameObject = (GameObject)Instantiate(bottonePiattoPrefab);
-        Button output = outputGameObject.GetComponent<Button>();
 
+
+        Button output = outputGameObject.GetComponent<Button>();
         output.GetComponentsInChildren<TextMeshProUGUI>()[0].text = piatto.nome;
         output.GetComponentsInChildren<TextMeshProUGUI>()[1].text = piatto.calcolaCostoBase().ToString();
 

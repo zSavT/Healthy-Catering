@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 328924248550223501}
   m_Layer: 5
   m_Name: Checkmark
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 328924248557582328}
   m_Layer: 5
   m_Name: TastoTornaIndietro
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1271,6 +1271,7 @@ GameObject:
   - component: {fileID: 328924248740716801}
   - component: {fileID: 328924248740716800}
   - component: {fileID: 328924248740716831}
+  - component: {fileID: 1131850030}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -1368,6 +1369,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1131850030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328924248740716829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursoreNormale: {fileID: 2800000, guid: 40f65d19297dd0148a0ff7d86543271c, type: 3}
+  cursoreSuElemento: {fileID: 2800000, guid: 5852cf799bb9aa448bd2d643ceb7e776, type: 3}
 --- !u!1 &328924248744543304
 GameObject:
   m_ObjectHideFlags: 0
@@ -3162,7 +3177,7 @@ GameObject:
   - component: {fileID: 328924249198842074}
   m_Layer: 5
   m_Name: Checkmark
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3750,18 +3765,6 @@ MonoBehaviour:
           m_StringArgument: Value
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 328924248935061441}
-        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
-        m_MethodName: salvaImpostazioniSensibilita
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &328924249324879014
 GameObject:
   m_ObjectHideFlags: 0
@@ -4205,7 +4208,7 @@ GameObject:
   - component: {fileID: 328924249524714985}
   m_Layer: 5
   m_Name: Template
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6187,7 +6190,7 @@ GameObject:
   - component: {fileID: 328924250014312971}
   m_Layer: 5
   m_Name: Grafica
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7339,7 +7342,7 @@ GameObject:
   - component: {fileID: 328924250305443687}
   m_Layer: 5
   m_Name: TastoGraficaAudio
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7697,9 +7700,10 @@ GameObject:
   - component: {fileID: 328924250402833476}
   - component: {fileID: 328924250402833475}
   - component: {fileID: 328924250402833474}
+  - component: {fileID: 539131456}
   m_Layer: 5
   m_Name: Template
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7794,6 +7798,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &539131456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328924250402833472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursoreNormale: {fileID: 2800000, guid: 40f65d19297dd0148a0ff7d86543271c, type: 3}
+  cursoreSuElemento: {fileID: 2800000, guid: 5852cf799bb9aa448bd2d643ceb7e776, type: 3}
 --- !u!1 &328924250406010459
 GameObject:
   m_ObjectHideFlags: 0
@@ -7895,7 +7913,7 @@ GameObject:
   - component: {fileID: 328924250426249774}
   m_Layer: 5
   m_Name: Checkmark
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8007,7 +8025,7 @@ GameObject:
   - component: {fileID: 328924250520376946}
   m_Layer: 5
   m_Name: SliderVolume
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8340,7 +8358,7 @@ GameObject:
   - component: {fileID: 328924250570220070}
   m_Layer: 5
   m_Name: TastoImpostazioniControlli
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8599,17 +8617,5 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Value
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 328924248935061441}
-        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
-        m_MethodName: salvaImpostazioniFov
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
