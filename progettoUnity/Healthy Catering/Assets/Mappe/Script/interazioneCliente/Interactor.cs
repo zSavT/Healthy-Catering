@@ -1,57 +1,9 @@
 using UnityEngine;
 using UnityEngine.Events;
-
-
-
-
-
-
-
-
-
-
-
-
-/*
- * 
- *      RICORDATI DI METTE LE NOTE PER LE ANIMAZIONI!
- * 
- * 
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+using System.Collections.Generic;
+using UnityEngine.UI;
+using TMPro;
+using System;
 
 public class Interactor : MonoBehaviour
 {
@@ -60,33 +12,44 @@ public class Interactor : MonoBehaviour
 
     [SerializeField] private KeyCode tastoInterazione;              //tasto da premere per invocare l'azione
 
+    [SerializeField] private GameObject NPC;
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private Transform posizioneCamera;
+    [SerializeField] private Transform posizioneCameraMenuCliente;
+    [SerializeField] private GameObject pannelloMenuCliente;
+    [SerializeField] private HudInGame hud;
+
+    [Header("Eventi")]
+    [SerializeField] private UnityEvent playerStop;
+    [SerializeField] private UnityEvent playerRiprendiMovimento;
     //trigger per la scritta dell'interazione
     [SerializeField] private UnityEvent inquadratoNPC;
     [SerializeField] private UnityEvent uscitaRangeMenu;
 
-    [SerializeField] private GameObject NPC;
-    [SerializeField] private GameObject Player;
-    [SerializeField] private GameObject mainCamera;
-
-    [SerializeField] private UnityEvent playerStop;
-    [SerializeField] private UnityEvent playerRiprendiMovimento;
-
-    [SerializeField] private Transform posizioneCamera;
-    public static bool pannelloAperto;
-
-    [SerializeField] private GameObject pannelloCliente;
     private Vector3 posizioneCameraOriginale;
+
     private bool menuApribile;
+    public static bool pannelloAperto;
+    private int IDClientePuntato;
+    private Player giocatore;
 
     void Start()
     {
+        try
+        {
+            giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
+        }
+        catch(Exception e)
+        {
+            Debug.Log("Player non trovato.");
+            SelezioneLivelli.caricaMenuCreazioneProfiloUtente();
+        }
         chiudiPannello();
         pannelloAperto = false;
         posizioneCameraOriginale = mainCamera.transform.position;
         menuApribile = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         interazioneUtenteNPC();
@@ -108,18 +71,20 @@ public class Interactor : MonoBehaviour
 
                 if (Input.GetKeyDown(tastoInterazione))
                 {
-                    interazioneCliente(/*Cliente.nomeClienteToCliente (NPC.tag)//ora gli passo solo un numero*/0, Player, NPC);
+                    interazioneCliente(IDClientePuntato);
                 }
             }
-
             else
             {
                 uscitaRangeMenu.Invoke();
                 if (pannelloAperto)
                 {
-                    if (Input.GetKeyDown(KeyCode.Escape))
+                    if(!PannelloMenu.pannelloIngredientiPiattoAperto && !PannelloMenu.pannelloConfermaPiattoAperto && !PannelloMenu.pannelloIngredientiGiustiSbagliatiAperto)
                     {
-                        esciDaInterazioneCliente();
+                        if (Input.GetKeyDown(KeyCode.Escape))
+                        {
+                            esciDaInterazioneCliente();
+                        }
                     }
                 }
             }
@@ -134,20 +99,24 @@ public class Interactor : MonoBehaviour
             // se l'oggetto visualizzato è interagibile
             if (NPCpuntato.collider.GetComponent<Interactable>() != false)
             {
+                IDClientePuntato = NPCpuntato.collider.GetComponent<Interactable>().IDCliente;
                 return true;
             }
         }
         return false;
     }
-    private void esciDaInterazioneCliente()
+
+    public void esciDaInterazioneCliente()
     {
         chiudiPannello();
         playerRiprendiMovimento.Invoke();
-        
+
 
         ritornaAllaPosizioneNormale();
 
         PuntatoreMouse.disabilitaCursore();
+        hud.aggiornaValorePunteggio(giocatore.punteggio);
+        hud.aggiornaValoreSoldi(giocatore.soldi);
     }
 
     private void ritornaAllaPosizioneNormale()
@@ -160,7 +129,7 @@ public class Interactor : MonoBehaviour
         pannelloAperto = !pannelloAperto;
     }
 
-    private void interazioneCliente(/*Cliente clienteTemp*/ int clienteTemp, GameObject Player, GameObject NPC)
+    private void interazioneCliente(int IDCliente)
     {
         muoviCameraPerInterazioneCliente();
 
@@ -168,45 +137,36 @@ public class Interactor : MonoBehaviour
 
         apriPannello();
 
+        pannelloMenuCliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato, giocatore);
+
+        //caricaClienteInPanello(Database.getDatabaseOggetto(new Cliente())[IDClientePuntato]);
 
         PuntatoreMouse.abilitaCursore();
     }
 
     private void muoviCameraPerInterazioneCliente()
     {
-        //prende la posizione della camera
-        Vector3 playerPos = mainCamera.transform.position;
-
-        //prende la posizione dell'npc
-        Vector3 newDestination = NPC.transform.position;
-
-        //modifico la destinazione in base alla posizione dell'npc
-        newDestination = newDestination + (Vector3.left * 3.5f);//left va cambiato in base alla posizione degli npc nel ristornate
-        newDestination = newDestination + (Vector3.up * 2.5f);
-
-        //cambio la posizione della camera
-        mainCamera.transform.position = Vector3.Lerp(playerPos, newDestination, 100f);
+        mainCamera.transform.position = posizioneCameraMenuCliente.transform.position;
     }
 
     private void apriPannello()
     {
-        if (pannelloCliente != null)
+        if (pannelloMenuCliente != null)
         {
             Vector3 newDestination = NPC.transform.position;
-            pannelloCliente.transform.position = newDestination;
+            pannelloMenuCliente.transform.position = newDestination;
 
-            pannelloCliente.SetActive(true);
+            pannelloMenuCliente.SetActive(true);
         }
         pannelloApertoChiuso();
     }
 
     private void chiudiPannello()
     {
-        if (pannelloCliente != null)
+        if (pannelloMenuCliente != null)
         {
-            pannelloCliente.SetActive(false);
+            pannelloMenuCliente.SetActive(false);
         }
         pannelloApertoChiuso();
     }
-
 }

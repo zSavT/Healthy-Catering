@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class CambioColoreScritta : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI testo;
+    private TextMeshProUGUI testo;
 
     // Start is called before the first frame update
     void Start()
@@ -13,13 +11,18 @@ public class CambioColoreScritta : MonoBehaviour
         testo = gameObject.GetComponent<TextMeshProUGUI>();
     }
 
-    public void cambioColoreNonCliccato()
+    public void cambioColoreNonCliccatoGrigio()
     {
-        testo.color = Color.gray;
+        testo.color = new Color32(125,125,125,125);
     }
 
-    public void cambioColoreCliccato()
+    public void cambioColoreCliccatoNero()
     {
-        testo.color = Color.white;
+        testo.color = Color.black;
+    }
+
+    public void cambioColoreCliccatoBianco()
+    {
+        testo.color = new Color32(255,255,255,255);
     }
 }

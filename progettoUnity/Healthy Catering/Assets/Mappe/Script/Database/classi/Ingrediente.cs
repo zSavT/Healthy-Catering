@@ -74,6 +74,17 @@ public class Ingrediente : Item
 
     }
 
+    public static bool ingredienteCompatibilePatologia (int idIngrediente, int idPatologia)
+    {
+        Ingrediente ingrediente = idToIngrediente(idIngrediente);
+
+        foreach (int id in ingrediente.listaIdPatologieCompatibili)
+            if (id == idPatologia)
+                return true;
+
+        return false;
+    }
+
     private static char idNutriScoreToString(int id)
     {
         if (id == 0)
@@ -153,5 +164,15 @@ public class Ingrediente : Item
         }
 
         throw new Exception("Ingrediente non trovato idToIngrediente");
+    }
+
+    public static string listIngredientiToStringa (List <Ingrediente> ingredienti)
+    {
+        string output = "";
+        foreach (Ingrediente ingrediente in ingredienti)
+        {
+            output += "\t" + ingrediente.nome + "\n";
+        }
+        return output;
     }
 }

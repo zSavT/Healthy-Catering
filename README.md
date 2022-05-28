@@ -1,4 +1,9 @@
-# Healthy Catering
+# Healthy Catering [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa] [![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
+
+[cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/deed.it
+[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
+[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
+
 
 ![Logo](doc/img/Logo.png "Logo Gioco")
 
@@ -46,14 +51,18 @@ I requisiti Hardware e Software del gioco:
 
 ## Immagini di gioco
 
+
 ![Menu Iniziale](doc/img/menuIniziale.png "Menu Iniziale")
 
 ![HUD](doc/img/Bozza_HUD_game.png "HUD in Game")
 
-![HUD](doc/img/Bozza_HUD_Ristorante.jpg "HUD in Game")
+
+![HUD](doc/Screenshoot/Bozza_HUD_Ristorante.jpg "HUD in Game")
 
 
 ---
-
+Questa opera è sotto 
+[Licenza Creative Commons Attribuzione - Non commerciale - Condividi allo stesso modo 4.0 Internazionale][cc-by-nc-sa].
+<br>
 Cassano Francesco Saverio<br>
 Carella Alessandro
