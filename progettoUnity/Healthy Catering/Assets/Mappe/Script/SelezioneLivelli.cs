@@ -45,6 +45,15 @@ public class SelezioneLivelli : MonoBehaviour
 
     public void playGame(int sceneIndex)
     {
+        if (sceneIndex == 2)
+        {
+            PlayerSettings.livelloSelezionato = 0;
+        } else if (sceneIndex == 6) {
+            PlayerSettings.livelloSelezionato = 1;
+        } else
+        {
+            PlayerSettings.livelloSelezionato = 2;
+        }
         allAvvio.Invoke();
         StartCoroutine(caricamentoAsincrono(sceneIndex));
     }
