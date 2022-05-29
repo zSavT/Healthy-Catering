@@ -26,6 +26,8 @@ public class OpzioniMenu : MonoBehaviour
     void Start()
     {
 
+        CambioCursore.cambioCursoreNormale();
+
         //DALTONISMO
         daltonismo.value = PlayerSettings.caricaImpostazioniDaltonismo();
 
