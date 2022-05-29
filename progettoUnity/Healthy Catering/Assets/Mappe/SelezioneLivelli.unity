@@ -3389,5 +3389,5 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  camera: {fileID: 1949538935}
+  cameraGioco: {fileID: 1949538935}
   elementiDomandaUscita: {fileID: 1442598453}

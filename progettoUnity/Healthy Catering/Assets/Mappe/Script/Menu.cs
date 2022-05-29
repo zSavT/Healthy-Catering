@@ -7,25 +7,28 @@ using TMPro;
 
 public class Menu : MonoBehaviour
 {
-    [SerializeField] private UnityEvent clickCrediti;             //serve per eliminare altri elementi in visualilzzazione
-    [SerializeField] private Camera camera;
+    [SerializeField] private Camera cameraGioco;
     [SerializeField] private TextMeshProUGUI testoVersioneGioco;
     [SerializeField] private TextMeshProUGUI companyName;
     [SerializeField] private GameObject elementiCrediti;
     [SerializeField] private GameObject elementiMenuPrincipale;
     [SerializeField] private GameObject elementiProfiloNonEsistente;
     private List<Player> player = new List<Player>();
+    [SerializeField] private UnityEvent clickCrediti;             //serve per eliminare altri elementi in visualilzzazione
 
     void Start()
     {
         gameVersion();
-        camera.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
-        elementiProfiloNonEsistente.SetActive(false);
+        elementiProfiloNonEsistente.SetActive(false);               //disattivo a priori, per non visualizzarli in caso di errori di lettura dei nomi utenti ed evitare lo schermo occupato tutto da scritte
+        cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         letturaNomiUtenti();
         if (!presentePlayer())
         {
             elementiProfiloNonEsistente.SetActive(true);
             elementiMenuPrincipale.SetActive(false);
+        } else
+        {
+            elementiProfiloNonEsistente.SetActive(false);
         }
         elementiCrediti.SetActive(false);
         CambioCursore.cambioCursoreNormale();

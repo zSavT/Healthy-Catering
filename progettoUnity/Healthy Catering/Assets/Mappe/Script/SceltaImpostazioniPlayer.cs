@@ -15,7 +15,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     [SerializeField] private GameObject elementiSalvataggio;
     [SerializeField] private GameObject elementiConferma;
     [SerializeField] private Button bottoneSalva;
-    [SerializeField] private Camera camera;
+    [SerializeField] private Camera cameraGioco;
     private List<Player> player = new List<Player>();
     private List<string> nomiPlayerPresenti = new List<string>();
     private string nomeGiocatoreScritto;
@@ -29,13 +29,18 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     {
         PuntatoreMouse.abilitaCursore();
         nomeGiocatoreScritto = "";
-        camera.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
+        cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         player = new List<Player>();
-        nomiPlayer();
         genereNeutroScelto = false;
+        disattivaElementi();
+        nomiPlayer();
+        controlloEsistenzaProfiliPlayer();
+    }
+
+    private void disattivaElementi()
+    {
         nomeGiaPreso.SetActive(false);
         elementiGenereNeutro.SetActive(false);
-        controlloEsistenzaProfiliPlayer();
         elementiSalvataggio.SetActive(false);
         elementiConferma.SetActive(false);
     }
@@ -48,7 +53,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
 
     public void nomiPlayer()
     {
-        List<Player> listaPlayer = Database.getDatabaseOggetto<Player>(new Player());
+        List<Player> listaPlayer = Database.getDatabaseOggetto(new Player());
         if (listaPlayer != null)
         {
             for (int i = 0; i < listaPlayer.Count; i++)

@@ -7221,7 +7221,7 @@ MonoBehaviour:
   dropDownGenere: {fileID: 1063818618}
   dropDownColorePelle: {fileID: 838797304}
   dropDownModello3D: {fileID: 600646477}
-  camera: {fileID: 1949538935}
+  cameraGioco: {fileID: 1949538935}
 --- !u!1 &2031227889
 GameObject:
   m_ObjectHideFlags: 0

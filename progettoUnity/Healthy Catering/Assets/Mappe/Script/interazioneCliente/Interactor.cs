@@ -1,8 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-using System.Collections.Generic;
-using UnityEngine.UI;
-using TMPro;
 using System;
 
 public class Interactor : MonoBehaviour
@@ -11,8 +8,6 @@ public class Interactor : MonoBehaviour
     [SerializeField] private LayerMask layerUnityNPC = 6;              //layer utilizzato da Unity per le categorie di oggetto
 
     [SerializeField] private KeyCode tastoInterazione;              //tasto da premere per invocare l'azione
-
-    [SerializeField] private GameObject NPC;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform posizioneCamera;
     [SerializeField] private Transform posizioneCameraMenuCliente;
@@ -45,7 +40,7 @@ public class Interactor : MonoBehaviour
         }
         catch(Exception e)
         {
-            Debug.Log("Player non trovato.");
+            Debug.Log(e.Message);
             PlayerSettings.profiloUtenteCreato = false;
             SelezioneLivelli.caricaMenuCreazioneProfiloUtente();
         }
@@ -168,9 +163,6 @@ public class Interactor : MonoBehaviour
     {
         if (pannelloMenuCliente != null)
         {
-            Vector3 newDestination = NPC.transform.position;
-            pannelloMenuCliente.transform.position = newDestination;
-
             pannelloMenuCliente.SetActive(true);
         }
         pannelloApertoChiuso();

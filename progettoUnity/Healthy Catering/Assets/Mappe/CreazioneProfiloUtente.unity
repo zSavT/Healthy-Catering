@@ -7628,7 +7628,7 @@ MonoBehaviour:
   elementiSalvataggio: {fileID: 1141563043}
   elementiConferma: {fileID: 866758270}
   bottoneSalva: {fileID: 440158603}
-  camera: {fileID: 1949538935}
+  cameraGioco: {fileID: 1949538935}
 --- !u!1 &2045322638
 GameObject:
   m_ObjectHideFlags: 0

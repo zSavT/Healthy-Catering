@@ -18,7 +18,7 @@ public class Player
 
     public List<OggettoQuantita<int>> inventario = new List<OggettoQuantita<int>>();
 
-    public int punteggio = -1;
+    public int punteggio = 0;
 
     public Player(string nome, int soldi, List<OggettoQuantita<int>> inventario)
     {

@@ -7,40 +7,36 @@ using TMPro;
 public class PannelloMenu : MonoBehaviour
 {
 
-    //TODO prendere il player che sta giocando al posto del primo nel database
+    //Variabili di supporto e linking
+    public static bool clienteServito;
+    private Piatto piattoSelezionato;
+    private Cliente cliente;
+    private Interactable controllerAnimazioneCliente;
     private Player giocatore;
 
+    [Header("Pannelli")]
     [SerializeField] private GameObject pannelloIngredientiPiatto;
     public static bool pannelloIngredientiPiattoAperto;
 
     [SerializeField] private GameObject pannelloIngredientiGiustiSbagliati;
     public static bool pannelloIngredientiGiustiSbagliatiAperto;
 
-    //TODO aggiornare con il cliente vero
-    private Cliente cliente;
-
     [SerializeField] GameObject pannelloConfermaPiatto;
     public static bool pannelloConfermaPiattoAperto;
 
-    private Piatto piattoSelezionato;
     [SerializeField] private GameObject pannelloCliente;
     [SerializeField] private GameObject pannelloMenu;
 
-    //DA EVENTUALMENTE TOGLIERE
-
-    [SerializeField] private GameObject Player;
-    [SerializeField] private TextMeshProUGUI testoConfermaPiatto;
-    [SerializeField] private GameObject EscPerUscireTesto; //Lo imposto come GameObject e non come testo, perch� mi interessa solo attivarlo disattivarlo velocemente
-    private Interactable controllerAnimazioneCliente;
-
-    //PannelloIngredientiGiustiSbagliati 
+    [Header("Elementi Pannello Ingredienti Giusto e Sbagliato")]
     [SerializeField] private TextMeshProUGUI titoloIngredientiGiustiSbagliati;
     [SerializeField] private TextMeshProUGUI testoIngredientiGiusti;
     [SerializeField] private TextMeshProUGUI testoIngredientiSbagliatiDieta;
     [SerializeField] private TextMeshProUGUI testoIngredientiSbagliatiPatologia;
 
+    [Header("Altro")]
+    [SerializeField] private TextMeshProUGUI testoConfermaPiatto;
+    [SerializeField] private GameObject EscPerUscireTesto; //Lo imposto come GameObject e non come testo, perch� mi interessa solo attivarlo disattivarlo velocemente
     public UnityEvent chiusuraInterazioneCliente;
-    public static bool clienteServito;
 
     void Start()
     {

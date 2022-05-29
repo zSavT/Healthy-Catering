@@ -16,20 +16,22 @@ public class SelezioneLivelli : MonoBehaviour
      * Menu Selezione Profilo Utente = 4
      * Menu Creazione Profilo Utente = 5
      */
-
+    [SerializeField] private Camera cameraGioco;
+    [SerializeField] private GameObject elementiDomandaUscita;
+    [Header("Bottoni Livelli")]
     [SerializeField] private Button bottoneLivello0;
     [SerializeField] private Button bottoneLivello1;
     [SerializeField] private Button bottoneLivello2;
+    [Header("Elementi Caricamento Livello")]
     [SerializeField] private Slider sliderCaricamento;        //slider del caricamento della partita
     [SerializeField] private UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
-    [SerializeField] private Camera camera;
-    [SerializeField] private GameObject elementiDomandaUscita;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        camera.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
+        cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         if (PlayerSettings.caricaProgressoLivello1() == 1)
         {
             bottoneLivello1.interactable = true;                
@@ -38,7 +40,7 @@ public class SelezioneLivelli : MonoBehaviour
         {
             bottoneLivello2.interactable = true;
         }
-        elementiDomandaUscita.SetActive(false);
+        elementiDomandaUscita.SetActive(false);                                         //disattiva gli elementi della domanda all'uscita per non visualizzarli fin da subito
     }
 
     public void playGame(int sceneIndex)
