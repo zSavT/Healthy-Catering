@@ -1844,11 +1844,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   tastoInterazione: 101
-  NPC: {fileID: 0}
   mainCamera: {fileID: 5218992457125795448}
   posizioneCamera: {fileID: 5218992457513206985}
   posizioneCameraMenuCliente: {fileID: 4878910828240045144}
-  pannelloMenuCliente: {fileID: 0}
+  pannelloMenuECliente: {fileID: 0}
   hud: {fileID: 0}
   playerStop:
     m_PersistentCalls:
