@@ -1,3 +1,4 @@
+[System.Serializable]
 public class Item
 {
     public int idItem = -1;

@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
+[System.Serializable]
 public class Ingrediente : Item
 {
     public float costo = 0;

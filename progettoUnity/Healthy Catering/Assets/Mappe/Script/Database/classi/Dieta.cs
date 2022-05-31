@@ -1,4 +1,6 @@
 using System;
+
+[System.Serializable]
 public class Dieta
 {
     public string nome = "";
