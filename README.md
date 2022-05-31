@@ -4,8 +4,9 @@
 [cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
 [cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
 
-
-![Logo](doc/img/Logo.png "Logo Gioco")
+<p align="center">
+  <img src="doc/img/Logo.png" />
+</p>
 
 Lo scopo del videogioco è di consolidare le conoscenze di coloro che hanno intrapreso uno studio presso un istituto Alberghiero o un corso concernente le Scienze della Nutrizione e/o corsi simili mirati alla sensibilizzazione sul tema della corretta alimentazione per lo più indirizzata a individui caratterizzati da un certo quadro patologico, con annesso accenno all’argomento ‘’sostenibilità ambientale’’. In più il gioco permetterà al giocatore di imparare a gestire al meglio il proprio denaro, come aspetto secondario del gioco.
 
