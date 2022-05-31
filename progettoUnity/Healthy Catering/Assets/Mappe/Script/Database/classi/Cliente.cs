@@ -1,7 +1,6 @@
 using System.Linq;
 using System.Collections.Generic;
 
-[System.Serializable]
 public class Cliente
 {
     public string nome = "";

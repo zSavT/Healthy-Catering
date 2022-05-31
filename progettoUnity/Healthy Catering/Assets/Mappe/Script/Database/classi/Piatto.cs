@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 
-[System.Serializable]
 public class Piatto
 {
     public string nome = "";

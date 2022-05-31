@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 
-[System.Serializable]
 public class OggettoQuantita<Oggetto>
 {
     public Oggetto oggetto;
