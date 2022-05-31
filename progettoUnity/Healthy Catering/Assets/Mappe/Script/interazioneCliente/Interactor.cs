@@ -14,6 +14,9 @@ public class Interactor : MonoBehaviour
     [SerializeField] private GameObject pannelloMenuECliente;
     [SerializeField] private HudInGame hud;
 
+    [Header("Interazione Magazzino")]
+    [SerializeField] private PannelloMagazzino magazzino;
+
     [Header("Eventi")]
     [SerializeField] private UnityEvent playerStop;
     [SerializeField] private UnityEvent playerRiprendiMovimento;
@@ -73,6 +76,14 @@ public class Interactor : MonoBehaviour
                 {
                     interazioneCliente(IDClientePuntato);
                 }
+            } else if (pcPuntato())
+            {
+                if (Input.GetKeyDown(tastoInterazione))
+                {
+                    magazzino.attivaPannello();
+                    playerStop.Invoke();
+                    PuntatoreMouse.abilitaCursore();
+                }
             }
             else
             {
@@ -89,6 +100,23 @@ public class Interactor : MonoBehaviour
                 }
             }
         }
+    }
+
+
+    private bool pcPuntato()
+    {
+        RaycastHit pcInquadrato;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out pcInquadrato, 2, layerUnityNPC))
+        {
+            Debug.Log("CheckComputer");
+            // se l'oggetto visualizzato è interagibile
+            if (pcInquadrato.collider.GetComponent<PannelloMagazzino>() != false)
+            {
+                Debug.Log("Computer puntato");
+                return true;
+            }
+        }
+        return false;
     }
 
     private bool NPCInteragibilePuntato()
