@@ -3,13 +3,11 @@ using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
-
     public UnityEvent onInteract;   //variabile per trigger dell'evento
     public int IDCliente;
     private Animator controllerAnimazione;
     [SerializeField] private ParticleSystem effettoPositivo;
     [SerializeField] private ParticleSystem effettoNegativo;
-
 
     void Start()
     {
@@ -38,7 +36,6 @@ public class Interactable : MonoBehaviour
     {
         controllerAnimazione.SetBool("finito", true);
     }
-
 }
 
 
