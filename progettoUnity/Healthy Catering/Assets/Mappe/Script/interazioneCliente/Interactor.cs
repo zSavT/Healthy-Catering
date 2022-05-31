@@ -78,6 +78,7 @@ public class Interactor : MonoBehaviour
                 }
             } else if (pcPuntato())
             {
+                inquadratoNPC.Invoke();
                 if (Input.GetKeyDown(tastoInterazione))
                 {
                     magazzino.attivaPannello();
