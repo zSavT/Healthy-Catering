@@ -1,5 +1,4 @@
 using System;
-
 public class Dieta
 {
     public string nome = "";
