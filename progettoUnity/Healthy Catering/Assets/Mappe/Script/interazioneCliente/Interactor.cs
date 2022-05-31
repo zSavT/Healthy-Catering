@@ -1,8 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-using System.Collections.Generic;
-using UnityEngine.UI;
-using TMPro;
 using System;
 
 public class Interactor : MonoBehaviour
@@ -11,8 +8,6 @@ public class Interactor : MonoBehaviour
     [SerializeField] private LayerMask layerUnityNPC = 6;              //layer utilizzato da Unity per le categorie di oggetto
 
     [SerializeField] private KeyCode tastoInterazione;              //tasto da premere per invocare l'azione
-
-    [SerializeField] private GameObject NPC;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform posizioneCamera;
     [SerializeField] private Transform posizioneCameraMenuCliente;
@@ -33,15 +28,20 @@ public class Interactor : MonoBehaviour
     private int IDClientePuntato;
     private Player giocatore;
 
+    private Interactable npc;
+
     void Start()
     {
         try
         {
             giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
+            giocatore.punteggio = 0;
+            giocatore.soldi = 0f;
         }
         catch(Exception e)
         {
-            Debug.Log("Player non trovato.");
+            Debug.Log(e.Message);
+            PlayerSettings.profiloUtenteCreato = false;
             SelezioneLivelli.caricaMenuCreazioneProfiloUtente();
         }
         chiudiPannello();
@@ -100,7 +100,8 @@ public class Interactor : MonoBehaviour
             if (NPCpuntato.collider.GetComponent<Interactable>() != false)
             {
                 IDClientePuntato = NPCpuntato.collider.GetComponent<Interactable>().IDCliente;
-                return true;
+                npc = NPCpuntato.collider.GetComponent<Interactable>();
+;               return true;
             }
         }
         return false;
@@ -113,10 +114,18 @@ public class Interactor : MonoBehaviour
 
 
         ritornaAllaPosizioneNormale();
-
+        CambioCursore.cambioCursoreNormale();
         PuntatoreMouse.disabilitaCursore();
-        hud.aggiornaValorePunteggio(giocatore.punteggio);
-        hud.aggiornaValoreSoldi(giocatore.soldi);
+        if (!PannelloMenu.clienteServito)
+        {
+            Debug.Log(PannelloMenu.clienteServito);
+            hud.bloccaAnimazioniParticellari();
+            PannelloMenu.clienteServito = false; //non si può vare il contrario, perchè in caso di apertura consecuitiva del pannello senza servire, la seconda volta risulterà servito
+        } else
+        {
+            hud.aggiornaValorePunteggio(giocatore.punteggio);
+            hud.aggiornaValoreSoldi(giocatore.soldi);
+        }
     }
 
     private void ritornaAllaPosizioneNormale()
@@ -137,7 +146,8 @@ public class Interactor : MonoBehaviour
 
         apriPannello();
 
-        pannelloMenuCliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato, giocatore);
+
+        pannelloMenuCliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato, giocatore, npc);
 
         //caricaClienteInPanello(Database.getDatabaseOggetto(new Cliente())[IDClientePuntato]);
 
@@ -153,9 +163,6 @@ public class Interactor : MonoBehaviour
     {
         if (pannelloMenuCliente != null)
         {
-            Vector3 newDestination = NPC.transform.position;
-            pannelloMenuCliente.transform.position = newDestination;
-
             pannelloMenuCliente.SetActive(true);
         }
         pannelloApertoChiuso();

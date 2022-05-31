@@ -12,8 +12,10 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     [SerializeField] private GameObject tastoIndietro;
     [SerializeField] private TMP_InputField inputFieldNomeGiocatore;
     [SerializeField] private GameObject nomeGiaPreso;
+    [SerializeField] private GameObject elementiSalvataggio;
+    [SerializeField] private GameObject elementiConferma;
     [SerializeField] private Button bottoneSalva;
-    [SerializeField] private Camera camera;
+    [SerializeField] private Camera cameraGioco;
     private List<Player> player = new List<Player>();
     private List<string> nomiPlayerPresenti = new List<string>();
     private string nomeGiocatoreScritto;
@@ -25,14 +27,22 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PuntatoreMouse.abilitaCursore();
         nomeGiocatoreScritto = "";
-        camera.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
+        cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         player = new List<Player>();
-        nomiPlayer();
         genereNeutroScelto = false;
+        disattivaElementi();
+        nomiPlayer();
+        controlloEsistenzaProfiliPlayer();
+    }
+
+    private void disattivaElementi()
+    {
         nomeGiaPreso.SetActive(false);
         elementiGenereNeutro.SetActive(false);
-        controlloEsistenzaProfiliPlayer();
+        elementiSalvataggio.SetActive(false);
+        elementiConferma.SetActive(false);
     }
 
     // Update is called once per frame
@@ -43,7 +53,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
 
     public void nomiPlayer()
     {
-        List<Player> listaPlayer = Database.getDatabaseOggetto<Player>(new Player());
+        List<Player> listaPlayer = Database.getDatabaseOggetto(new Player());
         if (listaPlayer != null)
         {
             for (int i = 0; i < listaPlayer.Count; i++)
@@ -77,7 +87,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         }
     }
 
-    private void controlloEsistenzaProfiliPlayer()
+    public void controlloEsistenzaProfiliPlayer()
     {
         letturaNomiUtenti();
         if (presentePlayer())
@@ -133,6 +143,14 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
             PlayerSettings.salvaGenereModello3D(nomeGiocatoreScritto, sceltaModelloPlayer);
         }
         Database.salvaNuovoOggettoSuFile(new Player(nomeGiocatoreScritto));
+        if(!PlayerSettings.profiloUtenteCreato)
+        {
+            PlayerSettings.profiloUtenteCreato = true;
+            SelezioneLivelli.caricaLivelloCitta();
+        } else
+        {
+            SelezioneLivelli.caricaMenuPrincipale();
+        }
     }
 
     public void leggiInputNomeScritto(string testo)

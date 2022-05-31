@@ -7,41 +7,40 @@ using TMPro;
 public class PannelloMenu : MonoBehaviour
 {
 
-    //TODO prendere il player che sta giocando al posto del primo nel database
+    //Variabili di supporto e linking
+    public static bool clienteServito;
+    private Piatto piattoSelezionato;
+    private Cliente cliente;
+    private Interactable controllerAnimazioneCliente;
     private Player giocatore;
 
+    [Header("Pannelli")]
     [SerializeField] private GameObject pannelloIngredientiPiatto;
     public static bool pannelloIngredientiPiattoAperto;
 
     [SerializeField] private GameObject pannelloIngredientiGiustiSbagliati;
     public static bool pannelloIngredientiGiustiSbagliatiAperto;
 
-    //TODO aggiornare con il cliente vero
-    private Cliente cliente;
-
     [SerializeField] GameObject pannelloConfermaPiatto;
     public static bool pannelloConfermaPiattoAperto;
 
-    private Piatto piattoSelezionato;
     [SerializeField] private GameObject pannelloCliente;
     [SerializeField] private GameObject pannelloMenu;
 
-    //DA EVENTUALMENTE TOGLIERE
-
-    [SerializeField] private GameObject Player;
-    [SerializeField] private TextMeshProUGUI testoConfermaPiatto;
-    [SerializeField] private GameObject EscPerUscireTesto; //Lo imposto come GameObject e non come testo, perchè mi interessa solo attivarlo disattivarlo velocemente
-
-    //PannelloIngredientiGiustiSbagliati 
+    [Header("Elementi Pannello Ingredienti Giusto e Sbagliato")]
     [SerializeField] private TextMeshProUGUI titoloIngredientiGiustiSbagliati;
     [SerializeField] private TextMeshProUGUI testoIngredientiGiusti;
     [SerializeField] private TextMeshProUGUI testoIngredientiSbagliatiDieta;
     [SerializeField] private TextMeshProUGUI testoIngredientiSbagliatiPatologia;
 
+    [Header("Altro")]
+    [SerializeField] private TextMeshProUGUI testoConfermaPiatto;
+    [SerializeField] private GameObject EscPerUscireTesto; //Lo imposto come GameObject e non come testo, perchï¿½ mi interessa solo attivarlo disattivarlo velocemente
     public UnityEvent chiusuraInterazioneCliente;
 
     void Start()
     {
+        clienteServito = false;
         pannelloIngredientiPiatto.SetActive(false);
         pannelloConfermaPiatto.SetActive(false);
         pannelloIngredientiGiustiSbagliati.SetActive(false);
@@ -67,10 +66,12 @@ public class PannelloMenu : MonoBehaviour
         }
     }
 
-    public void setCliente(int idClientePuntato, Player giocatorePartita)
+    public void setCliente(int idClientePuntato, Player giocatorePartita, Interactable controlleNPCPuntato)
     {
         cliente = Database.getDatabaseOggetto(new Cliente())[idClientePuntato];
         giocatore = giocatorePartita;
+        controllerAnimazioneCliente = controlleNPCPuntato;
+
         caricaClienteInPanello(cliente);
     }
 
@@ -102,8 +103,8 @@ public class PannelloMenu : MonoBehaviour
             });
 
 
-            //in posizione 0 c'è il bottone per selezionare il piatto
-            //e in posizione 1 c'è il bottone per vedere gli ingredienti
+            //in posizione 0 c'ï¿½ il bottone per selezionare il piatto
+            //e in posizione 1 c'ï¿½ il bottone per vedere gli ingredienti
             Button bottoneMostraIngredienti = bottoneTemp.GetComponentsInChildren<Button>()[1];
             bottoneMostraIngredienti.onClick.AddListener(() => {
                 cambiaPannelloIngredientiPiattoConPiatto(bottoneMostraIngredienti, piatti);
@@ -118,7 +119,7 @@ public class PannelloMenu : MonoBehaviour
     {
         foreach (Piatto piatto in piatti)
         {
-            if (bottone.name.Contains(piatto.nome))//contains perché viene aggiunta la stringa "(Clone)" nel gameobject
+            if (bottone.name.Contains(piatto.nome))//contains perchï¿½ viene aggiunta la stringa "(Clone)" nel gameobject
             {
                 piattoSelezionato = piatto;
                 break;
@@ -148,15 +149,15 @@ public class PannelloMenu : MonoBehaviour
             apriPannelloIngredientiGiustiSbagliati();
         }else
         {
+            clienteServito = true;
             chiusuraInterazioneCliente.Invoke();
         }
-
         animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
     }
 
     void setPannelloConfermaConNomePiatto(string nomePiatto)
     {
-        //pannelloConfermaPiatto.GetComponentsInChildren<Button>()[0] = bottone si, in posizione 1 c'è quello del no
+        //pannelloConfermaPiatto.GetComponentsInChildren<Button>()[0] = bottone si, in posizione 1 c'ï¿½ quello del no
         apriPannelloConfermaPiatto();
         testoConfermaPiatto.text = "Sei sicuro di voler servire il piatto: \n" + nomePiatto;
     }
@@ -176,18 +177,27 @@ public class PannelloMenu : MonoBehaviour
     void animazioni(bool affinitaPatologiePiatto, bool affinitaDietaPiatto, float guadagno)
     {
         //@zSavT qui puoi inserire le animazioni,
-        //la bool affinitaPatologiePiatto è per sapere se il piatto andava bene per la patologia,
-        //l'altra affinità è ovviamente per la dieta,
+        //la bool affinitaPatologiePiatto ï¿½ per sapere se il piatto andava bene per la patologia,
+        //l'altra affinitï¿½ ï¿½ ovviamente per la dieta,
         //il guadagno sono i soldi che sta guadagnando il giocatore,
-        //non so se vuoi mettere un'animazione per questa cosa e se nel caso la vuoi regolare per la quantità guadagnata ma nel caso ce l'hai,
-        //se vuoi togliere l'unica chiamata a questo metodo è nel metodo selezionaPiatto quindi ti basta rimuovere il parametro da li
+        //non so se vuoi mettere un'animazione per questa cosa e se nel caso la vuoi regolare per la quantitï¿½ guadagnata ma nel caso ce l'hai,
+        //se vuoi togliere l'unica chiamata a questo metodo ï¿½ nel metodo selezionaPiatto quindi ti basta rimuovere il parametro da li
+        if(affinitaPatologiePiatto && affinitaDietaPiatto)
+        {
+            controllerAnimazioneCliente.animazioneContenta();
+        } else
+        {
+            
+        }
+        
     }
 
     private Button generaBottonePiatto(Piatto piatto, GameObject bottonePiattoPrefab)
     {
         GameObject outputGameObject = (GameObject)Instantiate(bottonePiattoPrefab);
-        Button output = outputGameObject.GetComponent<Button>();
 
+
+        Button output = outputGameObject.GetComponent<Button>();
         output.GetComponentsInChildren<TextMeshProUGUI>()[0].text = piatto.nome;
         output.GetComponentsInChildren<TextMeshProUGUI>()[1].text = piatto.calcolaCostoBase().ToString();
 
@@ -197,8 +207,8 @@ public class PannelloMenu : MonoBehaviour
         output.name = piatto.nome;
 
 
-        //in posizione 0 c'è il bottone per selezionare il piatto
-        //e in posizione 1 c'è il bottone per vedere gli ingredienti
+        //in posizione 0 c'ï¿½ il bottone per selezionare il piatto
+        //e in posizione 1 c'ï¿½ il bottone per vedere gli ingredienti
         output.GetComponentsInChildren<Button>()[1].name = "Ingredienti " + piatto.nome;
 
         return output;
@@ -266,6 +276,7 @@ public class PannelloMenu : MonoBehaviour
             pannelloMenu.SetActive(true);
             pannelloCliente.SetActive(true);
             EscPerUscireTesto.SetActive(true);
+            controllerAnimazioneCliente.animazioneCamminata();
         }
     }
 
@@ -336,7 +347,10 @@ public class PannelloMenu : MonoBehaviour
             pannelloIngredientiGiustiSbagliatiApertoChiuso();
             pannelloCliente.SetActive(true);
             pannelloMenu.SetActive(true);
+            controllerAnimazioneCliente.animazioneCamminata();
+            clienteServito = true;
             chiusuraInterazioneCliente.Invoke();
+            controllerAnimazioneCliente.animazioneScontenta();
         }
     }
 }

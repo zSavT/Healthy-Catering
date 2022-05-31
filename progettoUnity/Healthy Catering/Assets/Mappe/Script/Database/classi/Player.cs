@@ -18,7 +18,7 @@ public class Player
 
     public List<OggettoQuantita<int>> inventario = new List<OggettoQuantita<int>>();
 
-    public int punteggio = -1;
+    public int punteggio = 0;
 
     public Player(string nome, int soldi, List<OggettoQuantita<int>> inventario)
     {
@@ -30,14 +30,14 @@ public class Player
     public Player(string nome)
     {
         this.nome = nome;
-        this.soldi = -1;
+        this.soldi = 0;
         this.inventario = new List<OggettoQuantita<int>>();
     }
 
     public Player()
     {
         this.nome = "";
-        this.soldi = -1;
+        this.soldi = 0;
         this.inventario = new List<OggettoQuantita<int>>(); //int perchè sono gli id degli item e non gli item veri e propri
     }
 

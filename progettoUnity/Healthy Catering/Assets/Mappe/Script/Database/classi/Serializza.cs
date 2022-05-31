@@ -52,7 +52,7 @@ public class Serializza
             salvaOggettiSuFile<Oggetto>(new List<Oggetto>());
             return leggiOggettiDaFile<Oggetto>(@filePath);
         }
-        catch (Exception e)
+        catch (Exception)
         {
             throw new FileNotFoundException("File non trovato e non riesco a crearlo, crea un file .json con la stringa \"[]\" per farmi leggere una lista vuota oppure popola il json a mano\n" + filePath);
         }

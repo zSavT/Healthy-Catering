@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using System;
 
 public class HudInGame : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class HudInGame : MonoBehaviour
 
     void start()
     {
+        bloccaAnimazioniParticellari();
+    }
+
+    public void bloccaAnimazioniParticellari()
+    {
         animazioneSoldi.Stop();
         animazionePunteggioPositiva.Stop();
         animazionePunteggioNegativa.Stop();
@@ -27,7 +33,7 @@ public class HudInGame : MonoBehaviour
     {
         soldiTesto.text = soldi.ToString("0.00");
         var main = animazioneSoldi.main;
-        main.maxParticles = (int)soldi / 2;
+        main.maxParticles = ((int)soldi / 2)+5;
         animazioneSoldi.Play();
     }
 
@@ -37,12 +43,12 @@ public class HudInGame : MonoBehaviour
         if(valorePrecedentePunteggio>punteggio)
         {
             var main = animazionePunteggioNegativa.main;
-            main.maxParticles = punteggio / 5;
+            main.maxParticles = (Math.Abs(punteggio/2))+5;               //per ottenere il valore assoluto ed ottenere il numero di particelle corretto
             animazionePunteggioNegativa.Play();
         } else
         {
             var main = animazionePunteggioNegativa.main;
-            main.maxParticles = punteggio / 5;
+            main.maxParticles = (punteggio / 5)+5;
             animazionePunteggioPositiva.Play();
         }
         valorePrecedentePunteggio = punteggio;
@@ -105,9 +111,7 @@ public class HudInGame : MonoBehaviour
                 yield return Wait;
             }
         }
-        animazioneSoldi.Stop();
-        animazionePunteggioPositiva.Stop();
-        animazionePunteggioNegativa.Stop();
+        bloccaAnimazioniParticellari();
     }
 
 
