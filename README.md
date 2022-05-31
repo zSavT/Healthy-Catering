@@ -52,9 +52,11 @@ I requisiti Hardware e Software del gioco:
 
 ## Immagini di gioco
 
-![HUD](doc/Screenshoot/Bozza_HUD_game.png "HUD in Game")
+![Creazione Profilo Utente](doc/Screenshoot/CreazioneProfiloUtente.PNG "HUD in Game")
 
-![HUD](doc/Screenshoot/Bozza_HUD_Ristorante.jpg "HUD in Game")
+![InterazioneCliente](doc/Screenshoot/InterazioneCliente.PNG "HUD in Game")
+
+![Menu Opzioni](doc/Screenshoot/MenuOpzioni.PNG "HUD in Game")
 
 
 ---
