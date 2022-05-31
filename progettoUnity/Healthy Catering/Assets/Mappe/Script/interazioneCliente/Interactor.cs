@@ -11,7 +11,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform posizioneCamera;
     [SerializeField] private Transform posizioneCameraMenuCliente;
-    [SerializeField] private GameObject pannelloMenuCliente;
+    [SerializeField] private GameObject pannelloMenuECliente;
     [SerializeField] private HudInGame hud;
 
     [Header("Eventi")]
@@ -112,16 +112,17 @@ public class Interactor : MonoBehaviour
         chiudiPannello();
         playerRiprendiMovimento.Invoke();
 
-
         ritornaAllaPosizioneNormale();
         CambioCursore.cambioCursoreNormale();
         PuntatoreMouse.disabilitaCursore();
+        
         if (!PannelloMenu.clienteServito)
         {
             Debug.Log(PannelloMenu.clienteServito);
             hud.bloccaAnimazioniParticellari();
             PannelloMenu.clienteServito = false; //non si può vare il contrario, perchè in caso di apertura consecuitiva del pannello senza servire, la seconda volta risulterà servito
-        } else
+        } 
+        else
         {
             hud.aggiornaValorePunteggio(giocatore.punteggio);
             hud.aggiornaValoreSoldi(giocatore.soldi);
@@ -147,7 +148,7 @@ public class Interactor : MonoBehaviour
         apriPannello();
 
 
-        pannelloMenuCliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato, giocatore, npc);
+        pannelloMenuECliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato, giocatore, npc);
 
         //caricaClienteInPanello(Database.getDatabaseOggetto(new Cliente())[IDClientePuntato]);
 
@@ -161,18 +162,18 @@ public class Interactor : MonoBehaviour
 
     private void apriPannello()
     {
-        if (pannelloMenuCliente != null)
+        if (pannelloMenuECliente != null)
         {
-            pannelloMenuCliente.SetActive(true);
+            pannelloMenuECliente.SetActive(true);
         }
         pannelloApertoChiuso();
     }
 
     private void chiudiPannello()
     {
-        if (pannelloMenuCliente != null)
+        if (pannelloMenuECliente != null)
         {
-            pannelloMenuCliente.SetActive(false);
+            pannelloMenuECliente.SetActive(false);
         }
         pannelloApertoChiuso();
     }

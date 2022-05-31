@@ -4,5 +4,11 @@
     "soldi": 0.0,
     "inventario": [],
     "punteggio": -1
+  },
+  {
+    "nome": "",
+    "soldi": 0.0,
+    "inventario": [],
+    "punteggio": 0
   }
 ]
