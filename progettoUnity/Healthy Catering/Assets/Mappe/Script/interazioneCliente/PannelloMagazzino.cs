@@ -16,6 +16,8 @@ public class PannelloMagazzino : MonoBehaviour
     private int numeroPannelliXElementiPresenti = 1;
     private Button bottoneIngredienteTemplate;
 
+    [SerializeField] private GameObject pannelloMostraIngredientiOggettiInventario;
+
     private void Start()
     {
         pannelloMagazzino.SetActive(false);
@@ -24,12 +26,19 @@ public class PannelloMagazzino : MonoBehaviour
         //poi lo elimino dal pannello cosi che non ci sia piu' (non posso eliminare l'instanza successivamente siccome ci sono piu' pannelli 
         //al posto di uno solo come in menu (interazione cliente))
         pannelloXElementi = rimuoviTuttiFigliDaPannello(pannelloXElementi);
+
+        pannelloMostraIngredientiOggettiInventario.SetActive(false);    
     }
 
     public void attivaPannello()
     {
         pannelloMagazzino.SetActive(true);
         popolaSchermata();
+    }
+
+    public void cambiaSfondo()
+    {
+        sfondoImmaginePC.sprite = Resources.Load<Sprite>("SchermataMagazzino");
     }
 
     private void popolaSchermata()
@@ -63,8 +72,8 @@ public class PannelloMagazzino : MonoBehaviour
         Button output = Instantiate(bottoneIngredienteTemplate);
         output.name = ingrediente.nome;
 
-        output.GetComponentsInChildren<TextMeshProUGUI>()[0].text = ingrediente.nome;
-        output.GetComponentsInChildren<TextMeshProUGUI>()[1].text = oggettoDellInventario.quantita.ToString ();
+        output.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Ingrediente: " + ingrediente.nome;
+        output.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Quantità presente: " + oggettoDellInventario.quantita.ToString ();
 
         return output;
     }
@@ -92,9 +101,15 @@ public class PannelloMagazzino : MonoBehaviour
         return pannello;//non sono sicuro sia necessario il return del pannello, se non serve poi lo togliamo
     }
 
-    public void cambiaSfondo()
+    public apriPannelloMostraIngredientiOggettiInventario()
     {
-        sfondoImmaginePC.sprite = Resources.Load<Sprite>("SchermataMagazzino");
+        /*
+         qualcosa sulla linea di 
+         Button bottoneMostraIngredienti = bottoneTemp.GetComponentsInChildren<Button>()[1];
+            bottoneMostraIngredienti.onClick.AddListener(() => {
+                cambiaPannelloIngredientiPiattoConPiatto(bottoneMostraIngredienti, piatti);
+                apriPannelloIngredientiPiatto();
+            });
+         */
     }
-
 }
