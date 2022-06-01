@@ -22,7 +22,7 @@ public class Serializza
     }
 
     public static string getJsonPath<Oggetto>(Oggetto oggetto){
-        string jsonPath = Application.streamingAssetsPath;
+        string jsonPath = Path.Combine(Application.streamingAssetsPath, "database");
 
         string tipoOggetto = getNomeTipo (oggetto);
         if (tipoOggetto.ToLower().Contains("list")) //se è una lista
