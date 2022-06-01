@@ -9,6 +9,7 @@ TagManager:
   - BottonePiatto
   - PannelloCliente
   - PannelloIngredientiPiatto
+  - Interagibile
   layers:
   - Default
   - TransparentFX

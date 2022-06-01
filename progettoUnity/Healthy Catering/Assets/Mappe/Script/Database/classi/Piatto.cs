@@ -110,8 +110,6 @@ public class Piatto
     }
 
     public float calcolaCostoConBonus (bool affine, float costoBase){
-        List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
-        
         if (affine){
             float output;
             int posizioneNellaListaMigliori;

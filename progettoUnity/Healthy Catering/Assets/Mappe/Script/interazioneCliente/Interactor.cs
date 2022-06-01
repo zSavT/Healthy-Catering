@@ -1,8 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-using System.Collections.Generic;
-using UnityEngine.UI;
-using TMPro;
 using System;
 
 public class Interactor : MonoBehaviour
@@ -11,13 +8,14 @@ public class Interactor : MonoBehaviour
     [SerializeField] private LayerMask layerUnityNPC = 6;              //layer utilizzato da Unity per le categorie di oggetto
 
     [SerializeField] private KeyCode tastoInterazione;              //tasto da premere per invocare l'azione
-
-    [SerializeField] private GameObject NPC;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform posizioneCamera;
     [SerializeField] private Transform posizioneCameraMenuCliente;
-    [SerializeField] private GameObject pannelloMenuCliente;
+    [SerializeField] private GameObject pannelloMenuECliente;
     [SerializeField] private HudInGame hud;
+
+    [Header("Interazione Magazzino")]
+    [SerializeField] private PannelloMagazzino magazzino;
 
     [Header("Eventi")]
     [SerializeField] private UnityEvent playerStop;
@@ -33,15 +31,20 @@ public class Interactor : MonoBehaviour
     private int IDClientePuntato;
     private Player giocatore;
 
+    private Interactable npc;
+
     void Start()
     {
         try
         {
             giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
+            giocatore.punteggio = 0;
+            giocatore.soldi = 0f;
         }
         catch(Exception e)
         {
-            Debug.Log("Player non trovato.");
+            Debug.Log(e.Message);
+            PlayerSettings.profiloUtenteCreato = false;
             SelezioneLivelli.caricaMenuCreazioneProfiloUtente();
         }
         chiudiPannello();
@@ -73,6 +76,15 @@ public class Interactor : MonoBehaviour
                 {
                     interazioneCliente(IDClientePuntato);
                 }
+            } else if (pcPuntato())
+            {
+                inquadratoNPC.Invoke();
+                if (Input.GetKeyDown(tastoInterazione))
+                {
+                    magazzino.attivaPannello();
+                    playerStop.Invoke();
+                    PuntatoreMouse.abilitaCursore();
+                }
             }
             else
             {
@@ -91,6 +103,23 @@ public class Interactor : MonoBehaviour
         }
     }
 
+
+    private bool pcPuntato()
+    {
+        RaycastHit pcInquadrato;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out pcInquadrato, 2, layerUnityNPC))
+        {
+            Debug.Log("CheckComputer");
+            // se l'oggetto visualizzato è interagibile
+            if (pcInquadrato.collider.GetComponent<PannelloMagazzino>() != false)
+            {
+                Debug.Log("Computer puntato");
+                return true;
+            }
+        }
+        return false;
+    }
+
     private bool NPCInteragibilePuntato()
     {
         RaycastHit NPCpuntato;
@@ -100,7 +129,8 @@ public class Interactor : MonoBehaviour
             if (NPCpuntato.collider.GetComponent<Interactable>() != false)
             {
                 IDClientePuntato = NPCpuntato.collider.GetComponent<Interactable>().IDCliente;
-                return true;
+                npc = NPCpuntato.collider.GetComponent<Interactable>();
+;               return true;
             }
         }
         return false;
@@ -111,12 +141,21 @@ public class Interactor : MonoBehaviour
         chiudiPannello();
         playerRiprendiMovimento.Invoke();
 
-
         ritornaAllaPosizioneNormale();
-
+        CambioCursore.cambioCursoreNormale();
         PuntatoreMouse.disabilitaCursore();
-        hud.aggiornaValorePunteggio(giocatore.punteggio);
-        hud.aggiornaValoreSoldi(giocatore.soldi);
+        
+        if (!PannelloMenu.clienteServito)
+        {
+            Debug.Log(PannelloMenu.clienteServito);
+            hud.bloccaAnimazioniParticellari();
+            PannelloMenu.clienteServito = false; //non si può vare il contrario, perchè in caso di apertura consecuitiva del pannello senza servire, la seconda volta risulterà servito
+        } 
+        else
+        {
+            hud.aggiornaValorePunteggio(giocatore.punteggio);
+            hud.aggiornaValoreSoldi(giocatore.soldi);
+        }
     }
 
     private void ritornaAllaPosizioneNormale()
@@ -137,7 +176,8 @@ public class Interactor : MonoBehaviour
 
         apriPannello();
 
-        pannelloMenuCliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato, giocatore);
+
+        pannelloMenuECliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato, giocatore, npc);
 
         //caricaClienteInPanello(Database.getDatabaseOggetto(new Cliente())[IDClientePuntato]);
 
@@ -151,21 +191,18 @@ public class Interactor : MonoBehaviour
 
     private void apriPannello()
     {
-        if (pannelloMenuCliente != null)
+        if (pannelloMenuECliente != null)
         {
-            Vector3 newDestination = NPC.transform.position;
-            pannelloMenuCliente.transform.position = newDestination;
-
-            pannelloMenuCliente.SetActive(true);
+            pannelloMenuECliente.SetActive(true);
         }
         pannelloApertoChiuso();
     }
 
     private void chiudiPannello()
     {
-        if (pannelloMenuCliente != null)
+        if (pannelloMenuECliente != null)
         {
-            pannelloMenuCliente.SetActive(false);
+            pannelloMenuECliente.SetActive(false);
         }
         pannelloApertoChiuso();
     }

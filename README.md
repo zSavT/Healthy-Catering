@@ -4,8 +4,9 @@
 [cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
 [cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
 
-
-![Logo](doc/img/Logo.png "Logo Gioco")
+<p align="center">
+  <img src="doc/img/Logo_Rettangolare.png" />
+</p>
 
 Lo scopo del videogioco è di consolidare le conoscenze di coloro che hanno intrapreso uno studio presso un istituto Alberghiero o un corso concernente le Scienze della Nutrizione e/o corsi simili mirati alla sensibilizzazione sul tema della corretta alimentazione per lo più indirizzata a individui caratterizzati da un certo quadro patologico, con annesso accenno all’argomento ‘’sostenibilità ambientale’’. In più il gioco permetterà al giocatore di imparare a gestire al meglio il proprio denaro, come aspetto secondario del gioco.
 
@@ -41,7 +42,13 @@ I requisiti Hardware e Software del gioco:
 -	RAM: 1GB per l’esecuzione
 -	Hard Disk: 1GB
 -	Scheda Video: GEFORCE GT710
--	Risoluzione: 1920x1080 o superiori - Aspect Ratio: 4:3 e/o 16:9
+-	Risoluzione: 1920x1080 o superiori - Aspect Ratio: 16:9
+
+
+### NOTA BENE!
+L'aspect ratio 4:3 non è pienamento supportato, l'esperienza potrebbe variare rispetto alla modalità 16:9 pienamente supportata.
+
+
 
 ### Requisiti Software
 
@@ -51,13 +58,14 @@ I requisiti Hardware e Software del gioco:
 
 ## Immagini di gioco
 
-
 ![Menu Iniziale](doc/Screenshoot/menuIniziale.png "Menu Iniziale")
 
-![HUD](doc/Screenshoot/Bozza_HUD_game.png "HUD in Game")
+![Creazione Profilo Utente](doc/Screenshoot/CreazioneProfiloUtente.PNG "HUD in Game")
 
+![InterazioneCliente](doc/Screenshoot/InterazioneCliente.PNG "HUD in Game")
 
-![HUD](doc/Screenshoot/Bozza_HUD_Ristorante.jpg "HUD in Game")
+![Menu Opzioni](doc/Screenshoot/MenuOpzioni.PNG "HUD in Game")
+
 
 
 ---

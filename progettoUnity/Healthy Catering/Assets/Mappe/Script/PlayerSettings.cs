@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class PlayerSettings : MonoBehaviour
 {
-
+    public static bool profiloUtenteCreato = true;
+    public static int livelloSelezionato = 0;
 
     //PROFILO UTENTE
 

@@ -8,11 +8,12 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
 {
 
     [SerializeField] private GameObject elementiGenereNeutro;
+    [SerializeField] private GameObject elementiDomandaUscita;
     [SerializeField] private TMP_Dropdown dropDownListaPlayer;
     [SerializeField] private TMP_Dropdown dropDownGenere;
     [SerializeField] private TMP_Dropdown dropDownColorePelle;
     [SerializeField] private TMP_Dropdown dropDownModello3D;
-    [SerializeField] private Camera camera;
+    [SerializeField] private Camera cameraGioco;
     private List<Player> player = new List<Player>();
     private List<string> nomiPlayerPresenti = new List<string>();
     private string nomeSelezionato = "";
@@ -25,7 +26,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        camera.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
+        cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         letturaNomiUtenti();
         nomiPlayer();
         aggiuntaNomiDropdown();
@@ -36,6 +37,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         dropDownModello3D.value = PlayerSettings.caricaGenereModello3D(nomeSelezionato);
         attivaDisattivaImpostazioniGenereNeutro();
         refreshValori();
+        elementiDomandaUscita.SetActive(false);
     }
 
     private int indiceNomeGiocatoreInLista(string nome)

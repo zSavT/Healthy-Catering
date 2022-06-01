@@ -503,7 +503,7 @@ public class Database
                 return temp;
             }
         }
-        throw new Exception("Non ho trovato un player chiamato " + nomePlayer);
+        throw new Exception("Non è stato trovato nessuno Player con il nome: " + nomePlayer);
     }
 
 }

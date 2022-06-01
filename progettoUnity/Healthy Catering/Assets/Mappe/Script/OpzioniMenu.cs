@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Audio;
-
+using System;
 
 public class OpzioniMenu : MonoBehaviour
 {
@@ -25,6 +25,9 @@ public class OpzioniMenu : MonoBehaviour
 
     void Start()
     {
+
+        CambioCursore.cambioCursoreNormale();
+
         //DALTONISMO
         daltonismo.value = PlayerSettings.caricaImpostazioniDaltonismo();
 
