@@ -47,8 +47,11 @@ public class PannelloMagazzino : MonoBehaviour
 
             if (bottoniAggiuntiFinoAdOra > bottoniMassimiPerPannelloXElementi)
             {
-                aggiungiPannelloXElementi();
-                bottoniAggiuntiFinoAdOra = 0;
+                if (oggettoDellInventario != inventario[inventario.Count - 1]) // se e' diverso dall'ultimo elemento, previene che venga creato un pannello vuoto
+                { 
+                    aggiungiPannelloXElementi();
+                    bottoniAggiuntiFinoAdOra = 0;
+                }
             }
         }
     }
