@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Serializza
 {
@@ -21,13 +22,13 @@ public class Serializza
     }
 
     public static string getJsonPath<Oggetto>(Oggetto oggetto){
-        string jsonPath = Directory.GetCurrentDirectory() + @"\Assets\Mappe\Script\Database\database\";
+        string jsonPath = Application.streamingAssetsPath;
 
         string tipoOggetto = getNomeTipo (oggetto);
         if (tipoOggetto.ToLower().Contains("list")) //se è una lista
             tipoOggetto = getNomeTipoOggettoInLista(oggetto);
 
-        return jsonPath + tipoOggetto + ".json";
+        return Path.Combine(jsonPath, tipoOggetto + ".json");
     }
 
     private static string getNomeTipoOggettoInLista<Oggetto>(Oggetto oggetto)
