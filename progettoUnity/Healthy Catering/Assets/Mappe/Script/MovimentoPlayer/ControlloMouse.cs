@@ -23,10 +23,11 @@ public class ControlloMouse : MonoBehaviour
     void Start()
     {
         posizioneZcamera = posizioneCameraIniziale.transform.position.z;
-        if (PlayerPrefs.GetInt("primoAvvio") == 0)
+        if (PlayerSettings.caricaPrimoAvvioSettaggiSensibilita() == 0)
         {
+            PlayerSettings.salvaPrimoAvvioSettaggiSensibilita();
             PlayerPrefs.SetInt("primoAvvio", 1);
-            PlayerPrefs.SetFloat("sensibilita", 250f);
+            PlayerSettings.salvaImpostazioniSensibilita(250f);
         }
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

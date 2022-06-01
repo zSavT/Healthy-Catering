@@ -27,6 +27,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerPrefs.SetInt("primoAvvio", 0);
         PuntatoreMouse.abilitaCursore();
         nomeGiocatoreScritto = "";
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
@@ -69,20 +70,26 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     {
         if (nomeGiocatoreScritto != "")
         {
-            foreach (string temp in nomiPlayerPresenti)
+            bottoneSalva.interactable = true;
+            if (PlayerSettings.caricaPrimoAvvio() == 1)
             {
-                if(temp.ToUpper() == nomeGiocatoreScritto.ToUpper())
+                foreach (string temp in nomiPlayerPresenti)
                 {
-                    nomeGiaPreso.SetActive(true);
-                    bottoneSalva.interactable = false;
-                    break;
-                } else
-                {
-                    nomeGiaPreso.SetActive(false);
-                    bottoneSalva.interactable = true;
+                    if (temp.ToUpper() == nomeGiocatoreScritto.ToUpper())
+                    {
+                        nomeGiaPreso.SetActive(true);
+                        bottoneSalva.interactable = false;
+                        break;
+                    }
+                    else
+                    {
+                        nomeGiaPreso.SetActive(false);
+                        bottoneSalva.interactable = true;
+                    }
                 }
             }
-        }else
+        }  
+        else
         {
             bottoneSalva.interactable = false;
         }
@@ -144,6 +151,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
 
     public void salvaImpostazioni()
     {
+        PlayerSettings.salvaPrimaAvvio();
         PlayerSettings.salvaNomePlayerGiocante(nomeGiocatoreScritto);
         PlayerSettings.salvaGenereGiocatore(nomeGiocatoreScritto, sceltaGenere);
         PlayerSettings.salvaColorePelle(nomeGiocatoreScritto, sceltaColorePelle);
