@@ -63,6 +63,8 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         }
     }
 
+
+
     private void controlloNomeEsistente()
     {
         if (nomeGiocatoreScritto != "")
@@ -73,6 +75,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
                 {
                     nomeGiaPreso.SetActive(true);
                     bottoneSalva.interactable = false;
+                    break;
                 } else
                 {
                     nomeGiaPreso.SetActive(false);
