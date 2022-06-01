@@ -7,6 +7,8 @@ public class PannelloMagazzino : MonoBehaviour
 {
     [SerializeField] private GameObject pannelloMagazzino;
     [SerializeField] private Image sfondoImmaginePC;
+    [SerializeField] private GameObject sottoPannelloMostraInventario3Elementi;
+
 
     private void Start()
     {
@@ -17,12 +19,17 @@ public class PannelloMagazzino : MonoBehaviour
     public void attivaPannello()
     {
         pannelloMagazzino.SetActive(true);
+        popolaSchermata();
     }
 
+    private void popolaSchermata()
+    {
+        print(sottoPannelloMostraInventario3Elementi.GetComponentInChildren<Button>().name);
+    }
 
     public void cambiaSfondo()
     {
-        sfondoImmaginePC.sprite = Resources.Load<Sprite> ("SchermataMagazzino");
+        sfondoImmaginePC.sprite = Resources.Load<Sprite>("SchermataMagazzino");
     }
 
 }
