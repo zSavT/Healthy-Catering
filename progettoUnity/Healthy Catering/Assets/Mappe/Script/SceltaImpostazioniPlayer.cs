@@ -63,19 +63,28 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         }
     }
 
+
+
     private void controlloNomeEsistente()
     {
         if (nomeGiocatoreScritto != "")
         {
-            if (nomiPlayerPresenti.Contains(nomeGiocatoreScritto))
+            foreach (string temp in nomiPlayerPresenti)
             {
-                nomeGiaPreso.SetActive(true);
-                bottoneSalva.interactable = false; 
-            } else
-            {
-                nomeGiaPreso.SetActive(false);
-                bottoneSalva.interactable = true;
+                if(temp.ToUpper() == nomeGiocatoreScritto.ToUpper())
+                {
+                    nomeGiaPreso.SetActive(true);
+                    bottoneSalva.interactable = false;
+                    break;
+                } else
+                {
+                    nomeGiaPreso.SetActive(false);
+                    bottoneSalva.interactable = true;
+                }
             }
+        }else
+        {
+            bottoneSalva.interactable = false;
         }
     }
 
