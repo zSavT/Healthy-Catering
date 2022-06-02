@@ -35,9 +35,6 @@ public class PannelloMagazzino : MonoBehaviour
         schermataMagazzinoPopolata = false;
     }
 
-
-
-
     public void apriPannelloMagazzino()
     {
         pannelloMagazzino.SetActive(true);
@@ -52,7 +49,6 @@ public class PannelloMagazzino : MonoBehaviour
     {
         pannelloMagazzino.SetActive(false);
         pannelloMagazzinoAperto = false;
-        pannelloXElementi.SetActive(false);
         pannelloMostraRicette.chiudiPannelloMostraRicette();
     }
 
