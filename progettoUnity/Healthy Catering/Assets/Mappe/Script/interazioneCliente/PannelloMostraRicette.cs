@@ -1,18 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PannelloMostraRicette : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject pannelloMostraRicette;
+    [SerializeField] private TextMeshProUGUI titoloPannelloMostraRicette;
+    [SerializeField] private TextMeshProUGUI listaRicettePannelloMostraRicette;
+
+    public void chiudiPannelloMostraRicette()
     {
-        
+        if (pannelloMostraRicette != null)
+        {
+            pannelloMostraRicette.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void apriPannelloMostraRicette (Ingrediente ingrediente, List<Ingrediente> databaseIngredienti, List<Piatto> databasePiatti)
     {
-        
+        List<Piatto> piattiRealizzabili = ingrediente.getListaPiattiRealizzabiliConIngrediente(databaseIngredienti, databasePiatti);
+        string stringaPiattiRealizzabili = "";
+
+        titoloPannelloMostraRicette.text += ingrediente.nome;
+        foreach (Piatto piattoRealizzabile in piattiRealizzabili)
+        {
+            stringaPiattiRealizzabili += piattoRealizzabile.nome + "\n";
+        }
+        listaRicettePannelloMostraRicette.text = stringaPiattiRealizzabili;
+
+        pannelloMostraRicette.SetActive(true);
     }
 }

@@ -16,7 +16,7 @@ public class PannelloMagazzino : MonoBehaviour
     private int numeroPannelliXElementiPresenti = 1;
     private Button bottoneIngredienteTemplate;
 
-    [SerializeField] private GameObject pannelloMostraIngredientiOggettiInventario;
+    [SerializeField] private PannelloMostraRicette pannelloMostraRicette;
 
     private void Start()
     {
@@ -26,13 +26,12 @@ public class PannelloMagazzino : MonoBehaviour
         //poi lo elimino dal pannello cosi che non ci sia piu' (non posso eliminare l'instanza successivamente siccome ci sono piu' pannelli 
         //al posto di uno solo come in menu (interazione cliente))
         pannelloXElementi = rimuoviTuttiFigliDaPannello(pannelloXElementi);
-
-        pannelloMostraIngredientiOggettiInventario.SetActive(false);    
     }
 
     public void attivaPannello()
     {
         pannelloMagazzino.SetActive(true);
+        pannelloMostraRicette.chiudiPannelloMostraRicette();
         popolaSchermata();
     }
 
@@ -44,13 +43,14 @@ public class PannelloMagazzino : MonoBehaviour
     private void popolaSchermata()
     {
         List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
+        List<Piatto> databasePiatti = Database.getDatabaseOggetto(new Piatto()); //mi serve per vedere le ricette
         List <OggettoQuantita <int>> inventario = Database.getPlayerDaNome (PlayerSettings.caricaNomePlayerGiocante ()).inventario;
         
         int bottoniAggiuntiFinoAdOra = 0;
 
         foreach (OggettoQuantita <int> oggettoDellInventario in inventario)
         {
-            Button bottoneDaAggiungereTemp = creaBottoneConValoriIngrediente(oggettoDellInventario, bottoneIngredienteTemplate, databaseIngredienti);
+            Button bottoneDaAggiungereTemp = creaBottoneConValoriIngrediente(oggettoDellInventario, bottoneIngredienteTemplate, databaseIngredienti, databasePiatti);
             bottoneDaAggiungereTemp.transform.SetParent(pannelloXElementi.transform, false);
             bottoniAggiuntiFinoAdOra++;
 
@@ -65,7 +65,7 @@ public class PannelloMagazzino : MonoBehaviour
         }
     }
 
-    private Button creaBottoneConValoriIngrediente(OggettoQuantita<int> oggettoDellInventario, Button bottoneIngredienteTemplate, List <Ingrediente> databaseIngredienti)
+    private Button creaBottoneConValoriIngrediente(OggettoQuantita<int> oggettoDellInventario, Button bottoneIngredienteTemplate, List <Ingrediente> databaseIngredienti, List<Piatto> databasePiatti)
     {
         Ingrediente ingrediente = Ingrediente.idToIngrediente(oggettoDellInventario.oggetto, databaseIngredienti);
      
@@ -74,6 +74,10 @@ public class PannelloMagazzino : MonoBehaviour
 
         output.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Ingrediente: " + ingrediente.nome;
         output.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Quantità presente: " + oggettoDellInventario.quantita.ToString ();
+
+        output.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => {
+            pannelloMostraRicette.apriPannelloMostraRicette(ingrediente, databaseIngredienti, databasePiatti);
+        }); 
 
         return output;
     }
@@ -101,15 +105,7 @@ public class PannelloMagazzino : MonoBehaviour
         return pannello;//non sono sicuro sia necessario il return del pannello, se non serve poi lo togliamo
     }
 
-    public apriPannelloMostraIngredientiOggettiInventario()
-    {
-        /*
-         qualcosa sulla linea di 
-         Button bottoneMostraIngredienti = bottoneTemp.GetComponentsInChildren<Button>()[1];
-            bottoneMostraIngredienti.onClick.AddListener(() => {
-                cambiaPannelloIngredientiPiattoConPiatto(bottoneMostraIngredienti, piatti);
-                apriPannelloIngredientiPiatto();
-            });
-         */
-    }
+    
+
+    
 }
