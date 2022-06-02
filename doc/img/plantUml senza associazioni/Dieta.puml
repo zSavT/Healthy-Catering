@@ -1,0 +1,13 @@
+@startuml
+class Dieta {
+    + nome : string = ""
+    + descrizione : string = ""
+    + Dieta(nome:string, descrizione:string)
+    + Dieta()
+    + <<override>> Equals(obj:object) : bool
+    + <<override>> ToString() : string
+    + {static} getNewDietaFromUtente(output:string) : int
+    - {static} dietaStringToIdDieta(dieta:string) : int
+    + {static} IdDietaToDietaString(id:int) : string
+}
+@enduml
