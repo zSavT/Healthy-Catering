@@ -9,12 +9,14 @@ public class PannelloMagazzino : MonoBehaviour
     [SerializeField] private GameObject pannelloMagazzino;
     private bool pannelloMagazzinoAperto;
     [SerializeField] private Image sfondoImmaginePC;
+    [SerializeField] private Button tastoX;
 
     //mi serve per settare il parent dell'oggetto sotto a questo oggetto, poi se la vede unity a sistemarli all'interno della schermata
     [SerializeField] private GameObject pannelloMostraInventario;
     private bool pannelloMostraInventarioAperto;
 
     [SerializeField] private GameObject pannelloXElementi;
+    [SerializeField] private GameObject pannelloInventarioCanvas;
     private int bottoniMassimiPerPannelloXElementi = 4;
     private int numeroPannelliXElementiPresenti = 1;
     private Button bottoneIngredienteTemplate;
@@ -49,6 +51,7 @@ public class PannelloMagazzino : MonoBehaviour
     {
         pannelloMagazzino.SetActive(false);
         pannelloMagazzinoAperto = false;
+        pannelloMostraInventario.SetActive(false);
         pannelloMostraRicette.chiudiPannelloMostraRicette();
     }
 
@@ -103,9 +106,11 @@ public class PannelloMagazzino : MonoBehaviour
 
         output.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Ingrediente: " + ingrediente.nome;
         output.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Quantità presente: " + oggettoDellInventario.quantita.ToString ();
-
+       
         output.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => {
             pannelloMostraRicette.apriPannelloMostraRicette(ingrediente, databaseIngredienti, databasePiatti);
+            Debug.Log(ingrediente);
+            pannelloInventarioCanvas.SetActive(false);
         }); 
 
         return output;

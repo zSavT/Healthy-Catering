@@ -10,8 +10,12 @@ public class PannelloMostraRicette : MonoBehaviour
     [SerializeField] private TextMeshProUGUI titoloPannelloMostraRicette;
     [SerializeField] private TextMeshProUGUI listaRicettePannelloMostraRicette;
 
+
     public void apriPannelloMostraRicette(Ingrediente ingrediente, List<Ingrediente> databaseIngredienti, List<Piatto> databasePiatti)
     {
+        Debug.Log("Ciao dentro\n" + ingrediente.ToString());
+        Debug.Log("Ciao dentro\n" + databaseIngredienti);
+        Debug.Log("Ciao dentro\n" + databasePiatti);
         List<Piatto> piattiRealizzabili = ingrediente.getListaPiattiRealizzabiliConIngrediente(databaseIngredienti, databasePiatti);
         string stringaPiattiRealizzabili = "";
 
@@ -24,6 +28,11 @@ public class PannelloMostraRicette : MonoBehaviour
 
         pannelloMostraRicette.SetActive(true);
         pannelloMostraRicetteAperto = true;
+    }
+
+    public void ing(int i)
+    {
+        Debug.Log(i);
     }
 
     public void chiudiPannelloMostraRicette()

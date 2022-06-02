@@ -101,15 +101,6 @@ public class Interactor : MonoBehaviour
                     }
                 } 
             }
-            Debug.Log("Pannello Magazzino: " + magazzino.getPannelloMagazzinoAperto());
-            if (magazzino.getPannelloMagazzinoAperto())
-            {
-                Debug.Log("LOL");
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    esciDaInterazionePC();
-                }
-            }
         }
     }
 
