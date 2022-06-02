@@ -81,7 +81,7 @@ public class Interactor : MonoBehaviour
                 inquadratoNPC.Invoke();
                 if (Input.GetKeyDown(tastoInterazione))
                 {
-                    magazzino.attivaPannello();
+                    magazzino.apriPannelloMagazzino();
                     playerStop.Invoke();
                     PuntatoreMouse.abilitaCursore();
                 }

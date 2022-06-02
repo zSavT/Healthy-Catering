@@ -7,10 +7,13 @@ using TMPro;
 public class PannelloMagazzino : MonoBehaviour
 {
     [SerializeField] private GameObject pannelloMagazzino;
+    private bool pannelloMagazzinoAperto;
     [SerializeField] private Image sfondoImmaginePC;
 
     //mi serve per settare il parent dell'oggetto sotto a questo oggetto, poi se la vede unity a sistemarli all'interno della schermata
     [SerializeField] private GameObject pannelloMostraInventario;
+    private bool pannelloMostraInventarioAperto;
+
     [SerializeField] private GameObject pannelloXElementi;
     private int bottoniMassimiPerPannelloXElementi = 4;
     private int numeroPannelliXElementiPresenti = 1;
@@ -28,11 +31,23 @@ public class PannelloMagazzino : MonoBehaviour
         pannelloXElementi = rimuoviTuttiFigliDaPannello(pannelloXElementi);
     }
 
-    public void attivaPannello()
+    public void apriPannelloMagazzino()
     {
         pannelloMagazzino.SetActive(true);
+        pannelloMagazzinoAperto = true;
         pannelloMostraRicette.chiudiPannelloMostraRicette();
         popolaSchermata();
+    }
+
+    public void chiudiPannelloMagazzino()
+    {
+        pannelloMagazzino.SetActive(false);
+        pannelloMagazzinoAperto = false;
+    }
+
+    public bool getPannelloMagazzinoAperto()
+    {
+        return pannelloMagazzinoAperto;
     }
 
     public void cambiaSfondo()
@@ -104,8 +119,4 @@ public class PannelloMagazzino : MonoBehaviour
 
         return pannello;//non sono sicuro sia necessario il return del pannello, se non serve poi lo togliamo
     }
-
-    
-
-    
 }
