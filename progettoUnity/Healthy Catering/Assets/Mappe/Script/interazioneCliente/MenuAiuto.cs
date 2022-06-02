@@ -14,6 +14,7 @@ public class MenuAiuto : MonoBehaviour
     [SerializeField] private TextMeshProUGUI testoNumeroPannelloAttuale;
 
     private int ultimaPosizione = 0;//cosi la prima volta apre il primo messaggio
+
     private List<string> titoloMessaggiDiAiuto = new List<string>
     {
         "Movimenti:",
@@ -39,14 +40,12 @@ public class MenuAiuto : MonoBehaviour
     void Start()
     {
         pannelloMenuAiuto.SetActive(true);
-        tastoAvanti.onClick.AddListener(() => {
-            mostraProssimoMessaggioDiAiuto();
-        });
-        tastoIndietro.onClick.AddListener(() => {
-            mostraPrecedenteMessaggioDiAiuto();
-        });
+        tastoAvanti.onClick.AddListener(mostraProssimoMessaggioDiAiuto);
+        tastoIndietro.onClick.AddListener(mostraPrecedenteMessaggioDiAiuto);
 
         testoNumeroPannelloAttuale.text = 1.ToString();
+
+        gestisciBottoniAvantiDietro(ultimaPosizione);
     }
 
     public void apriPannelloMenuAiuto()
@@ -58,10 +57,10 @@ public class MenuAiuto : MonoBehaviour
 
     void mostraProssimoMessaggioDiAiuto()
     {
-        int prossimaPosizione = ultimaPosizione + 1;
-        if (ultimaPosizione == messaggiDiAiuto.Count - 1)
+        int prossimaPosizione = ultimaPosizione;
+        if (ultimaPosizione != messaggiDiAiuto.Count - 1)
         {
-            prossimaPosizione = 0;
+            prossimaPosizione = ultimaPosizione + 1;
         }
         titoloTestoAiuto.text = titoloMessaggiDiAiuto[prossimaPosizione];
         testoAiuto.text = messaggiDiAiuto[prossimaPosizione];
@@ -69,14 +68,17 @@ public class MenuAiuto : MonoBehaviour
         ultimaPosizione = prossimaPosizione;//aggiorno l'ultima posizione
 
         aggiornaTestoNumeroPannelloAttuale(ultimaPosizione);
+
+        gestisciBottoniAvantiDietro(ultimaPosizione);
     }
 
     void mostraPrecedenteMessaggioDiAiuto()
     {
-        int precedentePosizione = ultimaPosizione - 1;
-        if (ultimaPosizione == 0)
+        print("ciao");
+        int precedentePosizione = ultimaPosizione;
+        if (ultimaPosizione != 0)
         {
-            precedentePosizione = messaggiDiAiuto.Count -1;
+            precedentePosizione = ultimaPosizione - 1;
         }
         titoloTestoAiuto.text = titoloMessaggiDiAiuto[precedentePosizione];
         testoAiuto.text = messaggiDiAiuto[precedentePosizione];
@@ -84,10 +86,35 @@ public class MenuAiuto : MonoBehaviour
         ultimaPosizione = precedentePosizione;//aggiorno l'ultima posizione
 
         aggiornaTestoNumeroPannelloAttuale(ultimaPosizione);
+
+        gestisciBottoniAvantiDietro(ultimaPosizione);
     }
 
     private void aggiornaTestoNumeroPannelloAttuale(int ultimaPosizione)
     {
         testoNumeroPannelloAttuale.text = (ultimaPosizione + 1).ToString();
+    }
+
+    private void gestisciBottoniAvantiDietro(int posizione)
+    {
+        //tasto avanti
+        if (posizione == messaggiDiAiuto.Count - 1)
+        {
+            tastoAvanti.interactable = false;
+        }
+        else
+        {
+            tastoAvanti.interactable = true;
+        }
+
+        //tasto indietro
+        if (posizione == 0)
+        {
+            tastoIndietro.interactable = false;
+        }
+        else
+        {
+            tastoIndietro.interactable = true;
+        }
     }
 }
