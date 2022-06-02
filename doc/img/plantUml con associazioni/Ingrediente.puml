@@ -1,0 +1,23 @@
+@startuml
+class Ingrediente {
+    + costo : float = 0
+    + costoEco : int = 0
+    + nutriScore : int = 0
+    + dieta : int
+    + Ingrediente(idItem:int, nome:string, descrizione:string, costo:float, costoEco:int, nutriScore:int, dieta:int, listaIdPatologieCompatibili:List<int>)
+    + Ingrediente()
+    + Ingrediente(nomeIngrediente:string)
+    + <<override>> Equals(obj:object) : bool
+    + <<override>> ToString() : string
+    - {static} idNutriScoreToString(id:int) : char
+    + {static} checkIngredienteOnonimoGiaPresente(nomeIngrediente:string) : Ingrediente
+    + {static} getIngredientiConNomeSimileInDatabase(nomeIngrediente:string, databaseIngredienti:List<Ingrediente>) : List<Ingrediente>
+    + {static} scegliIngredienteConNomeSimile(nomeIngrediente:string, ingredientiConNomeSimile:List<Ingrediente>) : Ingrediente
+    - {static} getStampaIngredientiSimiliPerSceltaUtente(nomeIngrediente:string, ingredientiConNomeSimile:List<Ingrediente>) : string
+    + {static} idToIngrediente(id:int, databaseIngredienti:List<Ingrediente>) : Ingrediente
+}
+class "List`1"<T> {
+}
+Item <|-- Ingrediente
+Ingrediente o-> "listaIdPatologieCompatibili<int>" "List`1"
+@enduml

@@ -58,11 +58,11 @@ L'aspect ratio 4:3 non è pienamento supportato, l'esperienza potrebbe variare r
 
 ## Immagini di gioco
 
-![Creazione Profilo Utente](doc/Screenshoot/CreazioneProfiloUtente.PNG "HUD in Game")
+![Creazione Profilo Utente](doc/img/Screenshoot/CreazioneProfiloUtente.PNG "HUD in Game")
 
-![InterazioneCliente](doc/Screenshoot/InterazioneCliente.PNG "HUD in Game")
+![InterazioneCliente](doc/img/Screenshoot/InterazioneCliente.PNG "HUD in Game")
 
-![Menu Opzioni](doc/Screenshoot/MenuOpzioni.PNG "HUD in Game")
+![Menu Opzioni](doc/img/Screenshoot/MenuOpzioni.PNG "HUD in Game")
 
 
 ---
