@@ -21,6 +21,8 @@ public class PannelloMagazzino : MonoBehaviour
 
     [SerializeField] private PannelloMostraRicette pannelloMostraRicette;
 
+    private bool schermataMagazzinoPopolata;
+
     private void Start()
     {
         pannelloMagazzino.SetActive(false);
@@ -29,6 +31,8 @@ public class PannelloMagazzino : MonoBehaviour
         //poi lo elimino dal pannello cosi che non ci sia piu' (non posso eliminare l'instanza successivamente siccome ci sono piu' pannelli 
         //al posto di uno solo come in menu (interazione cliente))
         pannelloXElementi = rimuoviTuttiFigliDaPannello(pannelloXElementi);
+
+        schermataMagazzinoPopolata = false;
     }
 
 
@@ -39,7 +43,9 @@ public class PannelloMagazzino : MonoBehaviour
         pannelloMagazzino.SetActive(true);
         pannelloMagazzinoAperto = true;
         pannelloMostraRicette.chiudiPannelloMostraRicette();
-        popolaSchermata();
+        
+        if (!schermataMagazzinoPopolata)
+            popolaSchermata();
     }
 
     public void chiudiPannelloMagazzino()
@@ -88,6 +94,8 @@ public class PannelloMagazzino : MonoBehaviour
                 }
             }
         }
+
+        schermataMagazzinoPopolata = true;
     }
 
     private Button creaBottoneConValoriIngrediente(OggettoQuantita<int> oggettoDellInventario, Button bottoneIngredienteTemplate, List <Ingrediente> databaseIngredienti, List<Piatto> databasePiatti)
