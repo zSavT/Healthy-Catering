@@ -15,7 +15,7 @@ public class MenuAiuto : MonoBehaviour
 
     private int ultimaPosizione = 0;//cosi la prima volta apre il primo messaggio
 
-    private List<string> titoloMessaggiDiAiuto = new List<string>
+    private List<string> titoliMessaggiDiAiuto = new List<string>
     {
         "Movimenti:",
         "Interazione con I clienti:",
@@ -51,7 +51,7 @@ public class MenuAiuto : MonoBehaviour
     public void apriPannelloMenuAiuto()
     {
         pannelloMenuAiuto.SetActive(true);
-        titoloTestoAiuto.text = titoloMessaggiDiAiuto[ultimaPosizione];
+        titoloTestoAiuto.text = titoliMessaggiDiAiuto[ultimaPosizione];
         testoAiuto.text = messaggiDiAiuto[ultimaPosizione];
     }
 
@@ -62,7 +62,7 @@ public class MenuAiuto : MonoBehaviour
         {
             prossimaPosizione = ultimaPosizione + 1;
         }
-        titoloTestoAiuto.text = titoloMessaggiDiAiuto[prossimaPosizione];
+        titoloTestoAiuto.text = titoliMessaggiDiAiuto[prossimaPosizione];
         testoAiuto.text = messaggiDiAiuto[prossimaPosizione];
 
         ultimaPosizione = prossimaPosizione;//aggiorno l'ultima posizione
@@ -74,13 +74,12 @@ public class MenuAiuto : MonoBehaviour
 
     void mostraPrecedenteMessaggioDiAiuto()
     {
-        print("ciao");
         int precedentePosizione = ultimaPosizione;
         if (ultimaPosizione != 0)
         {
             precedentePosizione = ultimaPosizione - 1;
         }
-        titoloTestoAiuto.text = titoloMessaggiDiAiuto[precedentePosizione];
+        titoloTestoAiuto.text = titoliMessaggiDiAiuto[precedentePosizione];
         testoAiuto.text = messaggiDiAiuto[precedentePosizione];
 
         ultimaPosizione = precedentePosizione;//aggiorno l'ultima posizione
