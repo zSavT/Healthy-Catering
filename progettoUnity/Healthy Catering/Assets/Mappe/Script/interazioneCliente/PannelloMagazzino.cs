@@ -31,6 +31,9 @@ public class PannelloMagazzino : MonoBehaviour
         pannelloXElementi = rimuoviTuttiFigliDaPannello(pannelloXElementi);
     }
 
+
+
+
     public void apriPannelloMagazzino()
     {
         pannelloMagazzino.SetActive(true);
@@ -43,6 +46,8 @@ public class PannelloMagazzino : MonoBehaviour
     {
         pannelloMagazzino.SetActive(false);
         pannelloMagazzinoAperto = false;
+        pannelloXElementi.SetActive(false);
+        pannelloMostraRicette.chiudiPannelloMostraRicette();
     }
 
     public bool getPannelloMagazzinoAperto()
@@ -50,9 +55,14 @@ public class PannelloMagazzino : MonoBehaviour
         return pannelloMagazzinoAperto;
     }
 
-    public void cambiaSfondo()
+    public void cambiaSfondoMagazzino()
     {
         sfondoImmaginePC.sprite = Resources.Load<Sprite>("SchermataMagazzino");
+    }
+
+    public void cambiaSfondoDesktop()
+    {
+        sfondoImmaginePC.sprite = Resources.Load<Sprite>("SfondoBasePC");
     }
 
     private void popolaSchermata()
