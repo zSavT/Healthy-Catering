@@ -42,7 +42,13 @@ I requisiti Hardware e Software del gioco:
 -	RAM: 1GB per l’esecuzione
 -	Hard Disk: 1GB
 -	Scheda Video: GEFORCE GT710
--	Risoluzione: 1920x1080 o superiori - Aspect Ratio: 4:3 e/o 16:9
+-	Risoluzione: 1920x1080 o superiori - Aspect Ratio: 16:9
+
+
+### NOTA BENE!
+L'aspect ratio 4:3 non è pienamento supportato, l'esperienza potrebbe variare rispetto alla modalità 16:9 pienamente supportata.
+
+
 
 ### Requisiti Software
 

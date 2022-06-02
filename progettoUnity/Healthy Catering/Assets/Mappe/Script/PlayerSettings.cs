@@ -5,7 +5,39 @@ public class PlayerSettings : MonoBehaviour
     public static bool profiloUtenteCreato = true;
     public static int livelloSelezionato = 0;
 
+    public static void salvaPrimoAvvioGame()
+    {
+        PlayerPrefs.SetInt("avvioCitta", 1);
+    }
+
+
+
+    public static void resetTuttiValori()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
+    public static int caricaPrimoAvvio()
+    {
+        return PlayerPrefs.GetInt("primoAvvio");
+    }
+
+    public static void salvaPrimaAvvio()
+    {
+        PlayerPrefs.SetInt("primoAvvio", 1);
+    }
+
+    public static int caricaPrimoAvvioSettaggiSensibilita()
+    {
+        return PlayerPrefs.GetInt(caricaNomePlayerGiocante() + "_primoAvvioSensibilita");
+    }
+
+    public static void salvaPrimoAvvioSettaggiSensibilita()
+    {
+        PlayerPrefs.SetInt(caricaNomePlayerGiocante() + "_primoAvvioSensibilita", 1);
+    }
     //PROFILO UTENTE
+
 
 
     //GENERE MODELLO
