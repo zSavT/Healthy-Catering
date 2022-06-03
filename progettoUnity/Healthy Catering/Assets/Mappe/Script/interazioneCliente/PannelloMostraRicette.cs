@@ -27,11 +27,6 @@ public class PannelloMostraRicette : MonoBehaviour
         pannelloMostraRicetteAperto = true;
     }
 
-    public void ing(int i)
-    {
-        Debug.Log(i);
-    }
-
     public void chiudiPannelloMostraRicette()
     {
         if (pannelloMostraRicette != null)

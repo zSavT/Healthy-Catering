@@ -39,6 +39,7 @@ public class PannelloMagazzino : MonoBehaviour
 
     public void apriPannelloMagazzino()
     {
+        CambioCursore.cambioCursoreNormale();
         pannelloMagazzino.SetActive(true);
         pannelloMagazzinoAperto = true;
         pannelloMostraRicette.chiudiPannelloMostraRicette();
@@ -51,7 +52,6 @@ public class PannelloMagazzino : MonoBehaviour
     {
         pannelloMagazzino.SetActive(false);
         pannelloMagazzinoAperto = false;
-        pannelloMostraInventario.SetActive(false);
         pannelloMostraRicette.chiudiPannelloMostraRicette();
     }
 
