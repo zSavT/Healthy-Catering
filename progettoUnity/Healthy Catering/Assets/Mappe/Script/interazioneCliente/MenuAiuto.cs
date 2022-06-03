@@ -14,6 +14,7 @@ public class MenuAiuto : MonoBehaviour
     [SerializeField] private Button tastoAvanti;
     [SerializeField] private Button tastoIndietro;
     [SerializeField] private TextMeshProUGUI testoNumeroPannelloAttuale;
+    [SerializeField] private Image immagineSchermata;
 
     private int ultimaPosizione = 0;//cosi la prima volta apre il primo messaggio
 
@@ -38,7 +39,6 @@ public class MenuAiuto : MonoBehaviour
         "Interagire con gli <color=#B5D99C>NPC</color> in giro per la città permetterà di ottenere <color=#B5D99C>suggerimenti</color> utili per servire piatti migliori, sia dal punto di vista dell’affinità le patologie che dal punto di vista del nutriScore e dell’ecoScore.",
     };
 
-
     void Start()
     {
         pannelloMenuAiuto.SetActive(false);
@@ -61,6 +61,7 @@ public class MenuAiuto : MonoBehaviour
 
         titoloTestoAiuto.text = titoliMessaggiDiAiuto[ultimaPosizione];
         testoAiuto.text = messaggiDiAiuto[ultimaPosizione];
+        cambiaImmagineSchermataAiuto(ultimaPosizione);
     }
 
     public void chiudiPannelloMenuAiuto()
@@ -84,6 +85,7 @@ public class MenuAiuto : MonoBehaviour
         }
         titoloTestoAiuto.text = titoliMessaggiDiAiuto[prossimaPosizione];
         testoAiuto.text = messaggiDiAiuto[prossimaPosizione];
+        cambiaImmagineSchermataAiuto(prossimaPosizione);
 
         ultimaPosizione = prossimaPosizione;//aggiorno l'ultima posizione
 
@@ -92,7 +94,7 @@ public class MenuAiuto : MonoBehaviour
         gestisciBottoniAvantiDietro(ultimaPosizione);
     }
 
-    void mostraPrecedenteMessaggioDiAiuto()
+    private void mostraPrecedenteMessaggioDiAiuto()
     {
         int precedentePosizione = ultimaPosizione;
         if (ultimaPosizione != 0)
@@ -101,12 +103,23 @@ public class MenuAiuto : MonoBehaviour
         }
         titoloTestoAiuto.text = titoliMessaggiDiAiuto[precedentePosizione];
         testoAiuto.text = messaggiDiAiuto[precedentePosizione];
+        cambiaImmagineSchermataAiuto(precedentePosizione);
 
         ultimaPosizione = precedentePosizione;//aggiorno l'ultima posizione
 
         aggiornaTestoNumeroPannelloAttuale(ultimaPosizione);
 
         gestisciBottoniAvantiDietro(ultimaPosizione);
+    }
+
+    private void cambiaImmagineSchermataAiuto(int ultimaPosizione)
+    {
+        Sprite nuovaImmagine = Resources.Load<Sprite>("immagineAiuto" + (ultimaPosizione + 1).ToString());
+        if (nuovaImmagine == null)
+        {
+            nuovaImmagine = Resources.Load<Sprite>("immagineAiutoDefault");
+        }
+        immagineSchermata.sprite = nuovaImmagine;
     }
 
     private void aggiornaTestoNumeroPannelloAttuale(int ultimaPosizione)
