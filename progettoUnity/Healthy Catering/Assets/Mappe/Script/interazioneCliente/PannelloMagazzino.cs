@@ -109,7 +109,6 @@ public class PannelloMagazzino : MonoBehaviour
        
         output.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => {
             pannelloMostraRicette.apriPannelloMostraRicette(ingrediente, databaseIngredienti, databasePiatti);
-            Debug.Log(ingrediente);
             pannelloInventarioCanvas.SetActive(false);
         }); 
 
@@ -138,4 +137,5 @@ public class PannelloMagazzino : MonoBehaviour
 
         return pannello;//non sono sicuro sia necessario il return del pannello, se non serve poi lo togliamo
     }
+
 }

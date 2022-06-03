@@ -156,7 +156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3888211035983004406
 RectTransform:
   m_ObjectHideFlags: 0
@@ -481,13 +481,14 @@ GameObject:
   - component: {fileID: 4281683608108030191}
   - component: {fileID: 5666521069147937095}
   - component: {fileID: 2998280228401840391}
+  - component: {fileID: 928960412}
   m_Layer: 6
   m_Name: ButtonTornaIndietro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5556542601634359633
 RectTransform:
   m_ObjectHideFlags: 0
@@ -591,30 +592,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3888211035983004402}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8927580658198771928}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -627,6 +604,44 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 3888211035983004402}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: CambioCursore, Assembly-CSharp
+        m_MethodName: cambioCursoreNormale
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &928960412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4819586439872632458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursoreNormale: {fileID: 2800000, guid: 40f65d19297dd0148a0ff7d86543271c, type: 3}
+  cursoreSuElemento: {fileID: 2800000, guid: 5852cf799bb9aa448bd2d643ceb7e776, type: 3}
 --- !u!1 &7340715542628842367
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,14 +791,14 @@ GameObject:
   - component: {fileID: 4483084709540164076}
   - component: {fileID: 8053949146941622707}
   - component: {fileID: 5826399956944892674}
-  - component: {fileID: 287591043}
+  - component: {fileID: 287591044}
   m_Layer: 6
   m_Name: EsciProgrammaRicette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2541937661788728404
 RectTransform:
   m_ObjectHideFlags: 0
@@ -911,9 +926,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+        m_TargetAssemblyTypeName: CambioCursore, Assembly-CSharp
+        m_MethodName: cambioCursoreNormale
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -946,7 +961,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8927580658198771928}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -958,10 +973,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8927580658198771928}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: CambioCursore, Assembly-CSharp
+        m_MethodName: cambioCursoreNormale
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -970,7 +985,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &287591043
+--- !u!114 &287591044
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -982,5 +997,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursoreNormale: {fileID: 2800000, guid: 4073fc67b3a8b904e9a806db1ce47e68, type: 3}
-  cursoreSuElemento: {fileID: 2800000, guid: e27047d119dcbeb4babd6ae3e792eea4, type: 3}
+  cursoreNormale: {fileID: 2800000, guid: 40f65d19297dd0148a0ff7d86543271c, type: 3}
+  cursoreSuElemento: {fileID: 2800000, guid: 5852cf799bb9aa448bd2d643ceb7e776, type: 3}
