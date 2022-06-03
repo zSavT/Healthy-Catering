@@ -10,7 +10,7 @@ public class MenuInGame : MonoBehaviour
     [SerializeField] private UnityEvent chiusuraMenuGioco;
     private bool giocoInPausa = false;
     private bool menuApribile;
-
+    [SerializeField]private MenuAiuto menuAiuto;
 
 
     // Start is called before the first frame update
@@ -37,8 +37,15 @@ public class MenuInGame : MonoBehaviour
                 {
                     if (giocoInPausa)
                     {
-                        resumeGame();
-                        PuntatoreMouse.disabilitaCursore();
+                        if (menuAiuto.getPannelloMenuAiutoAperto())
+                        {
+                            menuAiuto.chiudiPannelloMenuAiuto();
+                        }
+                        else
+                        {
+                            resumeGame();
+                            PuntatoreMouse.disabilitaCursore();
+                        }
                     }
                     else
                     {

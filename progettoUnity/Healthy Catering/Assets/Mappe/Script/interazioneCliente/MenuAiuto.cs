@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class MenuAiuto : MonoBehaviour
 {
+    private bool pannelloMenuAiutoAperto;
+
     [SerializeField] private GameObject pannelloMenuAiuto;
     [SerializeField] private TextMeshProUGUI titoloTestoAiuto;
     [SerializeField] private TextMeshProUGUI testoAiuto;
@@ -40,6 +42,9 @@ public class MenuAiuto : MonoBehaviour
     void Start()
     {
         pannelloMenuAiuto.SetActive(false);
+
+        pannelloMenuAiutoAperto = false;
+
         tastoAvanti.onClick.AddListener(mostraProssimoMessaggioDiAiuto);
         tastoIndietro.onClick.AddListener(mostraPrecedenteMessaggioDiAiuto);
 
@@ -50,10 +55,24 @@ public class MenuAiuto : MonoBehaviour
 
     public void apriPannelloMenuAiuto()
     {
-        print("ciao");
         pannelloMenuAiuto.SetActive(true);
+
+        pannelloMenuAiutoAperto = true;
+
         titoloTestoAiuto.text = titoliMessaggiDiAiuto[ultimaPosizione];
         testoAiuto.text = messaggiDiAiuto[ultimaPosizione];
+    }
+
+    public void chiudiPannelloMenuAiuto()
+    {
+        pannelloMenuAiuto.SetActive(false);
+
+        pannelloMenuAiutoAperto = false;
+    }
+
+    public bool getPannelloMenuAiutoAperto()
+    {
+        return pannelloMenuAiutoAperto;
     }
 
     void mostraProssimoMessaggioDiAiuto()
