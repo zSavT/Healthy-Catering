@@ -2,7 +2,54 @@
   {
     "nome": "Sav",
     "soldi": 0.0,
-    "inventario": [],
-    "punteggio": 0
+    "inventario": [{
+      "oggetto": 0,
+      "quantita": 100
+    },
+    {
+      "oggetto": 1,
+      "quantita": 100
+    },
+    {
+      "oggetto": 2,
+      "quantita": 100
+    },
+    {
+      "oggetto": 3,
+      "quantita": 100
+    },
+    {
+      "oggetto": 4,
+      "quantita": 100
+    },
+    {
+      "oggetto": 5,
+      "quantita": 100
+    },
+    {
+      "oggetto": 6,
+      "quantita": 100
+    },
+    {
+      "oggetto": 7,
+      "quantita": 100
+    },
+    {
+      "oggetto": 8,
+      "quantita": 100
+    },
+    {
+      "oggetto": 9,
+      "quantita": 100
+    },
+    {
+      "oggetto": 10,
+      "quantita": 100
+    },
+    {
+      "oggetto": 11,
+      "quantita": 100
+    }],
+    "punteggio": -1
   }
 ]
