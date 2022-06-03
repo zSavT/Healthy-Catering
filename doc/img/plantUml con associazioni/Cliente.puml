@@ -1,0 +1,13 @@
+@startuml
+class Cliente {
+    + nome : string = ""
+    + dieta : int = 0
+    + Cliente(nome:string, dieta:int, listaIdPatologie:List<int>)
+    + Cliente()
+    + <<override>> Equals(obj:object) : bool
+    + <<override>> ToString() : string
+}
+class "List`1"<T> {
+}
+Cliente o-> "listaIdPatologie<int>" "List`1"
+@enduml

@@ -28,7 +28,7 @@ public class Interactor : MonoBehaviour
 
     private Vector3 posizioneCameraOriginale;
 
-    private bool menuApribile;
+    private bool menuApribile;                                                      //se il menu opzioni è aperto, le interezioni sono disattivate
     public static bool pannelloAperto;
     private int IDClientePuntato;
     private Player giocatore;
@@ -83,7 +83,7 @@ public class Interactor : MonoBehaviour
                 inquadratoNPC.Invoke();
                 if (Input.GetKeyDown(tastoInterazione))
                 {
-                    magazzino.attivaPannello();
+                    magazzino.apriPannelloMagazzino();
                     playerStop.Invoke();
                     PuntatoreMouse.abilitaCursore();
                 }
@@ -99,23 +99,31 @@ public class Interactor : MonoBehaviour
                         {
                             esciDaInterazioneCliente();
                         }
+                        
                     }
-                }
+                } 
             }
         }
     }
 
+    public void esciDaInterazionePC()
+    {
+        playerRiprendiMovimento.Invoke();
+
+        ritornaAllaPosizioneNormale();
+        CambioCursore.cambioCursoreNormale();
+        PuntatoreMouse.disabilitaCursore();
+        magazzino.chiudiPannelloMagazzino();
+    }
 
     private bool pcPuntato()
     {
         RaycastHit pcInquadrato;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out pcInquadrato, 2, layerUnityNPC))
         {
-            Debug.Log("CheckComputer");
             // se l'oggetto visualizzato è interagibile
             if (pcInquadrato.collider.GetComponent<PannelloMagazzino>() != false)
             {
-                Debug.Log("Computer puntato");
                 return true;
             }
         }

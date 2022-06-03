@@ -6,11 +6,12 @@ public class MenuInGame : MonoBehaviour
     [Header("Menu Opzioni")]
     [SerializeField] private KeyCode tastoMenu;
     [SerializeField] private GameObject menuPausa;
+    [SerializeField] private MenuAiuto menuAiuto;
     [SerializeField] private UnityEvent aperturaMenuGioco;
     [SerializeField] private UnityEvent chiusuraMenuGioco;
     private bool giocoInPausa = false;
     private bool menuApribile;
-    [SerializeField]private MenuAiuto menuAiuto;
+    
 
 
     // Start is called before the first frame update
