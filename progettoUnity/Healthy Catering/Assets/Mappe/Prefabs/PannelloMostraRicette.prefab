@@ -482,6 +482,7 @@ GameObject:
   - component: {fileID: 4483084709540164076}
   - component: {fileID: 8053949146941622707}
   - component: {fileID: 5826399956944892674}
+  - component: {fileID: 287591043}
   m_Layer: 6
   m_Name: EsciProgrammaRicette
   m_TagString: Untagged
@@ -651,3 +652,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &287591043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8927580658198771928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursoreNormale: {fileID: 2800000, guid: 4073fc67b3a8b904e9a806db1ce47e68, type: 3}
+  cursoreSuElemento: {fileID: 2800000, guid: e27047d119dcbeb4babd6ae3e792eea4, type: 3}

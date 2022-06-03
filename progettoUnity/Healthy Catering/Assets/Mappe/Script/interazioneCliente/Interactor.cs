@@ -84,6 +84,7 @@ public class Interactor : MonoBehaviour
                     magazzino.apriPannelloMagazzino();
                     playerStop.Invoke();
                     PuntatoreMouse.abilitaCursore();
+                    CambioCursore.cambioCursoreNormalePC();
                 }
             }
             else
@@ -104,7 +105,7 @@ public class Interactor : MonoBehaviour
         }
     }
 
-    private void esciDaInterazionePC()
+    public void esciDaInterazionePC()
     {
         playerRiprendiMovimento.Invoke();
 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4510955117388309160}
   - component: {fileID: 8221292366785943241}
   - component: {fileID: 5803485010885829108}
+  - component: {fileID: 398639702}
   m_Layer: 6
   m_Name: IconaExit
   m_TagString: Untagged
@@ -146,21 +147,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Interactor, Assembly-CSharp
-        m_MethodName: esciDaInterazioneCliente
+        m_TargetAssemblyTypeName: CambioCursore, Assembly-CSharp
+        m_MethodName: cambioCursoreNormale
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -169,6 +158,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Interactor, Assembly-CSharp
+        m_MethodName: esciDaInterazionePC
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &398639702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894457967567867730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursoreNormale: {fileID: 2800000, guid: 4073fc67b3a8b904e9a806db1ce47e68, type: 3}
+  cursoreSuElemento: {fileID: 2800000, guid: e27047d119dcbeb4babd6ae3e792eea4, type: 3}
 --- !u!1 &2061283461208174157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,6 +1399,7 @@ GameObject:
   - component: {fileID: 2061283462718821683}
   - component: {fileID: 2061283462718821684}
   - component: {fileID: 2061283462718821685}
+  - component: {fileID: 231087195570636517}
   m_Layer: 6
   m_Name: EsciProgramma
   m_TagString: Untagged
@@ -1541,6 +1557,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &231087195570636517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061283462718821687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursoreNormale: {fileID: 2800000, guid: 4073fc67b3a8b904e9a806db1ce47e68, type: 3}
+  cursoreSuElemento: {fileID: 2800000, guid: e27047d119dcbeb4babd6ae3e792eea4, type: 3}
 --- !u!1 &2061283462759398707
 GameObject:
   m_ObjectHideFlags: 0
@@ -1688,6 +1718,7 @@ GameObject:
   - component: {fileID: 1520535718661421264}
   - component: {fileID: 3683906499218920366}
   - component: {fileID: 5282023440268198821}
+  - component: {fileID: 118525772}
   m_Layer: 6
   m_Name: IconaProgramma
   m_TagString: Untagged
@@ -1857,6 +1888,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &118525772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6219857566238694841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursoreNormale: {fileID: 2800000, guid: 4073fc67b3a8b904e9a806db1ce47e68, type: 3}
+  cursoreSuElemento: {fileID: 2800000, guid: e27047d119dcbeb4babd6ae3e792eea4, type: 3}
 --- !u!1 &7476081222775452756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,6 +1914,7 @@ GameObject:
   - component: {fileID: 7476081222775452759}
   - component: {fileID: 7476081222775452758}
   - component: {fileID: 7476081222775452757}
+  - component: {fileID: 8678360289355278213}
   m_Layer: 6
   m_Name: PannelloMagazzino
   m_TagString: Untagged
@@ -1959,6 +2005,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8678360289355278213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7476081222775452756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursoreNormale: {fileID: 2800000, guid: 4073fc67b3a8b904e9a806db1ce47e68, type: 3}
+  cursoreSuElemento: {fileID: 2800000, guid: e27047d119dcbeb4babd6ae3e792eea4, type: 3}
 --- !u!1 &7476081223675786577
 GameObject:
   m_ObjectHideFlags: 0
