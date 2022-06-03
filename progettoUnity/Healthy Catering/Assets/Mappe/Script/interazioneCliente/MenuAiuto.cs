@@ -15,6 +15,7 @@ public class MenuAiuto : MonoBehaviour
     [SerializeField] private Button tastoIndietro;
     [SerializeField] private TextMeshProUGUI testoNumeroPannelloAttuale;
     [SerializeField] private Image immagineSchermata;
+    [SerializeField] private GameObject menuOpzioni;
 
     private int ultimaPosizione = 0;//cosi la prima volta apre il primo messaggio
 
@@ -56,7 +57,7 @@ public class MenuAiuto : MonoBehaviour
     public void apriPannelloMenuAiuto()
     {
         pannelloMenuAiuto.SetActive(true);
-
+        menuOpzioni.SetActive(false);
         pannelloMenuAiutoAperto = true;
 
         titoloTestoAiuto.text = titoliMessaggiDiAiuto[ultimaPosizione];
@@ -67,7 +68,7 @@ public class MenuAiuto : MonoBehaviour
     public void chiudiPannelloMenuAiuto()
     {
         pannelloMenuAiuto.SetActive(false);
-
+        menuOpzioni.SetActive(true);
         pannelloMenuAiutoAperto = false;
     }
 
