@@ -172,17 +172,13 @@ public class Interactor : MonoBehaviour
 
     private void interazioneCliente(int IDCliente)
     {
-        //TODO eliminare i commenti dai metodi del cliente e eliminare la chiamata a menuAiuto.apriPannelloMenuAiuto();
-        //muoviCameraPerInterazioneCliente();
+        muoviCameraPerInterazioneCliente();
 
         playerStop.Invoke();
 
-        //apriPannello();
+        apriPannello();
 
-
-        //pannelloMenuECliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato, giocatore, npc);
-
-        menuAiuto.apriPannelloMenuAiuto();
+        pannelloMenuECliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato, giocatore, npc);
 
         PuntatoreMouse.abilitaCursore();
     }

@@ -22,6 +22,7 @@ public class OpzioniMenu : MonoBehaviour
     [SerializeField] private Slider sliderSensibilita;
     [SerializeField] private TextMeshProUGUI sliderFovTesto;
     [SerializeField] private TextMeshProUGUI sliderSensibilitaTesto;
+    [SerializeField] private Button tastoMenuAiuto;
 
     void Start()
     {

@@ -39,7 +39,7 @@ public class MenuAiuto : MonoBehaviour
 
     void Start()
     {
-        pannelloMenuAiuto.SetActive(true);
+        pannelloMenuAiuto.SetActive(false);
         tastoAvanti.onClick.AddListener(mostraProssimoMessaggioDiAiuto);
         tastoIndietro.onClick.AddListener(mostraPrecedenteMessaggioDiAiuto);
 
@@ -50,6 +50,7 @@ public class MenuAiuto : MonoBehaviour
 
     public void apriPannelloMenuAiuto()
     {
+        print("ciao");
         pannelloMenuAiuto.SetActive(true);
         titoloTestoAiuto.text = titoliMessaggiDiAiuto[ultimaPosizione];
         testoAiuto.text = messaggiDiAiuto[ultimaPosizione];
