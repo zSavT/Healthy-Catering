@@ -13,9 +13,6 @@ public class PannelloMostraRicette : MonoBehaviour
 
     public void apriPannelloMostraRicette(Ingrediente ingrediente, List<Ingrediente> databaseIngredienti, List<Piatto> databasePiatti)
     {
-        Debug.Log("Ciao dentro\n" + ingrediente.ToString());
-        Debug.Log("Ciao dentro\n" + databaseIngredienti);
-        Debug.Log("Ciao dentro\n" + databasePiatti);
         List<Piatto> piattiRealizzabili = ingrediente.getListaPiattiRealizzabiliConIngrediente(databaseIngredienti, databasePiatti);
         string stringaPiattiRealizzabili = "";
 
