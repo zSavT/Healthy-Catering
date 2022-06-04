@@ -6,7 +6,6 @@ using UnityEngine.Events;
 
 public class InterazionePassanti : MonoBehaviour
 {
-    [SerializeField] private LayerMask layerUnityNPCPassivi = 7;
     [SerializeField] private GameObject pannelloInterazionePassanti;
     [SerializeField] private TextMeshProUGUI testoInterazionePassanti;
 
@@ -20,27 +19,10 @@ public class InterazionePassanti : MonoBehaviour
 
     private void Update()
     {
-        if (NPCPassivoPuntato())
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                apriPannelloInterazionePassanti();
-            }
-        }
+        
     }
 
-    private bool NPCPassivoPuntato()
-    {
-        RaycastHit NPCPassivoInquadrato;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out NPCPassivoInquadrato, 3, layerUnityNPCPassivi))
-        {
-            return true;
-        }
-        print("ciao2");
-        return false;
-    }
-
-    private void apriPannelloInterazionePassanti()
+    public void apriPannelloInterazionePassanti()
     { 
         pannelloInterazionePassanti.SetActive(true);
         testoInterazionePassanti.text = trovaScrittaDaMostrare();

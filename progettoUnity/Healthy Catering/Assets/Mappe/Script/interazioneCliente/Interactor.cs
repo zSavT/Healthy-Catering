@@ -19,6 +19,10 @@ public class Interactor : MonoBehaviour
     [Header("Interazione Magazzino")]
     [SerializeField] private PannelloMagazzino magazzino;
 
+    [Header("Interazione NPC passivi")]
+    [SerializeField] private LayerMask layerUnityNPCPassivi = 7;
+    [SerializeField] private InterazionePassanti interazionePassanti;
+
     [Header("Eventi")]
     [SerializeField] private UnityEvent playerStop;
     [SerializeField] private UnityEvent playerRiprendiMovimento;
@@ -88,6 +92,13 @@ public class Interactor : MonoBehaviour
                     PuntatoreMouse.abilitaCursore();
                 }
             }
+            else if (NPCPassivoPuntato())
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    interazionePassanti.apriPannelloInterazionePassanti();
+                }
+            }
             else
             {
                 uscitaRangeMenu.Invoke();
@@ -143,6 +154,17 @@ public class Interactor : MonoBehaviour
 ;               return true;
             }
         }
+        return false;
+    }
+
+    private bool NPCPassivoPuntato()
+    {
+        RaycastHit NPCPassivoInquadrato;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out NPCPassivoInquadrato, 3, layerUnityNPCPassivi))
+        {
+            return true;
+        }
+        print("ciao2");
         return false;
     }
 
