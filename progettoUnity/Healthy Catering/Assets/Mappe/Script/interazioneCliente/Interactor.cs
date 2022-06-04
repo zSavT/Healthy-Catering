@@ -69,8 +69,22 @@ public class Interactor : MonoBehaviour
         menuApribile = !menuApribile;
     }
 
+    private Tuple<bool, string> NPCPassivoPuntatoENomeNPC()
+    {
+        RaycastHit NPCPassivoInquadrato;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out NPCPassivoInquadrato, 3, layerUnityNPCPassivi))
+        {
+            return new Tuple <bool, string>(true, NPCPassivoInquadrato.transform.name);
+        }
+        return new Tuple<bool, string>(false, "");
+    }
+
     private void interazioneUtenteNPC()
     {
+        var NPCPassivoPuntatoENomeNPCVar = NPCPassivoPuntatoENomeNPC();
+        bool NPCPassivoPuntato = NPCPassivoPuntatoENomeNPCVar.Item1;
+        string nomeNPC = NPCPassivoPuntatoENomeNPCVar.Item2;
+
         if (menuApribile)
         {
             if (NPCInteragibilePuntato())
@@ -90,11 +104,11 @@ public class Interactor : MonoBehaviour
                     PuntatoreMouse.abilitaCursore();
                 }
             }
-            else if (NPCPassivoPuntato())
+            else if (NPCPassivoPuntato)
             {
                 if (Input.GetKeyDown(tastoInterazione))
                 {
-                    interazionePassanti.apriPannelloInterazionePassanti();
+                    interazionePassanti.apriPannelloInterazionePassanti(nomeNPC);
                     playerStop.Invoke();
                 }
                 else if (interazionePassanti.getPannelloInterazionePassantiAperto())
@@ -164,16 +178,7 @@ public class Interactor : MonoBehaviour
         return false;
     }
 
-    private bool NPCPassivoPuntato()
-    {
-        RaycastHit NPCPassivoInquadrato;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out NPCPassivoInquadrato, 3, layerUnityNPCPassivi))
-        {
-            return true;
-        }
-        print("ciao2");
-        return false;
-    }
+    
 
     public void esciDaInterazioneCliente()
     {

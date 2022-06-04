@@ -8,12 +8,25 @@ using System.Linq;
 
 public class InterazionePassanti : MonoBehaviour
 {
+    //UNITY
     [SerializeField] private GameObject pannelloInterazionePassanti;
     private bool pannelloInterazionePassantiAperto;
     [SerializeField] private TextMeshProUGUI testoInterazionePassanti;
 
-    private List<string> tutteLeScritteAncoraDaMostrare;
-    private List<string> scritteGiaMostrare = new List<string> ();
+    //TROVA STRINGHE
+    /*
+    questa lista di tuple (che si può vedere, più o meno come un dizionario) avra come 
+    primo valore (o chiave) la scritta da dare in output e come 
+    secondo valore (o valore) la lista degli npc che usano quella stringa
+
+    finche ogni scritta non avrà un npc assegnato ogni lista relativa avrà solo un valore,
+    quando tutte le chiavi avranno una lista riempita da almeno 1 valore le liste inizeranno ad avere
+    più di un valore all'interno (ovvero saranno assegnate a più npc)
+    */
+    private List <(string, List <string>)> scrittaENPCsAssegnato = new List<(string, List<string>)> ();
+    private int numeroDiScritteAssegnate;
+    private int numeroDiScritteTotale;
+
 
     private void Start()
     {
@@ -32,13 +45,35 @@ public class InterazionePassanti : MonoBehaviour
     private void getTutteLeScritteInterazione() {
         string filePath = Path.Combine(Application.streamingAssetsPath, "stringheInterazioniPassanti.txt");
 
-        tutteLeScritteAncoraDaMostrare = File.ReadAllLines(filePath).ToList();
+        List<string> tutteLeScritte = shuffleList(File.ReadAllLines(filePath).ToList());
+
+        foreach (string scritta in tutteLeScritte)
+        {
+            //assegno ad ogni scritta una lista nuova
+            scrittaENPCsAssegnato.Add(new(scritta, new List<string>()));
+        }
+
+        numeroDiScritteAssegnate = 0;
+        numeroDiScritteTotale = tutteLeScritte.Count;
     }
 
-    public void apriPannelloInterazionePassanti()
+    private List<string> shuffleList (List<string> values)
+    {
+        System.Random rand = new System.Random();
+        values = values.OrderBy(_ => rand.Next()).ToList();
+        
+        foreach (string val in values)
+        {
+            print(val);
+        }
+        
+        return values;
+    }
+
+    public void apriPannelloInterazionePassanti(string nomeNPC)
     { 
         pannelloInterazionePassanti.SetActive(true);
-        testoInterazionePassanti.text = trovaScrittaDaMostrare();
+        testoInterazionePassanti.text = trovaScrittaDaMostrare(nomeNPC);
         pannelloInterazionePassantiAperto = true;
     }
 
@@ -53,26 +88,31 @@ public class InterazionePassanti : MonoBehaviour
         pannelloInterazionePassantiAperto = false;
     }
 
-    private string trovaScrittaDaMostrare()
+    private string trovaScrittaDaMostrare(string nomeNPC)
     {
-        string output = "";
-
-        if (tutteLeScritteAncoraDaMostrare.Count != 0)
+        //se l'npc è gia presente nel dizionario
+        foreach ((string, List<string>) chiaveValore in scrittaENPCsAssegnato)
         {
-            int posizioneScrittaMostrata = Random.Range(0, tutteLeScritteAncoraDaMostrare.Count - 1);
-            output = tutteLeScritteAncoraDaMostrare[posizioneScrittaMostrata];
+            if (chiaveValore.Item2.Contains (nomeNPC))
+            {
+                return chiaveValore.Item1;
+            }
+        }
 
-            scritteGiaMostrare.Add(output);
-            tutteLeScritteAncoraDaMostrare.RemoveAt(posizioneScrittaMostrata);
+        //ora so che l'npc non ha ancora una scritta corrispondente:
+        //aggiungo il nome dell'npc alla lista dei nomi degli npc relativi alla scritta
+        scrittaENPCsAssegnato[numeroDiScritteAssegnate].Item2.Add(nomeNPC);
+
+        if (numeroDiScritteAssegnate != numeroDiScritteTotale)
+        {
+            numeroDiScritteAssegnate++;//aumento l'indice se non sono arrivato all'ultimo valore
         }
         else
         {
-            tutteLeScritteAncoraDaMostrare = scritteGiaMostrare.ToList();
-            scritteGiaMostrare = new List<string>();
-            return trovaScrittaDaMostrare();
+            numeroDiScritteAssegnate = 0;//altrimenti lo resetto
         }
 
-
-        return output;
+        //restituisco la scritta all'indice precedente (non posso aumentare o resettare il counter dopo il return)
+        return scrittaENPCsAssegnato[numeroDiScritteAssegnate - 1].Item1;
     }
 }
