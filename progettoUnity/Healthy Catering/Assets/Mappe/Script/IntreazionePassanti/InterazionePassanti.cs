@@ -12,10 +12,13 @@ public class InterazionePassanti : MonoBehaviour
     private bool pannelloInterazionePassantiAperto;
     [SerializeField] private TextMeshProUGUI testoInterazionePassanti;
 
-    private List<string> tutteLeScritte;
+    private List<string> tutteLeScritteAncoraDaMostrare;
+    private List<string> scritteGiaMostrare = new List<string> ();
 
     private void Start()
     {
+        print(Application.streamingAssetsPath);
+
         pannelloInterazionePassanti.SetActive(false);
         pannelloInterazionePassantiAperto = false;
         
@@ -29,7 +32,7 @@ public class InterazionePassanti : MonoBehaviour
     private void getTutteLeScritteInterazione() {
         string filePath = Path.Combine(Application.streamingAssetsPath, "stringheInterazioniPassanti.txt");
 
-        tutteLeScritte = File.ReadAllLines(filePath).ToList();
+        tutteLeScritteAncoraDaMostrare = File.ReadAllLines(filePath).ToList();
     }
 
     public void apriPannelloInterazionePassanti()
@@ -53,7 +56,23 @@ public class InterazionePassanti : MonoBehaviour
     private string trovaScrittaDaMostrare()
     {
         string output = "";
-        
+
+        if (tutteLeScritteAncoraDaMostrare.Count != 0)
+        {
+            int posizioneScrittaMostrata = Random.Range(0, tutteLeScritteAncoraDaMostrare.Count - 1);
+            output = tutteLeScritteAncoraDaMostrare[posizioneScrittaMostrata];
+
+            scritteGiaMostrare.Add(output);
+            tutteLeScritteAncoraDaMostrare.RemoveAt(posizioneScrittaMostrata);
+        }
+        else
+        {
+            tutteLeScritteAncoraDaMostrare = scritteGiaMostrare.ToList();
+            scritteGiaMostrare = new List<string>();
+            return trovaScrittaDaMostrare();
+        }
+
+
         return output;
     }
 }
