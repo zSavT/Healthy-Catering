@@ -26,6 +26,7 @@ public class InterazionePassanti : MonoBehaviour
     private List <(string, List <string>)> scrittaENPCsAssegnato = new List<(string, List<string>)> ();
     private int numeroDiScritteAssegnate;
     private int numeroDiScritteTotale;
+    private bool ultimoNPCInteragitoNuovo;
 
 
     private void Start()
@@ -80,14 +81,18 @@ public class InterazionePassanti : MonoBehaviour
 
     private void aggiornaValoreNumeroScritteAssegnate()
     {
-        if (numeroDiScritteAssegnate != numeroDiScritteTotale - 1)
+        if (ultimoNPCInteragitoNuovo)
         {
-            numeroDiScritteAssegnate++;//aumento l'indice se non sono arrivato all'ultimo valore
+            if (numeroDiScritteAssegnate != numeroDiScritteTotale - 1)
+            {
+                numeroDiScritteAssegnate++;//aumento l'indice se non sono arrivato all'ultimo valore
+            }
+            else
+            {
+                numeroDiScritteAssegnate = 0;//altrimenti lo resetto
+            }
         }
-        else
-        {
-            numeroDiScritteAssegnate = 0;//altrimenti lo resetto
-        }
+        print("aggiorna valore:" + numeroDiScritteAssegnate.ToString());
     }
 
     public bool getPannelloInterazionePassantiAperto()
@@ -108,6 +113,7 @@ public class InterazionePassanti : MonoBehaviour
         {
             if (chiaveValore.Item2.Contains (nomeNPC))
             {
+                ultimoNPCInteragitoNuovo = false;
                 return chiaveValore.Item1;
             }
         }
@@ -115,7 +121,8 @@ public class InterazionePassanti : MonoBehaviour
         //ora so che l'npc non ha ancora una scritta corrispondente:
         //aggiungo il nome dell'npc alla lista dei nomi degli npc relativi alla scritta
         scrittaENPCsAssegnato[numeroDiScritteAssegnate].Item2.Add(nomeNPC);
+        ultimoNPCInteragitoNuovo = true;
 
-        return scrittaENPCsAssegnato[numeroDiScritteAssegnate ].Item1;
+        return scrittaENPCsAssegnato[numeroDiScritteAssegnate].Item1;
     }
 }
