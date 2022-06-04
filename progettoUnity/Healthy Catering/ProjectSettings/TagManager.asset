@@ -10,6 +10,7 @@ TagManager:
   - PannelloCliente
   - PannelloIngredientiPiatto
   - Interagibile
+  - SoundTrack
   layers:
   - Default
   - TransparentFX
