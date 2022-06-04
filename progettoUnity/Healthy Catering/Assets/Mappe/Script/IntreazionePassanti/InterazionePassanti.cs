@@ -74,7 +74,20 @@ public class InterazionePassanti : MonoBehaviour
     { 
         pannelloInterazionePassanti.SetActive(true);
         testoInterazionePassanti.text = trovaScrittaDaMostrare(nomeNPC);
+        aggiornaValoreNumeroScritteAssegnate();
         pannelloInterazionePassantiAperto = true;
+    }
+
+    private void aggiornaValoreNumeroScritteAssegnate()
+    {
+        if (numeroDiScritteAssegnate != numeroDiScritteTotale - 1)
+        {
+            numeroDiScritteAssegnate++;//aumento l'indice se non sono arrivato all'ultimo valore
+        }
+        else
+        {
+            numeroDiScritteAssegnate = 0;//altrimenti lo resetto
+        }
     }
 
     public bool getPannelloInterazionePassantiAperto()
@@ -103,16 +116,6 @@ public class InterazionePassanti : MonoBehaviour
         //aggiungo il nome dell'npc alla lista dei nomi degli npc relativi alla scritta
         scrittaENPCsAssegnato[numeroDiScritteAssegnate].Item2.Add(nomeNPC);
 
-        if (numeroDiScritteAssegnate != numeroDiScritteTotale)
-        {
-            numeroDiScritteAssegnate++;//aumento l'indice se non sono arrivato all'ultimo valore
-        }
-        else
-        {
-            numeroDiScritteAssegnate = 0;//altrimenti lo resetto
-        }
-
-        //restituisco la scritta all'indice precedente (non posso aumentare o resettare il counter dopo il return)
-        return scrittaENPCsAssegnato[numeroDiScritteAssegnate - 1].Item1;
+        return scrittaENPCsAssegnato[numeroDiScritteAssegnate ].Item1;
     }
 }
