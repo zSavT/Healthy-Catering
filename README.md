@@ -55,6 +55,8 @@ L'aspect ratio 4:3 non è pienamento supportato, l'esperienza potrebbe variare r
 - Windows 10/11
 - High Sierra 10.13+
 
+## Colonna Sonora
+La colonna sonora è sta realizzata da @AleCongi (Skonjee).
 
 ## Immagini di gioco
 
