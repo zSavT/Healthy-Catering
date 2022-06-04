@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Linq;
 
 public class InterazionePassanti : MonoBehaviour
 {
@@ -10,15 +12,24 @@ public class InterazionePassanti : MonoBehaviour
     private bool pannelloInterazionePassantiAperto;
     [SerializeField] private TextMeshProUGUI testoInterazionePassanti;
 
+    private List<string> tutteLeScritte;
+
     private void Start()
     {
         pannelloInterazionePassanti.SetActive(false);
         pannelloInterazionePassantiAperto = false;
+        
+        getTutteLeScritteInterazione();
     }
 
     private void Update()
     {
-        
+    }
+
+    private void getTutteLeScritteInterazione() {
+        string filePath = Path.Combine(Application.streamingAssetsPath, "stringheInterazioniPassanti.txt");
+
+        tutteLeScritte = File.ReadAllLines(filePath).ToList();
     }
 
     public void apriPannelloInterazionePassanti()
@@ -39,8 +50,10 @@ public class InterazionePassanti : MonoBehaviour
         pannelloInterazionePassantiAperto = false;
     }
 
-        private string trovaScrittaDaMostrare()
+    private string trovaScrittaDaMostrare()
     {
-        return "ciao";
+        string output = "";
+        
+        return output;
     }
 }
