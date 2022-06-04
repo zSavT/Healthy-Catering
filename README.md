@@ -56,8 +56,7 @@ L'aspect ratio 4:3 non è pienamento supportato, l'esperienza potrebbe variare r
 - High Sierra 10.13+
 
 ## Colonna Sonora
-La colonna sonora è sta realizzata da [@AleCongi](https://github.com/AleCongi), Nome d'arte Skonjee.
-
+La colonna sonora è sta realizzata da [@AleCongi](https://github.com/AleCongi), [Spotify](https://open.spotify.com/artist/4iiwwWtSPD6yEIKclYS0s6?si=seO-4IfkR5ytyORQFfO-CQ)
 ## Immagini di gioco
 
 ![Creazione Profilo Utente](doc/img/Screenshoot/CreazioneProfiloUtente.PNG "Creazione profilo utente")
