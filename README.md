@@ -56,7 +56,7 @@ L'aspect ratio 4:3 non è pienamento supportato, l'esperienza potrebbe variare r
 - High Sierra 10.13+
 
 ## Colonna Sonora
-La colonna sonora è sta realizzata da [@AleCongi](https://duckduckgo.com), Nome d'arte Skonjee.
+La colonna sonora è sta realizzata da [@AleCongi](https://github.com/AleCongi), Nome d'arte Skonjee.
 
 ## Immagini di gioco
 
