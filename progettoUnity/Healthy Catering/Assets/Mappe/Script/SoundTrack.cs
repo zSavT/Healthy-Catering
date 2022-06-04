@@ -8,7 +8,6 @@ public class SoundTrack : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(PlayerSettings.caricaImpostazioniVolume());
         audioMixer.SetFloat("volume", PlayerSettings.caricaImpostazioniVolume());
     }
 
