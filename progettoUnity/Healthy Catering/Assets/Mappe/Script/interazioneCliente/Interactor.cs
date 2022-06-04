@@ -76,8 +76,6 @@ public class Interactor : MonoBehaviour
             if (NPCInteragibilePuntato())
             {
                 inquadratoNPC.Invoke();
-
-
                 if (Input.GetKeyDown(tastoInterazione))
                 {
                     interazioneCliente(IDClientePuntato);
@@ -94,9 +92,18 @@ public class Interactor : MonoBehaviour
             }
             else if (NPCPassivoPuntato())
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(tastoInterazione))
                 {
                     interazionePassanti.apriPannelloInterazionePassanti();
+                    playerStop.Invoke();
+                }
+                else if (interazionePassanti.getPannelloInterazionePassantiAperto())
+                {
+                    if (Input.GetKeyDown(KeyCode.Escape))
+                    {
+                        interazionePassanti.chiudiPannelloInterazionePassanti();
+                        playerRiprendiMovimento.Invoke();
+                    }
                 }
             }
             else

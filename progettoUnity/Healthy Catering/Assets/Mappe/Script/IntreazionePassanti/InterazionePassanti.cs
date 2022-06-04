@@ -7,14 +7,13 @@ using UnityEngine.Events;
 public class InterazionePassanti : MonoBehaviour
 {
     [SerializeField] private GameObject pannelloInterazionePassanti;
+    private bool pannelloInterazionePassantiAperto;
     [SerializeField] private TextMeshProUGUI testoInterazionePassanti;
-
-    [SerializeField] private UnityEvent playerStop;
-    [SerializeField] private UnityEvent playerRiprendiMovimento;
 
     private void Start()
     {
         pannelloInterazionePassanti.SetActive(false);
+        pannelloInterazionePassantiAperto = false;
     }
 
     private void Update()
@@ -26,10 +25,21 @@ public class InterazionePassanti : MonoBehaviour
     { 
         pannelloInterazionePassanti.SetActive(true);
         testoInterazionePassanti.text = trovaScrittaDaMostrare();
-
+        pannelloInterazionePassantiAperto = true;
     }
 
-    private string trovaScrittaDaMostrare()
+    public bool getPannelloInterazionePassantiAperto()
+    {
+        return pannelloInterazionePassantiAperto;
+    }
+
+    public void chiudiPannelloInterazionePassanti()
+    {
+        pannelloInterazionePassanti.SetActive(false);
+        pannelloInterazionePassantiAperto = false;
+    }
+
+        private string trovaScrittaDaMostrare()
     {
         return "ciao";
     }
