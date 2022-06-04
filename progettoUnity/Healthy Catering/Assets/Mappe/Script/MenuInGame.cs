@@ -6,11 +6,12 @@ public class MenuInGame : MonoBehaviour
     [Header("Menu Opzioni")]
     [SerializeField] private KeyCode tastoMenu;
     [SerializeField] private GameObject menuPausa;
+    [SerializeField] private MenuAiuto menuAiuto;
     [SerializeField] private UnityEvent aperturaMenuGioco;
     [SerializeField] private UnityEvent chiusuraMenuGioco;
     private bool giocoInPausa = false;
     private bool menuApribile;
-
+    
 
 
     // Start is called before the first frame update
@@ -37,8 +38,15 @@ public class MenuInGame : MonoBehaviour
                 {
                     if (giocoInPausa)
                     {
-                        resumeGame();
-                        PuntatoreMouse.disabilitaCursore();
+                        if (menuAiuto.getPannelloMenuAiutoAperto())
+                        {
+                            menuAiuto.chiudiPannelloMenuAiuto();
+                        }
+                        else
+                        {
+                            resumeGame();
+                            PuntatoreMouse.disabilitaCursore();
+                        }
                     }
                     else
                     {

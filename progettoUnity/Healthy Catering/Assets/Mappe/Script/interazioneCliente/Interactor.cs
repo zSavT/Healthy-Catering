@@ -4,6 +4,8 @@ using System;
 
 public class Interactor : MonoBehaviour
 {
+    [SerializeField] private MenuAiuto menuAiuto;
+
     [Header("Interazione NPC")]
     [SerializeField] private LayerMask layerUnityNPC = 6;              //layer utilizzato da Unity per le categorie di oggetto
 
@@ -184,10 +186,7 @@ public class Interactor : MonoBehaviour
 
         apriPannello();
 
-
         pannelloMenuECliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato, giocatore, npc);
-
-        //caricaClienteInPanello(Database.getDatabaseOggetto(new Cliente())[IDClientePuntato]);
 
         PuntatoreMouse.abilitaCursore();
     }
