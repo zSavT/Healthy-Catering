@@ -26,11 +26,12 @@ public class InterazionePassanti : MonoBehaviour
     quando tutte le chiavi avranno una lista riempita da almeno 1 valore le liste inizeranno ad avere
     piu' di un valore all'interno (ovvero saranno assegnate a piu' npc)
     */
-    private List <(string, List <string>)> scrittaENPCsAssegnato = new List<(string, List<string>)> ();
+    private List <(List <string>, List <string>)> scritteENPCsAssegnato = new List<(List<string>, List<string>)> ();
+    private List<string> scritteMostrateOra;
     private int numeroDiScritteAssegnate;
     private int numeroDiScritteTotale;
     private bool ultimoNPCInteragitoNuovo;
-
+    private int numeroMassimoDiCaratteriPerSchermata = 100;
 
     private void Start()
     {
@@ -40,19 +41,16 @@ public class InterazionePassanti : MonoBehaviour
         getTutteLeScritteInterazione();
     }
 
-    private void Update()
-    {
-    }
-
     private void getTutteLeScritteInterazione() {
         string filePath = Path.Combine(Application.streamingAssetsPath, "stringheInterazioniPassanti.txt");
 
-        List<string> tutteLeScritte = shuffleList(File.ReadAllLines(filePath).ToList());
+        List <string> tutteLeScritte = shuffleList(File.ReadAllLines(filePath).ToList());
 
         foreach (string scritta in tutteLeScritte)
         {
+            List<string> scrittaDivisa = dividiStringa(scritta);
             //assegno ad ogni scritta una lista nuova
-            scrittaENPCsAssegnato.Add(new(scritta, new List<string>()));
+            scritteENPCsAssegnato.Add(new(scrittaDivisa, new List<string>()));
         }
 
         numeroDiScritteAssegnate = 0;
@@ -67,15 +65,58 @@ public class InterazionePassanti : MonoBehaviour
         return values;
     }
 
+    private List <string> dividiStringa(string scritta)
+    {
+        List<string> output = new List<string>();
+
+        string [] scrittaDivisaPerSpazi = scritta.Split(' ');
+        string temp = "";
+        string tempPrecedente = "";
+        foreach (string parola in scrittaDivisaPerSpazi)
+        {
+            temp += " " + parola;
+            if (temp.Length < numeroMassimoDiCaratteriPerSchermata - 1)
+            {
+                tempPrecedente = temp;
+            }
+            else
+            {
+                output.Add(tempPrecedente);
+                temp = "";
+                tempPrecedente = "";
+            }
+        }
+
+        if (!temp.Equals(""))
+        {
+            output.Add(temp);
+        }
+
+        return output;
+    }
+
+    private string rimoviPrimoCarattereSeSpazio(string temp)
+    {
+        if (!temp.Equals(""))
+        {
+            if (temp[0] == ' ')
+            {
+                temp = temp.Remove(0, 1);
+            }
+        }
+        return temp;
+    }
+
     public void apriPannelloInterazionePassanti(string nomeNPC)
     { 
         pannelloInterazionePassanti.SetActive(true);
-        testoInterazionePassanti.text = trovaScrittaDaMostrare(nomeNPC);
+        scritteMostrateOra = trovaScritteDaMostrare(nomeNPC);
+        testoInterazionePassanti.text = scritteMostrateOra [0];
         aggiornaValoreNumeroScritteAssegnate();
 
         if (numeroDiScritteAssegnate == 0)
         {
-            scrittaENPCsAssegnato = new List<(string, List<string>)>();
+            scritteENPCsAssegnato = new List<(List<string>, List<string>)>();
             getTutteLeScritteInterazione();
         }
 
@@ -106,12 +147,13 @@ public class InterazionePassanti : MonoBehaviour
     {
         pannelloInterazionePassanti.SetActive(false);
         pannelloInterazionePassantiAperto = false;
+        scritteMostrateOra = new List<string>();
     }
 
-    private string trovaScrittaDaMostrare(string nomeNPC)
+    private List<string> trovaScritteDaMostrare(string nomeNPC)
     {
         //se l'npc e' gia presente nel dizionario
-        foreach ((string, List<string>) chiaveValore in scrittaENPCsAssegnato)
+        foreach ((List<string>, List<string>) chiaveValore in scritteENPCsAssegnato)
         {
             if (chiaveValore.Item2.Contains (nomeNPC))
             {
@@ -122,9 +164,9 @@ public class InterazionePassanti : MonoBehaviour
 
         //ora so che l'npc non ha ancora una scritta corrispondente:
         //aggiungo il nome dell'npc alla lista dei nomi degli npc relativi alla scritta
-        scrittaENPCsAssegnato[numeroDiScritteAssegnate].Item2.Add(nomeNPC);
+        scritteENPCsAssegnato[numeroDiScritteAssegnate].Item2.Add(nomeNPC);
         ultimoNPCInteragitoNuovo = true;
 
-        return scrittaENPCsAssegnato[numeroDiScritteAssegnate].Item1;
+        return scritteENPCsAssegnato[numeroDiScritteAssegnate].Item1;
     }
 }
