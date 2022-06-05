@@ -69,12 +69,13 @@ public class InterazionePassanti : MonoBehaviour
         pannelloInterazionePassanti.SetActive(true);
         testoInterazionePassanti.text = trovaScrittaDaMostrare(nomeNPC);
         aggiornaValoreNumeroScritteAssegnate();
+
         if (numeroDiScritteAssegnate == 0)
         {
             scrittaENPCsAssegnato = new List<(string, List<string>)>();
             getTutteLeScritteInterazione();
         }
-        print("nuovo valore :" + numeroDiScritteAssegnate.ToString());
+
         pannelloInterazionePassantiAperto = true;
     }
 
@@ -112,8 +113,6 @@ public class InterazionePassanti : MonoBehaviour
             if (chiaveValore.Item2.Contains (nomeNPC))
             {
                 ultimoNPCInteragitoNuovo = false;
-                print(chiaveValore.Item1);
-                print(nomeNPC);
                 return chiaveValore.Item1;
             }
         }
@@ -123,8 +122,6 @@ public class InterazionePassanti : MonoBehaviour
         scrittaENPCsAssegnato[numeroDiScritteAssegnate].Item2.Add(nomeNPC);
         ultimoNPCInteragitoNuovo = true;
 
-        print(scrittaENPCsAssegnato[numeroDiScritteAssegnate].Item1);
-        print(nomeNPC);
         return scrittaENPCsAssegnato[numeroDiScritteAssegnate].Item1;
     }
 }
