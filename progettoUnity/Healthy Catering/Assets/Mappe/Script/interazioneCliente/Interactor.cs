@@ -110,12 +110,15 @@ public class Interactor : MonoBehaviour
                 {
                     interazionePassanti.apriPannelloInterazionePassanti(nomeNPC);
                     playerStop.Invoke();
+                    PuntatoreMouse.abilitaCursore();
+                    CambioCursore.cambioCursoreNormale();
                 }
                 else if (interazionePassanti.getPannelloInterazionePassantiAperto())
                 {
                     if (Input.GetKeyDown(KeyCode.Escape))
                     {
                         interazionePassanti.chiudiPannelloInterazionePassanti();
+                        PuntatoreMouse.disabilitaCursore();
                         playerRiprendiMovimento.Invoke();
                     }
                 }

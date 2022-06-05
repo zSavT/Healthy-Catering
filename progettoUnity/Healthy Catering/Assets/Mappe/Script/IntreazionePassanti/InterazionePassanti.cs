@@ -15,7 +15,6 @@ public class InterazionePassanti : MonoBehaviour
     [SerializeField] private TextMeshProUGUI testoInterazionePassanti;
     [SerializeField] private Button bottoneAvanti;
 
-
     //TROVA STRINGHE
     /*
     questa lista di tuple (che si puo' vedere, piu' o meno come un dizionario) avra come 
@@ -28,6 +27,7 @@ public class InterazionePassanti : MonoBehaviour
     */
     private List <(List <string>, List <string>)> scritteENPCsAssegnato = new List<(List<string>, List<string>)> ();
     private List<string> scritteMostrateOra;
+    private int indiceScrittaMostrataOra;
     private int numeroDiScritteAssegnate;
     private int numeroDiScritteTotale;
     private bool ultimoNPCInteragitoNuovo;
@@ -39,6 +39,34 @@ public class InterazionePassanti : MonoBehaviour
         pannelloInterazionePassantiAperto = false;
         
         getTutteLeScritteInterazione();
+
+        bottoneAvanti.onClick.AddListener(mostraProssimoScrittaMostrateOra);
+    }
+
+    private void Update()
+    {
+        if (scritteMostrateOra != null)
+        {
+            modificaInteractableBottoneInBasePosizioneScrittaMostrata();
+        }
+    }
+
+    private void modificaInteractableBottoneInBasePosizioneScrittaMostrata()
+    {
+        if (indiceScrittaMostrataOra == scritteMostrateOra.Count - 1)
+        {
+            bottoneAvanti.interactable = false;
+        }
+        else
+        {
+            bottoneAvanti.interactable = true;
+        }
+    }
+
+    private void mostraProssimoScrittaMostrateOra()
+    {
+        indiceScrittaMostrataOra++;
+        testoInterazionePassanti.text = scritteMostrateOra[indiceScrittaMostrataOra];
     }
 
     private void getTutteLeScritteInterazione() {
@@ -81,7 +109,7 @@ public class InterazionePassanti : MonoBehaviour
             }
             else
             {
-                output.Add(tempPrecedente);
+                output.Add(rimoviPrimoCarattereSeSpazio(tempPrecedente));
                 temp = "";
                 tempPrecedente = "";
             }
@@ -89,7 +117,7 @@ public class InterazionePassanti : MonoBehaviour
 
         if (!temp.Equals(""))
         {
-            output.Add(temp);
+            output.Add(rimoviPrimoCarattereSeSpazio(temp));
         }
 
         return output;
@@ -111,7 +139,8 @@ public class InterazionePassanti : MonoBehaviour
     { 
         pannelloInterazionePassanti.SetActive(true);
         scritteMostrateOra = trovaScritteDaMostrare(nomeNPC);
-        testoInterazionePassanti.text = scritteMostrateOra [0];
+        indiceScrittaMostrataOra = 0;
+        testoInterazionePassanti.text = scritteMostrateOra [indiceScrittaMostrataOra];
         aggiornaValoreNumeroScritteAssegnate();
 
         if (numeroDiScritteAssegnate == 0)
@@ -169,4 +198,6 @@ public class InterazionePassanti : MonoBehaviour
 
         return scritteENPCsAssegnato[numeroDiScritteAssegnate].Item1;
     }
+
+  
 }
