@@ -56,7 +56,11 @@ L'aspect ratio 4:3 non è pienamento supportato, l'esperienza potrebbe variare r
 - High Sierra 10.13+
 
 ## Colonna Sonora
-La colonna sonora è sta realizzata da [@AleCongi](https://github.com/AleCongi), [Spotify](https://open.spotify.com/artist/4iiwwWtSPD6yEIKclYS0s6?si=seO-4IfkR5ytyORQFfO-CQ)
+La colonna sonora è sta realizzata da [@AleCongi](https://github.com/AleCongi).<br>
+ <a href="https://open.spotify.com/artist/4iiwwWtSPD6yEIKclYS0s6?si=ITua36BuQ3yJgiRAOlB20A">
+<img src="doc/img/Skonjee.gif"  width=50% height=50%>
+</a>
+
 ## Immagini di gioco
 
 ![Creazione Profilo Utente](doc/img/Screenshoot/CreazioneProfiloUtente.PNG "Creazione profilo utente")
