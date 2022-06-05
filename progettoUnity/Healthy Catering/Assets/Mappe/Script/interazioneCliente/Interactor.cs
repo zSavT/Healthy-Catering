@@ -74,7 +74,7 @@ public class Interactor : MonoBehaviour
         RaycastHit NPCPassivoInquadrato;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out NPCPassivoInquadrato, 3, layerUnityNPCPassivi))
         {
-            return new Tuple <bool, string>(true, NPCPassivoInquadrato.transform.name);
+            return new Tuple <bool, string>(true, NPCPassivoInquadrato.transform.parent.name);
         }
         return new Tuple<bool, string>(false, "");
     }
@@ -177,8 +177,6 @@ public class Interactor : MonoBehaviour
         }
         return false;
     }
-
-    
 
     public void esciDaInterazioneCliente()
     {

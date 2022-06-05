@@ -15,13 +15,13 @@ public class InterazionePassanti : MonoBehaviour
 
     //TROVA STRINGHE
     /*
-    questa lista di tuple (che si può vedere, più o meno come un dizionario) avra come 
+    questa lista di tuple (che si puï¿½ vedere, piï¿½ o meno come un dizionario) avra come 
     primo valore (o chiave) la scritta da dare in output e come 
     secondo valore (o valore) la lista degli npc che usano quella stringa
 
-    finche ogni scritta non avrà un npc assegnato ogni lista relativa avrà solo un valore,
+    finche ogni scritta non avrï¿½ un npc assegnato ogni lista relativa avrï¿½ solo un valore,
     quando tutte le chiavi avranno una lista riempita da almeno 1 valore le liste inizeranno ad avere
-    più di un valore all'interno (ovvero saranno assegnate a più npc)
+    piï¿½ di un valore all'interno (ovvero saranno assegnate a piï¿½ npc)
     */
     private List <(string, List <string>)> scrittaENPCsAssegnato = new List<(string, List<string>)> ();
     private int numeroDiScritteAssegnate;
@@ -31,8 +31,6 @@ public class InterazionePassanti : MonoBehaviour
 
     private void Start()
     {
-        print(Application.streamingAssetsPath);
-
         pannelloInterazionePassanti.SetActive(false);
         pannelloInterazionePassantiAperto = false;
         
@@ -63,11 +61,6 @@ public class InterazionePassanti : MonoBehaviour
         System.Random rand = new System.Random();
         values = values.OrderBy(_ => rand.Next()).ToList();
         
-        foreach (string val in values)
-        {
-            print(val);
-        }
-        
         return values;
     }
 
@@ -76,6 +69,7 @@ public class InterazionePassanti : MonoBehaviour
         pannelloInterazionePassanti.SetActive(true);
         testoInterazionePassanti.text = trovaScrittaDaMostrare(nomeNPC);
         aggiornaValoreNumeroScritteAssegnate();
+        print("nuovo valore :" + numeroDiScritteAssegnate.ToString());
         pannelloInterazionePassantiAperto = true;
     }
 
@@ -92,7 +86,6 @@ public class InterazionePassanti : MonoBehaviour
                 numeroDiScritteAssegnate = 0;//altrimenti lo resetto
             }
         }
-        print("aggiorna valore:" + numeroDiScritteAssegnate.ToString());
     }
 
     public bool getPannelloInterazionePassantiAperto()
@@ -108,12 +101,14 @@ public class InterazionePassanti : MonoBehaviour
 
     private string trovaScrittaDaMostrare(string nomeNPC)
     {
-        //se l'npc è gia presente nel dizionario
+        //se l'npc e' gia presente nel dizionario
         foreach ((string, List<string>) chiaveValore in scrittaENPCsAssegnato)
         {
             if (chiaveValore.Item2.Contains (nomeNPC))
             {
                 ultimoNPCInteragitoNuovo = false;
+                print(chiaveValore.Item1);
+                print(nomeNPC);
                 return chiaveValore.Item1;
             }
         }
@@ -123,6 +118,8 @@ public class InterazionePassanti : MonoBehaviour
         scrittaENPCsAssegnato[numeroDiScritteAssegnate].Item2.Add(nomeNPC);
         ultimoNPCInteragitoNuovo = true;
 
+        print(scrittaENPCsAssegnato[numeroDiScritteAssegnate].Item1);
+        print(nomeNPC);
         return scrittaENPCsAssegnato[numeroDiScritteAssegnate].Item1;
     }
 }
