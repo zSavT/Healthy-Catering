@@ -14,18 +14,17 @@ public class InterazionePassanti : MonoBehaviour
     private bool pannelloInterazionePassantiAperto;
     [SerializeField] private TextMeshProUGUI testoInterazionePassanti;
     [SerializeField] private Button bottoneAvanti;
-    [SerializeField] private Button bottoneIndietro;
 
 
     //TROVA STRINGHE
     /*
-    questa lista di tuple (che si pu� vedere, pi� o meno come un dizionario) avra come 
+    questa lista di tuple (che si puo' vedere, piu' o meno come un dizionario) avra come 
     primo valore (o chiave) la scritta da dare in output e come 
     secondo valore (o valore) la lista degli npc che usano quella stringa
 
-    finche ogni scritta non avr� un npc assegnato ogni lista relativa avr� solo un valore,
+    finche ogni scritta non avra' un npc assegnato ogni lista relativa avra' solo un valore,
     quando tutte le chiavi avranno una lista riempita da almeno 1 valore le liste inizeranno ad avere
-    pi� di un valore all'interno (ovvero saranno assegnate a pi� npc)
+    piu' di un valore all'interno (ovvero saranno assegnate a piu' npc)
     */
     private List <(string, List <string>)> scrittaENPCsAssegnato = new List<(string, List<string>)> ();
     private int numeroDiScritteAssegnate;
