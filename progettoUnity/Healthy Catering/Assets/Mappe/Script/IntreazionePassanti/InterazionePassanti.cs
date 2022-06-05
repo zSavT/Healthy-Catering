@@ -12,26 +12,29 @@ public class InterazionePassanti : MonoBehaviour
     //UNITY
     [SerializeField] private GameObject pannelloInterazionePassanti;
     private bool pannelloInterazionePassantiAperto;
-    [SerializeField] private TextMeshProUGUI testoInterazionePassanti;
     [SerializeField] private Button bottoneAvanti;
+    [SerializeField] private TextMeshProUGUI testoInterazionePassanti;
 
     //TROVA STRINGHE
     /*
     questa lista di tuple (che si puo' vedere, piu' o meno come un dizionario) avra come 
-    primo valore (o chiave) la scritta da dare in output e come 
+    primo valore (o chiave) la lista di scritte da dare in output e come 
     secondo valore (o valore) la lista degli npc che usano quella stringa
 
-    finche ogni scritta non avra' un npc assegnato ogni lista relativa avra' solo un valore,
+    finche ogni lista di scritta non avra' un npc assegnato ogni lista relativa avra' solo un valore,
     quando tutte le chiavi avranno una lista riempita da almeno 1 valore le liste inizeranno ad avere
     piu' di un valore all'interno (ovvero saranno assegnate a piu' npc)
     */
-    private List <(List <string>, List <string>)> scritteENPCsAssegnato = new List<(List<string>, List<string>)> ();
-    private List<string> scritteMostrateOra;
-    private int indiceScrittaMostrataOra;
-    private int numeroDiScritteAssegnate;
-    private int numeroDiScritteTotale;
-    private bool ultimoNPCInteragitoNuovo;
-    private int numeroMassimoDiCaratteriPerSchermata = 100;
+    private List <(List <string>, List <string>)> scritteENPCsAssegnato = new List<(List<string>, List<string>)> ();//76
+    private List<string> scritteMostrateOra;//48
+    private int indiceScrittaMostrataOra;//56
+
+    private int numeroDiScritteAssegnate;//79
+    private int numeroDiScritteTotale;//80
+    
+    private bool ultimoNPCInteragitoNuovo;//166
+    
+    private int numeroMassimoDiCaratteriPerSchermata = 100; //102
 
     private void Start()
     {
