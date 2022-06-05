@@ -69,6 +69,11 @@ public class InterazionePassanti : MonoBehaviour
         pannelloInterazionePassanti.SetActive(true);
         testoInterazionePassanti.text = trovaScrittaDaMostrare(nomeNPC);
         aggiornaValoreNumeroScritteAssegnate();
+        if (numeroDiScritteAssegnate == 0)
+        {
+            scrittaENPCsAssegnato = new List<(string, List<string>)>();
+            getTutteLeScritteInterazione();
+        }
         print("nuovo valore :" + numeroDiScritteAssegnate.ToString());
         pannelloInterazionePassantiAperto = true;
     }
