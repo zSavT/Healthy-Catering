@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
+using UnityEngine.UI;
 
 public class InterazionePassanti : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class InterazionePassanti : MonoBehaviour
     [SerializeField] private GameObject pannelloInterazionePassanti;
     private bool pannelloInterazionePassantiAperto;
     [SerializeField] private TextMeshProUGUI testoInterazionePassanti;
+    [SerializeField] private Button bottoneAvanti;
+    [SerializeField] private Button bottoneIndietro;
+
 
     //TROVA STRINGHE
     /*
