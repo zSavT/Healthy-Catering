@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
 public class InterazionePassanti : MonoBehaviour
 {
@@ -124,42 +125,24 @@ public class InterazionePassanti : MonoBehaviour
 
     private int trovaVeraLunghezzaStringaPerColore(string temp)
     {
-        string newTemp = temp; //non so se le stringhe vengono passate per reference o per valore
         string coloreInizio = "<color=#"; //<color=#B5D99C>
         int numeroDiScritteColorate = 0;
         string coloreFine = "</color>"; //</color>
 
-        print("coloreInizio");
-        if (newTemp.Contains(coloreInizio))
+        if ((temp.Contains(coloreInizio)) && (temp.Contains(coloreFine)))
         {
-            do
+            int numeroColoreInizio = Regex.Matches(temp, coloreInizio).Count;
+            int numeroColoreFine = Regex.Matches(temp, coloreFine).Count;
+            if (numeroColoreInizio == numeroColoreFine)
             {
-                print("");
-                print("pre rimozione");
-                print(newTemp);
-                newTemp.Replace(coloreInizio, "");
-                print("post rimozione");
-                print(newTemp);
-                print("");
-                numeroDiScritteColorate++;
-            } while (newTemp.Contains(coloreInizio)) ;
-        }
-        print("coloreFine");
-        if (newTemp.Contains(coloreFine))
-        {
-            do
-            {
-                print("");
-                print("pre rimozione");
-                print(newTemp);
-                newTemp.Replace(coloreFine, "");
-                print("post rimozione");
-                print(newTemp);
-                print("");
-            } while (newTemp.Contains(coloreFine));
+                // 8 = lunghezza colore inizio,
+                // 7 = lunghezza codice HEX colore e >
+                // 8 = lunghezza colore fine
+                return temp.Length - (numeroColoreInizio * (8 + 7 + 8));
+            }
         }
 
-        return newTemp.Length - (numeroDiScritteColorate * 7); // 7 = numero di caratteri mancanti dalla stringa coloreInizio (i colori HEX hanno sempre 6 caratteri, + 1 per il '<' --> 7)
+        return temp.Length;
     }
 
     private string rimoviPrimoCarattereSeSpazio(string temp)
