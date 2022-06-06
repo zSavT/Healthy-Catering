@@ -69,7 +69,7 @@ Le grafiche utilizzate nel gioco sono state realizzate da <a href="https://linkt
 
 ### 3D Artist
 
-Il modello 3D interno del ristorante è stato realizzato da 
+Il modello 3D interno del ristorante è stato realizzato da Angelica.
 
 ## Immagini di gioco
 
