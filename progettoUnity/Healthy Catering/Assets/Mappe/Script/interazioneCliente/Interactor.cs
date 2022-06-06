@@ -111,7 +111,7 @@ public class Interactor : MonoBehaviour
                 if (Input.GetKeyDown(tastoInterazione))
                 {
                     interazionePassanti.apriPannelloInterazionePassanti(npcPassivo.transform.parent.name);
-                    npcPassivo.animazioneParlata();
+                    npcPassivo.animazioneParlata(gameObject.transform);
                     playerStop.Invoke();
                     PuntatoreMouse.abilitaCursore();
                     CambioCursore.cambioCursoreNormale();
