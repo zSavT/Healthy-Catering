@@ -22,6 +22,7 @@ public class Interactor : MonoBehaviour
     [Header("Interazione NPC passivi")]
     [SerializeField] private LayerMask layerUnityNPCPassivi = 7;
     [SerializeField] private InterazionePassanti interazionePassanti;
+    private InteractableNPCPassivi npcPassivo;
 
     [Header("Eventi")]
     [SerializeField] private UnityEvent playerStop;
@@ -69,22 +70,23 @@ public class Interactor : MonoBehaviour
         menuApribile = !menuApribile;
     }
 
-    private Tuple<bool, string> NPCPassivoPuntatoENomeNPC()
+    private bool NPCPassivoPuntato()
     {
         RaycastHit NPCPassivoInquadrato;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out NPCPassivoInquadrato, 3, layerUnityNPCPassivi))
         {
-            return new Tuple <bool, string>(true, NPCPassivoInquadrato.transform.parent.name);
+            if(NPCPassivoInquadrato.collider.GetComponent<InteractableNPCPassivi>() != false)
+            {
+                npcPassivo = NPCPassivoInquadrato.collider.GetComponent<InteractableNPCPassivi>();
+                return true;
+            }
+            
         }
-        return new Tuple<bool, string>(false, "");
+        return false;
     }
 
     private void interazioneUtenteNPC()
     {
-        var NPCPassivoPuntatoENomeNPCVar = NPCPassivoPuntatoENomeNPC();
-        bool NPCPassivoPuntato = NPCPassivoPuntatoENomeNPCVar.Item1;
-        string nomeNPC = NPCPassivoPuntatoENomeNPCVar.Item2;
-
         if (menuApribile)
         {
             if (NPCInteragibilePuntato())
@@ -104,11 +106,11 @@ public class Interactor : MonoBehaviour
                     PuntatoreMouse.abilitaCursore();
                 }
             }
-            else if (NPCPassivoPuntato)
+            else if (NPCPassivoPuntato())
             {
                 if (Input.GetKeyDown(tastoInterazione))
                 {
-                    interazionePassanti.apriPannelloInterazionePassanti(nomeNPC);
+                    interazionePassanti.apriPannelloInterazionePassanti(npcPassivo.gameObject.name);
                     playerStop.Invoke();
                     PuntatoreMouse.abilitaCursore();
                     CambioCursore.cambioCursoreNormale();
