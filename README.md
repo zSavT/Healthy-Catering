@@ -55,11 +55,21 @@ L'aspect ratio 4:3 non è pienamento supportato, l'esperienza potrebbe variare r
 - Windows 10/11
 - High Sierra 10.13+
 
-## Colonna Sonora
+## Aiutanti
+
+### Colonna Sonora
 La colonna sonora è sta realizzata da [@AleCongi](https://github.com/AleCongi).<br>
  <a href="https://open.spotify.com/artist/4iiwwWtSPD6yEIKclYS0s6?si=ITua36BuQ3yJgiRAOlB20A">
-<img src="doc/img/Skonjee.gif"  width=50% height=50%>
+<img src="doc/img/Skonjee.gif"  width=35% height=35%>
 </a>
+
+### Design Artist
+
+Le grafiche utilizzate nel gioco sono state realizzate da <a href="https://linktr.ee/franci.cara">Franci.cara</a>.
+
+### 3D Artist
+
+Il modello 3D interno del ristorante è stato realizzato da 
 
 ## Immagini di gioco
 
