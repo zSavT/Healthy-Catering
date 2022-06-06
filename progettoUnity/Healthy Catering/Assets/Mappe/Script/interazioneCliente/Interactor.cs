@@ -76,7 +76,7 @@ public class Interactor : MonoBehaviour
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out NPCPassivoInquadrato, 3, layerUnityNPCPassivi))
         {
             if(NPCPassivoInquadrato.collider.GetComponent<InteractableNPCPassivi>() != false)
-            {
+            { 
                 npcPassivo = NPCPassivoInquadrato.collider.GetComponent<InteractableNPCPassivi>();
                 return true;
             }
@@ -110,7 +110,7 @@ public class Interactor : MonoBehaviour
             {
                 if (Input.GetKeyDown(tastoInterazione))
                 {
-                    interazionePassanti.apriPannelloInterazionePassanti(npcPassivo.gameObject.name);
+                    interazionePassanti.apriPannelloInterazionePassanti(npcPassivo.transform.parent.name);
                     playerStop.Invoke();
                     PuntatoreMouse.abilitaCursore();
                     CambioCursore.cambioCursoreNormale();
