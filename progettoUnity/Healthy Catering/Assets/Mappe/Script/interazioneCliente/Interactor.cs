@@ -111,6 +111,7 @@ public class Interactor : MonoBehaviour
                 if (Input.GetKeyDown(tastoInterazione))
                 {
                     interazionePassanti.apriPannelloInterazionePassanti(npcPassivo.transform.parent.name);
+                    npcPassivo.animazioneParlata();
                     playerStop.Invoke();
                     PuntatoreMouse.abilitaCursore();
                     CambioCursore.cambioCursoreNormale();
@@ -120,6 +121,7 @@ public class Interactor : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.Escape))
                     {
                         interazionePassanti.chiudiPannelloInterazionePassanti();
+                        npcPassivo.stopAnimazioneParlata();
                         PuntatoreMouse.disabilitaCursore();
                         playerRiprendiMovimento.Invoke();
                     }
