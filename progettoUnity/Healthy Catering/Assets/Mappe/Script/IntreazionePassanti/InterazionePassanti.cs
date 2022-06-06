@@ -25,16 +25,16 @@ public class InterazionePassanti : MonoBehaviour
     quando tutte le chiavi avranno una lista riempita da almeno 1 valore le liste inizeranno ad avere
     piu' di un valore all'interno (ovvero saranno assegnate a piu' npc)
     */
-    private List <(List <string>, List <string>)> scritteENPCsAssegnato = new List<(List<string>, List<string>)> ();//76
-    private List<string> scritteMostrateOra;//48
-    private int indiceScrittaMostrataOra;//56
+    private List <(List <string>, List <string>)> scritteENPCsAssegnato = new List<(List<string>, List<string>)> ();
+    private List<string> scritteMostrateOra;
+    private int indiceScrittaMostrataOra;
 
-    private int numeroDiScritteAssegnate;//79
-    private int numeroDiScritteTotale;//80
+    private int numeroDiScritteAssegnate;
+    private int numeroDiScritteTotale;
     
-    private bool ultimoNPCInteragitoNuovo;//166
+    private bool ultimoNPCInteragitoNuovo;
     
-    private int numeroMassimoDiCaratteriPerSchermata = 100; //102
+    private int numeroMassimoDiCaratteriPerSchermata = 100;
 
     private void Start()
     {
@@ -102,7 +102,7 @@ public class InterazionePassanti : MonoBehaviour
         foreach (string parola in scrittaDivisaPerSpazi)
         {
             temp += " " + parola;
-            if (temp.Length < numeroMassimoDiCaratteriPerSchermata - 1)
+            if (trovaVeraLunghezzaStringaPerColore(temp) < numeroMassimoDiCaratteriPerSchermata - 1)
             {
                 tempPrecedente = temp;
             }
@@ -120,6 +120,46 @@ public class InterazionePassanti : MonoBehaviour
         }
 
         return output;
+    }
+
+    private int trovaVeraLunghezzaStringaPerColore(string temp)
+    {
+        string newTemp = temp; //non so se le stringhe vengono passate per reference o per valore
+        string coloreInizio = "<color=#"; //<color=#B5D99C>
+        int numeroDiScritteColorate = 0;
+        string coloreFine = "</color>"; //</color>
+
+        print("coloreInizio");
+        if (newTemp.Contains(coloreInizio))
+        {
+            do
+            {
+                print("");
+                print("pre rimozione");
+                print(newTemp);
+                newTemp.Replace(coloreInizio, "");
+                print("post rimozione");
+                print(newTemp);
+                print("");
+                numeroDiScritteColorate++;
+            } while (newTemp.Contains(coloreInizio)) ;
+        }
+        print("coloreFine");
+        if (newTemp.Contains(coloreFine))
+        {
+            do
+            {
+                print("");
+                print("pre rimozione");
+                print(newTemp);
+                newTemp.Replace(coloreFine, "");
+                print("post rimozione");
+                print(newTemp);
+                print("");
+            } while (newTemp.Contains(coloreFine));
+        }
+
+        return newTemp.Length - (numeroDiScritteColorate * 7); // 7 = numero di caratteri mancanti dalla stringa coloreInizio (i colori HEX hanno sempre 6 caratteri, + 1 per il '<' --> 7)
     }
 
     private string rimoviPrimoCarattereSeSpazio(string temp)
