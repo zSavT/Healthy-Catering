@@ -59,7 +59,7 @@ L'aspect ratio 4:3 non è pienamento supportato, l'esperienza potrebbe variare r
 
 ### Colonna Sonora
 La colonna sonora è sta realizzata da [@AleCongi](https://github.com/AleCongi).<br>
- <a href="https://open.spotify.com/artist/4iiwwWtSPD6yEIKclYS0s6?si=ITua36BuQ3yJgiRAOlB20A">
+ <a href="https://open.spotify.com/artist/4iiwwWtSPD6yEIKclYS0s6">
 <img src="doc/img/Skonjee.gif"  width=35% height=35%>
 </a>
 
