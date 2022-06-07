@@ -49,7 +49,6 @@ I requisiti Hardware e Software del gioco:
 L'aspect ratio 4:3 non è pienamento supportato, l'esperienza potrebbe variare rispetto alla modalità 16:9 pienamente supportata.
 
 
-
 ### Requisiti Software
 
 - Windows 10/11
@@ -58,10 +57,7 @@ L'aspect ratio 4:3 non è pienamento supportato, l'esperienza potrebbe variare r
 ## Aiutanti
 
 ### Colonna Sonora
-La colonna sonora è sta realizzata da [@AleCongi](https://github.com/AleCongi).<br>
- <a href="https://open.spotify.com/artist/4iiwwWtSPD6yEIKclYS0s6">
-<img src="doc/img/Skonjee.gif"  width=35% height=35%>
-</a>
+La colonna sonora è sta realizzata da [@AleCongi](https://github.com/AleCongi), profilo [Spotify](https://open.spotify.com/artist/4iiwwWtSPD6yEIKclYS0s6).<br>
 
 ### Design Artist
 
