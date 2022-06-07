@@ -44,7 +44,7 @@ public class InterazionePassanti : MonoBehaviour
         
         getTutteLeScritteInterazione();
 
-        bottoneAvanti.onClick.AddListener(mostraProssimoScrittaMostrateOra);
+        bottoneAvanti.onClick.AddListener(mostraProssimaScrittaDaMostrateOra);
     }
 
     private void Update()
@@ -109,7 +109,7 @@ public class InterazionePassanti : MonoBehaviour
             }
             else
             {
-                output.Add(rimoviPrimoCarattereSeSpazio(tempPrecedente));
+                output.Add(rimuoviPrimoCarattereSeSpazio(tempPrecedente));
                 temp = "";
                 tempPrecedente = "";
             }
@@ -117,7 +117,7 @@ public class InterazionePassanti : MonoBehaviour
 
         if (!temp.Equals("")) // se è stata riempita ma non superava il numeroMassimoDiCaratteriPerSchermata
         {
-            output.Add(rimoviPrimoCarattereSeSpazio(temp));
+            output.Add(rimuoviPrimoCarattereSeSpazio(temp));
         }
 
         return output;
@@ -145,7 +145,7 @@ public class InterazionePassanti : MonoBehaviour
         return temp.Length;
     }
 
-    private string rimoviPrimoCarattereSeSpazio(string temp)
+    private string rimuoviPrimoCarattereSeSpazio(string temp)
     {
         if (!temp.Equals(""))
         {
@@ -158,7 +158,7 @@ public class InterazionePassanti : MonoBehaviour
         return temp;
     }
 
-    private void mostraProssimoScrittaMostrateOra()
+    private void mostraProssimaScrittaDaMostrateOra()
     {
         indiceScrittaMostrataOra++;
         testoInterazionePassanti.text = scritteMostrateOra[indiceScrittaMostrataOra];
