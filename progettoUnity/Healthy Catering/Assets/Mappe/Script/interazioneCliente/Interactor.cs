@@ -106,6 +106,7 @@ public class Interactor : MonoBehaviour
             }
             else if (NPCPassivoPuntato())
             {
+                inquadratoNPC.Invoke();
                 if (Input.GetKeyDown(tastoInterazione))
                 {
                     interazionePassanti.apriPannelloInterazionePassanti(npcPassivo.transform.parent.name);
