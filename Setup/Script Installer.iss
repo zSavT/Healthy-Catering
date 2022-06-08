@@ -2,9 +2,9 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Healthy Catering"
-#define MyAppVersion "Beta_0.6"
-#define MyAppPublisher "Francesco Saverio Cassano & Alessandro Carella"
-#define MyAppURL "https://github.com/zSavT/Healthy-Catering"
+#define MyAppVersion "Beta 0.8.2"
+#define MyAppPublisher "Francesco Saverio Cassano - Alessandro Carella"
+#define MyAppURL "https://github.com/zSavT/Healthy-Cat"
 #define MyAppExeName "Healthy Catering.exe"
 #define MyAppAssocName MyAppName + ""
 #define MyAppAssocExt ".myp"
@@ -13,7 +13,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{1D9AEA5C-A974-4A0E-BFA0-3A6B7015CA22}
+AppId={{D4DFA671-304C-418A-BCAC-8497FC7DC190}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -24,14 +24,13 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={autopf}\{#MyAppName}
 ChangesAssociations=yes
 DisableProgramGroupPage=yes
-LicenseFile=C:\Users\verio\OneDrive - Università degli Studi di Bari\License.txt
-InfoBeforeFile=C:\Users\verio\OneDrive - Università degli Studi di Bari\Lo scopo del videogioco e' di consolidar.txt
+LicenseFile=C:\Users\verio\Repo\Healthy-Catering\LICENSE
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
-OutputDir=C:\Users\verio\Desktop\Nuova cartella (2)
-OutputBaseFilename=Heathy Catering Beta 0.6 Setup
-SetupIconFile=C:\Users\verio\repo\Healthy-Catering\doc\img\Logo.ico
+OutputDir=C:\Users\verio\Desktop\Installer
+OutputBaseFilename=Healthy Catering Beta 0.8.2
+SetupIconFile=C:\Users\verio\Repo\Healthy-Catering\doc\img\Logo_Quadrato_Trasparente.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -44,8 +43,8 @@ Name: "italian"; MessagesFile: "compiler:Languages\Italian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\verio\Desktop\Healthy Catering Beta\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\verio\Desktop\Healthy Catering Beta\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\verio\Desktop\Build Beta\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\verio\Desktop\Build Beta\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
