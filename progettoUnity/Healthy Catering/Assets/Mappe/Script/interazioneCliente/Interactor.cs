@@ -4,8 +4,6 @@ using System;
 
 public class Interactor : MonoBehaviour
 {
-    [SerializeField] private MenuAiuto menuAiuto;
-
     [Header("Interazione NPC")]
     [SerializeField] private LayerMask layerUnityNPC = 6;              //layer utilizzato da Unity per le categorie di oggetto
 
@@ -18,6 +16,11 @@ public class Interactor : MonoBehaviour
 
     [Header("Interazione Magazzino")]
     [SerializeField] private PannelloMagazzino magazzino;
+
+    [Header("Interazione NPC passivi")]
+    [SerializeField] private LayerMask layerUnityNPCPassivi = 7;
+    [SerializeField] private InterazionePassanti interazionePassanti;
+    private InteractableNPCPassivi npcPassivo;
 
     [Header("Eventi")]
     [SerializeField] private UnityEvent playerStop;
@@ -57,7 +60,7 @@ public class Interactor : MonoBehaviour
 
     void Update()
     {
-        interazioneUtenteNPC();
+        interazioneUtenteConNPCVari();
     }
 
     public void menuApribileOnOff()
@@ -65,15 +68,28 @@ public class Interactor : MonoBehaviour
         menuApribile = !menuApribile;
     }
 
-    private void interazioneUtenteNPC()
+    private bool NPCPassantePuntato()
+    {
+        RaycastHit NPCPassivoInquadrato;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out NPCPassivoInquadrato, 3, layerUnityNPCPassivi))
+        {
+            if(NPCPassivoInquadrato.collider.GetComponent<InteractableNPCPassivi>() != false)
+            { 
+                npcPassivo = NPCPassivoInquadrato.collider.GetComponent<InteractableNPCPassivi>();
+                return true;
+            }
+            
+        }
+        return false;
+    }
+
+    private void interazioneUtenteConNPCVari()
     {
         if (menuApribile)
         {
-            if (NPCInteragibilePuntato())
+            if (NPCClientePuntato())
             {
                 inquadratoNPC.Invoke();
-
-
                 if (Input.GetKeyDown(tastoInterazione))
                 {
                     interazioneCliente(IDClientePuntato);
@@ -88,6 +104,18 @@ public class Interactor : MonoBehaviour
                     PuntatoreMouse.abilitaCursore();
                 }
             }
+            else if (NPCPassantePuntato())
+            {
+                inquadratoNPC.Invoke();
+                if (Input.GetKeyDown(tastoInterazione) && !(interazionePassanti.getPannelloInterazionePassantiAperto()))
+                {
+                    interazionePassanti.apriPannelloInterazionePassanti(npcPassivo.transform.parent.name);
+                    npcPassivo.animazioneParlata(gameObject.transform);
+                    playerStop.Invoke();
+                    PuntatoreMouse.abilitaCursore();
+                    CambioCursore.cambioCursoreNormale();
+                }
+            } 
             else
             {
                 uscitaRangeMenu.Invoke();
@@ -102,6 +130,17 @@ public class Interactor : MonoBehaviour
                         
                     }
                 } 
+            }
+
+            if (interazionePassanti.getPannelloInterazionePassantiAperto())
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    interazionePassanti.chiudiPannelloInterazionePassanti();
+                    npcPassivo.stopAnimazioneParlata(gameObject.transform);
+                    PuntatoreMouse.disabilitaCursore();
+                    playerRiprendiMovimento.Invoke();
+                }
             }
         }
     }
@@ -130,7 +169,7 @@ public class Interactor : MonoBehaviour
         return false;
     }
 
-    private bool NPCInteragibilePuntato()
+    private bool NPCClientePuntato()
     {
         RaycastHit NPCpuntato;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out NPCpuntato, 2, layerUnityNPC))
