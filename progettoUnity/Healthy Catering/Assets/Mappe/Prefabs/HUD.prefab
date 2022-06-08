@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 5081507436669986339}
   - component: {fileID: 5081507436669986337}
   - component: {fileID: 5081507436669986338}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: PunteggioEffettoNegativo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5729,7 +5729,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 256
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -5752,7 +5752,7 @@ GameObject:
   - component: {fileID: 5081507437606627282}
   - component: {fileID: 5081507437606627280}
   - component: {fileID: 5081507437606627281}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: SoldiEffetto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10569,7 +10569,7 @@ GameObject:
   - component: {fileID: 5081507437837667110}
   - component: {fileID: 5081507437837667108}
   - component: {fileID: 5081507437837667109}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: PunteggioEffettoPositivo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
