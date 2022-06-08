@@ -16,12 +16,14 @@ public class InteractableNPCPassivi : MonoBehaviour
     public void animazioneParlata(Transform posizionePlayer)
     {
         rotazioneNPC(posizionePlayer);
+        print(rotazioneOriginale.position);
+        print(posizionePlayer.position);
         animazione.SetBool("parlando", true);
     }
 
     public void stopAnimazioneParlata()
     {
-        gameObject.transform.parent.localRotation = rotazioneOriginale.localRotation;
+        gameObject.transform.parent.LookAt(rotazioneOriginale);
         animazione.SetBool("parlando", false);
     }
 
