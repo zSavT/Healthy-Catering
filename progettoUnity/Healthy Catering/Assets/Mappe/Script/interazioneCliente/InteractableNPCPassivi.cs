@@ -15,28 +15,14 @@ public class InteractableNPCPassivi : MonoBehaviour
 
     public void animazioneParlata(Transform posizionePlayer)
     {
-        rotazioneNPC(posizionePlayer);
-        print(rotazioneOriginale.position);
-        print(posizionePlayer.position);
+        gameObject.transform.parent.LookAt(posizionePlayer);
         animazione.SetBool("parlando", true);
     }
 
     public void stopAnimazioneParlata()
     {
-        gameObject.transform.parent.LookAt(rotazioneOriginale);
+        gameObject.transform.parent.localRotation = rotazioneOriginale.localRotation;
         animazione.SetBool("parlando", false);
     }
 
-    private void rotazioneNPC(Transform posizionePlayer)
-    {
-        //Il movimento è istantaneo per renderlo più smooth si può usare eventualmente la stessa logica CountText() in HUB
-        //in alternativa si puoò usare il GameObject.FindGameObjectWithTag("Player").transform;
-        /*
-        Transform npcPos = gameObject.transform.parent;         //parent perchè la rotazione è dovuta dal contenitore in game e non dal modello
-        Vector3 delta = new Vector3(posizionePlayer.rotation.x - npcPos.position.x, 0.0f, posizionePlayer.rotation.z - npcPos.position.z);
-        Quaternion rotation = Quaternion.LookRotation(delta);
-        gameObject.transform.parent.localRotation = rotation;
-        */
-        gameObject.transform.parent.LookAt(posizionePlayer);
-    }
 }
