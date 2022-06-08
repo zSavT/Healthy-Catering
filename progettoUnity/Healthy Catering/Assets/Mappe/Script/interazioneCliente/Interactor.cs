@@ -115,17 +115,7 @@ public class Interactor : MonoBehaviour
                     PuntatoreMouse.abilitaCursore();
                     CambioCursore.cambioCursoreNormale();
                 }
-                else if (interazionePassanti.getPannelloInterazionePassantiAperto())
-                {
-                    if (Input.GetKeyDown(KeyCode.Escape))
-                    {
-                        interazionePassanti.chiudiPannelloInterazionePassanti();
-                        npcPassivo.stopAnimazioneParlata();
-                        PuntatoreMouse.disabilitaCursore();
-                        playerRiprendiMovimento.Invoke();
-                    }
-                }
-            }
+            } 
             else
             {
                 uscitaRangeMenu.Invoke();
@@ -140,6 +130,17 @@ public class Interactor : MonoBehaviour
                         
                     }
                 } 
+            }
+
+            if (interazionePassanti.getPannelloInterazionePassantiAperto())
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    interazionePassanti.chiudiPannelloInterazionePassanti();
+                    npcPassivo.stopAnimazioneParlata();
+                    PuntatoreMouse.disabilitaCursore();
+                    playerRiprendiMovimento.Invoke();
+                }
             }
         }
     }
