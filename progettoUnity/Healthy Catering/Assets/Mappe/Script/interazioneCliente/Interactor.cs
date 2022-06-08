@@ -60,7 +60,7 @@ public class Interactor : MonoBehaviour
 
     void Update()
     {
-        interazioneUtenteNPC();
+        interazioneUtenteConNPCVari();
     }
 
     public void menuApribileOnOff()
@@ -68,7 +68,7 @@ public class Interactor : MonoBehaviour
         menuApribile = !menuApribile;
     }
 
-    private bool NPCPassivoPuntato()
+    private bool NPCPassantePuntato()
     {
         RaycastHit NPCPassivoInquadrato;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out NPCPassivoInquadrato, 3, layerUnityNPCPassivi))
@@ -83,11 +83,11 @@ public class Interactor : MonoBehaviour
         return false;
     }
 
-    private void interazioneUtenteNPC()
+    private void interazioneUtenteConNPCVari()
     {
         if (menuApribile)
         {
-            if (NPCInteragibilePuntato())
+            if (NPCClientePuntato())
             {
                 inquadratoNPC.Invoke();
                 if (Input.GetKeyDown(tastoInterazione))
@@ -104,7 +104,7 @@ public class Interactor : MonoBehaviour
                     PuntatoreMouse.abilitaCursore();
                 }
             }
-            else if (NPCPassivoPuntato())
+            else if (NPCPassantePuntato())
             {
                 inquadratoNPC.Invoke();
                 if (Input.GetKeyDown(tastoInterazione) && !(interazionePassanti.getPannelloInterazionePassantiAperto()))
@@ -169,7 +169,7 @@ public class Interactor : MonoBehaviour
         return false;
     }
 
-    private bool NPCInteragibilePuntato()
+    private bool NPCClientePuntato()
     {
         RaycastHit NPCpuntato;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out NPCpuntato, 2, layerUnityNPC))
