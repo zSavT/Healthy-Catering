@@ -153,7 +153,7 @@ public class PannelloMenu : MonoBehaviour
             clienteServito = true;
             chiusuraInterazioneCliente.Invoke();
         }
-
+        //richiamo Metodi progressione obbiettivi
         animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
     }
 
