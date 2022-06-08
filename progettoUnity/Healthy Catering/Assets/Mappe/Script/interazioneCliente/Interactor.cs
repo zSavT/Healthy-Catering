@@ -137,7 +137,7 @@ public class Interactor : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     interazionePassanti.chiudiPannelloInterazionePassanti();
-                    npcPassivo.stopAnimazioneParlata();
+                    npcPassivo.stopAnimazioneParlata(gameObject.transform);
                     PuntatoreMouse.disabilitaCursore();
                     playerRiprendiMovimento.Invoke();
                 }

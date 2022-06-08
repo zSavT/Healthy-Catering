@@ -4,12 +4,12 @@ public class InteractableNPCPassivi : MonoBehaviour
 {
 
     private Animator animazione;
-    private Transform rotazioneOriginale;
+    private Quaternion rotazioneOriginale;
 
     // Start is called before the first frame update
     void Start()
     {
-        rotazioneOriginale = GetComponentInParent<Transform>();
+        rotazioneOriginale = GetComponentInParent<Transform>().rotation;
         animazione = GetComponentInParent<Animator>();
     }
 
@@ -19,9 +19,9 @@ public class InteractableNPCPassivi : MonoBehaviour
         animazione.SetBool("parlando", true);
     }
 
-    public void stopAnimazioneParlata()
+    public void stopAnimazioneParlata(Transform posizionePlayer)
     {
-        gameObject.transform.parent.localRotation = rotazioneOriginale.localRotation;
+        gameObject.transform.parent.transform.rotation = rotazioneOriginale;
         animazione.SetBool("parlando", false);
     }
 
