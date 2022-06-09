@@ -123,6 +123,7 @@ public class Interactor : MonoBehaviour
             } else if (negozianteInquadrato())
             {
                 inquadratoNPC.Invoke();
+                negozio.animazioneNPCInquadrato();
                 if (Input.GetKeyDown(tastoInterazione) && !(negozio.getPannelloAperto()))
                 {
                     negozio.apriPannelloNegozio();
