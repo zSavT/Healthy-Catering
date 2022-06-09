@@ -4,29 +4,32 @@ using UnityEngine;
 
 public class PannelloNegozio : MonoBehaviour
 {
-    [SerializeField] private GameObject pannelloNegozio;
+    [SerializeField] private GameObject canvasPannelloNegozio;
     private bool pannelloAperto = false;
     private Animator animazione;
+
+    private InterazioneNegozio interazioneNegozio;
 
     // Start is called before the first frame update
     void Start()
     {
         animazione = GetComponentInParent<Animator>();
         pannelloAperto = false;
-        pannelloNegozio.SetActive(false);
+        canvasPannelloNegozio.SetActive(false);
     }
 
     public void apriPannelloNegozio()
     {
         animazioneNPCParlante();
         pannelloAperto = true;
-        pannelloNegozio.SetActive(true);
+        canvasPannelloNegozio.SetActive(true);
+        interazioneNegozio.interazioneNegozio();
     }
 
     public void chiudiPannelloNegozio()
     {
         pannelloAperto = false;
-        pannelloNegozio.SetActive(false);
+        canvasPannelloNegozio.SetActive(false);
         animazioneNPCIdle();
     }
 
