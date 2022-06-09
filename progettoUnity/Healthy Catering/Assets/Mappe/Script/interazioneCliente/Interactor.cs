@@ -24,7 +24,7 @@ public class Interactor : MonoBehaviour
     [Header("Interazione NPC passivi")]
     [SerializeField] private LayerMask layerUnityNPCPassivi = 7;
     [SerializeField] private InterazionePassanti interazionePassanti;
-    private InteractableNPCPassivi npcPassivo;
+    private InteractableNPCPassivi npcPassivo;  
 
     [Header("Eventi")]
     [SerializeField] private UnityEvent playerStop;

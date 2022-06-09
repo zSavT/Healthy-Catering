@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PannelloNegozio : MonoBehaviour
 {
@@ -8,14 +10,24 @@ public class PannelloNegozio : MonoBehaviour
     private bool pannelloAperto = false;
     private Animator animazione;
 
-    private InterazioneNegozio interazioneNegozio;
+    //INTERAZIONE NEGOZIO
+    [SerializeField] private GameObject pannelloNegozio;
+    [SerializeField] private Button bottoneAvantiPannelloNegozio;
+    [SerializeField] private Button bottoneIndietroPannelloNegozio;
+
+    private List<Ingrediente> tuttiGliIngredienti;
+
+    //readonly == final in java
+    private readonly int numeroBottoniNellaPagina = 9;
+    private Button[] ingredientiBottoniFake;
 
     // Start is called before the first frame update
     void Start()
     {
         animazione = GetComponentInParent<Animator>();
         pannelloAperto = false;
-        canvasPannelloNegozio.SetActive(false);
+        canvasPannelloNegozio.SetActive(false); 
+        tuttiGliIngredienti = Database.getDatabaseOggetto(new Ingrediente());
     }
 
     public void apriPannelloNegozio()
@@ -23,7 +35,7 @@ public class PannelloNegozio : MonoBehaviour
         animazioneNPCParlante();
         pannelloAperto = true;
         canvasPannelloNegozio.SetActive(true);
-        interazioneNegozio.interazioneNegozio();
+        interazioneNegozio();
     }
 
     public void chiudiPannelloNegozio()
@@ -54,5 +66,34 @@ public class PannelloNegozio : MonoBehaviour
         animazione.SetBool("parlante", true);
     }
 
+    //INTERAZIONE NEGOZIO
+    public void interazioneNegozio()
+    {
+        ingredientiBottoniFake = pannelloNegozio.GetComponentsInChildren<Button>();
+        caricaPaginaIngredientiInPannelloNegozio(0);
+    }
 
+    private void caricaPaginaIngredientiInPannelloNegozio(int pagina)
+    {
+        int indiceIniziale = calcolaIndiceInizialeLista(pagina);
+
+        while (indiceIniziale < (indiceIniziale + numeroBottoniNellaPagina))
+        {
+            if (indiceIniziale < tuttiGliIngredienti.Count)
+            {
+                modificaBottoneIngredienteNegozio(ingredientiBottoniFake[indiceIniziale]);
+            }
+            indiceIniziale++;
+        }
+    }
+
+    private int calcolaIndiceInizialeLista(int pagina)
+    {
+        return pagina * numeroBottoniNellaPagina;
+    }
+
+    private void modificaBottoneIngredienteNegozio(Button bottoneIngrediente)
+    {
+        print(bottoneIngrediente.transform.Find("nome"));
+    }
 }
