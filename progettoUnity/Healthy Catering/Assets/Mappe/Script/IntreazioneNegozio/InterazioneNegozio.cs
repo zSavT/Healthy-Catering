@@ -8,7 +8,11 @@ using System.Linq;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
 
-public class InterazioneNegozio
+public class InterazioneNegozio : MonoBehaviour
 {
+    [SerializeField] private GameObject pannelloNegozio;
+    [SerializeField] private Button bottoneAvanti;
+    [SerializeField] private Button bottoneIndietro;
+
 
 }
