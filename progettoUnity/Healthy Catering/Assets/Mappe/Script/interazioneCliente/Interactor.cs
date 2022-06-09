@@ -4,7 +4,7 @@ using System;
 
 public class Interactor : MonoBehaviour
 {
-    [Header("Interazione NPC")]
+    [Header("Interazione Cliente")]
     [SerializeField] private LayerMask layerUnityNPC = 6;              //layer utilizzato da Unity per le categorie di oggetto
 
     [SerializeField] private KeyCode tastoInterazione;              //tasto da premere per invocare l'azione
@@ -13,6 +13,10 @@ public class Interactor : MonoBehaviour
     [SerializeField] private Transform posizioneCameraMenuCliente;
     [SerializeField] private GameObject pannelloMenuECliente;
     [SerializeField] private HudInGame hud;
+
+    [Header("Interazione Negozio")]
+    [SerializeField] private PannelloNegozio negozio;
+
 
     [Header("Interazione Magazzino")]
     [SerializeField] private PannelloMagazzino magazzino;
@@ -102,6 +106,7 @@ public class Interactor : MonoBehaviour
                     magazzino.apriPannelloMagazzino();
                     playerStop.Invoke();
                     PuntatoreMouse.abilitaCursore();
+                    CambioCursore.cambioCursoreNormale();
                 }
             }
             else if (NPCPassantePuntato())
@@ -115,7 +120,17 @@ public class Interactor : MonoBehaviour
                     PuntatoreMouse.abilitaCursore();
                     CambioCursore.cambioCursoreNormale();
                 }
-            } 
+            } else if (negozianteInquadrato())
+            {
+                inquadratoNPC.Invoke();
+                if (Input.GetKeyDown(tastoInterazione) && !(negozio.getPannelloAperto()))
+                {
+                    negozio.apriPannelloNegozio();
+                    playerStop.Invoke();
+                    PuntatoreMouse.abilitaCursore();
+                    CambioCursore.cambioCursoreNormale();
+                }
+            }
             else
             {
                 uscitaRangeMenu.Invoke();
@@ -131,7 +146,15 @@ public class Interactor : MonoBehaviour
                     }
                 } 
             }
-
+            if(negozio.getPannelloAperto())
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    negozio.chiudiPannelloNegozio();
+                    PuntatoreMouse.disabilitaCursore();
+                    playerRiprendiMovimento.Invoke();
+                }
+            }
             if (interazionePassanti.getPannelloInterazionePassantiAperto())
             {
                 if (Input.GetKeyDown(KeyCode.Escape))
@@ -143,6 +166,20 @@ public class Interactor : MonoBehaviour
                 }
             }
         }
+    }
+
+    private bool negozianteInquadrato()
+    {
+        RaycastHit pcInquadrato;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out pcInquadrato, 2, layerUnityNPC))
+        {
+            // se l'oggetto visualizzato è interagibile
+            if (pcInquadrato.collider.GetComponent<PannelloNegozio>() != false)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void esciDaInterazionePC()
