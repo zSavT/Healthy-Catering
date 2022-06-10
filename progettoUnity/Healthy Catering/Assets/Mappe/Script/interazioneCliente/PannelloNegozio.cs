@@ -19,7 +19,9 @@ public class PannelloNegozio : MonoBehaviour
     [SerializeField] private Button bottoneAvantiPannelloNegozio;
     [SerializeField] private Button bottoneIndietroPannelloNegozio;
 
-    private List<Ingrediente> tuttiGliIngredienti;
+    private List<Ingrediente> databaseIngredienti;
+    private List<Piatto> databasePiatti;
+    [SerializeField] private PannelloMostraRicette pannelloMostraRicette;
 
     //readonly == final in java
     private readonly int numeroBottoniNellaPagina = 9;
@@ -38,8 +40,9 @@ public class PannelloNegozio : MonoBehaviour
         pannelloXElementi.SetActive(false);
 
         //INTERAZIONE NEGOZIO
-        tuttiGliIngredienti = Database.getDatabaseOggetto(new Ingrediente());
-        ultimaPaginaPossibile = (tuttiGliIngredienti.Count / numeroBottoniNellaPagina) + 1;
+        databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
+        databasePiatti = Database.getDatabaseOggetto(new Piatto());
+        ultimaPaginaPossibile = (databaseIngredienti.Count / numeroBottoniNellaPagina) + 1;
 
         copiaTemplateSingoloIngrediente = Instantiate(templateSingoloIngrediente);
         Destroy(templateSingoloIngrediente);
@@ -93,6 +96,7 @@ public class PannelloNegozio : MonoBehaviour
     {
         eliminaElementiPrecedentiSePresenti();
         fillNuoviIngredientiBottoniFake();
+
     }
 
     private void eliminaElementiPrecedentiSePresenti()
@@ -131,7 +135,7 @@ public class PannelloNegozio : MonoBehaviour
             {
                 if (numeroBottoniFakeIngredientiInseriti == (numeroBottoniNellaPagina/numeroPannelliXElementiNellaPagina))
                 {
-                    pannelloXElementiTemp = aggiungiBottoneFakeIngredientiAlPannelloXElementi(pannelloXElementiTemp, numeroBottoniFakeIngredientiInseriti);
+                    pannelloXElementiTemp = aggiungiBottoneFakeIngredientiAlPannelloXElementi(pannelloXElementiTemp, indicePiattoDaAggiungereNelDatabase);
                     numeroBottoniFakeIngredientiInseriti++;
                 }
                 else
@@ -151,17 +155,17 @@ public class PannelloNegozio : MonoBehaviour
     {
         int indice = (ultimaPaginaVisualizzata * numeroBottoniNellaPagina) - numeroIngredientiInseritiFinoAdOra + 1;
 
-        if (indice != tuttiGliIngredienti.Count)
+        if (indice != databaseIngredienti.Count)
             return indice;
 
         return -1;
     }
 
-    private GameObject aggiungiBottoneFakeIngredientiAlPannelloXElementi(GameObject pannelloXElementiTemp, int numeroIngredientiInseritiFinoAdOra)
+    private GameObject aggiungiBottoneFakeIngredientiAlPannelloXElementi(GameObject pannelloXElementiTemp, int indicePiattoDaAggiungereNelDatabase)
     {
         Button singoloIngredienteTemp = Instantiate(copiaTemplateSingoloIngrediente);
 
-        singoloIngredienteTemp = popolaSingoloIngrediente(singoloIngredienteTemp, tuttiGliIngredienti[indicePiattoDaAggiungereNelDatabase]);
+        singoloIngredienteTemp = popolaSingoloIngrediente(singoloIngredienteTemp, databaseIngredienti[indicePiattoDaAggiungereNelDatabase]);
 
         aggiungiSingoloIngredienteAPanelloXElementi(singoloIngredienteTemp, pannelloXElementiTemp);
 
@@ -176,7 +180,7 @@ public class PannelloNegozio : MonoBehaviour
 
         singoloIngredienteTemp = aggiungiListenerBottoniQuantita(singoloIngredienteTemp);
 
-        singoloIngredienteTemp = aggiungiListenerBottoneMostraIngredienti(singoloIngredienteTemp);
+        singoloIngredienteTemp = aggiungiListenerBottoneMostraIngredienti(singoloIngredienteTemp, ingrediente);
 
         singoloIngredienteTemp = aggiungiListenerCompraIngrediente(singoloIngredienteTemp);
             
@@ -245,9 +249,13 @@ public class PannelloNegozio : MonoBehaviour
         }
     }
 
-    private Button aggiungiListenerBottoneMostraIngredienti (Button singoloIngredienteTemp)
+    private Button aggiungiListenerBottoneMostraIngredienti (Button singoloIngredienteTemp, Ingrediente ingrediente)
     {
-
+        //bottone mostra ingredienti
+        singoloIngredienteTemp.GetComponentsInChildren<Button>()[2].onClick.AddListener(() =>
+        {
+            pannelloMostraRicette.apriPannelloMostraRicette(ingrediente, databaseIngredienti, databasePiatti);
+        });
         return singoloIngredienteTemp;
     }
 
@@ -274,13 +282,15 @@ public class PannelloNegozio : MonoBehaviour
         pannelloAperto = true;
         canvasPannelloNegozio.SetActive(true);
         interazioneNegozio();
+        pannelloMostraRicette.chiudiPannelloMostraRicette();
     }
 
     public void chiudiPannelloNegozio()
     {
         pannelloAperto = false;
         canvasPannelloNegozio.SetActive(false);
-        animazioneNPCIdle();
+        animazioneNPCIdle(); 
+        pannelloMostraRicette.chiudiPannelloMostraRicette();
     }
 
     public bool getPannelloAperto()
