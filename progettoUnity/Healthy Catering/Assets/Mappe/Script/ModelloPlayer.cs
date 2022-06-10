@@ -1,10 +1,18 @@
 using UnityEngine;
 
+/// <summary>
+/// Classe per la gestione del modello 3D del giocatore.<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Contenitore del Player.
+/// </para>
+/// </summary>
 public class ModelloPlayer : MonoBehaviour
 {
-
+    [Header("Modello 3D")]
     [SerializeField] private GameObject modelloFemminile;
     [SerializeField] private GameObject modelloMaschile;
+    [Header("Colore pelle modello 3D")]
+    //EVENTUALMENTE POSSONO ESSERE TOLTI SE CARICHIAMO LE TEXTURE DALLA CARTELLA RISORSE
     [SerializeField] private Material textureBianco;
     [SerializeField] private Material textureNero;
     [SerializeField] private Material textureMulatto;
@@ -19,6 +27,9 @@ public class ModelloPlayer : MonoBehaviour
         setTexturePelle();
     }
 
+    /// <summary>
+    /// Metodo per controllare il genere del modello del giocatore
+    /// </summary>
     private void attivaModelloGenere()
     {
         if (PlayerSettings.caricaGenereModello3D(nomeGiocatore) == 0)
@@ -33,6 +44,9 @@ public class ModelloPlayer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Metodo per impostare il colore della pelle del modello 3D del giocatore
+    /// </summary>
     private void setTexturePelle()
     {
         if(PlayerSettings.caricaColorePelle(nomeGiocatore) == 0)
