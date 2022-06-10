@@ -30,9 +30,14 @@ public class PannelloNegozio : MonoBehaviour
     private int ultimaPaginaVisualizzata = 0;
     private int ultimaPaginaPossibile;
 
+    private Player giocatore;
+
     // Start is called before the first frame update
     void Start()
     {
+        //TODO sotstituire con l'istanza del giocatore attivo
+        giocatore = new Player();
+
         //GESTIONE PANNELLO E RELATIVI
         animazione = GetComponentInParent<Animator>();
         pannelloAperto = false;
@@ -182,7 +187,7 @@ public class PannelloNegozio : MonoBehaviour
 
         singoloIngredienteTemp = aggiungiListenerBottoneMostraIngredienti(singoloIngredienteTemp, ingrediente);
 
-        singoloIngredienteTemp = aggiungiListenerCompraIngrediente(singoloIngredienteTemp);
+        singoloIngredienteTemp = aggiungiListenerCompraIngrediente(singoloIngredienteTemp, ingrediente);
             
         return singoloIngredienteTemp;
     }
@@ -206,15 +211,16 @@ public class PannelloNegozio : MonoBehaviour
         else
             singoloIngredienteTemp.GetComponentsInChildren<Button>()[0].interactable = true;
 
-        /*TODO aggiungere controllo massimo sui soldi del player e il costo dell'ingrediente,
-         * mi serve la reference al player o sapere quanti soldi ha direttamente
-        
         //bottone aumenta quantita
-        if (quantitaSelezionata.Equals(player.soldi/(costoIngrediente*quantitaSelezionata) < 1)
+            //se il resto della divisione fra i soldi del giocatore e il costo
+            //della merce che vuole comprare è minore del costo dell'ingrediente
+            //se ne aggiunge 1 non può più comprarlo
+            //quindi ha raggiunto il massimo
+        if (giocatore.soldi % (costoIngrediente * System.Int32.Parse(quantitaSelezionata)) < costoIngrediente)
             singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].interactable = false;
         else
             singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].interactable = true;
-        */
+        
 
         return singoloIngredienteTemp;
     }
@@ -256,13 +262,27 @@ public class PannelloNegozio : MonoBehaviour
         {
             pannelloMostraRicette.apriPannelloMostraRicette(ingrediente, databaseIngredienti, databasePiatti);
         });
+
         return singoloIngredienteTemp;
     }
 
-    private Button aggiungiListenerCompraIngrediente (Button singoloIngredienteTemp)
+    private Button aggiungiListenerCompraIngrediente (Button singoloIngredienteTemp, Ingrediente ingrediente)
     {
-
+        //bottone mostra compra
+        singoloIngredienteTemp.GetComponentsInChildren<Button>()[3].onClick.AddListener(() =>
+        {
+            compraIngrediente(ingrediente, System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text));
+        });
+        
         return singoloIngredienteTemp;
+    }
+
+    private void compraIngrediente(Ingrediente ingrediente, int quantitaDaComprare)
+    {
+        float prezzoDaPagare = ingrediente.costo * quantitaDaComprare;
+        giocatore.guadagna(-prezzoDaPagare);
+
+        giocatore.aggiornaInventario(ingrediente, quantitaDaComprare);
     }
 
     private void aggiungiSingoloIngredienteAPanelloXElementi (Button singoloIngrediente, GameObject pannelloXElementi)
