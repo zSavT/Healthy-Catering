@@ -170,14 +170,92 @@ public class PannelloNegozio : MonoBehaviour
 
     private Button popolaSingoloIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
     {
-        singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[0].text = ingrediente.nome;
-        singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[0].text = ingrediente.costo.ToString();
+        singoloIngredienteTemp = modificaTesto(singoloIngredienteTemp, ingrediente.nome, ingrediente.costo.ToString());
 
+        singoloIngredienteTemp = aggiungiGestioneBottoniQuantita(singoloIngredienteTemp, ingrediente.costo);
+
+        singoloIngredienteTemp = aggiungiListenerBottoniQuantita(singoloIngredienteTemp);
+
+        singoloIngredienteTemp = aggiungiListenerBottoneMostraIngredienti(singoloIngredienteTemp);
+
+        singoloIngredienteTemp = aggiungiListenerCompraIngrediente(singoloIngredienteTemp);
+            
+        return singoloIngredienteTemp;
+    }
+
+    private Button modificaTesto(Button singoloIngredienteTemp, string nomeIngrediente, string costoIngrediente)
+    {
+        singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[0].text = nomeIngrediente;
+        singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[1].text = costoIngrediente;
 
         return singoloIngredienteTemp;
     }
 
 
+    private Button aggiungiGestioneBottoniQuantita(Button singoloIngredienteTemp, float costoIngrediente)
+    {
+        string quantitaSelezionata = singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text;
+        
+        //bottone diminuisci quantita
+        if (quantitaSelezionata.Equals("0"))
+            singoloIngredienteTemp.GetComponentsInChildren<Button>()[0].interactable = false;
+        else
+            singoloIngredienteTemp.GetComponentsInChildren<Button>()[0].interactable = true;
+
+        /*TODO aggiungere controllo massimo sui soldi del player e il costo dell'ingrediente,
+         * mi serve la reference al player o sapere quanti soldi ha direttamente
+        
+        //bottone aumenta quantita
+        if (quantitaSelezionata.Equals(player.soldi/(costoIngrediente*quantitaSelezionata) < 1)
+            singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].interactable = false;
+        else
+            singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].interactable = true;
+        */
+
+        return singoloIngredienteTemp;
+    }
+
+    private Button aggiungiListenerBottoniQuantita(Button singoloIngredienteTemp)
+    {
+        //bottone diminuisci quantita    
+        singoloIngredienteTemp.GetComponentsInChildren<Button>()[0].onClick.AddListener(()=> {
+            cambiaQuantitaAcquistare(false, singoloIngredienteTemp);
+        });
+
+        //bottone aumenta quantita
+        singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => {
+            cambiaQuantitaAcquistare(true, singoloIngredienteTemp);
+        });
+
+        return singoloIngredienteTemp;
+    }
+
+    private void cambiaQuantitaAcquistare (bool diPiu, Button singoloIngredienteTemp)
+    {
+        //testo quantita
+        int quantitaPrecedente = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text);
+        
+        if (diPiu)
+        {
+            singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text = (quantitaPrecedente + 1).ToString();
+        }
+        else // controllo per andare sotto lo 0 sul bottone che chiama il metodo (diventa non interagibile se si è a 0)
+        {
+            singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text = (quantitaPrecedente - 1).ToString();
+        }
+    }
+
+    private Button aggiungiListenerBottoneMostraIngredienti (Button singoloIngredienteTemp)
+    {
+
+        return singoloIngredienteTemp;
+    }
+
+    private Button aggiungiListenerCompraIngrediente (Button singoloIngredienteTemp)
+    {
+
+        return singoloIngredienteTemp;
+    }
 
     private void aggiungiSingoloIngredienteAPanelloXElementi (Button singoloIngrediente, GameObject pannelloXElementi)
     {
