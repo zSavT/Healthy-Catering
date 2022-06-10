@@ -11,6 +11,7 @@ public class PannelloNegozio : MonoBehaviour
     private Animator animazione;
 
     //INTERAZIONE NEGOZIO
+    [SerializeField] private GameObject pannelloNegozio;
     [SerializeField] private GameObject pannelloXElementi;
     [SerializeField] private Button templateSingoloIngrediente;
     private Button copiaTemplateSingoloIngrediente;
@@ -22,6 +23,7 @@ public class PannelloNegozio : MonoBehaviour
 
     //readonly == final in java
     private readonly int numeroBottoniNellaPagina = 9;
+    private readonly int numeroPannelliXElementiNellaPagina = 3;
     private Button[] ingredientiBottoniFake;
     private int ultimaPaginaVisualizzata = 0;
     private int ultimaPaginaPossibile;
@@ -63,7 +65,7 @@ public class PannelloNegozio : MonoBehaviour
             ultimaPaginaVisualizzata--;
 
         disattivaBottoniAvantiDietroSeServe();
-        caricaElementiNelCanvas();
+        interazioneNegozio();
     }
 
     private void disattivaBottoniAvantiDietroSeServe()
@@ -87,26 +89,51 @@ public class PannelloNegozio : MonoBehaviour
         }
     }
 
-
     public void interazioneNegozio()
     {
-        //il metodo viene chiamato più volte, e non può essere interazione negozio
-        //ad essere chiamato più volte,
-        //FORSE
-        caricaElementiNelCanvas();
-    }
-
-    private void caricaElementiNelCanvas()
-    {
-        fillIngredientiBottoniFake();
+        
+        fillNuoviIngredientiBottoniFake();
         mettiIngredientiBottoniFakeNellaSchermata();
     }
 
-    private void fillIngredientiBottoniFake()
+    private void eliminaElementiPrecedentiSePresenti()
     {
+        GameObject[] pannelliXElementiPresenti = new GameObject[numeroPannelliXElementiNellaPagina];
+        int numeroPannelliXElementiAggiunti = 0;
+       
+        foreach (GameObject gameobject in pannelloNegozio.GetComponentsInChildren<GameObject>())
+        {
+            if (gameobject.name.ToLower().Contains("pannelloxelementi"))
+            {
+                pannelliXElementiPresenti[numeroPannelliXElementiAggiunti] = gameobject;
+            }
+        }
+
+        foreach (GameObject pannelloXElementiTemp in pannelliXElementiPresenti)
+        {
+            foreach (Button bottoneIngrediente in pannelloXElementiTemp.GetComponentsInChildren<Button>())
+            {
+                Destroy(bottoneIngrediente);
+            }
+            Destroy(pannelloXElementiTemp);
+        }
+    }
+    
+    private void fillNuoviIngredientiBottoniFake()
+    {
+        int bottoniInseriti = 0;
         foreach (Button bottoneFakeIngrediente in ingredientiBottoniFake)
         {
+            if (bottoniInseriti != 3)
+            {
 
+            }
+            else
+            {
+                //aggiungiPannelloXElementiAllaSchermata();
+                bottoniInseriti = 0;
+            }
+            bottoniInseriti++;
         }
     }
 
