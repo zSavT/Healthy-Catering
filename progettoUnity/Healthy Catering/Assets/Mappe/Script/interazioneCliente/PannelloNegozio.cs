@@ -11,7 +11,8 @@ public class PannelloNegozio : MonoBehaviour
     private Animator animazione;
 
     //INTERAZIONE NEGOZIO
-    [SerializeField] private GameObject pannelloNegozio;
+    [SerializeField] private GameObject pannelloXElementi;
+    [SerializeField] private Button templateSingoloIngrediente;
     [SerializeField] private Button bottoneAvantiPannelloNegozio;
     [SerializeField] private Button bottoneIndietroPannelloNegozio;
 
@@ -69,31 +70,6 @@ public class PannelloNegozio : MonoBehaviour
     //INTERAZIONE NEGOZIO
     public void interazioneNegozio()
     {
-        ingredientiBottoniFake = pannelloNegozio.GetComponentsInChildren<Button>();
-        caricaPaginaIngredientiInPannelloNegozio(0);
-    }
 
-    private void caricaPaginaIngredientiInPannelloNegozio(int pagina)
-    {
-        int indiceIniziale = calcolaIndiceInizialeLista(pagina);
-
-        while (indiceIniziale < (indiceIniziale + numeroBottoniNellaPagina))
-        {
-            if (indiceIniziale < tuttiGliIngredienti.Count)
-            {
-                modificaBottoneIngredienteNegozio(ingredientiBottoniFake[indiceIniziale]);
-            }
-            indiceIniziale++;
-        }
-    }
-
-    private int calcolaIndiceInizialeLista(int pagina)
-    {
-        return pagina * numeroBottoniNellaPagina;
-    }
-
-    private void modificaBottoneIngredienteNegozio(Button bottoneIngrediente)
-    {
-        print(bottoneIngrediente.transform.Find("nome"));
     }
 }
