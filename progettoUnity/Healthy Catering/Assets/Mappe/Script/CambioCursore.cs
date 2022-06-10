@@ -9,8 +9,8 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class CambioCursore : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public Texture2D cursoreNormale;
-    public Texture2D cursoreSuElemento;
+    private Texture2D cursoreNormale;
+    private Texture2D cursoreSuElemento;
 
 
     private void Start()
