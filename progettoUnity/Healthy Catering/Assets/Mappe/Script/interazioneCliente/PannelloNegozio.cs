@@ -24,6 +24,7 @@ public class PannelloNegozio : MonoBehaviour
     private readonly int numeroBottoniNellaPagina = 9;
     private Button[] ingredientiBottoniFake;
     private int ultimaPaginaVisualizzata = 0;
+    private int ultimaPaginaPossibile;
 
     // Start is called before the first frame update
     void Start()
@@ -33,9 +34,10 @@ public class PannelloNegozio : MonoBehaviour
         pannelloAperto = false;
         canvasPannelloNegozio.SetActive(false);
         pannelloXElementi.SetActive(false);
-        
+
         //INTERAZIONE NEGOZIO
         tuttiGliIngredienti = Database.getDatabaseOggetto(new Ingrediente());
+        ultimaPaginaPossibile = (tuttiGliIngredienti.Count / numeroBottoniNellaPagina) + 1;
 
         copiaTemplateSingoloIngrediente = Instantiate(templateSingoloIngrediente);
         Destroy(templateSingoloIngrediente);
@@ -48,8 +50,8 @@ public class PannelloNegozio : MonoBehaviour
             i++;
         }
 
-        bottoneAvantiPannelloNegozio.onClick.AddListener(cambiaPannelloCarosello (true));
-        bottoneIndietroPannelloNegozio.onClick.AddListener(cambiaPannelloCarosello(false));
+        bottoneAvantiPannelloNegozio.onClick.AddListener(()=>{cambiaPannelloCarosello(true);});
+        bottoneIndietroPannelloNegozio.onClick.AddListener(()=>{cambiaPannelloCarosello(false);});
     }
     
     //INTERAZIONE NEGOZIO
@@ -64,18 +66,48 @@ public class PannelloNegozio : MonoBehaviour
         caricaElementiNelCanvas();
     }
 
+    private void disattivaBottoniAvantiDietroSeServe()
+    {
+        if (ultimaPaginaVisualizzata == ultimaPaginaPossibile)
+        {
+            bottoneAvantiPannelloNegozio.interactable = false;
+        }
+        else
+        {
+            bottoneAvantiPannelloNegozio.interactable = true;
+        }
+
+        if (ultimaPaginaVisualizzata == 0)
+        {
+            bottoneIndietroPannelloNegozio.interactable = false;
+        }
+        else
+        {
+            bottoneIndietroPannelloNegozio.interactable = true;
+        }
+    }
+
 
     public void interazioneNegozio()
     {
+        //il metodo viene chiamato più volte, e non può essere interazione negozio
+        //ad essere chiamato più volte,
+        //FORSE
         caricaElementiNelCanvas();
-
-
     }
 
     private void caricaElementiNelCanvas()
     {
         fillIngredientiBottoniFake();
         mettiIngredientiBottoniFakeNellaSchermata();
+    }
+
+    private void fillIngredientiBottoniFake()
+    {
+        foreach (Button bottoneFakeIngrediente in ingredientiBottoniFake)
+        {
+
+        }
     }
 
     //GESTIONE PANNELLO E RELATIVI
