@@ -6,21 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Mappe/Menu.unity
+    path: Assets/Mappe/Scene/Menu.unity
     guid: 9166c8a14a7c0a94caeded7b06f20b60
   - enabled: 1
-    path: Assets/Mappe/Opzioni.unity
+    path: Assets/Mappe/Scene/Opzioni.unity
     guid: 47ae8ef6368c47f4596fcdf1b9906090
   - enabled: 1
-    path: Assets/Mappe/Citta.unity
+    path: Assets/Mappe/Scene/Citta.unity
     guid: 782fc05060c563444976fa10cee3fa17
   - enabled: 1
-    path: Assets/Mappe/SelezioneLivelli.unity
+    path: Assets/Mappe/Scene/SelezioneLivelli.unity
     guid: db8971f933c8b9a408b39ec697fd4c51
   - enabled: 1
-    path: Assets/Mappe/SelezioneProfiloUtente.unity
+    path: Assets/Mappe/Scene/SelezioneProfiloUtente.unity
     guid: 67b0a547487948743aaad2c56810f0b9
   - enabled: 1
-    path: Assets/Mappe/CreazioneProfiloUtente.unity
+    path: Assets/Mappe/Scene/CreazioneProfiloUtente.unity
     guid: 44b3f06098107ee45ae9d12482c3d28a
   m_configObjects: {}
