@@ -13,6 +13,8 @@ public class PannelloNegozio : MonoBehaviour
     //INTERAZIONE NEGOZIO
     [SerializeField] private GameObject pannelloXElementi;
     [SerializeField] private Button templateSingoloIngrediente;
+    private Button copiaTemplateSingoloIngrediente;
+
     [SerializeField] private Button bottoneAvantiPannelloNegozio;
     [SerializeField] private Button bottoneIndietroPannelloNegozio;
 
@@ -25,12 +27,26 @@ public class PannelloNegozio : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //GESTIONE PANNELLO E RELATIVI
         animazione = GetComponentInParent<Animator>();
         pannelloAperto = false;
-        canvasPannelloNegozio.SetActive(false); 
+        canvasPannelloNegozio.SetActive(false);
+        pannelloXElementi.SetActive(false);
+        
+        //INTERAZIONE NEGOZIO
         tuttiGliIngredienti = Database.getDatabaseOggetto(new Ingrediente());
+
+        copiaTemplateSingoloIngrediente = Instantiate(templateSingoloIngrediente);
+        Destroy(templateSingoloIngrediente);
     }
 
+    //INTERAZIONE NEGOZIO
+    public void interazioneNegozio()
+    {
+        
+    }
+
+    //GESTIONE PANNELLO E RELATIVI
     public void apriPannelloNegozio()
     {
         animazioneNPCParlante();
@@ -65,11 +81,5 @@ public class PannelloNegozio : MonoBehaviour
     private void animazioneNPCParlante()
     {
         animazione.SetBool("parlante", true);
-    }
-
-    //INTERAZIONE NEGOZIO
-    public void interazioneNegozio()
-    {
-
     }
 }
