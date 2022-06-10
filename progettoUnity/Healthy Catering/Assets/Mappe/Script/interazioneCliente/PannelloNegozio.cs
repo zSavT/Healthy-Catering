@@ -23,6 +23,7 @@ public class PannelloNegozio : MonoBehaviour
     //readonly == final in java
     private readonly int numeroBottoniNellaPagina = 9;
     private Button[] ingredientiBottoniFake;
+    private int ultimaPaginaVisualizzata = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -47,16 +48,34 @@ public class PannelloNegozio : MonoBehaviour
             i++;
         }
 
+        bottoneAvantiPannelloNegozio.onClick.AddListener(cambiaPannelloCarosello (true));
+        bottoneIndietroPannelloNegozio.onClick.AddListener(cambiaPannelloCarosello(false));
+    }
+    
+    //INTERAZIONE NEGOZIO
+    private void cambiaPannelloCarosello(bool avanti)
+    {
+        if (avanti)
+            ultimaPaginaVisualizzata++;
+        else
+            ultimaPaginaVisualizzata--;
+
+        disattivaBottoniAvantiDietroSeServe();
+        caricaElementiNelCanvas();
+    }
+
+
+    public void interazioneNegozio()
+    {
+        caricaElementiNelCanvas();
+
 
     }
 
-    //INTERAZIONE NEGOZIO
-    public void interazioneNegozio()
+    private void caricaElementiNelCanvas()
     {
         fillIngredientiBottoniFake();
         mettiIngredientiBottoniFakeNellaSchermata();
-
-        
     }
 
     //GESTIONE PANNELLO E RELATIVI
