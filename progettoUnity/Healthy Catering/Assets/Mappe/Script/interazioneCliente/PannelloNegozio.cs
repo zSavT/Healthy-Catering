@@ -38,11 +38,24 @@ public class PannelloNegozio : MonoBehaviour
 
         copiaTemplateSingoloIngrediente = Instantiate(templateSingoloIngrediente);
         Destroy(templateSingoloIngrediente);
+
+        ingredientiBottoniFake = new Button[numeroBottoniNellaPagina];
+        int i = 0;
+        while (i < numeroBottoniNellaPagina)
+        {
+            ingredientiBottoniFake[i] = copiaTemplateSingoloIngrediente;
+            i++;
+        }
+
+
     }
 
     //INTERAZIONE NEGOZIO
     public void interazioneNegozio()
     {
+        fillIngredientiBottoniFake();
+        mettiIngredientiBottoniFakeNellaSchermata();
+
         
     }
 
