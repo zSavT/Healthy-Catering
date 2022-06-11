@@ -126,7 +126,7 @@ public class Interactor : MonoBehaviour
                 negozio.animazioneNPCInquadrato();
                 if (Input.GetKeyDown(tastoInterazione) && !(negozio.getPannelloAperto()))
                 {
-                    negozio.apriPannelloNegozio();
+                    negozio.apriPannelloNegozio(giocatore);
                     playerStop.Invoke();
                     PuntatoreMouse.abilitaCursore();
                     CambioCursore.cambioCursoreNormale();

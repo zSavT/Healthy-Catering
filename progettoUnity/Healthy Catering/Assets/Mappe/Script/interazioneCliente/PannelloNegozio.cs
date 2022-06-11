@@ -296,8 +296,9 @@ public class PannelloNegozio : MonoBehaviour
     }
 
     //GESTIONE PANNELLO E RELATIVI
-    public void apriPannelloNegozio()
+    public void apriPannelloNegozio(Player giocatorePassato)
     {
+        giocatore = giocatorePassato;
         animazioneNPCParlante();
         pannelloAperto = true;
         canvasPannelloNegozio.SetActive(true);
