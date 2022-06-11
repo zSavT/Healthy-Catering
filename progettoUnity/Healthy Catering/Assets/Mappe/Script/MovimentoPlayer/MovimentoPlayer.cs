@@ -1,6 +1,12 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Classe per la gestione del movimento del giocatore<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Contenitore del giocatore.
+/// </para>
+/// </summary>
 public class MovimentoPlayer : MonoBehaviour
 {
     [SerializeField] private CharacterController controller;
@@ -59,17 +65,26 @@ public class MovimentoPlayer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Blocca o sblocca il movimento
+    /// </summary>
     public void lockUnlockVisuale()
     {
         this.puoMuoversi = !puoMuoversi;
         lockUnlockMovimento.Invoke();
     }
 
+    /// <summary>
+    /// Muove il giocatore
+    /// </summary>
     private void movimentoEffettivo()
     {
         controller.Move(movimento * velocitaAttuale * Time.deltaTime);
     }
 
+    /// <summary>
+    /// Controlla la pressione dei tasti per il movimento
+    /// </summary>
     private void controlloTastiMovimento()
     {
         x = Input.GetAxis("Horizontal");
@@ -103,6 +118,9 @@ public class MovimentoPlayer : MonoBehaviour
         controllerAnimazione.SetBool("corre", false);
     }
 
+    /// <summary>
+    /// Controlla la velocità dei movimenti.
+    /// </summary>
     private void controlloVelocita()
     {
         if (perTerra && velocita.y < 0)
@@ -111,18 +129,27 @@ public class MovimentoPlayer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sistema ed aggiorna la gravita del gioco.
+    /// </summary>
     private void controlloGravita()
     {
         velocita.y += gravita * Time.deltaTime;
         controller.Move(velocita * Time.deltaTime);
     }
 
+    /// <summary>
+    /// Controlla la collisione del giocatore con il pavimento.
+    /// </summary>
     private void controlloCollisionePavimento()
     {
         perTerra = Physics.CheckSphere(controlloPavimento.position, distanzaPavimento, pavimentoMask);
         controllerAnimazione.SetBool("salta", false);
     }
 
+    /// <summary>
+    /// Controllo degli input.
+    /// </summary>
     private void controlloComandi()
     {
         if (Input.GetKey(tastoSprint))
@@ -144,6 +171,9 @@ public class MovimentoPlayer : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Se il giocatore è per terra, può sprintare
+    /// </summary>
     private void sprint()
     {
         if(perTerra)
@@ -155,12 +185,19 @@ public class MovimentoPlayer : MonoBehaviour
         controllerAnimazione.SetBool("corre", true);
     }
 
+    /// <summary>
+    /// Avvia il salto del giocatore
+    /// </summary>
     private void salto()
     {
         velocita.y = Mathf.Sqrt(altezzaSalto * -2f * gravita);
         controllerAnimazione.SetBool("salta", true);
     }
 
+    /// <summary>
+    /// Controlla se il giocotore è fermo o meno.
+    /// </summary>
+    /// <returns><strong>True</strong>: il giocatore è fermo.<br><strong>False</strong>: il giocatore non è fermo.</br></returns>
     private bool isFermo()
     {
         if (x == 0 && z == 0)
@@ -169,6 +206,9 @@ public class MovimentoPlayer : MonoBehaviour
             return false;
     }
 
+    /// <summary>
+    /// Avvia le animazioni dell'idle.
+    /// </summary>
     private void idle()
     {
         controllerAnimazione.SetBool("fermo", true);

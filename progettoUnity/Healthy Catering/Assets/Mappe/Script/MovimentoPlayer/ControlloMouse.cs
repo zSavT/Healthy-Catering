@@ -1,6 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
 
+/// <summary>
+/// Classe per la gestione della camera del gioco<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Camera principale del gioco.
+/// </para>
+/// </summary>
 public class ControlloMouse : MonoBehaviour
 {
     [Header("Impostazioni Camera")]
@@ -26,7 +31,7 @@ public class ControlloMouse : MonoBehaviour
         if (PlayerSettings.caricaPrimoAvvioSettaggiSensibilita() == 0)
         {
             PlayerSettings.salvaPrimoAvvioSettaggiSensibilita();
-            PlayerPrefs.SetInt("primoAvvio", 1);
+            PlayerSettings.salvaPrimoAvvio();
             PlayerSettings.salvaImpostazioniSensibilita(250f);
         }
         Cursor.lockState = CursorLockMode.Locked;
@@ -56,6 +61,9 @@ public class ControlloMouse : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Aggiorna il valore de fov
+    /// </summary>
     public void aggiornamentoFovInGame()
     {
         cameraGioco.fieldOfView = PlayerSettings.caricaImpostazioniFov();
@@ -64,6 +72,11 @@ public class ControlloMouse : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Metodo che calcola la posizione della camera in base al fov.
+    /// </summary>
+    /// <param name="valoreFov">Valore del fov</param>
+    /// <returns>Valore posizione della camera</returns>
     private float calcoloPosizioneCameraFovAsseZ(float valoreFov)
     {   
         return (posizioneZcamera + ((valoreFov - 60)/40) * (posizioneCameraFovMassimo - posizioneZcamera));
@@ -71,7 +84,9 @@ public class ControlloMouse : MonoBehaviour
 
 
 
-
+    /// <summary>
+    /// Sblocca o blocca la visuale del giocatore.
+    /// </summary>
     public void lockUnlockVisuale()
     {
         this.puoCambiareVisuale = !puoCambiareVisuale;

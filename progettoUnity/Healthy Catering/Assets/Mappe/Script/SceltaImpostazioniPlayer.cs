@@ -5,6 +5,12 @@ using System.Collections.Generic;
 using TMPro;
 using Wilberforce;
 
+/// <summary>
+/// Classe per la gestione delle impostazioni presenti nel menu del profilo utente per la modifica e selezione.<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Pannello menu per la scelta delle impostazioni del player.
+/// </para>
+/// </summary>
 public class SceltaImpostazioniPlayer : MonoBehaviour
 {
 
@@ -38,6 +44,9 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         controlloEsistenzaProfiliPlayer();
     }
 
+    /// <summary>
+    /// Disattiva tutti gli elementi presenti.
+    /// </summary>
     private void disattivaElementi()
     {
         nomeGiaPreso.SetActive(false);
@@ -52,6 +61,9 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         controlloNomeEsistente();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public void nomiPlayer()
     {
         List<Player> listaPlayer = Database.getDatabaseOggetto(new Player());
@@ -65,7 +77,9 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     }
 
 
-
+    /// <summary>
+    /// Controlla se il nome inserito dall'utente, corrisponde con uno già presente nella lista.
+    /// </summary>
     private void controlloNomeEsistente()
     {
         if (nomeGiocatoreScritto != "")
@@ -95,6 +109,9 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Inizializza la lista dei nomi dei player presenti.
+    /// </summary>
     private void aggiuntaNomiPresentiInLista()
     {
         for (int i = 0; i < player.Count; i++)
@@ -103,6 +120,9 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Legge i player presenti, se esistono attiva il tasto per tornare indietro, altrimenti lo disattiva.
+    /// </summary>
     public void controlloEsistenzaProfiliPlayer()
     {
         letturaNomiUtenti();
@@ -110,13 +130,16 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         {
             aggiuntaNomiPresentiInLista();
             attivaTastoIndietro();
-
         } else
         {
             disattivaTastoIndietro();
         }
     }
 
+    /// <summary>
+    /// Controlla se sono presenti player nel database.
+    /// </summary>
+    /// <returns><br><strong>True</strong>: Presente almeno un player nel database.<br><strong>False</strong>: Non presente almeno un player nel database.</br></br></returns>
     private bool presentePlayer()
     {
         if (player.Count > 0)
@@ -128,30 +151,40 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Legge da file tutti i player presenti e li salva nella lista.
+    /// </summary>
     private void letturaNomiUtenti()
     {
         player = Database.getDatabaseOggetto(new Player());
         
     }
 
+    /// <summary>
+    /// Attiva il tasto indietro.
+    /// </summary>
     private void attivaTastoIndietro()
     {
         tastoIndietro.SetActive(true);
     }
 
+    /// <summary>
+    /// Disattiva il tasto indietro.
+    /// </summary>
     private void disattivaTastoIndietro()
     {
         tastoIndietro.SetActive(false);
     }
 
-    public void menuPrincipale()
-    {
-        SceneManager.LoadScene(0);
-    }
-
+    /// <summary>
+    /// Salva tutte le impostazioni fatte dal giocatore, salva il giocatore su file<br></br>
+    /// Se la scena è stata caricata dal livello tutorial, dopo il salvataggio ritorna al livello tutorial.<br></br>
+    /// In caso contrario carica la scena del menu principale. Utilizza 
+    /// <see cref="PlayerSettings"/>.
+    /// </summary>
     public void salvaImpostazioni()
     {
-        PlayerSettings.salvaPrimaAvvio();
+        PlayerSettings.salvaPrimoAvvio();
         PlayerSettings.salvaNomePlayerGiocante(nomeGiocatoreScritto);
         PlayerSettings.salvaGenereGiocatore(nomeGiocatoreScritto, sceltaGenere);
         PlayerSettings.salvaColorePelle(nomeGiocatoreScritto, sceltaColorePelle);
@@ -170,21 +203,38 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Salva localmente il nome scelto dal giocatore.
+    /// </summary>
+    /// <param name="testo">Nome scritto dal giocatore.</param>
     public void leggiInputNomeScritto(string testo)
     {
         nomeGiocatoreScritto = testo;
     }
 
+    /// <summary>
+    /// Salva localmente il valore della pelle scelto dal giocatore.
+    /// </summary>
+    /// <param name="indice">Indice del dropdown scelta colore pelle modello.<br><strong>0: Caucasico<br>1: Asiatico</br><br>2: Afro</br></strong></br></param>
     public void setPellePlayer(int indice)
     {
         sceltaColorePelle = indice;
     }
 
+    /// <summary>
+    /// Metodo che salva localmente il valore della scelta del genere del modello del giocatore.
+    /// </summary>
+    /// <param name="indice">Indice scela del modello player<br><strong>0: Maschio<br>1: Femmina</br></strong></br></param>
     public void setSceltaModelloGiocatore(int indice)
     {
         sceltaModelloPlayer = indice;
     }
 
+    /// <summary>
+    /// Metodo che salva localmente la scelta del genere scelto dal giocatore e controlla se il genere scelto sia quello neutro.<br></br>
+    /// In caso affermativo attiva il dropdown per la scelta del genere del modello, altrimenti lo disattiva.
+    /// </summary>
+    /// <param name="indiceScelta">Indice dropdown del genere<br><strong>0: Maschio<br>1: Femmina</br><br>2: Neutro</br></strong></br></param>
     public void dropdownGenere(int indiceScelta)
     {
         sceltaGenere = indiceScelta;

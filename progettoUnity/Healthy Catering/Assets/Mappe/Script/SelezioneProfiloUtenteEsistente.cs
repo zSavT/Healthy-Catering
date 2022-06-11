@@ -4,6 +4,12 @@ using TMPro;
 using UnityEngine;
 using Wilberforce;
 
+/// <summary>
+/// Classe per la gestione delle impostazioni presenti nel menu della creazione profilo utente<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Pannello menu della scena della creazione del profilo utente.
+/// </para>
+/// </summary>
 public class SelezioneProfiloUtenteEsistente : MonoBehaviour
 {
 
@@ -40,6 +46,11 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         elementiDomandaUscita.SetActive(false);
     }
 
+    /// <summary>
+    /// Trova l'indice corrispondente al nome della lista dei player. 
+    /// </summary>
+    /// <param name="nome">Nome del giocatore selezionato</param>
+    /// <returns>Indice della lista dei nomi presenti</returns>
     private int indiceNomeGiocatoreInLista(string nome)
     {
         int indice = 0;
@@ -54,6 +65,9 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         return indice;
     }
 
+    /// <summary>
+    /// Aggiorna i volori degli elementi presenti nella scena con quelli attuali.
+    /// </summary>
     public void refreshValori()
     {
         dropDownGenere.value = PlayerSettings.caricaGenereGiocatore(nomeSelezionato);
@@ -61,6 +75,11 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         dropDownModello3D.value = PlayerSettings.caricaGenereModello3D(nomeSelezionato);
     }
 
+    /// <summary>
+    /// Salva tutte le impostazioni fatte dal giocatore, salva il giocatore su file<br></br>
+    /// Carica successivamente il menu principale.
+    /// <see cref="PlayerSettings"/>.
+    /// </summary>
     public void salvaImpostazioni()
     {
         PlayerSettings.salvaNomePlayerGiocante(nomeSelezionato);
@@ -73,28 +92,22 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         {
             PlayerSettings.salvaGenereModello3D(nomeSelezionato, sceltaGenere);
         }
-        SceneManager.LoadScene(0);
+        SelezioneLivelli.caricaMenuPrincipale();
     }
 
 
+    /// <summary>
+    /// Inizializza la lista dei player presenti nel database.
+    /// </summary>
     private void letturaNomiUtenti()
     {
         player = Database.getDatabaseOggetto<Player>(new Player());
     }
 
 
-    private bool presentePlayer()
-    {
-        if (player.Count > 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
+    /// <summary>
+    /// Aggiunge i nomi presenti dalla lista player.
+    /// </summary>
     public void nomiPlayer()
     {
         List<Player> listaPlayer = Database.getDatabaseOggetto<Player>(new Player());
@@ -104,16 +117,26 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Aggiunge i player presenti nel database nella lista.
+    /// </summary>
     private void aggiuntaNomiDropdown()
     {
         dropDownListaPlayer.AddOptions(nomiPlayerPresenti);
     }
 
+    /// <summary>
+    /// Metodo che salva localmente il valore della scelta del genere del modello del giocatore.
+    /// </summary>
+    /// <param name="indice">Indice scela del modello player<br><strong>0: Maschio<br>1: Femmina</br></strong></br></param>
     public void setSceltaModelloGiocatore(int indice)
     {
         sceltaModelloPlayer = indice;
     }
 
+    /// <summary>
+    /// Attiva o disattiva le impostazioni del genere neutro in base al valore del dropdown del genere.
+    /// </summary>
     private void attivaDisattivaImpostazioniGenereNeutro()
     {
         if (dropDownGenere.value == 2)
@@ -128,6 +151,11 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Controlla se il genere scelto sia quello neutro.<br></br>
+    /// In caso affermativo attiva il dropdown per la scelta del genere del modello, altrimenti lo disattiva.
+    /// </summary>
+    /// <param name="indice">Indice dropdown del genere<br><strong>0: Maschio<br>1: Femmina</br><br>2: Neutro</br></strong></br></param>
     private void attivaDisattivaImpostazioniGenereNeutro(int indice)
     {
         if (indice == 2)
@@ -142,17 +170,32 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// Metodo che salva localmente la scelta del genere scelto dal giocatore e controlla se il genere scelto sia quello neutro.<br></br>
+    /// In caso affermativo attiva il dropdown per la scelta del genere del modello, altrimenti lo disattiva.
+    /// </summary>
+    /// <param name="indiceScelta">Indice dropdown del genere<br><strong>0: Maschio<br>1: Femmina</br><br>2: Neutro</br></strong></br></param>
     public void setGenerePlayer(int indiceScelta)
     {
         sceltaGenere = indiceScelta;
         attivaDisattivaImpostazioniGenereNeutro(sceltaGenere);
     }
 
+
+    /// <summary>
+    /// Salva localmente il valore della pelle scelto dal giocatore.
+    /// </summary>
+    /// <param name="indice">Indice del dropdown scelta colore pelle modello.<br><strong>0: Caucasico<br>1: Asiatico</br><br>2: Afro</br></strong></br></param>
     public void setPellePlayer(int indice)
     {
         sceltaColorePelle = indice;
     }
 
+    /// <summary>
+    /// Inizializza correttamente il valore del profilo utente selezionato.
+    /// </summary>
+    /// <param name="indice">Indice della scelta dropdown lista nomi profili giocatore.</param>
     public void indiceSceltaNomeUtente(int indice)
     {
         nomeSelezionato = dropDownListaPlayer.options[dropDownListaPlayer.value].text;
