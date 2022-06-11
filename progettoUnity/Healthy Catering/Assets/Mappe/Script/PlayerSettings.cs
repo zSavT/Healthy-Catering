@@ -18,14 +18,6 @@ public class PlayerSettings : MonoBehaviour
 
 
     /// <summary>
-    /// Setta variabile per confermare che è stato avviato per la prima volta un livello
-    /// </summary>
-    public static void salvaPrimoAvvioGame()
-    {
-        PlayerPrefs.SetInt("avvioCitta", 1);
-    }
-
-    /// <summary>
     /// Retta tutti i valori pesenti nel database del playerPref
     /// </summary>
     public static void resetTuttiValori()

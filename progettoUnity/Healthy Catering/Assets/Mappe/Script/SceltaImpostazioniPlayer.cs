@@ -33,14 +33,12 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerPrefs.SetInt("primoAvvio", 0);
         PuntatoreMouse.abilitaCursore();
         nomeGiocatoreScritto = "";
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         player = new List<Player>();
         genereNeutroScelto = false;
         disattivaElementi();
-        nomiPlayer();
         controlloEsistenzaProfiliPlayer();
     }
 
@@ -59,21 +57,6 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     void Update()
     {
         controlloNomeEsistente();
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public void nomiPlayer()
-    {
-        List<Player> listaPlayer = Database.getDatabaseOggetto(new Player());
-        if (listaPlayer != null)
-        {
-            for (int i = 0; i < listaPlayer.Count; i++)
-            {
-                nomiPlayerPresenti.Add(listaPlayer[i].nome);
-            }
-        }
     }
 
 
@@ -248,6 +231,14 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
             genereNeutroScelto = false;
             elementiGenereNeutro.SetActive(false);
         }
+    }
+
+    /// <summary>
+    /// Carica la scena del menu pricipale
+    /// </summary>
+    public void menuPrincipale()
+    {
+        SelezioneLivelli.caricaMenuPrincipale();
     }
 
 }

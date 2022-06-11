@@ -31,7 +31,6 @@ public class ControlloMouse : MonoBehaviour
         if (PlayerSettings.caricaPrimoAvvioSettaggiSensibilita() == 0)
         {
             PlayerSettings.salvaPrimoAvvioSettaggiSensibilita();
-            PlayerSettings.salvaPrimoAvvio();
             PlayerSettings.salvaImpostazioniSensibilita(250f);
         }
         Cursor.lockState = CursorLockMode.Locked;
