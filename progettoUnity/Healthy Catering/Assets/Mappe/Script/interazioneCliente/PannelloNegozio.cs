@@ -35,9 +35,6 @@ public class PannelloNegozio : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //TODO sotstituire con l'istanza del giocatore attivo
-        giocatore = new Player();
-
         //GESTIONE PANNELLO E RELATIVI
         animazione = GetComponentInParent<Animator>();
         pannelloAperto = false;
@@ -52,18 +49,10 @@ public class PannelloNegozio : MonoBehaviour
         copiaTemplateSingoloIngrediente = Instantiate(templateSingoloIngrediente);
         Destroy(templateSingoloIngrediente);
 
-        ingredientiBottoniFake = new Button[numeroBottoniNellaPagina];
-        int i = 0;
-        while (i < numeroBottoniNellaPagina)
-        {
-            ingredientiBottoniFake[i] = copiaTemplateSingoloIngrediente;
-            i++;
-        }
-
-        bottoneAvantiPannelloNegozio.onClick.AddListener(()=>{cambiaPannelloCarosello(true);});
-        bottoneIndietroPannelloNegozio.onClick.AddListener(()=>{cambiaPannelloCarosello(false);});
+        bottoneAvantiPannelloNegozio.onClick.AddListener(() => { cambiaPannelloCarosello(true); });
+        bottoneIndietroPannelloNegozio.onClick.AddListener(() => { cambiaPannelloCarosello(false); });
     }
-    
+
     //INTERAZIONE NEGOZIO
     private void cambiaPannelloCarosello(bool avanti)
     {
@@ -99,17 +88,26 @@ public class PannelloNegozio : MonoBehaviour
 
     public void interazioneNegozio()
     {
-        eliminaElementiPrecedentiSePresenti();
-        fillNuoviIngredientiBottoniFake();
+        //eliminaElementiPrecedentiSePresenti();
 
+        fillNuoviIngredientiBottoniFake();
+        /*
+        GameObject pannelloXElementiTemp = Instantiate(pannelloXElementi);
+        pannelloXElementiTemp.gameObject.transform.SetParent(pannelloNegozio.transform, false);
+        pannelloXElementiTemp.SetActive(true);
+        pannelloXElementiTemp = Instantiate(pannelloXElementi);
+        pannelloXElementiTemp.gameObject.transform.SetParent(pannelloNegozio.transform, false);
+        pannelloXElementiTemp.SetActive(true);
+        */
     }
 
     private void eliminaElementiPrecedentiSePresenti()
     {
+        /*
         GameObject[] pannelliXElementiPresenti = new GameObject[numeroPannelliXElementiNellaPagina];
         int numeroPannelliXElementiAggiunti = 0;
-       
-        foreach (GameObject gameobject in pannelloNegozio.GetComponentsInChildren<GameObject>())
+
+        foreach (GameObject gameobject in pannelloNegozio.GetComponents<GameObject>())
         {
             if (gameobject.name.ToLower().Contains("pannelloxelementi"))
             {
@@ -125,25 +123,30 @@ public class PannelloNegozio : MonoBehaviour
             }
             Destroy(pannelloXElementiTemp);
         }
+        */
+
+        foreach (Transform child in pannelloNegozio.GetComponentsInChildren<Transform>())
+        {
+            Destroy(child.gameObject);
+        }
     }
-    
+
     private void fillNuoviIngredientiBottoniFake()
     {
         int numeroBottoniFakeIngredientiInseriti = 0;
         GameObject pannelloXElementiTemp = Instantiate(pannelloXElementi);
+        int indicePiattoDaAggiungereNelDatabase;
 
-        foreach (Button bottoneFakeIngrediente in ingredientiBottoniFake)
+        while (numeroBottoniFakeIngredientiInseriti < numeroBottoniNellaPagina)
         {
-            int indicePiattoDaAggiungereNelDatabase = trovaIndicePiattoDaInserire(numeroBottoniFakeIngredientiInseriti);
+            indicePiattoDaAggiungereNelDatabase = trovaIndicePiattoDaInserire(numeroBottoniFakeIngredientiInseriti);
 
+            //-1 quando è stato aggiunto anche l'ultimo piatto del database
             if (indicePiattoDaAggiungereNelDatabase != -1)
             {
-                if (numeroBottoniFakeIngredientiInseriti == (numeroBottoniNellaPagina/numeroPannelliXElementiNellaPagina))
-                {
-                    pannelloXElementiTemp = aggiungiBottoneFakeIngredientiAlPannelloXElementi(pannelloXElementiTemp, indicePiattoDaAggiungereNelDatabase);
-                    numeroBottoniFakeIngredientiInseriti++;
-                }
-                else
+                pannelloXElementiTemp = aggiungiBottoneFakeIngredientiAlPannelloXElementi(pannelloXElementiTemp, indicePiattoDaAggiungereNelDatabase);
+
+                if (numeroBottoniFakeIngredientiInseriti % ((numeroBottoniNellaPagina / numeroPannelliXElementiNellaPagina)) == 0)
                 {
                     aggiungiPannelloXElementiAllaSchermata(pannelloXElementiTemp);
                     pannelloXElementiTemp = Instantiate(pannelloXElementi);
@@ -151,14 +154,17 @@ public class PannelloNegozio : MonoBehaviour
             }
             else
             {
+                aggiungiPannelloXElementiAllaSchermata(pannelloXElementiTemp);
                 return;
             }
+
+            numeroBottoniFakeIngredientiInseriti++;
         }
     }
 
     private int trovaIndicePiattoDaInserire(int numeroIngredientiInseritiFinoAdOra)
     {
-        int indice = (ultimaPaginaVisualizzata * numeroBottoniNellaPagina) - numeroIngredientiInseritiFinoAdOra + 1;
+        int indice = (ultimaPaginaVisualizzata * numeroBottoniNellaPagina) + numeroIngredientiInseritiFinoAdOra;
 
         if (indice != databaseIngredienti.Count)
             return indice;
@@ -188,7 +194,7 @@ public class PannelloNegozio : MonoBehaviour
         singoloIngredienteTemp = aggiungiListenerBottoneMostraIngredienti(singoloIngredienteTemp, ingrediente);
 
         singoloIngredienteTemp = aggiungiListenerCompraIngrediente(singoloIngredienteTemp, ingrediente);
-            
+
         return singoloIngredienteTemp;
     }
 
@@ -200,11 +206,10 @@ public class PannelloNegozio : MonoBehaviour
         return singoloIngredienteTemp;
     }
 
-
     private Button aggiungiGestioneBottoniQuantita(Button singoloIngredienteTemp, float costoIngrediente)
     {
         string quantitaSelezionata = singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text;
-        
+
         //bottone diminuisci quantita
         if (quantitaSelezionata.Equals("0"))
             singoloIngredienteTemp.GetComponentsInChildren<Button>()[0].interactable = false;
@@ -212,15 +217,15 @@ public class PannelloNegozio : MonoBehaviour
             singoloIngredienteTemp.GetComponentsInChildren<Button>()[0].interactable = true;
 
         //bottone aumenta quantita
-            //se il resto della divisione fra i soldi del giocatore e il costo
-            //della merce che vuole comprare è minore del costo dell'ingrediente
-            //se ne aggiunge 1 non può più comprarlo
-            //quindi ha raggiunto il massimo
+        //se il resto della divisione fra i soldi del giocatore e il costo
+        //della merce che vuole comprare è minore del costo dell'ingrediente
+        //se ne aggiunge 1 non può più comprarlo
+        //quindi ha raggiunto il massimo
         if (giocatore.soldi % (costoIngrediente * System.Int32.Parse(quantitaSelezionata)) < costoIngrediente)
             singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].interactable = false;
         else
             singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].interactable = true;
-        
+
 
         return singoloIngredienteTemp;
     }
@@ -228,7 +233,7 @@ public class PannelloNegozio : MonoBehaviour
     private Button aggiungiListenerBottoniQuantita(Button singoloIngredienteTemp)
     {
         //bottone diminuisci quantita    
-        singoloIngredienteTemp.GetComponentsInChildren<Button>()[0].onClick.AddListener(()=> {
+        singoloIngredienteTemp.GetComponentsInChildren<Button>()[0].onClick.AddListener(() => {
             cambiaQuantitaAcquistare(false, singoloIngredienteTemp);
         });
 
@@ -240,11 +245,11 @@ public class PannelloNegozio : MonoBehaviour
         return singoloIngredienteTemp;
     }
 
-    private void cambiaQuantitaAcquistare (bool diPiu, Button singoloIngredienteTemp)
+    private void cambiaQuantitaAcquistare(bool diPiu, Button singoloIngredienteTemp)
     {
         //testo quantita
         int quantitaPrecedente = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text);
-        
+
         if (diPiu)
         {
             singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text = (quantitaPrecedente + 1).ToString();
@@ -255,7 +260,7 @@ public class PannelloNegozio : MonoBehaviour
         }
     }
 
-    private Button aggiungiListenerBottoneMostraIngredienti (Button singoloIngredienteTemp, Ingrediente ingrediente)
+    private Button aggiungiListenerBottoneMostraIngredienti(Button singoloIngredienteTemp, Ingrediente ingrediente)
     {
         //bottone mostra ingredienti
         singoloIngredienteTemp.GetComponentsInChildren<Button>()[2].onClick.AddListener(() =>
@@ -266,14 +271,14 @@ public class PannelloNegozio : MonoBehaviour
         return singoloIngredienteTemp;
     }
 
-    private Button aggiungiListenerCompraIngrediente (Button singoloIngredienteTemp, Ingrediente ingrediente)
+    private Button aggiungiListenerCompraIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
     {
         //bottone mostra compra
         singoloIngredienteTemp.GetComponentsInChildren<Button>()[3].onClick.AddListener(() =>
         {
             compraIngrediente(ingrediente, System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text));
         });
-        
+
         return singoloIngredienteTemp;
     }
 
@@ -285,14 +290,15 @@ public class PannelloNegozio : MonoBehaviour
         giocatore.aggiornaInventario(ingrediente, quantitaDaComprare);
     }
 
-    private void aggiungiSingoloIngredienteAPanelloXElementi (Button singoloIngrediente, GameObject pannelloXElementi)
+    private void aggiungiSingoloIngredienteAPanelloXElementi(Button singoloIngrediente, GameObject pannelloXElementi)
     {
-        singoloIngrediente.transform.SetParent(pannelloXElementi.transform, false);
+        singoloIngrediente.gameObject.transform.SetParent(pannelloXElementi.transform, false);
     }
 
     private void aggiungiPannelloXElementiAllaSchermata(GameObject pannelloXElementiTemp)
     {
-        pannelloXElementi.transform.SetParent(pannelloNegozio.transform, false);
+        pannelloXElementiTemp.gameObject.transform.SetParent(pannelloNegozio.transform, false);
+        pannelloXElementiTemp.SetActive(true);
     }
 
     //GESTIONE PANNELLO E RELATIVI
@@ -310,7 +316,7 @@ public class PannelloNegozio : MonoBehaviour
     {
         pannelloAperto = false;
         canvasPannelloNegozio.SetActive(false);
-        animazioneNPCIdle(); 
+        animazioneNPCIdle();
         pannelloMostraRicette.chiudiPannelloMostraRicette();
     }
 
