@@ -153,7 +153,7 @@ public class PannelloMenu : MonoBehaviour
             clienteServito = true;
             chiusuraInterazioneCliente.Invoke();
         }
-
+        //richiamo Metodi progressione obbiettivi
         animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
     }
 
@@ -322,13 +322,13 @@ public class PannelloMenu : MonoBehaviour
         //nella lista degli ingredienti piatto selezionato ci sono solo gli ingredienti che vanno bene ora
         List<Ingrediente> ingredientiCompatibili = ingredientiPiattoSelezionato;
 
-        testoIngredientiGiusti.color = Color.green;
+        testoIngredientiGiusti.color = new Color32(182, 216, 156, 255);
         testoIngredientiGiusti.text = Ingrediente.listIngredientiToStringa (ingredientiCompatibili);
 
-        testoIngredientiSbagliatiDieta.color = Color.red;
+        testoIngredientiSbagliatiDieta.color = new Color32(255, 102, 102, 255);
         testoIngredientiSbagliatiDieta.text = Ingrediente.listIngredientiToStringa(ingredientiNonCompatibiliDieta);
 
-        testoIngredientiSbagliatiPatologia.color = Color.red;
+        testoIngredientiSbagliatiPatologia.color = new Color32(255, 102, 102, 255);
         testoIngredientiSbagliatiPatologia.text = Ingrediente.listIngredientiToStringa(ingredientiNonCompatibiliPatologia);
     }
 

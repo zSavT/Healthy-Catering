@@ -17,6 +17,11 @@ public class Interactor : MonoBehaviour
     [Header("Interazione Magazzino")]
     [SerializeField] private PannelloMagazzino magazzino;
 
+    [Header("Interazione NPC passivi")]
+    [SerializeField] private LayerMask layerUnityNPCPassivi = 7;
+    [SerializeField] private InterazionePassanti interazionePassanti;
+    private InteractableNPCPassivi npcPassivo;
+
     [Header("Eventi")]
     [SerializeField] private UnityEvent playerStop;
     [SerializeField] private UnityEvent playerRiprendiMovimento;
@@ -26,7 +31,7 @@ public class Interactor : MonoBehaviour
 
     private Vector3 posizioneCameraOriginale;
 
-    private bool menuApribile;
+    private bool menuApribile;                                                      //se il menu opzioni è aperto, le interezioni sono disattivate
     public static bool pannelloAperto;
     private int IDClientePuntato;
     private Player giocatore;
@@ -55,7 +60,7 @@ public class Interactor : MonoBehaviour
 
     void Update()
     {
-        interazioneUtenteNPC();
+        interazioneUtenteConNPCVari();
     }
 
     public void menuApribileOnOff()
@@ -63,15 +68,28 @@ public class Interactor : MonoBehaviour
         menuApribile = !menuApribile;
     }
 
-    private void interazioneUtenteNPC()
+    private bool NPCPassantePuntato()
+    {
+        RaycastHit NPCPassivoInquadrato;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out NPCPassivoInquadrato, 3, layerUnityNPCPassivi))
+        {
+            if(NPCPassivoInquadrato.collider.GetComponent<InteractableNPCPassivi>() != false)
+            { 
+                npcPassivo = NPCPassivoInquadrato.collider.GetComponent<InteractableNPCPassivi>();
+                return true;
+            }
+            
+        }
+        return false;
+    }
+
+    private void interazioneUtenteConNPCVari()
     {
         if (menuApribile)
         {
-            if (NPCInteragibilePuntato())
+            if (NPCClientePuntato())
             {
                 inquadratoNPC.Invoke();
-
-
                 if (Input.GetKeyDown(tastoInterazione))
                 {
                     interazioneCliente(IDClientePuntato);
@@ -81,11 +99,23 @@ public class Interactor : MonoBehaviour
                 inquadratoNPC.Invoke();
                 if (Input.GetKeyDown(tastoInterazione))
                 {
-                    magazzino.attivaPannello();
+                    magazzino.apriPannelloMagazzino();
                     playerStop.Invoke();
                     PuntatoreMouse.abilitaCursore();
                 }
             }
+            else if (NPCPassantePuntato())
+            {
+                inquadratoNPC.Invoke();
+                if (Input.GetKeyDown(tastoInterazione) && !(interazionePassanti.getPannelloInterazionePassantiAperto()))
+                {
+                    interazionePassanti.apriPannelloInterazionePassanti(npcPassivo.transform.parent.name);
+                    npcPassivo.animazioneParlata(gameObject.transform);
+                    playerStop.Invoke();
+                    PuntatoreMouse.abilitaCursore();
+                    CambioCursore.cambioCursoreNormale();
+                }
+            } 
             else
             {
                 uscitaRangeMenu.Invoke();
@@ -97,30 +127,49 @@ public class Interactor : MonoBehaviour
                         {
                             esciDaInterazioneCliente();
                         }
+                        
                     }
+                } 
+            }
+
+            if (interazionePassanti.getPannelloInterazionePassantiAperto())
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    interazionePassanti.chiudiPannelloInterazionePassanti();
+                    npcPassivo.stopAnimazioneParlata(gameObject.transform);
+                    PuntatoreMouse.disabilitaCursore();
+                    playerRiprendiMovimento.Invoke();
                 }
             }
         }
     }
 
+    public void esciDaInterazionePC()
+    {
+        playerRiprendiMovimento.Invoke();
+
+        ritornaAllaPosizioneNormale();
+        CambioCursore.cambioCursoreNormale();
+        PuntatoreMouse.disabilitaCursore();
+        magazzino.chiudiPannelloMagazzino();
+    }
 
     private bool pcPuntato()
     {
         RaycastHit pcInquadrato;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out pcInquadrato, 2, layerUnityNPC))
         {
-            Debug.Log("CheckComputer");
             // se l'oggetto visualizzato è interagibile
             if (pcInquadrato.collider.GetComponent<PannelloMagazzino>() != false)
             {
-                Debug.Log("Computer puntato");
                 return true;
             }
         }
         return false;
     }
 
-    private bool NPCInteragibilePuntato()
+    private bool NPCClientePuntato()
     {
         RaycastHit NPCpuntato;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out NPCpuntato, 2, layerUnityNPC))
@@ -176,10 +225,7 @@ public class Interactor : MonoBehaviour
 
         apriPannello();
 
-
         pannelloMenuECliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato, giocatore, npc);
-
-        //caricaClienteInPanello(Database.getDatabaseOggetto(new Cliente())[IDClientePuntato]);
 
         PuntatoreMouse.abilitaCursore();
     }

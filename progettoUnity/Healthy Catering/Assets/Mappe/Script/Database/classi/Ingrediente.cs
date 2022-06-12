@@ -101,6 +101,25 @@ public class Ingrediente : Item
             throw new InvalidOperationException("Id nutriscore inserito non valido");
     }
 
+    public List<Piatto> getListaPiattiRealizzabiliConIngrediente(List<Ingrediente> databaseIngredienti, List<Piatto> databasePiatti)
+    {
+        List<Piatto> ricettePossibiliConIngrediente = new List<Piatto>();
+
+        foreach (Piatto piatto in databasePiatti)
+        {
+            List<Ingrediente> ingredientiPiatto = piatto.getIngredientiPiatto(databaseIngredienti);
+            foreach (Ingrediente ingredientePiatto in ingredientiPiatto)
+            {
+                if (this.Equals(ingredientePiatto))
+                {
+                    ricettePossibiliConIngrediente.Add(piatto);
+                }
+            }
+        }
+
+        return ricettePossibiliConIngrediente;
+    }
+
     public static Ingrediente checkIngredienteOnonimoGiaPresente(string nomeIngrediente)
     {
         List<Ingrediente> ingredientiConNomeSimileInDatabase = getIngredientiConNomeSimileInDatabase(nomeIngrediente);

@@ -1849,6 +1849,11 @@ MonoBehaviour:
   posizioneCameraMenuCliente: {fileID: 4878910828240045144}
   pannelloMenuECliente: {fileID: 0}
   hud: {fileID: 0}
+  magazzino: {fileID: 0}
+  layerUnityNPCPassivi:
+    serializedVersion: 2
+    m_Bits: 128
+  interazionePassanti: {fileID: 0}
   playerStop:
     m_PersistentCalls:
       m_Calls:
@@ -2222,7 +2227,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 255
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

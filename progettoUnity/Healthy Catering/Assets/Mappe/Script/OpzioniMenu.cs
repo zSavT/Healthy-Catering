@@ -25,7 +25,6 @@ public class OpzioniMenu : MonoBehaviour
 
     void Start()
     {
-
         CambioCursore.cambioCursoreNormale();
 
         //DALTONISMO

@@ -5,7 +5,7 @@
 [cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
 
 <p align="center">
-  <img src="doc/img/Logo_Rettangolare.png" />
+  <img src="doc/img/Logo/Logo_Rettangolare.png" />
 </p>
 
 Lo scopo del videogioco è di consolidare le conoscenze di coloro che hanno intrapreso uno studio presso un istituto Alberghiero o un corso concernente le Scienze della Nutrizione e/o corsi simili mirati alla sensibilizzazione sul tema della corretta alimentazione per lo più indirizzata a individui caratterizzati da un certo quadro patologico, con annesso accenno all’argomento ‘’sostenibilità ambientale’’. In più il gioco permetterà al giocatore di imparare a gestire al meglio il proprio denaro, come aspetto secondario del gioco.
@@ -49,22 +49,35 @@ I requisiti Hardware e Software del gioco:
 L'aspect ratio 4:3 non è pienamento supportato, l'esperienza potrebbe variare rispetto alla modalità 16:9 pienamente supportata.
 
 
-
 ### Requisiti Software
 
 - Windows 10/11
 - High Sierra 10.13+
 
+## Aiutanti
+
+### Colonna Sonora
+La colonna sonora è sta realizzata da [@AleCongi](https://github.com/AleCongi), profilo [Spotify](https://open.spotify.com/artist/4iiwwWtSPD6yEIKclYS0s6).<br>
+
+### Design Artist
+
+Le grafiche utilizzate nel gioco sono state realizzate da <a href="https://linktr.ee/franci.cara">Franci.cara</a>.
+
+### 3D Artist
+
+Il modello 3D interno del ristorante è stato realizzato da Angelica.
 
 ## Immagini di gioco
 
+
 ![Menu Iniziale](doc/Screenshoot/menuIniziale.png "Menu Iniziale")
 
-![Creazione Profilo Utente](doc/Screenshoot/CreazioneProfiloUtente.PNG "HUD in Game")
+![Creazione Profilo Utente](doc/img/Screenshoot/CreazioneProfiloUtente.PNG "Creazione profilo utente")
 
-![InterazioneCliente](doc/Screenshoot/InterazioneCliente.PNG "HUD in Game")
+![InterazioneCliente](doc/img/Screenshoot/InterazioneCliente.PNG "HUD in Game interazione cliente")
 
-![Menu Opzioni](doc/Screenshoot/MenuOpzioni.PNG "HUD in Game")
+![Menu Opzioni](doc/img/Screenshoot/MenuOpzioni.PNG "HUD Menu opzioni")
+
 
 
 
