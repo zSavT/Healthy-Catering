@@ -51,6 +51,7 @@ public class PannelloNegozio : MonoBehaviour
 
         bottoneAvantiPannelloNegozio.onClick.AddListener(() => { cambiaPannelloCarosello(true); });
         bottoneIndietroPannelloNegozio.onClick.AddListener(() => { cambiaPannelloCarosello(false); });
+        disattivaBottoniAvantiDietroSeServe();
     }
 
     //INTERAZIONE NEGOZIO
