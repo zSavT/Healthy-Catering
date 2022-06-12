@@ -99,7 +99,7 @@ public class PannelloNegozio : MonoBehaviour
             int j = 0;
             while(j < numeroIngredientiPerPannelloXElementi)
             {
-                output.SetValue(temp.GetValue(j), (i * numeroIngredientiPerPannelloXElementi) + j);//LE MATRICIIIIIIIIIIIII
+                output[(i * numeroIngredientiPerPannelloXElementi) + j] = temp [j];//LE MATRICIIIIIIIIIIIII
                 j++;
             }
             i++;
@@ -119,13 +119,20 @@ public class PannelloNegozio : MonoBehaviour
         int i = 0;
         while (i < numeroIngredientiPerPannelloXElementi)
         {
-            output.SetValue(Instantiate(copiaTemplateSingoloIngrediente), i);
+            output [i] = Instantiate(copiaTemplateSingoloIngrediente);
             aggiungiBottoneFakeIngredientiAlPannelloXElementi(pannelloXElementiTemp, output[i]);
             i++;
         }
         aggiungiPannelloXElementiAllaSchermata(pannelloXElementiTemp);
 
         return output;
+    }
+
+    private GameObject aggiungiBottoneFakeIngredientiAlPannelloXElementi(GameObject pannelloXElementiTemp, Button singoloIngredienteTemp)
+    {
+        aggiungiSingoloIngredienteAPanelloXElementi(singoloIngredienteTemp, pannelloXElementiTemp);
+
+        return pannelloXElementiTemp;
     }
 
     public void aggiornaBottoniPaginaCarosello()
@@ -138,35 +145,27 @@ public class PannelloNegozio : MonoBehaviour
 
     private void aggiornaValoriBottoniFake()
     {
-        /*
-        int numeroBottoniFakeIngredientiInseriti = 0;
-        GameObject pannelloXElementiTemp = Instantiate(pannelloXElementi);
         int indicePiattoDaAggiungereNelDatabase;
-
-        while (numeroBottoniFakeIngredientiInseriti < numeroBottoniNellaPagina)
+        int i = 0;
+        while (i < numeroBottoniNellaPagina)
         {
-            indicePiattoDaAggiungereNelDatabase = trovaIndicePiattoDaInserire(numeroBottoniFakeIngredientiInseriti);
+            indicePiattoDaAggiungereNelDatabase = trovaIndicePiattoDaInserire(i);
 
             //-1 quando è stato aggiunto anche l'ultimo piatto del database
             if (indicePiattoDaAggiungereNelDatabase != -1)
             {
-                //pannelloXElementiTemp = aggiungiBottoneFakeIngredientiAlPannelloXElementi(pannelloXElementiTemp);
-
-                if ((numeroBottoniFakeIngredientiInseriti % ((numeroBottoniNellaPagina / numeroPannelliXElementiNellaPagina)) == 0) && (numeroBottoniFakeIngredientiInseriti != 0))
-                {
-                    aggiungiPannelloXElementiAllaSchermata(pannelloXElementiTemp);
-                    pannelloXElementiTemp = Instantiate(pannelloXElementi);
-                }
+                ingredientiBottoniFake[i] = popolaSingoloIngrediente(
+                    ingredientiBottoniFake[i], 
+                    databaseIngredienti[indicePiattoDaAggiungereNelDatabase]
+                );
             }
             else
             {
-                aggiungiPannelloXElementiAllaSchermata(pannelloXElementiTemp);
+                //disattivaIBottoniSuccessivi(i);
                 return;
             }
-
-            numeroBottoniFakeIngredientiInseriti++;
+            i++;
         }
-        */
     }
 
     private int trovaIndicePiattoDaInserire(int numeroIngredientiInseritiFinoAdOra)
@@ -177,15 +176,6 @@ public class PannelloNegozio : MonoBehaviour
             return indice;
 
         return -1;
-    }
-
-    private GameObject aggiungiBottoneFakeIngredientiAlPannelloXElementi(GameObject pannelloXElementiTemp, Button singoloIngredienteTemp)
-    {
-        //singoloIngredienteTemp = popolaSingoloIngrediente(singoloIngredienteTemp, databaseIngredienti[indicePiattoDaAggiungereNelDatabase]);
-
-        aggiungiSingoloIngredienteAPanelloXElementi(singoloIngredienteTemp, pannelloXElementiTemp);
-
-        return pannelloXElementiTemp;
     }
 
     private Button popolaSingoloIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
