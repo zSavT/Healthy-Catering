@@ -166,6 +166,10 @@ public class PannelloNegozio : MonoBehaviour
             }
             i++;
         }
+        foreach (Button temp in ingredientiBottoniFake)
+        {
+            print(temp.GetComponentsInChildren<TextMeshProUGUI>()[0].name);
+        }
     }
 
     private int trovaIndicePiattoDaInserire(int numeroIngredientiInseritiFinoAdOra)
@@ -185,8 +189,6 @@ public class PannelloNegozio : MonoBehaviour
         singoloIngredienteTemp = aggiungiGestioneBottoniQuantita(singoloIngredienteTemp, ingrediente.costo);
 
         singoloIngredienteTemp = aggiungiListenerBottoniQuantita(singoloIngredienteTemp);
-
-        singoloIngredienteTemp = aggiungiListenerBottoneMostraIngredienti(singoloIngredienteTemp, ingrediente);
 
         singoloIngredienteTemp = aggiungiListenerCompraIngrediente(singoloIngredienteTemp, ingrediente);
 
@@ -255,21 +257,10 @@ public class PannelloNegozio : MonoBehaviour
         }
     }
 
-    private Button aggiungiListenerBottoneMostraIngredienti(Button singoloIngredienteTemp, Ingrediente ingrediente)
-    {
-        //bottone mostra ingredienti
-        singoloIngredienteTemp.GetComponentsInChildren<Button>()[2].onClick.AddListener(() =>
-        {
-            pannelloMostraRicette.apriPannelloMostraRicette(ingrediente, databaseIngredienti, databasePiatti);
-        });
-
-        return singoloIngredienteTemp;
-    }
-
     private Button aggiungiListenerCompraIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
     {
         //bottone mostra compra
-        singoloIngredienteTemp.GetComponentsInChildren<Button>()[3].onClick.AddListener(() =>
+        singoloIngredienteTemp.GetComponentsInChildren<Button>()[2].onClick.AddListener(() =>
         {
             compraIngrediente(ingrediente, System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text));
         });
