@@ -213,6 +213,22 @@ public class PannelloNegozio : MonoBehaviour
 
         singoloIngredienteTemp = aggiungiListenerCompraIngrediente(singoloIngredienteTemp, ingrediente);
 
+        singoloIngredienteTemp = modificaImmagineIngrediente(singoloIngredienteTemp, ingrediente);
+
+        return singoloIngredienteTemp;
+    }
+
+    private Button modificaImmagineIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
+    {
+        singoloIngredienteTemp.GetComponentsInChildren<Image>()[6].name = "immagine ingrediente " + ingrediente.nome;
+        
+        Sprite nuovaImmagine = Resources.Load<Sprite>(ingrediente.nome);
+        if (nuovaImmagine == null)
+        {
+            nuovaImmagine = Resources.Load<Sprite>("ImmagineIngredienteDefault");
+        }
+        singoloIngredienteTemp.GetComponentsInChildren<Image>()[6].sprite = nuovaImmagine;
+
         return singoloIngredienteTemp;
     }
 
