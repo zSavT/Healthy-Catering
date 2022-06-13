@@ -33,6 +33,10 @@ public class PannelloNegozio : MonoBehaviour
 
     private Player giocatore;
 
+    [SerializeField] private GameObject pannelloSeiSicuro;
+    private Ingrediente ingredienteAttualmenteSelezionato;
+    private int quantitaAttualmenteSelezionata;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +57,10 @@ public class PannelloNegozio : MonoBehaviour
         bottoneAvantiPannelloNegozio.onClick.AddListener(() => { cambiaPannelloCarosello(true); });
         bottoneIndietroPannelloNegozio.onClick.AddListener(() => { cambiaPannelloCarosello(false); });
         disattivaBottoniAvantiDietroSeServe();
+
+        chiudiPannelloSeiSicuro();
+        ingredienteAttualmenteSelezionato = null;
+        quantitaAttualmenteSelezionata = 0;
     }
 
     //INTERAZIONE NEGOZIO
@@ -299,18 +307,40 @@ public class PannelloNegozio : MonoBehaviour
         //bottone mostra compra
         singoloIngredienteTemp.GetComponentsInChildren<Button>()[2].onClick.AddListener(() =>
         {
-            compraIngrediente(ingrediente, System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text));
+            ingredienteAttualmenteSelezionato = ingrediente;
+            quantitaAttualmenteSelezionata = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text);
+            apriPannelloSeiSicuro();
         });
 
         return singoloIngredienteTemp;
     }
 
-    private void compraIngrediente(Ingrediente ingrediente, int quantitaDaComprare)
+    private void apriPannelloSeiSicuro()
     {
-        float prezzoDaPagare = ingrediente.costo * quantitaDaComprare;
-        giocatore.guadagna(-prezzoDaPagare);
+        pannelloSeiSicuro.SetActive(true);
+    }
 
-        giocatore.aggiornaInventario(ingrediente, quantitaDaComprare);
+    public void compraIngrediente()
+    {
+        if ((ingredienteAttualmenteSelezionato != null) && (quantitaAttualmenteSelezionata != 0))
+        {
+            float prezzoDaPagare = ingredienteAttualmenteSelezionato.costo * quantitaAttualmenteSelezionata;
+            giocatore.guadagna(-prezzoDaPagare);
+
+            giocatore.aggiornaInventario(ingredienteAttualmenteSelezionato, quantitaAttualmenteSelezionata);
+        }
+        chiudiPannelloSeiSicuro();
+    }
+
+    public void annullaCompraIngrediente()
+    {
+        ingredienteAttualmenteSelezionato = null;
+        quantitaAttualmenteSelezionata = 0;
+    }
+
+    private void chiudiPannelloSeiSicuro()
+    {
+        pannelloSeiSicuro.SetActive(false);
     }
 
     private void aggiungiSingoloIngredienteAPanelloXElementi(Button singoloIngrediente, GameObject pannelloXElementi)
@@ -333,6 +363,7 @@ public class PannelloNegozio : MonoBehaviour
         canvasPannelloNegozio.SetActive(true);
         aggiornaBottoniPaginaCarosello();
         pannelloMostraRicette.chiudiPannelloMostraRicette();
+        chiudiPannelloSeiSicuro();
     }
 
     public void chiudiPannelloNegozio()
