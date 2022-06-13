@@ -139,8 +139,8 @@ public class PannelloNegozio : MonoBehaviour
     {
         if (ingredientiBottoniFake == null)
             ingredientiBottoniFake = creaIstanzeBottoniFakeNeiPannelli();
-        else
-            aggiornaValoriBottoniFake();
+        
+        aggiornaValoriBottoniFake();
     }
 
     private void aggiornaValoriBottoniFake()
