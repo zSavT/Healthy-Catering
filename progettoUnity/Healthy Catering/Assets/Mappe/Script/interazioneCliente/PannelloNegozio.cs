@@ -166,10 +166,6 @@ public class PannelloNegozio : MonoBehaviour
             }
             i++;
         }
-        foreach (Button temp in ingredientiBottoniFake)
-        {
-            print(temp.GetComponentsInChildren<TextMeshProUGUI>()[0].name);
-        }
     }
 
     private int trovaIndicePiattoDaInserire(int numeroIngredientiInseritiFinoAdOra)
