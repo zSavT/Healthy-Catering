@@ -299,7 +299,7 @@ public class PannelloNegozio : MonoBehaviour
         return singoloIngredienteTemp;
     }
 
-    private void apriPannelloSeiSicuro()
+    public void apriPannelloSeiSicuro()
     {
         pannelloSeiSicuro.SetActive(true);
     }
