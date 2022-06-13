@@ -20,7 +20,6 @@ public class PannelloNegozio : MonoBehaviour
     [SerializeField] private Button bottoneIndietroPannelloNegozio;
 
     private List<Ingrediente> databaseIngredienti;
-    private List<Piatto> databasePiatti;
     [SerializeField] private PannelloMostraRicette pannelloMostraRicette;
 
     //readonly == final in java
@@ -37,7 +36,6 @@ public class PannelloNegozio : MonoBehaviour
     private Ingrediente ingredienteAttualmenteSelezionato;
     private int quantitaAttualmenteSelezionata;
 
-    // Start is called before the first frame update
     void Start()
     {
         //GESTIONE PANNELLO E RELATIVI
@@ -48,7 +46,6 @@ public class PannelloNegozio : MonoBehaviour
 
         //INTERAZIONE NEGOZIO
         databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
-        databasePiatti = Database.getDatabaseOggetto(new Piatto());
         ultimaPaginaPossibile = (databaseIngredienti.Count / numeroBottoniNellaPagina);
 
         copiaTemplateSingoloIngrediente = Instantiate(templateSingoloIngrediente);
@@ -94,6 +91,14 @@ public class PannelloNegozio : MonoBehaviour
         {
             bottoneIndietroPannelloNegozio.interactable = true;
         }
+    }
+
+    public void aggiornaBottoniPaginaCarosello()
+    {
+        if (ingredientiBottoniFake == null)
+            ingredientiBottoniFake = creaIstanzeBottoniFakeNeiPannelli();
+
+        aggiornaValoriBottoniFake();
     }
 
     private Button [] creaIstanzeBottoniFakeNeiPannelli()
@@ -143,12 +148,15 @@ public class PannelloNegozio : MonoBehaviour
         return pannelloXElementiTemp;
     }
 
-    public void aggiornaBottoniPaginaCarosello()
+    private void aggiungiSingoloIngredienteAPanelloXElementi(Button singoloIngrediente, GameObject pannelloXElementi)
     {
-        if (ingredientiBottoniFake == null)
-            ingredientiBottoniFake = creaIstanzeBottoniFakeNeiPannelli();
-        
-        aggiornaValoriBottoniFake();
+        singoloIngrediente.gameObject.transform.SetParent(pannelloXElementi.transform, false);
+    }
+
+    private void aggiungiPannelloXElementiAllaSchermata(GameObject pannelloXElementiTemp)
+    {
+        pannelloXElementiTemp.gameObject.transform.SetParent(pannelloNegozio.transform, false);
+        pannelloXElementiTemp.SetActive(true);
     }
 
     private void aggiornaValoriBottoniFake()
@@ -192,15 +200,6 @@ public class PannelloNegozio : MonoBehaviour
         }
     }
 
-    private void disattivaIBottoniSuccessivi(int indicePrimoIngredienteDaDisattivare)
-    {
-        while (indicePrimoIngredienteDaDisattivare < numeroBottoniNellaPagina)
-        {
-            ingredientiBottoniFake[indicePrimoIngredienteDaDisattivare].gameObject.SetActive(false);
-            indicePrimoIngredienteDaDisattivare++;
-        }
-    }
-
     private int trovaIndicePiattoDaInserire(int numeroIngredientiInseritiFinoAdOra)
     {
         int indice = (ultimaPaginaVisualizzata * numeroBottoniNellaPagina) + numeroIngredientiInseritiFinoAdOra;
@@ -222,20 +221,6 @@ public class PannelloNegozio : MonoBehaviour
         singoloIngredienteTemp = aggiungiListenerCompraIngrediente(singoloIngredienteTemp, ingrediente);
 
         singoloIngredienteTemp = modificaImmagineIngrediente(singoloIngredienteTemp, ingrediente);
-
-        return singoloIngredienteTemp;
-    }
-
-    private Button modificaImmagineIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
-    {
-        singoloIngredienteTemp.GetComponentsInChildren<Image>()[6].name = "immagine ingrediente " + ingrediente.nome;
-        
-        Sprite nuovaImmagine = Resources.Load<Sprite>(ingrediente.nome);
-        if (nuovaImmagine == null)
-        {
-            nuovaImmagine = Resources.Load<Sprite>("ImmagineIngredienteDefault");
-        }
-        singoloIngredienteTemp.GetComponentsInChildren<Image>()[6].sprite = nuovaImmagine;
 
         return singoloIngredienteTemp;
     }
@@ -267,7 +252,6 @@ public class PannelloNegozio : MonoBehaviour
             singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].interactable = false;
         else
             singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].interactable = true;
-
 
         return singoloIngredienteTemp;
     }
@@ -320,6 +304,30 @@ public class PannelloNegozio : MonoBehaviour
         pannelloSeiSicuro.SetActive(true);
     }
 
+    private Button modificaImmagineIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
+    {
+        singoloIngredienteTemp.GetComponentsInChildren<Image>()[6].name = "immagine ingrediente " + ingrediente.nome;
+
+        Sprite nuovaImmagine = Resources.Load<Sprite>(ingrediente.nome);
+        if (nuovaImmagine == null)
+        {
+            nuovaImmagine = Resources.Load<Sprite>("ImmagineIngredienteDefault");
+        }
+        singoloIngredienteTemp.GetComponentsInChildren<Image>()[6].sprite = nuovaImmagine;
+
+        return singoloIngredienteTemp;
+    }
+
+    private void disattivaIBottoniSuccessivi(int indicePrimoIngredienteDaDisattivare)
+    {
+        while (indicePrimoIngredienteDaDisattivare < numeroBottoniNellaPagina)
+        {
+            ingredientiBottoniFake[indicePrimoIngredienteDaDisattivare].gameObject.SetActive(false);
+            indicePrimoIngredienteDaDisattivare++;
+        }
+    }
+
+    //METODI DEI BOTTONI DEL PANNELLO SEI SICURO
     public void compraIngrediente()
     {
         if ((ingredienteAttualmenteSelezionato != null) && (quantitaAttualmenteSelezionata != 0))
@@ -342,17 +350,6 @@ public class PannelloNegozio : MonoBehaviour
     private void chiudiPannelloSeiSicuro()
     {
         pannelloSeiSicuro.SetActive(false);
-    }
-
-    private void aggiungiSingoloIngredienteAPanelloXElementi(Button singoloIngrediente, GameObject pannelloXElementi)
-    {
-        singoloIngrediente.gameObject.transform.SetParent(pannelloXElementi.transform, false);
-    }
-
-    private void aggiungiPannelloXElementiAllaSchermata(GameObject pannelloXElementiTemp)
-    {
-        pannelloXElementiTemp.gameObject.transform.SetParent(pannelloNegozio.transform, false);
-        pannelloXElementiTemp.SetActive(true);
     }
 
     //GESTIONE PANNELLO E RELATIVI
