@@ -45,7 +45,7 @@ public class PannelloNegozio : MonoBehaviour
         //INTERAZIONE NEGOZIO
         databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
         databasePiatti = Database.getDatabaseOggetto(new Piatto());
-        ultimaPaginaPossibile = (databaseIngredienti.Count / numeroBottoniNellaPagina) + 1;
+        ultimaPaginaPossibile = (databaseIngredienti.Count / numeroBottoniNellaPagina);
 
         copiaTemplateSingoloIngrediente = Instantiate(templateSingoloIngrediente);
         numeroIngredientiPerPannelloXElementi = numeroBottoniNellaPagina / numeroPannelliXElementiNellaPagina;
@@ -145,6 +145,11 @@ public class PannelloNegozio : MonoBehaviour
 
     private void aggiornaValoriBottoniFake()
     {
+        //serve perche' se qualche ingrediente e' stato disattivato prima,
+        //perche' era gia stato mostrato l'ultimo elemento del database degli ingredienti
+        //ora va riattivato
+        attivaTuttiIBottoniNelPannelloNegozio();         
+
         int indicePiattoDaAggiungereNelDatabase;
         int i = 0;
         while (i < numeroBottoniNellaPagina)
@@ -161,10 +166,30 @@ public class PannelloNegozio : MonoBehaviour
             }
             else
             {
-                //disattivaIBottoniSuccessivi(i);
+                disattivaIBottoniSuccessivi(i);//i e' l'indice del bottone dal quale bisogna disattivare
                 return;
             }
             i++;
+        }
+    }
+
+    private void attivaTuttiIBottoniNelPannelloNegozio()
+    {
+        foreach (Button temp in ingredientiBottoniFake)
+        {
+            if (!temp.IsActive())
+            {
+                temp.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    private void disattivaIBottoniSuccessivi(int indicePrimoIngredienteDaDisattivare)
+    {
+        while (indicePrimoIngredienteDaDisattivare < numeroBottoniNellaPagina)
+        {
+            ingredientiBottoniFake[indicePrimoIngredienteDaDisattivare].gameObject.SetActive(false);
+            indicePrimoIngredienteDaDisattivare++;
         }
     }
 
