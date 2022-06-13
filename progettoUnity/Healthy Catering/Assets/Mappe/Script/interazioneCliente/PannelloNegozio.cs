@@ -336,6 +336,7 @@ public class PannelloNegozio : MonoBehaviour
     {
         ingredienteAttualmenteSelezionato = null;
         quantitaAttualmenteSelezionata = 0;
+        chiudiPannelloSeiSicuro();
     }
 
     private void chiudiPannelloSeiSicuro()
