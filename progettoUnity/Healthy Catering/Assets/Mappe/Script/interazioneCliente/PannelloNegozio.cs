@@ -228,8 +228,8 @@ public class PannelloNegozio : MonoBehaviour
     private Button modificaTesto(Button singoloIngredienteTemp, string nomeIngrediente, string costoIngrediente)
     {
         singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[0].text = nomeIngrediente;
-        singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[1].text = costoIngrediente;
-
+        singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Costo: " + costoIngrediente;
+        singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text = 0.ToString();
         return singoloIngredienteTemp;
     }
 
