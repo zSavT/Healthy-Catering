@@ -20,7 +20,7 @@ public class PannelloNegozio : MonoBehaviour
     [SerializeField] private Button bottoneIndietroPannelloNegozio;
 
     private List<Ingrediente> databaseIngredienti;
-    [SerializeField] private PannelloMostraRicette pannelloMostraRicette;
+    [SerializeField] private HudInGame gui;
 
     //readonly == final in java
     private readonly int numeroBottoniNellaPagina = 9;
@@ -336,7 +336,7 @@ public class PannelloNegozio : MonoBehaviour
             testoPannelloSeiSicuro.text = "Sei sicuro di voler comprare " + quantitaAttualmenteSelezionata.ToString() + " dell'ingrediente:\n" + ingredienteAttualmenteSelezionato.nome;
             float prezzoDaPagare = ingredienteAttualmenteSelezionato.costo * quantitaAttualmenteSelezionata;
             giocatore.guadagna(-prezzoDaPagare);
-
+            gui.aggiornaValoreSoldi(giocatore.soldi);
             giocatore.aggiornaInventario(ingredienteAttualmenteSelezionato, quantitaAttualmenteSelezionata);
         }
         chiudiPannelloSeiSicuro();
@@ -363,7 +363,6 @@ public class PannelloNegozio : MonoBehaviour
         pannelloAperto = true;
         canvasPannelloNegozio.SetActive(true);
         aggiornaBottoniPaginaCarosello();
-        pannelloMostraRicette.chiudiPannelloMostraRicette();
         chiudiPannelloSeiSicuro();
     }
 
@@ -372,7 +371,6 @@ public class PannelloNegozio : MonoBehaviour
         pannelloAperto = false;
         canvasPannelloNegozio.SetActive(false);
         animazioneNPCIdle();
-        pannelloMostraRicette.chiudiPannelloMostraRicette();
     }
 
     public bool getPannelloAperto()
