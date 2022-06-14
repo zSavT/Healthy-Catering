@@ -33,6 +33,7 @@ public class PannelloNegozio : MonoBehaviour
     private Player giocatore;
 
     [SerializeField] private GameObject pannelloSeiSicuro;
+    [SerializeField] private TextMeshProUGUI testoPannelloSeiSicuro;
     private Ingrediente ingredienteAttualmenteSelezionato;
     private int quantitaAttualmenteSelezionata;
 
@@ -332,6 +333,7 @@ public class PannelloNegozio : MonoBehaviour
     {
         if ((ingredienteAttualmenteSelezionato != null) && (quantitaAttualmenteSelezionata != 0))
         {
+            testoPannelloSeiSicuro.text = "Sei sicuro di voler comprare " + quantitaAttualmenteSelezionata.ToString() + " dell'ingrediente:\n" + ingredienteAttualmenteSelezionato.nome;
             float prezzoDaPagare = ingredienteAttualmenteSelezionato.costo * quantitaAttualmenteSelezionata;
             giocatore.guadagna(-prezzoDaPagare);
 
@@ -349,6 +351,7 @@ public class PannelloNegozio : MonoBehaviour
 
     private void chiudiPannelloSeiSicuro()
     {
+        testoPannelloSeiSicuro.text = "You werent supposed to be able to get here you know";
         pannelloSeiSicuro.SetActive(false);
     }
 
