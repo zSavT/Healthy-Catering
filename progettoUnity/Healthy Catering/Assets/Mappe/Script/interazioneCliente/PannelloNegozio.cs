@@ -302,6 +302,7 @@ public class PannelloNegozio : MonoBehaviour
 
     public void apriPannelloSeiSicuro()
     {
+        testoPannelloSeiSicuro.text = "Sei sicuro di voler comprare " + quantitaAttualmenteSelezionata.ToString() + " dell'ingrediente:\n" + ingredienteAttualmenteSelezionato.nome;
         pannelloSeiSicuro.SetActive(true);
     }
 
@@ -333,13 +334,22 @@ public class PannelloNegozio : MonoBehaviour
     {
         if ((ingredienteAttualmenteSelezionato != null) && (quantitaAttualmenteSelezionata != 0))
         {
-            testoPannelloSeiSicuro.text = "Sei sicuro di voler comprare " + quantitaAttualmenteSelezionata.ToString() + " dell'ingrediente:\n" + ingredienteAttualmenteSelezionato.nome;
             float prezzoDaPagare = ingredienteAttualmenteSelezionato.costo * quantitaAttualmenteSelezionata;
             giocatore.guadagna(-prezzoDaPagare);
             guiInGame.aggiornaValoreSoldi(giocatore.soldi);
             giocatore.aggiornaInventario(ingredienteAttualmenteSelezionato, quantitaAttualmenteSelezionata);
+            quantitaAttualmenteSelezionata = 0;
+            resetQuantitaTuttiBottoni();
         }
         chiudiPannelloSeiSicuro();
+    }
+
+    public void resetQuantitaTuttiBottoni()
+    {
+        foreach (Button ingrediente in ingredientiBottoniFake)
+        {
+            ingrediente.GetComponentsInChildren<TextMeshProUGUI>()[2].text = 0.ToString();
+        }
     }
 
     public void annullaCompraIngrediente()
@@ -359,6 +369,7 @@ public class PannelloNegozio : MonoBehaviour
     public void apriPannelloNegozio(Player giocatorePassato)
     {
         giocatore = giocatorePassato;
+        giocatore.soldi = 1000;
         animazioneNPCParlante();
         pannelloAperto = true;
         canvasPannelloNegozio.SetActive(true);
