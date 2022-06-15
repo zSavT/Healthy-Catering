@@ -376,10 +376,11 @@ public class PannelloNegozio : MonoBehaviour
         testoPannelloSeiSicuro.text = "You werent supposed to be able to get here you know";
         pannelloSeiSicuro.SetActive(false);
 
-        foreach (Button ingrediente in ingredientiBottoniFake)
-        {
-            attivaDisattivaBottoneCompra(ingrediente, 0);
-        }
+        if (ingredientiBottoniFake != null)
+            foreach (Button ingrediente in ingredientiBottoniFake)
+            {
+                attivaDisattivaBottoneCompra(ingrediente, 0);
+            }
     }
 
     //GESTIONE PANNELLO E RELATIVI
