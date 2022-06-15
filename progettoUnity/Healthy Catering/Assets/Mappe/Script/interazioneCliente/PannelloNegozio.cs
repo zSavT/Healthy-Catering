@@ -226,9 +226,9 @@ public class PannelloNegozio : MonoBehaviour
 
         singoloIngredienteTemp = aggiungiGestioneBottoniQuantita(singoloIngredienteTemp, ingrediente.costo);
 
-        singoloIngredienteTemp = aggiungiListenerBottoniQuantita(singoloIngredienteTemp);
-
         singoloIngredienteTemp = aggiungiListenerCompraIngrediente(singoloIngredienteTemp, ingrediente);
+
+        attivaDisattivaBottoneCompra(singoloIngredienteTemp, 0);
 
         singoloIngredienteTemp = modificaImmagineIngrediente(singoloIngredienteTemp, ingrediente);
 
@@ -245,55 +245,48 @@ public class PannelloNegozio : MonoBehaviour
 
     private Button aggiungiGestioneBottoniQuantita(Button singoloIngredienteTemp, float costoIngrediente)
     {
-        string quantitaSelezionata = singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text;
 
         //bottone diminuisci quantita 
-        if (quantitaSelezionata.Equals("0"))
-            singoloIngredienteTemp.GetComponentsInChildren<Button>()[2].interactable = false;
-        else
-            singoloIngredienteTemp.GetComponentsInChildren<Button>()[2].interactable = true;
-
-        //bottone aumenta quantita 
-        //se il resto della divisione fra i soldi del giocatore e il costo
-        //della merce che vuole comprare è minore del costo dell'ingrediente
-        //se ne aggiunge 1 non può più comprarlo
-        //quindi ha raggiunto il massimo
-        if (giocatore.soldi % (costoIngrediente * System.Int32.Parse(quantitaSelezionata)) < costoIngrediente)
-            singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].interactable = false;
-        else
-            singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].interactable = true;
-
-        return singoloIngredienteTemp;
-    }
-
-    private Button aggiungiListenerBottoniQuantita(Button singoloIngredienteTemp)
-    {
-        //bottone diminuisci quantita    
         singoloIngredienteTemp.GetComponentsInChildren<Button>()[2].onClick.AddListener(() => {
-            cambiaQuantitaAcquistare(false, singoloIngredienteTemp);
+            int quantitaSelezionata = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text);
+            
+            if (quantitaSelezionata == 0)
+                singoloIngredienteTemp.GetComponentsInChildren<Button>()[2].interactable = false;
+            else
+                singoloIngredienteTemp.GetComponentsInChildren<Button>()[2].interactable = true;
+            
+            if (quantitaSelezionata > 0)
+            {
+                quantitaSelezionata--;
+                singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text = (quantitaSelezionata).ToString();
+            }
+
+            attivaDisattivaBottoneCompra(singoloIngredienteTemp, quantitaSelezionata);
         });
 
         //bottone aumenta quantita 
         singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => {
-            cambiaQuantitaAcquistare(true, singoloIngredienteTemp);
+            int quantitaSelezionata = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text);
+
+            //se il resto della divisione fra i soldi del giocatore e il costo
+            //della merce che vuole comprare è minore del costo dell'ingrediente
+            //se ne aggiunge 1 non può più comprarlo
+            //quindi ha raggiunto il massimo
+            if (giocatore.soldi - (costoIngrediente * (quantitaSelezionata)) < 0)
+                singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].interactable = false;
+            else
+                singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].interactable = true;
+
+            if (giocatore.soldi - (costoIngrediente * (quantitaSelezionata + 1)) >= 0)
+            {
+                quantitaSelezionata++;
+                singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text = (quantitaSelezionata).ToString();
+            }
+
+            attivaDisattivaBottoneCompra(singoloIngredienteTemp, quantitaSelezionata);
         });
 
         return singoloIngredienteTemp;
-    }
-
-    private void cambiaQuantitaAcquistare(bool diPiu, Button singoloIngredienteTemp)
-    {
-        //testo quantita
-        int quantitaPrecedente = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text);
-
-        if (diPiu)
-        {
-            singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text = (quantitaPrecedente + 1).ToString();
-        }
-        else // controllo per andare sotto lo 0 sul bottone che chiama il metodo (diventa non interagibile se si è a 0)
-        {
-            singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text = (quantitaPrecedente - 1).ToString();
-        }
     }
 
     private Button aggiungiListenerCompraIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
@@ -307,6 +300,14 @@ public class PannelloNegozio : MonoBehaviour
         });
 
         return singoloIngredienteTemp;
+    }
+
+    private void attivaDisattivaBottoneCompra(Button singoloIngredienteTemp, int quantita)
+    {
+        if (quantita > 0)
+            singoloIngredienteTemp.GetComponentsInChildren<Button>()[3].interactable = true;
+        else
+            singoloIngredienteTemp.GetComponentsInChildren<Button>()[3].interactable = false;
     }
 
     public void apriPannelloSeiSicuro()
@@ -341,7 +342,7 @@ public class PannelloNegozio : MonoBehaviour
     //METODI DEI BOTTONI DEL PANNELLO SEI SICURO
     public void compraIngrediente()
     {
-        if ((ingredienteAttualmenteSelezionato != null) && (quantitaAttualmenteSelezionata != 0))
+        if ((ingredienteAttualmenteSelezionato != null) && (quantitaAttualmenteSelezionata > 0))
         {
             float prezzoDaPagare = ingredienteAttualmenteSelezionato.costo * quantitaAttualmenteSelezionata;
             giocatore.guadagna(-prezzoDaPagare);
@@ -351,6 +352,8 @@ public class PannelloNegozio : MonoBehaviour
             resetQuantitaTuttiBottoni();
         }
         chiudiPannelloSeiSicuro();
+
+        print("soldi giocatore: " + giocatore.soldi.ToString());
     }
 
     public void resetQuantitaTuttiBottoni()
@@ -372,6 +375,11 @@ public class PannelloNegozio : MonoBehaviour
     {
         testoPannelloSeiSicuro.text = "You werent supposed to be able to get here you know";
         pannelloSeiSicuro.SetActive(false);
+
+        foreach (Button ingrediente in ingredientiBottoniFake)
+        {
+            attivaDisattivaBottoneCompra(ingrediente, 0);
+        }
     }
 
     //GESTIONE PANNELLO E RELATIVI
