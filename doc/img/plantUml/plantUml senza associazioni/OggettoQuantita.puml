@@ -1,0 +1,10 @@
+@startuml
+class "OggettoQuantita`1"<Oggetto> {
+    + oggetto : Oggetto
+    + quantita : int
+    + OggettoQuantita(oggetto:Oggetto, quantita:int)
+    + <<override>> Equals(obj:object) : bool
+    + <<override>> ToString() : string
+    + {static} listeIdQuantitaUguali(lista1:List<OggettoQuantita<int>>, lista2:List<OggettoQuantita<int>>) : bool
+}
+@enduml

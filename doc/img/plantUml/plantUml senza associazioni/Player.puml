@@ -1,0 +1,15 @@
+@startuml
+class Player {
+    + nome : string = ""
+    + soldi : float = 0
+    + inventario : List<OggettoQuantita<int>>
+    + Player(nome:string, soldi:int, inventario:List<OggettoQuantita<int>>)
+    + Player()
+    + <<override>> Equals(obj:object) : bool
+    + <<override>> ToString() : string
+    + {static} popolaInventario() : List<OggettoQuantita<int>>
+    - {static} getNewItem() : List<Item>
+    - {static} chiediQuantitaItem(itemGiaPresenti:List<Item>) : List<int>
+    - {static} creaInventarioFromListaItemEQuantita(itemGiaPresenti:List<Item>, quantitaItemNuovi:List<int>) : List<OggettoQuantita<int>>
+}
+@enduml
