@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+
+/*
+    bottoni nell'array bottoneFakeIngrediente.GetComponentsInChildren <Button> ():
+    0 = bottone generale, l'ingrediente fake
+    1 = aumenta quantita
+    2 = diminuisci quantita
+    3 = compra ingrediente
+*/
 
 public class PannelloNegozio : MonoBehaviour
 {
@@ -238,13 +247,13 @@ public class PannelloNegozio : MonoBehaviour
     {
         string quantitaSelezionata = singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text;
 
-        //bottone diminuisci quantita
+        //bottone diminuisci quantita 
         if (quantitaSelezionata.Equals("0"))
-            singoloIngredienteTemp.GetComponentsInChildren<Button>()[0].interactable = false;
+            singoloIngredienteTemp.GetComponentsInChildren<Button>()[2].interactable = false;
         else
-            singoloIngredienteTemp.GetComponentsInChildren<Button>()[0].interactable = true;
+            singoloIngredienteTemp.GetComponentsInChildren<Button>()[2].interactable = true;
 
-        //bottone aumenta quantita
+        //bottone aumenta quantita 
         //se il resto della divisione fra i soldi del giocatore e il costo
         //della merce che vuole comprare è minore del costo dell'ingrediente
         //se ne aggiunge 1 non può più comprarlo
@@ -260,11 +269,11 @@ public class PannelloNegozio : MonoBehaviour
     private Button aggiungiListenerBottoniQuantita(Button singoloIngredienteTemp)
     {
         //bottone diminuisci quantita    
-        singoloIngredienteTemp.GetComponentsInChildren<Button>()[0].onClick.AddListener(() => {
+        singoloIngredienteTemp.GetComponentsInChildren<Button>()[2].onClick.AddListener(() => {
             cambiaQuantitaAcquistare(false, singoloIngredienteTemp);
         });
 
-        //bottone aumenta quantita
+        //bottone aumenta quantita 
         singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => {
             cambiaQuantitaAcquistare(true, singoloIngredienteTemp);
         });
@@ -289,8 +298,8 @@ public class PannelloNegozio : MonoBehaviour
 
     private Button aggiungiListenerCompraIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
     {
-        //bottone mostra compra
-        singoloIngredienteTemp.GetComponentsInChildren<Button>()[2].onClick.AddListener(() =>
+        //bottone mostra compra 
+        singoloIngredienteTemp.GetComponentsInChildren<Button>()[3].onClick.AddListener(() =>
         {
             ingredienteAttualmenteSelezionato = ingrediente;
             quantitaAttualmenteSelezionata = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text);
@@ -369,7 +378,7 @@ public class PannelloNegozio : MonoBehaviour
     public void apriPannelloNegozio(Player giocatorePassato)
     {
         giocatore = giocatorePassato;
-        giocatore.soldi = 1000;
+        giocatore.soldi = 10;
         animazioneNPCParlante();
         pannelloAperto = true;
         canvasPannelloNegozio.SetActive(true);
