@@ -12,7 +12,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private Transform posizioneCamera;
     [SerializeField] private Transform posizioneCameraMenuCliente;
     [SerializeField] private GameObject pannelloMenuECliente;
-    [SerializeField] private HudInGame hud;
+    [SerializeField] private Gui guiInGame;
 
     [Header("Interazione Negozio")]
     [SerializeField] private PannelloNegozio negozio;
@@ -235,13 +235,13 @@ public class Interactor : MonoBehaviour
         if (!PannelloMenu.clienteServito)
         {
             Debug.Log(PannelloMenu.clienteServito);
-            hud.bloccaAnimazioniParticellari();
+            guiInGame.bloccaAnimazioniParticellari();
             PannelloMenu.clienteServito = false; //non si può vare il contrario, perchè in caso di apertura consecuitiva del pannello senza servire, la seconda volta risulterà servito
         } 
         else
         {
-            hud.aggiornaValorePunteggio(giocatore.punteggio);
-            hud.aggiornaValoreSoldi(giocatore.soldi);
+            guiInGame.aggiornaValorePunteggio(giocatore.punteggio);
+            guiInGame.aggiornaValoreSoldi(giocatore.soldi);
         }
     }
 

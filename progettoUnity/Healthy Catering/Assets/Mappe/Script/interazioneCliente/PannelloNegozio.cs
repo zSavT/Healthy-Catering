@@ -20,7 +20,7 @@ public class PannelloNegozio : MonoBehaviour
     [SerializeField] private Button bottoneIndietroPannelloNegozio;
 
     private List<Ingrediente> databaseIngredienti;
-    [SerializeField] private HudInGame gui;
+    [SerializeField] private Gui guiInGame;
 
     //readonly == final in java
     private readonly int numeroBottoniNellaPagina = 9;
@@ -336,7 +336,7 @@ public class PannelloNegozio : MonoBehaviour
             testoPannelloSeiSicuro.text = "Sei sicuro di voler comprare " + quantitaAttualmenteSelezionata.ToString() + " dell'ingrediente:\n" + ingredienteAttualmenteSelezionato.nome;
             float prezzoDaPagare = ingredienteAttualmenteSelezionato.costo * quantitaAttualmenteSelezionata;
             giocatore.guadagna(-prezzoDaPagare);
-            gui.aggiornaValoreSoldi(giocatore.soldi);
+            guiInGame.aggiornaValoreSoldi(giocatore.soldi);
             giocatore.aggiornaInventario(ingredienteAttualmenteSelezionato, quantitaAttualmenteSelezionata);
         }
         chiudiPannelloSeiSicuro();

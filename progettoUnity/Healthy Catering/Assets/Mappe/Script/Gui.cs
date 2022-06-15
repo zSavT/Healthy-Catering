@@ -9,7 +9,7 @@ using System;
 /// Pannello GUI del gioco.
 /// </para>
 /// </summary>
-public class HudInGame : MonoBehaviour
+public class Gui : MonoBehaviour
 {
 
 
