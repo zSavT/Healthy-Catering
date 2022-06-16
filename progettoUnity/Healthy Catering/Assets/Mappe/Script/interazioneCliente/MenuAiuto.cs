@@ -115,10 +115,10 @@ public class MenuAiuto : MonoBehaviour
 
     private void cambiaImmagineSchermataAiuto(int ultimaPosizione)
     {
-        Sprite nuovaImmagine = Resources.Load<Sprite>("immagineAiuto" + (ultimaPosizione + 1).ToString());
+        Sprite nuovaImmagine = Resources.Load<Sprite>("immaginiAiuto/" + "immagineAiuto" + (ultimaPosizione + 1).ToString());
         if (nuovaImmagine == null)
         {
-            nuovaImmagine = Resources.Load<Sprite>("immagineAiutoDefault");
+            nuovaImmagine = Resources.Load<Sprite>("immaginiAiuto/immagineAiutoDefault");
         }
         immagineSchermata.sprite = nuovaImmagine;
     }

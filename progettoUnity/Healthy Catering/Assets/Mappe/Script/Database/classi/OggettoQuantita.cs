@@ -52,8 +52,9 @@ public class OggettoQuantita<Oggetto>
 
         for (int i = 0; i < lista1.Count; i++)
             for (int j = i; j < lista2.Count; j++)
-                if (!(lista1[i].Equals(lista2[j]))) ;
-        return false;
+                if (!(lista1[i].Equals(lista2[j]))) 
+                    return false;
+
         return true;
     }
 }

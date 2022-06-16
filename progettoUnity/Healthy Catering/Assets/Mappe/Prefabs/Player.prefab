@@ -1848,7 +1848,8 @@ MonoBehaviour:
   posizioneCamera: {fileID: 5218992457513206985}
   posizioneCameraMenuCliente: {fileID: 4878910828240045144}
   pannelloMenuECliente: {fileID: 0}
-  hud: {fileID: 0}
+  guiInGame: {fileID: 0}
+  negozio: {fileID: 0}
   magazzino: {fileID: 0}
   layerUnityNPCPassivi:
     serializedVersion: 2

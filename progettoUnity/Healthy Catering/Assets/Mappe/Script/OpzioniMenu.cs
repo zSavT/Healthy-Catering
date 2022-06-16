@@ -4,24 +4,34 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Audio;
-using System;
 
+/// <summary>
+/// Classe per la gestione delle impostazioni del gioco.<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Pannello opzioni.
+/// </para>
+/// </summary>
 public class OpzioniMenu : MonoBehaviour
 {
 
-    [SerializeField] private AudioMixer audioMixer;
+    [Header("Impostazioni Grafica e Schermo")]
     [SerializeField] private TMP_Dropdown risoluzioniDisponibili;
     [SerializeField] private TMP_Dropdown livelloGrafica;
     [SerializeField] private Toggle schermoIntero;
-    [SerializeField] private Slider sliderVolume;
     [SerializeField] private Toggle vSynch;
     [SerializeField] private Toggle framerateLibero;
     [SerializeField] private Resolution[] risoluzioni;
     [SerializeField] private TMP_Dropdown daltonismo;
-    [SerializeField] private Slider sliderFov;
-    [SerializeField] private Slider sliderSensibilita;
-    [SerializeField] private TextMeshProUGUI sliderFovTesto;
+    [Header("Impostazioni Audio")]
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private Slider sliderVolume;
+    [Header("Impostazioni Sensibilità")]
     [SerializeField] private TextMeshProUGUI sliderSensibilitaTesto;
+    [SerializeField] private Slider sliderSensibilita;
+    [Header("Impostazioni Fov")]
+    [SerializeField] private TextMeshProUGUI sliderFovTesto;
+    [SerializeField] private Slider sliderFov;
+
 
     void Start()
     {
@@ -77,6 +87,10 @@ public class OpzioniMenu : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Salva impostazioni framerate libero e le attiva.
+    /// </summary>
+    /// <param name="isActive">Valore booleano toggle</param>
     public void setFramerateLibero(bool isActive)
     {
         if (isActive)
@@ -86,6 +100,10 @@ public class OpzioniMenu : MonoBehaviour
         PlayerSettings.salvaImpostazioniFramerateLibero(isActive);
     }
 
+    /// <summary>
+    /// Salva impostazioni vSync e le attiva
+    /// </summary>
+    /// <param name="isActive">Valore booleano toogle</param>
     public void setVSync(bool isActive)
     {
         if (isActive == true)
@@ -97,28 +115,47 @@ public class OpzioniMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Imposta valore refresh rate.
+    /// </summary>
+    /// <param name="value">Indice scelta refreshRate</param>
     void setRefreshRateToScelta(int value)
     {
         Application.targetFrameRate = value;
     }
 
+    /// <summary>
+    /// Imposta valore volume.
+    /// </summary>
+    /// <param name="volume">Valore volume</param>
     public void setVolume(float volume)
     {
         audioMixer.SetFloat("volume", volume);
         PlayerSettings.salvaImpostazioniVolume(volume);
     }
 
+    /// <summary>
+    /// Imposta la qualità selezionata
+    /// </summary>
+    /// <param name="indiceQualita">Indice qualità scelta dropdown</param>
     public void setQualita(int indiceQualita)
     {
         QualitySettings.SetQualityLevel(indiceQualita);
     }
 
+    /// <summary>
+    /// Imposta valore fullscreen dal toggle.
+    /// </summary>
+    /// <param name="isFullscreen">Valore booleano Toggle</param>
     public void setFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
         PlayerSettings.salvaImpostazioniFullScreen(isFullscreen);
     }
 
+    /// <summary>
+    /// Sblocca il tempo se si carica il menu principale
+    /// </summary>
     public void menuPrincipale()
     {
         if (Time.timeScale == 0)
@@ -128,6 +165,10 @@ public class OpzioniMenu : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    /// <summary>
+    /// Salva e setta impostazioni risoluzione
+    /// </summary>
+    /// <param name="risoluzioneSelezionata">Indice scelta risoluzione dropdown</param>
     public void setRisoluzione(int risoluzioneSelezionata)
     {
         Resolution risoluzione = risoluzioni[risoluzioneSelezionata];
@@ -136,17 +177,28 @@ public class OpzioniMenu : MonoBehaviour
         PlayerSettings.salvaImpostazioniRisoluzione(risoluzioneSelezionata);
     }
 
+    /// <summary>
+    /// Aggiorna valore testo fov.
+    /// </summary>
     public void aggiornaValoreScrittaFov()
     {
         sliderFovTesto.text = sliderFov.value.ToString();
         PlayerSettings.salvaImpostazioniFov(sliderFov.value);
     }
+
+    /// <summary>
+    /// Aggiorna valore testo sensibilità.
+    /// </summary>
     public void aggiornaValoreScrittaSensibilita()
     {
         sliderSensibilitaTesto.text = sliderSensibilita.value.ToString();
         PlayerSettings.salvaImpostazioniSensibilita(sliderSensibilita.value);
     }
 
+    /// <summary>
+    /// Salva impostazione daltonismo.
+    /// </summary>
+    /// <param name="scelta">Indice scelta daltonismo dropdown</param>
     public void setDaltonismo(int scelta)
     {
         PlayerSettings.salvaImpostazioniDaltonismo(scelta);

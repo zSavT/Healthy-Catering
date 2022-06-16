@@ -5,6 +5,12 @@ using UnityEngine.UI;
 using System.Collections;
 using Wilberforce;
 
+/// <summary>
+/// Classe per il caricamento dei livelli<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Pannello menu della scelta dei livelli.
+/// </para>
+/// </summary>
 public class SelezioneLivelli : MonoBehaviour
 {
 
@@ -43,6 +49,10 @@ public class SelezioneLivelli : MonoBehaviour
         elementiDomandaUscita.SetActive(false);                                         //disattiva gli elementi della domanda all'uscita per non visualizzarli fin da subito
     }
 
+    /// <summary>
+    /// Avvia il caricamento del livello
+    /// </summary>
+    /// <param name="sceneIndex">Indice scena da caricare</param>
     public void playGame(int sceneIndex)
     {
         if (sceneIndex == 2)
@@ -58,6 +68,10 @@ public class SelezioneLivelli : MonoBehaviour
         StartCoroutine(caricamentoAsincrono(sceneIndex));
     }
 
+    /// <summary>
+    /// Carica il livello con la barra di caricamento
+    /// </summary>
+    /// <param name="sceneIndex">Indice della scena da caricare</param>
     IEnumerator caricamentoAsincrono(int sceneIndex)
     {
         AsyncOperation caricamento = SceneManager.LoadSceneAsync(sceneIndex);
@@ -70,31 +84,50 @@ public class SelezioneLivelli : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Carica il menu principale.
+    /// </summary>
     public static void caricaMenuPrincipale()
     {
         SceneManager.LoadScene(0);
     }
 
+    /// <summary>
+    /// Carica il menu delle opzioni.
+    /// </summary>
     public static void caricaMenuOpzioni()
     {
         SceneManager.LoadScene(1);
     }
 
+
+    /// <summary>
+    /// Carica il menu della selezione livelli.
+    /// </summary>
     public static void caricaMenuSelezioneLivello()
     {
         SceneManager.LoadScene(3);
     }
 
+    /// <summary>
+    /// Carica il menu della selezione del profilo utente
+    /// </summary>
     public static void caricaMenuSelezioneProfiloUtente()
     {
         SceneManager.LoadScene(4);
     }
 
+    /// <summary>
+    /// Carica il menu della creazione del profilo utente.
+    /// </summary>
     public static void caricaMenuCreazioneProfiloUtente()
     {
         SceneManager.LoadScene(5);
     }
 
+    /// <summary>
+    /// Carica il livello della citta.
+    /// </summary>
     public static void caricaLivelloCitta()
     {
         SceneManager.LoadScene(2);

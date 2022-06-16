@@ -1,6 +1,12 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Classe per la gestione delle impostazioni presenti nel menu in Game.<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Pannello menu opzioni in game.
+/// </para>
+/// </summary>
 public class MenuInGame : MonoBehaviour
 {
     [Header("Menu Opzioni")]
@@ -28,6 +34,9 @@ public class MenuInGame : MonoBehaviour
         checkTastoMenu();
     }
 
+    /// <summary>
+    /// Metodo per controllare se il è stato premuto il tasto per aprire il menu opzioni e verificare che sia apribile in quel momento.
+    /// </summary>
     private void checkTastoMenu()
     {
         if (Input.GetKeyDown(tastoMenu))
@@ -58,6 +67,9 @@ public class MenuInGame : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Metodo per ripristinare lo scorrere del tempo in gioco
+    /// </summary>
     void resumeGame()
     {
         chiusuraMenuGioco.Invoke();
@@ -65,6 +77,10 @@ public class MenuInGame : MonoBehaviour
         Time.timeScale = 1f; //sblocca il tempo
         giocoInPausa = false;
     }
+
+    /// <summary>
+    /// Metodo per bloccare lo scorrere del tempo in gioco.
+    /// </summary>
     void pauseGame()
     {
         aperturaMenuGioco.Invoke();
@@ -73,11 +89,17 @@ public class MenuInGame : MonoBehaviour
         giocoInPausa = true;
     }
 
+    /// <summary>
+    /// Metodo per impostare il menu su apribile vero
+    /// </summary>
     public void menuAttivo()
     {
         menuApribile = true;
     }
 
+    /// <summary>
+    /// Metodo per impostare che il menu non è apribile
+    /// </summary>
     public void menuDisattivo()
     {
         menuApribile = false;

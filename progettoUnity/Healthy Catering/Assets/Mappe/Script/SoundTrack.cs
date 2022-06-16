@@ -1,6 +1,12 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
+/// <summary>
+/// Classe per gestire la musica nel gioco.<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Qualsiasi oggetto presente nella prima scena (prefiribilmente uno vuoto).
+/// </para>
+/// </summary>
 public class SoundTrack : MonoBehaviour
 {
 

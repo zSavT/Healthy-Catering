@@ -1,6 +1,12 @@
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Classe per la gestione dei cambi colore del testo quando cliccati<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Sull'elemento (testo) che si vuol far cambiare colore.
+/// </para>
+/// </summary>
 public class CambioColoreScritta : MonoBehaviour
 {
     private TextMeshProUGUI testo;
@@ -11,16 +17,25 @@ public class CambioColoreScritta : MonoBehaviour
         testo = gameObject.GetComponent<TextMeshProUGUI>();
     }
 
+    /// <summary>
+    /// Imposta colore grigio
+    /// </summary>
     public void cambioColoreNonCliccatoGrigio()
     {
         testo.color = new Color32(125,125,125,125);
     }
 
+    /// <summary>
+    /// Imposta il colore nero per il testo cliccato
+    /// </summary>
     public void cambioColoreCliccatoNero()
     {
         testo.color = Color.black;
     }
 
+    /// <summary>
+    /// Imposta il colore bianco per il testo cliccato
+    /// </summary>
     public void cambioColoreCliccatoBianco()
     {
         testo.color = new Color32(255,255,255,255);

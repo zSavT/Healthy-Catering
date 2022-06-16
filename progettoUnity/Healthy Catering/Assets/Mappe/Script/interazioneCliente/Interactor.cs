@@ -4,7 +4,7 @@ using System;
 
 public class Interactor : MonoBehaviour
 {
-    [Header("Interazione NPC")]
+    [Header("Interazione Cliente")]
     [SerializeField] private LayerMask layerUnityNPC = 6;              //layer utilizzato da Unity per le categorie di oggetto
 
     [SerializeField] private KeyCode tastoInterazione;              //tasto da premere per invocare l'azione
@@ -12,7 +12,11 @@ public class Interactor : MonoBehaviour
     [SerializeField] private Transform posizioneCamera;
     [SerializeField] private Transform posizioneCameraMenuCliente;
     [SerializeField] private GameObject pannelloMenuECliente;
-    [SerializeField] private HudInGame hud;
+    [SerializeField] private Gui guiInGame;
+
+    [Header("Interazione Negozio")]
+    [SerializeField] private PannelloNegozio negozio;
+
 
     [Header("Interazione Magazzino")]
     [SerializeField] private PannelloMagazzino magazzino;
@@ -20,7 +24,7 @@ public class Interactor : MonoBehaviour
     [Header("Interazione NPC passivi")]
     [SerializeField] private LayerMask layerUnityNPCPassivi = 7;
     [SerializeField] private InterazionePassanti interazionePassanti;
-    private InteractableNPCPassivi npcPassivo;
+    private InteractableNPCPassivi npcPassivo;  
 
     [Header("Eventi")]
     [SerializeField] private UnityEvent playerStop;
@@ -102,6 +106,7 @@ public class Interactor : MonoBehaviour
                     magazzino.apriPannelloMagazzino();
                     playerStop.Invoke();
                     PuntatoreMouse.abilitaCursore();
+                    CambioCursore.cambioCursoreNormale();
                 }
             }
             else if (NPCPassantePuntato())
@@ -115,7 +120,18 @@ public class Interactor : MonoBehaviour
                     PuntatoreMouse.abilitaCursore();
                     CambioCursore.cambioCursoreNormale();
                 }
-            } 
+            } else if (negozianteInquadrato())
+            {
+                inquadratoNPC.Invoke();
+                negozio.animazioneNPCInquadrato();
+                if (Input.GetKeyDown(tastoInterazione) && !(negozio.getPannelloAperto()))
+                {
+                    negozio.apriPannelloNegozio(giocatore);
+                    playerStop.Invoke();
+                    PuntatoreMouse.abilitaCursore();
+                    CambioCursore.cambioCursoreNormale();
+                }
+            }
             else
             {
                 uscitaRangeMenu.Invoke();
@@ -131,7 +147,15 @@ public class Interactor : MonoBehaviour
                     }
                 } 
             }
-
+            if(negozio.getPannelloAperto())
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    negozio.chiudiPannelloNegozio();
+                    PuntatoreMouse.disabilitaCursore();
+                    playerRiprendiMovimento.Invoke();
+                }
+            }
             if (interazionePassanti.getPannelloInterazionePassantiAperto())
             {
                 if (Input.GetKeyDown(KeyCode.Escape))
@@ -143,6 +167,20 @@ public class Interactor : MonoBehaviour
                 }
             }
         }
+    }
+
+    private bool negozianteInquadrato()
+    {
+        RaycastHit pcInquadrato;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out pcInquadrato, 2, layerUnityNPC))
+        {
+            // se l'oggetto visualizzato è interagibile
+            if (pcInquadrato.collider.GetComponent<PannelloNegozio>() != false)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void esciDaInterazionePC()
@@ -197,13 +235,13 @@ public class Interactor : MonoBehaviour
         if (!PannelloMenu.clienteServito)
         {
             Debug.Log(PannelloMenu.clienteServito);
-            hud.bloccaAnimazioniParticellari();
+            guiInGame.bloccaAnimazioniParticellari();
             PannelloMenu.clienteServito = false; //non si può vare il contrario, perchè in caso di apertura consecuitiva del pannello senza servire, la seconda volta risulterà servito
         } 
         else
         {
-            hud.aggiornaValorePunteggio(giocatore.punteggio);
-            hud.aggiornaValoreSoldi(giocatore.soldi);
+            guiInGame.aggiornaValorePunteggio(giocatore.punteggio);
+            guiInGame.aggiornaValoreSoldi(giocatore.soldi);
         }
     }
 

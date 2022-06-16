@@ -191,10 +191,10 @@ public class PannelloMenu : MonoBehaviour
         output.GetComponentsInChildren<TextMeshProUGUI>()[0].text = piatto.nome;
         output.GetComponentsInChildren<TextMeshProUGUI>()[1].text = piatto.calcolaCostoBase().ToString();
 
-        Sprite nuovaImmagine = Resources.Load<Sprite>(piatto.nome);
+        Sprite nuovaImmagine = Resources.Load<Sprite>("immaginiPiatti/" + piatto.nome);
         if (nuovaImmagine == null) 
         { 
-            nuovaImmagine = Resources.Load<Sprite>("ImmaginePiattoDefault");
+            nuovaImmagine = Resources.Load<Sprite>("immaginiPiatti/ImmaginePiattoDefault");
         }
         output.GetComponentsInChildren<Image>()[1].sprite = nuovaImmagine;
 
