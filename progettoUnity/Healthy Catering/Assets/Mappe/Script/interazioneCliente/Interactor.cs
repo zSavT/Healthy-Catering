@@ -234,7 +234,6 @@ public class Interactor : MonoBehaviour
         
         if (!PannelloMenu.clienteServito)
         {
-            Debug.Log(PannelloMenu.clienteServito);
             guiInGame.bloccaAnimazioniParticellari();
             PannelloMenu.clienteServito = false; //non si può vare il contrario, perchè in caso di apertura consecuitiva del pannello senza servire, la seconda volta risulterà servito
         } 
