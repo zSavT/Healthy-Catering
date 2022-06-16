@@ -332,10 +332,10 @@ public class PannelloNegozio : MonoBehaviour
     {
         singoloIngredienteTemp.GetComponentsInChildren<Image>()[6].name = "immagine ingrediente " + ingrediente.nome;
 
-        Sprite nuovaImmagine = Resources.Load<Sprite>(ingrediente.nome);
+        Sprite nuovaImmagine = Resources.Load<Sprite>("immaginiIngredienti/" + ingrediente.nome);
         if (nuovaImmagine == null)
         {
-            nuovaImmagine = Resources.Load<Sprite>("ImmagineIngredienteDefault");
+            nuovaImmagine = Resources.Load<Sprite>("immaginiIngredienti/ImmagineIngredienteDefault");
         }
         singoloIngredienteTemp.GetComponentsInChildren<Image>()[6].sprite = nuovaImmagine;
 
@@ -399,7 +399,6 @@ public class PannelloNegozio : MonoBehaviour
     public void apriPannelloNegozio(Player giocatorePassato)
     {
         giocatore = giocatorePassato;
-        giocatore.soldi = 10;
         animazioneNPCParlante();
         pannelloAperto = true;
         canvasPannelloNegozio.SetActive(true);
