@@ -189,7 +189,7 @@ public class PannelloMenu : MonoBehaviour
 
         Button output = outputGameObject.GetComponent<Button>();
         output.GetComponentsInChildren<TextMeshProUGUI>()[0].text = piatto.nome;
-        output.GetComponentsInChildren<TextMeshProUGUI>()[1].text = piatto.calcolaCostoBase().ToString();
+        output.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Costo: " + piatto.calcolaCostoBase().ToString();
 
         Sprite nuovaImmagine = Resources.Load<Sprite>("immaginiPiatti/" + piatto.nome);
         if (nuovaImmagine == null) 
