@@ -74,7 +74,13 @@ Il modello 3D interno del ristorante è stato realizzato da Angelica.
 
 ![Creazione Profilo Utente](doc/img/Screenshoot/CreazioneProfiloUtente.PNG "Creazione profilo utente")
 
-![InterazioneCliente](doc/img/Screenshoot/InterazioneCliente.PNG "GUI interazione cliente")
+![Selezione Livelli](doc/img/Screenshoot/SelezioneLivelli.PNG "Selezione Livelli")
+
+![Interazione Cliente](doc/img/Screenshoot/InterazioneCliente.PNG "GUI interazione cliente")
+
+![Menu Negozio](doc/img/Screenshoot/MenuNegozio.PNG "GUI Menu Negozio")
+
+![GUI Interazione Passanti](doc/img/Screenshoot/InterazionePassanti.png "GUI Interazione Passanti")
 
 ![GUI in Game](doc/img/Screenshoot/ScreenInGame.png "GUI in Game")
 
