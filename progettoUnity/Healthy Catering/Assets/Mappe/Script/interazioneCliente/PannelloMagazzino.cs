@@ -112,7 +112,7 @@ public class PannelloMagazzino : MonoBehaviour
         Button output = Instantiate(bottoneIngredienteTemplate);
         output.name = ingrediente.nome;
 
-        output.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Ingrediente: " + ingrediente.nome;
+        output.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Ingrediente: " + Utility.coloreIngredienti + ingrediente.nome + Utility.fineColore;
         output.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Quantità presente: " + oggettoDellInventario.quantita.ToString();
 
         output.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => {

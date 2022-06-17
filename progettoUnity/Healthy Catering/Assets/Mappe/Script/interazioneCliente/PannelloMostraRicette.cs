@@ -16,10 +16,10 @@ public class PannelloMostraRicette : MonoBehaviour
         List<Piatto> piattiRealizzabili = ingrediente.getListaPiattiRealizzabiliConIngrediente(databaseIngredienti, databasePiatti);
         string stringaPiattiRealizzabili = "";
 
-        titoloPannelloMostraRicette.text = "Ricette realizzabili con l'ingrediente:\n" + ingrediente.nome;
+        titoloPannelloMostraRicette.text = "Ricette realizzabili con l'ingrediente:\n" + Utility.coloreIngredienti + ingrediente.nome + Utility.fineColore;
         foreach (Piatto piattoRealizzabile in piattiRealizzabili)
         {
-            stringaPiattiRealizzabili += piattoRealizzabile.nome + "\n";
+            stringaPiattiRealizzabili += Utility.colorePiatti + piattoRealizzabile.nome + "\n" + Utility.fineColore;
         }
         listaRicettePannelloMostraRicette.text = stringaPiattiRealizzabili;
 

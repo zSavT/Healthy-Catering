@@ -45,6 +45,7 @@ public class PannelloMenu : MonoBehaviour
     [SerializeField] private GameObject EscPerUscireTesto; //Lo imposto come GameObject e non come testo, perch� mi interessa solo attivarlo disattivarlo velocemente
     public UnityEvent chiusuraInterazioneCliente;
 
+
     void Start()
     {
         clienteServito = false;
@@ -160,7 +161,7 @@ public class PannelloMenu : MonoBehaviour
     private void setPannelloConfermaConNomePiatto(string nomePiatto)
     {
         apriPannelloConfermaPiatto();
-        testoConfermaPiatto.text = "Sei sicuro di voler servire il piatto: \n" + nomePiatto;
+        testoConfermaPiatto.text = "Sei sicuro di voler servire il piatto: \n" + Utility.colorePiatti + nomePiatto + Utility.fineColore;
     }
 
     private void cambiaPannelloIngredientiPiattoConPiatto(Button bottoneMostraIngredienti, List<Piatto> piatti)
@@ -170,9 +171,9 @@ public class PannelloMenu : MonoBehaviour
         string ingredientiPiatto = piattoSelezionato.getListaIngredientiQuantitaToString();
 
         //piatto
-        pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Ingredienti nel piatto " + piattoSelezionato.nome + ":";
+        pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Ingredienti nel piatto " + Utility.colorePiatti + piattoSelezionato.nome + Utility.fineColore;
         //Ingredienti
-        pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Ingredienti:\n" + ingredientiPiatto;
+        pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Ingredienti:\n" + Utility.coloreIngredienti + ingredientiPiatto + Utility.fineColore;
     }
 
     private void animazioni(bool affinitaPatologiePiatto, bool affinitaDietaPiatto, float guadagno)
@@ -188,8 +189,8 @@ public class PannelloMenu : MonoBehaviour
         GameObject outputGameObject = (GameObject)Instantiate(bottonePiatto);
 
         Button output = outputGameObject.GetComponent<Button>();
-        output.GetComponentsInChildren<TextMeshProUGUI>()[0].text = piatto.nome;
-        output.GetComponentsInChildren<TextMeshProUGUI>()[1].text = piatto.calcolaCostoBase().ToString();
+        output.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Utility.colorePiatti + piatto.nome + Utility.fineColore;
+        output.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Costo: " + piatto.calcolaCostoBase().ToString();
 
         Sprite nuovaImmagine = Resources.Load<Sprite>("immaginiPiatti/" + piatto.nome);
         if (nuovaImmagine == null) 
@@ -210,8 +211,8 @@ public class PannelloMenu : MonoBehaviour
     private void caricaClienteInPanello(Cliente cliente)
     {
         pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Utility.getStringaConCapitalLetterIniziale(cliente.nome);
-        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Dieta: " + Utility.getStringaConCapitalLetterIniziale(Dieta.IdDietaToDietaString(cliente.dieta));
-        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[2].text = Patologia.listIdToListPatologie(cliente.listaIdPatologie);
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Dieta: " + Utility.coloreDieta + Utility.getStringaConCapitalLetterIniziale(Dieta.IdDietaToDietaString(cliente.dieta)) + Utility.fineColore;
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[2].text = "Patologie: " + Utility.colorePatologia + Patologia.listIdToListPatologie(cliente.listaIdPatologie) + Utility.fineColore;
     }
 
     private void pannelloIngredientiPiattoApertoChiuso()
@@ -307,7 +308,7 @@ public class PannelloMenu : MonoBehaviour
     {
         databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
 
-        titoloIngredientiGiustiSbagliati.text = "Ingredienti del piatto " + piattoSelezionato.nome + "\nche vanno bene e non per: " + cliente.nome;
+        titoloIngredientiGiustiSbagliati.text = "Ingredienti del piatto " + Utility.colorePiatti + piattoSelezionato.nome + Utility.fineColore +"\nche vanno bene e non per: " + Utility.getStringaConCapitalLetterIniziale(cliente.nome);
 
         List<Ingrediente> ingredientiPiattoSelezionato = piattoSelezionato.getIngredientiPiatto(databaseIngredienti);
 

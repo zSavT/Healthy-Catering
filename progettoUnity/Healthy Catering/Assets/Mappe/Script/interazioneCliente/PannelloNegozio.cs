@@ -248,7 +248,7 @@ public class PannelloNegozio : MonoBehaviour
 
     private Button modificaTesto(Button singoloIngredienteTemp, string nomeIngrediente, string costoIngrediente)
     {
-        singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[0].text = nomeIngrediente;
+        singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Utility.coloreIngredienti + nomeIngrediente + Utility.fineColore;
         singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Costo: " + costoIngrediente;
         singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text = 0.ToString();
         return singoloIngredienteTemp;
@@ -321,7 +321,7 @@ public class PannelloNegozio : MonoBehaviour
 
     public void apriPannelloSeiSicuro()
     {
-        testoPannelloSeiSicuro.text = "Sei sicuro di voler comprare x" + quantitaAttualmenteSelezionata.ToString() + "\n" + ingredienteAttualmenteSelezionato.nome;
+        testoPannelloSeiSicuro.text = "Sei sicuro di voler comprare x" + quantitaAttualmenteSelezionata.ToString() + "\n" + Utility.coloreIngredienti + ingredienteAttualmenteSelezionato.nome + Utility.fineColore;
         pannelloSeiSicuro.SetActive(true);
     }
 
