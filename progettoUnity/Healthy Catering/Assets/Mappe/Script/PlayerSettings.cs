@@ -278,7 +278,7 @@ public class PlayerSettings : MonoBehaviour
 
     /// <summary>
     /// Metodo che salva l'indice della scelta dell'impostazioni del daltonismo.<para>I valori possibili sono:<br></br>
-    /// <strong>0: Normale<br>1: Protanopia</br><br>2: Deuteranopia</br><br>3: Tritanopia</br></strong>
+    /// <strong>0: Disattivo<br>1: Protanopia</br><br>2: Deuteranopia</br><br>3: Tritanopia</br></strong>
     /// </para>
     /// </summary>
     /// <param name="indiceDaltonismo">Indice scelta dropdown del daltonismo</param>
@@ -290,7 +290,7 @@ public class PlayerSettings : MonoBehaviour
     /// <summary>
     /// Metodo che carica l'indice della scelta fatta in precedenza dal giocatore per il daltonismo.
     /// </summary>
-    /// <returns><strong>0: Normale<br>1: Protanopia</br><br>2: Deuteranopia</br><br>3: Tritanopia</br></strong></returns>
+    /// <returns><strong>0: Disattivo<br>1: Protanopia</br><br>2: Deuteranopia</br><br>3: Tritanopia</br></strong></returns>
     public static int caricaImpostazioniDaltonismo()
     {
         return PlayerPrefs.GetInt(caricaNomePlayerGiocante() + "_Daltonismo");
