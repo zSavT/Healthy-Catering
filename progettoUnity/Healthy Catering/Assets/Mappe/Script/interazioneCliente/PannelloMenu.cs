@@ -210,8 +210,8 @@ public class PannelloMenu : MonoBehaviour
     private void caricaClienteInPanello(Cliente cliente)
     {
         pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Utility.getStringaConCapitalLetterIniziale(cliente.nome);
-        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Dieta: " + Utility.getStringaConCapitalLetterIniziale(Dieta.IdDietaToDietaString(cliente.dieta));
-        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[2].text = Patologia.listIdToListPatologie(cliente.listaIdPatologie);
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Dieta: <color=#64568c>" + Utility.getStringaConCapitalLetterIniziale(Dieta.IdDietaToDietaString(cliente.dieta)) +"</color>";
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[2].text = Patologia.listIdToListPatologie(cliente.listaIdPatologie) + "</color>";
     }
 
     private void pannelloIngredientiPiattoApertoChiuso()
