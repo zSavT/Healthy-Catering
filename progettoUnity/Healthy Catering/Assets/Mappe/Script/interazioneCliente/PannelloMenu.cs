@@ -324,13 +324,13 @@ public class PannelloMenu : MonoBehaviour
         //nella lista degli ingredienti piatto selezionato ci sono solo gli ingredienti che vanno bene ora
         List<Ingrediente> ingredientiCompatibili = ingredientiPiattoSelezionato;
 
-        testoIngredientiGiusti.color = new Color32(182, 216, 156, 255);
+        testoIngredientiGiusti.color = new Color32(104, 176, 60, 255);
         testoIngredientiGiusti.text = Ingrediente.listIngredientiToStringa (ingredientiCompatibili);
 
-        testoIngredientiSbagliatiDieta.color = new Color32(255, 102, 102, 255);
+        testoIngredientiSbagliatiDieta.color = new Color32(255, 8, 10, 255);
         testoIngredientiSbagliatiDieta.text = Ingrediente.listIngredientiToStringa(ingredientiNonCompatibiliDieta);
 
-        testoIngredientiSbagliatiPatologia.color = new Color32(255, 102, 102, 255);
+        testoIngredientiSbagliatiPatologia.color = new Color32(255, 8, 10, 255);
         testoIngredientiSbagliatiPatologia.text = Ingrediente.listIngredientiToStringa(ingredientiNonCompatibiliPatologia);
     }
 
