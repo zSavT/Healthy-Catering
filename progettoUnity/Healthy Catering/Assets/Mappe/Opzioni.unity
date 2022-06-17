@@ -2452,7 +2452,7 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Normale
+    - m_Text: Disattiva
       m_Image: {fileID: 0}
     - m_Text: Protanopia
       m_Image: {fileID: 0}
@@ -3929,8 +3929,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursoreNormale: {fileID: 2800000, guid: 40f65d19297dd0148a0ff7d86543271c, type: 3}
-  cursoreSuElemento: {fileID: 2800000, guid: 5852cf799bb9aa448bd2d643ceb7e776, type: 3}
 --- !u!1 &795170710
 GameObject:
   m_ObjectHideFlags: 0
@@ -4169,8 +4167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursoreNormale: {fileID: 2800000, guid: 40f65d19297dd0148a0ff7d86543271c, type: 3}
-  cursoreSuElemento: {fileID: 2800000, guid: 5852cf799bb9aa448bd2d643ceb7e776, type: 3}
 --- !u!1 &894305781
 GameObject:
   m_ObjectHideFlags: 0
@@ -5289,8 +5285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursoreNormale: {fileID: 2800000, guid: 40f65d19297dd0148a0ff7d86543271c, type: 3}
-  cursoreSuElemento: {fileID: 2800000, guid: 5852cf799bb9aa448bd2d643ceb7e776, type: 3}
 --- !u!1 &1159896328
 GameObject:
   m_ObjectHideFlags: 0
@@ -6085,7 +6079,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Normale
+  m_text: Disattiva
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6212,8 +6206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursoreNormale: {fileID: 2800000, guid: 40f65d19297dd0148a0ff7d86543271c, type: 3}
-  cursoreSuElemento: {fileID: 2800000, guid: 5852cf799bb9aa448bd2d643ceb7e776, type: 3}
 --- !u!1 &1539560360
 GameObject:
   m_ObjectHideFlags: 0
@@ -6723,8 +6715,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursoreNormale: {fileID: 2800000, guid: 40f65d19297dd0148a0ff7d86543271c, type: 3}
-  cursoreSuElemento: {fileID: 2800000, guid: 5852cf799bb9aa448bd2d643ceb7e776, type: 3}
 --- !u!1 &1709367771
 GameObject:
   m_ObjectHideFlags: 0
@@ -8053,8 +8043,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursoreNormale: {fileID: 2800000, guid: 40f65d19297dd0148a0ff7d86543271c, type: 3}
-  cursoreSuElemento: {fileID: 2800000, guid: 5852cf799bb9aa448bd2d643ceb7e776, type: 3}
 --- !u!1 &1871178532
 GameObject:
   m_ObjectHideFlags: 0
@@ -8563,18 +8551,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98291a72b1c8140448a74bdb5cb204f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 7e80b91a87fa18a4dac7cec66de33ef3, type: 2}
   risoluzioniDisponibili: {fileID: 1961824172}
   livelloGrafica: {fileID: 1555884324}
   schermoIntero: {fileID: 1237080155}
-  sliderVolume: {fileID: 2036615889}
   vSynch: {fileID: 1843281677}
   framerateLibero: {fileID: 592033082}
   daltonismo: {fileID: 541497964}
-  sliderFov: {fileID: 1060960641}
+  audioMixer: {fileID: 24100000, guid: 7e80b91a87fa18a4dac7cec66de33ef3, type: 2}
+  sliderVolume: {fileID: 2036615889}
+  sliderSensibilitaTesto: {fileID: 38735336}
   sliderSensibilita: {fileID: 1893535362}
   sliderFovTesto: {fileID: 795170712}
-  sliderSensibilitaTesto: {fileID: 38735336}
+  sliderFov: {fileID: 1060960641}
 --- !u!114 &1988159439
 MonoBehaviour:
   m_ObjectHideFlags: 0
