@@ -13,6 +13,7 @@ public class PannelloMenu : MonoBehaviour
     private Cliente cliente;
     private Interactable controllerAnimazioneCliente;
     private Player giocatore;
+    [SerializeField] private ProgressoLivello livelloProgresso;
 
     [Header("Pannello menu e pannello cliente")]
     [SerializeField] private GameObject pannelloMenu;
@@ -154,7 +155,7 @@ public class PannelloMenu : MonoBehaviour
             clienteServito = true;
             chiusuraInterazioneCliente.Invoke();
         }
-        //richiamo Metodi progressione obbiettivi
+        livelloProgresso.servitoCliente(giocatore.punteggio);
         animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
     }
 
