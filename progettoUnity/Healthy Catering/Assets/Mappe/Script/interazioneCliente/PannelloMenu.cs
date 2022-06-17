@@ -211,9 +211,9 @@ public class PannelloMenu : MonoBehaviour
 
     private void caricaClienteInPanello(Cliente cliente)
     {
-        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Utility.getStringaConCapitalLetterIniziale(cliente.nome);
-        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Dieta: " + Utility.coloreDieta + Utility.getStringaConCapitalLetterIniziale(Dieta.IdDietaToDietaString(cliente.dieta)) + Utility.fineColore;
-        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[2].text = "Patologie: " + Utility.colorePatologia + Patologia.listIdToListPatologie(cliente.listaIdPatologie) + Utility.fineColore;
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Utility.grassetto + Utility.getStringaConCapitalLetterIniziale(cliente.nome) + Utility.fineGrassetto;
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[1].text = Utility.grassetto + "Dieta: " + Utility.fineGrassetto + Utility.coloreDieta + Utility.getStringaConCapitalLetterIniziale(Dieta.IdDietaToDietaString(cliente.dieta)) + Utility.fineColore;
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[2].text = Utility.grassetto + "Patologie: " + Utility.fineGrassetto + Utility.colorePatologia + Patologia.listIdToListPatologie(cliente.listaIdPatologie) + Utility.fineColore;
     }
 
     private void pannelloIngredientiPiattoApertoChiuso()

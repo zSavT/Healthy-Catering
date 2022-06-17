@@ -1,11 +1,13 @@
 public class Utility{
 
     //Colori gioco
-    public static string fineColore = "</color>";
-    public static string colorePiatti = "<color=#FFA64C>";
-    public static string coloreIngredienti = "<color=#ffcc66>";
-    public static string coloreDieta = "<color=#64568c>";
-    public static string colorePatologia = "<color=#009082>";
+    public static readonly string fineColore = "</color>";
+    public static readonly string colorePiatti = "<color=#FFA64C>";
+    public static readonly string coloreIngredienti = "<color=#ffcc66>";
+    public static readonly string coloreDieta = "<color=#64568c>";
+    public static readonly string colorePatologia = "<color=#009082>";
+    public static readonly string grassetto = "<b>";
+    public static readonly string fineGrassetto = "</b>";
 
 
     public static float calcolaCostoPercentuale (float costoBase, float percentuale){
