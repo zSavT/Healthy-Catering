@@ -287,12 +287,9 @@ public class PannelloNegozio : MonoBehaviour
             else
                 singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].interactable = true;
 
-            print(quantitaSelezionata);
+
             if (giocatore.soldi - (costoIngrediente * (quantitaSelezionata + 1)) >= 0)
-            {
-                print(quantitaSelezionata);
                 singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text = (quantitaSelezionata + 1).ToString();
-            }
 
             quantitaSelezionata = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text);
             attivaDisattivaBottoneCompra(singoloIngredienteTemp, quantitaSelezionata);
@@ -324,7 +321,7 @@ public class PannelloNegozio : MonoBehaviour
 
     public void apriPannelloSeiSicuro()
     {
-        testoPannelloSeiSicuro.text = "Sei sicuro di voler comprare " + quantitaAttualmenteSelezionata.ToString() + " dell'ingrediente:\n" + ingredienteAttualmenteSelezionato.nome;
+        testoPannelloSeiSicuro.text = "Sei sicuro di voler comprare x" + quantitaAttualmenteSelezionata.ToString() + "\n" + ingredienteAttualmenteSelezionato.nome;
         pannelloSeiSicuro.SetActive(true);
     }
 
@@ -364,8 +361,6 @@ public class PannelloNegozio : MonoBehaviour
             resetQuantitaTuttiBottoni();
         }
         chiudiPannelloSeiSicuro();
-
-        print("soldi giocatore: " + giocatore.soldi.ToString());
     }
 
     public void resetQuantitaTuttiBottoni()
