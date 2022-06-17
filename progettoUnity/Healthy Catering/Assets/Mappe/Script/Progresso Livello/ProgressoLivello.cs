@@ -2,6 +2,8 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using System;
+using System.Collections;
 
 /// <summary>
 /// Classe che gestisce gli obbiettivi del livello, ovvero il numero di clienti da servire ed il punteggio da raggiungere.
@@ -123,8 +125,19 @@ public class ProgressoLivello : MonoBehaviour
         valorePunteggioPlayer.text = "Punteggio raggiunto: " + punteggioPlayer.ToString();
         disattivaElementiFineLivello.Invoke();
         PuntatoreMouse.abilitaCursore();
+        disattivaObbiettivi();
+        GameObject.FindObjectOfType<Camera>().transform.position = new Vector3(0, 4000, 0);
     }
-    
+
+
+    private void disattivaObbiettivi()
+    {
+        obbiettivoUno.gameObject.SetActive(false);
+        obbiettivoUnoToogle.gameObject.SetActive(false);
+        obbiettivoUno.gameObject.SetActive(false);
+        obbiettivoUnoToogle.gameObject.SetActive(false);
+    }
+
     /// <summary>
     /// Metodo che salva il progresso livello e carica il menu Iniziale
     /// </summary>
