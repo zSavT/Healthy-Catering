@@ -81,6 +81,14 @@ public class ControlloMouse : MonoBehaviour
         return (posizioneZcamera + ((valoreFov - 60)/40) * (posizioneCameraFovMassimo - posizioneZcamera));
     }
 
+    /// <summary>
+    /// Blocca il movimento della visuale
+    /// </summary>
+    public void bloccaVisuale()
+    {
+        this.puoCambiareVisuale = false;
+    }
+
 
 
     /// <summary>
