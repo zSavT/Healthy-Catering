@@ -38,6 +38,7 @@ public class ProgressoLivello : MonoBehaviour
     [SerializeField] private TextMeshProUGUI valorePunteggioPlayer;
     public UnityEvent disattivaElementiFineLivello;
 
+
     private void Start()
     {
         //disattivare la schermata per evitare che l'animazione parti fin da subito (N.B. L'animazione è impostata per avviarsi all'attivazione dell'oggetto per semplicità è per dover scrivere molti meno controlli)
