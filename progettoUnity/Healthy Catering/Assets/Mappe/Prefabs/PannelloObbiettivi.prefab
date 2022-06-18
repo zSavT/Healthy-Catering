@@ -643,17 +643,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7026049646864199763}
-  m_LocalRotation: {x: -0.7071065, y: -0.0008440378, z: 0.00084402034, w: 0.7071061}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: -0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 15.9800005, y: 15.980001, z: 15.9800005}
+  m_LocalScale: {x: 16.11, y: 16.11, z: 16.11}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7026049647302790125}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -89.864, y: -90.012, z: 90.012}
+  m_LocalEulerAnglesHint: {x: 0, y: -270, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -883, y: 446}
+  m_AnchoredPosition: {x: 955, y: 762}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!198 &7026049646864199756
@@ -1284,7 +1284,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 17
+    type: 2
     angle: 68.64
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -6142,17 +6142,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7026049647856217431}
-  m_LocalRotation: {x: -0.7071065, y: -0.0008440378, z: 0.00084402034, w: 0.7071061}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 15.9800005, y: 15.980001, z: 15.9800005}
+  m_LocalRotation: {x: -0.0006499538, y: -0.7071063, z: 0.7071067, w: 0.00064993434}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 16.11, y: 16.11, z: 16.11}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7026049647302790125}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -89.864, y: -90.012, z: 90.012}
+  m_LocalEulerAnglesHint: {x: 90.103, y: -180, z: -0.10498047}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 249, y: 452}
+  m_AnchoredPosition: {x: -156, y: 766}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!198 &7026049647856217426
@@ -6783,7 +6783,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 17
+    type: 2
     angle: 68.64
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
