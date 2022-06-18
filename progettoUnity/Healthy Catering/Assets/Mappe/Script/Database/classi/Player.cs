@@ -132,9 +132,48 @@ public class Player
             return -10;
     }
 
-    public void aggiornaInventario(Ingrediente ingrediente, int quantitaDaComprare)
+    public void aggiornaInventario(OggettoQuantita<int> ingrediente, bool compra)
     {
-        //TODO
+        //compra == true se compra, false se vendi
+        compraVendiSingoloIngrediente(ingrediente, compra);
+    }
+
+    private void compraVendiSingoloIngrediente(OggettoQuantita<int> oggettoDaComprare, bool compra)
+    {
+        //compra == true se compra, false se vendi
+        int i = 0;
+        
+        foreach (OggettoQuantita <int> oggettoInventario in this.inventario)
+        {
+            if (oggettoDaComprare.oggetto == oggettoInventario.oggetto)
+            {
+                if (compra)
+                    this.inventario[i].quantita = this.inventario[i].quantita + oggettoDaComprare.quantita;
+                else
+                {
+                    if (this.inventario[i].quantita - oggettoDaComprare.quantita >= 0)
+                        this.inventario[i].quantita = this.inventario[i].quantita - oggettoDaComprare.quantita;
+                    else
+                        this.inventario[i].quantita = 0; //cosi non creo problemi se qualche cosa è andata storta sopra
+                }
+                return;
+            }
+            i++;
+        }
+        if (compra)
+            this.inventario.Add(oggettoDaComprare);
+        //else
+        //////stessa cosa di prima, non creo problemi se qualche cosa è andata storta sopra, 
+        //////ci dovrebbero essere dei controlli prima comunque
+    }
+
+    public void aggiornaInventario(List<OggettoQuantita<int>> ingredienti, bool compra)
+    {
+        //compra == true se compra, false se vendi
+        foreach (OggettoQuantita<int> ingrediente in ingredienti)
+        {
+            compraVendiSingoloIngrediente(ingrediente, compra);
+        }
     }
 
     //DATABASE
