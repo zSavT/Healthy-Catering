@@ -49,6 +49,8 @@ public class PannelloMagazzino : MonoBehaviour
         cambiaSfondoDesktop();
         if (!schermataMagazzinoPopolata)
             popolaSchermata();
+        //else
+        //////aggiornaSchermataMagazzino();
     }
 
     public void chiudiPannelloMagazzino()
@@ -84,29 +86,41 @@ public class PannelloMagazzino : MonoBehaviour
 
     private void popolaSchermata()
     {
-        List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
-        List<Piatto> databasePiatti = Database.getDatabaseOggetto(new Piatto()); //mi serve per vedere le ricette
-        List<OggettoQuantita<int>> inventario = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante()).inventario;
-
-        int bottoniAggiuntiFinoAdOra = 0;
-
-        foreach (OggettoQuantita<int> oggettoDellInventario in inventario)
+        Player giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
+        
+        if (!giocatore.inventarioVuoto())
         {
-            Button bottoneDaAggiungereTemp = creaBottoneConValoriIngrediente(oggettoDellInventario, bottoneIngredienteTemplate, databaseIngredienti, databasePiatti);
-            bottoneDaAggiungereTemp.transform.SetParent(pannelloXElementi.transform, false);
-            bottoniAggiuntiFinoAdOra++;
+            List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
+            List<Piatto> databasePiatti = Database.getDatabaseOggetto(new Piatto()); //mi serve per vedere le ricette
+            List<OggettoQuantita<int>> inventario = giocatore.inventario;
 
-            if (bottoniAggiuntiFinoAdOra > bottoniMassimiPerPannelloXElementi)
+            int bottoniAggiuntiFinoAdOra = 0;
+
+            foreach (OggettoQuantita<int> oggettoDellInventario in inventario)
             {
-                if (oggettoDellInventario != inventario[inventario.Count - 1]) // se e' diverso dall'ultimo elemento, previene che venga creato un pannello vuoto
+                Button bottoneDaAggiungereTemp = creaBottoneConValoriIngrediente(oggettoDellInventario, bottoneIngredienteTemplate, databaseIngredienti, databasePiatti);
+                bottoneDaAggiungereTemp.transform.SetParent(pannelloXElementi.transform, false);
+                bottoniAggiuntiFinoAdOra++;
+
+                if (bottoniAggiuntiFinoAdOra > bottoniMassimiPerPannelloXElementi)
                 {
-                    aggiungiPannelloXElementi();
-                    bottoniAggiuntiFinoAdOra = 0;
+                    if (oggettoDellInventario != inventario[inventario.Count - 1]) // se e' diverso dall'ultimo elemento, previene che venga creato un pannello vuoto
+                    {
+                        aggiungiPannelloXElementi();
+                        bottoniAggiuntiFinoAdOra = 0;
+                    }
                 }
             }
-        }
 
-        schermataMagazzinoPopolata = true;
+            schermataMagazzinoPopolata = true;
+
+            if (!testoInventarioVuoto.text.Equals(""))
+                testoInventarioVuoto.text = "";
+        }
+        else
+        {
+            testoInventarioVuoto.text = testoInventarioVuotoString;
+        }
     }
 
     private Button creaBottoneConValoriIngrediente(OggettoQuantita<int> oggettoDellInventario, Button bottoneIngredienteTemplate, List<Ingrediente> databaseIngredienti, List<Piatto> databasePiatti)
