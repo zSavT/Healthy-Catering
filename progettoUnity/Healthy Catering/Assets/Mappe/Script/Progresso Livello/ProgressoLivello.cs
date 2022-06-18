@@ -10,7 +10,7 @@ using System.Collections;
 /// </summary>
 public class ProgressoLivello : MonoBehaviour
 {
-
+    [SerializeField] private TextMeshProUGUI scrittaObbiettivo;
     [SerializeField] private Color32 coloreRaggiuntoObbiettivo;
     //da eventualmente eliminare se esiste un modo per accedere al punteggio nella classe player
     private int punteggioPlayer;                        
@@ -126,7 +126,7 @@ public class ProgressoLivello : MonoBehaviour
         disattivaElementiFineLivello.Invoke();
         PuntatoreMouse.abilitaCursore();
         disattivaObbiettivi();
-        GameObject.FindObjectOfType<Camera>().transform.position = new Vector3(0, 4000, 0);
+       // GameObject.FindObjectOfType<Camera>().transform.position = new Vector3(0, 4000, 0);       //sposta la telecamera in ciealo
     }
 
 
@@ -134,8 +134,9 @@ public class ProgressoLivello : MonoBehaviour
     {
         obbiettivoUno.gameObject.SetActive(false);
         obbiettivoUnoToogle.gameObject.SetActive(false);
-        obbiettivoUno.gameObject.SetActive(false);
-        obbiettivoUnoToogle.gameObject.SetActive(false);
+        obbiettivoDue.gameObject.SetActive(false);
+        obbiettivoDueToogle.gameObject.SetActive(false);
+        scrittaObbiettivo.gameObject.SetActive(false);
     }
 
     /// <summary>
