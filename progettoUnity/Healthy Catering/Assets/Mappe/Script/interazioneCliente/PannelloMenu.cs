@@ -144,7 +144,8 @@ public class PannelloMenu : MonoBehaviour
 
         giocatore.guadagna(guadagno);
         giocatore.aggiungiDiminuisciPunteggio(affinita, piattoSelezionato.calcolaNutriScore(databaseIngredienti), piattoSelezionato.calcolaCostoEco(databaseIngredienti));
-        
+        giocatore.aggiornaInventario(piattoSelezionato.listaIdIngredientiQuantita, false);
+
         if (!affinita)
         {
             caricaIngredientiInPannelloIngredientiGiustiSbagliati(piattoSelezionato, cliente, databaseIngredienti);
