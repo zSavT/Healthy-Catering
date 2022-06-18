@@ -179,7 +179,6 @@ public class Player
 
     public bool inventarioVuoto()
     {
-        return true;
         return this.inventario.Count == 0;
     }
 

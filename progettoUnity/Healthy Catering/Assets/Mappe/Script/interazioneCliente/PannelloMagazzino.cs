@@ -47,6 +47,9 @@ public class PannelloMagazzino : MonoBehaviour
         pannelloMagazzinoAperto = true;
         pannelloMostraRicette.chiudiPannelloMostraRicette();
         cambiaSfondoDesktop();
+
+        pannelloInventarioCanvas.SetActive(false);
+
         if (!schermataMagazzinoPopolata)
             popolaSchermata();
         //else
@@ -90,6 +93,8 @@ public class PannelloMagazzino : MonoBehaviour
         
         if (!giocatore.inventarioVuoto())
         {
+            pannelloXElementi.SetActive(true);
+            
             List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
             List<Piatto> databasePiatti = Database.getDatabaseOggetto(new Piatto()); //mi serve per vedere le ricette
             List<OggettoQuantita<int>> inventario = giocatore.inventario;
@@ -120,6 +125,7 @@ public class PannelloMagazzino : MonoBehaviour
         else
         {
             testoInventarioVuoto.text = testoInventarioVuotoString;
+            pannelloXElementi.SetActive(false);
         }
     }
 
