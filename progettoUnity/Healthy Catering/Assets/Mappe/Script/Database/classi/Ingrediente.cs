@@ -190,7 +190,7 @@ public class Ingrediente : Item
         string output = "";
         foreach (Ingrediente ingrediente in ingredienti)
         {
-            output += "\t" + ingrediente.nome + "\n";
+            output += ingrediente.nome + "\n";
         }
         return output;
     }

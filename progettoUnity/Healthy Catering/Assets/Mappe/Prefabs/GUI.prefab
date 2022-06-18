@@ -5561,8 +5561,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -745.922, y: -264.5583}
-  m_SizeDelta: {x: 83.766, y: 60.98}
+  m_AnchoredPosition: {x: -722.58374, y: -264.5583}
+  m_SizeDelta: {x: 130.443, y: 60.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5081507437357877163
 CanvasRenderer:
@@ -5592,7 +5592,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Soldi
+  m_text: Denaro
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}

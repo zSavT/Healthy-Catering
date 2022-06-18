@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae118c9b001ee1a41b6ba2c8757d7740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  livelloProgresso: {fileID: 0}
   pannelloMenu: {fileID: 917471965055420610}
   pannelloCliente: {fileID: 8563828291385068490}
   bottonePiatto: {fileID: 6321563858081638370}
