@@ -134,8 +134,14 @@ public class Player
 
     public void aggiornaInventario(OggettoQuantita<int> ingrediente, bool compra)
     {
+        List<Player> databasePlayer = Database.getDatabaseOggetto(this);
+        int posizionePlayerNelDatabase = databasePlayer.IndexOf(this);
+
         //compra == true se compra, false se vendi
         compraVendiSingoloIngrediente(ingrediente, compra);
+
+        databasePlayer[posizionePlayerNelDatabase] = this;
+        Database.aggiornaDatabaseOggetto(databasePlayer);
     }
 
     private void compraVendiSingoloIngrediente(OggettoQuantita<int> oggettoDaComprare, bool compra)
@@ -170,16 +176,33 @@ public class Player
     //@overloading (trovo il tag per l'override ma non per l'overloading :| , pero è quello)
     public void aggiornaInventario(List<OggettoQuantita<int>> ingredienti, bool compra)
     {
+        List<Player> databasePlayer = Database.getDatabaseOggetto(this);
+        int posizionePlayerNelDatabase = databasePlayer.IndexOf(this);
+        
         //compra == true se compra, false se vendi
         foreach (OggettoQuantita<int> ingrediente in ingredienti)
         {
             compraVendiSingoloIngrediente(ingrediente, compra);
         }
+
+        databasePlayer[posizionePlayerNelDatabase] = this;
+        Database.aggiornaDatabaseOggetto(databasePlayer);
     }
 
     public bool inventarioVuoto()
     {
         return this.inventario.Count == 0;
+    }
+
+    public string stampaInventario()
+    {
+        string output = "";
+        foreach (OggettoQuantita<int> oggetto in inventario)
+        {
+            Ingrediente temp = Ingrediente.idToIngrediente(oggetto.oggetto);
+            output += temp.ToString() + "\n" + oggetto.quantita + "\n\n";
+        }
+        return output;
     }
 
     //DATABASE

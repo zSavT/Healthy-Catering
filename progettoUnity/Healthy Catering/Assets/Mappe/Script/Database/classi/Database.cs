@@ -53,6 +53,11 @@ public class Database
         }
     }
 
+    public static void aggiornaDatabaseOggetto <Oggetto> (List<Oggetto> nuovoDatabaseOggetto)
+    {
+        Serializza.salvaOggettiSuFile(nuovoDatabaseOggetto);
+    }
+
     //Get nuovi valori
     public static int getNewId<Oggetto>(Oggetto oggetto)
     {

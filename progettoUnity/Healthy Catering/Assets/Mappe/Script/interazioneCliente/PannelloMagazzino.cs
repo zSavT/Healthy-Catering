@@ -52,8 +52,8 @@ public class PannelloMagazzino : MonoBehaviour
 
         if (!schermataMagazzinoPopolata)
             popolaSchermata();
-        //else
-        //////aggiornaSchermataMagazzino();
+        else
+            aggiornaSchermataMagazzino();
     }
 
     public void chiudiPannelloMagazzino()
@@ -168,6 +168,13 @@ public class PannelloMagazzino : MonoBehaviour
         }
 
         return pannello;//non sono sicuro sia necessario il return del pannello, se non serve poi lo togliamo
+    }
+
+    private void aggiornaSchermataMagazzino()
+    {
+        Player giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
+
+        print(giocatore.stampaInventario());
     }
 
     /// <summary>
