@@ -27,6 +27,7 @@ public class PannelloMagazzino : MonoBehaviour
 
     private void Start()
     {
+        cambiaSfondoDesktop();
         pannelloMagazzino.SetActive(false);
         //creo una copia del bottone template
         bottoneIngredienteTemplate = Instantiate(pannelloXElementi.GetComponentInChildren<Button>());
