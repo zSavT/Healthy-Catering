@@ -21,7 +21,7 @@ public class PannelloMagazzino : MonoBehaviour
     private int bottoniMassimiPerPannelloXElementi = 4;
     private int numeroPannelliXElementiPresenti = 1;
     private Button bottoneIngredienteTemplate;
-    private List<GameObject> pannelliXElementi;
+    GameObject copiaPannelloMostraInventario;
 
     [SerializeField] private PannelloMostraRicette pannelloMostraRicette;
 
@@ -40,9 +40,6 @@ public class PannelloMagazzino : MonoBehaviour
         //al posto di uno solo come in menu (interazione cliente))
         pannelloXElementi = rimuoviTuttiFigliDaPannello(pannelloXElementi);
         schermataMagazzinoPopolata = false;
-
-        pannelliXElementi = new List<GameObject>();
-        copiaPannelloXElementi = Instantiate(pannelloXElementi);
     }
 
     public void apriPannelloMagazzino()
@@ -55,10 +52,15 @@ public class PannelloMagazzino : MonoBehaviour
 
         pannelloInventarioCanvas.SetActive(false);
 
+        copiaPannelloMostraInventario = Instantiate(pannelloMostraInventario);
+        copiaPannelloXElementi = Instantiate(pannelloXElementi);
+
         if (!schermataMagazzinoPopolata)
             popolaSchermata();
         else
+        {
             aggiornaSchermataMagazzino();
+        }
     }
 
     public void chiudiPannelloMagazzino()
@@ -117,7 +119,6 @@ public class PannelloMagazzino : MonoBehaviour
                 {
                     if (oggettoDellInventario != inventario[inventario.Count - 1]) // se e' diverso dall'ultimo elemento, previene che venga creato un pannello vuoto
                     {
-                        //pannelliXElementi.Add(pannelloXElementi);
                         aggiungiPannelloXElementi();
                         numeroBottoniAggiuntiFinoAdOraInPannelloXElementi = 0;
                     }
@@ -125,8 +126,6 @@ public class PannelloMagazzino : MonoBehaviour
             }
 
             schermataMagazzinoPopolata = true;
-
-            //pannelliXElementi.Add(pannelloXElementi);
 
             if (!testoInventarioVuoto.text.Equals(""))
                 testoInventarioVuoto.text = "";
@@ -203,21 +202,19 @@ public class PannelloMagazzino : MonoBehaviour
         */
         Player giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
 
-        /*
-        foreach (GameObject pannelloXElementi in pannelliXElementi)
-        {
-            rimuoviTuttiFigliDaPannello(pannelloXElementi);
-            Destroy(pannelloXElementi);
-        }
-        */
-
-        //pannelliXElementi = new List<GameObject>();
         
+        copiaPannelloMostraInventario.transform.SetParent(pannelloMostraInventario.transform.parent, false);
+
         foreach (Transform child in pannelloMostraInventario.GetComponentsInChildren<Transform>())
         {
             Destroy(child.gameObject);
         }
-        
+
+        pannelloMostraInventario = copiaPannelloMostraInventario;
+        pannelloMostraInventario = rimuoviTuttiFigliDaPannello(pannelloMostraInventario);
+
+
+        numeroPannelliXElementiPresenti = 0;
         aggiungiPannelloXElementi();//nuovo primo pannello
 
         popolaSchermata();
