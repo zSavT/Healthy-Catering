@@ -21,6 +21,7 @@ public class SelezioneLivelli : MonoBehaviour
      * Menu Selezione livello = 3
      * Menu Selezione Profilo Utente = 4
      * Menu Creazione Profilo Utente = 5
+     * Classifica = 6
      */
     [SerializeField] private Camera cameraGioco;
     [SerializeField] private GameObject elementiDomandaUscita;
@@ -131,6 +132,11 @@ public class SelezioneLivelli : MonoBehaviour
     public static void caricaLivelloCitta()
     {
         SceneManager.LoadScene(2);
+    }
+
+    public static void caricaClassifica()
+    {
+        SceneManager.LoadScene(6);
     }
 }
 
