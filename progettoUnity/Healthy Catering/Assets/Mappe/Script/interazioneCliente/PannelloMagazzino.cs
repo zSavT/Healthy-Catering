@@ -30,6 +30,8 @@ public class PannelloMagazzino : MonoBehaviour
     [SerializeField] private TextMeshProUGUI testoInventarioVuoto;
     private string testoInventarioVuotoString = "Inventario magazzino vuoto";
 
+    private Player giocatore;
+
     private void Start()
     {
         cambiaSfondoDesktop();
@@ -42,8 +44,10 @@ public class PannelloMagazzino : MonoBehaviour
         schermataMagazzinoPopolata = false;
     }
 
-    public void apriPannelloMagazzino()
+    public void apriPannelloMagazzino(Player player)
     {
+        giocatore = player;
+
         CambioCursore.cambioCursoreNormale();
         pannelloMagazzino.SetActive(true);
         pannelloMagazzinoAperto = true;
@@ -95,9 +99,7 @@ public class PannelloMagazzino : MonoBehaviour
     }
 
     private void popolaSchermata()
-    {
-        Player giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
-        
+    {   
         if (!giocatore.inventarioVuoto())
         {
             pannelloXElementi.SetActive(true);
@@ -200,9 +202,6 @@ public class PannelloMagazzino : MonoBehaviour
         e' sia scomodo che, molto probabilmente, piu' pesante di ricreare i bottoni da capo
         quindi, almeno secondo e' meglio fare cosi
         */
-        Player giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
-
-        
         copiaPannelloMostraInventario.transform.SetParent(pannelloMostraInventario.transform.parent, false);
 
         foreach (Transform child in pannelloMostraInventario.GetComponentsInChildren<Transform>())
