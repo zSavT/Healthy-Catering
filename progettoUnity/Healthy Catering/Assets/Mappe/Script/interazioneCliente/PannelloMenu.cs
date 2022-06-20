@@ -132,8 +132,16 @@ public class PannelloMenu : MonoBehaviour
         int i = 0;
         foreach (Button bottonePiatto in bottoniPiatti)
         {
+            print(piatti[i].ToString());
             if (!piatti[i].piattoInInventario(giocatore.inventario))
+            {
                 bottonePiatto.interactable = false;
+                print("non disponibile");
+            }
+            else
+            {
+                print("disponibile");
+            }
             i++;
         }
     }
