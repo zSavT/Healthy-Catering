@@ -46,6 +46,10 @@ public class PannelloMenu : MonoBehaviour
     [SerializeField] private GameObject EscPerUscireTesto; //Lo imposto come GameObject e non come testo, perch� mi interessa solo attivarlo disattivarlo velocemente
     public UnityEvent chiusuraInterazioneCliente;
 
+    [Header("Gestione aggiornamento piatti")]
+    private Button[] bottoniPiatti; 
+    List<Piatto> piatti;
+    private bool pannelloAggiornato;
 
     void Start()
     {
@@ -53,7 +57,8 @@ public class PannelloMenu : MonoBehaviour
         pannelloIngredientiPiatto.SetActive(false);
         pannelloConfermaPiatto.SetActive(false);
         pannelloIngredientiGiustiSbagliati.SetActive(false);
-        generaBottoniPiatti(cliente);
+        piatti = Database.getDatabaseOggetto(new Piatto());
+        generaBottoniPiatti();
     }
 
     void Update()
@@ -84,18 +89,18 @@ public class PannelloMenu : MonoBehaviour
         caricaClienteInPanello(cliente);
     }
 
-    //TODO divisione in metodi
-    private void generaBottoniPiatti(Cliente cliente)
+    private void generaBottoniPiatti()
     {
-        List<Piatto> piatti = Database.getDatabaseOggetto(new Piatto());
-        List<Button> bottoniPiatti = new List<Button>();
+        List <Button> bottoniPiattiTemp = new List<Button>();
+        bottoniPiatti = new Button[piatti.Count];
 
         foreach (Piatto piatto in piatti)
         {
-            bottoniPiatti.Add(generaBottonePiatto(piatto, bottonePiatto));
+            bottoniPiattiTemp.Add(generaBottonePiatto(piatto, bottonePiatto));
         }
 
-        foreach (Button bottonePiatto in bottoniPiatti)
+        int i = 0;
+        foreach (Button bottonePiatto in bottoniPiattiTemp)
         {
             GameObject bottoneTemp = new GameObject();
             bottoneTemp = (Instantiate(bottonePiatto, pannelloPiatti.transform, false) as Button).gameObject;
@@ -112,9 +117,25 @@ public class PannelloMenu : MonoBehaviour
                 cambiaPannelloIngredientiPiattoConPiatto(bottoneMostraIngredienti, piatti);
                 apriPannelloIngredientiPiatto();
             });
+
+            bottoniPiatti[i] = bottoneTemp.GetComponent<Button>();
+            i++;
         }
 
         Destroy(bottonePiatto);
+
+        aggiornaBottoniPiatti();
+    }
+
+    private void aggiornaBottoniPiatti()
+    {
+        int i = 0;
+        foreach (Button bottonePiatto in bottoniPiatti)
+        {
+            if (!piatti[i].piattoInInventario(giocatore.inventario))
+                bottonePiatto.interactable = false;
+            i++;
+        }
     }
 
     private void selezionaPiatto(GameObject bottone, List<Piatto> piatti, Cliente cliente)
@@ -158,6 +179,8 @@ public class PannelloMenu : MonoBehaviour
         }
         livelloProgresso.servitoCliente(giocatore.punteggio);
         animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
+
+        aggiornaBottoniPiatti();
     }
 
     private void setPannelloConfermaConNomePiatto(string nomePiatto)

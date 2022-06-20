@@ -5,51 +5,51 @@
     "inventario": [
       {
         "oggetto": 0,
-        "quantita": 93
+        "quantita": 5
       },
       {
         "oggetto": 1,
-        "quantita": 75
+        "quantita": 5
       },
       {
         "oggetto": 2,
-        "quantita": 75
-      },
-      {
-        "oggetto": 3,
-        "quantita": 75
-      },
-      {
-        "oggetto": 4,
-        "quantita": 75
+        "quantita": 5
       },
       {
         "oggetto": 5,
-        "quantita": 75
+        "quantita": 5
+      },
+      {
+        "oggetto": 4,
+        "quantita": 5
+      },
+      {
+        "oggetto": 5,
+        "quantita": 5
       },
       {
         "oggetto": 6,
-        "quantita": 75
+        "quantita": 5
       },
       {
         "oggetto": 7,
-        "quantita": 99
+        "quantita": 5
       },
       {
         "oggetto": 8,
-        "quantita": 100
+        "quantita": 5
       },
       {
         "oggetto": 9,
-        "quantita": 99
+        "quantita": 5
       },
       {
         "oggetto": 10,
-        "quantita": 99
+        "quantita": 5
       },
       {
         "oggetto": 11,
-        "quantita": 99
+        "quantita": 5
       }
     ],
     "punteggio": 121

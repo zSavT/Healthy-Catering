@@ -42,6 +42,8 @@ public class Interactor : MonoBehaviour
 
     private Interactable npc;
 
+    bool bottoniInterazioneClienteGeneratiLaPrimaVolta;
+
     void Start()
     {
         try
