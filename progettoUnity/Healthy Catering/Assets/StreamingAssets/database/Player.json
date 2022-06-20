@@ -1,35 +1,35 @@
 [
   {
     "nome": "Sav",
-    "soldi": 10.17,
+    "soldi": 8.085,
     "inventario": [
       {
         "oggetto": 0,
-        "quantita": 94
+        "quantita": 93
       },
       {
         "oggetto": 1,
-        "quantita": 76
+        "quantita": 75
       },
       {
         "oggetto": 2,
-        "quantita": 76
+        "quantita": 75
       },
       {
         "oggetto": 3,
-        "quantita": 76
+        "quantita": 75
       },
       {
         "oggetto": 4,
-        "quantita": 76
+        "quantita": 75
       },
       {
         "oggetto": 5,
-        "quantita": 76
+        "quantita": 75
       },
       {
         "oggetto": 6,
-        "quantita": 76
+        "quantita": 75
       },
       {
         "oggetto": 7,
@@ -52,7 +52,7 @@
         "quantita": 99
       }
     ],
-    "punteggio": 242
+    "punteggio": 121
   },
   {
     "nome": "SavT",

@@ -28,7 +28,7 @@ public class PannelloMagazzino : MonoBehaviour
     private bool schermataMagazzinoPopolata;
 
     [SerializeField] private TextMeshProUGUI testoInventarioVuoto;
-    private string testoInventarioVuotoString = "Non hai alcun ingrediente nel tuo inventario, vai al negozio per acquistarne altri";
+    private string testoInventarioVuotoString = "Inventario magazzino vuoto";
 
     private void Start()
     {
