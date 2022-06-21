@@ -16,10 +16,14 @@ public class Classifica : MonoBehaviour
     [SerializeField] private TextMeshProUGUI listaPunteggioLivello0;
     [SerializeField] private TextMeshProUGUI listaPunteggioLivello1;
     [SerializeField] private TextMeshProUGUI listaPunteggioLivello2;
-
+    private List<Player> listaPlayer;
+    private int numeroGiocatoriDaVisualizzare = 5;
 
     void Start()
     {
+        listaPlayer = Database.getDatabaseOggetto(new Player());
+        listaPunteggioLivello0.text = "";
+        popolaClassificaLivello0();
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
     }
 
@@ -30,4 +34,24 @@ public class Classifica : MonoBehaviour
     {
         SelezioneLivelli.caricaMenuPrincipale();
     }
+
+    private void popolaClassificaLivello0()
+    {
+        listaPlayer.Sort();
+        int i = 0;
+        while(i < numeroGiocatoriDaVisualizzare)
+        {
+            if(i < listaPlayer.Count)
+            {
+                listaPunteggioLivello0.text = listaPunteggioLivello0.text + (i+1).ToString() + " " + listaPlayer[i].nome + " " + listaPlayer[i].punteggio[0] + "\n\n";
+            } else
+            {
+                listaPunteggioLivello0.text = listaPunteggioLivello0.text + (i + 1).ToString() + " AAA " + 0.ToString() + "\n\n";
+            }
+            i++;
+        }
+    }
 }
+
+
+
