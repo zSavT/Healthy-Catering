@@ -11,6 +11,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform posizioneCamera;
     [SerializeField] private Transform posizioneCameraMenuCliente;
+    [SerializeField] private GameObject pannelloMenuECliente;
     [SerializeField] private PannelloMenu pannelloMenuCliente;
     [SerializeField] private Gui guiInGame;
 
@@ -261,12 +262,10 @@ public class Interactor : MonoBehaviour
         muoviCameraPerInterazioneCliente();
 
         playerStop.Invoke();
-
-        apriPannello();
-
+        
         pannelloMenuCliente.setCliente(IDClientePuntato, giocatore, npc);
-
         PuntatoreMouse.abilitaCursore();
+        pannelloApertoChiuso();
     }
 
     private void muoviCameraPerInterazioneCliente()
@@ -274,11 +273,6 @@ public class Interactor : MonoBehaviour
         mainCamera.transform.position = posizioneCameraMenuCliente.transform.position;
     }
 
-    private void apriPannello()
-    {
-        pannelloMenuCliente.apriPannelloMenuCliente();
-        pannelloApertoChiuso();
-    }
 
     private void chiudiPannello()
     {

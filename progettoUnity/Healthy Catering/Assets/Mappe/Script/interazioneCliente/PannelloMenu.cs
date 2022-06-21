@@ -96,7 +96,6 @@ public class PannelloMenu : MonoBehaviour
     {
         pannelloPrincipaleMenuCliente.SetActive(true);
         apriMenuCliente();
-        //aggiornaBottoniPiatti();
     }
 
     public void ChiudiPannelloMenuCliente()
@@ -107,11 +106,12 @@ public class PannelloMenu : MonoBehaviour
 
     public void setCliente(int idClientePuntato, Player giocatorePartita, Interactable controlleNPCPuntato)
     {
+        apriPannelloMenuCliente();
         cliente = Database.getDatabaseOggetto(new Cliente())[idClientePuntato];
         giocatore = giocatorePartita;
         controllerAnimazioneCliente = controlleNPCPuntato;
-
         caricaClienteInPanello(cliente);
+        //aggiornaBottoniPiatti();          in questo momento i bottoniPiatti non sono ancora stati popolati e quindi questa chiamata fallisce. 
     }
 
     private void generaBottoniPiatti()
@@ -157,7 +157,7 @@ public class PannelloMenu : MonoBehaviour
         int i = 0;
         foreach (Button bottonePiatto in bottoniPiatti)
         {
-            print(piatti[i].ToString());
+            print("Piatto " + i + " " + piatti[i].ToString());
             if (!piatti[i].piattoInInventario(giocatore.inventario))
             {
                 bottonePiatto.interactable = false;
