@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : IComparable<Player>
+public class Player : IComparable<Player>, IEquatable<Player>
 {
     /*
     tutti i metodi e gli attributi e le variabili dichiarate nei metodi di questa classe con il nome 'Item' al loro interno sono in verità Ingredienti (o id di Ingredienti)
@@ -263,11 +263,11 @@ public class Player : IComparable<Player>
         if (other == null)
             return 1;
         else
-            if (this.punteggio[PlayerSettings.livelloSelezionato] > (other.punteggio[PlayerSettings.livelloSelezionato]))
-            return 1;
-        else if (this.punteggio[PlayerSettings.livelloSelezionato] == (other.punteggio[PlayerSettings.livelloSelezionato]))
-            return 0;
-        else
-            return -1;
+            return this.punteggio[PlayerSettings.livelloSelezionato].CompareTo(other.punteggio[PlayerSettings.livelloSelezionato]);
+    }
+
+    public bool Equals(Player other)
+    {
+        return Equals(other);
     }
 }

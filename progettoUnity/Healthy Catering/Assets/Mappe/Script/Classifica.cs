@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using Wilberforce;
@@ -24,8 +25,8 @@ public class Classifica : MonoBehaviour
         listaPlayer = Database.getDatabaseOggetto(new Player());
         azzeraTextElementi();
         popolaClassificaLivello0();
-        popolaClassificaLivello1();
-        popolaClassificaLivello2();
+     //   popolaClassificaLivello1();
+      //  popolaClassificaLivello2();
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
     }
 
@@ -47,6 +48,7 @@ public class Classifica : MonoBehaviour
     private void popolaClassificaLivello0()
     {
         PlayerSettings.livelloSelezionato = 0;
+        Debug.Log(PlayerSettings.livelloSelezionato);
         listaPlayer.Sort();
         int i = 0;
         while (i < numeroGiocatoriDaVisualizzare)

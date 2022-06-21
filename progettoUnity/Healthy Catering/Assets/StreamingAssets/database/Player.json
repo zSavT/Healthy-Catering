@@ -56,12 +56,20 @@
         "quantita": 1
       }
     ],
-    "punteggio": [0,0,0]
+    "punteggio": [
+      242,
+      0,
+      0
+    ]
   },
   {
     "nome": "SavT",
-    "soldi": 0.0,
+    "soldi": 220.0,
     "inventario": [],
-    "punteggio": [0,0,0]
+    "punteggio": [
+      500,
+      0,
+      0
+    ]
   }
 ]

@@ -4,6 +4,7 @@ using UnityEngine.Events;
 using TMPro;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// Classe che gestisce gli obbiettivi del livello, ovvero il numero di clienti da servire ed il punteggio da raggiungere.
@@ -13,7 +14,9 @@ public class ProgressoLivello : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scrittaObbiettivo;
     [SerializeField] private Color32 coloreRaggiuntoObbiettivo;
     //da eventualmente eliminare se esiste un modo per accedere al punteggio nella classe player
-    private int punteggioPlayer;                        
+    private int punteggioPlayer;
+    private Player giocatore;
+    [SerializeField] Interactor interazioni;
     [Header("Obbiettivo numero Clienti da Servire")]
     [SerializeField] private TextMeshProUGUI obbiettivoUno;
     [SerializeField] private Toggle obbiettivoUnoToogle;
@@ -41,6 +44,7 @@ public class ProgressoLivello : MonoBehaviour
 
     private void Start()
     {
+        giocatore = interazioni.getPlayer();
         //disattivare la schermata per evitare che l'animazione parti fin da subito (N.B. L'animazione è impostata per avviarsi all'attivazione dell'oggetto per semplicità è per dover scrivere molti meno controlli)
         schermataFineLivello.SetActive(false);
         valorePunteggioPlayer.gameObject.SetActive(false);
@@ -145,7 +149,24 @@ public class ProgressoLivello : MonoBehaviour
     /// </summary>
     public void tornaAlMenuPrincipale()
     {
+        Database.aggiornaDatabaseOggetto(aggiornaGiocatore());
         PlayerSettings.salvaProgressoLivello1(true);
         SelezioneLivelli.caricaMenuPrincipale();
+    }
+
+    private List<Player> aggiornaGiocatore()
+    {
+        List<Player> listaPlayer = Database.getDatabaseOggetto(new Player());
+        int i = 0;
+        foreach(Player temp in listaPlayer)
+        {
+            if(temp.nome == listaPlayer[i].nome)
+            {
+                listaPlayer[i].punteggio[PlayerSettings.livelloSelezionato] = punteggioPlayer;
+                break;
+            }
+            i++;
+        }
+        return listaPlayer;
     }
 }
