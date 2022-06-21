@@ -198,7 +198,7 @@ public class PannelloMenu : MonoBehaviour
         chiudiPannelloConfermaPiatto();
 
         giocatore.guadagna(guadagno);
-        giocatore.aggiungiDiminuisciPunteggio(affinita, piattoSelezionato.calcolaNutriScore(databaseIngredienti), piattoSelezionato.calcolaCostoEco(databaseIngredienti));
+        giocatore.aggiungiDiminuisciPunteggio(affinita, piattoSelezionato.calcolaNutriScore(databaseIngredienti), piattoSelezionato.calcolaCostoEco(databaseIngredienti), PlayerSettings.livelloSelezionato);
         giocatore.aggiornaInventario(piattoSelezionato.listaIdIngredientiQuantita, false);
 
         if (!affinita)
@@ -211,7 +211,7 @@ public class PannelloMenu : MonoBehaviour
             clienteServito = true;
             chiusuraInterazioneCliente.Invoke();
         }
-        livelloProgresso.servitoCliente(giocatore.punteggio);
+        livelloProgresso.servitoCliente(giocatore.punteggio[PlayerSettings.livelloSelezionato]);
         animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
 
         aggiornaBottoniPiatti();

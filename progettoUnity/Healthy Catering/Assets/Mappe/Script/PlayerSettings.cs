@@ -109,8 +109,30 @@ public class PlayerSettings : MonoBehaviour
     {
         return PlayerPrefs.GetString("PlayerName");
     }
-    
+
     //PROGRESSI LIVELLI
+    //LIVELLO 0
+
+    /// <summary>
+    /// Salva se il livello 1 è stato completato o meno per il profilo del giocatore giocante.
+    /// </summary>
+    /// <param name="completato">True completato, false non completato</param>
+    public static void salvaProgressoLivello0(bool completato)
+    {
+        if (completato)
+            PlayerPrefs.SetInt(caricaNomePlayerGiocante() + "_livello0", 1);
+        else
+            PlayerPrefs.SetInt(caricaNomePlayerGiocante() + "_livello0", 0);
+    }
+
+    /// <summary>
+    /// Carica se il livello 1 è stato completato o meno per il profilo del giocatore giocante.
+    /// </summary>
+    /// <returns>1 completato, 0 non completato.</returns>
+    public static int caricaProgressoLivello0()
+    {
+        return PlayerPrefs.GetInt(caricaNomePlayerGiocante() + "_livello0");
+    }
 
     //LIVELLO 1
 

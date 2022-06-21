@@ -18,7 +18,8 @@ public class Player
 
     public List<OggettoQuantita<int>> inventario = new List<OggettoQuantita<int>>();
 
-    public int punteggio = 0;
+    public static readonly int numeroLivelli = 3;
+    public int[] punteggio = new int [numeroLivelli];
 
     public Player(string nome, int soldi, List<OggettoQuantita<int>> inventario)
     {
@@ -90,7 +91,7 @@ public class Player
         this.soldi += guadagno;
     }
 
-    public void aggiungiDiminuisciPunteggio(bool affine, int nutriScore, float costoEco)
+    public void aggiungiDiminuisciPunteggio(bool affine, int nutriScore, float costoEco, int livello)
     {
         float punteggioDaAggiungere;
         if (affine)
@@ -101,7 +102,7 @@ public class Player
         punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Utility.valoreAssoluto(punteggioDaAggiungere), trovaPercentualeNutriScore(nutriScore));
         punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Utility.valoreAssoluto(punteggioDaAggiungere), trovaPercentualeEcoScore(costoEco));
 
-        this.punteggio += (int)punteggioDaAggiungere;
+        this.punteggio [livello] += (int)punteggioDaAggiungere;
     }
 
     public float trovaPercentualeNutriScore(int nutriScore)
