@@ -152,9 +152,15 @@ public class Player
                 else
                 {
                     if (this.inventario[i].quantita - oggettoDaComprare.quantita >= 0)
+                    {
                         this.inventario[i].quantita = this.inventario[i].quantita - oggettoDaComprare.quantita;
+                    }
                     else
+                    {
                         this.inventario[i].quantita = 0; //cosi non creo problemi se qualche cosa è andata storta sopra
+                        this.inventario.Remove(this.inventario[i]);
+                    }
+                       
                 }
                 return;
             }
