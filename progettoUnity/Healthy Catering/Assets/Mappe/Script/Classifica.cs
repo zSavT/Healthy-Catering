@@ -1,6 +1,5 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using Wilberforce;
@@ -8,7 +7,7 @@ using Wilberforce;
 /// <summary>
 /// Classe per la gestione della classifica del gioco.<para>
 /// <strong>Da aggiungere a:</strong><br></br>
-/// Pannello dove sono presenti gli elementi della classifica (Va bene in realtà qualsiasi oggetto).
+/// Pannello dove sono presenti gli elementi della classifica (Va bene in realtï¿½ qualsiasi oggetto).
 /// </para>
 /// </summary>
 public class Classifica : MonoBehaviour
@@ -25,8 +24,8 @@ public class Classifica : MonoBehaviour
         listaPlayer = Database.getDatabaseOggetto(new Player());
         azzeraTextElementi();
         popolaClassificaLivello0();
-     //   popolaClassificaLivello1();
-      //  popolaClassificaLivello2();
+        popolaClassificaLivello1();
+        popolaClassificaLivello2();
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
     }
 
@@ -48,7 +47,6 @@ public class Classifica : MonoBehaviour
     private void popolaClassificaLivello0()
     {
         PlayerSettings.livelloSelezionato = 0;
-        Debug.Log(PlayerSettings.livelloSelezionato);
         listaPlayer.Sort();
         int i = 0;
         while (i < numeroGiocatoriDaVisualizzare)
@@ -56,7 +54,8 @@ public class Classifica : MonoBehaviour
             if (i < listaPlayer.Count)
             {
                 listaPunteggioLivello0.text = listaPunteggioLivello0.text + (i + 1).ToString() + " " + listaPlayer[i].nome + " " + listaPlayer[i].punteggio[0] + "\n\n";
-            } else
+            }
+            else
             {
                 listaPunteggioLivello0.text = listaPunteggioLivello0.text + (i + 1).ToString() + "\n\n";
             }
@@ -103,6 +102,5 @@ public class Classifica : MonoBehaviour
         }
     }
 }
-
 
 
