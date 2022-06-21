@@ -220,6 +220,7 @@ MonoBehaviour:
   pannelloXElementi: {fileID: 0}
   pannelloInventarioCanvas: {fileID: 0}
   pannelloMostraRicette: {fileID: 0}
+  testoInventarioVuoto: {fileID: 0}
 --- !u!65 &461872272
 BoxCollider:
   m_ObjectHideFlags: 0

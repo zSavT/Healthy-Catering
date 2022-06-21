@@ -75,6 +75,11 @@ public class Interactor : MonoBehaviour
         menuApribile = !menuApribile;
     }
 
+    public void menuNonApribile()
+    {
+        menuApribile = false;
+    }
+
     private bool NPCPassantePuntato()
     {
         RaycastHit NPCPassivoInquadrato;
