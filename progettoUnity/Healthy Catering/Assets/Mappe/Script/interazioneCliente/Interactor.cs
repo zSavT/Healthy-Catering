@@ -11,7 +11,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform posizioneCamera;
     [SerializeField] private Transform posizioneCameraMenuCliente;
-    [SerializeField] private GameObject pannelloMenuECliente;
+    [SerializeField] private PannelloMenu pannelloMenuCliente;
     [SerializeField] private Gui guiInGame;
 
     [Header("Interazione Negozio")]
@@ -264,7 +264,7 @@ public class Interactor : MonoBehaviour
 
         apriPannello();
 
-        pannelloMenuECliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato, giocatore, npc);
+        pannelloMenuCliente.setCliente(IDClientePuntato, giocatore, npc);
 
         PuntatoreMouse.abilitaCursore();
     }
@@ -276,19 +276,13 @@ public class Interactor : MonoBehaviour
 
     private void apriPannello()
     {
-        if (pannelloMenuECliente != null)
-        {
-            pannelloMenuECliente.SetActive(true);
-        }
+        pannelloMenuCliente.apriPannelloMenuCliente();
         pannelloApertoChiuso();
     }
 
     private void chiudiPannello()
     {
-        if (pannelloMenuECliente != null)
-        {
-            pannelloMenuECliente.SetActive(false);
-        }
+        pannelloMenuCliente.ChiudiPannelloMenuCliente();
         pannelloApertoChiuso();
     }
 }

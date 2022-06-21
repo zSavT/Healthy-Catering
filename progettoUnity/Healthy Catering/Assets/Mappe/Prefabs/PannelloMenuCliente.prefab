@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   livelloProgresso: {fileID: 0}
+  pannelloPrincipaleMenuCliente: {fileID: 669099460223522329}
   pannelloMenu: {fileID: 917471965055420610}
   pannelloCliente: {fileID: 8563828291385068490}
   bottonePiatto: {fileID: 6321563858081638370}
@@ -2208,7 +2209,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -20.95105, y: 0}
+  m_AnchoredPosition: {x: -20.95105, y: 0.000030517578}
   m_SizeDelta: {x: -82.85, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &9146929669833992664

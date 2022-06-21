@@ -14,8 +14,8 @@ public class PannelloMenu : MonoBehaviour
     private Interactable controllerAnimazioneCliente;
     private Player giocatore;
     [SerializeField] private ProgressoLivello livelloProgresso;
-
     [Header("Pannello menu e pannello cliente")]
+    [SerializeField] private GameObject pannelloPrincipaleMenuCliente;
     [SerializeField] private GameObject pannelloMenu;
     [SerializeField] private GameObject pannelloCliente;
 
@@ -78,6 +78,31 @@ public class PannelloMenu : MonoBehaviour
                 chiudiPannelloIngredientiGiustiSbagliati();
             }
         }
+    }
+
+    private void apriMenuCliente()
+    {
+        pannelloMenu.SetActive(true);
+        pannelloCliente.SetActive(true);
+    }
+
+    private void chiudiMenuCliente()
+    {
+        pannelloMenu.SetActive(false);
+        pannelloCliente.SetActive(false);
+    }
+
+    public void apriPannelloMenuCliente()
+    {
+        pannelloPrincipaleMenuCliente.SetActive(true);
+        apriMenuCliente();
+        //aggiornaBottoniPiatti();
+    }
+
+    public void ChiudiPannelloMenuCliente()
+    {
+        pannelloPrincipaleMenuCliente.SetActive(false);
+        chiudiMenuCliente();
     }
 
     public void setCliente(int idClientePuntato, Player giocatorePartita, Interactable controlleNPCPuntato)
@@ -259,8 +284,7 @@ public class PannelloMenu : MonoBehaviour
         {
             pannelloIngredientiPiatto.SetActive(true);
             pannelloIngredientiPiattoApertoChiuso();
-            pannelloMenu.SetActive(false);
-            pannelloCliente.SetActive(false);
+            chiudiMenuCliente();
         }
 
     }
@@ -271,8 +295,7 @@ public class PannelloMenu : MonoBehaviour
         {
             pannelloIngredientiPiatto.SetActive(false);
             pannelloIngredientiPiattoApertoChiuso();
-            pannelloMenu.SetActive(true);
-            pannelloCliente.SetActive(true);
+            apriMenuCliente();
         }
     }
 
@@ -286,8 +309,7 @@ public class PannelloMenu : MonoBehaviour
         if (pannelloConfermaPiatto != null)
         {
             pannelloConfermaPiatto.SetActive(true);
-            pannelloMenu.SetActive(false);
-            pannelloCliente.SetActive(false);
+            chiudiMenuCliente();
             pannelloConfermaPiattoApertoChiuso();
             EscPerUscireTesto.SetActive(false);
         }
@@ -300,8 +322,7 @@ public class PannelloMenu : MonoBehaviour
         {
             pannelloConfermaPiatto.SetActive(false);
             pannelloConfermaPiattoApertoChiuso();
-            pannelloMenu.SetActive(true);
-            pannelloCliente.SetActive(true);
+            apriMenuCliente();
             EscPerUscireTesto.SetActive(true);
             controllerAnimazioneCliente.animazioneCamminata();
         }
@@ -313,9 +334,8 @@ public class PannelloMenu : MonoBehaviour
         {
             pannelloConfermaPiatto.SetActive(false);
             pannelloConfermaPiattoApertoChiuso();
-            pannelloMenu.SetActive(true);
             EscPerUscireTesto.SetActive(true);
-            pannelloCliente.SetActive(true);
+            apriMenuCliente();
         }
     }
 
@@ -331,8 +351,7 @@ public class PannelloMenu : MonoBehaviour
             
             pannelloIngredientiGiustiSbagliati.SetActive(true);
             pannelloIngredientiGiustiSbagliatiApertoChiuso();
-            pannelloMenu.SetActive(false);
-            pannelloCliente.SetActive(false);
+            chiudiMenuCliente();
         }
 
     }
@@ -372,8 +391,7 @@ public class PannelloMenu : MonoBehaviour
         {
             pannelloIngredientiGiustiSbagliati.SetActive(false);
             pannelloIngredientiGiustiSbagliatiApertoChiuso();
-            pannelloCliente.SetActive(true);
-            pannelloMenu.SetActive(true);
+            apriMenuCliente();
             controllerAnimazioneCliente.animazioneCamminata();
             clienteServito = true;
             chiusuraInterazioneCliente.Invoke();
