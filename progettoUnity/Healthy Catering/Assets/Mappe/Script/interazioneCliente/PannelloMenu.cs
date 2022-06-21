@@ -111,7 +111,7 @@ public class PannelloMenu : MonoBehaviour
         giocatore = giocatorePartita;
         controllerAnimazioneCliente = controlleNPCPuntato;
         caricaClienteInPanello(cliente);
-        //aggiornaBottoniPiatti();          in questo momento i bottoniPiatti non sono ancora stati popolati e quindi questa chiamata fallisce. 
+        aggiornaBottoniPiatti();         // in questo momento i bottoniPiatti non sono ancora stati popolati e quindi questa chiamata fallisce. 
     }
 
     private void generaBottoniPiatti()
@@ -154,20 +154,24 @@ public class PannelloMenu : MonoBehaviour
 
     private void aggiornaBottoniPiatti()
     {
-        int i = 0;
-        foreach (Button bottonePiatto in bottoniPiatti)
+        if(bottoniPiatti != null)
         {
-            print("Piatto " + i + " " + piatti[i].ToString());
-            if (!piatti[i].piattoInInventario(giocatore.inventario))
+            int i = 0;
+            foreach (Button bottonePiatto in bottoniPiatti)
             {
-                bottonePiatto.interactable = false;
-                print("non disponibile");
+                print("Piatto " + i + " " + piatti[i].ToString());
+                if (!piatti[i].piattoInInventario(giocatore.inventario))
+                {
+                    bottonePiatto.interactable = false;
+                    print("non disponibile");
+                }
+                else
+                {
+                    bottonePiatto.interactable = true;
+                    print("disponibile");
+                }
+                i++;
             }
-            else
-            {
-                print("disponibile");
-            }
-            i++;
         }
     }
 
