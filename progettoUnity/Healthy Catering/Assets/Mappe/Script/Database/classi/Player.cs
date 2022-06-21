@@ -19,6 +19,7 @@ public class Player
     public List<OggettoQuantita<int>> inventario = new List<OggettoQuantita<int>>();
 
     public static readonly int numeroLivelli = 3;
+    public int livelloAttuale = 0;
     public int[] punteggio = new int [numeroLivelli];
 
     public Player(string nome, int soldi, List<OggettoQuantita<int>> inventario)

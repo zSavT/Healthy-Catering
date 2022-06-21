@@ -18,7 +18,6 @@ public class Interactor : MonoBehaviour
     [Header("Interazione Negozio")]
     [SerializeField] private PannelloNegozio negozio;
 
-
     [Header("Interazione Magazzino")]
     [SerializeField] private PannelloMagazzino magazzino;
 
@@ -45,12 +44,15 @@ public class Interactor : MonoBehaviour
 
     bool bottoniInterazioneClienteGeneratiLaPrimaVolta;
 
+    private int livelloAttuale;
+
     void Start()
-    {
+    { 
         try
         {
             giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
-            giocatore.punteggio = 0;
+            livelloAttuale = giocatore.livelloAttuale;
+            giocatore.punteggio[livelloAttuale] = 0;
             giocatore.soldi = 0f;
         }
         catch(Exception e)
@@ -247,7 +249,7 @@ public class Interactor : MonoBehaviour
         } 
         else
         {
-            guiInGame.aggiornaValorePunteggio(giocatore.punteggio);
+            guiInGame.aggiornaValorePunteggio(giocatore.punteggio[livelloAttuale]);
             guiInGame.aggiornaValoreSoldi(giocatore.soldi);
         }
     }
