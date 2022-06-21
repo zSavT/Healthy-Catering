@@ -22,9 +22,18 @@ public class Classifica : MonoBehaviour
     void Start()
     {
         listaPlayer = Database.getDatabaseOggetto(new Player());
-        listaPunteggioLivello0.text = "";
+        azzeraTextElementi();
         popolaClassificaLivello0();
+        popolaClassificaLivello1();
+        popolaClassificaLivello2();
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
+    }
+
+    private void azzeraTextElementi()
+    {
+        listaPunteggioLivello0.text = "";
+        listaPunteggioLivello1.text = "";
+        listaPunteggioLivello2.text = "";
     }
 
     /// <summary>
@@ -37,16 +46,56 @@ public class Classifica : MonoBehaviour
 
     private void popolaClassificaLivello0()
     {
+        PlayerSettings.livelloSelezionato = 0;
         listaPlayer.Sort();
         int i = 0;
-        while(i < numeroGiocatoriDaVisualizzare)
+        while (i < numeroGiocatoriDaVisualizzare)
         {
-            if(i < listaPlayer.Count)
+            if (i < listaPlayer.Count)
             {
-                listaPunteggioLivello0.text = listaPunteggioLivello0.text + (i+1).ToString() + " " + listaPlayer[i].nome + " " + listaPlayer[i].punteggio[0] + "\n\n";
+                listaPunteggioLivello0.text = listaPunteggioLivello0.text + (i + 1).ToString() + " " + listaPlayer[i].nome + " " + listaPlayer[i].punteggio[0] + "\n\n";
             } else
             {
-                listaPunteggioLivello0.text = listaPunteggioLivello0.text + (i + 1).ToString() + " AAA " + 0.ToString() + "\n\n";
+                listaPunteggioLivello0.text = listaPunteggioLivello0.text + (i + 1).ToString() + "\n\n";
+            }
+            i++;
+        }
+
+    }
+
+    private void popolaClassificaLivello1()
+    {
+        PlayerSettings.livelloSelezionato = 1;
+        listaPlayer.Sort();
+        int i = 0;
+        while (i < numeroGiocatoriDaVisualizzare)
+        {
+            if (i < listaPlayer.Count)
+            {
+                listaPunteggioLivello1.text = listaPunteggioLivello1.text + (i + 1).ToString() + " " + listaPlayer[i].nome + " " + listaPlayer[i].punteggio[1] + "\n\n";
+            }
+            else
+            {
+                listaPunteggioLivello1.text = listaPunteggioLivello1.text + (i + 1).ToString() + "\n\n";
+            }
+            i++;
+        }
+    }
+
+    private void popolaClassificaLivello2()
+    {
+        PlayerSettings.livelloSelezionato = 2;
+        listaPlayer.Sort();
+        int i = 0;
+        while (i < numeroGiocatoriDaVisualizzare)
+        {
+            if (i < listaPlayer.Count)
+            {
+                listaPunteggioLivello2.text = listaPunteggioLivello2.text + (i + 1).ToString() + " " + listaPlayer[i].nome + " " + listaPlayer[i].punteggio[2] + "\n\n";
+            }
+            else
+            {
+                listaPunteggioLivello2.text = listaPunteggioLivello2.text + (i + 1).ToString() + "\n\n";
             }
             i++;
         }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Player : IComparable<Player>
 {
@@ -262,6 +263,11 @@ public class Player : IComparable<Player>
         if (other == null)
             return 1;
         else
-            return this.punteggio[PlayerSettings.livelloSelezionato].CompareTo(other.punteggio[PlayerSettings.livelloSelezionato]);
+            if (this.punteggio[PlayerSettings.livelloSelezionato] > (other.punteggio[PlayerSettings.livelloSelezionato]))
+            return 1;
+        else if (this.punteggio[PlayerSettings.livelloSelezionato] == (other.punteggio[PlayerSettings.livelloSelezionato]))
+            return 0;
+        else
+            return -1;
     }
 }
