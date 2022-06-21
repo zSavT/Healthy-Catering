@@ -12,6 +12,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private Transform posizioneCamera;
     [SerializeField] private Transform posizioneCameraMenuCliente;
     [SerializeField] private GameObject pannelloMenuECliente;
+    [SerializeField] private PannelloMenu pannelloMenuCliente;
     [SerializeField] private Gui guiInGame;
 
     [Header("Interazione Negozio")]
@@ -42,6 +43,8 @@ public class Interactor : MonoBehaviour
 
     private Interactable npc;
 
+    bool bottoniInterazioneClienteGeneratiLaPrimaVolta;
+
     void Start()
     {
         try
@@ -70,6 +73,11 @@ public class Interactor : MonoBehaviour
     public void menuApribileOnOff()
     {
         menuApribile = !menuApribile;
+    }
+
+    public void menuNonApribile()
+    {
+        menuApribile = false;
     }
 
     private bool NPCPassantePuntato()
@@ -103,7 +111,7 @@ public class Interactor : MonoBehaviour
                 inquadratoNPC.Invoke();
                 if (Input.GetKeyDown(tastoInterazione))
                 {
-                    magazzino.apriPannelloMagazzino();
+                    magazzino.apriPannelloMagazzino(giocatore);
                     playerStop.Invoke();
                     PuntatoreMouse.abilitaCursore();
                     CambioCursore.cambioCursoreNormale();
@@ -259,12 +267,10 @@ public class Interactor : MonoBehaviour
         muoviCameraPerInterazioneCliente();
 
         playerStop.Invoke();
-
-        apriPannello();
-
-        pannelloMenuECliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato, giocatore, npc);
-
+        
+        pannelloMenuCliente.setCliente(IDClientePuntato, giocatore, npc);
         PuntatoreMouse.abilitaCursore();
+        pannelloApertoChiuso();
     }
 
     private void muoviCameraPerInterazioneCliente()
@@ -272,21 +278,10 @@ public class Interactor : MonoBehaviour
         mainCamera.transform.position = posizioneCameraMenuCliente.transform.position;
     }
 
-    private void apriPannello()
-    {
-        if (pannelloMenuECliente != null)
-        {
-            pannelloMenuECliente.SetActive(true);
-        }
-        pannelloApertoChiuso();
-    }
 
     private void chiudiPannello()
     {
-        if (pannelloMenuECliente != null)
-        {
-            pannelloMenuECliente.SetActive(false);
-        }
+        pannelloMenuCliente.ChiudiPannelloMenuCliente();
         pannelloApertoChiuso();
     }
 }

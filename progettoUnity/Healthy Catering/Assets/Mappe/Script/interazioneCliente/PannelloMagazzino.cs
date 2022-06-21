@@ -16,14 +16,21 @@ public class PannelloMagazzino : MonoBehaviour
     private bool pannelloMostraInventarioAperto;
 
     [SerializeField] private GameObject pannelloXElementi;
+    private GameObject copiaPannelloXElementi;
     [SerializeField] private GameObject pannelloInventarioCanvas;
     private int bottoniMassimiPerPannelloXElementi = 4;
     private int numeroPannelliXElementiPresenti = 1;
     private Button bottoneIngredienteTemplate;
+    GameObject copiaPannelloMostraInventario;
 
     [SerializeField] private PannelloMostraRicette pannelloMostraRicette;
 
     private bool schermataMagazzinoPopolata;
+
+    [SerializeField] private TextMeshProUGUI testoInventarioVuoto;
+    private string testoInventarioVuotoString = "Inventario magazzino vuoto";
+
+    private Player giocatore;
 
     private void Start()
     {
@@ -37,15 +44,27 @@ public class PannelloMagazzino : MonoBehaviour
         schermataMagazzinoPopolata = false;
     }
 
-    public void apriPannelloMagazzino()
+    public void apriPannelloMagazzino(Player player)
     {
+        giocatore = player;
+
         CambioCursore.cambioCursoreNormale();
         pannelloMagazzino.SetActive(true);
         pannelloMagazzinoAperto = true;
         pannelloMostraRicette.chiudiPannelloMostraRicette();
         cambiaSfondoDesktop();
+
+        pannelloInventarioCanvas.SetActive(false);
+
+        copiaPannelloMostraInventario = Instantiate(pannelloMostraInventario);
+        copiaPannelloXElementi = Instantiate(pannelloXElementi);
+
         if (!schermataMagazzinoPopolata)
             popolaSchermata();
+        else
+        {
+            aggiornaSchermataMagazzino();
+        }
     }
 
     public void chiudiPannelloMagazzino()
@@ -80,30 +99,47 @@ public class PannelloMagazzino : MonoBehaviour
     }
 
     private void popolaSchermata()
-    {
-        List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
-        List<Piatto> databasePiatti = Database.getDatabaseOggetto(new Piatto()); //mi serve per vedere le ricette
-        List<OggettoQuantita<int>> inventario = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante()).inventario;
-
-        int bottoniAggiuntiFinoAdOra = 0;
-
-        foreach (OggettoQuantita<int> oggettoDellInventario in inventario)
+    {   
+        if (!giocatore.inventarioVuoto())
         {
-            Button bottoneDaAggiungereTemp = creaBottoneConValoriIngrediente(oggettoDellInventario, bottoneIngredienteTemplate, databaseIngredienti, databasePiatti);
-            bottoneDaAggiungereTemp.transform.SetParent(pannelloXElementi.transform, false);
-            bottoniAggiuntiFinoAdOra++;
+            pannelloXElementi.SetActive(true);
+            
+            List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
+            List<Piatto> databasePiatti = Database.getDatabaseOggetto(new Piatto()); //mi serve per vedere le ricette
+            List<OggettoQuantita<int>> inventario = giocatore.inventario;
 
-            if (bottoniAggiuntiFinoAdOra > bottoniMassimiPerPannelloXElementi)
+            int numeroBottoniAggiuntiFinoAdOraInPannelloXElementi = 0;
+
+            foreach (OggettoQuantita<int> oggettoDellInventario in inventario)
             {
-                if (oggettoDellInventario != inventario[inventario.Count - 1]) // se e' diverso dall'ultimo elemento, previene che venga creato un pannello vuoto
+                if(oggettoDellInventario.quantita != 0)
                 {
-                    aggiungiPannelloXElementi();
-                    bottoniAggiuntiFinoAdOra = 0;
+                    Button bottoneDaAggiungereTemp = creaBottoneConValoriIngrediente(oggettoDellInventario, bottoneIngredienteTemplate, databaseIngredienti, databasePiatti);
+
+                    bottoneDaAggiungereTemp.transform.SetParent(pannelloXElementi.transform, false);
+                    numeroBottoniAggiuntiFinoAdOraInPannelloXElementi++;
+
+                    if (numeroBottoniAggiuntiFinoAdOraInPannelloXElementi > bottoniMassimiPerPannelloXElementi)
+                    {
+                        if (oggettoDellInventario != inventario[inventario.Count - 1]) // se e' diverso dall'ultimo elemento, previene che venga creato un pannello vuoto
+                        {
+                            aggiungiPannelloXElementi();
+                            numeroBottoniAggiuntiFinoAdOraInPannelloXElementi = 0;
+                        }
+                    }
                 }
             }
-        }
 
-        schermataMagazzinoPopolata = true;
+            schermataMagazzinoPopolata = true;
+
+            if (!testoInventarioVuoto.text.Equals(""))
+                testoInventarioVuoto.text = "";
+        }
+        else
+        {
+            testoInventarioVuoto.text = testoInventarioVuotoString;
+            pannelloXElementi.SetActive(false);
+        }
     }
 
     private Button creaBottoneConValoriIngrediente(OggettoQuantita<int> oggettoDellInventario, Button bottoneIngredienteTemplate, List<Ingrediente> databaseIngredienti, List<Piatto> databasePiatti)
@@ -126,7 +162,7 @@ public class PannelloMagazzino : MonoBehaviour
 
     private void aggiungiPannelloXElementi()
     {
-        GameObject nuovoPannelloXElementi = Instantiate(pannelloXElementi);
+        GameObject nuovoPannelloXElementi = Instantiate(copiaPannelloXElementi);
         nuovoPannelloXElementi = rimuoviTuttiFigliDaPannello(nuovoPannelloXElementi);
 
         nuovoPannelloXElementi.name = "SottoPannelloMostraInventarioXElementi" + numeroPannelliXElementiPresenti.ToString();
@@ -145,6 +181,45 @@ public class PannelloMagazzino : MonoBehaviour
         }
 
         return pannello;//non sono sicuro sia necessario il return del pannello, se non serve poi lo togliamo
+    }
+
+    private void aggiornaSchermataMagazzino()
+    {
+        /*
+        si potrebbe aggiungere una gestione dinamica della cosa,
+        senza distruggere e ricreare tutti i bottoni ogni volta ma significherebbe
+        gestire la disposizione degli elementi nei pannelliXElementi e aggiornarli
+        ogni volta che uno degli elementi non e' più presente nell'inventario:
+        es:
+        ho un pannelloXElementi con:
+            ingrediente1
+            ingrediente2
+            ingrediente3
+            ingrediente4
+        mettiamo caso che ingrediente 2 finisca, cosa succede? 
+        diventa grigio o viene rimosso completamente?
+        se diventa grigio, la prossima volta che viene aperto il gioco quell'ingrediente 
+        non è più nella lista
+        se devo eliminarlo dalla lista, sopratutto se e' nel primo dei pannelliXElementi
+        devo far scalare di posto tutti gli elementi dei pannelli successivi, il che 
+        e' sia scomodo che, molto probabilmente, piu' pesante di ricreare i bottoni da capo
+        quindi, almeno secondo e' meglio fare cosi
+        */
+        copiaPannelloMostraInventario.transform.SetParent(pannelloMostraInventario.transform.parent, false);
+
+        foreach (Transform child in pannelloMostraInventario.GetComponentsInChildren<Transform>())
+        {
+            Destroy(child.gameObject);
+        }
+
+        pannelloMostraInventario = copiaPannelloMostraInventario;
+        pannelloMostraInventario = rimuoviTuttiFigliDaPannello(pannelloMostraInventario);
+
+
+        numeroPannelliXElementiPresenti = 0;
+        aggiungiPannelloXElementi();//nuovo primo pannello
+
+        popolaSchermata();
     }
 
     /// <summary>

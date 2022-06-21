@@ -243,7 +243,6 @@ public class Piatto
         return (patologieCompatibili && dietaCompatibile);
     }
 
-    //TODO metti private
     public bool checkAffinitaPatologiePiatto(List <OggettoQuantita <int>> listaIdIngredientiQuantita, List <int> listaIdPatologieCliente)
     {
         foreach (int idPatologiaCliente in listaIdPatologieCliente)
@@ -259,7 +258,6 @@ public class Piatto
         return true;
     }
 
-    //TODO metti private
     public bool checkAffinitaDietaPiatto(List <OggettoQuantita<int>> listaIdIngredientiQuantita, int dietaCliente)
     {
         foreach (OggettoQuantita<int> idIngredienteEQuantita in listaIdIngredientiQuantita)
@@ -286,6 +284,33 @@ public class Piatto
             }
         }
         return piattoSelezionato;
+    }
+
+    public bool piattoInInventario(List <OggettoQuantita<int>> inventario)
+    {
+        bool ingredienteTrovato;
+        foreach (OggettoQuantita<int> ingredientePiatto in listaIdIngredientiQuantita)
+        {
+            ingredienteTrovato = false;
+            foreach (OggettoQuantita<int> ingredienteInventario in inventario)
+            {
+                if (ingredientePiatto.oggetto == ingredienteInventario.oggetto)
+                {
+                    ingredienteTrovato = true;
+                    if (ingredientePiatto.quantita > ingredienteInventario.quantita)
+                    {
+                        return false;
+                    }
+                }
+            }
+            if (!ingredienteTrovato)
+            {
+                return false;
+            }
+            ingredienteTrovato = false;
+        }
+
+        return true;
     }
 
     //FUNZIONI PER DATABASE
