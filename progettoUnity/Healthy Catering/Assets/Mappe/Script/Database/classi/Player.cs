@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-public class Player
+public class Player : IComparable<Player>
 {
     /*
     tutti i metodi e gli attributi e le variabili dichiarate nei metodi di questa classe con il nome 'Item' al loro interno sono in verità Ingredienti (o id di Ingredienti)
@@ -55,6 +55,7 @@ public class Player
         }
         return (this.nome.Equals(((Player)obj).nome));
     }
+
 
     public override string ToString()
     {
@@ -254,5 +255,13 @@ public class Player
             return output;
         }
         throw new Exception("Le dimensioni della lista contente gli item e le quantita di essi non corrispondo");
+    }
+
+    public int CompareTo(Player other)
+    {
+        if (other == null)
+            return 1;
+        else
+            return this.punteggio[PlayerSettings.livelloSelezionato].CompareTo(other.punteggio[PlayerSettings.livelloSelezionato]);
     }
 }
