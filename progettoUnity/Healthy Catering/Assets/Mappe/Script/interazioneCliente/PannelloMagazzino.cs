@@ -112,17 +112,20 @@ public class PannelloMagazzino : MonoBehaviour
 
             foreach (OggettoQuantita<int> oggettoDellInventario in inventario)
             {
-                Button bottoneDaAggiungereTemp = creaBottoneConValoriIngrediente(oggettoDellInventario, bottoneIngredienteTemplate, databaseIngredienti, databasePiatti);
-                
-                bottoneDaAggiungereTemp.transform.SetParent(pannelloXElementi.transform, false);
-                numeroBottoniAggiuntiFinoAdOraInPannelloXElementi++;
-
-                if (numeroBottoniAggiuntiFinoAdOraInPannelloXElementi > bottoniMassimiPerPannelloXElementi)
+                if(oggettoDellInventario.quantita != 0)
                 {
-                    if (oggettoDellInventario != inventario[inventario.Count - 1]) // se e' diverso dall'ultimo elemento, previene che venga creato un pannello vuoto
+                    Button bottoneDaAggiungereTemp = creaBottoneConValoriIngrediente(oggettoDellInventario, bottoneIngredienteTemplate, databaseIngredienti, databasePiatti);
+
+                    bottoneDaAggiungereTemp.transform.SetParent(pannelloXElementi.transform, false);
+                    numeroBottoniAggiuntiFinoAdOraInPannelloXElementi++;
+
+                    if (numeroBottoniAggiuntiFinoAdOraInPannelloXElementi > bottoniMassimiPerPannelloXElementi)
                     {
-                        aggiungiPannelloXElementi();
-                        numeroBottoniAggiuntiFinoAdOraInPannelloXElementi = 0;
+                        if (oggettoDellInventario != inventario[inventario.Count - 1]) // se e' diverso dall'ultimo elemento, previene che venga creato un pannello vuoto
+                        {
+                            aggiungiPannelloXElementi();
+                            numeroBottoniAggiuntiFinoAdOraInPannelloXElementi = 0;
+                        }
                     }
                 }
             }
