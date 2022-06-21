@@ -19,7 +19,6 @@ public class Player
     public List<OggettoQuantita<int>> inventario = new List<OggettoQuantita<int>>();
 
     public static readonly int numeroLivelli = 3;
-    public int livelloAttuale = 0;
     public int[] punteggio = new int [numeroLivelli];
 
     public Player(string nome, int soldi, List<OggettoQuantita<int>> inventario)
@@ -27,7 +26,6 @@ public class Player
         this.nome = nome;
         this.soldi = soldi;
         this.inventario = inventario;
-        setLivello();
     }
 
     public Player(string nome)
@@ -35,7 +33,6 @@ public class Player
         this.nome = nome;
         this.soldi = 0;
         this.inventario = new List<OggettoQuantita<int>>();
-        setLivello();
     }
 
     public Player()
@@ -43,35 +40,6 @@ public class Player
         this.nome = "";
         this.soldi = 0;
         this.inventario = new List<OggettoQuantita<int>>(); //int perchè sono gli id degli item e non gli item veri e propri
-        setLivello();
-    }
-
-    private void setLivello()
-    {
-        if (PlayerSettings.caricaProgressoLivello0() == 1)
-        {
-            this.livelloAttuale = 1;
-            if (PlayerSettings.caricaProgressoLivello1() == 1)
-            {
-                this.livelloAttuale = 2;
-                if (PlayerSettings.caricaProgressoLivello2() == 1)
-                {
-                    this.livelloAttuale = 3;
-                }
-                else
-                {
-                    this.livelloAttuale = 2;
-                }
-            }
-            else
-            {
-                this.livelloAttuale = 1;
-            }
-        }
-        else
-        {
-            this.livelloAttuale = 0;
-        }
     }
 
     public override bool Equals(object obj)

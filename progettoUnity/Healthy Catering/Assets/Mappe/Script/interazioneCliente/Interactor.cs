@@ -51,7 +51,6 @@ public class Interactor : MonoBehaviour
         try
         {
             giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
-            livelloAttuale = giocatore.livelloAttuale;
             giocatore.punteggio[livelloAttuale] = 0;
             giocatore.soldi = 0f;
         }
