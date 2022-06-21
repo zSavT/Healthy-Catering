@@ -12,11 +12,11 @@ public class Interactor : MonoBehaviour
     [SerializeField] private Transform posizioneCamera;
     [SerializeField] private Transform posizioneCameraMenuCliente;
     [SerializeField] private GameObject pannelloMenuECliente;
+    [SerializeField] private PannelloMenu pannelloMenuCliente;
     [SerializeField] private Gui guiInGame;
 
     [Header("Interazione Negozio")]
     [SerializeField] private PannelloNegozio negozio;
-
 
     [Header("Interazione Magazzino")]
     [SerializeField] private PannelloMagazzino magazzino;
@@ -42,12 +42,16 @@ public class Interactor : MonoBehaviour
 
     private Interactable npc;
 
+    bool bottoniInterazioneClienteGeneratiLaPrimaVolta;
+
+    private int livelloAttuale;
+
     void Start()
-    {
+    { 
         try
         {
             giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
-            giocatore.punteggio = 0;
+            giocatore.punteggio[livelloAttuale] = 0;
             giocatore.soldi = 0f;
         }
         catch(Exception e)
@@ -70,6 +74,11 @@ public class Interactor : MonoBehaviour
     public void menuApribileOnOff()
     {
         menuApribile = !menuApribile;
+    }
+
+    public void menuNonApribile()
+    {
+        menuApribile = false;
     }
 
     private bool NPCPassantePuntato()
@@ -103,7 +112,7 @@ public class Interactor : MonoBehaviour
                 inquadratoNPC.Invoke();
                 if (Input.GetKeyDown(tastoInterazione))
                 {
-                    magazzino.apriPannelloMagazzino();
+                    magazzino.apriPannelloMagazzino(giocatore);
                     playerStop.Invoke();
                     PuntatoreMouse.abilitaCursore();
                     CambioCursore.cambioCursoreNormale();
@@ -239,7 +248,7 @@ public class Interactor : MonoBehaviour
         } 
         else
         {
-            guiInGame.aggiornaValorePunteggio(giocatore.punteggio);
+            guiInGame.aggiornaValorePunteggio(giocatore.punteggio[livelloAttuale]);
             guiInGame.aggiornaValoreSoldi(giocatore.soldi);
         }
     }
@@ -259,12 +268,10 @@ public class Interactor : MonoBehaviour
         muoviCameraPerInterazioneCliente();
 
         playerStop.Invoke();
-
-        apriPannello();
-
-        pannelloMenuECliente.GetComponent<PannelloMenu>().setCliente(IDClientePuntato, giocatore, npc);
-
+        
+        pannelloMenuCliente.setCliente(IDClientePuntato, giocatore, npc);
         PuntatoreMouse.abilitaCursore();
+        pannelloApertoChiuso();
     }
 
     private void muoviCameraPerInterazioneCliente()
@@ -272,21 +279,10 @@ public class Interactor : MonoBehaviour
         mainCamera.transform.position = posizioneCameraMenuCliente.transform.position;
     }
 
-    private void apriPannello()
-    {
-        if (pannelloMenuECliente != null)
-        {
-            pannelloMenuECliente.SetActive(true);
-        }
-        pannelloApertoChiuso();
-    }
 
     private void chiudiPannello()
     {
-        if (pannelloMenuECliente != null)
-        {
-            pannelloMenuECliente.SetActive(false);
-        }
+        pannelloMenuCliente.ChiudiPannelloMenuCliente();
         pannelloApertoChiuso();
     }
 }

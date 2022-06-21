@@ -14,8 +14,8 @@ public class PannelloMenu : MonoBehaviour
     private Interactable controllerAnimazioneCliente;
     private Player giocatore;
     [SerializeField] private ProgressoLivello livelloProgresso;
-
     [Header("Pannello menu e pannello cliente")]
+    [SerializeField] private GameObject pannelloPrincipaleMenuCliente;
     [SerializeField] private GameObject pannelloMenu;
     [SerializeField] private GameObject pannelloCliente;
 
@@ -46,6 +46,10 @@ public class PannelloMenu : MonoBehaviour
     [SerializeField] private GameObject EscPerUscireTesto; //Lo imposto come GameObject e non come testo, perch� mi interessa solo attivarlo disattivarlo velocemente
     public UnityEvent chiusuraInterazioneCliente;
 
+    [Header("Gestione aggiornamento piatti")]
+    private Button[] bottoniPiatti; 
+    List<Piatto> piatti;
+    private bool pannelloAggiornato;
 
     void Start()
     {
@@ -53,7 +57,8 @@ public class PannelloMenu : MonoBehaviour
         pannelloIngredientiPiatto.SetActive(false);
         pannelloConfermaPiatto.SetActive(false);
         pannelloIngredientiGiustiSbagliati.SetActive(false);
-        generaBottoniPiatti(cliente);
+        piatti = Database.getDatabaseOggetto(new Piatto());
+        generaBottoniPiatti();
     }
 
     void Update()
@@ -75,27 +80,52 @@ public class PannelloMenu : MonoBehaviour
         }
     }
 
+    private void apriMenuCliente()
+    {
+        pannelloMenu.SetActive(true);
+        pannelloCliente.SetActive(true);
+    }
+
+    private void chiudiMenuCliente()
+    {
+        pannelloMenu.SetActive(false);
+        pannelloCliente.SetActive(false);
+    }
+
+    public void apriPannelloMenuCliente()
+    {
+        pannelloPrincipaleMenuCliente.SetActive(true);
+        apriMenuCliente();
+    }
+
+    public void ChiudiPannelloMenuCliente()
+    {
+        pannelloPrincipaleMenuCliente.SetActive(false);
+        chiudiMenuCliente();
+    }
+
     public void setCliente(int idClientePuntato, Player giocatorePartita, Interactable controlleNPCPuntato)
     {
+        apriPannelloMenuCliente();
         cliente = Database.getDatabaseOggetto(new Cliente())[idClientePuntato];
         giocatore = giocatorePartita;
         controllerAnimazioneCliente = controlleNPCPuntato;
-
         caricaClienteInPanello(cliente);
+        aggiornaBottoniPiatti();         // in questo momento i bottoniPiatti non sono ancora stati popolati e quindi questa chiamata fallisce. 
     }
 
-    //TODO divisione in metodi
-    private void generaBottoniPiatti(Cliente cliente)
+    private void generaBottoniPiatti()
     {
-        List<Piatto> piatti = Database.getDatabaseOggetto(new Piatto());
-        List<Button> bottoniPiatti = new List<Button>();
+        List <Button> bottoniPiattiTemp = new List<Button>();
+        bottoniPiatti = new Button[piatti.Count];
 
         foreach (Piatto piatto in piatti)
         {
-            bottoniPiatti.Add(generaBottonePiatto(piatto, bottonePiatto));
+            bottoniPiattiTemp.Add(generaBottonePiatto(piatto, bottonePiatto));
         }
 
-        foreach (Button bottonePiatto in bottoniPiatti)
+        int i = 0;
+        foreach (Button bottonePiatto in bottoniPiattiTemp)
         {
             GameObject bottoneTemp = new GameObject();
             bottoneTemp = (Instantiate(bottonePiatto, pannelloPiatti.transform, false) as Button).gameObject;
@@ -112,9 +142,34 @@ public class PannelloMenu : MonoBehaviour
                 cambiaPannelloIngredientiPiattoConPiatto(bottoneMostraIngredienti, piatti);
                 apriPannelloIngredientiPiatto();
             });
+
+            bottoniPiatti[i] = bottoneTemp.GetComponent<Button>();
+            i++;
         }
 
         Destroy(bottonePiatto);
+
+        aggiornaBottoniPiatti();
+    }
+
+    private void aggiornaBottoniPiatti()
+    {
+        if(bottoniPiatti != null)
+        {
+            int i = 0;
+            foreach (Button bottonePiatto in bottoniPiatti)
+            {
+                if (!piatti[i].piattoInInventario(giocatore.inventario))
+                {
+                    bottonePiatto.interactable = false;
+                }
+                else
+                {
+                    bottonePiatto.interactable = true;
+                }
+                i++;
+            }
+        }
     }
 
     private void selezionaPiatto(GameObject bottone, List<Piatto> piatti, Cliente cliente)
@@ -143,8 +198,9 @@ public class PannelloMenu : MonoBehaviour
         chiudiPannelloConfermaPiatto();
 
         giocatore.guadagna(guadagno);
-        giocatore.aggiungiDiminuisciPunteggio(affinita, piattoSelezionato.calcolaNutriScore(databaseIngredienti), piattoSelezionato.calcolaCostoEco(databaseIngredienti));
-        
+        giocatore.aggiungiDiminuisciPunteggio(affinita, piattoSelezionato.calcolaNutriScore(databaseIngredienti), piattoSelezionato.calcolaCostoEco(databaseIngredienti), PlayerSettings.livelloSelezionato);
+        giocatore.aggiornaInventario(piattoSelezionato.listaIdIngredientiQuantita, false);
+
         if (!affinita)
         {
             caricaIngredientiInPannelloIngredientiGiustiSbagliati(piattoSelezionato, cliente, databaseIngredienti);
@@ -155,8 +211,10 @@ public class PannelloMenu : MonoBehaviour
             clienteServito = true;
             chiusuraInterazioneCliente.Invoke();
         }
-        livelloProgresso.servitoCliente(giocatore.punteggio);
+        livelloProgresso.servitoCliente(giocatore.punteggio[PlayerSettings.livelloSelezionato]);
         animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
+
+        aggiornaBottoniPiatti();
     }
 
     private void setPannelloConfermaConNomePiatto(string nomePiatto)
@@ -227,8 +285,7 @@ public class PannelloMenu : MonoBehaviour
         {
             pannelloIngredientiPiatto.SetActive(true);
             pannelloIngredientiPiattoApertoChiuso();
-            pannelloMenu.SetActive(false);
-            pannelloCliente.SetActive(false);
+            chiudiMenuCliente();
         }
 
     }
@@ -239,8 +296,7 @@ public class PannelloMenu : MonoBehaviour
         {
             pannelloIngredientiPiatto.SetActive(false);
             pannelloIngredientiPiattoApertoChiuso();
-            pannelloMenu.SetActive(true);
-            pannelloCliente.SetActive(true);
+            apriMenuCliente();
         }
     }
 
@@ -254,8 +310,7 @@ public class PannelloMenu : MonoBehaviour
         if (pannelloConfermaPiatto != null)
         {
             pannelloConfermaPiatto.SetActive(true);
-            pannelloMenu.SetActive(false);
-            pannelloCliente.SetActive(false);
+            chiudiMenuCliente();
             pannelloConfermaPiattoApertoChiuso();
             EscPerUscireTesto.SetActive(false);
         }
@@ -268,8 +323,7 @@ public class PannelloMenu : MonoBehaviour
         {
             pannelloConfermaPiatto.SetActive(false);
             pannelloConfermaPiattoApertoChiuso();
-            pannelloMenu.SetActive(true);
-            pannelloCliente.SetActive(true);
+            apriMenuCliente();
             EscPerUscireTesto.SetActive(true);
             controllerAnimazioneCliente.animazioneCamminata();
         }
@@ -281,9 +335,8 @@ public class PannelloMenu : MonoBehaviour
         {
             pannelloConfermaPiatto.SetActive(false);
             pannelloConfermaPiattoApertoChiuso();
-            pannelloMenu.SetActive(true);
             EscPerUscireTesto.SetActive(true);
-            pannelloCliente.SetActive(true);
+            apriMenuCliente();
         }
     }
 
@@ -299,8 +352,7 @@ public class PannelloMenu : MonoBehaviour
             
             pannelloIngredientiGiustiSbagliati.SetActive(true);
             pannelloIngredientiGiustiSbagliatiApertoChiuso();
-            pannelloMenu.SetActive(false);
-            pannelloCliente.SetActive(false);
+            chiudiMenuCliente();
         }
 
     }
@@ -340,8 +392,7 @@ public class PannelloMenu : MonoBehaviour
         {
             pannelloIngredientiGiustiSbagliati.SetActive(false);
             pannelloIngredientiGiustiSbagliatiApertoChiuso();
-            pannelloCliente.SetActive(true);
-            pannelloMenu.SetActive(true);
+            apriMenuCliente();
             controllerAnimazioneCliente.animazioneCamminata();
             clienteServito = true;
             chiusuraInterazioneCliente.Invoke();

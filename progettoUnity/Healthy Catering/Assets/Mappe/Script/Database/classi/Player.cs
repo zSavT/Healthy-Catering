@@ -18,7 +18,8 @@ public class Player
 
     public List<OggettoQuantita<int>> inventario = new List<OggettoQuantita<int>>();
 
-    public int punteggio = 0;
+    public static readonly int numeroLivelli = 3;
+    public int[] punteggio = new int [numeroLivelli];
 
     public Player(string nome, int soldi, List<OggettoQuantita<int>> inventario)
     {
@@ -90,7 +91,7 @@ public class Player
         this.soldi += guadagno;
     }
 
-    public void aggiungiDiminuisciPunteggio(bool affine, int nutriScore, float costoEco)
+    public void aggiungiDiminuisciPunteggio(bool affine, int nutriScore, float costoEco, int livello)
     {
         float punteggioDaAggiungere;
         if (affine)
@@ -101,7 +102,7 @@ public class Player
         punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Utility.valoreAssoluto(punteggioDaAggiungere), trovaPercentualeNutriScore(nutriScore));
         punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Utility.valoreAssoluto(punteggioDaAggiungere), trovaPercentualeEcoScore(costoEco));
 
-        this.punteggio += (int)punteggioDaAggiungere;
+        this.punteggio [livello] += (int)punteggioDaAggiungere;
     }
 
     public float trovaPercentualeNutriScore(int nutriScore)
@@ -132,9 +133,71 @@ public class Player
             return -10;
     }
 
-    public void aggiornaInventario(Ingrediente ingrediente, int quantitaDaComprare)
+    public void aggiornaInventario(OggettoQuantita<int> ingrediente, bool compra)
     {
-        //TODO
+        //compra == true se compra, false se vendi
+        compraVendiSingoloIngrediente(ingrediente, compra);
+    }
+
+    private void compraVendiSingoloIngrediente(OggettoQuantita<int> oggettoDaComprare, bool compra)
+    {
+        //compra == true se compra, false se vendi
+        int i = 0;
+        
+        foreach (OggettoQuantita <int> oggettoInventario in this.inventario)
+        {
+            if (oggettoDaComprare.oggetto == oggettoInventario.oggetto)
+            {
+                if (compra)
+                    this.inventario[i].quantita = this.inventario[i].quantita + oggettoDaComprare.quantita;
+                else
+                {
+                    if (this.inventario[i].quantita - oggettoDaComprare.quantita >= 0)
+                    {
+                        this.inventario[i].quantita = this.inventario[i].quantita - oggettoDaComprare.quantita;
+                    }
+                    else
+                    {
+                        this.inventario[i].quantita = 0; //cosi non creo problemi se qualche cosa è andata storta sopra
+                        this.inventario.Remove(this.inventario[i]);
+                    }
+                       
+                }
+                return;
+            }
+            i++;
+        }
+        if (compra)
+            this.inventario.Add(oggettoDaComprare);
+        //else
+        //////stessa cosa di prima, non creo problemi se qualche cosa è andata storta sopra, 
+        //////ci dovrebbero essere dei controlli prima comunque
+    }
+
+    //@overloading (trovo il tag per l'override ma non per l'overloading :| , pero è quello)
+    public void aggiornaInventario(List<OggettoQuantita<int>> ingredienti, bool compra)
+    {   
+        //compra == true se compra, false se vendi
+        foreach (OggettoQuantita<int> ingrediente in ingredienti)
+        {
+            compraVendiSingoloIngrediente(ingrediente, compra);
+        }
+    }
+
+    public bool inventarioVuoto()
+    {
+        return this.inventario.Count == 0;
+    }
+
+    public string stampaInventario()
+    {
+        string output = "";
+        foreach (OggettoQuantita<int> oggetto in inventario)
+        {
+            Ingrediente temp = Ingrediente.idToIngrediente(oggetto.oggetto);
+            output += temp.ToString() + "\n" + oggetto.quantita + "\n\n";
+        }
+        return output;
     }
 
     //DATABASE
