@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : IComparable<Player>, IEquatable<Player>
+public class Player
 {
     /*
     tutti i metodi e gli attributi e le variabili dichiarate nei metodi di questa classe con il nome 'Item' al loro interno sono in verità Ingredienti (o id di Ingredienti)
@@ -258,16 +258,36 @@ public class Player : IComparable<Player>, IEquatable<Player>
         throw new Exception("Le dimensioni della lista contente gli item e le quantita di essi non corrispondo");
     }
 
-    public int CompareTo(Player other)
-    {
-        if (other == null)
-            return 1;
-        else
-            return this.punteggio[PlayerSettings.livelloSelezionato].CompareTo(other.punteggio[PlayerSettings.livelloSelezionato]);
+    public static List <Player> getListaSortata(List <Player> databasePlayer = null){
+        databasePlayer ??= Database.getDatabaseOggetto (new Player());
+        
+        databasePlayer.Sort (new PlayerComparer());
+        return databasePlayer;
     }
 
-    public bool Equals(Player other)
+    private class PlayerComparer : IComparer<Player>
     {
-        return Equals(other);
+        //Compare returns -1 (less than), 0 (equal), or 1 (greater)
+        //nutriScore costoEco costo
+        public int Compare(Player first, Player second)
+        {
+            int punteggioPrimo = first.punteggio[PlayerSettings.livelloSelezionato];
+            int punteggioSecondo = second.punteggio[PlayerSettings.livelloSelezionato];
+            if (punteggioPrimo != punteggioSecondo)
+            {
+                if (first.punteggio[PlayerSettings.livelloSelezionato] > second.punteggio[PlayerSettings.livelloSelezionato])
+                {
+                    return -1;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }
