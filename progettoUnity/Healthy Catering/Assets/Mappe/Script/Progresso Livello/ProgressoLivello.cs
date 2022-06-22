@@ -2,8 +2,6 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 
 /// <summary>
@@ -135,6 +133,9 @@ public class ProgressoLivello : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Disattiva gli elementi degli obbiettivi.
+    /// </summary>
     private void disattivaObbiettivi()
     {
         obbiettivoUno.gameObject.SetActive(false);
@@ -154,6 +155,10 @@ public class ProgressoLivello : MonoBehaviour
         SelezioneLivelli.caricaMenuPrincipale();
     }
 
+    /// <summary>
+    /// Legge da file la lista dei player presenti e poi aggiorna il punteggio del giocatore.
+    /// </summary>
+    /// <returns>Lista giocatori aggiornata</returns>
     private List<Player> aggiornaGiocatore()
     {
         List<Player> listaPlayer = Database.getDatabaseOggetto(new Player());

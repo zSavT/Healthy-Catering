@@ -29,6 +29,10 @@ public class Classifica : MonoBehaviour
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
     }
 
+
+    /// <summary>
+    /// Elimina il testo presente nelle liste punteggio.
+    /// </summary>
     private void azzeraTextElementi()
     {
         listaPunteggioLivello0.text = "";
@@ -44,6 +48,9 @@ public class Classifica : MonoBehaviour
         SelezioneLivelli.caricaMenuPrincipale();
     }
 
+    /// <summary>
+    /// Aggiorna il testo della lista dei punteggio dei giocatori per il livello 0
+    /// </summary>
     private void popolaClassificaLivello0()
     {
         PlayerSettings.livelloSelezionato = 0;
@@ -64,6 +71,9 @@ public class Classifica : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Aggiorna il testo della lista dei punteggio dei giocatori per il livello 1
+    /// </summary>
     private void popolaClassificaLivello1()
     {
         PlayerSettings.livelloSelezionato = 1;
@@ -83,6 +93,9 @@ public class Classifica : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Aggiorna il testo della lista dei punteggio dei giocatori per il livello 2
+    /// </summary>
     private void popolaClassificaLivello2()
     {
         PlayerSettings.livelloSelezionato = 2;

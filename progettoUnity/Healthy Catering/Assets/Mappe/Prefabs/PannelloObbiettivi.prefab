@@ -121,6 +121,7 @@ MonoBehaviour:
   coloreRaggiuntoObbiettivo:
     serializedVersion: 2
     rgba: 4288469174
+  interazioni: {fileID: 0}
   obbiettivoUno: {fileID: 7026049646424702194}
   obbiettivoUnoToogle: {fileID: 7026049647747035611}
   numeroClientiDaServire: 2
