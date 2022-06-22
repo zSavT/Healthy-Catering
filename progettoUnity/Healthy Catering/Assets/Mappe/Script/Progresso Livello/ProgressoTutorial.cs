@@ -22,7 +22,7 @@ public class ProgressoTutorial : MonoBehaviour
     private void Start()
     {
         canvasVideoTutorial.SetActive(false);
-        //le disattivo per attivarle solo nel momento opportuno
+        //le disattivo per attivarle solo nel momento opportuno - Questi elementi sono nel loro specifico pannello, che va attivato poi quando serve.
         obbiettivoTesto.gameObject.SetActive(false);
         obbiettivoToggle.gameObject.SetActive(false);
     }
