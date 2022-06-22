@@ -2060,6 +2060,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  layerUnityTeleport:
+    serializedVersion: 2
+    m_Bits: 512
+  giocatoreGameObject: {fileID: 2985297774341178771}
 --- !u!143 &5218992458153246270
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2253,7 +2257,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 255
+    m_Bits: 767
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
