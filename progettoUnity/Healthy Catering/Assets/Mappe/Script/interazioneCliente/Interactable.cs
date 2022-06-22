@@ -8,12 +8,14 @@ public class Interactable : MonoBehaviour
     private Animator controllerAnimazione;
     [SerializeField] private ParticleSystem effettoPositivo;
     [SerializeField] private ParticleSystem effettoNegativo;
+    [SerializeField] private GameObject modelloCliente;
 
     void Start()
     {
         controllerAnimazione = GetComponentInChildren<Animator>();
         effettoPositivo.Stop();
         effettoNegativo.Stop();
+        //modelloCliente.SetActive(false);
     }
 
     public void animazioneContenta()
