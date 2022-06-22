@@ -32,6 +32,11 @@ public class Interactor : MonoBehaviour
     //trigger per la scritta dell'interazione
     [SerializeField] private UnityEvent inquadratoNPC;
     [SerializeField] private UnityEvent uscitaRangeMenu;
+    [Header("Teleport")]
+    [SerializeField] private LayerMask layerUnityTeleport = 9;
+    private Transform destinazioneTeleport;
+    [SerializeField] private GameObject giocatoreGameObject;
+
 
     private Vector3 posizioneCameraOriginale;
 
@@ -140,6 +145,13 @@ public class Interactor : MonoBehaviour
                     PuntatoreMouse.abilitaCursore();
                     CambioCursore.cambioCursoreNormale();
                 }
+            } else if(portaInquadrata())
+            {
+                inquadratoNPC.Invoke();
+                if (Input.GetKeyDown(tastoInterazione) && !(negozio.getPannelloAperto()))
+                {
+                    giocatoreGameObject.transform.position = destinazioneTeleport.transform.position;
+                }
             }
             else
             {
@@ -200,6 +212,22 @@ public class Interactor : MonoBehaviour
         CambioCursore.cambioCursoreNormale();
         PuntatoreMouse.disabilitaCursore();
         magazzino.chiudiPannelloMagazzino();
+    }
+
+    private bool portaInquadrata()
+    {
+        RaycastHit portaInquadrata;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out portaInquadrata, 2, layerUnityTeleport))
+        {
+            // se l'oggetto visualizzato è interagibile
+            if (portaInquadrata.collider.GetComponent<InteractablePorta>() != false)
+            {
+                
+                destinazioneTeleport = portaInquadrata.collider.GetComponent<InteractablePorta>().posizioneTeleport;
+                return true;
+            }
+        }
+        return false;
     }
 
     private bool pcPuntato()
