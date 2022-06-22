@@ -8,6 +8,8 @@ using UnityEngine.UI;
 /// </summary>
 public class ProgressoTutorial : MonoBehaviour
 {
+    [Header("Video tutorial")]
+    [SerializeField] private GameObject canvasVideoTutorial;
 
     [Header("Obbiettivi Tutorial")]
     //testo obbiettivo da cambiare di volta in volta
@@ -15,13 +17,20 @@ public class ProgressoTutorial : MonoBehaviour
     //toggle obbiettivo 
     [SerializeField] private Toggle obbiettivoToggle;
     //se vero, il tutorial dei comandi base, viene saltato
-    public bool skipTutorialComandi;                                
+    public bool skipTutorialComandi;
 
     private void Start()
     {
+        canvasVideoTutorial.SetActive(false);
         //le disattivo per attivarle solo nel momento opportuno
-        obbiettivoTesto.gameObject.SetActive(false);                                    
+        obbiettivoTesto.gameObject.SetActive(false);
         obbiettivoToggle.gameObject.SetActive(false);
+    }
+    
+    private void riproduciVideo()
+    {
+        canvasVideoTutorial.SetActive(true);
+
     }
 
     /// <summary>
