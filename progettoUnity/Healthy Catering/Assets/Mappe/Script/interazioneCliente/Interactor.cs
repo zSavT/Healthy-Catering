@@ -313,4 +313,9 @@ public class Interactor : MonoBehaviour
         pannelloMenuCliente.ChiudiPannelloMenuCliente();
         pannelloApertoChiuso();
     }
+
+    public Player getPlayer()
+    {
+        return giocatore;
+    }
 }

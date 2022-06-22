@@ -169,4 +169,9 @@ public class Menu : MonoBehaviour
         testoVersioneGioco.text = testoVersioneGioco.text + Application.version;
         companyName.text = companyName.text + " " + Application.companyName;
     }
+
+    public void classifica()
+    {
+        SelezioneLivelli.caricaClassifica();
+    }
 }

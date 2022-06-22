@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Player
 {
@@ -55,6 +56,7 @@ public class Player
         }
         return (this.nome.Equals(((Player)obj).nome));
     }
+
 
     public override string ToString()
     {
@@ -254,5 +256,38 @@ public class Player
             return output;
         }
         throw new Exception("Le dimensioni della lista contente gli item e le quantita di essi non corrispondo");
+    }
+
+    public static List <Player> getListaSortata(List <Player> databasePlayer = null){
+        databasePlayer ??= Database.getDatabaseOggetto (new Player());
+        
+        databasePlayer.Sort (new PlayerComparer());
+        return databasePlayer;
+    }
+
+    private class PlayerComparer : IComparer<Player>
+    {
+        //Compare returns -1 (less than), 0 (equal), or 1 (greater)
+        //nutriScore costoEco costo
+        public int Compare(Player first, Player second)
+        {
+            int punteggioPrimo = first.punteggio[PlayerSettings.livelloSelezionato];
+            int punteggioSecondo = second.punteggio[PlayerSettings.livelloSelezionato];
+            if (punteggioPrimo != punteggioSecondo)
+            {
+                if (first.punteggio[PlayerSettings.livelloSelezionato] > second.punteggio[PlayerSettings.livelloSelezionato])
+                {
+                    return -1;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }
