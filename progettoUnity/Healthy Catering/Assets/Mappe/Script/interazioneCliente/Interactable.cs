@@ -45,19 +45,21 @@ public class Interactable : MonoBehaviour
         {
             if(waypoints.Length -2 == waypointIndex)
             {
-                Debug.Log("Raggiunto Bancone");
                 raggiuntoBancone = true;
                 animazioneIdle();
                 if (servito == true)
                 {
-                    iterazioneIndex();
-                    updateDestinazione();
-                    raggiuntoBancone = false;
-                    animazioneCamminata();
+                    if (controllerAnimazione.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !controllerAnimazione.IsInTransition(0))
+                    {
+                        Debug.Log("Dentro");
+                        iterazioneIndex();
+                        updateDestinazione();
+                        raggiuntoBancone = false;
+                        animazioneCamminata();
+                    }
                 }
             } else
             {
-                Debug.Log("Raggiunta porta");
                 modelloCliente.SetActive(false);
             }
             if (waypoints.Length == waypointIndex)
