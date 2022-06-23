@@ -32,7 +32,8 @@ public class SelezioneLivelli : MonoBehaviour
     [Header("Elementi Caricamento Livello")]
     [SerializeField] private Slider sliderCaricamento;        //slider del caricamento della partita
     [SerializeField] private UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
-
+    [Header("Tutorial")]
+    private ProgressoTutorial tutorial;
 
 
     // Start is called before the first frame update
@@ -83,6 +84,9 @@ public class SelezioneLivelli : MonoBehaviour
             sliderCaricamento.value = progresso;
             yield return null;
         }
+
+        if (PlayerSettings.livelloSelezionato == 0)
+            tutorial.iniziaTutorial();
     }
 
     /// <summary>
