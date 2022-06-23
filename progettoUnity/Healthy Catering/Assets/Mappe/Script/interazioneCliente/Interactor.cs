@@ -107,10 +107,16 @@ public class Interactor : MonoBehaviour
         {
             if (NPCClientePuntato())
             {
-                inquadratoNPC.Invoke();
-                if (Input.GetKeyDown(tastoInterazione))
+                if(npc.raggiuntoBancone)
                 {
-                    interazioneCliente(IDClientePuntato);
+                    inquadratoNPC.Invoke();
+                    if (Input.GetKeyDown(tastoInterazione))
+                    {
+                        interazioneCliente(IDClientePuntato);
+                    }
+                } else
+                {
+                    uscitaRangeMenu.Invoke();
                 }
             } else if (pcPuntato())
             {
