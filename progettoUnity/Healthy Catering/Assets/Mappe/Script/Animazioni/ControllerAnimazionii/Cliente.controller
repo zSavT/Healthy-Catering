@@ -39,7 +39,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Happy Idle
-  m_Speed: 0.5
+  m_Speed: 0.001
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -1703937835493883923}
@@ -138,7 +138,7 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.25
-  m_TransitionOffset: 0.047605127
+  m_TransitionOffset: 0
   m_ExitTime: 0.9849549
   m_HasExitTime: 0
   m_HasFixedDuration: 1

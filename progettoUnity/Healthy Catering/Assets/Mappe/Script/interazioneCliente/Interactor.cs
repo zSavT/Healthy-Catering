@@ -34,7 +34,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private UnityEvent uscitaRangeMenu;
     [Header("Teleport")]
     [SerializeField] private LayerMask layerUnityTeleport = 9;
-    private Transform destinazioneTeleport;
+    public Transform destinazioneTeleport;
     [SerializeField] private GameObject giocatoreGameObject;
 
 
@@ -74,6 +74,10 @@ public class Interactor : MonoBehaviour
     void Update()
     {
         interazioneUtenteConNPCVari();
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            giocatoreGameObject.transform.position = destinazioneTeleport.transform.position;
+        }
     }
 
     public void menuApribileOnOff()

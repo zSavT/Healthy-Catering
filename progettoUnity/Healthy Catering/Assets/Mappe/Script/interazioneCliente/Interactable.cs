@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -10,6 +12,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] private ParticleSystem effettoPositivo;
     [SerializeField] private ParticleSystem effettoNegativo;
     [SerializeField] private GameObject modelloCliente;
+    [SerializeField] private GameObject modelloCliente3D;
 
     //Controller della mappa percorribile degli NPC
     NavMeshAgent agent;
@@ -49,6 +52,7 @@ public class Interactable : MonoBehaviour
                 animazioneIdle();
                 if (servito == true)
                 {
+                    Debug.Log("Ciao");
                     if (controllerAnimazione.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !controllerAnimazione.IsInTransition(0))
                     {
                         Debug.Log("Dentro");
@@ -60,13 +64,87 @@ public class Interactable : MonoBehaviour
                 }
             } else
             {
-                modelloCliente.SetActive(false);
-            }
-            if (waypoints.Length == waypointIndex)
-            {
-                
+                // disattivaModello();
+                //  iTween.FadeFrom(modelloCliente, 1, 1);
+                //  iTween.FadeUpdate(modelloCliente, 1, 1);
+                SetMaterialTransparent();
+               attendi(2f);
+                iTween.FadeTo(modelloCliente, 0, 1);
+                attendi(2f);
+                Destroy(modelloCliente);
+               // SetMaterialOpaque();
+               // disattivaModello();
             }
         }
+    }
+
+
+    IEnumerator attendi(float attesa)
+    {
+        yield return new WaitForSecondsRealtime(attesa);
+    }
+
+
+
+    private void SetMaterialTransparent()
+
+    {
+
+        foreach (Material m in modelloCliente3D.GetComponent<Renderer>().materials)
+
+        {
+
+            m.SetFloat("_Mode", 2);
+
+            m.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+
+            m.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+
+            m.SetInt("_ZWrite", 0);
+
+            m.DisableKeyword("_ALPHATEST_ON");
+
+            m.EnableKeyword("_ALPHABLEND_ON");
+
+            m.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+
+            m.renderQueue = 3000;
+
+        }
+
+    }
+
+
+
+    private void SetMaterialOpaque()
+
+    {
+
+        foreach (Material m in modelloCliente3D.GetComponent<Renderer>().materials)
+
+        {
+
+            m.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+
+            m.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+
+            m.SetInt("_ZWrite", 1);
+
+            m.DisableKeyword("_ALPHATEST_ON");
+
+            m.DisableKeyword("_ALPHABLEND_ON");
+
+            m.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+
+            m.renderQueue = -1;
+
+        }
+
+    }
+
+    private void disattivaModello()
+    {
+        modelloCliente.SetActive(false);
     }
 
     public void animazioneContenta()
