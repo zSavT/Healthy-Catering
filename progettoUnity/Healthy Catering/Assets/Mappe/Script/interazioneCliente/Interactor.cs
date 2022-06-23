@@ -49,7 +49,7 @@ public class Interactor : MonoBehaviour
 
     bool bottoniInterazioneClienteGeneratiLaPrimaVolta;
 
-    private int livelloAttuale;
+    private int livelloAttuale = PlayerSettings.livelloSelezionato;
 
     void Start()
     { 
