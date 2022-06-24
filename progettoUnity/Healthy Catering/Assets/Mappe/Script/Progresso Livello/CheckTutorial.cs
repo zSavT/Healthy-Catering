@@ -31,18 +31,24 @@ public class CheckTutorial :MonoBehaviour
         }
         return premutoW && premutoA && premutoS && premutoD;
     }
+
     public static bool checkSalto()
     {
-        return false; //TODO
+        if (Input.GetKeyDown(KeyCode.Space))
+            return true;
+        return false;
     }
+
     public static bool checkSprint()
     {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+            return true;
         return false; //TODO
     }
 
     public static bool checkParlaConZio()
     {
-        return false; //TODO
+        return true; //TODO
     }
 
     public static bool checkVaiRistorante()
