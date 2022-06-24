@@ -14,7 +14,9 @@ public class GestoreClienti : MonoBehaviour
 
     public void attivaClienteSuccessivo()
     {
-        vettoreClienti[Interactable.numeroCliente].SetActive(true);
+        Interactable.numeroCliente++;
+        if(Interactable.numeroCliente < vettoreClienti.Length)
+            vettoreClienti[Interactable.numeroCliente].SetActive(true);
     }
 
 }

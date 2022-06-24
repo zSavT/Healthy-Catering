@@ -78,7 +78,6 @@ public class Interactable : MonoBehaviour
     IEnumerator attendiEDistruggi(float attesa)
     {
         yield return new WaitForSecondsRealtime(attesa);
-        numeroCliente++;
         gestioneCliente.attivaClienteSuccessivo();
         Destroy(modelloCliente);
     }
