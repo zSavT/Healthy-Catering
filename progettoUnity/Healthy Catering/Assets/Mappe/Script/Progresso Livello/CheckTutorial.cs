@@ -4,13 +4,32 @@ using UnityEngine;
 
 public class CheckTutorial :MonoBehaviour
 {
+    //check WASD e mouse
+    private static bool premutoW = false;
+    private static bool premutoA = false;
+    private static bool premutoS = false;
+    private static bool premutoD = false;
+    private static bool mossoMouse = false;
+
     public static bool checkWASDeMouse()
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            return true; 
+            premutoW = true;
         }
-        return false;
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            premutoA = true;
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            premutoS = true;
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            premutoD = true;
+        }
+        return premutoW && premutoA && premutoS && premutoD;
     }
     public static bool checkSalto()
     {

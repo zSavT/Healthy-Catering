@@ -15,11 +15,12 @@ public class ProgressoTutorial : MonoBehaviour
 
     [Header("Obbiettivi Tutorial")]
     //testo obbiettivo da cambiare di volta in volta
-    [SerializeField] private TextMeshProUGUI obbiettivoTesto;
-    //toggle obbiettivo 
-    [SerializeField] private Toggle obbiettivoToggle;
-    //se vero, il tutorial dei comandi base, viene saltato
-    public bool skipTutorialComandi;
+    [SerializeField] private TextMeshProUGUI obbiettivo1Testo;
+    [SerializeField] private Toggle obbiettivo1Toggle;
+    /*
+    [SerializeField] private TextMeshProUGUI obbiettivo2Testo;
+    [SerializeField] private TextMeshProUGUI obbiettivo2Toggle;
+    */
 
     private bool videoInRiproduzione;
     private bool skipVideo;
@@ -37,7 +38,7 @@ public class ProgressoTutorial : MonoBehaviour
 
     private CheckTutorial checkTuorial;
     private bool finitoTutorial;
-
+        
     private void Start()
     {
         print("iniziato tutorial");
@@ -46,8 +47,7 @@ public class ProgressoTutorial : MonoBehaviour
         inTutorial = true;
         canvasVideoTutorial.SetActive(true);
         //le disattivo per attivarle solo nel momento opportuno - Questi elementi sono nel loro specifico pannello, che va attivato poi quando serve.
-        obbiettivoTesto.gameObject.SetActive(true);
-        obbiettivoToggle.gameObject.SetActive(true);
+        attivaObbiettiviTutorial();
 
         scritteDaMostrare = new List<string> /*qui vanno inserite le varie scritte per bene*/
         {
@@ -85,6 +85,7 @@ public class ProgressoTutorial : MonoBehaviour
             {
                 if (i == numeroScritteMostrate)
                 {
+                    print(scritteDaMostrare[i]);
                     setobiettivoTesto(scritteDaMostrare[i]);
                 }
 
@@ -143,9 +144,11 @@ public class ProgressoTutorial : MonoBehaviour
                         finitoTutorial = true;
                     }
                 }
-
+                else
+                {
+                    setobiettivoTesto("");//resetto l'obbiettivo testo
+                }
             }
-            setobiettivoTesto("");//resetto l'obbiettivo testo
         //}
         
         if (finitoTutorial)
@@ -190,13 +193,13 @@ public class ProgressoTutorial : MonoBehaviour
     /// </summary>
     public void attivaObbiettiviTutorial()
     {
-        obbiettivoTesto.gameObject.SetActive(true);
-        obbiettivoToggle.gameObject.SetActive(true);
+        obbiettivo1Testo.gameObject.SetActive(true);
+        obbiettivo1Toggle.gameObject.SetActive(true);
     }
 
     private void setobiettivoTesto (string output)
     {
-        obbiettivoTesto.text = output;
+        obbiettivo1Testo.text = output;
     }
 
     private void mostraOkBoxVideo(string output, string nomeVideoOGifDaRiprodurre = null)
@@ -215,8 +218,6 @@ public class ProgressoTutorial : MonoBehaviour
         {
             videoOkBoxVideo.Play();
         }
-
-        
     }
 
     public void disattivaOkBoxVideo()
