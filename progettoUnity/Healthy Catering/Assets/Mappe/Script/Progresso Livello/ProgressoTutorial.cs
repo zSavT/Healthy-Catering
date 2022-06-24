@@ -85,7 +85,6 @@ public class ProgressoTutorial : MonoBehaviour
             {
                 if (i == numeroScritteMostrate)
                 {
-                    print(scritteDaMostrare[i]);
                     setobiettivoTesto(scritteDaMostrare[i]);
                 }
 
@@ -111,7 +110,7 @@ public class ProgressoTutorial : MonoBehaviour
                 }
                 else if (numeroScritteMostrate == 5)
                 {
-                    mostraOkBoxVideo("spiegazione meccaniche per servire");
+                    //mostraOkBoxVideo("spiegazione meccaniche per servire");
                     //forse qui serve un if "è alla cassa prima? cosi da poter aggiornare la scritta meglio"
                     if (true)
                         if (CheckTutorial.checkServitoPiattoCompatibileENon()) { numeroScritteMostrate++; }

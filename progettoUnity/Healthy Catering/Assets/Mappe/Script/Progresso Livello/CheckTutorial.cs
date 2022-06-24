@@ -43,7 +43,7 @@ public class CheckTutorial :MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
             return true;
-        return false; //TODO
+        return false; 
     }
 
     public static bool checkParlaConZio()
@@ -53,7 +53,9 @@ public class CheckTutorial :MonoBehaviour
 
     public static bool checkVaiRistorante()
     {
-        return false; //TODO
+        float posizionePlayer = GameObject.FindGameObjectWithTag("Player").transform.position.y;
+
+        return posizionePlayer < -500; // siccome e' nel ristorante la y e' minore di -500
     }
 
     /*

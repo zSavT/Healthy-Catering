@@ -43,6 +43,7 @@ public class ProgressoLivello : MonoBehaviour
     private void Start()
     {
         giocatore = interazioni.getPlayer();
+        print(giocatore.nome);
         //disattivare la schermata per evitare che l'animazione parti fin da subito (N.B. L'animazione è impostata per avviarsi all'attivazione dell'oggetto per semplicità è per dover scrivere molti meno controlli)
         schermataFineLivello.SetActive(false);
         valorePunteggioPlayer.gameObject.SetActive(false);
