@@ -215,9 +215,6 @@ public class Database
         //player
         aggiungiPlayer(new Player("Gianni", 4, ingredientiQuantita));
 
-        //ristorante
-        aggiungiRistorante(new Ristorante("Da Gianni", 0, ingredientiQuantita));
-
         pulisciDatabase();
     }
 
@@ -258,7 +255,6 @@ public class Database
         creaDatabaseVuotoPatologia();
         creaDatabaseVuotoPiatto();
         creaDatabaseVuotoPlayer();
-        creaDatabaseVuotoRistorante();
     }
 
     private static void creaDatabaseVuotoCliente()
@@ -315,35 +311,6 @@ public class Database
         tempPlayer.Add(new Player());
 
         Serializza.salvaOggettiSuFile<Player>(tempPlayer);
-    }
-
-    private static void creaDatabaseVuotoRistorante()
-    {
-        List<Ristorante> tempRistorante = new List<Ristorante>();
-        tempRistorante.Add(new Ristorante());
-
-        Serializza.salvaOggettiSuFile<Ristorante>(tempRistorante);
-    }
-
-    //Aggiungi X
-    private static void aggiungiRistorante(Ristorante ristorante)
-    {
-        while (ristorante.nome.Equals(""))
-        {
-            ristorante.nome = getNewStringaFromUtente("Inserisci il nome del ristorante");
-        }
-
-        while (ristorante.punteggio < 0)
-        {
-            ristorante.punteggio = getNewIntFromUtente("Inserisci il punteggio del ristorante " + ristorante.nome);
-        }
-
-        while (ristorante.magazzinoIngredienti.Count == 0)
-        {
-            ristorante.magazzinoIngredienti = Ristorante.fillMagazzinoIngredienti();
-        }
-
-        salvaNuovoOggettoSuFile(ristorante);
     }
 
     private static void aggiungiPlayer(Player player)
