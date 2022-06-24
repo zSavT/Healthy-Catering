@@ -69,95 +69,91 @@ public class ProgressoTutorial : MonoBehaviour
 
     private void Update()
     {
-        if (inTutorial)
+        /*
+        if (videoInRiproduzione)
         {
-            if (videoInRiproduzione)
+            if (skipVideo) // si aggiorna con 
             {
-                if (skipVideo) // si aggiorna con 
-                {
-                    stopRiproduzioneVideo();
-                    //dopo che ha riprodotto il video gli chiedo se deve skippare la prima parte del tutorial
-                    skipTutorialComandi = chiediSeSaHaGiocatoFPS();
-                }
-            }
-            else
-            {
-                for (int i = 0; i < scritteDaMostrare.Count; i++)
-                {
-                    print("for");
-                    if (i == numeroScritteMostrate)
-                    {
-                        setobiettivoTesto(scritteDaMostrare[i]);
-                        print("settato obbiettivo");
-                    }
-
-                    if (numeroScritteMostrate == 0)
-                    {
-                        print("primo check");
-                        if (CheckTutorial.checkWASDeMouse()) { numeroScritteMostrate++; print("premuto W"); }
-                    }
-                    else if (numeroScritteMostrate == 1)
-                    {
-                        if (CheckTutorial.checkSalto()) { numeroScritteMostrate++; }
-                    }
-                    else if (numeroScritteMostrate == 2)
-                    {
-                        if (CheckTutorial.checkSprint()) { numeroScritteMostrate++; }
-                    }
-                    else if (numeroScritteMostrate == 3)
-                    {
-                        if (CheckTutorial.checkParlaConZio()) { numeroScritteMostrate++; }
-                    }
-                    else if (numeroScritteMostrate == 4)
-                    {
-                        if (CheckTutorial.checkVaiRistorante()) { numeroScritteMostrate++; }
-                    }
-                    else if (numeroScritteMostrate == 5)
-                    {
-                        mostraOkBoxVideo("spiegazione meccaniche per servire");
-                        //forse qui serve un if "è alla cassa prima? cosi da poter aggiornare la scritta meglio"
-                        if (true)
-                            if (CheckTutorial.checkServitoPiattoCompatibileENon()) { numeroScritteMostrate++; }
-                    }
-                    else if (numeroScritteMostrate == 6)
-                    {
-                        mostraOkBoxVideo("sono finiti gli ingredienti per fare i piatti");
-                        if (CheckTutorial.checkVistoMagazzino()) { numeroScritteMostrate++; }
-
-                        //nel magazzino dovremmo mettere un ingrediente che non e' presente nella ricetta ne del 
-                        //Piatto compatibile ne in quella del piatto non compatibile, cosi che quando il giocatore 
-                        //apre il magazzino non sia vuoto del tutto, se no sembra che il magazzino abbia solo la 
-                        //funzione di avvisarti che non hai più ingredienti
-                        //magari possiamo cambiare la scritta a "il magazzino sarebbe cosi se ci fossero degli
-                        //ingredienti" e poi far scomparire l'ingrediente temp che abbiamo inserito dopo 5 secondi
-                    }
-                    else if (numeroScritteMostrate == 7)
-                    {
-                        mostraOkBoxVideo("mostra dov'e' il negozio");
-                        //forse qui serve un if "è nel negozio prima? cosi da poter aggiornare la scritta meglio"
-                        if (true)
-                            if (CheckTutorial.checkCompratiIngredienti()) { numeroScritteMostrate++; }
-                    }
-                    else if (numeroScritteMostrate == 8)
-                    {
-                        mostraOkBoxVideo("puoi interagire con gli npc");
-                        if (CheckTutorial.checkParlatoConNPC())
-                        {
-                            numeroScritteMostrate++;
-                            finitoTutorial = true;
-                        }
-                    }
-
-                }
-                setobiettivoTesto("");//resetto l'obbiettivo testo
-            }
-        
-            if (finitoTutorial)
-            {
-                setobiettivoTesto("Hai finito il tutorial!!!");
-                inTutorial = false;
+                stopRiproduzioneVideo();
+                //dopo che ha riprodotto il video gli chiedo se deve skippare la prima parte del tutorial
+                skipTutorialComandi = chiediSeSaHaGiocatoFPS();
             }
         }
+        else
+        {*/
+            for (int i = 0; i < scritteDaMostrare.Count; i++)
+            {
+                if (i == numeroScritteMostrate)
+                {
+                    setobiettivoTesto(scritteDaMostrare[i]);
+                }
+
+                if (numeroScritteMostrate == 0)
+                {
+                    if (CheckTutorial.checkWASDeMouse()) { numeroScritteMostrate++; }
+                }
+                else if (numeroScritteMostrate == 1)
+                {
+                    if (CheckTutorial.checkSalto()) { numeroScritteMostrate++; }
+                }
+                else if (numeroScritteMostrate == 2)
+                {
+                    if (CheckTutorial.checkSprint()) { numeroScritteMostrate++; }
+                }
+                else if (numeroScritteMostrate == 3)
+                {
+                    if (CheckTutorial.checkParlaConZio()) { numeroScritteMostrate++; }
+                }
+                else if (numeroScritteMostrate == 4)
+                {
+                    if (CheckTutorial.checkVaiRistorante()) { numeroScritteMostrate++; }
+                }
+                else if (numeroScritteMostrate == 5)
+                {
+                    mostraOkBoxVideo("spiegazione meccaniche per servire");
+                    //forse qui serve un if "è alla cassa prima? cosi da poter aggiornare la scritta meglio"
+                    if (true)
+                        if (CheckTutorial.checkServitoPiattoCompatibileENon()) { numeroScritteMostrate++; }
+                }
+                else if (numeroScritteMostrate == 6)
+                {
+                    mostraOkBoxVideo("sono finiti gli ingredienti per fare i piatti");
+                    if (CheckTutorial.checkVistoMagazzino()) { numeroScritteMostrate++; }
+
+                    //nel magazzino dovremmo mettere un ingrediente che non e' presente nella ricetta ne del 
+                    //Piatto compatibile ne in quella del piatto non compatibile, cosi che quando il giocatore 
+                    //apre il magazzino non sia vuoto del tutto, se no sembra che il magazzino abbia solo la 
+                    //funzione di avvisarti che non hai più ingredienti
+                    //magari possiamo cambiare la scritta a "il magazzino sarebbe cosi se ci fossero degli
+                    //ingredienti" e poi far scomparire l'ingrediente temp che abbiamo inserito dopo 5 secondi
+                }
+                else if (numeroScritteMostrate == 7)
+                {
+                    mostraOkBoxVideo("mostra dov'e' il negozio");
+                    //forse qui serve un if "è nel negozio prima? cosi da poter aggiornare la scritta meglio"
+                    if (true)
+                        if (CheckTutorial.checkCompratiIngredienti()) { numeroScritteMostrate++; }
+                }
+                else if (numeroScritteMostrate == 8)
+                {
+                    mostraOkBoxVideo("puoi interagire con gli npc");
+                    if (CheckTutorial.checkParlatoConNPC())
+                    {
+                        numeroScritteMostrate++;
+                        finitoTutorial = true;
+                    }
+                }
+
+            }
+            setobiettivoTesto("");//resetto l'obbiettivo testo
+        //}
+        
+        if (finitoTutorial)
+        {
+            setobiettivoTesto("Hai finito il tutorial!!!");
+            inTutorial = false;
+        }
+        
     }
 
     private void riproduciVideo()
