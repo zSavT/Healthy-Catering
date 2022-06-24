@@ -64,16 +64,9 @@ public class Interactable : MonoBehaviour
                 }
             } else
             {
-                // disattivaModello();
-                //  iTween.FadeFrom(modelloCliente, 1, 1);
-                //  iTween.FadeUpdate(modelloCliente, 1, 1);
                 SetMaterialTransparent();
-               attendi(2f);
                 iTween.FadeTo(modelloCliente, 0, 1);
-                attendi(2f);
-                Destroy(modelloCliente);
-               // SetMaterialOpaque();
-               // disattivaModello();
+                StartCoroutine(attendi(2f));
             }
         }
     }
@@ -82,6 +75,7 @@ public class Interactable : MonoBehaviour
     IEnumerator attendi(float attesa)
     {
         yield return new WaitForSecondsRealtime(attesa);
+        Destroy(modelloCliente);
     }
 
 
