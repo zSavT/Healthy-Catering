@@ -28,23 +28,25 @@ public class Interactable : MonoBehaviour
 
     void Start()
     {
+        SetMaterialTransparent();
+
+        StartCoroutine(attendi(2f));
+
+        
         controllerAnimazione = GetComponentInChildren<Animator>();
         effettoPositivo.Stop();
         effettoNegativo.Stop();
-        //modelloCliente.SetActive(false);
 
         //Inizializza il controller
         agent = GetComponent<NavMeshAgent>();
-        animazioneCamminata();
-        //refresh delle impostazioni
-        updateDestinazione();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         //Controllo della distanza minima per considerare il waypoint raggiunto, in caso positivo si
-        if (Vector3.Distance(transform.position, target) < 1)
+        if (Vector3.Distance(transform.position, target) < 0.5f)
         {
             if(waypoints.Length -2 == waypointIndex)
             {
@@ -52,10 +54,9 @@ public class Interactable : MonoBehaviour
                 animazioneIdle();
                 if (servito == true)
                 {
-                    Debug.Log("Ciao");
+                    raggiuntoBancone = false;
                     if (controllerAnimazione.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !controllerAnimazione.IsInTransition(0))
                     {
-                        Debug.Log("Dentro");
                         iterazioneIndex();
                         updateDestinazione();
                         raggiuntoBancone = false;
@@ -66,18 +67,26 @@ public class Interactable : MonoBehaviour
             {
                 SetMaterialTransparent();
                 iTween.FadeTo(modelloCliente, 0, 1);
-                StartCoroutine(attendi(2f));
+                StartCoroutine(attendiEDistruggi(2f));
             }
         }
     }
 
 
-    IEnumerator attendi(float attesa)
+    IEnumerator attendiEDistruggi(float attesa)
     {
         yield return new WaitForSecondsRealtime(attesa);
         Destroy(modelloCliente);
     }
 
+    IEnumerator attendi(float attesa)
+    {
+        iTween.FadeTo(modelloCliente, 1, attesa);
+        yield return new WaitForSecondsRealtime(attesa);
+        SetMaterialOpaque();
+        animazioneCamminata();
+        updateDestinazione();
+    }
 
 
     private void SetMaterialTransparent()
@@ -134,11 +143,6 @@ public class Interactable : MonoBehaviour
 
         }
 
-    }
-
-    private void disattivaModello()
-    {
-        modelloCliente.SetActive(false);
     }
 
     public void animazioneContenta()
