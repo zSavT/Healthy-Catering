@@ -38,9 +38,11 @@ public class ProgressoTutorial : MonoBehaviour
 
     private CheckTutorial checkTuorial;
     private bool finitoTutorial;
-        
+
+    private Player giocatore = null;
+
     private void Start()
-    {
+    { 
         print("iniziato tutorial");
         riproduciVideo(); 
 
@@ -113,11 +115,12 @@ public class ProgressoTutorial : MonoBehaviour
                     //mostraOkBoxVideo("spiegazione meccaniche per servire");
                     //forse qui serve un if "è alla cassa prima? cosi da poter aggiornare la scritta meglio"
                     if (true)
-                        if (CheckTutorial.checkServitoPiattoCompatibileENon()) { numeroScritteMostrate++; }
+                        if (giocatore != null)
+                            if (CheckTutorial.checkServitoPiattoCompatibileENon(giocatore)) { numeroScritteMostrate++; }
                 }
                 else if (numeroScritteMostrate == 6)
                 {
-                    mostraOkBoxVideo("sono finiti gli ingredienti per fare i piatti");
+                    //mostraOkBoxVideo("sono finiti gli ingredienti per fare i piatti");
                     if (CheckTutorial.checkVistoMagazzino()) { numeroScritteMostrate++; }
 
                     //nel magazzino dovremmo mettere un ingrediente che non e' presente nella ricetta ne del 
@@ -129,14 +132,14 @@ public class ProgressoTutorial : MonoBehaviour
                 }
                 else if (numeroScritteMostrate == 7)
                 {
-                    mostraOkBoxVideo("mostra dov'e' il negozio");
+                    //mostraOkBoxVideo("mostra dov'e' il negozio");
                     //forse qui serve un if "è nel negozio prima? cosi da poter aggiornare la scritta meglio"
                     if (true)
                         if (CheckTutorial.checkCompratiIngredienti()) { numeroScritteMostrate++; }
                 }
                 else if (numeroScritteMostrate == 8)
                 {
-                    mostraOkBoxVideo("puoi interagire con gli npc");
+                    //mostraOkBoxVideo("puoi interagire con gli npc");
                     if (CheckTutorial.checkParlatoConNPC())
                     {
                         numeroScritteMostrate++;
@@ -145,8 +148,8 @@ public class ProgressoTutorial : MonoBehaviour
                 }
                 else
                 {
-                    setobiettivoTesto("");//resetto l'obbiettivo testo
-                }
+                    setobiettivoTesto("");//resetto il testo dell'obbiettivo 
+            }
             }
         //}
         
@@ -156,6 +159,11 @@ public class ProgressoTutorial : MonoBehaviour
             inTutorial = false;
         }
         
+    }
+
+    public void setGiocatore (Player player)
+    {
+        giocatore = player;
     }
 
     private void riproduciVideo()

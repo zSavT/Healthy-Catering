@@ -2,14 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckTutorial :MonoBehaviour
+public class CheckTutorial : MonoBehaviour
 {
+    //Player
+
     //check WASD e mouse
     private static bool premutoW = false;
     private static bool premutoA = false;
     private static bool premutoS = false;
     private static bool premutoD = false;
-    private static bool mossoMouse = false;
+
+    //check servito piatto compatibile e non
+    private static List<OggettoQuantita<int>> ingredientiPiattoCompatibile = new List<OggettoQuantita<int>>{
+        new OggettoQuantita<int> (0,1),
+        new OggettoQuantita<int> (1,1),
+        new OggettoQuantita<int> (2,1),
+        new OggettoQuantita<int> (3,1),
+        new OggettoQuantita<int> (4,1),
+        new OggettoQuantita<int> (5,1),
+        new OggettoQuantita<int> (6,1)
+    };
+    private static List<OggettoQuantita<int>> ingredientiPiattoNonCompatibile = new List<OggettoQuantita<int>>
+    {
+        new OggettoQuantita<int> (7,1),
+        new OggettoQuantita<int> (8,1),
+    };
+    private static Piatto piattoCompatibile = new Piatto("", "", ingredientiPiattoCompatibile);
+    private static Piatto piattoNonCompatibile = new Piatto("", "", ingredientiPiattoNonCompatibile);
 
     public static bool checkWASDeMouse()
     {
@@ -65,9 +84,12 @@ public class CheckTutorial :MonoBehaviour
     }
     */
 
-    public static bool checkServitoPiattoCompatibileENon()
+    public static bool checkServitoPiattoCompatibileENon(Player giocatore)
     {
-        return false; //TODO
+        return
+            !piattoCompatibile.piattoInInventario(giocatore.inventario) 
+            && 
+            !piattoNonCompatibile.piattoInInventario(giocatore.inventario);
     }
 
     public static bool checkVistoMagazzino()

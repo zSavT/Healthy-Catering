@@ -51,6 +51,9 @@ public class PannelloMenu : MonoBehaviour
     List<Piatto> piatti;
     private bool pannelloAggiornato;
 
+    [Header("Tutorial")]
+    [SerializeField] private ProgressoTutorial progressoTutorial;
+
     void Start()
     {
         clienteServito = false;
@@ -215,6 +218,8 @@ public class PannelloMenu : MonoBehaviour
         animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
 
         aggiornaBottoniPiatti();
+
+        progressoTutorial.setGiocatore(giocatore);
     }
 
     private void setPannelloConfermaConNomePiatto(string nomePiatto)

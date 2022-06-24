@@ -308,6 +308,7 @@ public class Interactor : MonoBehaviour
         playerStop.Invoke();
         
         pannelloMenuCliente.setCliente(IDClientePuntato, giocatore, npc);
+        
         PuntatoreMouse.abilitaCursore();
         pannelloApertoChiuso();
     }

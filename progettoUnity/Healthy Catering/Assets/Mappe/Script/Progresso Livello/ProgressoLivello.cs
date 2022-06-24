@@ -43,11 +43,10 @@ public class ProgressoLivello : MonoBehaviour
     private void Start()
     {
         giocatore = interazioni.getPlayer();
-        print(giocatore.nome);
-        //disattivare la schermata per evitare che l'animazione parti fin da subito (N.B. L'animazione è impostata per avviarsi all'attivazione dell'oggetto per semplicità è per dover scrivere molti meno controlli)
+        //disattivare la schermata per evitare che l'animazione parti fin da subito (N.B. L'animazione ï¿½ impostata per avviarsi all'attivazione dell'oggetto per semplicitï¿½ ï¿½ per dover scrivere molti meno controlli)
         schermataFineLivello.SetActive(false);
         valorePunteggioPlayer.gameObject.SetActive(false);
-        //Se il livello è il livello tutorial la schermata obbiettivi non si attiva (da attivare successivamente)
+        //Se il livello ï¿½ il livello tutorial la schermata obbiettivi non si attiva (da attivare successivamente)
         if (PlayerSettings.livelloSelezionato != -1)
         {
             testoObbietivo1 = "Servire " + numeroClientiDaServire + " clienti. Clienti serviti: " + numeroClientiServiti + "/" + numeroClientiDaServire;
@@ -59,7 +58,7 @@ public class ProgressoLivello : MonoBehaviour
 
     private void Update()
     {
-        //controllo costante dell'obbiettivi raggiunti, eventualmente questo controllo può essere spostato altrove in base a come verrà strutturato il gioco successivamente.
+        //controllo costante dell'obbiettivi raggiunti, eventualmente questo controllo puï¿½ essere spostato altrove in base a come verrï¿½ strutturato il gioco successivamente.
         if(obbiettiviRaggiunti())
         {
             attivazioneSchermataFineLivello();
@@ -84,7 +83,7 @@ public class ProgressoLivello : MonoBehaviour
 
     /// <summary>
     /// Controllo e aggiornamento degli obbiettivi del livello.<br></br>
-    /// Se un obbiettivo è stato raggiunto, il testo si colora con il <strong>coloreRaggiuntoObbiettivo</strong> ed il Toggle si setta su True.
+    /// Se un obbiettivo ï¿½ stato raggiunto, il testo si colora con il <strong>coloreRaggiuntoObbiettivo</strong> ed il Toggle si setta su True.
     /// </summary>
     /// <param name="punteggio">Punteggio raggiunto dal giocatore</param>
     private void controlloProgressiObbiettivo(int punteggio)
@@ -102,7 +101,7 @@ public class ProgressoLivello : MonoBehaviour
             obbiettivoDueRaggiunto = true;
         } else
         {
-            //Solo l'obbiettivo due si può resettare perchè il punteggio può diminuire ma il numero dei clienti serviti no
+            //Solo l'obbiettivo due si puï¿½ resettare perchï¿½ il punteggio puï¿½ diminuire ma il numero dei clienti serviti no
             obbiettivoDueToogle.isOn = false;
             obbiettivoDue.color = Color.white;
         }
@@ -111,7 +110,7 @@ public class ProgressoLivello : MonoBehaviour
     /// <summary>
     /// Controllo se entrambi gli obbiettivi sono stati raggiunti.
     /// </summary>
-    /// <returns>Restituisce true se entrambi gli obbiettivi sono stati raggiunti, falso se anche uno dei due obbiettivi non è stato raggiunto.</returns>
+    /// <returns>Restituisce true se entrambi gli obbiettivi sono stati raggiunti, falso se anche uno dei due obbiettivi non ï¿½ stato raggiunto.</returns>
     public bool obbiettiviRaggiunti()
     {
         if (obbiettivoUnoRaggiunto && obbiettivoDueRaggiunto)
@@ -121,7 +120,7 @@ public class ProgressoLivello : MonoBehaviour
     }
 
 
-    //Il metodo eventualmente può essere eliminato per inserire il suo contenuto altrove, oppure può essere espanso in base alle necessità.
+    //Il metodo eventualmente puï¿½ essere eliminato per inserire il suo contenuto altrove, oppure puï¿½ essere espanso in base alle necessitï¿½.
     private void attivazioneSchermataFineLivello()
     {
         schermataFineLivello.SetActive(true);
