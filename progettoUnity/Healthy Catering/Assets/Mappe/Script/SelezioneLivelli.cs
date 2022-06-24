@@ -84,9 +84,6 @@ public class SelezioneLivelli : MonoBehaviour
             sliderCaricamento.value = progresso;
             yield return null;
         }
-
-        if (PlayerSettings.livelloSelezionato == 0)
-            tutorial.iniziaTutorial();
     }
 
     /// <summary>
@@ -136,6 +133,7 @@ public class SelezioneLivelli : MonoBehaviour
     public static void caricaLivelloCitta()
     {
         SceneManager.LoadScene(2);
+        
     }
 
     public static void caricaClassifica()

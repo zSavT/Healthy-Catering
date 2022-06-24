@@ -6,7 +6,11 @@ public class CheckTutorial :MonoBehaviour
 {
     public static bool checkWASDeMouse()
     {
-        return false; //TODO
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            return true; 
+        }
+        return false;
     }
     public static bool checkSalto()
     {

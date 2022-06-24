@@ -31,20 +31,23 @@ public class ProgressoTutorial : MonoBehaviour
     private readonly int posizioneScritteDaMostrareSaGiocare = 3;
 
 
-    [SerializeField] GameObject okBoxVideo;
-    [SerializeField] TextMeshProUGUI testoOkBoxVideo;
-    [SerializeField] UnityEngine.Video.VideoPlayer videoOkBoxVideo; // non so sicuro sia quello l'oggetto giusto per questa cosa
+    [SerializeField] private GameObject okBoxVideo;
+    [SerializeField] private TextMeshProUGUI testoOkBoxVideo;
+    [SerializeField] private UnityEngine.Video.VideoPlayer videoOkBoxVideo; // non so sicuro sia quello l'oggetto giusto per questa cosa
 
     private CheckTutorial checkTuorial;
     private bool finitoTutorial;
 
     private void Start()
     {
-        inTutorial = false;
-        canvasVideoTutorial.SetActive(false);
+        print("iniziato tutorial");
+        riproduciVideo(); 
+
+        inTutorial = true;
+        canvasVideoTutorial.SetActive(true);
         //le disattivo per attivarle solo nel momento opportuno - Questi elementi sono nel loro specifico pannello, che va attivato poi quando serve.
-        obbiettivoTesto.gameObject.SetActive(false);
-        obbiettivoToggle.gameObject.SetActive(false);
+        obbiettivoTesto.gameObject.SetActive(true);
+        obbiettivoToggle.gameObject.SetActive(true);
 
         scritteDaMostrare = new List<string> /*qui vanno inserite le varie scritte per bene*/
         {
@@ -79,15 +82,19 @@ public class ProgressoTutorial : MonoBehaviour
             }
             else
             {
-
                 for (int i = 0; i < scritteDaMostrare.Count; i++)
                 {
+                    print("for");
                     if (i == numeroScritteMostrate)
-                        setobbiettivoTesto(scritteDaMostrare[i]);
+                    {
+                        setobiettivoTesto(scritteDaMostrare[i]);
+                        print("settato obbiettivo");
+                    }
 
                     if (numeroScritteMostrate == 0)
                     {
-                        if (CheckTutorial.checkWASDeMouse()) { numeroScritteMostrate++; }
+                        print("primo check");
+                        if (CheckTutorial.checkWASDeMouse()) { numeroScritteMostrate++; print("premuto W"); }
                     }
                     else if (numeroScritteMostrate == 1)
                     {
@@ -142,29 +149,25 @@ public class ProgressoTutorial : MonoBehaviour
                     }
 
                 }
-                setobbiettivoTesto("");//resetto l'obbiettivo testo
+                setobiettivoTesto("");//resetto l'obbiettivo testo
             }
         
             if (finitoTutorial)
             {
-                setobbiettivoTesto("Hai finito il tutorial!!!");
+                setobiettivoTesto("Hai finito il tutorial!!!");
                 inTutorial = false;
             }
         }
     }
 
-    public void iniziaTutorial()
-    {
-        riproduciVideo();
-        inTutorial = true;
-    }
-
     private void riproduciVideo()
     {
+        /*
         canvasVideoTutorial.SetActive(true);
 
         //metodo per riprodurre il video, per ora ho solo attivato il canvas che contiene gli elementi per riprodurlo
 
+        */
         videoInRiproduzione = true;
         print("ciao video");
     }
@@ -195,7 +198,7 @@ public class ProgressoTutorial : MonoBehaviour
         obbiettivoToggle.gameObject.SetActive(true);
     }
 
-    private void setobbiettivoTesto (string output)
+    private void setobiettivoTesto (string output)
     {
         obbiettivoTesto.text = output;
     }
