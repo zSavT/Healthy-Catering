@@ -13,6 +13,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] private ParticleSystem effettoNegativo;
     [SerializeField] private GameObject modelloCliente;
     [SerializeField] private GameObject modelloCliente3D;
+    [SerializeField] private GestoreClienti gestioneCliente;
 
     //Controller della mappa percorribile degli NPC
     NavMeshAgent agent;
@@ -25,6 +26,7 @@ public class Interactable : MonoBehaviour
 
     public bool raggiuntoBancone = false;
     public bool servito = false;
+    public static int numeroCliente = 0;
 
     void Start()
     {
@@ -76,6 +78,8 @@ public class Interactable : MonoBehaviour
     IEnumerator attendiEDistruggi(float attesa)
     {
         yield return new WaitForSecondsRealtime(attesa);
+        numeroCliente++;
+        gestioneCliente.attivaClienteSuccessivo();
         Destroy(modelloCliente);
     }
 
