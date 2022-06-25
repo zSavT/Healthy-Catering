@@ -106,16 +106,15 @@ public class CheckTutorial : MonoBehaviour
     }
 
 
-    /*
+    
     public static bool checkIsNelNegozio()
     {
         return false; //TODO
     }
-    */
+
 
     public static bool checkCompratiIngredienti(Player giocatore)
     {
-        return true;//TODO quando il riferimento al giocatore sarà giusto togliere il return true;
         return giocatore.inventarioTutteQuantitaZero();
     }
 

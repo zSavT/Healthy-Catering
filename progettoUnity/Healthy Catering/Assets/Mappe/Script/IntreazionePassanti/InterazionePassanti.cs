@@ -187,6 +187,7 @@ public class InterazionePassanti : MonoBehaviour
         if (nomeNPC.ToLower().Contains ("zio") || nomeNPC.ToLower().Contains("tutorial"))
         {
             parlatoConZio = true;
+            parlatoConNPC = false;
         }
     }
 
