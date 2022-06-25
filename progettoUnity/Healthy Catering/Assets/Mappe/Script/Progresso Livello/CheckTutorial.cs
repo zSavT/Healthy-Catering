@@ -30,8 +30,6 @@ public class CheckTutorial : MonoBehaviour
     private static Piatto piattoCompatibile = new Piatto("", "", ingredientiPiattoCompatibile);
     private static Piatto piattoNonCompatibile = new Piatto("", "", ingredientiPiattoNonCompatibile);
 
-    //magazzino
-    private static bool vistoMagazzino = false;
 
     //zio
     private static bool parlatoConZio = false;
@@ -76,13 +74,9 @@ public class CheckTutorial : MonoBehaviour
 
     public static bool checkParlaConZio()
     {
-        return parlatoConZio;
+        return InterazionePassanti.parlatoConZio;
     }
 
-    public static void setParlatoConZio()
-    {
-        parlatoConZio = true;
-    }
 
     public static bool checkVaiRistorante()
     {
@@ -108,13 +102,9 @@ public class CheckTutorial : MonoBehaviour
 
     public static bool checkVistoMagazzino()
     {
-        return vistoMagazzino;
+        return PannelloMagazzino.pannelloMagazzinoApertoPerTutorial;
     }
 
-    public static void setPannelloMagazzinoAperto()
-    {
-        vistoMagazzino = true;
-    }
 
     /*
     public static bool checkIsNelNegozio()
@@ -131,11 +121,7 @@ public class CheckTutorial : MonoBehaviour
 
     public static bool checkParlatoConNPC()
     {
-        return parlatoNPCpassivo; //TODO
+        return InterazionePassanti.parlatoConNPC;
     }
 
-    public static void setParlatoNPCpassivo()
-    {
-        parlatoNPCpassivo = true;
-    }
 }

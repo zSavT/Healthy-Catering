@@ -34,7 +34,9 @@ public class InterazionePassanti : MonoBehaviour
     private int numeroDiScritteTotale;
     
     private bool ultimoNPCInteragitoNuovo;
-    
+
+    public static bool parlatoConNPC = false;
+    public static bool parlatoConZio = false;
     private int numeroMassimoDiCaratteriPerSchermata = 100;
 
     private void Start()
@@ -165,7 +167,8 @@ public class InterazionePassanti : MonoBehaviour
     }
 
     public void apriPannelloInterazionePassanti(string nomeNPC)
-    { 
+    {
+        parlatoConNPC = true;
         pannelloInterazionePassanti.SetActive(true);
 
         scritteMostrateOra = trovaScritteDaMostrare(nomeNPC);
@@ -181,10 +184,9 @@ public class InterazionePassanti : MonoBehaviour
 
         pannelloInterazionePassantiAperto = true;
 
-        CheckTutorial.setParlatoNPCpassivo();
         if (nomeNPC.ToLower().Contains ("zio") || nomeNPC.ToLower().Contains("tutorial"))
         {
-            CheckTutorial.setParlatoConZio();
+            parlatoConZio = true;
         }
     }
 
