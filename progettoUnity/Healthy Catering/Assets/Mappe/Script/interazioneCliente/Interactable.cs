@@ -1,12 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
-    public UnityEvent onInteract;   //variabile per trigger dell'evento
     public int IDCliente;
     private Animator controllerAnimazione;
     [SerializeField] private ParticleSystem effettoPositivo;
@@ -75,6 +72,11 @@ public class Interactable : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Distruggi NPC con effetto trasparenza.
+    /// </summary>
+    /// <param name="attesa">Durata attesa</param>
+    /// <returns></returns>
     IEnumerator attendiEDistruggi(float attesa)
     {
         yield return new WaitForSecondsRealtime(attesa);
@@ -82,6 +84,11 @@ public class Interactable : MonoBehaviour
         Destroy(modelloCliente);
     }
 
+    /// <summary>
+    /// Attiva modello NPC con fade trasparenza ed avvia l'animazione camminata.
+    /// </summary>
+    /// <param name="attesa">Durata attesa</param>
+    /// <returns></returns>
     IEnumerator attendi(float attesa)
     {
         iTween.FadeTo(modelloCliente, 1, attesa);
@@ -92,6 +99,9 @@ public class Interactable : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Imposta il materiale dell'oggetto su transparente.
+    /// </summary>
     private void SetMaterialTransparent()
 
     {
@@ -122,6 +132,9 @@ public class Interactable : MonoBehaviour
 
 
 
+    /// <summary>
+    /// Imposta il material dell'oggetto su Opaque.
+    /// </summary>
     private void SetMaterialOpaque()
 
     {
@@ -148,6 +161,9 @@ public class Interactable : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Avvia animazione Contenta del cliente dopo piatto servito corretto.
+    /// </summary>
     public void animazioneContenta()
     {
         controllerAnimazione.SetBool("servito", true);
@@ -157,6 +173,10 @@ public class Interactable : MonoBehaviour
         servito = true;
     }
 
+
+    /// <summary>
+    /// Avvia animazione Scontenta del cliente dopo piatto servito non corretto.
+    /// </summary>
     public void animazioneScontenta()
     {
         controllerAnimazione.SetBool("servito", true);
@@ -166,18 +186,26 @@ public class Interactable : MonoBehaviour
         servito = true;
     }
 
+
+    /// <summary>
+    /// Avvia animazione idle per il cliente.
+    /// </summary>
     public void animazioneIdle()
     {
         controllerAnimazione.SetBool("finito", false);
     }
 
+
+    /// <summary>
+    /// Avvia animazione camminata per il cliente.
+    /// </summary>
     public void animazioneCamminata()
     {
         controllerAnimazione.SetBool("finito", true);
     }
 
     /// <summary>
-    /// Imposta la destinazione del WayPoint Successiva
+    /// Imposta la destinazione del WayPoint Successiva.
     /// </summary>
     private void updateDestinazione()
     {
@@ -187,7 +215,7 @@ public class Interactable : MonoBehaviour
 
     /// <summary>
     /// Reset dell'indice dei waypoint da raggiungere.<br></br>
-    /// Permette di far camminare all'infinito gli NPC una volta che hanno raggiunto tutti i waypoint facendoli ri-percorre tutti i waypoint
+    /// Permette di far camminare all'infinito gli NPC una volta che hanno raggiunto tutti i waypoint facendoli ri-percorre tutti i waypoint.
     /// </summary>
     private void iterazioneIndex()
     {
