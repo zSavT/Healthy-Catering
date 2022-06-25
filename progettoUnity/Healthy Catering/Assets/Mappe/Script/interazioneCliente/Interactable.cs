@@ -168,9 +168,6 @@ public class Interactable : MonoBehaviour
 
     public void animazioneIdle()
     {
-        controllerAnimazione.SetBool("servito", false);
-        controllerAnimazione.SetBool("affinitaPatologiePiatto", false);
-        controllerAnimazione.SetBool("affinitaDietaPiatto", false);
         controllerAnimazione.SetBool("finito", false);
     }
 

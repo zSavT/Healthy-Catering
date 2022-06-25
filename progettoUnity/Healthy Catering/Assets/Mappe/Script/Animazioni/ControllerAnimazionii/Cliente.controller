@@ -39,7 +39,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Happy Idle
-  m_Speed: 0.001
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -1703937835493883923}
@@ -100,6 +100,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: finito
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: servito
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2020101626946450286}
   m_Solo: 0
@@ -130,6 +133,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: servito
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: finito
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5616352356722888566}
