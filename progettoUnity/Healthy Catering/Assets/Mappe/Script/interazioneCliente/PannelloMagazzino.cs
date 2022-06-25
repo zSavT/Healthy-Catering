@@ -65,6 +65,8 @@ public class PannelloMagazzino : MonoBehaviour
         {
             aggiornaSchermataMagazzino();
         }
+
+        CheckTutorial.setPannelloMagazzinoAperto();
     }
 
     public void chiudiPannelloMagazzino()

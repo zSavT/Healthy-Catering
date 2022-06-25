@@ -115,8 +115,10 @@ public class ProgressoTutorial : MonoBehaviour
                 }
                 else if (numeroScritteMostrate == 5)
                 {
-                    //mostraOkBoxVideo("spiegazione meccaniche per servire");
-                    //forse qui serve un if "è alla cassa prima? cosi da poter aggiornare la scritta meglio"
+                //mostraOkBoxVideo("spiegazione meccaniche per servire");
+                //forse qui serve un if "è alla cassa prima? cosi da poter aggiornare la scritta meglio"
+                numeroScritteMostrate++;
+                print(giocatore != null);
                     if (true)
                         if (giocatore != null)
                             if (CheckTutorial.checkServitoPiattoCompatibileENon(giocatore)) { numeroScritteMostrate++; }

@@ -30,6 +30,9 @@ public class CheckTutorial : MonoBehaviour
     private static Piatto piattoCompatibile = new Piatto("", "", ingredientiPiattoCompatibile);
     private static Piatto piattoNonCompatibile = new Piatto("", "", ingredientiPiattoNonCompatibile);
 
+    //magazzino
+    private static bool vistoMagazzino = false;
+
     public static bool checkWASDeMouse()
     {
         if (Input.GetKeyDown(KeyCode.W))
@@ -86,6 +89,7 @@ public class CheckTutorial : MonoBehaviour
 
     public static bool checkServitoPiattoCompatibileENon(Player giocatore)
     {
+        return true;
         return
             !piattoCompatibile.piattoInInventario(giocatore.inventario) 
             && 
@@ -94,7 +98,12 @@ public class CheckTutorial : MonoBehaviour
 
     public static bool checkVistoMagazzino()
     {
-        return false; //TODO
+        return vistoMagazzino;
+    }
+
+    public static void setPannelloMagazzinoAperto()
+    {
+        vistoMagazzino = true;
     }
 
     /*
