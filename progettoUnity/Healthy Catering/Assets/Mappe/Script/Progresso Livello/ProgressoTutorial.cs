@@ -44,7 +44,7 @@ public class ProgressoTutorial : MonoBehaviour
     [SerializeField] private ProgressoLivello progressoLivelloClassico;
 
     private void Start()
-    { 
+    {
         print("iniziato tutorial");
         riproduciVideo(); 
 
@@ -162,6 +162,7 @@ public class ProgressoTutorial : MonoBehaviour
             obbiettivo1Toggle.gameObject.SetActive(false);
             inTutorial = false;
             progressoLivelloClassico.attivaSoloObbiettivi();
+            iTween.Destroy(this.gameObject);
         }
         
     }

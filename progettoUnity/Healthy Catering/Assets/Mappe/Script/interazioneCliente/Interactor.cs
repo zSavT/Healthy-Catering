@@ -35,7 +35,6 @@ public class Interactor : MonoBehaviour
     [Header("Teleport")]
     [SerializeField] private LayerMask layerUnityTeleport = 9;
     public Transform destinazioneTeleport;
-    [SerializeField] private GameObject giocatoreGameObject;
 
 
     private Vector3 posizioneCameraOriginale;
@@ -76,7 +75,7 @@ public class Interactor : MonoBehaviour
         interazioneUtenteConNPCVari();
         if(Input.GetKeyDown(KeyCode.Tab))
         {
-            giocatoreGameObject.transform.position = destinazioneTeleport.transform.position;
+            this.gameObject.transform.position = destinazioneTeleport.transform.position;
         }
     }
 
@@ -160,7 +159,7 @@ public class Interactor : MonoBehaviour
                 inquadratoNPC.Invoke();
                 if (Input.GetKeyDown(tastoInterazione) && !(negozio.getPannelloAperto()))
                 {
-                    giocatoreGameObject.transform.position = destinazioneTeleport.transform.position;
+                    this.gameObject.transform.position = destinazioneTeleport.transform.position;
                 }
             }
             else
