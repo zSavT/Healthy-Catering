@@ -52,7 +52,7 @@ public class ProgressoLivello : MonoBehaviour
             valoriInizialiTesto();
         } else
         {
-            disattivaSoloObbiettivi();
+            //disattivaSoloObbiettivi();
         }
     }
 

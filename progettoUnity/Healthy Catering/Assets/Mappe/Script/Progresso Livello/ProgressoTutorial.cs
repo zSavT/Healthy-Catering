@@ -40,6 +40,7 @@ public class ProgressoTutorial : MonoBehaviour
     private bool finitoTutorial;
 
     private Player giocatore = null;
+    [SerializeField] private Interactor interazioniPlayer;
 
     private void Start()
     { 
@@ -67,6 +68,7 @@ public class ProgressoTutorial : MonoBehaviour
         numeroScritteMostrate = 0;
         
         finitoTutorial = false;
+        giocatore = interazioniPlayer.getPlayer();
     }
 
     private void Update()
