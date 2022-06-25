@@ -153,12 +153,23 @@ public class ProgressoLivello : MonoBehaviour
         scrittaObbiettivo.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Disattiva tutti gli elementi tranne la scritta Obbiettivo
+    /// </summary>
     private void disattivaSoloObbiettivi()
     {
         obbiettivoUno.gameObject.SetActive(false);
         obbiettivoUnoToogle.gameObject.SetActive(false);
         obbiettivoDue.gameObject.SetActive(false);
         obbiettivoDueToogle.gameObject.SetActive(false);
+    }
+
+    public void attivaSoloObbiettivi()
+    {
+        obbiettivoUno.gameObject.SetActive(true);
+        obbiettivoUnoToogle.gameObject.SetActive(true);
+        obbiettivoDue.gameObject.SetActive(true);
+        obbiettivoDueToogle.gameObject.SetActive(true);
     }
 
     /// <summary>

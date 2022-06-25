@@ -41,6 +41,7 @@ public class ProgressoTutorial : MonoBehaviour
 
     private Player giocatore = null;
     [SerializeField] private Interactor interazioniPlayer;
+    [SerializeField] private ProgressoLivello progressoLivelloClassico;
 
     private void Start()
     { 
@@ -157,8 +158,10 @@ public class ProgressoTutorial : MonoBehaviour
         
         if (finitoTutorial)
         {
-            setobiettivoTesto("Hai finito il tutorial!!!");
+            obbiettivo1Testo.gameObject.SetActive(false);
+            obbiettivo1Toggle.gameObject.SetActive(false);
             inTutorial = false;
+            progressoLivelloClassico.attivaSoloObbiettivi();
         }
         
     }
