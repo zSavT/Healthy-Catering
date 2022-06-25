@@ -182,6 +182,10 @@ public class InterazionePassanti : MonoBehaviour
         pannelloInterazionePassantiAperto = true;
 
         CheckTutorial.setParlatoNPCpassivo();
+        if (nomeNPC.ToLower().Contains ("zio") || nomeNPC.ToLower().Contains("tutorial"))
+        {
+            CheckTutorial.setParlatoConZio();
+        }
     }
 
     private List<string> trovaScritteDaMostrare(string nomeNPC)

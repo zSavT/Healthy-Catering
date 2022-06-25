@@ -33,6 +33,9 @@ public class CheckTutorial : MonoBehaviour
     //magazzino
     private static bool vistoMagazzino = false;
 
+    //zio
+    private static bool parlatoConZio = false;
+
     //npc passivi
     private static bool parlatoNPCpassivo = false;
 
@@ -73,7 +76,12 @@ public class CheckTutorial : MonoBehaviour
 
     public static bool checkParlaConZio()
     {
-        return true; //TODO
+        return parlatoConZio;
+    }
+
+    public static void setParlatoConZio()
+    {
+        parlatoConZio = true;
     }
 
     public static bool checkVaiRistorante()
