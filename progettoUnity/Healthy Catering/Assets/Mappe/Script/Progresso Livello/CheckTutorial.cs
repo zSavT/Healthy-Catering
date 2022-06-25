@@ -33,6 +33,9 @@ public class CheckTutorial : MonoBehaviour
     //magazzino
     private static bool vistoMagazzino = false;
 
+    //npc passivi
+    private static bool parlatoNPCpassivo = false;
+
     public static bool checkWASDeMouse()
     {
         if (Input.GetKeyDown(KeyCode.W))
@@ -121,6 +124,11 @@ public class CheckTutorial : MonoBehaviour
 
     public static bool checkParlatoConNPC()
     {
-        return false; //TODO
+        return parlatoNPCpassivo; //TODO
+    }
+
+    public static void setParlatoNPCpassivo()
+    {
+        parlatoNPCpassivo = true;
     }
 }

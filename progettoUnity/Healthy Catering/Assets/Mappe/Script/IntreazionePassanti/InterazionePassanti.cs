@@ -180,6 +180,8 @@ public class InterazionePassanti : MonoBehaviour
         }
 
         pannelloInterazionePassantiAperto = true;
+
+        CheckTutorial.setParlatoNPCpassivo();
     }
 
     private List<string> trovaScritteDaMostrare(string nomeNPC)
