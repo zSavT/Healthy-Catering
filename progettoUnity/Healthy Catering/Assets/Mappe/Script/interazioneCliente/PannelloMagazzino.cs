@@ -65,8 +65,6 @@ public class PannelloMagazzino : MonoBehaviour
         {
             aggiornaSchermataMagazzino();
         }
-
-        CheckTutorial.setPannelloMagazzinoAperto();
     }
 
     public void chiudiPannelloMagazzino()
@@ -89,6 +87,7 @@ public class PannelloMagazzino : MonoBehaviour
         else
             sfondoImmaginePC.sprite = Resources.Load<Sprite>("SchermataMagazzino");
 
+        CheckTutorial.setPannelloMagazzinoAperto();
 
     }
 

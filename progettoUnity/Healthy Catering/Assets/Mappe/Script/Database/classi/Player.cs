@@ -191,6 +191,18 @@ public class Player
         return this.inventario.Count == 0;
     }
 
+    public bool inventarioTutteQuantitaZero()
+    {
+        foreach (OggettoQuantita<int> ingrediente in inventario)
+        {
+            if (ingrediente.quantita != 0)
+            {
+                return true;
+            }       
+        }
+        return false;
+    }
+
     public string stampaInventario()
     {
         string output = "";

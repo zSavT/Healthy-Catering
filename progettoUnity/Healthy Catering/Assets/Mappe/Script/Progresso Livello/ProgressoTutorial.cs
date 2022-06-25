@@ -140,7 +140,7 @@ public class ProgressoTutorial : MonoBehaviour
                     //mostraOkBoxVideo("mostra dov'e' il negozio");
                     //forse qui serve un if "è nel negozio prima? cosi da poter aggiornare la scritta meglio"
                     if (true)
-                        if (CheckTutorial.checkCompratiIngredienti()) { numeroScritteMostrate++; }
+                        if (CheckTutorial.checkCompratiIngredienti(giocatore)) { numeroScritteMostrate++; };
                 }
                 else if (numeroScritteMostrate == 8)
                 {

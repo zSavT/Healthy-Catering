@@ -89,7 +89,7 @@ public class CheckTutorial : MonoBehaviour
 
     public static bool checkServitoPiattoCompatibileENon(Player giocatore)
     {
-        return true;
+        return true;//TODO quando il riferimento al giocatore sarà giusto togliere il return true;
         return
             !piattoCompatibile.piattoInInventario(giocatore.inventario) 
             && 
@@ -113,9 +113,10 @@ public class CheckTutorial : MonoBehaviour
     }
     */
 
-    public static bool checkCompratiIngredienti()
+    public static bool checkCompratiIngredienti(Player giocatore)
     {
-        return false; //TODO
+        return true;//TODO quando il riferimento al giocatore sarà giusto togliere il return true;
+        return giocatore.inventarioTutteQuantitaZero();
     }
 
     public static bool checkParlatoConNPC()
