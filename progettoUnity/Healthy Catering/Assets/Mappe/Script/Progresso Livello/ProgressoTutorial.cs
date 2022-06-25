@@ -69,7 +69,7 @@ public class ProgressoTutorial : MonoBehaviour
         numeroScritteMostrate = 0;
         
         finitoTutorial = false;
-        giocatore = interazioniPlayer.getPlayer();
+
     }
 
     private void Update()
@@ -91,6 +91,7 @@ public class ProgressoTutorial : MonoBehaviour
                 if (i == numeroScritteMostrate)
                 {
                     setobiettivoTesto(scritteDaMostrare[i]);
+                    giocatore = interazioniPlayer.getPlayer();
                 }
 
                 if (numeroScritteMostrate == 0)
@@ -117,8 +118,6 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                 //mostraOkBoxVideo("spiegazione meccaniche per servire");
                 //forse qui serve un if "è alla cassa prima? cosi da poter aggiornare la scritta meglio"
-                numeroScritteMostrate++;
-                print(giocatore != null);
                     if (true)
                         if (giocatore != null)
                             if (CheckTutorial.checkServitoPiattoCompatibileENon(giocatore)) { numeroScritteMostrate++; }

@@ -100,7 +100,6 @@ public class CheckTutorial : MonoBehaviour
 
     public static bool checkServitoPiattoCompatibileENon(Player giocatore)
     {
-        return true;//TODO quando il riferimento al giocatore sarà giusto togliere il return true;
         return
             !piattoCompatibile.piattoInInventario(giocatore.inventario) 
             && 
