@@ -47,13 +47,13 @@ public class ProgressoLivello : MonoBehaviour
         schermataFineLivello.SetActive(false);
         valorePunteggioPlayer.gameObject.SetActive(false);
         //Se il livello � il livello tutorial la schermata obbiettivi non si attiva (da attivare successivamente)
-        if (PlayerSettings.livelloSelezionato != -1)
+        if (PlayerSettings.livelloSelezionato != 0)
         {
-            testoObbietivo1 = "Servire " + numeroClientiDaServire + " clienti. Clienti serviti: " + numeroClientiServiti + "/" + numeroClientiDaServire;
-            obbiettivoUno.text = testoObbietivo1;
-            testoObbietivo2 = "Raggiungi un punteggio pari a " + punteggioMassimo + ". Punteggio attuale " + 0 + "/" + punteggioMassimo;
-            obbiettivoDue.text = testoObbietivo2;
-        } 
+            valoriInizialiTesto();
+        } else
+        {
+            disattivaSoloObbiettivi();
+        }
     }
 
     private void Update()
@@ -63,6 +63,14 @@ public class ProgressoLivello : MonoBehaviour
         {
             attivazioneSchermataFineLivello();
         }
+    }
+
+    private void valoriInizialiTesto()
+    {
+        testoObbietivo1 = "Servire " + numeroClientiDaServire + " clienti. Clienti serviti: " + numeroClientiServiti + "/" + numeroClientiDaServire;
+        obbiettivoUno.text = testoObbietivo1;
+        testoObbietivo2 = "Raggiungi un punteggio pari a " + punteggioMassimo + ". Punteggio attuale " + 0 + "/" + punteggioMassimo;
+        obbiettivoDue.text = testoObbietivo2;
     }
 
     /// <summary>
@@ -128,7 +136,7 @@ public class ProgressoLivello : MonoBehaviour
         valorePunteggioPlayer.text = "Punteggio raggiunto: " + punteggioPlayer.ToString();
         disattivaElementiFineLivello.Invoke();
         PuntatoreMouse.abilitaCursore();
-        disattivaObbiettivi();
+        disattivaObbiettiviETesto();
        // GameObject.FindObjectOfType<Camera>().transform.position = new Vector3(0, 4000, 0);       //sposta la telecamera in ciealo
     }
 
@@ -136,13 +144,21 @@ public class ProgressoLivello : MonoBehaviour
     /// <summary>
     /// Disattiva gli elementi degli obbiettivi.
     /// </summary>
-    private void disattivaObbiettivi()
+    private void disattivaObbiettiviETesto()
     {
         obbiettivoUno.gameObject.SetActive(false);
         obbiettivoUnoToogle.gameObject.SetActive(false);
         obbiettivoDue.gameObject.SetActive(false);
         obbiettivoDueToogle.gameObject.SetActive(false);
         scrittaObbiettivo.gameObject.SetActive(false);
+    }
+
+    private void disattivaSoloObbiettivi()
+    {
+        obbiettivoUno.gameObject.SetActive(false);
+        obbiettivoUnoToogle.gameObject.SetActive(false);
+        obbiettivoDue.gameObject.SetActive(false);
+        obbiettivoDueToogle.gameObject.SetActive(false);
     }
 
     /// <summary>
