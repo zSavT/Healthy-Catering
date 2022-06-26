@@ -76,7 +76,9 @@ Il modello 3D interno del ristorante è stato realizzato da Angelica.
 
 ![Selezione Livelli](doc/img/Screenshoot/SelezioneLivelli.png "Selezione Livelli")
 
-![Interazione Cliente](doc/img/Screenshoot/InterazioneCliente.PNG "GUI interazione cliente")
+![Classifica](doc/img/Screenshoot/Classifica.png "Classifica")
+
+![Interazione Cliente](doc/img/Screenshoot/InterazioneCliente.png "GUI interazione cliente")
 
 ![Menu Negozio](doc/img/Screenshoot/MenuNegozio.png "GUI Menu Negozio")
 
