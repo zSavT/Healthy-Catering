@@ -79,126 +79,114 @@ public class ProgressoTutorial : MonoBehaviour
     private void Update()
     {
 
-        /*
-        if (videoInRiproduzione)
+        
+        if (!saGiocareSettato)
         {
-            if (skipVideo) // si aggiorna con 
-            {
-                stopRiproduzioneVideo();
-                //dopo che ha riprodotto il video gli chiedo se deve skippare la prima parte del tutorial
-                skipTutorialComandi = chiediSeSaHaGiocatoFPS();
-            }
+            playerStop.Invoke();
+            playerSaGiocareFPS.apriPannelloPlayerSaGiocareFPS();
+
+            siOno = PlayerSaGiocareFPS.getSiOno();
+                
+            if (siOno == 1)
+                numeroScritteMostrate = posizioneScritteDaMostrareSaGiocare;
+            else if (siOno == -1)
+                numeroScritteMostrate = 0;
+
+            if (siOno != 0)
+                saGiocareSettato = true;
         }
         else
         {
-        */
-            if (!saGiocareSettato)
+            for (int i = 0; i < scritteDaMostrare.Count; i++)
             {
-                playerStop.Invoke();
-                playerSaGiocareFPS.apriPannelloPlayerSaGiocareFPS();
-
-                siOno = PlayerSaGiocareFPS.getSiOno();
-                
-                if (siOno == 1)
-                    numeroScritteMostrate = posizioneScritteDaMostrareSaGiocare;
-                else if (siOno == -1)
-                    numeroScritteMostrate = 0;
-
-                if (siOno != 0)
-                    saGiocareSettato = true;
-            }
-            else
-            {
-                for (int i = 0; i < scritteDaMostrare.Count; i++)
+                if (i == numeroScritteMostrate)
                 {
-                    if (i == numeroScritteMostrate)
-                    {
-                        setobiettivoTesto(scritteDaMostrare[i]);
-                        giocatore = interazioniPlayer.getPlayer();
-                    }
-
-                    if (numeroScritteMostrate == 0)
-                    {
-                        if (CheckTutorial.checkWASDeMouse()) { numeroScritteMostrate++; }
-                    }
-                    else if (numeroScritteMostrate == 1)
-                    {
-                        if (CheckTutorial.checkSalto()) { numeroScritteMostrate++; }
-                    }
-                    else if (numeroScritteMostrate == 2)
-                    {
-                        if (CheckTutorial.checkSprint()) { numeroScritteMostrate++; }
-                    }
-                    else if (numeroScritteMostrate == 3)
-                    {
-                        if (CheckTutorial.checkParlaConZio()) { numeroScritteMostrate++; }
-                    }
-                    else if (numeroScritteMostrate == 4)
-                    {
-                        if (CheckTutorial.checkVaiRistorante()) { numeroScritteMostrate++; }
-                    }
-                    else if (numeroScritteMostrate == 5)
-                    {
-                        if (!OkBoxVideo.meccanicheServireMostrato)
-                        {
-                            okBoxVideo.apriOkBoxVideo(OkBoxVideo.meccanicheServire);
-                            OkBoxVideo.meccanicheServireMostrato = true;
-                        }
-
-                        if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
-                            if (giocatore != null)
-                                if (CheckTutorial.checkServitoPiattoCompatibileENon(giocatore)) { numeroScritteMostrate++; }
-                    }
-                    else if (numeroScritteMostrate == 6)
-                    {
-                        if (!OkBoxVideo.finitiIngredientiMostrato)
-                        {
-                            okBoxVideo.apriOkBoxVideo(OkBoxVideo.finitiIngredienti);
-                            OkBoxVideo.finitiIngredientiMostrato  = true;
-                        }
-                    
-                        if (CheckTutorial.checkVistoMagazzino()) { numeroScritteMostrate++; }
-
-                        //nel magazzino dovremmo mettere un ingrediente che non e' presente nella ricetta ne del 
-                        //Piatto compatibile ne in quella del piatto non compatibile, cosi che quando il giocatore 
-                        //apre il magazzino non sia vuoto del tutto, se no sembra che il magazzino abbia solo la 
-                        //funzione di avvisarti che non hai più ingredienti
-                        //magari possiamo cambiare la scritta a "il magazzino sarebbe cosi se ci fossero degli
-                        //ingredienti" e poi far scomparire l'ingrediente temp che abbiamo inserito dopo 5 secondi
-                    }
-                    else if (numeroScritteMostrate == 7)
-                    {
-                        if (!OkBoxVideo.doveEIlNegozioMostrato)
-                        {
-                            okBoxVideo.apriOkBoxVideo(OkBoxVideo.doveEIlNegozio);
-                            OkBoxVideo.doveEIlNegozioMostrato = true;
-                        }
-                    
-                        if (CheckTutorial.checkIsNelNegozio()) //TODO implementazione
-                            if (CheckTutorial.checkCompratiIngredienti(giocatore)) { numeroScritteMostrate++; };
-                    }
-                    else if (numeroScritteMostrate == 8)
-                    {
-                        if (!OkBoxVideo.interazioneNPCMostrato)
-                        {
-                            okBoxVideo.apriOkBoxVideo(OkBoxVideo.interazioneNPC);
-                            OkBoxVideo.interazioneNPCMostrato = true;
-                        }
-                    
-                        if (CheckTutorial.checkParlatoConNPC())
-                        {
-                            numeroScritteMostrate++;
-                            finitoTutorial = true;
-                        }
-                    }
-                    else
-                    {
-                        setobiettivoTesto("");//resetto il testo dell'obbiettivo 
-                    }
+                    setobiettivoTesto(scritteDaMostrare[i]);
+                    giocatore = interazioniPlayer.getPlayer();
                 }
 
+                if (numeroScritteMostrate == 0)
+                {
+                    if (CheckTutorial.checkWASDeMouse()) { numeroScritteMostrate++; }
+                }
+                else if (numeroScritteMostrate == 1)
+                {
+                    if (CheckTutorial.checkSalto()) { numeroScritteMostrate++; }
+                }
+                else if (numeroScritteMostrate == 2)
+                {
+                    if (CheckTutorial.checkSprint()) { numeroScritteMostrate++; }
+                }
+                else if (numeroScritteMostrate == 3)
+                {
+                    if (CheckTutorial.checkParlaConZio()) { numeroScritteMostrate++; }
+                }
+                else if (numeroScritteMostrate == 4)
+                {
+                    if (CheckTutorial.checkVaiRistorante()) { numeroScritteMostrate++; }
+                }
+                else if (numeroScritteMostrate == 5)
+                {
+                    if (!OkBoxVideo.meccanicheServireMostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.meccanicheServire);
+                        OkBoxVideo.meccanicheServireMostrato = true;
+                    }
+
+                    if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
+                        if (giocatore != null)
+                            if (CheckTutorial.checkServitoPiattoCompatibileENon(giocatore)) { numeroScritteMostrate++; }
+                }
+                else if (numeroScritteMostrate == 6)
+                {
+                    if (!OkBoxVideo.finitiIngredientiMostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.finitiIngredienti);
+                        OkBoxVideo.finitiIngredientiMostrato  = true;
+                    }
+                    
+                    if (CheckTutorial.checkVistoMagazzino()) { numeroScritteMostrate++; }
+
+                    //nel magazzino dovremmo mettere un ingrediente che non e' presente nella ricetta ne del 
+                    //Piatto compatibile ne in quella del piatto non compatibile, cosi che quando il giocatore 
+                    //apre il magazzino non sia vuoto del tutto, se no sembra che il magazzino abbia solo la 
+                    //funzione di avvisarti che non hai più ingredienti
+                    //magari possiamo cambiare la scritta a "il magazzino sarebbe cosi se ci fossero degli
+                    //ingredienti" e poi far scomparire l'ingrediente temp che abbiamo inserito dopo 5 secondi
+                }
+                else if (numeroScritteMostrate == 7)
+                {
+                    if (!OkBoxVideo.doveEIlNegozioMostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.doveEIlNegozio);
+                        OkBoxVideo.doveEIlNegozioMostrato = true;
+                    }
+                    
+                    if (CheckTutorial.checkIsNelNegozio()) //TODO implementazione
+                        if (CheckTutorial.checkCompratiIngredienti(giocatore)) { numeroScritteMostrate++; };
+                }
+                else if (numeroScritteMostrate == 8)
+                {
+                    if (!OkBoxVideo.interazioneNPCMostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.interazioneNPC);
+                        OkBoxVideo.interazioneNPCMostrato = true;
+                    }
+                    
+                    if (CheckTutorial.checkParlatoConNPC())
+                    {
+                        numeroScritteMostrate++;
+                        finitoTutorial = true;
+                    }
+                }
+                else
+                {
+                    setobiettivoTesto("");//resetto il testo dell'obbiettivo 
+                }
             }
-        //}
+
+        }
+
         
         if (finitoTutorial)
         {

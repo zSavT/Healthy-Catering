@@ -42,7 +42,7 @@ public class SelezioneLivelli : MonoBehaviour
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         if (PlayerSettings.caricaProgressoLivello1() == 1)
         {
-            bottoneLivello1.interactable = true;                
+            bottoneLivello1.interactable = true;
         }
         if (PlayerSettings.caricaProgressoLivello2() == 1)
         {
@@ -133,12 +133,13 @@ public class SelezioneLivelli : MonoBehaviour
     public static void caricaLivelloCitta()
     {
         SceneManager.LoadScene(2);
-        
+
     }
 
     public static void caricaClassifica()
     {
         SceneManager.LoadScene(6);
     }
+
 }
 
