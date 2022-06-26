@@ -115,7 +115,7 @@ public class CheckTutorial : MonoBehaviour
 
     public static bool checkCompratiIngredienti(Player giocatore)
     {
-        return giocatore.inventarioTutteQuantitaZero();
+        return !giocatore.inventarioVuoto();
     }
 
     public static bool checkParlatoConNPC()
