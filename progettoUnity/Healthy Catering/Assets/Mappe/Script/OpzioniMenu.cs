@@ -24,7 +24,9 @@ public class OpzioniMenu : MonoBehaviour
     [SerializeField] private TMP_Dropdown daltonismo;
     [Header("Impostazioni Audio")]
     [SerializeField] private AudioMixer audioMixer;
-    [SerializeField] private Slider sliderVolume;
+    [SerializeField] private Slider sliderVolumeMusica;
+    [SerializeField] private AudioMixer audioMixerSuoni;
+    [SerializeField] private Slider sliderVolumeSuoni;
     [Header("Impostazioni Sensibilità")]
     [SerializeField] private TextMeshProUGUI sliderSensibilitaTesto;
     [SerializeField] private Slider sliderSensibilita;
@@ -43,7 +45,7 @@ public class OpzioniMenu : MonoBehaviour
         //IMPOSTAZIONI CONTROLLI
         sliderFov.value = PlayerSettings.caricaImpostazioniFov();
         sliderSensibilita.value = PlayerSettings.caricaImpostazioniSensibilita();
-        
+
         //RISOLUZIONE
         risoluzioni = Screen.resolutions;
         risoluzioniDisponibili.ClearOptions();      //svuota le scelte
@@ -60,7 +62,7 @@ public class OpzioniMenu : MonoBehaviour
             }
         }
         risoluzioniDisponibili.AddOptions(opzioni);
-        risoluzioniDisponibili.value = PlayerSettings.caricaImpostazioniRisoluzione ();
+        risoluzioniDisponibili.value = PlayerSettings.caricaImpostazioniRisoluzione();
         risoluzioniDisponibili.RefreshShownValue();
         risoluzioniDisponibili.value = PlayerSettings.caricaImpostazioniRisoluzione();
 
@@ -75,7 +77,8 @@ public class OpzioniMenu : MonoBehaviour
         if (vSyncVal == 0)
         {
             vSynch.isOn = false;
-        } else if (vSyncVal == 1)
+        }
+        else if (vSyncVal == 1)
         {
             vSynch.isOn = true;
         }
@@ -83,8 +86,8 @@ public class OpzioniMenu : MonoBehaviour
         framerateLibero.isOn = PlayerSettings.caricaImpostazioniFramerateLibero();
 
         //AUDIO
-        sliderVolume.value = PlayerSettings.caricaImpostazioniVolume();
-
+        sliderVolumeMusica.value = PlayerSettings.caricaImpostazioniVolumeMusica();
+        sliderVolumeSuoni.value = PlayerSettings.caricaImpostazioniVolumeSuoni();
     }
 
     /// <summary>
@@ -109,7 +112,8 @@ public class OpzioniMenu : MonoBehaviour
         if (isActive == true)
         {
             QualitySettings.vSyncCount = 1;
-        } else
+        }
+        else
         {
             QualitySettings.vSyncCount = 0;
         }
@@ -125,13 +129,23 @@ public class OpzioniMenu : MonoBehaviour
     }
 
     /// <summary>
-    /// Imposta valore volume.
+    /// Imposta valore volume musica.
     /// </summary>
     /// <param name="volume">Valore volume</param>
-    public void setVolume(float volume)
+    public void setVolumeMusica(float volume)
     {
         audioMixer.SetFloat("volume", volume);
-        PlayerSettings.salvaImpostazioniVolume(volume);
+        PlayerSettings.salvaImpostazioniVolumeMusica(volume);
+    }
+
+    /// <summary>
+    /// Imposta valore volume suoni.
+    /// </summary>
+    /// <param name="volume">Valore volume</param>
+    public void setVolumeSuoni(float volume)
+    {
+        audioMixer.SetFloat("volume", volume);
+        PlayerSettings.salvaImpostazioniVolumeSuoni(volume);
     }
 
     /// <summary>
@@ -173,7 +187,7 @@ public class OpzioniMenu : MonoBehaviour
     {
         Resolution risoluzione = risoluzioni[risoluzioneSelezionata];
         Screen.SetResolution(risoluzione.width, risoluzione.height, schermoIntero.isOn, risoluzione.refreshRate);
-        setRefreshRateToScelta (risoluzione.refreshRate);
+        setRefreshRateToScelta(risoluzione.refreshRate);
         PlayerSettings.salvaImpostazioniRisoluzione(risoluzioneSelezionata);
     }
 
