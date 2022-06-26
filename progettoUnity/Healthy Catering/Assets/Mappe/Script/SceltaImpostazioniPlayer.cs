@@ -22,6 +22,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     [SerializeField] private GameObject elementiConferma;
     [SerializeField] private Button bottoneSalva;
     [SerializeField] private Camera cameraGioco;
+    [SerializeField] private AudioSource suono;
     private List<Player> player = new List<Player>();
     private List<string> nomiPlayerPresenti = new List<string>();
     private string nomeGiocatoreScritto;
@@ -76,6 +77,13 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
                     {
                         nomeGiaPreso.SetActive(true);
                         bottoneSalva.interactable = false;
+                        if(suono.isPlaying)
+                        {
+                            suono.Stop();
+                        } else
+                        {
+                            suono.Play();
+                        }
                         break;
                     }
                     else
