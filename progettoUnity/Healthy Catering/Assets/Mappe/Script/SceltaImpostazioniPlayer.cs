@@ -22,7 +22,6 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     [SerializeField] private GameObject elementiConferma;
     [SerializeField] private Button bottoneSalva;
     [SerializeField] private Camera cameraGioco;
-    [SerializeField] private AudioSource suono;
     private List<Player> player = new List<Player>();
     private List<string> nomiPlayerPresenti = new List<string>();
     private string nomeGiocatoreScritto;
@@ -54,17 +53,10 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         elementiConferma.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        controlloNomeEsistente();
-    }
-
-
     /// <summary>
     /// Controlla se il nome inserito dall'utente, corrisponde con uno già presente nella lista.
     /// </summary>
-    private void controlloNomeEsistente()
+    public void controlloNomeEsistente()
     {
         if (nomeGiocatoreScritto != "")
         {
@@ -77,13 +69,6 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
                     {
                         nomeGiaPreso.SetActive(true);
                         bottoneSalva.interactable = false;
-                        if(suono.isPlaying)
-                        {
-                            suono.Stop();
-                        } else
-                        {
-                            suono.Play();
-                        }
                         break;
                     }
                     else
