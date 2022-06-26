@@ -144,7 +144,7 @@ public class OpzioniMenu : MonoBehaviour
     /// <param name="volume">Valore volume</param>
     public void setVolumeSuoni(float volume)
     {
-        audioMixer.SetFloat("volume", volume);
+        audioMixerSuoni.SetFloat("volume", volume);
         PlayerSettings.salvaImpostazioniVolumeSuoni(volume);
     }
 
