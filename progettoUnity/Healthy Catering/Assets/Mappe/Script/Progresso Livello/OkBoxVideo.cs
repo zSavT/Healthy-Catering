@@ -29,7 +29,7 @@ public class OkBoxVideo : MonoBehaviour
         "Dov'e' il negozio",
         "interazione con gli npc"
     };
-    
+
     List<string> testi = new List<string>
     {
         "testo spiegazione meccaniche per servire",
@@ -46,7 +46,7 @@ public class OkBoxVideo : MonoBehaviour
         pannello.SetActive(false);
         titolo.text = "";
         testo.text = "";
-        cambiaImmagine(titoli.Count + 1); //setto l'immagine a quella di default
+        setImmagineDefault();
     }
 
     public void apriOkBoxVideo(int posizione)
@@ -66,19 +66,18 @@ public class OkBoxVideo : MonoBehaviour
         {
             titolo.text = "errore";
             testo.text = "";
-            cambiaImmagine(titoli.Count + 1); //setto l'immagine a quella di default
+            setImmagineDefault();
         }
     }
 
     public void chiudiOkBoxVideo()
     {
         PuntatoreMouse.disabilitaCursore();
-        pannello.SetActive(false); 
+        pannello.SetActive(false);
         playerRiprendiMovimento.Invoke();
 
         titolo.text = "";
         testo.text = "";
-        immagineOGIF = null;
     }
 
     private void cambiaImmagine(int posizione)
@@ -87,8 +86,15 @@ public class OkBoxVideo : MonoBehaviour
         print(nuovaImmagine);
         if (nuovaImmagine == null)
         {
-            nuovaImmagine = Resources.Load<Sprite>("immaginiOGifOkBoxVideo/immagineOGifOkBoxVideoDefault"); ;
+            setImmagineDefault();
         }
-        immagineOGIF.sprite = nuovaImmagine;
+        else
+        {
+            immagineOGIF.sprite = nuovaImmagine;
+        }
+    }
+
+    private void setImmagineDefault (){
+        immagineOGIF.sprite = Resources.Load<Sprite>("immaginiOGifOkBoxVideo/immagineOGifOkBoxVideoDefault"); 
     }
 }
