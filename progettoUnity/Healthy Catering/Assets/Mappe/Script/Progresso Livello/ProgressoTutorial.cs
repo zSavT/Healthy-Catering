@@ -112,14 +112,24 @@ public class ProgressoTutorial : MonoBehaviour
                 }
                 else if (numeroScritteMostrate == 5)
                 {
-                    okBoxVideo.apriOkBoxVideo(OkBoxVideo.meccanicheServire);
+                    if (!OkBoxVideo.meccanicheServireMostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.meccanicheServire);
+                        OkBoxVideo.meccanicheServireMostrato = true;
+                    }
+
                     if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
                         if (giocatore != null)
                             if (CheckTutorial.checkServitoPiattoCompatibileENon(giocatore)) { numeroScritteMostrate++; }
                 }
                 else if (numeroScritteMostrate == 6)
                 {
-                    okBoxVideo.apriOkBoxVideo(OkBoxVideo.finitiIngredienti);
+                    if (!OkBoxVideo.finitiIngredientiMostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.finitiIngredienti);
+                        OkBoxVideo.finitiIngredientiMostrato  = true;
+                    }
+                    
                     if (CheckTutorial.checkVistoMagazzino()) { numeroScritteMostrate++; }
 
                     //nel magazzino dovremmo mettere un ingrediente che non e' presente nella ricetta ne del 
@@ -131,13 +141,23 @@ public class ProgressoTutorial : MonoBehaviour
                 }
                 else if (numeroScritteMostrate == 7)
                 {
-                    okBoxVideo.apriOkBoxVideo(OkBoxVideo.doveEIlNegozio);
+                    if (!OkBoxVideo.doveEIlNegozioMostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.doveEIlNegozio);
+                        OkBoxVideo.doveEIlNegozioMostrato = true;
+                    }
+                    
                     if (CheckTutorial.checkIsNelNegozio()) //TODO implementazione
                         if (CheckTutorial.checkCompratiIngredienti(giocatore)) { numeroScritteMostrate++; };
                 }
                 else if (numeroScritteMostrate == 8)
                 {
-                    okBoxVideo.apriOkBoxVideo(OkBoxVideo.interazioneNPC);
+                    if (!OkBoxVideo.interazioneNPCMostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.interazioneNPC);
+                        OkBoxVideo.interazioneNPCMostrato = true;
+                    }
+                    
                     if (CheckTutorial.checkParlatoConNPC())
                     {
                         numeroScritteMostrate++;

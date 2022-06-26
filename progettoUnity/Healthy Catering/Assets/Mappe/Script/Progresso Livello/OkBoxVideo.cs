@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class OkBoxVideo : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class OkBoxVideo : MonoBehaviour
     public static readonly int doveEIlNegozio = 2;
     public static readonly int interazioneNPC = 3;
 
+    public static bool meccanicheServireMostrato = false;
+    public static bool finitiIngredientiMostrato = false;
+    public static bool doveEIlNegozioMostrato = false;
+    public static bool interazioneNPCMostrato = false;
+
     List<string> titoli = new List<string>
     {
         "spiegazione meccaniche per servire",
@@ -23,7 +29,7 @@ public class OkBoxVideo : MonoBehaviour
         "Dov'e' il negozio",
         "interazione con gli npc"
     };
-
+    
     List<string> testi = new List<string>
     {
         "testo spiegazione meccaniche per servire",
@@ -32,31 +38,44 @@ public class OkBoxVideo : MonoBehaviour
         "testo interazione con gli npc"
     };
 
+    [SerializeField] private UnityEvent playerStop;
+    [SerializeField] private UnityEvent playerRiprendiMovimento;
+
     void Start()
     {
         pannello.SetActive(false);
         titolo.text = "";
         testo.text = "";
+        cambiaImmagine(titoli.Count + 1); //setto l'immagine a quella di default
     }
 
     public void apriOkBoxVideo(int posizione)
     {
+        pannello.SetActive(true);
+        playerStop.Invoke();
+        PuntatoreMouse.abilitaCursore();
+        CambioCursore.cambioCursoreNormale();
+
         if (posizione < titoli.Count)
         {
             titolo.text = titoli[posizione];
             testo.text = testi[posizione];
+            cambiaImmagine(posizione);
         }
         else
         {
             titolo.text = "errore";
             testo.text = "";
+            cambiaImmagine(titoli.Count + 1); //setto l'immagine a quella di default
         }
-        cambiaImmagine(posizione);
     }
 
     public void chiudiOkBoxVideo()
     {
-        pannello.SetActive(false);
+        PuntatoreMouse.disabilitaCursore();
+        pannello.SetActive(false); 
+        playerRiprendiMovimento.Invoke();
+
         titolo.text = "";
         testo.text = "";
         immagineOGIF = null;
@@ -64,13 +83,12 @@ public class OkBoxVideo : MonoBehaviour
 
     private void cambiaImmagine(int posizione)
     {
-        Sprite nuovaImmagine = Resources.Load<Sprite>("immaginiAiuto/" + "immagineOGifOkBoxVideo" + titoli[posizione]);
+        Sprite nuovaImmagine = Resources.Load<Sprite>("immaginiOGifOkBoxVideo/" + "immagineOGifOkBoxVideo " + titoli[posizione]);
+        print(nuovaImmagine);
         if (nuovaImmagine == null)
         {
-            nuovaImmagine = Resources.Load<Sprite>("immaginiAiuto/immagineAiutoDefault"); ;
+            nuovaImmagine = Resources.Load<Sprite>("immaginiOGifOkBoxVideo/immagineOGifOkBoxVideoDefault"); ;
         }
         immagineOGIF.sprite = nuovaImmagine;
     }
-
-    
 }
