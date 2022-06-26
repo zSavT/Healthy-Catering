@@ -10,7 +10,6 @@ public class OkBoxVideo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI titolo;
     [SerializeField] private TextMeshProUGUI testo;
     [SerializeField] private Image immagineOGIF;
-    [SerializeField] private Button bottoneConferma;
 
     public static readonly int meccanicheServire = 0;
     public static readonly int finitiIngredienti = 1;
@@ -27,8 +26,10 @@ public class OkBoxVideo : MonoBehaviour
 
     List<string> testi = new List<string>
     {
-        "ciao testo",
-        "idk testo"
+        "testo spiegazione meccaniche per servire",
+        "testo sono finiti gli ingredienti per fare i piatti",
+        "testo Dov'e' il negozio",
+        "testo interazione con gli npc"
     };
 
     void Start()
@@ -36,7 +37,6 @@ public class OkBoxVideo : MonoBehaviour
         pannello.SetActive(false);
         titolo.text = "";
         testo.text = "";
-        immagineOGIF = null;
     }
 
     public void apriOkBoxVideo(int posizione)
@@ -67,7 +67,7 @@ public class OkBoxVideo : MonoBehaviour
         Sprite nuovaImmagine = Resources.Load<Sprite>("immaginiAiuto/" + "immagineOGifOkBoxVideo" + titoli[posizione]);
         if (nuovaImmagine == null)
         {
-            nuovaImmagine = null;
+            nuovaImmagine = Resources.Load<Sprite>("immaginiAiuto/immagineAiutoDefault"); ;
         }
         immagineOGIF.sprite = nuovaImmagine;
     }

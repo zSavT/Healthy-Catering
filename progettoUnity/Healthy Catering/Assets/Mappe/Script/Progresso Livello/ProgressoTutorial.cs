@@ -31,17 +31,13 @@ public class ProgressoTutorial : MonoBehaviour
     //3 va sostituito con la posizione nella lista delle scritte che devono uscire solo se sa gia giocare agli fps
     private readonly int posizioneScritteDaMostrareSaGiocare = 3;
 
-
-    [SerializeField] private GameObject okBoxVideo;
-    [SerializeField] private TextMeshProUGUI testoOkBoxVideo;
-    [SerializeField] private UnityEngine.Video.VideoPlayer videoOkBoxVideo; // non so sicuro sia quello l'oggetto giusto per questa cosa
-
-    private CheckTutorial checkTuorial;
     private bool finitoTutorial;
 
     private Player giocatore = null;
     [SerializeField] private Interactor interazioniPlayer;
     [SerializeField] private ProgressoLivello progressoLivelloClassico;
+
+    [SerializeField] private OkBoxVideo okBoxVideo;
 
     private void Start()
     {
@@ -116,15 +112,14 @@ public class ProgressoTutorial : MonoBehaviour
                 }
                 else if (numeroScritteMostrate == 5)
                 {
-                //mostraOkBoxVideo("spiegazione meccaniche per servire");
-                //forse qui serve un if "è alla cassa prima? cosi da poter aggiornare la scritta meglio"
-                    if (true)
+                    okBoxVideo.apriOkBoxVideo(OkBoxVideo.meccanicheServire);
+                    if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
                         if (giocatore != null)
                             if (CheckTutorial.checkServitoPiattoCompatibileENon(giocatore)) { numeroScritteMostrate++; }
                 }
                 else if (numeroScritteMostrate == 6)
                 {
-                    //mostraOkBoxVideo("sono finiti gli ingredienti per fare i piatti");
+                    okBoxVideo.apriOkBoxVideo(OkBoxVideo.finitiIngredienti);
                     if (CheckTutorial.checkVistoMagazzino()) { numeroScritteMostrate++; }
 
                     //nel magazzino dovremmo mettere un ingrediente che non e' presente nella ricetta ne del 
@@ -136,14 +131,13 @@ public class ProgressoTutorial : MonoBehaviour
                 }
                 else if (numeroScritteMostrate == 7)
                 {
-                    //mostraOkBoxVideo("mostra dov'e' il negozio");
-                    //forse qui serve un if "è nel negozio prima? cosi da poter aggiornare la scritta meglio"
-                    if (true)
+                    okBoxVideo.apriOkBoxVideo(OkBoxVideo.doveEIlNegozio);
+                    if (CheckTutorial.checkIsNelNegozio()) //TODO implementazione
                         if (CheckTutorial.checkCompratiIngredienti(giocatore)) { numeroScritteMostrate++; };
                 }
                 else if (numeroScritteMostrate == 8)
                 {
-                    //mostraOkBoxVideo("puoi interagire con gli npc");
+                    okBoxVideo.apriOkBoxVideo(OkBoxVideo.interazioneNPC);
                     if (CheckTutorial.checkParlatoConNPC())
                     {
                         numeroScritteMostrate++;
@@ -214,30 +208,6 @@ public class ProgressoTutorial : MonoBehaviour
     private void setobiettivoTesto (string output)
     {
         obbiettivo1Testo.text = output;
-    }
-
-    private void mostraOkBoxVideo(string output, string nomeVideoOGifDaRiprodurre = null)
-    {
-        //TODO (il metodo e tutto il resto)
-
-        nomeVideoOGifDaRiprodurre ??= "";
-
-        // poi li disattiviamo dal bottone relativo che chiama il metodo scritto sotto
-        okBoxVideo.SetActive(true);
-        //attiva puntatore mouse
-
-        testoOkBoxVideo.text = output;
-
-        if (!nomeVideoOGifDaRiprodurre.Equals(""))
-        {
-            videoOkBoxVideo.Play();
-        }
-    }
-
-    public void disattivaOkBoxVideo()
-    {
-        okBoxVideo.SetActive(false);
-        //disattiva puntatore mouse
     }
 
     /*

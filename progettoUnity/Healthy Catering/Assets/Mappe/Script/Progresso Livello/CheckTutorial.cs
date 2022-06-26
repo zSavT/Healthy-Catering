@@ -85,12 +85,10 @@ public class CheckTutorial : MonoBehaviour
         return posizionePlayer < -500; // siccome e' nel ristorante la y e' minore di -500
     }
 
-    /*
     public static bool checkIsAllaCassa()
     {
-        return false; //TODO
+        return true; //TODO
     }
-    */
 
     public static bool checkServitoPiattoCompatibileENon(Player giocatore)
     {
@@ -109,7 +107,7 @@ public class CheckTutorial : MonoBehaviour
     
     public static bool checkIsNelNegozio()
     {
-        return false; //TODO
+        return true; //TODO
     }
 
 
