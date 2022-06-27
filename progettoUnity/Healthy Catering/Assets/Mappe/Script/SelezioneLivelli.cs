@@ -32,8 +32,6 @@ public class SelezioneLivelli : MonoBehaviour
     [Header("Elementi Caricamento Livello")]
     [SerializeField] private Slider sliderCaricamento;        //slider del caricamento della partita
     [SerializeField] private UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
-    [Header("Tutorial")]
-    private ProgressoTutorial tutorial;
 
 
     // Start is called before the first frame update
@@ -136,6 +134,10 @@ public class SelezioneLivelli : MonoBehaviour
 
     }
 
+
+    /// <summary>
+    /// Carica la scena della classifica.
+    /// </summary>
     public static void caricaClassifica()
     {
         SceneManager.LoadScene(6);

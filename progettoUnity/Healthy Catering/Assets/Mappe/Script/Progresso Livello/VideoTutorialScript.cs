@@ -39,7 +39,7 @@ public class VideoTutorialScript : MonoBehaviour
         videoPlayer.renderMode = UnityEngine.Video.VideoRenderMode.CameraNearPlane;
 
         // This will cause our Scene to be visible through the video being played.
-        videoPlayer.targetCameraAlpha = 0.5F;
+        videoPlayer.targetCameraAlpha = 1;
 
         /*
         // Set the video to play. URL supports local absolute or relative paths.
@@ -80,5 +80,10 @@ public class VideoTutorialScript : MonoBehaviour
             testoBottoneSkip.text = "Continua";
         }
          
+    }
+
+    public void caricaLivelloTutorial()
+    {
+        SelezioneLivelli.caricaLivelloCitta();
     }
 }
