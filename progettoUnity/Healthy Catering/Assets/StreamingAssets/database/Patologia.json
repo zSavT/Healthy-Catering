@@ -6,8 +6,8 @@
   },
   {
     "idPatologia": 1,
-    "nome": "Reflusso gastroesofageo",
-    "descrizione": "La malattia da reflusso gastroesofageo è una malattia di interesse gastroenterologico, causata da complicanze patologiche del reflusso gastroesofageo: si parla di malattia quando il reflusso causa sintomi o quando, con la gastroscopia, si evidenziano lesioni infiammatorie a carico dell'esofago, o ulcere, o trasformazione metaplastica della mucosa."
+    "nome": "Ipertensione",
+    "descrizione": "L'ipertensione arteriosa, chiamata spesso colloquialmente solo ipertensione, è una condizione clinica in cui la pressione del sangue nelle arterie della circolazione sistemica risulta elevata."
   },
   {
     "idPatologia": 2,

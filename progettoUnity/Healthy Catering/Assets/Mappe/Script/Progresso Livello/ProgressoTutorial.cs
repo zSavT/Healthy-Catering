@@ -41,6 +41,10 @@ public class ProgressoTutorial : MonoBehaviour
     [SerializeField] private UnityEvent playerStop;
     private int siOno = 0;
 
+    OggettoQuantita<int> ingredienteInPiu = new OggettoQuantita<int>(10, 1);//mango
+
+    [SerializeField] private UnityEvent playerRiprendiMovimento;
+
     private void Start()
     {
         print("iniziato tutorial");
@@ -72,6 +76,7 @@ public class ProgressoTutorial : MonoBehaviour
 
     private void Update()
     {
+        print(saGiocareSettato);
         if (!saGiocareSettato)
         {
             if (PlayerSaGiocareFPS.siOnoSettato())
@@ -158,11 +163,16 @@ public class ProgressoTutorial : MonoBehaviour
                     {
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.meccanicheServire);
                         OkBoxVideo.meccanicheServireMostrato = true;
+
+                        playerRiprendiMovimento.Invoke();
                     }
 
                     if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
                         if (giocatore != null)
-                            if (CheckTutorial.checkServitoPiattoCompatibileENon(giocatore)) { numeroScritteMostrate++; }
+                            if (CheckTutorial.checkServitoPiattoCompatibileENon(giocatore)) { 
+                                numeroScritteMostrate++;
+                                giocatore.aggiornaInventario(ingredienteInPiu, true);
+                            }
                 }
                 else if (numeroScritteMostrate == 6)
                 {

@@ -95,8 +95,6 @@ public class CheckTutorial : MonoBehaviour
     {
         return PannelloMagazzino.pannelloMagazzinoApertoPerTutorial;
     }
-
-
     
     public static bool checkIsNelNegozio()
     {
@@ -113,5 +111,4 @@ public class CheckTutorial : MonoBehaviour
     {
         return InterazionePassanti.parlatoConNPC;
     }
-
 }
