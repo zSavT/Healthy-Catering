@@ -6,6 +6,7 @@ using UnityEngine.Video;
 using System;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class VideoTutorialScript : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class VideoTutorialScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI testoBottoneSkip;
     [SerializeField] GameObject camera;
     [SerializeField] VideoPlayer videoPlayer;
+    [Header("Elementi Caricamento Livello")]
+    [SerializeField] private Slider sliderCaricamento;        //slider del caricamento della partita
+    [SerializeField] private UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
 
     // Examples of VideoPlayer function
     void Start()
@@ -71,19 +75,42 @@ public class VideoTutorialScript : MonoBehaviour
         playerFrameCount = Convert.ToInt64(videoPlayer.GetComponent<VideoPlayer>().frameCount);
 
 
-
+        
 
         if (playerCurrentFrame >= playerFrameCount)
         {
+            testoBottoneSkip.text = "Continua";
             print("ciao");
             videoPlayer.Pause();
-            testoBottoneSkip.text = "Continua";
+            
         }
          
     }
 
     public void caricaLivelloTutorial()
     {
-        SelezioneLivelli.caricaLivelloCitta();
+        StartCoroutine(caricamentoAsincrono(2));
     }
+
+   
+
+
+    /// <summary>
+    /// Carica il livello con la barra di caricamento
+    /// </summary>
+    /// <param name="sceneIndex">Indice della scena da caricare</param>
+    IEnumerator caricamentoAsincrono(int sceneIndex)
+    {
+        allAvvio.Invoke();
+        yield return new WaitForSecondsRealtime(2f);
+        AsyncOperation caricamento = SceneManager.LoadSceneAsync(sceneIndex);
+
+        while (!caricamento.isDone)
+        {
+            float progresso = Mathf.Clamp01(caricamento.progress / .9f);
+            sliderCaricamento.value = progresso;
+            yield return null;
+        }
+    }
+
 }
