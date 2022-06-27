@@ -60,7 +60,8 @@ public class ProgressoTutorial : MonoBehaviour
             "Premi <color=#B5D99C>Shift</color> per correre.",
             "Vai a parlare con tuo <color=#B5D99C>Zio</color>.",
             "Raggiungi il <color=#B5D99C>Ristorante</color>.",
-            "Servi due <color=#B5D99C>Clienti</color>.",
+            "Servi un <color=#B5D99C>Cliente</color> con un piatto idoneo.",
+            "Servi un <color=#B5D99C>Cliente</color> con un piatto non idoneo.",
             "Controlla il <color=#B5D99C>Magazzino</color>.",
             "Compra <color=#B5D99C>Ingredienti</color> dal negozio.",
             "Chiedi informazioni alle  <color=#B5D99C>Persone</color>."
@@ -186,7 +187,6 @@ public class ProgressoTutorial : MonoBehaviour
                             if (CheckTutorial.checkServitoPiattoNonCompatibile(giocatore))
                             {
                                 numeroScritteMostrate++;
-                                giocatore.aggiornaInventario(ingredienteInPiu, true);
                             }
                 }
 
@@ -194,6 +194,7 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.finitiIngredientiMostrato)
                     {
+                        PannelloMagazzino.pannelloMagazzinoApertoPerTutorial = false;
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.finitiIngredienti);
                         OkBoxVideo.finitiIngredientiMostrato  = true;
                     }
