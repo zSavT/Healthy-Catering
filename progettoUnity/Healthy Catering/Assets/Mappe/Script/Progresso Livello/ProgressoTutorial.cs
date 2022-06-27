@@ -46,8 +46,6 @@ public class ProgressoTutorial : MonoBehaviour
         print("iniziato tutorial");
         riproduciVideo();
         
-        playerSaGiocareFPS.apriPannelloPlayerSaGiocareFPS();
-
         inTutorial = true;
         canvasVideoTutorial.SetActive(true);
         //le disattivo per attivarle solo nel momento opportuno - Questi elementi sono nel loro specifico pannello, che va attivato poi quando serve.
@@ -74,22 +72,25 @@ public class ProgressoTutorial : MonoBehaviour
 
     private void Update()
     {
-
-        
         if (!saGiocareSettato)
         {
-            playerStop.Invoke();
-            playerSaGiocareFPS.apriPannelloPlayerSaGiocareFPS();
-
-            siOno = PlayerSaGiocareFPS.getSiOno();
+            if (PlayerSaGiocareFPS.siOnoSettato())
+            {
+                siOno = PlayerSaGiocareFPS.getSiOno();
                 
-            if (siOno == 1)
-                numeroScritteMostrate = posizioneScritteDaMostrareSaGiocare;
-            else if (siOno == -1)
-                numeroScritteMostrate = 0;
+                if (siOno == 1)
+                    numeroScritteMostrate = posizioneScritteDaMostrareSaGiocare;
+                else if (siOno == -1)
+                    numeroScritteMostrate = 0;
 
-            if (siOno != 0)
-                saGiocareSettato = true;
+                if (siOno != 0)
+                    saGiocareSettato = true;
+            }
+            else
+            {
+                playerStop.Invoke();
+                playerSaGiocareFPS.apriPannelloPlayerSaGiocareFPS();
+            }
         }
         else
         {

@@ -43,6 +43,11 @@ public class PlayerSaGiocareFPS : MonoBehaviour
         siOno = -1;
     }
 
+    public static bool siOnoSettato ()
+    {
+        return siOno != 0;
+    }
+
     public static int getSiOno()
     {
         return siOno;
