@@ -10,10 +10,6 @@ using UnityEngine.Events;
 
 public class VideoTutorialScript : MonoBehaviour
 {
-    private long playerCurrentFrame;
-    private long playerFrameCount;
-
-    [SerializeField] private TextMeshProUGUI testoBottoneSkip;
     [SerializeField] GameObject camera;
     [SerializeField] VideoPlayer videoPlayer;
     [Header("Elementi Caricamento Livello")]
@@ -67,32 +63,22 @@ public class VideoTutorialScript : MonoBehaviour
         // associated with this preparation one can use videoPlayer.Prepare() along with
         // its prepareCompleted event.
         videoPlayer.Play();
+        StartCoroutine(autoSkip(((float)videoPlayer.length) + 2f));          //Aggiungo un secondo di delay per dare la possibilità ai pc poco performanti di non caricarli troppo
+
     }
 
-    private void Update()
-    {
-        playerCurrentFrame = videoPlayer.GetComponent<VideoPlayer>().frame;
-        playerFrameCount = Convert.ToInt64(videoPlayer.GetComponent<VideoPlayer>().frameCount);
-
-
-        
-
-        if (playerCurrentFrame >= playerFrameCount)
-        {
-            testoBottoneSkip.text = "Continua";
-            print("ciao");
-            videoPlayer.Pause();
-            
-        }
-         
-    }
 
     public void caricaLivelloTutorial()
     {
         StartCoroutine(caricamentoAsincrono(2));
     }
 
-   
+    IEnumerator autoSkip(float tempo)
+    {
+        yield return new WaitForSecondsRealtime(tempo);
+        caricaLivelloTutorial();
+    }
+
 
 
     /// <summary>
