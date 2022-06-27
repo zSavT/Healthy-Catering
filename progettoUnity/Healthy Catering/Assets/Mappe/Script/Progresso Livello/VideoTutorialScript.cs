@@ -1,16 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
-using System;
 using UnityEngine.UI;
-using TMPro;
 using UnityEngine.Events;
+using Wilberforce;
 
 public class VideoTutorialScript : MonoBehaviour
 {
-    [SerializeField] GameObject camera;
+    [SerializeField] GameObject cameraGioco;
     [SerializeField] VideoPlayer videoPlayer;
     [Header("Elementi Caricamento Livello")]
     [SerializeField] private Slider sliderCaricamento;        //slider del caricamento della partita
@@ -18,7 +16,8 @@ public class VideoTutorialScript : MonoBehaviour
 
     // Examples of VideoPlayer function
     void Start()
-    {   
+    {
+        cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         /*
         // Will attach a VideoPlayer to the main camera.
         GameObject camera = GameObject.Find("Main Camera");
