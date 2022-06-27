@@ -43,8 +43,6 @@ public class ProgressoTutorial : MonoBehaviour
 
     OggettoQuantita<int> ingredienteInPiu = new OggettoQuantita<int>(10, 1);//mango
 
-    [SerializeField] private UnityEvent playerRiprendiMovimento;
-
     private void Start()
     {
         print("iniziato tutorial");
@@ -155,33 +153,51 @@ public class ProgressoTutorial : MonoBehaviour
                         OkBoxVideo.vaiAlRistoranteMostrato = true;
                     }
 
-                    if (CheckTutorial.checkVaiRistorante()) { numeroScritteMostrate++; }
+                    if (CheckTutorial.checkVaiRistorante()) { 
+                        numeroScritteMostrate++;
+                        giocatore.setInventarioLivello(0);
+                    }
                 }
                 else if (numeroScritteMostrate == 5)
                 {
-                    if (!OkBoxVideo.meccanicheServireMostrato)
+                    if (!OkBoxVideo.meccanicheServireCompatibileMostrato)
                     {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.meccanicheServire);
-                        OkBoxVideo.meccanicheServireMostrato = true;
-
-                        playerRiprendiMovimento.Invoke();
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.meccanicheServireCompatibile);
+                        OkBoxVideo.meccanicheServireCompatibileMostrato = true;
                     }
 
                     if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
                         if (giocatore != null)
-                            if (CheckTutorial.checkServitoPiattoCompatibileENon(giocatore)) { 
+                            if (CheckTutorial.checkServitoPiattoCompatibile(giocatore)) { 
+                                numeroScritteMostrate++;
+                                giocatore.setInventarioLivello(0.5);
+                            }
+                }
+                else if (numeroScritteMostrate == 6)
+                {
+                    if (!OkBoxVideo.meccanicheServireNonCompatibileMostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.meccanicheServireNonCompatibile);
+                        OkBoxVideo.meccanicheServireNonCompatibileMostrato = true;
+                    }
+
+                    if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
+                        if (giocatore != null)
+                            if (CheckTutorial.checkServitoPiattoNonCompatibile(giocatore))
+                            {
                                 numeroScritteMostrate++;
                                 giocatore.aggiornaInventario(ingredienteInPiu, true);
                             }
                 }
-                else if (numeroScritteMostrate == 6)
+
+                else if (numeroScritteMostrate == 7)
                 {
                     if (!OkBoxVideo.finitiIngredientiMostrato)
                     {
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.finitiIngredienti);
                         OkBoxVideo.finitiIngredientiMostrato  = true;
                     }
-                    
+
                     if (CheckTutorial.checkVistoMagazzino()) { numeroScritteMostrate++; }
 
                     //nel magazzino dovremmo mettere un ingrediente che non e' presente nella ricetta ne del 
@@ -191,7 +207,7 @@ public class ProgressoTutorial : MonoBehaviour
                     //magari possiamo cambiare la scritta a "il magazzino sarebbe cosi se ci fossero degli
                     //ingredienti" e poi far scomparire l'ingrediente temp che abbiamo inserito dopo 5 secondi
                 }
-                else if (numeroScritteMostrate == 7)
+                else if (numeroScritteMostrate == 8)
                 {
                     if (!OkBoxVideo.doveEIlNegozioMostrato)
                     {
@@ -202,7 +218,7 @@ public class ProgressoTutorial : MonoBehaviour
                     if (CheckTutorial.checkIsNelNegozio()) //TODO implementazione
                         if (CheckTutorial.checkCompratiIngredienti(giocatore)) { numeroScritteMostrate++; };
                 }
-                else if (numeroScritteMostrate == 8)
+                else if (numeroScritteMostrate == 9)
                 {
                     if (!OkBoxVideo.interazioneNPCMostrato)
                     {

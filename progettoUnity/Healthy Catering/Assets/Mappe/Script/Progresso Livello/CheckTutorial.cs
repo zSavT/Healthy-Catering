@@ -83,12 +83,13 @@ public class CheckTutorial : MonoBehaviour
         return true; //TODO
     }
 
-    public static bool checkServitoPiattoCompatibileENon(Player giocatore)
+    public static bool checkServitoPiattoCompatibile(Player giocatore)
     {
-        return
-            !piattoCompatibile.piattoInInventario(giocatore.inventario) 
-            && 
-            !piattoNonCompatibile.piattoInInventario(giocatore.inventario);
+        return !piattoCompatibile.piattoInInventario(giocatore.inventario);
+    }
+    public static bool checkServitoPiattoNonCompatibile(Player giocatore)
+    {
+        return !piattoNonCompatibile.piattoInInventario(giocatore.inventario);
     }
 
     public static bool checkVistoMagazzino()

@@ -17,17 +17,19 @@ public class OkBoxVideo : MonoBehaviour
     public static readonly int sprint = 2;
     public static readonly int parlaZio = 3;
     public static readonly int vaiAlRistorante = 4;
-    public static readonly int meccanicheServire = 5;
-    public static readonly int finitiIngredienti = 6;
-    public static readonly int doveEIlNegozio = 7;
-    public static readonly int interazioneNPC = 8;
+    public static readonly int meccanicheServireCompatibile = 5;
+    public static readonly int meccanicheServireNonCompatibile = 6;
+    public static readonly int finitiIngredienti = 7;
+    public static readonly int doveEIlNegozio = 8;
+    public static readonly int interazioneNPC = 9;
     
     public static bool WASDmostrato = false;
     public static bool saltoMostrato = false;
     public static bool sprintMostrato = false;
     public static bool parlaZioMostrato = false;
     public static bool vaiAlRistoranteMostrato = false;
-    public static bool meccanicheServireMostrato = false;
+    public static bool meccanicheServireCompatibileMostrato = false;
+    public static bool meccanicheServireNonCompatibileMostrato = false;
     public static bool finitiIngredientiMostrato = false;
     public static bool doveEIlNegozioMostrato = false;
     public static bool interazioneNPCMostrato = false;
@@ -39,7 +41,8 @@ public class OkBoxVideo : MonoBehaviour
         "sprint",
         "parlaZio",
         "vaiAlRistorante",
-        "Come servire un cliente",
+        "Come servire un cliente compatibile",
+        "Come servire un cliente non compatibile",
         "Controllare l'inventario del magazzino del Negozio",
         "Rifornire il Magazzino visitando il Negozio",
         "Acquisire informazioni interagendo con i passanti"
@@ -52,7 +55,8 @@ public class OkBoxVideo : MonoBehaviour
         "testo sprint",
         "testo parlaZio",
         "testo vaiAlRistorante",
-        "Per poter interagire con i clienti si dovrà utilizzare il mouse come puntatore e selezionare il <color=#B5D99C>piatto</color> che si vuole servire al cliente quando richiesto attraverso la relativa schermata.",
+        "COMPATIBILE per poter interagire con i clienti si dovrà utilizzare il mouse come puntatore e selezionare il <color=#B5D99C>piatto</color> che si vuole servire al cliente quando richiesto attraverso la relativa schermata.",
+        "NON COMPATIBILEPer poter interagire con i clienti si dovrà utilizzare il mouse come puntatore e selezionare il <color=#B5D99C>piatto</color> che si vuole servire al cliente quando richiesto attraverso la relativa schermata.",
         "testo sono finiti gli ingredienti per fare i piatti",
         "testo Dov'e' il negozio",
         "Interagire con gli <color=#B5D99C>NPC</color> in giro per la città permetterà di ottenere <color=#B5D99C>suggerimenti</color> utili per servire piatti migliori, sia dal punto di vista dell’affinità le patologie che dal punto di vista del nutriScore e dell’ecoScore."
