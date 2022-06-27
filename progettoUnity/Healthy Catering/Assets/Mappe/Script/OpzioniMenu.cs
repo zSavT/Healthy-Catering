@@ -27,6 +27,7 @@ public class OpzioniMenu : MonoBehaviour
     [SerializeField] private Slider sliderVolumeMusica;
     [SerializeField] private AudioMixer audioMixerSuoni;
     [SerializeField] private Slider sliderVolumeSuoni;
+    [SerializeField] private AudioSource suonoClick;
     [Header("Impostazioni Sensibilità")]
     [SerializeField] private TextMeshProUGUI sliderSensibilitaTesto;
     [SerializeField] private Slider sliderSensibilita;
@@ -154,6 +155,7 @@ public class OpzioniMenu : MonoBehaviour
     /// <param name="indiceQualita">Indice qualità scelta dropdown</param>
     public void setQualita(int indiceQualita)
     {
+        suonoClick.Play();
         QualitySettings.SetQualityLevel(indiceQualita);
     }
 
@@ -185,6 +187,7 @@ public class OpzioniMenu : MonoBehaviour
     /// <param name="risoluzioneSelezionata">Indice scelta risoluzione dropdown</param>
     public void setRisoluzione(int risoluzioneSelezionata)
     {
+        suonoClick.Play();
         Resolution risoluzione = risoluzioni[risoluzioneSelezionata];
         Screen.SetResolution(risoluzione.width, risoluzione.height, schermoIntero.isOn, risoluzione.refreshRate);
         setRefreshRateToScelta(risoluzione.refreshRate);
@@ -215,6 +218,7 @@ public class OpzioniMenu : MonoBehaviour
     /// <param name="scelta">Indice scelta daltonismo dropdown</param>
     public void setDaltonismo(int scelta)
     {
+        suonoClick.Play();
         PlayerSettings.salvaImpostazioniDaltonismo(scelta);
     }
 }

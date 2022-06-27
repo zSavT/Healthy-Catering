@@ -8623,6 +8623,7 @@ MonoBehaviour:
   elementiConferma: {fileID: 866758270}
   bottoneSalva: {fileID: 440158603}
   cameraGioco: {fileID: 1949538935}
+  suonoClick: {fileID: 0}
 --- !u!1 &2045322638
 GameObject:
   m_ObjectHideFlags: 0
