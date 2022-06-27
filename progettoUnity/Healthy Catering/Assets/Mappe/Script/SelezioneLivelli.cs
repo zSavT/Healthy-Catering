@@ -22,6 +22,7 @@ public class SelezioneLivelli : MonoBehaviour
      * Menu Selezione Profilo Utente = 4
      * Menu Creazione Profilo Utente = 5
      * Classifica = 6
+     * Video Tutorial = 7
      */
     [SerializeField] private Camera cameraGioco;
     [SerializeField] private GameObject elementiDomandaUscita;
@@ -55,15 +56,23 @@ public class SelezioneLivelli : MonoBehaviour
     /// <param name="sceneIndex">Indice scena da caricare</param>
     public void playGame(int sceneIndex)
     {
-        if (sceneIndex == 2)
+        if (sceneIndex == 7)
         {
             PlayerSettings.livelloSelezionato = 0;
+            caricareVideoTutorial();
         } else if (sceneIndex == 6) {
             PlayerSettings.livelloSelezionato = 1;
+            avvioLivelloSelezionato(sceneIndex);
         } else
         {
             PlayerSettings.livelloSelezionato = 2;
+            avvioLivelloSelezionato(sceneIndex);
         }
+        
+    }
+
+    private void avvioLivelloSelezionato(int sceneIndex)
+    {
         allAvvio.Invoke();
         StartCoroutine(caricamentoAsincrono(sceneIndex));
     }
@@ -131,7 +140,6 @@ public class SelezioneLivelli : MonoBehaviour
     public static void caricaLivelloCitta()
     {
         SceneManager.LoadScene(2);
-
     }
 
 
@@ -141,6 +149,14 @@ public class SelezioneLivelli : MonoBehaviour
     public static void caricaClassifica()
     {
         SceneManager.LoadScene(6);
+    }
+
+    /// <summary>
+    /// Carica la scena del videoTutorial.
+    /// </summary>
+    public static void caricareVideoTutorial()
+    {
+        SceneManager.LoadScene(7);
     }
 
 }
