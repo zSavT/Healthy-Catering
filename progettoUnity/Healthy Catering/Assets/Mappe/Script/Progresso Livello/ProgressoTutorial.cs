@@ -103,22 +103,52 @@ public class ProgressoTutorial : MonoBehaviour
 
                 if (numeroScritteMostrate == 0)
                 {
+                    if (!OkBoxVideo.WASDmostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.WASD);
+                        OkBoxVideo.WASDmostrato = true;
+                    }
+
                     if (CheckTutorial.checkWASDeMouse()) { numeroScritteMostrate++; }
                 }
                 else if (numeroScritteMostrate == 1)
                 {
+                    if (!OkBoxVideo.saltoMostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.salto);
+                        OkBoxVideo.saltoMostrato = true;
+                    }
+
                     if (CheckTutorial.checkSalto()) { numeroScritteMostrate++; }
                 }
                 else if (numeroScritteMostrate == 2)
                 {
+                    if (!OkBoxVideo.sprintMostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.sprint);
+                        OkBoxVideo.sprintMostrato = true;
+                    }
+
                     if (CheckTutorial.checkSprint()) { numeroScritteMostrate++; }
                 }
                 else if (numeroScritteMostrate == 3)
                 {
+                    if (!OkBoxVideo.parlaZioMostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.parlaZio);
+                        OkBoxVideo.parlaZioMostrato = true;
+                    }
+
                     if (CheckTutorial.checkParlaConZio()) { numeroScritteMostrate++; }
                 }
                 else if (numeroScritteMostrate == 4)
                 {
+                    if (!OkBoxVideo.vaiAlRistoranteMostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.vaiAlRistorante);
+                        OkBoxVideo.vaiAlRistoranteMostrato = true;
+                    }
+
                     if (CheckTutorial.checkVaiRistorante()) { numeroScritteMostrate++; }
                 }
                 else if (numeroScritteMostrate == 5)

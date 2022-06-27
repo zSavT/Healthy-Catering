@@ -12,18 +12,33 @@ public class OkBoxVideo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI testo;
     [SerializeField] private Image immagineOGIF;
 
-    public static readonly int meccanicheServire = 0;
-    public static readonly int finitiIngredienti = 1;
-    public static readonly int doveEIlNegozio = 2;
-    public static readonly int interazioneNPC = 3;
-
+    public static readonly int WASD = 0;
+    public static readonly int salto = 1;
+    public static readonly int sprint = 2;
+    public static readonly int parlaZio = 3;
+    public static readonly int vaiAlRistorante = 4;
+    public static readonly int meccanicheServire = 5;
+    public static readonly int finitiIngredienti = 6;
+    public static readonly int doveEIlNegozio = 7;
+    public static readonly int interazioneNPC = 8;
+    
+    public static bool WASDmostrato = false;
+    public static bool saltoMostrato = false;
+    public static bool sprintMostrato = false;
+    public static bool parlaZioMostrato = false;
+    public static bool vaiAlRistoranteMostrato = false;
     public static bool meccanicheServireMostrato = false;
     public static bool finitiIngredientiMostrato = false;
     public static bool doveEIlNegozioMostrato = false;
     public static bool interazioneNPCMostrato = false;
-
+    
     List<string> titoli = new List<string>
     {
+        "wasd",
+        "salto",
+        "sprint",
+        "parlaZio",
+        "vaiAlRistorante",
         "Come servire un cliente",
         "Controllare l'inventario del magazzino del Negozio",
         "Rifornire il Magazzino visitando il Negozio",
@@ -32,6 +47,11 @@ public class OkBoxVideo : MonoBehaviour
 
     List<string> testi = new List<string>
     {
+        "testo wasd",
+        "testo salto",
+        "testo sprint",
+        "testo parlaZio",
+        "testo vaiAlRistorante",
         "Per poter interagire con i clienti si dovrà utilizzare il mouse come puntatore e selezionare il <color=#B5D99C>piatto</color> che si vuole servire al cliente quando richiesto attraverso la relativa schermata.",
         "testo sono finiti gli ingredienti per fare i piatti",
         "testo Dov'e' il negozio",
