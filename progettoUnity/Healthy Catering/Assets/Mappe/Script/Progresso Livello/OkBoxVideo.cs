@@ -24,18 +24,18 @@ public class OkBoxVideo : MonoBehaviour
 
     List<string> titoli = new List<string>
     {
-        "spiegazione meccaniche per servire",
-        "sono finiti gli ingredienti per fare i piatti",
-        "Dov'e' il negozio",
-        "interazione con gli npc"
+        "Come servire un cliente",
+        "Controllare l'inventario del magazzino del Negozio",
+        "Rifornire il Magazzino visitando il Negozio",
+        "Acquisire informazioni interagendo con i passanti"
     };
 
     List<string> testi = new List<string>
     {
-        "testo spiegazione meccaniche per servire",
+        "Per poter interagire con i clienti si dovrà utilizzare il mouse come puntatore e selezionare il <color=#B5D99C>piatto</color> che si vuole servire al cliente quando richiesto attraverso la relativa schermata.",
         "testo sono finiti gli ingredienti per fare i piatti",
         "testo Dov'e' il negozio",
-        "testo interazione con gli npc"
+        "Interagire con gli <color=#B5D99C>NPC</color> in giro per la città permetterà di ottenere <color=#B5D99C>suggerimenti</color> utili per servire piatti migliori, sia dal punto di vista dell’affinità le patologie che dal punto di vista del nutriScore e dell’ecoScore."
     };
 
     [SerializeField] private UnityEvent playerStop;
@@ -51,6 +51,7 @@ public class OkBoxVideo : MonoBehaviour
 
     public void apriOkBoxVideo(int posizione)
     {
+        pauseGame();
         pannello.SetActive(true);
         playerStop.Invoke();
         PuntatoreMouse.abilitaCursore();
@@ -78,6 +79,7 @@ public class OkBoxVideo : MonoBehaviour
 
         titolo.text = "";
         testo.text = "";
+        resumeGame();
     }
 
     private void cambiaImmagine(int posizione)
@@ -96,5 +98,21 @@ public class OkBoxVideo : MonoBehaviour
 
     private void setImmagineDefault (){
         immagineOGIF.sprite = Resources.Load<Sprite>("immaginiOGifOkBoxVideo/immagineOGifOkBoxVideoDefault"); 
+    }
+
+    /// <summary>
+    /// Metodo per ripristinare lo scorrere del tempo in gioco
+    /// </summary>
+    void resumeGame()
+    {
+        Time.timeScale = 1f; //sblocca il tempo
+    }
+
+    /// <summary>
+    /// Metodo per bloccare lo scorrere del tempo in gioco.
+    /// </summary>
+    void pauseGame()
+    {
+        Time.timeScale = 0f; //blocca il tempo
     }
 }

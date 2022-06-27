@@ -30,13 +30,6 @@ public class CheckTutorial : MonoBehaviour
     private static Piatto piattoCompatibile = new Piatto("", "", ingredientiPiattoCompatibile);
     private static Piatto piattoNonCompatibile = new Piatto("", "", ingredientiPiattoNonCompatibile);
 
-
-    //zio
-    private static bool parlatoConZio = false;
-
-    //npc passivi
-    private static bool parlatoNPCpassivo = false;
-
     public static bool checkWASDeMouse()
     {
         if (Input.GetKeyDown(KeyCode.W))

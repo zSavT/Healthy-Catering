@@ -17,11 +17,7 @@ public class ProgressoTutorial : MonoBehaviour
     [Header("Obbiettivi Tutorial")]
     //testo obbiettivo da cambiare di volta in volta
     [SerializeField] private TextMeshProUGUI obbiettivo1Testo;
-    [SerializeField] private Toggle obbiettivo1Toggle;
-    /*
-    [SerializeField] private TextMeshProUGUI obbiettivo2Testo;
-    [SerializeField] private TextMeshProUGUI obbiettivo2Toggle;
-    */
+    
 
     private bool videoInRiproduzione;
     private bool skipVideo;
@@ -62,12 +58,12 @@ public class ProgressoTutorial : MonoBehaviour
             "Premi <color=#B5D99C>W,A,S,D</color> per camminare.",
             "Premi <color=#B5D99C>Spazio</color> per saltare.",
             "Premi <color=#B5D99C>Shift</color> per correre.",
-            "parla zio",
+            "Vai a parlare con tuo <color=#B5D99C>Zio</color>.",
             "Raggiungi il <color=#B5D99C>Ristorante</color>.",
-            "servito piatto compatibile e non",
-            "controlla il magazzino",
-            "compra ingredienti",
-            "interagito con npc"
+            "Servi due <color=#B5D99C>Clienti</color>.",
+            "Controlla il <color=#B5D99C>Magazzino</color>.",
+            "Compra <color=#B5D99C>Ingredienti</color> dal negozio.",
+            "Chiedi informazioni alle  <color=#B5D99C>Persone</color>."
         };
 
         numeroScritteMostrate = 0;
@@ -101,7 +97,7 @@ public class ProgressoTutorial : MonoBehaviour
             {
                 if (i == numeroScritteMostrate)
                 {
-                    setobiettivoTesto(scritteDaMostrare[i]);
+                    setObiettivoTesto(scritteDaMostrare[i]);
                     giocatore = interazioniPlayer.getPlayer();
                 }
 
@@ -181,7 +177,7 @@ public class ProgressoTutorial : MonoBehaviour
                 }
                 else
                 {
-                    setobiettivoTesto("");//resetto il testo dell'obbiettivo 
+                    setObiettivoTesto("");//resetto il testo dell'obbiettivo 
                 }
             }
 
@@ -191,7 +187,6 @@ public class ProgressoTutorial : MonoBehaviour
         if (finitoTutorial)
         {
             obbiettivo1Testo.gameObject.SetActive(false);
-            obbiettivo1Toggle.gameObject.SetActive(false);
             inTutorial = false;
             progressoLivelloClassico.attivaSoloObbiettivi();
             iTween.Destroy(this.gameObject);
@@ -239,10 +234,9 @@ public class ProgressoTutorial : MonoBehaviour
     public void attivaObbiettiviTutorial()
     {
         obbiettivo1Testo.gameObject.SetActive(true);
-        obbiettivo1Toggle.gameObject.SetActive(true);
     }
 
-    private void setobiettivoTesto (string output)
+    private void setObiettivoTesto (string output)
     {
         obbiettivo1Testo.text = output;
     }
