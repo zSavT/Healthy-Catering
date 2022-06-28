@@ -1,161 +1,422 @@
 [
     {
-        "idIngrediente": 0,
-        "nome": "Spaghetti",
-        "descrizione": "Gli spaghetti sono un particolare formato di pasta prodotta esclusivamente con semole di grano duro e acqua, dalla forma lunga e sottile e di sezione tonda.",
-        "costo": 1.0,
-        "costoEco": 1,
-        "nutriScore": 1,
-        "dieta": 0,
-        "listaIdPatologieCompatibili": [
-            0
-        ]
-    },
-    {
         "idIngrediente": 1,
-        "nome": "Aglio",
-        "descrizione": "L'aglio (Allium sativum L.) è una pianta bulbosa della famiglia Amaryllidaceae (sottofamiglia Allioideae).",
-        "costo": 1.0,
-        "costoEco": 1,
-        "nutriScore": 1,
-        "dieta": 0,
-        "listaIdPatologieCompatibili": [
-            0
-        ]
+        "nome": "Olio",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 1,
+        "EcoScore": 1,
+        "listaIdPatologieCompatibili": [0, 1]
     },
     {
         "idIngrediente": 2,
-        "nome": "Olio extravergine d'oliva",
-        "descrizione": "L'olio di oliva è un olio alimentare estratto dalle olive, ovvero i frutti dell'olivo (Olea europaea). Il tipo vergine si ricava dalla spremitura meccanica delle olive.",
-        "costo": 1.0,
-        "costoEco": 1,
-        "nutriScore": 1,
-        "dieta": 0,
-        "listaIdPatologieCompatibili": [
-            0
-        ]
+        "nome": "Riso",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 2,
+        "EcoScore": 15,
+        "listaIdPatologieCompatibili": [0, 1]
     },
     {
         "idIngrediente": 3,
-        "nome": "Basilico",
-        "descrizione": "Il basilico (Ocimum basilicum, L., 1753) è una pianta erbacea annuale, appartenente alla famiglia delle Lamiaceae, normalmente coltivata come pianta aromatica.",
-        "costo": 1.0,
-        "costoEco": 1,
-        "nutriScore": 1,
-        "dieta": 0,
-        "listaIdPatologieCompatibili": [
-            0
-        ]
+        "nome": "Asparagi",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 0,
+        "EcoScore": 1,
+        "listaIdPatologieCompatibili": [0, 1]
     },
     {
         "idIngrediente": 4,
-        "nome": "Sugo di pomodoro",
-        "descrizione": "La salsa di pomodoro, o sugo di pomodoro, è un sugo ottenuto dalla cottura della polpa dei pomodori nell'olio di oliva e utilizzato nella cucina italiana come condimento per la pasta.",
-        "costo": 1.0,
-        "costoEco": 1,
-        "nutriScore": 1,
-        "dieta": 0,
-        "listaIdPatologieCompatibili": [
-            0
-        ]
+        "nome": "Cipolla",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 0,
+        "EcoScore": 1,
+        "listaIdPatologieCompatibili": [0, 1]
     },
     {
         "idIngrediente": 5,
-        "nome": "Peperoncino secco",
-        "descrizione": "Il peperoncino è il nome comune dato alla bacca ottenuta da alcune varietà piccanti del genere di piante Capsicum utilizzata principalmente come condimento.",
-        "costo": 1.0,
-        "costoEco": 1,
-        "nutriScore": 1,
-        "dieta": 0,
-        "listaIdPatologieCompatibili": [
-            0
-        ]
+        "nome": "Tagliatelle",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 2,
+        "EcoScore": 23,
+        "listaIdPatologieCompatibili": [0, 1]
     },
     {
         "idIngrediente": 6,
-        "nome": "Acqua",
-        "descrizione": "L'acqua è un ingrediente fondamentale in cucina. Il suo sapore determina il gusto di bevande come tè e caffè. La qualità dell'acqua utilizzata per cucinare condiziona anche la riuscita del processo di lievitazione così come la stessa ebollizione.",
-        "costo": 1.0,
-        "costoEco": 1,
-        "nutriScore": 1,
-        "dieta": 0,
-        "listaIdPatologieCompatibili": [
-            0
-        ]
+        "nome": "Fagioli",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 1,
+        "EcoScore": 10,
+        "listaIdPatologieCompatibili": [0, 1]
     },
     {
         "idIngrediente": 7,
-        "nome": "Pane",
-        "descrizione": "Il pane è un prodotto alimentare ottenuto dalla fermentazione, dalla formatura a cui segue una lievitazione, e successiva cottura in forno di un impasto a base di farina (normale o integrale), cereali e acqua, confezionato con diverse modalità, arricchito e caratterizzato frequentemente da ingredienti che si differenziano seguendo le tradizioni locali.",
-        "costo": 1.0,
-        "costoEco": 1,
-        "nutriScore": 1,
-        "dieta": 0,
-        "listaIdPatologieCompatibili": [
-            0,
-            1,
-            2,
-            3
-        ]
+        "nome": "Carota",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 0,
+        "EcoScore": 4,
+        "listaIdPatologieCompatibili": [0, 1]
     },
     {
         "idIngrediente": 8,
-        "nome": "Carne di pollo",
-        "descrizione": "La carne di pollo è la carne ricavata dalla macellazione del pollo.",
-        "costo": 1.0,
-        "costoEco": 1,
-        "nutriScore": 1,
-        "dieta": 2,
-        "listaIdPatologieCompatibili": [
-            0,
-            1,
-            2,
-            3
-        ]
+        "nome": "Sedano",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 0,
+        "EcoScore": 1,
+        "listaIdPatologieCompatibili": [0, 1]
     },
     {
         "idIngrediente": 9,
-        "nome": "Formaggio spalmabile",
-        "descrizione": "Buono",
-        "costo": 1.0,
-        "costoEco": 1,
-        "nutriScore": 1,
-        "dieta": 1,
-        "listaIdPatologieCompatibili": [
-            0,
-            1,
-            2,
-            3
-        ]
+        "nome": "Prezzemolo",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 0,
+        "EcoScore": 1,
+        "listaIdPatologieCompatibili": [0, 1]
     },
     {
         "idIngrediente": 10,
-        "nome": "Mango",
-        "descrizione": "Mango è il nome comune di un frutto tropicale e della pianta indiana che lo produce (Genere Mangifera); la specie più diffusa è senz'altro la M. indica, anche nota come mango comune o mango indiano.",
-        "costo": 1.0,
-        "costoEco": 1,
-        "nutriScore": 1,
-        "dieta": 0,
-        "listaIdPatologieCompatibili": [
-            0,
-            1,
-            2,
-            3
-        ]
+        "nome": "Farina",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 2,
+        "EcoScore": 20,
+        "listaIdPatologieCompatibili": [1]
     },
     {
         "idIngrediente": 11,
-        "nome": "Spinaci",
-        "descrizione": "Lo spinacio è una pianta erbacea della famiglia delle Amaranthaceae, sottofamiglia delle Chenopodioideae.",
-        "costo": 1.0,
-        "costoEco": 1,
-        "nutriScore": 1,
-        "dieta": 0,
-        "listaIdPatologieCompatibili": [
-            0,
-            1,
-            2,
-            3
-        ]
+        "nome": "Zucchero",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 1,
+        "EcoScore": 40,
+        "listaIdPatologieCompatibili": [1]
+    },
+    {
+        "idIngrediente": 12,
+        "nome": "Confettura ai frutti di bosco",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 0,
+        "EcoScore": 32,
+        "listaIdPatologieCompatibili": [1]
+    },
+    {
+        "idIngrediente": 13,
+        "nome": "Spaghetti",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 2,
+        "EcoScore": 23,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 14,
+        "nome": "Vongole",
+        "Descrizione": "",
+        "Dieta": 2,
+        "Costo": 1,
+        "NutriScore": 2,
+        "EcoScore": 18,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 15,
+        "nome": "Cozze",
+        "Descrizione": "",
+        "Dieta": 2,
+        "Costo": 1,
+        "NutriScore": 2,
+        "EcoScore": 18,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 16,
+        "nome": "Aglio",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 0,
+        "EcoScore": 1,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 17,
+        "nome": "Passata di Pomodoro",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 2,
+        "EcoScore": 28,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 18,
+        "nome": "Mozzarella",
+        "Descrizione": "",
+        "Dieta": 1,
+        "Costo": 1,
+        "NutriScore": 3,
+        "EcoScore": 21,
+        "listaIdPatologieCompatibili": [0]
+    },
+    {
+        "idIngrediente": 19,
+        "nome": "Basilico",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 0,
+        "EcoScore": 1,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 20,
+        "nome": "Salmone",
+        "Descrizione": "",
+        "Dieta": 2,
+        "Costo": 1,
+        "NutriScore": 2,
+        "EcoScore": 17,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 21,
+        "nome": "Patate",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 1,
+        "EcoScore": 15,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 22,
+        "nome": "Zucchine",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 0,
+        "EcoScore": 1,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 23,
+        "nome": "Maggiorana",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 0,
+        "EcoScore": 1,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 24,
+        "nome": "Uova",
+        "Descrizione": "",
+        "Dieta": 1,
+        "Costo": 1,
+        "NutriScore": 2,
+        "EcoScore": 24,
+        "listaIdPatologieCompatibili": [0]
+    },
+    {
+        "idIngrediente": 25,
+        "nome": "Guanciale",
+        "Descrizione": "",
+        "Dieta": 2,
+        "Costo": 1,
+        "NutriScore": 4,
+        "EcoScore": 40,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 26,
+        "nome": "Pecorino",
+        "Descrizione": "",
+        "Dieta": 1,
+        "Costo": 1,
+        "NutriScore": 3,
+        "EcoScore": 29,
+        "listaIdPatologieCompatibili": [0]
+    },
+    {
+        "idIngrediente": 27,
+        "nome": "Cioccolato",
+        "Descrizione": "",
+        "Dieta": 1,
+        "Costo": 1,
+        "NutriScore": 2,
+        "EcoScore": 37,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 28,
+        "nome": "Burro",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 3,
+        "EcoScore": 40,
+        "listaIdPatologieCompatibili": [0]
+    },
+    {
+        "idIngrediente": 29,
+        "nome": "Cacao",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 2,
+        "EcoScore": 29,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 30,
+        "nome": "Lievito",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 0,
+        "EcoScore": 1,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 31,
+        "nome": "Pollo",
+        "Descrizione": "",
+        "Dieta": 2,
+        "Costo": 1,
+        "NutriScore": 3,
+        "EcoScore": 20,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 32,
+        "nome": "Rosmarino",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 0,
+        "EcoScore": 1,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 33,
+        "nome": "Alloro",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 0,
+        "EcoScore": 1,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 34,
+        "nome": "Lattuga",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 0,
+        "EcoScore": 1,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 35,
+        "nome": "Pomodoro",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 0,
+        "EcoScore": 1,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 36,
+        "nome": "Pane",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 1,
+        "EcoScore": 25,
+        "listaIdPatologieCompatibili": [1]
+    },
+    {
+        "idIngrediente": 37,
+        "nome": "Carne di manzo",
+        "Descrizione": "",
+        "Dieta": 2,
+        "Costo": 1,
+        "NutriScore": 4,
+        "EcoScore": 40,
+        "listaIdPatologieCompatibili": [0]
+    },
+    {
+        "idIngrediente": 38,
+        "nome": "Calamari",
+        "Descrizione": "",
+        "Dieta": 2,
+        "Costo": 1,
+        "NutriScore": 2,
+        "EcoScore": 18,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 39,
+        "nome": "Gamberi",
+        "Descrizione": "",
+        "Dieta": 2,
+        "Costo": 1,
+        "NutriScore": 2,
+        "EcoScore": 20,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 40,
+        "nome": "Alici",
+        "Descrizione": "",
+        "Dieta": 2,
+        "Costo": 1,
+        "NutriScore": 2,
+        "EcoScore": 18,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 41,
+        "nome": "Peperoni",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 0,
+        "EcoScore": 1,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
+        "idIngrediente": 42,
+        "nome": "Melanzane",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 0,
+        "EcoScore": 1,
+        "listaIdPatologieCompatibili": [0, 1]
     }
 ]
