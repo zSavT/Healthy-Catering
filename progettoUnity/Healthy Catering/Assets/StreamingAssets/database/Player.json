@@ -2,6 +2,7 @@
   {
     "nome": "Sav",
     "soldi": 8.085,
+    "inventario": [],
     "punteggio": [
       242,
       2,
@@ -11,10 +12,21 @@
   {
     "nome": "keepuwu",
     "soldi": 100.0,
+    "inventario": [],
     "punteggio": [
       590,
       1,
       2
+    ]
+  },
+  {
+    "nome": "aaa",
+    "soldi": 0.0,
+    "inventario": [],
+    "punteggio": [
+      0,
+      0,
+      0
     ]
   }
 ]

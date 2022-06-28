@@ -73,10 +73,12 @@ public class Interactor : MonoBehaviour
     void Update()
     {
         interazioneUtenteConNPCVari();
+        /*//teletrasporto a ristorante
         if(Input.GetKeyDown(KeyCode.Tab))
         {
             this.gameObject.transform.position = destinazioneTeleport.transform.position;
         }
+        */
     }
 
     public void menuApribileOnOff()

@@ -357,7 +357,7 @@ public class PannelloNegozio : MonoBehaviour
             float prezzoDaPagare = ingredienteAttualmenteSelezionato.costo * quantitaAttualmenteSelezionata;
             giocatore.guadagna(-prezzoDaPagare);
             guiInGame.aggiornaValoreSoldi(giocatore.soldi);
-            giocatore.aggiornaInventario(new OggettoQuantita<int> (ingredienteAttualmenteSelezionato.idItem, quantitaAttualmenteSelezionata), true);
+            giocatore.aggiornaInventario(new OggettoQuantita<int> (ingredienteAttualmenteSelezionato.idIngrediente, quantitaAttualmenteSelezionata), true);
             quantitaAttualmenteSelezionata = 0;
             resetQuantitaTuttiBottoni();
             compratoIngredientePerTutorial = true;

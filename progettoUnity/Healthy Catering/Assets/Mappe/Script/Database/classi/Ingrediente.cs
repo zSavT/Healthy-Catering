@@ -2,8 +2,13 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-public class Ingrediente : Item
+public class Ingrediente
 {
+    //ex item
+    public int idIngrediente = -1;
+    public string nome = "";
+    public string descrizione = "";
+    //ingrediente
     public float costo = 0;
     public int costoEco = 0;
     public int nutriScore = 0;
@@ -13,10 +18,13 @@ public class Ingrediente : Item
 
     //base sarebbe, più o meno, il super di java
     public Ingrediente(
-        int idItem, string nome, string descrizione,
+        int idIngrediente, string nome, string descrizione,
         float costo, int costoEco, int nutriScore, int dieta, List<int> listaIdPatologieCompatibili)
-        : base(idItem, nome, descrizione)
     {
+        this.idIngrediente = idIngrediente;
+        this.nome = nome;
+        this.descrizione = descrizione;
+
         this.costo = costo;
         this.costoEco = costoEco;
         this.nutriScore = nutriScore;
@@ -24,8 +32,12 @@ public class Ingrediente : Item
         this.listaIdPatologieCompatibili = listaIdPatologieCompatibili;
     }
 
-    public Ingrediente() : base()
+    public Ingrediente()
     {
+        this.idIngrediente = -1;
+        this.nome = "";
+        this.descrizione = "";
+
         this.costo = -1;
         this.costoEco = -1;
         this.nutriScore = -1;
@@ -176,7 +188,7 @@ public class Ingrediente : Item
 
         foreach (Ingrediente ingrediente in databaseIngredienti)
         {
-            if (id == ingrediente.idItem)
+            if (id == ingrediente.idIngrediente)
             {
                 return ingrediente;
             }
@@ -193,5 +205,13 @@ public class Ingrediente : Item
             output += ingrediente.nome + "\n";
         }
         return output;
+    }
+
+    public static Ingrediente creaNuovoIngrediente(string nome = null)
+    {
+        nome ??= Database.getNewStringaFromUtente("Inserisci il nome dell'ingrediente che vuoi aggiungere");
+
+        Database.aggiungiIngrediente(new Ingrediente(nome));
+        return Database.getUltimoOggettoAggiuntoAlDatabase(new Ingrediente());
     }
 }
