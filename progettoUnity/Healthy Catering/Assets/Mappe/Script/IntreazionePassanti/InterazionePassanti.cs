@@ -42,8 +42,8 @@ public class InterazionePassanti : MonoBehaviour
     //Tutorial
     private List<string> scritteZio = new List<string>
     {
-        "ciao sono lo zio",
-        "banane"
+        "Eccoti qua! Questo edificio è il nostro <color=#B5D99C>ristorante</color> o meglio, ormai è il tuo ristorante.",
+        "Spero che questo lavoro ti piacerà e ricordati, si sembre garbatƏ con i <color=#B5D99C>clienti</color>, sapranno ricompensarti."
     };
     private int numeroScritteZioMostrate = 0; 
 
