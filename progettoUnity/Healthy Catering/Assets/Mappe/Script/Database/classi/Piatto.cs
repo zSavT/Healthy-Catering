@@ -288,7 +288,7 @@ public class Piatto
 
     public bool piattoInInventario(List <OggettoQuantita<int>> inventario)
     {
-        bool ingredienteTrovato;
+        bool ingredienteTrovato = false;
         foreach (OggettoQuantita<int> ingredientePiatto in listaIdIngredientiQuantita)
         {
             ingredienteTrovato = false;

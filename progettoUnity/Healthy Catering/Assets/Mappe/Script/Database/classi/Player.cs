@@ -2,13 +2,15 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Newtonsoft.Json;
+
 public class Player
 {
     public string nome = "";
 
     public float soldi = 0;
 
-    public List<OggettoQuantita<int>> inventario = new List<OggettoQuantita<int>>();
+    [JsonIgnore] public List<OggettoQuantita<int>> inventario = new List<OggettoQuantita<int>>();
 
     public static readonly int numeroLivelli = 3;
     public int[] punteggio = new int [numeroLivelli];
