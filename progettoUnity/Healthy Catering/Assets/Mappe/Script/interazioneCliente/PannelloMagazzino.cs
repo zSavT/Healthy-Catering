@@ -8,6 +8,7 @@ public class PannelloMagazzino : MonoBehaviour
 {
     [SerializeField] private GameObject pannelloMagazzino;
     private bool pannelloMagazzinoAperto;
+    public static bool pannelloMagazzinoApertoPerTutorial = false;
     [SerializeField] private Image sfondoImmaginePC;
     [SerializeField] private Button tastoX;
 
@@ -82,12 +83,11 @@ public class PannelloMagazzino : MonoBehaviour
 
     public void cambiaSfondoMagazzino()
     {
+        pannelloMagazzinoApertoPerTutorial = true;
         if (AspectRatio(Screen.height, Screen.width) == "4:3" || AspectRatio(Screen.height, Screen.width) == "3:4")
             sfondoImmaginePC.sprite = Resources.Load<Sprite>("SchermataMagazzino4_3");
         else
             sfondoImmaginePC.sprite = Resources.Load<Sprite>("SchermataMagazzino");
-
-
     }
 
     public void cambiaSfondoDesktop()

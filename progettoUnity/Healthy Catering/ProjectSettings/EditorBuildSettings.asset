@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Mappe/Classifica.unity
     guid: 0f963e7f49f6d954992b5aea701fa248
+  - enabled: 1
+    path: Assets/Mappe/VideoTutorial.unity
+    guid: fee951b2823b5d345a3bc303f6caf04d
   m_configObjects: {}

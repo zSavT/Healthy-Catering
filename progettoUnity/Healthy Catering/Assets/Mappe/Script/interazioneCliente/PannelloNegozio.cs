@@ -45,6 +45,7 @@ public class PannelloNegozio : MonoBehaviour
     [SerializeField] private TextMeshProUGUI testoPannelloSeiSicuro;
     private Ingrediente ingredienteAttualmenteSelezionato;
     private int quantitaAttualmenteSelezionata;
+    public static bool compratoIngredientePerTutorial = false;
 
     void Start()
     {
@@ -359,6 +360,7 @@ public class PannelloNegozio : MonoBehaviour
             giocatore.aggiornaInventario(new OggettoQuantita<int> (ingredienteAttualmenteSelezionato.idItem, quantitaAttualmenteSelezionata), true);
             quantitaAttualmenteSelezionata = 0;
             resetQuantitaTuttiBottoni();
+            compratoIngredientePerTutorial = true;
         }
         chiudiPannelloSeiSicuro();
     }

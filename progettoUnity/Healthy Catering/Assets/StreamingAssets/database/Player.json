@@ -1,85 +1,20 @@
 [
-    {
-        "nome": "Sav",
-        "soldi": 8.085,
-        "inventario": [
-            {
-                "oggetto": 0,
-                "quantita": 5
-            },
-            {
-                "oggetto": 1,
-                "quantita": 5
-            },
-            {
-                "oggetto": 2,
-                "quantita": 5
-            },
-            {
-                "oggetto": 3,
-                "quantita": 5
-            },
-            {
-                "oggetto": 5,
-                "quantita": 5
-            },
-            {
-                "oggetto": 4,
-                "quantita": 5
-            },
-            {
-                "oggetto": 5,
-                "quantita": 5
-            },
-            {
-                "oggetto": 6,
-                "quantita": 5
-            },
-            {
-                "oggetto": 7,
-                "quantita": 5
-            },
-            {
-                "oggetto": 8,
-                "quantita": 1
-            },
-            {
-                "oggetto": 9,
-                "quantita": 1
-            },
-            {
-                "oggetto": 10,
-                "quantita": 1
-            },
-            {
-                "oggetto": 11,
-                "quantita": 1
-            }
-        ],
-        "punteggio": [
-            242,
-            2,
-            1
-        ]
-    },
-    {
-        "nome": "SavT",
-        "soldi": 220.0,
-        "inventario": [],
-        "punteggio": [
-            500,
-            3,
-            3
-        ]
-    },
-    {
-        "nome": "keepuwu",
-        "soldi": 100.0,
-        "inventario": [],
-        "punteggio": [
-            590,
-            1,
-            2
-        ]
-    }
+  {
+    "nome": "Sav",
+    "soldi": 8.085,
+    "punteggio": [
+      242,
+      2,
+      1
+    ]
+  },
+  {
+    "nome": "keepuwu",
+    "soldi": 100.0,
+    "punteggio": [
+      590,
+      1,
+      2
+    ]
+  }
 ]

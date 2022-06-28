@@ -20,6 +20,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     [SerializeField] private TMP_Dropdown dropDownColorePelle;
     [SerializeField] private TMP_Dropdown dropDownModello3D;
     [SerializeField] private Camera cameraGioco;
+    [SerializeField] private AudioSource suonoClick;
     private List<Player> player = new List<Player>();
     private List<string> nomiPlayerPresenti = new List<string>();
     private string nomeSelezionato = "";
@@ -131,6 +132,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     /// <param name="indice">Indice scela del modello player<br><strong>0: Maschio<br>1: Femmina</br></strong></br></param>
     public void setSceltaModelloGiocatore(int indice)
     {
+        suonoClick.Play();
         sceltaModelloPlayer = indice;
     }
 
@@ -178,6 +180,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     /// <param name="indiceScelta">Indice dropdown del genere<br><strong>0: Maschio<br>1: Femmina</br><br>2: Neutro</br></strong></br></param>
     public void setGenerePlayer(int indiceScelta)
     {
+        suonoClick.Play();
         sceltaGenere = indiceScelta;
         attivaDisattivaImpostazioniGenereNeutro(sceltaGenere);
     }
@@ -189,6 +192,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     /// <param name="indice">Indice del dropdown scelta colore pelle modello.<br><strong>0: Caucasico<br>1: Asiatico</br><br>2: Afro</br></strong></br></param>
     public void setPellePlayer(int indice)
     {
+        suonoClick.Play();
         sceltaColorePelle = indice;
     }
 
@@ -198,6 +202,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     /// <param name="indice">Indice della scelta dropdown lista nomi profili giocatore.</param>
     public void indiceSceltaNomeUtente(int indice)
     {
+        suonoClick.Play();
         nomeSelezionato = dropDownListaPlayer.options[dropDownListaPlayer.value].text;
         refreshValori();
     }

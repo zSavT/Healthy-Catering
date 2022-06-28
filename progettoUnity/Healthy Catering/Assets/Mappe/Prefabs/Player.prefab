@@ -2063,6 +2063,7 @@ MonoBehaviour:
   layerUnityTeleport:
     serializedVersion: 2
     m_Bits: 512
+  destinazioneTeleport: {fileID: 0}
   giocatoreGameObject: {fileID: 2985297774341178771}
 --- !u!143 &5218992458153246270
 CharacterController:

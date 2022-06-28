@@ -22,6 +22,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     [SerializeField] private GameObject elementiConferma;
     [SerializeField] private Button bottoneSalva;
     [SerializeField] private Camera cameraGioco;
+    [SerializeField] private AudioSource suonoClick;
     private List<Player> player = new List<Player>();
     private List<string> nomiPlayerPresenti = new List<string>();
     private string nomeGiocatoreScritto;
@@ -53,17 +54,10 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         elementiConferma.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        controlloNomeEsistente();
-    }
-
-
     /// <summary>
     /// Controlla se il nome inserito dall'utente, corrisponde con uno già presente nella lista.
     /// </summary>
-    private void controlloNomeEsistente()
+    public void controlloNomeEsistente()
     {
         if (nomeGiocatoreScritto != "")
         {
@@ -201,6 +195,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     /// <param name="indice">Indice del dropdown scelta colore pelle modello.<br><strong>0: Caucasico<br>1: Asiatico</br><br>2: Afro</br></strong></br></param>
     public void setPellePlayer(int indice)
     {
+        suonoClick.Play();
         sceltaColorePelle = indice;
     }
 
@@ -210,6 +205,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     /// <param name="indice">Indice scela del modello player<br><strong>0: Maschio<br>1: Femmina</br></strong></br></param>
     public void setSceltaModelloGiocatore(int indice)
     {
+        suonoClick.Play();
         sceltaModelloPlayer = indice;
     }
 
@@ -220,6 +216,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     /// <param name="indiceScelta">Indice dropdown del genere<br><strong>0: Maschio<br>1: Femmina</br><br>2: Neutro</br></strong></br></param>
     public void dropdownGenere(int indiceScelta)
     {
+        suonoClick.Play();
         sceltaGenere = indiceScelta;
         if (indiceScelta == 2)
         {

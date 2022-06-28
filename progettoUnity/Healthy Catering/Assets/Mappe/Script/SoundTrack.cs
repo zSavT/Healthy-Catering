@@ -14,7 +14,7 @@ public class SoundTrack : MonoBehaviour
 
     private void Start()
     {
-        audioMixer.SetFloat("volume", PlayerSettings.caricaImpostazioniVolume());
+        audioMixer.SetFloat("volume", PlayerSettings.caricaImpostazioniVolumeMusica());
     }
 
     private void Awake()

@@ -111,28 +111,6 @@ public class PlayerSettings : MonoBehaviour
     }
 
     //PROGRESSI LIVELLI
-    //LIVELLO 0
-
-    /// <summary>
-    /// Salva se il livello 1 è stato completato o meno per il profilo del giocatore giocante.
-    /// </summary>
-    /// <param name="completato">True completato, false non completato</param>
-    public static void salvaProgressoLivello0(bool completato)
-    {
-        if (completato)
-            PlayerPrefs.SetInt(caricaNomePlayerGiocante() + "_livello0", 1);
-        else
-            PlayerPrefs.SetInt(caricaNomePlayerGiocante() + "_livello0", 0);
-    }
-
-    /// <summary>
-    /// Carica se il livello 1 è stato completato o meno per il profilo del giocatore giocante.
-    /// </summary>
-    /// <returns>1 completato, 0 non completato.</returns>
-    public static int caricaProgressoLivello0()
-    {
-        return PlayerPrefs.GetInt(caricaNomePlayerGiocante() + "_livello0");
-    }
 
     //LIVELLO 1
 
@@ -317,25 +295,35 @@ public class PlayerSettings : MonoBehaviour
     {
         return PlayerPrefs.GetInt(caricaNomePlayerGiocante() + "_Daltonismo");
     }
+    //VOLUME PRINCIPALE GIOCO
 
     /// <summary>
-    /// Metodo che salva il valore dello slider del volume.
+    /// Metodo che salva il valore dello slider del volume della musica.
     /// </summary>
     /// <param name="volume">Valore del volume del gioco scelto dal giocatore nello slider</param>
-    public static void salvaImpostazioniVolume(float volume)
+    public static void salvaImpostazioniVolumeMusica(float volume)
     {
         PlayerPrefs.SetFloat("volume", volume);
     }
 
-    //VOLUME PRINCIPALE GIOCO
 
     /// <summary>
-    /// Metodo che carica il valore dello slider del volume.
+    /// Metodo che carica il valore dello slider del volume della musica.
     /// </summary>
     /// <returns>Valore del volume scelto</returns>
-    public static float caricaImpostazioniVolume()
+    public static float caricaImpostazioniVolumeMusica()
     {
         return PlayerPrefs.GetFloat("volume");
+    }
+
+    public static void salvaImpostazioniVolumeSuoni(float volume)
+    {
+        PlayerPrefs.SetFloat("volumeSuoni", volume);
+    }
+
+    public static float caricaImpostazioniVolumeSuoni()
+    {
+        return PlayerPrefs.GetFloat("volumeSuoni");
     }
 
     //IMPOSTAZIONI FULL SCREEN
