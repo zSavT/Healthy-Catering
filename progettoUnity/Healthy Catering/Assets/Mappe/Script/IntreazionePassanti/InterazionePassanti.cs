@@ -34,8 +34,19 @@ public class InterazionePassanti : MonoBehaviour
     private int numeroDiScritteTotale;
     
     private bool ultimoNPCInteragitoNuovo;
-    
+
+    public static bool parlatoConNPC = false;
+    public static bool parlatoConZio = false;
     private int numeroMassimoDiCaratteriPerSchermata = 100;
+
+    //Tutorial
+    private List<string> scritteZio = new List<string>
+    {
+        "Eccoti qua! Questo edificio è il nostro <color=#B5D99C>ristorante</color> o meglio, ormai è il tuo ristorante.",
+        "Spero che questo lavoro ti piacerà e ricordati, si sembre garbatƏ con i <color=#B5D99C>clienti</color>, sapranno ricompensarti."
+    };
+    private int numeroScritteZioMostrate = 0; 
+
 
     private void Start()
     {
@@ -165,7 +176,8 @@ public class InterazionePassanti : MonoBehaviour
     }
 
     public void apriPannelloInterazionePassanti(string nomeNPC)
-    { 
+    {
+        parlatoConNPC = true;
         pannelloInterazionePassanti.SetActive(true);
 
         scritteMostrateOra = trovaScritteDaMostrare(nomeNPC);
@@ -180,26 +192,44 @@ public class InterazionePassanti : MonoBehaviour
         }
 
         pannelloInterazionePassantiAperto = true;
+
+        if (isNPCzio (nomeNPC))
+        {
+            parlatoConZio = true;
+            parlatoConNPC = false;
+        }
     }
 
     private List<string> trovaScritteDaMostrare(string nomeNPC)
     {
-        //se l'npc e' gia presente nel dizionario
-        foreach ((List<string>, List<string>) chiaveValore in scritteENPCsAssegnato)
+        if (!isNPCzio(nomeNPC))
         {
-            if (chiaveValore.Item2.Contains(nomeNPC))
+            //se l'npc e' gia presente nel dizionario
+            foreach ((List<string>, List<string>) chiaveValore in scritteENPCsAssegnato)
             {
-                ultimoNPCInteragitoNuovo = false;
-                return chiaveValore.Item1;
+                if (chiaveValore.Item2.Contains(nomeNPC))
+                {
+                    ultimoNPCInteragitoNuovo = false;
+                    return chiaveValore.Item1;
+                }
             }
+
+            //ora so che l'npc non ha ancora una scritta corrispondente:
+            //aggiungo il nome dell'npc alla lista dei nomi degli npc relativi alla scritta
+            scritteENPCsAssegnato[numeroDiScritteAssegnate].Item2.Add(nomeNPC);
+            ultimoNPCInteragitoNuovo = true;
+
+            return scritteENPCsAssegnato[numeroDiScritteAssegnate].Item1;
         }
+        else
+        {
+            return scritteZio;
+        }
+    }
 
-        //ora so che l'npc non ha ancora una scritta corrispondente:
-        //aggiungo il nome dell'npc alla lista dei nomi degli npc relativi alla scritta
-        scritteENPCsAssegnato[numeroDiScritteAssegnate].Item2.Add(nomeNPC);
-        ultimoNPCInteragitoNuovo = true;
-
-        return scritteENPCsAssegnato[numeroDiScritteAssegnate].Item1;
+    private bool isNPCzio(string nomeNPC)
+    {
+        return (nomeNPC.ToLower().Contains("zio") || nomeNPC.ToLower().Contains("tutorial"));
     }
 
     private void aggiornaValoreNumeroScritteAssegnate()

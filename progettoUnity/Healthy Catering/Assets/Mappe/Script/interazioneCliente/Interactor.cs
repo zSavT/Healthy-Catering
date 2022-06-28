@@ -34,8 +34,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private UnityEvent uscitaRangeMenu;
     [Header("Teleport")]
     [SerializeField] private LayerMask layerUnityTeleport = 9;
-    private Transform destinazioneTeleport;
-    [SerializeField] private GameObject giocatoreGameObject;
+    public Transform destinazioneTeleport;
 
 
     private Vector3 posizioneCameraOriginale;
@@ -49,10 +48,10 @@ public class Interactor : MonoBehaviour
 
     bool bottoniInterazioneClienteGeneratiLaPrimaVolta;
 
-    private int livelloAttuale;
+    private int livelloAttuale = PlayerSettings.livelloSelezionato;
 
     void Start()
-    { 
+    {
         try
         {
             giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
@@ -74,6 +73,10 @@ public class Interactor : MonoBehaviour
     void Update()
     {
         interazioneUtenteConNPCVari();
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            this.gameObject.transform.position = destinazioneTeleport.transform.position;
+        }
     }
 
     public void menuApribileOnOff()
@@ -107,10 +110,16 @@ public class Interactor : MonoBehaviour
         {
             if (NPCClientePuntato())
             {
-                inquadratoNPC.Invoke();
-                if (Input.GetKeyDown(tastoInterazione))
+                if(npc.raggiuntoBancone)
                 {
-                    interazioneCliente(IDClientePuntato);
+                    inquadratoNPC.Invoke();
+                    if (Input.GetKeyDown(tastoInterazione))
+                    {
+                        interazioneCliente(IDClientePuntato);
+                    }
+                } else
+                {
+                    uscitaRangeMenu.Invoke();
                 }
             } else if (pcPuntato())
             {
@@ -150,7 +159,7 @@ public class Interactor : MonoBehaviour
                 inquadratoNPC.Invoke();
                 if (Input.GetKeyDown(tastoInterazione) && !(negozio.getPannelloAperto()))
                 {
-                    giocatoreGameObject.transform.position = destinazioneTeleport.transform.position;
+                    this.gameObject.transform.position = destinazioneTeleport.transform.position;
                 }
             }
             else
@@ -298,6 +307,7 @@ public class Interactor : MonoBehaviour
         playerStop.Invoke();
         
         pannelloMenuCliente.setCliente(IDClientePuntato, giocatore, npc);
+        
         PuntatoreMouse.abilitaCursore();
         pannelloApertoChiuso();
     }

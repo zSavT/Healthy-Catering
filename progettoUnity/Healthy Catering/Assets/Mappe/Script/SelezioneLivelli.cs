@@ -22,6 +22,7 @@ public class SelezioneLivelli : MonoBehaviour
      * Menu Selezione Profilo Utente = 4
      * Menu Creazione Profilo Utente = 5
      * Classifica = 6
+     * Video Tutorial = 7
      */
     [SerializeField] private Camera cameraGioco;
     [SerializeField] private GameObject elementiDomandaUscita;
@@ -34,14 +35,13 @@ public class SelezioneLivelli : MonoBehaviour
     [SerializeField] private UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
 
 
-
     // Start is called before the first frame update
     void Start()
     {
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         if (PlayerSettings.caricaProgressoLivello1() == 1)
         {
-            bottoneLivello1.interactable = true;                
+            bottoneLivello1.interactable = true;
         }
         if (PlayerSettings.caricaProgressoLivello2() == 1)
         {
@@ -56,15 +56,23 @@ public class SelezioneLivelli : MonoBehaviour
     /// <param name="sceneIndex">Indice scena da caricare</param>
     public void playGame(int sceneIndex)
     {
-        if (sceneIndex == 2)
+        if (sceneIndex == 7)
         {
             PlayerSettings.livelloSelezionato = 0;
+            caricareVideoTutorial();
         } else if (sceneIndex == 6) {
             PlayerSettings.livelloSelezionato = 1;
+            avvioLivelloSelezionato(sceneIndex);
         } else
         {
             PlayerSettings.livelloSelezionato = 2;
+            avvioLivelloSelezionato(sceneIndex);
         }
+        
+    }
+
+    private void avvioLivelloSelezionato(int sceneIndex)
+    {
         allAvvio.Invoke();
         StartCoroutine(caricamentoAsincrono(sceneIndex));
     }
@@ -134,9 +142,22 @@ public class SelezioneLivelli : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
+
+    /// <summary>
+    /// Carica la scena della classifica.
+    /// </summary>
     public static void caricaClassifica()
     {
         SceneManager.LoadScene(6);
     }
+
+    /// <summary>
+    /// Carica la scena del videoTutorial.
+    /// </summary>
+    public static void caricareVideoTutorial()
+    {
+        SceneManager.LoadScene(7);
+    }
+
 }
 

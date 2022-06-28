@@ -4,6 +4,33 @@ using UnityEngine;
 
 public class Player
 {
+    List<OggettoQuantita<int>> inventarioLivello0 = new List<OggettoQuantita<int>>
+    {
+        new OggettoQuantita<int> (0,1),
+        new OggettoQuantita<int> (1,1),
+        new OggettoQuantita<int> (2,1),
+        new OggettoQuantita<int> (3,1),
+        new OggettoQuantita<int> (4,1),
+        new OggettoQuantita<int> (5,1),
+        new OggettoQuantita<int> (6,1),
+    };
+
+    List<OggettoQuantita<int>> inventarioLivello05 = new List<OggettoQuantita<int>>
+    {
+        new OggettoQuantita<int> (7,1),
+        new OggettoQuantita<int> (8,1),
+    };
+    
+    List<OggettoQuantita<int>> inventarioLivello1 = new List<OggettoQuantita<int>>
+    {
+
+    };
+    List<OggettoQuantita<int>> inventarioLivello2 = new List<OggettoQuantita<int>>
+    {
+
+    };
+
+
     /*
     tutti i metodi e gli attributi e le variabili dichiarate nei metodi di questa classe con il nome 'Item' al loro interno sono in verità Ingredienti (o id di Ingredienti)
     reference: discussione relativa a questa cosa a partire dal commento che inizia con questa stringa:
@@ -188,7 +215,14 @@ public class Player
 
     public bool inventarioVuoto()
     {
-        return this.inventario.Count == 0;
+        foreach (OggettoQuantita<int> ingrediente in inventario)
+        {
+            if (ingrediente.quantita != 0)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     public string stampaInventario()
@@ -200,6 +234,25 @@ public class Player
             output += temp.ToString() + "\n" + oggetto.quantita + "\n\n";
         }
         return output;
+    }
+
+    public void setInventarioLivello (double livello)
+    {
+        switch (livello)
+        {
+            case 0:
+                this.inventario = inventarioLivello0;
+                break;
+            case 0.5:
+                this.inventario = inventarioLivello05;
+                break;
+            case 1:
+                this.inventario = inventarioLivello1;
+                break;
+            case 2:
+                this.inventario = inventarioLivello2;
+                break;
+        }
     }
 
     //DATABASE
