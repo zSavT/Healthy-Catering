@@ -1,5 +1,15 @@
 [
     {
+        "idIngrediente": 0,
+        "nome": "Melanzane",
+        "Descrizione": "",
+        "Dieta": 0,
+        "Costo": 1,
+        "NutriScore": 0,
+        "EcoScore": 1,
+        "listaIdPatologieCompatibili": [0, 1]
+    },
+    {
         "idIngrediente": 1,
         "nome": "Olio",
         "Descrizione": "",
@@ -402,16 +412,6 @@
     {
         "idIngrediente": 41,
         "nome": "Peperoni",
-        "Descrizione": "",
-        "Dieta": 0,
-        "Costo": 1,
-        "NutriScore": 0,
-        "EcoScore": 1,
-        "listaIdPatologieCompatibili": [0, 1]
-    },
-    {
-        "idIngrediente": 42,
-        "nome": "Melanzane",
         "Descrizione": "",
         "Dieta": 0,
         "Costo": 1,
