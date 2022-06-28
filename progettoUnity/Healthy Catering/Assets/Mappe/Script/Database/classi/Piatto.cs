@@ -86,7 +86,7 @@ public class Piatto
         foreach (OggettoQuantita<int> ingredienteQuantita in listaIdIngredientiQuantita)
         {
             Ingrediente temp = Ingrediente.idToIngrediente(ingredienteQuantita.oggetto, databaseIngredienti);
-            if (temp.idItem != -1)
+            if (temp.idIngrediente != -1)
                 ingredientiQuantitaString = ingredientiQuantitaString + "\n\t" + temp.nome + " in quantita: " + ingredienteQuantita.quantita.ToString() + "\n";
         }
 
@@ -227,7 +227,7 @@ public class Piatto
         foreach (OggettoQuantita<int> ingredienteQuantita in this.listaIdIngredientiQuantita)
         {
             foreach (Ingrediente ingrediente in databaseIngredienti)
-                if (ingredienteQuantita.oggetto == ingrediente.idItem)
+                if (ingredienteQuantita.oggetto == ingrediente.idIngrediente)
                     ingredientiPiatto.Add(ingrediente);
             i++;
         }
@@ -288,7 +288,7 @@ public class Piatto
 
     public bool piattoInInventario(List <OggettoQuantita<int>> inventario)
     {
-        bool ingredienteTrovato;
+        bool ingredienteTrovato = false;
         foreach (OggettoQuantita<int> ingredientePiatto in listaIdIngredientiQuantita)
         {
             ingredienteTrovato = false;
@@ -394,7 +394,7 @@ public class Piatto
             }
 
             int quantita = getQuantitaIngredienteNelPiattoFromUtente(ingredienteTemp.nome, nomePiatto);
-            listaIdIngredientiQuantitaPiatto.Add(new OggettoQuantita<int>(ingredienteTemp.idItem, quantita));
+            listaIdIngredientiQuantitaPiatto.Add(new OggettoQuantita<int>(ingredienteTemp.idIngrediente, quantita));
         }
 
         return listaIdIngredientiQuantitaPiatto;

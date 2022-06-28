@@ -2,9 +2,21 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Newtonsoft.Json;
+
 public class Player
 {
-    List<OggettoQuantita<int>> inventarioLivello0 = new List<OggettoQuantita<int>>
+    public string nome = "";
+
+    public float soldi = 0;
+
+    [JsonIgnore] public List<OggettoQuantita<int>> inventario = new List<OggettoQuantita<int>>();
+
+    public static readonly int numeroLivelli = 3;
+    public int[] punteggio = new int [numeroLivelli];
+
+    //INVENTARI LIVELLI
+     List<OggettoQuantita<int>> inventarioLivello0 = new List<OggettoQuantita<int>>
     {
         new OggettoQuantita<int> (0,1),
         new OggettoQuantita<int> (1,1),
@@ -14,40 +26,22 @@ public class Player
         new OggettoQuantita<int> (5,1),
         new OggettoQuantita<int> (6,1),
     };
-
     List<OggettoQuantita<int>> inventarioLivello05 = new List<OggettoQuantita<int>>
     {
         new OggettoQuantita<int> (7,1),
         new OggettoQuantita<int> (8,1),
     };
-    
+
     List<OggettoQuantita<int>> inventarioLivello1 = new List<OggettoQuantita<int>>
     {
 
     };
+    
     List<OggettoQuantita<int>> inventarioLivello2 = new List<OggettoQuantita<int>>
     {
 
     };
-
-
-    /*
-    tutti i metodi e gli attributi e le variabili dichiarate nei metodi di questa classe con il nome 'Item' al loro interno sono in verità Ingredienti (o id di Ingredienti)
-    reference: discussione relativa a questa cosa a partire dal commento che inizia con questa stringa:
-    "
-    @zSavT l'ultimo commit ha un problema bello grande ovvero che quando aggiungo un item al player, siccome può essere sia un Item generico che un Ingrediente non si possono 
-    distinguere gli id degli Item e gli id degli ingredienti, in quanto hanno 2 database diversi.
-    " 
-    nella Pull Request chiamata PR issue#18
-    */
-    public string nome = "";
-
-    public float soldi = 0;
-
-    public List<OggettoQuantita<int>> inventario = new List<OggettoQuantita<int>>();
-
-    public static readonly int numeroLivelli = 3;
-    public int[] punteggio = new int [numeroLivelli];
+    //FINE INVENTARI LIVELLI
 
     public Player(string nome, int soldi, List<OggettoQuantita<int>> inventario)
     {
@@ -67,7 +61,7 @@ public class Player
     {
         this.nome = "";
         this.soldi = 0;
-        this.inventario = new List<OggettoQuantita<int>>(); //int perchè sono gli id degli item e non gli item veri e propri
+        this.inventario = new List<OggettoQuantita<int>>(); //int perchè sono gli id degli Ingrediente e non gli Ingrediente veri e propri
     }
 
     public override bool Equals(object obj)
@@ -97,7 +91,7 @@ public class Player
             {
                 int id = temp.oggetto;
                 Ingrediente ingredienteTemp = Ingrediente.idToIngrediente(id, databaseIngredienti);
-                if (ingredienteTemp.idItem != -1)
+                if (ingredienteTemp.idIngrediente != -1)
                     inventarioString = inventarioString + "\n\t" + ingredienteTemp.nome + "\n";
             }
         }
@@ -258,57 +252,57 @@ public class Player
     //DATABASE
     public static List<OggettoQuantita<int>> popolaInventario()
     {
-        List<Item> itemNuovi = getNewItem();
+        List<Ingrediente> ingredientiNuovi = getNewIngredienti();
 
-        List<int> quantitaItemNuovi = new List<int>();
+        List<int> quantitaIngredientiNuovi = new List<int>();
 
-        quantitaItemNuovi = chiediQuantitaItem(itemNuovi);
+        quantitaIngredientiNuovi = chiediQuantitaIngredienti(ingredientiNuovi);
 
-        return creaInventarioFromListaItemEQuantita(itemNuovi, quantitaItemNuovi);
+        return creaInventarioFromListaIngredientiEQuantita(ingredientiNuovi, quantitaIngredientiNuovi);
     }
 
-    private static List<Item> getNewItem()
+    private static List<Ingrediente> getNewIngredienti()
     {
-        List<Item> itemGiaPresenti = new List<Item>();
+        List<Ingrediente> ingredientiGiaPresenti = new List<Ingrediente>();
 
         while (true)
         {
-            Console.WriteLine("Inserisci la keyword 'inizia' o la keyword 'continua' per inserire un nuovo item e la parola 'fine' per concludere l'inserimento");
+            Console.WriteLine("Inserisci la keyword 'inizia' o la keyword 'continua' per inserire un nuovo ingrediente e la parola 'fine' per concludere l'inserimento");
             string input = Console.ReadLine();
             if (input.ToLower().Equals("fine"))
                 break;
             else if ((input.ToLower().Equals("inizia")) || (input.Equals("continua")))
-                itemGiaPresenti.Add(Item.creaNuovoItem());
+                ingredientiGiaPresenti.Add(Ingrediente.creaNuovoIngrediente());
             else
                 Console.WriteLine("Input sbagliato");
         }
 
-        return itemGiaPresenti;
+        return ingredientiGiaPresenti;
     }
 
-    private static List<int> chiediQuantitaItem(List<Item> itemGiaPresenti)
+    private static List<int> chiediQuantitaIngredienti(List<Ingrediente> ingredientiGiaPresenti)
     {
         List<int> quantita = new List<int>();
-        foreach (Item item in itemGiaPresenti)
+        foreach (Ingrediente ingrediente in ingredientiGiaPresenti)
         {
             int numero = -1;
             while (numero < 0)
-                numero = Database.getNewIntFromUtente("Quanti " + item.ToString() + "\n" + " devono essere presenti nell'inventario?");
+                numero = Database.getNewIntFromUtente("Quanti " + ingrediente.ToString() + "\n" + " devono essere presenti nell'inventario?");
             quantita.Add(numero);
         }
         return quantita;
     }
 
-    private static List<OggettoQuantita<int>> creaInventarioFromListaItemEQuantita(List<Item> itemGiaPresenti, List<int> quantitaItemNuovi)
+    private static List<OggettoQuantita<int>> creaInventarioFromListaIngredientiEQuantita(List<Ingrediente> ingredientiGiaPresenti, List<int> quantitaIngredientiNuovi)
     {
-        if (itemGiaPresenti.Count == quantitaItemNuovi.Count)
+        if (ingredientiGiaPresenti.Count == quantitaIngredientiNuovi.Count)
         {
             List<OggettoQuantita<int>> output = new List<OggettoQuantita<int>>();
-            for (int i = 0; i < itemGiaPresenti.Count; i++)
-                output.Add(new OggettoQuantita<int>(itemGiaPresenti[i].idItem, quantitaItemNuovi[i]));
+            for (int i = 0; i < ingredientiGiaPresenti.Count; i++)
+                output.Add(new OggettoQuantita<int>(ingredientiGiaPresenti[i].idIngrediente, quantitaIngredientiNuovi[i]));
             return output;
         }
-        throw new Exception("Le dimensioni della lista contente gli item e le quantita di essi non corrispondo");
+        throw new Exception("Le dimensioni della lista contente gli ingredienti e le quantita di essi non corrispondo");
     }
 
     public static List <Player> getListaSortata(List <Player> databasePlayer = null){
