@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class Player
 {
-    List<OggettoQuantita<int>> inventarioLivello0 = new List<OggettoQuantita<int>>
+    public string nome = "";
+
+    public float soldi = 0;
+
+    public List<OggettoQuantita<int>> inventario = new List<OggettoQuantita<int>>();
+
+    public static readonly int numeroLivelli = 3;
+    public int[] punteggio = new int [numeroLivelli];
+
+    //INVENTARI LIVELLI
+     List<OggettoQuantita<int>> inventarioLivello0 = new List<OggettoQuantita<int>>
     {
         new OggettoQuantita<int> (0,1),
         new OggettoQuantita<int> (1,1),
@@ -14,40 +24,22 @@ public class Player
         new OggettoQuantita<int> (5,1),
         new OggettoQuantita<int> (6,1),
     };
-
     List<OggettoQuantita<int>> inventarioLivello05 = new List<OggettoQuantita<int>>
     {
         new OggettoQuantita<int> (7,1),
         new OggettoQuantita<int> (8,1),
     };
-    
+
     List<OggettoQuantita<int>> inventarioLivello1 = new List<OggettoQuantita<int>>
     {
 
     };
+    
     List<OggettoQuantita<int>> inventarioLivello2 = new List<OggettoQuantita<int>>
     {
 
     };
-
-
-    /*
-    tutti i metodi e gli attributi e le variabili dichiarate nei metodi di questa classe con il nome 'Ingrediente' al loro interno sono in verità Ingredienti (o id di Ingredienti)
-    reference: discussione relativa a questa cosa a partire dal commento che inizia con questa stringa:
-    "
-    @zSavT l'ultimo commit ha un problema bello grande ovvero che quando aggiungo un Ingrediente al player, siccome può essere sia un Ingrediente generico che un Ingrediente non si possono 
-    distinguere gli id degli Ingrediente e gli id degli ingredienti, in quanto hanno 2 database diversi.
-    " 
-    nella Pull Request chiamata PR issue#18
-    */
-    public string nome = "";
-
-    public float soldi = 0;
-
-    public List<OggettoQuantita<int>> inventario = new List<OggettoQuantita<int>>();
-
-    public static readonly int numeroLivelli = 3;
-    public int[] punteggio = new int [numeroLivelli];
+    //FINE INVENTARI LIVELLI
 
     public Player(string nome, int soldi, List<OggettoQuantita<int>> inventario)
     {
