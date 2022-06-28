@@ -13,6 +13,8 @@ public class Database
         return Serializza.leggiOggettiDaFile<Oggetto>(Serializza.getJsonPath(oggetto));
     }
 
+
+
     public static Oggetto getUltimoOggettoAggiuntoAlDatabase<Oggetto>(Oggetto oggetto, List<Oggetto> databaseOggetto = null)
     {
         databaseOggetto ??= getDatabaseOggetto(oggetto);
@@ -476,6 +478,19 @@ public class Database
             }
         }
         throw new Exception("Non è stato trovato nessuno Player con il nome: " + nomePlayer);
+    }
+
+    public static List<Cliente> getListaClientiPerPatologia(int idexPatologia)
+    {
+        List<Cliente> databaseClienti = Database.getDatabaseOggetto(new Cliente());
+        for(int i = 0; i < databaseClienti.Count; i++)
+        {
+            if (!databaseClienti[i].listaIdPatologie.Contains(idexPatologia))
+            {
+                databaseClienti.Remove(databaseClienti[i]);
+            }
+        }
+        return databaseClienti;
     }
 
 }
