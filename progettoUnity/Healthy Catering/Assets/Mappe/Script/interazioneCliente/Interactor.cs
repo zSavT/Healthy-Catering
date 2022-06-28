@@ -51,7 +51,7 @@ public class Interactor : MonoBehaviour
     private int livelloAttuale = PlayerSettings.livelloSelezionato;
 
     void Start()
-    { 
+    {
         try
         {
             giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());

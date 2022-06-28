@@ -127,20 +127,19 @@ public class Database
     {
         //patologie
         aggiungiPatologia(new Patologia(0, "Diabete", "Malattia cronica, inquadrabile nel gruppo delle patologie note come diabete mellito, caratterizzata da un'elevata concentrazione di glucosio nel sangue, che viene a sua volta causata da una carenza (assoluta o relativa) di insulina nell'organismo umano, o da un'alterata funzionalità dell'insulina stessa, ormone che stimolando l'assunzione del glucosio nelle cellule muscolari e adipose ne diminuisce la concentrazione nel sangue."));
-        aggiungiPatologia(new Patologia(1, "Reflusso gastroesofageo", "La malattia da reflusso gastroesofageo è una malattia di interesse gastroenterologico, causata da complicanze patologiche del reflusso gastroesofageo: si parla di malattia quando il reflusso causa sintomi o quando, con la gastroscopia, si evidenziano lesioni infiammatorie a carico dell'esofago, o ulcere, o trasformazione metaplastica della mucosa."));
-        aggiungiPatologia(new Patologia(2, "Allergia al nichel", "L'allergia alimentare è una reazione avversa che si sviluppa per una risposta immunitaria specifica e riproducibile all’ingestione di un determinato alimento"));
-        aggiungiPatologia(new Patologia(3, "Malattia di Crohn", "La malattia di Crohn o morbo di Crohn, nota anche come enterite regionale, è una malattia infiammatoria cronica dell'intestino che può colpire qualsiasi parte del tratto gastrointestinale, provocando una vasta gamma di sintomi."));
+        aggiungiPatologia(new Patologia(1, "Ipertensione", "L'ipertensione arteriosa, chiamata spesso colloquialmente solo ipertensione, è una condizione clinica in cui la pressione del sangue nelle arterie della circolazione sistemica risulta elevata."));
+       // aggiungiPatologia(new Patologia(2, "Allergia al nichel", "L'allergia alimentare è una reazione avversa che si sviluppa per una risposta immunitaria specifica e riproducibile all’ingestione di un determinato alimento"));
+       // aggiungiPatologia(new Patologia(3, "Malattia di Crohn", "La malattia di Crohn o morbo di Crohn, nota anche come enterite regionale, è una malattia infiammatoria cronica dell'intestino che può colpire qualsiasi parte del tratto gastrointestinale, provocando una vasta gamma di sintomi."));
 
         //clienti
-        List<int> patologieCliente = new List<int>();
-        aggiungiCliente(new Cliente("alessandro", 0, patologieCliente));
-        patologieCliente.Add(0);
-        aggiungiCliente(new Cliente("giorgio", 1, patologieCliente));
-        patologieCliente.Add(1);
-        aggiungiCliente(new Cliente("marco", 1, patologieCliente));
-        patologieCliente.Add(2);
-        patologieCliente.Add(3);
-        aggiungiCliente(new Cliente("saverio", 2, patologieCliente));
+        List<int> patologieClienteDiabete = new List<int>();
+        List<int> patologieClienteIpertensione = new List<int>();
+        List<int> patologieClienteEntrambe = new List<int>();
+        aggiungiCliente(new Cliente("Alessandro", 0, patologieClienteDiabete));
+        aggiungiCliente(new Cliente("Giorgio", 1, patologieClienteDiabete));
+        aggiungiCliente(new Cliente("Marco", 1, patologieClienteDiabete));
+        aggiungiCliente(new Cliente("Saverio", 2, patologieClienteDiabete));
+        aggiungiCliente(new Cliente("Vincenzo Pio", 2, patologieClienteDiabete));
 
         //diete
         aggiungiDieta(new Dieta("Vegana", "La dieta vegana è un regime alimentare che prevede l'esclusione di tutti i cibi di origine animale e, di conseguenza, l'assunzione esclusiva di alimenti vegetali"));
@@ -177,7 +176,7 @@ public class Database
         aggiungiIngrediente(new Ingrediente(8, "Carne di pollo", "La carne di pollo è la carne ricavata dalla macellazione del pollo.",
          1, 1, 1, 2, listaIdPatologieCompatibili));
 
-        aggiungiIngrediente(new Ingrediente(9, "Philadelphia", "Philadelphia è il nome commerciale di un formaggio spalmabile di tipo quark prodotto dalla Kraft Foods negli Stati Uniti d'America e venduto in molti stati. In Italia è commercializzato dal 1971.",
+        aggiungiIngrediente(new Ingrediente(9, "Formaggio Spalmabile", "Il formaggio spalmabile, anche detto formaggio cremoso, è un tipo di formaggio fresco, molto tenero e spesso delicato. Il formaggio cremoso non matura in modo naturale ed è destinato ad essere consumato fresco, quindi si differenzia da altri formaggi a pasta molle",
          1, 1, 1, 1, listaIdPatologieCompatibili));
         aggiungiIngrediente(new Ingrediente(10, "Mango", "Mango è il nome comune di un frutto tropicale e della pianta indiana che lo produce (Genere Mangifera); la specie più diffusa è senz'altro la M. indica, anche nota come mango comune o mango indiano.",
          1, 1, 1, 0, listaIdPatologieCompatibili));
@@ -211,11 +210,10 @@ public class Database
         ingredientiQuantita.Add(new OggettoQuantita<int>(9, 1));
         ingredientiQuantita.Add(new OggettoQuantita<int>(10, 1));
         ingredientiQuantita.Add(new OggettoQuantita<int>(11, 1));
-        aggiungiPiatto(new Piatto("Pane, mango, spinaci e philadelphia", "Ricetta dal sito ufficiale di philadelphia italia rielaborata", ingredientiQuantita));
+        aggiungiPiatto(new Piatto("Pane, mango, spinaci e Formaggio Spalmabile", "Ricetta estiva realizzata con una combinazione di ingredienti tanto salutare quanto inaspettata", ingredientiQuantita));
 
 
         //player
-        aggiungiPlayer(new Player("Gianni", 4, ingredientiQuantita));
 
         pulisciDatabase();
     }
