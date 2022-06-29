@@ -17,6 +17,7 @@ public class Interactor : MonoBehaviour
 
     [Header("Interazione Negozio")]
     [SerializeField] private PannelloNegozio negozio;
+    [SerializeField] private AudioSource suonoNegozio;
 
     [Header("Interazione Magazzino")]
     [SerializeField] private PannelloMagazzino magazzino;
@@ -161,6 +162,7 @@ public class Interactor : MonoBehaviour
                 inquadratoNPC.Invoke();
                 if (Input.GetKeyDown(tastoInterazione) && !(negozio.getPannelloAperto()))
                 {
+                    suonoNegozio.Play();
                     this.gameObject.transform.position = destinazioneTeleport.transform.position;
                 }
             }
