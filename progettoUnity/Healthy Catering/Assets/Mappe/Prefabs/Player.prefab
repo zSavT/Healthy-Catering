@@ -2475,6 +2475,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   destinazioneTeleport: {fileID: 0}
+  posizioneInizialePlayer: {fileID: 0}
 --- !u!143 &5218992458153246270
 CharacterController:
   m_ObjectHideFlags: 0

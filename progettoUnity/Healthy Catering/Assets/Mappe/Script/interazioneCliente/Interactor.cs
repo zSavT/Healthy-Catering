@@ -35,6 +35,7 @@ public class Interactor : MonoBehaviour
     [Header("Teleport")]
     [SerializeField] private LayerMask layerUnityTeleport = 9;
     public Transform destinazioneTeleport;
+    [SerializeField] private Transform posizioneInizialePlayer;
 
 
     private Vector3 posizioneCameraOriginale;
@@ -52,6 +53,7 @@ public class Interactor : MonoBehaviour
 
     void Start()
     {
+        this.gameObject.transform.position = posizioneInizialePlayer.transform.position;
         try
         {
             giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
