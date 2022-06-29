@@ -14,7 +14,7 @@ public class Ricettario : MonoBehaviour
     [SerializeField] Button switchIngredienti;
 
     private List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
-    private List<Piatto> databasePiatti = Database.getDatabaseOggetto(new Piatto());<
+    private List<Piatto> databasePiatti = Database.getDatabaseOggetto(new Piatto());
 
     private int numeroPaginaIngredienti = 0;
     private int numeroPaginaPiatti = 0;
@@ -50,7 +50,6 @@ public class Ricettario : MonoBehaviour
        
         setTestoSchermata();
         switchPiatti.interactable = false;
-        attivaDisattivaAvantiIndietro();
     }
 
     private void switchToPiattiView()
@@ -60,7 +59,6 @@ public class Ricettario : MonoBehaviour
 
         setTestoSchermata();
         switchPiatti.interactable = false;
-        attivaDisattivaAvantiIndietro();
     }
 
     private void setTestoSchermata(string titolo, string testo)
@@ -84,6 +82,39 @@ public class Ricettario : MonoBehaviour
                databaseIngredienti[numeroPaginaIngredienti].nome,
                databaseIngredienti[numeroPaginaIngredienti].getListaPiattiRealizzabiliConIngredienteToSingolaString(databaseIngredienti, databasePiatti)
             );
+        }
+        attivaDisattivaAvantiIndietro();
+    }
+
+    public void avantiPagina()
+    {
+        if (isVistaPiatto)
+        {
+            if (numeroPaginaPiatti != databasePiatti.Count)
+                numeroPaginaPiatti++;
+            setTestoSchermata();
+        }
+        else
+        {
+            if (numeroPaginaIngredienti != databaseIngredienti.Count)
+                numeroPaginaIngredienti++;
+            setTestoSchermata();
+        }
+    }
+
+    public void indietroPagina()
+    {
+        if (isVistaPiatto)
+        {
+            if (numeroPaginaPiatti != 0)
+                numeroPaginaPiatti--;
+            setTestoSchermata();
+        }
+        else
+        {
+            if (numeroPaginaIngredienti != 0)
+                numeroPaginaIngredienti--;
+            setTestoSchermata();
         }
     }
 
