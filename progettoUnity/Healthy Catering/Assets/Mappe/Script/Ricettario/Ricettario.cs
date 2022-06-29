@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Ricettario : MonoBehaviour
 {
+    [SerializeField] GameObject pannelloPrincipale;
     [SerializeField] TextMeshProUGUI titoloSchermata;
     [SerializeField] TextMeshProUGUI testoSchermata;
     [SerializeField] Button avanti;
@@ -23,6 +24,8 @@ public class Ricettario : MonoBehaviour
 
     void Start()
     {
+        pannelloPrincipale.SetActive(true);
+
         switchToPiattiView();
     }
 
@@ -43,7 +46,7 @@ public class Ricettario : MonoBehaviour
         indietro.interactable = indietroAttivo;
     }
 
-    private void switchToIngredientiView()
+    public void switchToIngredientiView()
     {
         isVistaPiatto = false;
         numeroPaginaIngredienti = 0;
@@ -52,7 +55,7 @@ public class Ricettario : MonoBehaviour
         switchPiatti.interactable = false;
     }
 
-    private void switchToPiattiView()
+    public void switchToPiattiView()
     {
         isVistaPiatto = true;
         numeroPaginaPiatti = 0;

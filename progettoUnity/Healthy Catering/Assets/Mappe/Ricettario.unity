@@ -267,6 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21697fa33fa5ca64bbe867ffb8c0e644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pannelloPrincipale: {fileID: 1191590947}
   titoloSchermata: {fileID: 400921006}
   testoSchermata: {fileID: 202894279}
   avanti: {fileID: 1939109121}
@@ -424,6 +425,34 @@ PrefabInstance:
       propertyPath: m_Colors.m_HighlightedColor.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1857318694947723199, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857318694947723199, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857318694947723199, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 556623197}
+    - target: {fileID: 1857318694947723199, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857318694947723199, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: avantiPagina
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857318694947723199, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ricettario, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857318694947723199, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2536442991747623786, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -435,6 +464,10 @@ PrefabInstance:
     - target: {fileID: 2536442991747623786, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2675222067951267968, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_text
+      value: Ingredienti o piatti realizzabili
       objectReference: {fileID: 0}
     - target: {fileID: 2787683893560405573, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
       propertyPath: m_AnchorMax.x
@@ -492,6 +525,34 @@ PrefabInstance:
       propertyPath: m_Colors.m_DisabledColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3546885198195390015, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546885198195390015, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546885198195390015, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 556623197}
+    - target: {fileID: 3546885198195390015, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546885198195390015, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: indietroPagina
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546885198195390015, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ricettario, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546885198195390015, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3757055453016414250, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -524,6 +585,34 @@ PrefabInstance:
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6256169956676043939, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256169956676043939, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256169956676043939, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 556623197}
+    - target: {fileID: 6256169956676043939, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256169956676043939, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: switchToPiattiView
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256169956676043939, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ricettario, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256169956676043939, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7099978261124062593, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
       value: 0
@@ -548,6 +637,34 @@ PrefabInstance:
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7099978261124062593, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7099978261124062593, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7099978261124062593, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 556623197}
+    - target: {fileID: 7099978261124062593, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7099978261124062593, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: switchToIngredientiView
+      objectReference: {fileID: 0}
+    - target: {fileID: 7099978261124062593, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ricettario, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7099978261124062593, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7215489577285970472, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -562,6 +679,11 @@ PrefabInstance:
       objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+--- !u!1 &1191590947 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 669745254423179519, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+  m_PrefabInstance: {fileID: 712189046}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1422925068 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3546885198195390015, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
