@@ -1,12 +1,12 @@
 [
     {
         "idIngrediente": 0,
-        "nome": "Melanzane",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Olio",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 0,
         "costoEco": 1,
+        "nutriScore": 1,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -14,12 +14,12 @@
     },
     {
         "idIngrediente": 1,
-        "nome": "Olio",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Riso",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 1,
-        "costoEco": 1,
+        "costoEco": 15,
+        "nutriScore": 2,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -27,12 +27,12 @@
     },
     {
         "idIngrediente": 2,
-        "nome": "Riso",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Asparagi",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 2,
-        "costoEco": 15,
+        "costoEco": 1,
+        "nutriScore": 0,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -40,12 +40,12 @@
     },
     {
         "idIngrediente": 3,
-        "nome": "Asparagi",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Cipolla",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 0,
         "costoEco": 1,
+        "nutriScore": 0,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -53,12 +53,12 @@
     },
     {
         "idIngrediente": 4,
-        "nome": "Cipolla",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Tagliatelle",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 0,
-        "costoEco": 1,
+        "costoEco": 23,
+        "nutriScore": 2,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -66,12 +66,12 @@
     },
     {
         "idIngrediente": 5,
-        "nome": "Tagliatelle",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Fagioli",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 2,
-        "costoEco": 23,
+        "costoEco": 10,
+        "nutriScore": 1,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -79,12 +79,12 @@
     },
     {
         "idIngrediente": 6,
-        "nome": "Fagioli",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Carota",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 1,
-        "costoEco": 10,
+        "costoEco": 4,
+        "nutriScore": 0,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -92,12 +92,12 @@
     },
     {
         "idIngrediente": 7,
-        "nome": "Carota",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Sedano",
+        "descrizione": "",
         "costo": 1,
+        "costoEco": 1,
         "nutriScore": 0,
-        "costoEco": 4,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -105,12 +105,12 @@
     },
     {
         "idIngrediente": 8,
-        "nome": "Sedano",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Prezzemolo",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 0,
         "costoEco": 1,
+        "nutriScore": 0,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -118,61 +118,61 @@
     },
     {
         "idIngrediente": 9,
-        "nome": "Prezzemolo",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Farina",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 0,
-        "costoEco": 1,
+        "costoEco": 20,
+        "nutriScore": 2,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
-            0,
             1
         ]
     },
     {
         "idIngrediente": 10,
-        "nome": "Farina",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Zucchero",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 2,
-        "costoEco": 20,
+        "costoEco": 40,
+        "nutriScore": 1,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             1
         ]
     },
     {
         "idIngrediente": 11,
-        "nome": "Zucchero",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Confettura ai frutti di bosco",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 1,
-        "costoEco": 40,
+        "costoEco": 32,
+        "nutriScore": 0,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             1
         ]
     },
     {
         "idIngrediente": 12,
-        "nome": "Confettura ai frutti di bosco",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Spaghetti",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 0,
-        "costoEco": 32,
+        "costoEco": 23,
+        "nutriScore": 2,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
+            0,
             1
         ]
     },
     {
         "idIngrediente": 13,
-        "nome": "Spaghetti",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Vongole",
+        "descrizione": "",
         "costo": 1,
+        "costoEco": 18,
         "nutriScore": 2,
-        "costoEco": 23,
+        "dieta": 2,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -180,12 +180,12 @@
     },
     {
         "idIngrediente": 14,
-        "nome": "Vongole",
-        "descrizione": "descrizione mancante",
-        "dieta": 2,
+        "nome": "Cozze",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 2,
         "costoEco": 18,
+        "nutriScore": 2,
+        "dieta": 2,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -193,12 +193,12 @@
     },
     {
         "idIngrediente": 15,
-        "nome": "Cozze",
-        "descrizione": "descrizione mancante",
-        "dieta": 2,
+        "nome": "Aglio",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 2,
-        "costoEco": 18,
+        "costoEco": 1,
+        "nutriScore": 0,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -206,12 +206,12 @@
     },
     {
         "idIngrediente": 16,
-        "nome": "Aglio",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Passata di Pomodoro",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 0,
-        "costoEco": 1,
+        "costoEco": 28,
+        "nutriScore": 2,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -219,37 +219,37 @@
     },
     {
         "idIngrediente": 17,
-        "nome": "Passata di Pomodoro",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Mozzarella",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 2,
-        "costoEco": 28,
+        "costoEco": 21,
+        "nutriScore": 3,
+        "dieta": 1,
+        "listaIdPatologieCompatibili": [
+            0
+        ]
+    },
+    {
+        "idIngrediente": 18,
+        "nome": "Basilico",
+        "descrizione": "",
+        "costo": 1,
+        "costoEco": 1,
+        "nutriScore": 0,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
         ]
     },
     {
-        "idIngrediente": 18,
-        "nome": "Mozzarella",
-        "descrizione": "descrizione mancante",
-        "dieta": 1,
-        "costo": 1,
-        "nutriScore": 3,
-        "costoEco": 21,
-        "listaIdPatologieCompatibili": [
-            0
-        ]
-    },
-    {
         "idIngrediente": 19,
-        "nome": "Basilico",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Salmone",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 0,
-        "costoEco": 1,
+        "costoEco": 17,
+        "nutriScore": 2,
+        "dieta": 2,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -257,12 +257,12 @@
     },
     {
         "idIngrediente": 20,
-        "nome": "Salmone",
-        "descrizione": "descrizione mancante",
-        "dieta": 2,
+        "nome": "Patate",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 2,
-        "costoEco": 17,
+        "costoEco": 15,
+        "nutriScore": 1,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -270,12 +270,12 @@
     },
     {
         "idIngrediente": 21,
-        "nome": "Patate",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Zucchine",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 1,
-        "costoEco": 15,
+        "costoEco": 1,
+        "nutriScore": 0,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -283,12 +283,12 @@
     },
     {
         "idIngrediente": 22,
-        "nome": "Zucchine",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Maggiorana",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 0,
         "costoEco": 1,
+        "nutriScore": 0,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -296,87 +296,87 @@
     },
     {
         "idIngrediente": 23,
-        "nome": "Maggiorana",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Uova",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 0,
-        "costoEco": 1,
+        "costoEco": 24,
+        "nutriScore": 2,
+        "dieta": 1,
         "listaIdPatologieCompatibili": [
-            0,
-            1
+            0
         ]
     },
     {
         "idIngrediente": 24,
-        "nome": "Uova",
-        "descrizione": "descrizione mancante",
-        "dieta": 1,
+        "nome": "Guanciale",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 2,
-        "costoEco": 24,
+        "costoEco": 40,
+        "nutriScore": 4,
+        "dieta": 2,
         "listaIdPatologieCompatibili": [
-            0
+            0,
+            1
         ]
     },
     {
         "idIngrediente": 25,
-        "nome": "Guanciale",
-        "descrizione": "descrizione mancante",
-        "dieta": 2,
+        "nome": "Pecorino",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 4,
-        "costoEco": 40,
+        "costoEco": 29,
+        "nutriScore": 3,
+        "dieta": 1,
         "listaIdPatologieCompatibili": [
-            0,
-            1
+            0
         ]
     },
     {
         "idIngrediente": 26,
-        "nome": "Pecorino",
-        "descrizione": "descrizione mancante",
-        "dieta": 1,
-        "costo": 1,
-        "nutriScore": 3,
-        "costoEco": 29,
-        "listaIdPatologieCompatibili": [
-            0
-        ]
-    },
-    {
-        "idIngrediente": 27,
         "nome": "Cioccolato",
-        "descrizione": "descrizione mancante",
-        "dieta": 1,
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 2,
         "costoEco": 37,
+        "nutriScore": 2,
+        "dieta": 1,
         "listaIdPatologieCompatibili": [
             0,
             1
         ]
     },
     {
-        "idIngrediente": 28,
+        "idIngrediente": 27,
         "nome": "Burro",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 3,
         "costoEco": 40,
+        "nutriScore": 3,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0
         ]
     },
     {
-        "idIngrediente": 29,
+        "idIngrediente": 28,
         "nome": "Cacao",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 2,
         "costoEco": 29,
+        "nutriScore": 2,
+        "dieta": 0,
+        "listaIdPatologieCompatibili": [
+            0,
+            1
+        ]
+    },
+    {
+        "idIngrediente": 29,
+        "nome": "Lievito",
+        "descrizione": "",
+        "costo": 1,
+        "costoEco": 1,
+        "nutriScore": 0,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -384,12 +384,12 @@
     },
     {
         "idIngrediente": 30,
-        "nome": "Lievito",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Pollo",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 0,
-        "costoEco": 1,
+        "costoEco": 20,
+        "nutriScore": 3,
+        "dieta": 2,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -397,12 +397,12 @@
     },
     {
         "idIngrediente": 31,
-        "nome": "Pollo",
-        "descrizione": "descrizione mancante",
-        "dieta": 2,
+        "nome": "Rosmarino",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 3,
-        "costoEco": 20,
+        "costoEco": 1,
+        "nutriScore": 0,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -410,12 +410,12 @@
     },
     {
         "idIngrediente": 32,
-        "nome": "Rosmarino",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Alloro",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 0,
         "costoEco": 1,
+        "nutriScore": 0,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -423,12 +423,12 @@
     },
     {
         "idIngrediente": 33,
-        "nome": "Alloro",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Lattuga",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 0,
         "costoEco": 1,
+        "nutriScore": 0,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -436,12 +436,12 @@
     },
     {
         "idIngrediente": 34,
-        "nome": "Lattuga",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Pomodoro",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 0,
         "costoEco": 1,
+        "nutriScore": 0,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -449,49 +449,49 @@
     },
     {
         "idIngrediente": 35,
-        "nome": "Pomodoro",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Pane",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 0,
-        "costoEco": 1,
+        "costoEco": 25,
+        "nutriScore": 1,
+        "dieta": 0,
+        "listaIdPatologieCompatibili": [
+            1
+        ]
+    },
+    {
+        "idIngrediente": 36,
+        "nome": "Carne di manzo",
+        "descrizione": "",
+        "costo": 1,
+        "costoEco": 40,
+        "nutriScore": 4,
+        "dieta": 2,
+        "listaIdPatologieCompatibili": [
+            0
+        ]
+    },
+    {
+        "idIngrediente": 37,
+        "nome": "Calamari",
+        "descrizione": "",
+        "costo": 1,
+        "costoEco": 18,
+        "nutriScore": 2,
+        "dieta": 2,
         "listaIdPatologieCompatibili": [
             0,
             1
         ]
     },
     {
-        "idIngrediente": 36,
-        "nome": "Pane",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
-        "costo": 1,
-        "nutriScore": 1,
-        "costoEco": 25,
-        "listaIdPatologieCompatibili": [
-            1
-        ]
-    },
-    {
-        "idIngrediente": 37,
-        "nome": "Carne di manzo",
-        "descrizione": "descrizione mancante",
-        "dieta": 2,
-        "costo": 1,
-        "nutriScore": 4,
-        "costoEco": 40,
-        "listaIdPatologieCompatibili": [
-            0
-        ]
-    },
-    {
         "idIngrediente": 38,
-        "nome": "Calamari",
-        "descrizione": "descrizione mancante",
-        "dieta": 2,
+        "nome": "Gamberi",
+        "descrizione": "",
         "costo": 1,
+        "costoEco": 20,
         "nutriScore": 2,
-        "costoEco": 18,
+        "dieta": 2,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -499,12 +499,12 @@
     },
     {
         "idIngrediente": 39,
-        "nome": "Gamberi",
-        "descrizione": "descrizione mancante",
-        "dieta": 2,
+        "nome": "Alici",
+        "descrizione": "",
         "costo": 1,
+        "costoEco": 18,
         "nutriScore": 2,
-        "costoEco": 20,
+        "dieta": 2,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -512,12 +512,12 @@
     },
     {
         "idIngrediente": 40,
-        "nome": "Alici",
-        "descrizione": "descrizione mancante",
-        "dieta": 2,
+        "nome": "Peperoni",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 2,
-        "costoEco": 18,
+        "costoEco": 1,
+        "nutriScore": 0,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1
@@ -525,12 +525,12 @@
     },
     {
         "idIngrediente": 41,
-        "nome": "Peperoni",
-        "descrizione": "descrizione mancante",
-        "dieta": 0,
+        "nome": "Melanzane",
+        "descrizione": "",
         "costo": 1,
-        "nutriScore": 0,
         "costoEco": 1,
+        "nutriScore": 0,
+        "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
             1

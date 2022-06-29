@@ -1,7 +1,8 @@
 [
     {
+        "nome": "Tagliatelle e fagioli",
         "descrizione": "La pasta ruvida e porosa, accoglie in s\u00e9 tutto il sapore genuino dei fagioli.",
-        "listaIngredienti": [
+        "listaIdIngredientiQuantita": [
             {
                 "oggetto": 2,
                 "quantita": 1
@@ -18,12 +19,12 @@
                 "oggetto": 1,
                 "quantita": 1
             }
-        ],
-        "nome": "Tagliatelle e fagioli"
+        ]
     },
     {
+        "nome": "Crostata vegana ai frutti di bosco",
         "descrizione": "Dolce composto da una base di pasta frolla ricoperto con confettura ai frutti di bosco, con l'aggiunta di sottili strisce di pasta frolla intrecciate.",
-        "listaIngredienti": [
+        "listaIdIngredientiQuantita": [
             {
                 "oggetto": 5,
                 "quantita": 1
@@ -52,12 +53,12 @@
                 "oggetto": 1,
                 "quantita": 1
             }
-        ],
-        "nome": "Crostata vegana ai frutti di bosco"
+        ]
     },
     {
+        "nome": "Spaghetti alla pescatora",
         "descrizione": "Primo piatto light di mare, condito con cozze, vongole e pomodorini freschi.",
-        "listaIngredienti": [
+        "listaIdIngredientiQuantita": [
             {
                 "oggetto": 10,
                 "quantita": 1
@@ -74,12 +75,12 @@
                 "oggetto": 12,
                 "quantita": 1
             }
-        ],
-        "nome": "Spaghetti alla pescatora"
+        ]
     },
     {
+        "nome": "Pizza",
         "descrizione": "Piatto originario della cucina Napoletana famoso in tutto il mondo.",
-        "listaIngredienti": [
+        "listaIdIngredientiQuantita": [
             {
                 "oggetto": 13,
                 "quantita": 1
@@ -108,12 +109,12 @@
                 "oggetto": 35,
                 "quantita": 1
             }
-        ],
-        "nome": "Pizza"
+        ]
     },
     {
+        "nome": "Salmone in crosta di patate e zucchine",
         "descrizione": "Tenero trancio di salmone, cotto per pochi minuti, guarnito con sottili fettine di zucchine e patate.",
-        "listaIngredienti": [
+        "listaIdIngredientiQuantita": [
             {
                 "oggetto": 10,
                 "quantita": 1
@@ -134,12 +135,12 @@
                 "oggetto": 19,
                 "quantita": 1
             }
-        ],
-        "nome": "Salmone in crosta di patate e zucchine"
+        ]
     },
     {
+        "nome": "Pasta alla carbonara",
         "descrizione": "Primo piatto tipico della cucina romana dal sapore goloso.",
-        "listaIngredienti": [
+        "listaIdIngredientiQuantita": [
             {
                 "oggetto": 20,
                 "quantita": 1
@@ -160,12 +161,12 @@
                 "oggetto": 23,
                 "quantita": 1
             }
-        ],
-        "nome": "Pasta alla carbonara"
+        ]
     },
     {
+        "nome": "Patatine fritte",
         "descrizione": "Sfiziose patate tagliate a fette di forma allungata e fritte.",
-        "listaIngredienti": [
+        "listaIdIngredientiQuantita": [
             {
                 "oggetto": 13,
                 "quantita": 1
@@ -182,12 +183,12 @@
                 "oggetto": 26,
                 "quantita": 1
             }
-        ],
-        "nome": "Patatine fritte"
+        ]
     },
     {
+        "nome": "Torta al cioccolato",
         "descrizione": "Goloso, soffice e semplice dolce al cioccolato.",
-        "listaIngredienti": [
+        "listaIdIngredientiQuantita": [
             {
                 "oggetto": 21,
                 "quantita": 1
@@ -196,12 +197,12 @@
                 "oggetto": 1,
                 "quantita": 1
             }
-        ],
-        "nome": "Torta al cioccolato"
+        ]
     },
     {
+        "nome": "Salsiccia con patate al forno",
         "descrizione": "Secondo piatto di salsicce cotte in forno con patate aromatizzate.",
-        "listaIngredienti": [
+        "listaIdIngredientiQuantita": [
             {
                 "oggetto": 27,
                 "quantita": 1
@@ -230,12 +231,12 @@
                 "oggetto": 30,
                 "quantita": 1
             }
-        ],
-        "nome": "Salsiccia con patate al forno"
+        ]
     },
     {
+        "nome": "Insalatona",
         "descrizione": "Mix di verdure rude leggero e rinfrescante.",
-        "listaIngredienti": [
+        "listaIdIngredientiQuantita": [
             {
                 "oggetto": 31,
                 "quantita": 1
@@ -256,12 +257,12 @@
                 "oggetto": 1,
                 "quantita": 1
             }
-        ],
-        "nome": "Insalatona"
+        ]
     },
     {
+        "nome": "Panino con hamburger di manzo",
         "descrizione": "Panino con hamburger di carne bovina adagiato su foglie di lattuga e fette di pomodoro.",
-        "listaIngredienti": [
+        "listaIdIngredientiQuantita": [
             {
                 "oggetto": 34,
                 "quantita": 1
@@ -274,12 +275,12 @@
                 "oggetto": 35,
                 "quantita": 1
             }
-        ],
-        "nome": "Panino con hamburger di manzo"
+        ]
     },
     {
+        "nome": "Frittura di pesce",
         "descrizione": "Delizioso secondo piatto di mare con calamari, gamberi e alici panati e fritti.",
-        "listaIngredienti": [
+        "listaIdIngredientiQuantita": [
             {
                 "oggetto": 36,
                 "quantita": 1
@@ -300,12 +301,12 @@
                 "oggetto": 35,
                 "quantita": 1
             }
-        ],
-        "nome": "Frittura di pesce"
+        ]
     },
     {
+        "nome": "Verdure grigliate",
         "descrizione": "Gustoso contorno di ortaggi in sottili fette grigliate e impreziosite dall\u2019aggiunta di condimento a freddo.",
-        "listaIngredienti": [
+        "listaIdIngredientiQuantita": [
             {
                 "oggetto": 38,
                 "quantita": 1
@@ -322,7 +323,6 @@
                 "oggetto": 1,
                 "quantita": 1
             }
-        ],
-        "nome": "Verdure grigliate"
+        ]
     }
 ]
