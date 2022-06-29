@@ -15,6 +15,7 @@ public class InterazionePassanti : MonoBehaviour
     private bool pannelloInterazionePassantiAperto;
     [SerializeField] private Button bottoneAvanti;
     [SerializeField] private TextMeshProUGUI testoInterazionePassanti;
+    [SerializeField] private AudioSource suonoAperturaDialogo;
 
     //TROVA STRINGHE
     /*
@@ -137,7 +138,6 @@ public class InterazionePassanti : MonoBehaviour
     private int trovaVeraLunghezzaStringaPerColore(string temp)
     {
         string coloreInizio = "<color=#"; //<color=#B5D99C>
-        int numeroDiScritteColorate = 0;
         string coloreFine = "</color>"; //</color>
 
         if ((temp.Contains(coloreInizio)) && (temp.Contains(coloreFine)))
@@ -177,6 +177,7 @@ public class InterazionePassanti : MonoBehaviour
 
     public void apriPannelloInterazionePassanti(string nomeNPC)
     {
+        suonoAperturaDialogo.Play();
         parlatoConNPC = true;
         pannelloInterazionePassanti.SetActive(true);
 
