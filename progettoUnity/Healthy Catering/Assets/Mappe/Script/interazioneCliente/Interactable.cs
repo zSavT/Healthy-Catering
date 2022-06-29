@@ -12,7 +12,6 @@ public class Interactable : MonoBehaviour
     [SerializeField] private GameObject modelloCliente3D;
     [SerializeField] private GestoreClienti gestioneCliente;
     [SerializeField] private AudioSource suonoContento;
-    [SerializeField] private AudioSource suonoScorretto;
 
 
     //Controller della mappa percorribile degli NPC
@@ -188,7 +187,6 @@ public class Interactable : MonoBehaviour
         controllerAnimazione.SetBool("affinitaDietaPiatto", false);
         effettoNegativo.Play();
         servito = true;
-        suonoScorretto.Play();
     }
 
 

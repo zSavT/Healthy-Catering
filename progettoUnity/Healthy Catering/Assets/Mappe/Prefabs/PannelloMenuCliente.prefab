@@ -200,6 +200,7 @@ MonoBehaviour:
   pannelloPiatti: {fileID: 9026646235953771938}
   pannelloIngredientiPiatto: {fileID: 0}
   pannelloIngredientiGiustiSbagliati: {fileID: 0}
+  suonoPiattoScorretto: {fileID: 0}
   pannelloConfermaPiatto: {fileID: 0}
   titoloIngredientiGiustiSbagliati: {fileID: 0}
   testoIngredientiGiusti: {fileID: 0}
