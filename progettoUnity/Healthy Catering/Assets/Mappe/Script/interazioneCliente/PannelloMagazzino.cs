@@ -77,18 +77,12 @@ public class PannelloMagazzino : MonoBehaviour
 
     public void chiudiPannelloMagazzino()
     {
-        StartCoroutine(playSuonoChiusura());
+        suonoChiusuraPC.Play();
         pannelloMagazzino.SetActive(false);
         pannelloMagazzinoAperto = false;
         pannelloMostraRicette.chiudiPannelloMostraRicette();
-        
     }
 
-    private IEnumerator playSuonoChiusura()
-    {
-        suonoChiusuraPC.Play();
-        yield return new WaitForSecondsRealtime(5f);
-    }
 
     public bool getPannelloMagazzinoAperto()
     {
