@@ -54,7 +54,7 @@
     {
         "idIngrediente": 4,
         "nome": "Tagliatelle",
-        "descrizione": "",
+        "descrizione": "Le tagliatelle sono una pasta all'uovo tipica dell'Emilia e diffusa nella cucina tradizionale del Centro e Nord Italia. Il loro nome deriva dal verbo \"tagliare\", dato che tradizionalmente si ottengono stendendo la pasta in sfoglia sottile e tagliandola, dopo averla arrotolata.",
         "costo": 1,
         "costoEco": 23,
         "nutriScore": 2,
@@ -155,7 +155,7 @@
     {
         "idIngrediente": 12,
         "nome": "Spaghetti",
-        "descrizione": "",
+        "descrizione": "Gli spaghetti sono un particolare formato di pasta prodotta esclusivamente con semole di grano duro e acqua, dalla forma lunga e sottile e di sezione tonda.",
         "costo": 1,
         "costoEco": 23,
         "nutriScore": 2,
@@ -220,7 +220,7 @@
     {
         "idIngrediente": 17,
         "nome": "Mozzarella",
-        "descrizione": "",
+        "descrizione": "La mozzarella \u00e8 un formaggio a pasta filata originario dell'Italia meridionale e prodotta da secoli anche in Italia centrale; oggi la sua produzione \u00e8 diffusa in tutta Italia e in vari paesi del mondo.",
         "costo": 1,
         "costoEco": 21,
         "nutriScore": 3,
@@ -245,7 +245,7 @@
     {
         "idIngrediente": 19,
         "nome": "Salmone",
-        "descrizione": "",
+        "descrizione": "Il nome volgare salmone pu\u00f2 essere utilizzato per diverse specie ittiche della famiglia Salmonidae.",
         "costo": 1,
         "costoEco": 17,
         "nutriScore": 2,
@@ -322,7 +322,7 @@
     {
         "idIngrediente": 25,
         "nome": "Pecorino",
-        "descrizione": "",
+        "descrizione": "Con il termine pecorino si indica un formaggio prodotto con latte di pecora, il quale si differenzia da quello vaccino soprattutto per la percentuale di grasso e di caseina: pi\u00f9 del doppio, il che ai fini della caseificazione configura un latte particolarmente ricco. Storicamente di origine mediterranea, \u00e8 un prodotto diffuso anche altrove.",
         "costo": 1,
         "costoEco": 29,
         "nutriScore": 3,
@@ -334,7 +334,7 @@
     {
         "idIngrediente": 26,
         "nome": "Cioccolato",
-        "descrizione": "",
+        "descrizione": "Il cioccolato, o la cioccolata (specie se fusa o da spalmare), \u00e8 un alimento derivato dai semi dell'albero del cacao, ampiamente diffuso e consumato in tutto il mondo. Il termine \"cioccolata\" viene utilizzato come sinonimo di \"cioccolato\" oppure per indicare una bevanda liquida a base di polvere di semi di cacao, nell'uso occidentale contemporaneo invariabilmente con l'aggiunta di zucchero (al contrario di come veniva consumato il cacao in bevande salate e speziate nelle culture precolombiane).",
         "costo": 1,
         "costoEco": 37,
         "nutriScore": 2,
@@ -347,7 +347,7 @@
     {
         "idIngrediente": 27,
         "nome": "Burro",
-        "descrizione": "",
+        "descrizione": "Il burro \u00e8 la parte grassa del latte, separata dal latticello tramite un processo di inversione di fase, derivante dalla panna. Il risultato del procedimento \u00e8 un'emulsione, principalmente di acqua, in cui risultano disciolti zuccheri e proteine, nei grassi, nella cui fase fluida cristallizzano in parte.",
         "costo": 1,
         "costoEco": 40,
         "nutriScore": 3,
@@ -372,7 +372,7 @@
     {
         "idIngrediente": 29,
         "nome": "Lievito",
-        "descrizione": "",
+        "descrizione": "I lieviti sono un gruppo di funghi, formati da un unico tipo di cellula eucariotica, che possono avere forma ellittica o sferica. Sono state catalogate pi\u00f9 di mille specie di lieviti.",
         "costo": 1,
         "costoEco": 1,
         "nutriScore": 0,
@@ -450,7 +450,7 @@
     {
         "idIngrediente": 35,
         "nome": "Pane",
-        "descrizione": "",
+        "descrizione": "Il pane \u00e8 un prodotto alimentare ottenuto dalla fermentazione, dalla formatura a cui segue una lievitazione, e successiva cottura in forno di un impasto a base di farina (normale o integrale), cereali e acqua, confezionato con diverse modalit\u00e0, arricchito e caratterizzato frequentemente da ingredienti che si differenziano seguendo le tradizioni locali.",
         "costo": 1,
         "costoEco": 25,
         "nutriScore": 1,
