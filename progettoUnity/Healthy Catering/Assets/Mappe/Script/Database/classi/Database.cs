@@ -68,9 +68,9 @@ public class Database
         string nomeTipoOggetto = Serializza.getNomeTipo(databaseOggetto).ToLower();
 
         //prendo l'id dell'ultimo oggetto aggiunto al database(quindi all'indice dimensioneLista - 1) e gli aggiungo 1
-        if ((nomeTipoOggetto.Equals("item")) || (nomeTipoOggetto.Equals("ingrediente"))){
-            Item temp = (Item) Convert.ChangeType (databaseOggetto[databaseOggetto.Count - 1], typeof (Item));
-            return temp.idItem + 1;
+        if (nomeTipoOggetto.Equals("ingrediente")){
+            Ingrediente temp = (Ingrediente) Convert.ChangeType (databaseOggetto[databaseOggetto.Count - 1], typeof (Ingrediente));
+            return temp.idIngrediente + 1;
         }
         else if (nomeTipoOggetto.Equals("patologia")){
             Patologia temp = (Patologia) Convert.ChangeType (databaseOggetto[databaseOggetto.Count - 1], typeof (Patologia));
@@ -222,18 +222,10 @@ public class Database
     {
         List<Ingrediente> databaseIngredienti = getDatabaseOggetto(new Ingrediente());
         if (databaseIngredienti.Count > 0)
-            if (databaseIngredienti[0].idItem == -1)
+            if (databaseIngredienti[0].idIngrediente == -1)
             {
                 databaseIngredienti.RemoveAt(0);
                 Serializza.salvaOggettiSuFile(databaseIngredienti);
-            }
-
-        List<Item> databaseItem = getDatabaseOggetto(new Item());
-        if (databaseItem.Count > 0)
-            if (databaseItem[0].idItem == -1)
-            {
-                databaseItem.RemoveAt(0);
-                Serializza.salvaOggettiSuFile(databaseItem);
             }
 
         List<Patologia> databasePatologie = getDatabaseOggetto(new Patologia());
@@ -251,7 +243,6 @@ public class Database
         creaDatabaseVuotoCliente();
         creaDatabaseVuotoDieta();
         creaDatabaseVuotoIngrediente();
-        creaDatabaseVuotoItem();
         creaDatabaseVuotoPatologia();
         creaDatabaseVuotoPiatto();
         creaDatabaseVuotoPlayer();
@@ -279,14 +270,6 @@ public class Database
         tempIngrediente.Add(new Ingrediente());
 
         Serializza.salvaOggettiSuFile<Ingrediente>(tempIngrediente);
-    }
-
-    private static void creaDatabaseVuotoItem()
-    {
-        List<Item> tempItem = new List<Item>();
-        tempItem.Add(new Item());
-
-        Serializza.salvaOggettiSuFile<Item>(tempItem);
     }
 
     private static void creaDatabaseVuotoPatologia()
@@ -392,7 +375,7 @@ public class Database
         Ingrediente ingredienteGiaPresente = Ingrediente.checkIngredienteOnonimoGiaPresente(ingrediente.nome);
         if (ingredienteGiaPresente == null)
         {
-            ingrediente.idItem = getNewId<Ingrediente>(ingrediente);
+            ingrediente.idIngrediente = getNewId<Ingrediente>(ingrediente);
 
             while (ingrediente.descrizione.Equals(""))
             {

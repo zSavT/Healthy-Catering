@@ -1,26 +1,27 @@
+/***
 public class Item
 {
-    public int idItem = -1;
+    public int idIngrediente = -1;
 
     public string nome = "";
     public string descrizione = "";
 
-    public Item(int idItem, string nome, string descrizione)
+    public Item(int idIngrediente, string nome, string descrizione)
     {
-        this.idItem = idItem;
+        this.idIngrediente = idIngrediente;
         this.nome = nome;
         this.descrizione = descrizione;
     }
 
     public Item(string nome) : base()
     {
-        this.idItem = Database.getNewId<Item>(this);
+        this.idIngrediente = Database.getNewId<Item>(this);
         this.nome = nome;
     }
 
     public Item()
     {
-        this.idItem = -1;
+        this.idIngrediente = -1;
         this.nome = "";
         this.descrizione = "";
     }
@@ -50,7 +51,7 @@ public class Item
 
     }
 
-    public static Item creaNuovoItem(string nome = null /*@Deprecated ,string tipoItem = null*/)
+    public static Item creaNuovoItem(string nome = null)
     {
         nome ??= Database.getNewStringaFromUtente("Inserisci il nome dell'item che vuoi aggiungere");
 
@@ -94,4 +95,4 @@ public class Item
         }
     }
     */
-}
+//}
