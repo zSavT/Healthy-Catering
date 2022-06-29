@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
@@ -10,13 +10,14 @@ using UnityEngine.Events;
 public class MovimentoPlayer : MonoBehaviour
 {
     [SerializeField] private CharacterController controller;
-    
+
     [Header("Movimento")]
     [SerializeField] private float velocitaBase = 5f;
     [SerializeField] private float velocitaSprint = 8f;
     [SerializeField] private KeyCode tastoSprint;
     private float velocitaAttuale = 0;
-    
+    private bool isSprinting;
+
 
     [Header("Salto")]
     [SerializeField] private KeyCode tastoSalto;
@@ -25,6 +26,11 @@ public class MovimentoPlayer : MonoBehaviour
     [SerializeField] private float distanzaPavimento = 0.4f;
     [SerializeField] private LayerMask pavimentoMask;
     [SerializeField] private float gravita = -9.8f;
+
+    [Header("Suoni Movienti")]
+    [SerializeField] private AudioSource suonoCamminata;
+    [SerializeField] private AudioSource suonoSprint;
+    [SerializeField] private AudioSource suonoSalto;
     private bool perTerra;
 
 
@@ -47,7 +53,7 @@ public class MovimentoPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(puoMuoversi)
+        if (puoMuoversi)
         {
             controlloCollisionePavimento();
 
@@ -56,6 +62,8 @@ public class MovimentoPlayer : MonoBehaviour
             Physics.SyncTransforms();
 
             controlloTastiMovimento();
+
+            controlloSuonoMovimento();
 
             controlloComandi();
 
@@ -95,13 +103,15 @@ public class MovimentoPlayer : MonoBehaviour
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
         movimento = transform.right * x + transform.forward * z;
-        if(z > 0 )
+        if (z > 0)
         {
             controllerAnimazione.SetBool("camminaIndietro", false);
-        } else if (z < 0)
+        }
+        else if (z < 0)
         {
             controllerAnimazione.SetBool("camminaIndietro", true);
-        } else if (z == 0)
+        }
+        else if (z == 0)
         {
             controllerAnimazione.SetBool("camminaIndietro", false);
         }
@@ -109,11 +119,13 @@ public class MovimentoPlayer : MonoBehaviour
         {
             controllerAnimazione.SetBool("camminaDestra", true);
             controllerAnimazione.SetBool("camminaSinistra", false);
-        } else if (x < 0)
+        }
+        else if (x < 0)
         {
             controllerAnimazione.SetBool("camminaSinistra", true);
             controllerAnimazione.SetBool("camminaDestra", false);
-        } else if (x == 0)
+        }
+        else if (x == 0)
         {
             controllerAnimazione.SetBool("camminaSinistra", false);
             controllerAnimazione.SetBool("camminaDestra", false);
@@ -123,8 +135,22 @@ public class MovimentoPlayer : MonoBehaviour
         controllerAnimazione.SetBool("corre", false);
     }
 
+
+    private void controlloSuonoMovimento()
+    {
+        if (!isFermo() && !isSprinting)
+        {
+            if (!suonoCamminata.isPlaying)
+                suonoCamminata.Play();
+        }
+        else
+        {
+            suonoCamminata.Stop();
+        }
+    }
+
     /// <summary>
-    /// Controlla la velocità dei movimenti.
+    /// Controlla la velocitï¿½ dei movimenti.
     /// </summary>
     private void controlloVelocita()
     {
@@ -160,10 +186,14 @@ public class MovimentoPlayer : MonoBehaviour
         if (Input.GetKey(tastoSprint))
         {
             sprint();
+        } else if(Input.GetKeyUp(tastoSprint))
+        {
+            suonoSprint.Stop();
         }
         else
         {
             velocitaAttuale = velocitaBase;
+            isSprinting = false;
         }
         if (Input.GetKeyDown(tastoSalto) && perTerra)
         {
@@ -177,17 +207,20 @@ public class MovimentoPlayer : MonoBehaviour
 
 
     /// <summary>
-    /// Se il giocatore è per terra, può sprintare
+    /// Se il giocatore ï¿½ per terra, puï¿½ sprintare
     /// </summary>
     private void sprint()
     {
-        if(perTerra)
+        if (perTerra)
         {
             velocitaAttuale = velocitaSprint;
         }
         controllerAnimazione.SetBool("fermo", false);
         controllerAnimazione.SetBool("cammina", false);
         controllerAnimazione.SetBool("corre", true);
+        isSprinting = true;
+        if (!suonoSprint.isPlaying && !isFermo())
+            suonoSprint.Play();
     }
 
     /// <summary>
@@ -197,12 +230,15 @@ public class MovimentoPlayer : MonoBehaviour
     {
         velocita.y = Mathf.Sqrt(altezzaSalto * -2f * gravita);
         controllerAnimazione.SetBool("salta", true);
+        if (!suonoSalto.isPlaying)
+            suonoSalto.Play();
     }
 
+
     /// <summary>
-    /// Controlla se il giocotore è fermo o meno.
+    /// Controlla se il giocotore ï¿½ fermo o meno.
     /// </summary>
-    /// <returns><strong>True</strong>: il giocatore è fermo.<br><strong>False</strong>: il giocatore non è fermo.</br></returns>
+    /// <returns><strong>True</strong>: il giocatore ï¿½ fermo.<br><strong>False</strong>: il giocatore non ï¿½ fermo.</br></returns>
     private bool isFermo()
     {
         if (x == 0 && z == 0)

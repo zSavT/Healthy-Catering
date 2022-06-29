@@ -75,7 +75,7 @@ public class ProgressoTutorial : MonoBehaviour
 
     private void Update()
     {
-        print(saGiocareSettato);
+    //    print(saGiocareSettato);
         if (!saGiocareSettato)
         {
             if (PlayerSaGiocareFPS.siOnoSettato())
