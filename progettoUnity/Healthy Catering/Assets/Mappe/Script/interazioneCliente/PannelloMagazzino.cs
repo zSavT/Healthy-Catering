@@ -11,6 +11,11 @@ public class PannelloMagazzino : MonoBehaviour
     public static bool pannelloMagazzinoApertoPerTutorial = false;
     [SerializeField] private Image sfondoImmaginePC;
     [SerializeField] private Button tastoX;
+    [Header("Suoni PC")]
+    [SerializeField] private AudioSource suonoAperturaPC;
+    [SerializeField] private AudioSource suonoChiusuraPC;
+
+
 
     //mi serve per settare il parent dell'oggetto sotto a questo oggetto, poi se la vede unity a sistemarli all'interno della schermata
     [SerializeField] private GameObject pannelloMostraInventario;
@@ -47,6 +52,7 @@ public class PannelloMagazzino : MonoBehaviour
 
     public void apriPannelloMagazzino(Player player)
     {
+
         giocatore = player;
 
         CambioCursore.cambioCursoreNormale();
@@ -66,14 +72,22 @@ public class PannelloMagazzino : MonoBehaviour
         {
             aggiornaSchermataMagazzino();
         }
+        suonoAperturaPC.Play();
     }
 
     public void chiudiPannelloMagazzino()
     {
+        StartCoroutine(playSuonoChiusura());
         pannelloMagazzino.SetActive(false);
         pannelloMagazzinoAperto = false;
         pannelloMostraRicette.chiudiPannelloMostraRicette();
+        
+    }
 
+    private IEnumerator playSuonoChiusura()
+    {
+        suonoChiusuraPC.Play();
+        yield return new WaitForSecondsRealtime(5f);
     }
 
     public bool getPannelloMagazzinoAperto()
