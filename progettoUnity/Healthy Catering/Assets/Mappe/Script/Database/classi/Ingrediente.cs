@@ -131,6 +131,29 @@ public class Ingrediente
 
         return ricettePossibiliConIngrediente;
     }
+    public string getListaPiattiRealizzabiliConIngredienteToSingolaString(List<Ingrediente> databaseIngredienti, List<Piatto> databasePiatti)
+    {
+        List<Piatto> ricettePossibiliConIngrediente = new List<Piatto>();
+
+        foreach (Piatto piatto in databasePiatti)
+        {
+            List<Ingrediente> ingredientiPiatto = piatto.getIngredientiPiatto(databaseIngredienti);
+            foreach (Ingrediente ingredientePiatto in ingredientiPiatto)
+            {
+                if (this.Equals(ingredientePiatto))
+                {
+                    ricettePossibiliConIngrediente.Add(piatto);
+                }
+            }
+        }
+
+        string output = "";
+        foreach (Piatto piatto in ricettePossibiliConIngrediente)
+        {
+            output += piatto.nome + "\n";
+        }
+        return output;
+    }
 
     public static Ingrediente checkIngredienteOnonimoGiaPresente(string nomeIngrediente)
     {
