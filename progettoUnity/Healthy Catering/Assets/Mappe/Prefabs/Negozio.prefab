@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472897}
-  m_LocalRotation: {x: -0.00024980574, y: -0.024933755, z: 0.2098779, w: 0.97740966}
+  m_LocalRotation: {x: -0.00023678552, y: -0.024947738, z: 0.21034229, w: 0.97730947}
   m_LocalPosition: {x: -3.513328, y: 0.0000021267624, z: 0.000000052386895}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -55,7 +55,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14997999}
-  m_LocalRotation: {x: 0.06463624, y: 0.16089723, z: 0.23118971, w: -0.95733255}
+  m_LocalRotation: {x: 0.060452014, y: 0.17921412, z: 0.23258148, w: -0.95400935}
   m_LocalPosition: {x: 5.66551, y: 0.000008754432, z: -0.000024586916}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -86,7 +86,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 63553110}
-  m_LocalRotation: {x: 0.99501973, y: -0.099678904, z: 0.000000001633758, w: -0.00000001779761}
+  m_LocalRotation: {x: 0.99501973, y: -0.099678904, z: 0.00000011345944, w: -0.00000019478594}
   m_LocalPosition: {x: -10.393262, y: -0.00000074505806, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -277,7 +277,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199410226}
-  m_LocalRotation: {x: 0.5984741, y: 0.549022, z: 0.42668468, w: -0.39792445}
+  m_LocalRotation: {x: 0.62614214, y: 0.5145757, z: 0.40620106, w: -0.42208827}
   m_LocalPosition: {x: -5.801531, y: -4.1914196, z: 7.4471517}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -309,7 +309,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236551131}
-  m_LocalRotation: {x: -0.040873684, y: -0.010348285, z: 0.1815042, w: 0.9824859}
+  m_LocalRotation: {x: -0.039450653, y: -0.015525991, z: 0.08635423, w: 0.99536204}
   m_LocalPosition: {x: -4.093632, y: 0.0000017877028, z: -0.00000017971615}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -341,7 +341,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254601280}
-  m_LocalRotation: {x: -0.034261163, y: -0.03594348, z: 0.00253373, w: 0.9987632}
+  m_LocalRotation: {x: -0.05476379, y: -0.03969071, z: -0.06385539, w: 0.99566466}
   m_LocalPosition: {x: 27.114487, y: -0.000002514571, z: 0.03813356}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -365,6 +365,7 @@ GameObject:
   - component: {fileID: 288465215}
   - component: {fileID: 288465214}
   - component: {fileID: 288465213}
+  - component: {fileID: 901777526290878088}
   m_Layer: 6
   m_Name: BottoneAumentaQuantita
   m_TagString: Untagged
@@ -487,6 +488,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &901777526290878088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288465211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &336596655
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,7 +540,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336596655}
-  m_LocalRotation: {x: -0.01148706, y: 0.029444613, z: 0.13535558, w: 0.9902929}
+  m_LocalRotation: {x: -0.02652106, y: 0.03584479, z: 0.048383705, w: 0.9978331}
   m_LocalPosition: {x: -10.396562, y: 0.3987115, z: 2.6726491}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -562,6 +592,7 @@ GameObject:
   - component: {fileID: 356178295}
   - component: {fileID: 356178294}
   - component: {fileID: 356178293}
+  - component: {fileID: 901777526290878090}
   m_Layer: 5
   m_Name: BottoneSi
   m_TagString: Untagged
@@ -684,6 +715,35 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &901777526290878090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356178291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &358603713
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,7 +767,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 358603713}
-  m_LocalRotation: {x: 0.2250784, y: 0.20647049, z: 0.603216, w: 0.7367769}
+  m_LocalRotation: {x: 0.22077568, y: 0.15942952, z: 0.5894765, w: 0.76049834}
   m_LocalPosition: {x: 13.197862, y: 0.0006434042, z: 0.0000067055225}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -910,7 +970,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 412552399}
-  m_LocalRotation: {x: -0.13105348, y: -0.0370741, z: 0.008235688, w: 0.9906477}
+  m_LocalRotation: {x: -0.13919656, y: -0.03602522, z: 0.0060178926, w: 0.989591}
   m_LocalPosition: {x: -27.114529, y: -0.0000023952452, z: -0.03813613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1079,7 +1139,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 449263242}
-  m_LocalRotation: {x: -0.06723102, y: -0.11513485, z: 0.019736854, w: 0.9908756}
+  m_LocalRotation: {x: -0.06753642, y: -0.104087844, z: 0.01977068, w: 0.99207544}
   m_LocalPosition: {x: -6.3702145, y: -0.0000052619725, z: 0.0000004656613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1111,7 +1171,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546071684}
-  m_LocalRotation: {x: 0.84192735, y: 0.4757418, z: 0.04680219, w: -0.25027508}
+  m_LocalRotation: {x: 0.8592526, y: 0.50815135, z: 0.026174307, w: -0.05274649}
   m_LocalPosition: {x: 37.71233, y: 0.000014901161, z: -0.00008493662}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1345,7 +1405,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597957385}
-  m_LocalRotation: {x: 0.04465981, y: 0.024026133, z: -0.116356775, w: -0.991912}
+  m_LocalRotation: {x: 0.031074688, y: -0.0073241172, z: -0.66300607, w: -0.747933}
   m_LocalPosition: {x: 3.7912118, y: 0.00032056123, z: -0.000005122274}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1512,7 +1572,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 729719853}
-  m_LocalRotation: {x: -0.11817041, y: 0.06500597, z: -0.010218412, w: 0.99081063}
+  m_LocalRotation: {x: -0.12170884, y: 0.1379781, z: 0.0014118402, w: 0.9829278}
   m_LocalPosition: {x: -33.947403, y: -0.144906, z: -0.14362651}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1544,7 +1604,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741169190}
-  m_LocalRotation: {x: 0.72260046, y: 0.027249038, z: -0.013224123, w: 0.69060206}
+  m_LocalRotation: {x: 0.64067185, y: 0.022131458, z: -0.0012128293, w: 0.7674949}
   m_LocalPosition: {x: -39.93091, y: 0.0000059604645, z: 0.000000045820414}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1753,7 +1813,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768174990}
-  m_LocalRotation: {x: -0.044054285, y: -0.021330854, z: 0.17126268, w: 0.98400885}
+  m_LocalRotation: {x: -0.044939656, y: -0.025443966, z: 0.08555684, w: 0.99499404}
   m_LocalPosition: {x: -3.7911885, y: -0.0000044849003, z: 0.00000009458745}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1775,6 +1835,7 @@ GameObject:
   - component: {fileID: 768696000}
   - component: {fileID: 768695999}
   - component: {fileID: 768695998}
+  - component: {fileID: 901777526290878086}
   m_Layer: 6
   m_Name: BottoneCompra
   m_TagString: Untagged
@@ -1897,6 +1958,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &901777526290878086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768695996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &790378785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,7 +2010,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790378785}
-  m_LocalRotation: {x: 0.000397792, y: 0.024767926, z: -0.20463015, w: -0.97852594}
+  m_LocalRotation: {x: -0.013100306, y: 0.03609085, z: -0.65858704, w: -0.7515245}
   m_LocalPosition: {x: 3.513327, y: -0.000013876706, z: 0.0000014901161}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2075,7 +2165,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.4420166, y: 2.4110107}
+  m_AnchoredPosition: {x: -5.4418945, y: 2.4110107}
   m_SizeDelta: {x: -310.905, y: -324.622}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &808672225
@@ -2340,6 +2430,7 @@ GameObject:
   - component: {fileID: 909262339}
   - component: {fileID: 909262338}
   - component: {fileID: 909262337}
+  - component: {fileID: 901777526290878087}
   m_Layer: 6
   m_Name: BottoneDiminuisciQuantita
   m_TagString: Untagged
@@ -2462,6 +2553,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &901777526290878087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909262335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &935907750
 GameObject:
   m_ObjectHideFlags: 0
@@ -2485,7 +2605,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935907750}
-  m_LocalRotation: {x: -0.52862245, y: 0.6210164, z: -0.41036215, w: -0.40804398}
+  m_LocalRotation: {x: -0.5366365, y: 0.607779, z: -0.4072354, w: -0.42045844}
   m_LocalPosition: {x: -5.801173, y: -4.191449, z: -7.447155}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2517,7 +2637,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 996456672}
-  m_LocalRotation: {x: -0.033345263, y: 0.064850874, z: -0.18102872, w: -0.9807707}
+  m_LocalRotation: {x: -0.05286805, y: 0.1261264, z: -0.52987635, w: -0.83697563}
   m_LocalPosition: {x: 9.9825, y: 0.11600417, z: 3.2833476}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2549,7 +2669,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010610913}
-  m_LocalRotation: {x: 0.045467913, y: 0.7570442, z: -0.64886725, w: -0.061547887}
+  m_LocalRotation: {x: 0.04046091, y: 0.7401131, z: -0.66811717, w: -0.064923376}
   m_LocalPosition: {x: 4.1157684, y: -2.6920707, z: -9.896706}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2581,7 +2701,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068327456}
-  m_LocalRotation: {x: -0.019871017, y: -0.02014584, z: -0.2150245, w: -0.9761986}
+  m_LocalRotation: {x: -0.02726722, y: -0.0073203538, z: -0.65241045, w: -0.7573398}
   m_LocalPosition: {x: 4.2488074, y: 0.00002910383, z: -0.0000013969839}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2883,7 +3003,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102515637}
-  m_LocalRotation: {x: -0.07935676, y: 0.05773115, z: -0.020192292, w: 0.9949683}
+  m_LocalRotation: {x: -0.113812625, y: 0.07719715, z: -0.020518268, w: 0.990286}
   m_LocalPosition: {x: 33.94746, y: 0.14475659, z: 0.14362484}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3065,7 +3185,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167330811}
-  m_LocalRotation: {x: 0.019869145, y: 0.020147493, z: 0.21495141, w: 0.97621477}
+  m_LocalRotation: {x: 0.021090617, y: 0.018769303, z: 0.27417517, w: 0.96126527}
   m_LocalPosition: {x: -4.248817, y: -0.0000044325134, z: 0.00000020936568}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3232,7 +3352,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226363894}
-  m_LocalRotation: {x: 0.99518615, y: -0.09800284, z: 0.000000014850592, w: 0.0000000052113305}
+  m_LocalRotation: {x: 0.99518615, y: -0.09800275, z: 0.000000013667705, w: 0.000000098830604}
   m_LocalPosition: {x: -18.15117, y: -0.0000029802322, z: 0.0000013969839}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3253,6 +3373,7 @@ GameObject:
   - component: {fileID: 1321015307}
   - component: {fileID: 1321015306}
   - component: {fileID: 1321015305}
+  - component: {fileID: 901777526290878089}
   m_Layer: 5
   m_Name: BottoneNo
   m_TagString: Untagged
@@ -3375,6 +3496,35 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &901777526290878089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321015303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1323339628
 GameObject:
   m_ObjectHideFlags: 0
@@ -3398,7 +3548,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323339628}
-  m_LocalRotation: {x: 0.2296665, y: 0.3186264, z: 0.5775172, w: 0.7156846}
+  m_LocalRotation: {x: 0.2900591, y: 0.20380786, z: 0.6023777, w: 0.7151708}
   m_LocalPosition: {x: -13.197872, y: -0.0000052939868, z: -0.00000044237822}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3528,7 +3678,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373963920}
-  m_LocalRotation: {x: 0.036970664, y: -0.07534819, z: 0.2118293, w: 0.9736962}
+  m_LocalRotation: {x: 0.030200178, y: -0.05497089, z: 0.09089908, w: 0.9938831}
   m_LocalPosition: {x: -9.982523, y: -0.115958855, z: -3.2833405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3799,7 +3949,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495827607}
-  m_LocalRotation: {x: -0.060973518, y: -0.15207599, z: -0.23628032, w: -0.95777184}
+  m_LocalRotation: {x: -0.087943144, y: -0.099857934, z: -0.2707627, w: -0.9534055}
   m_LocalPosition: {x: 3.5139983, y: 1.1710002, z: -4.505549}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3831,7 +3981,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1547297916}
-  m_LocalRotation: {x: 0.8321685, y: 0.47960603, z: 0.09956999, w: -0.25992203}
+  m_LocalRotation: {x: 0.8518595, y: 0.50413716, z: 0.069970936, w: -0.12363352}
   m_LocalPosition: {x: -37.71235, y: 0, z: -0.00000018626451}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3884,6 +4034,7 @@ GameObject:
   - component: {fileID: 1671942584}
   - component: {fileID: 1671942583}
   - component: {fileID: 1671942586}
+  - component: {fileID: 1418081016}
   m_Layer: 5
   m_Name: BottoneIndietro
   m_TagString: Untagged
@@ -4005,6 +4156,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1418081016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671942581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: PlayDelayed
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0.1
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1675904486
 GameObject:
   m_ObjectHideFlags: 0
@@ -4028,7 +4220,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1675904486}
-  m_LocalRotation: {x: -0.05875759, y: -0.18662296, z: -0.23312214, w: 0.95256156}
+  m_LocalRotation: {x: -0.10698103, y: 0.03426396, z: -0.21150991, w: 0.9708989}
   m_LocalPosition: {x: -5.6655703, y: -0.0000059604645, z: 0.0000013504177}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4059,7 +4251,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695299621}
-  m_LocalRotation: {x: 0.022256657, y: -0.041817706, z: -0.08895883, w: -0.9949082}
+  m_LocalRotation: {x: -0.054968543, y: 0.007534206, z: -0.48863125, w: -0.87072456}
   m_LocalPosition: {x: 10.396602, y: -0.39899853, z: -2.672656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4091,7 +4283,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722219550}
-  m_LocalRotation: {x: 0.0000000047558295, y: 0.0000000028450835, z: -0.27001598, w: 0.96285594}
+  m_LocalRotation: {x: 0.0000000047558286, y: 0.0000000028450764, z: -0.27001572, w: 0.962856}
   m_LocalPosition: {x: 11.28403, y: -0.0000018626451, z: 0.0000029802322}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4154,7 +4346,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1799066177}
-  m_LocalRotation: {x: 0.45857096, y: -0.53824955, z: 0.45857108, w: 0.5382497}
+  m_LocalRotation: {x: 0.45857117, y: -0.53824943, z: 0.45857114, w: 0.5382496}
   m_LocalPosition: {x: -12.164438, y: -0.0000044703484, z: 0.0000037252903}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4318,7 +4510,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1850947741}
   m_LocalRotation: {x: -0, y: -0.40245822, z: -0, w: -0.9154384}
-  m_LocalPosition: {x: -0.03476, y: 0.00233, z: -0.03464}
+  m_LocalPosition: {x: -0.03476, y: 0.00233, z: -0.034639996}
   m_LocalScale: {x: 0.010000001, y: 0.01, z: 0.010000001}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4370,7 +4562,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1857469082}
-  m_LocalRotation: {x: 0.067382574, y: 0.10936539, z: -0.019697685, w: -0.9915195}
+  m_LocalRotation: {x: 0.06703883, y: 0.121640995, z: -0.019658832, w: -0.99011254}
   m_LocalPosition: {x: 6.370145, y: -0.00078547746, z: 0.00003874302}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4434,7 +4626,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907193792}
-  m_LocalRotation: {x: 0.071426526, y: 0.13627829, z: 0.2512861, w: 0.9556055}
+  m_LocalRotation: {x: 0.033295978, y: 0.10999586, z: 0.16469438, w: 0.97962654}
   m_LocalPosition: {x: -3.5140455, y: -1.17069, z: 4.5055394}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4466,8 +4658,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920797288}
-  m_LocalRotation: {x: 0.45966363, y: -0.5361813, z: -0.46211743, w: 0.53634554}
-  m_LocalPosition: {x: -0.18864761, y: 91.08424, z: 1.2391915}
+  m_LocalRotation: {x: 0.461668, y: -0.5353827, z: -0.46000463, w: 0.5372372}
+  m_LocalPosition: {x: -0.16848601, y: 91.141235, z: 1.5187305}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4500,7 +4692,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1921374995}
-  m_LocalRotation: {x: -0.00000000374635, y: -0.00000002770301, z: 0.041733366, w: 0.9991288}
+  m_LocalRotation: {x: 0.0000001911587, y: -0.00000020697868, z: 0.041733272, w: 0.9991288}
   m_LocalPosition: {x: -11.188972, y: -0.0000014901161, z: 0.0000013969839}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4532,7 +4724,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1933394758}
-  m_LocalRotation: {x: -0.7215582, y: 0.041288305, z: -0.06458999, w: 0.6880968}
+  m_LocalRotation: {x: -0.68580246, y: 0.041618615, z: -0.06379628, w: 0.7237907}
   m_LocalPosition: {x: 4.11578, y: -2.6920757, z: 9.89671}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4595,7 +4787,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2015168397}
-  m_LocalRotation: {x: 0.040170353, y: 0.0130931465, z: -0.13148202, w: -0.9904178}
+  m_LocalRotation: {x: 0.041626826, y: -0.01928285, z: -0.6631722, w: -0.74705964}
   m_LocalPosition: {x: 4.0935884, y: 0.0000923872, z: -0.0000059604645}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4627,7 +4819,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046718414}
-  m_LocalRotation: {x: 0.7356663, y: 0.024483852, z: -0.006031735, w: 0.6768747}
+  m_LocalRotation: {x: 0.63723505, y: 0.027237527, z: -0.0016345512, w: 0.77018636}
   m_LocalPosition: {x: 39.930923, y: -0.000035762787, z: -0.000000012739676}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4649,6 +4841,7 @@ GameObject:
   - component: {fileID: 2063133330}
   - component: {fileID: 2063133329}
   - component: {fileID: 2063133332}
+  - component: {fileID: 568091874}
   m_Layer: 5
   m_Name: BottoneAvanti
   m_TagString: Untagged
@@ -4770,6 +4963,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ab26e796361914d818a7f42a5c9c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &568091874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063133327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: PlayDelayed
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0.1
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2067402890
 GameObject:
   m_ObjectHideFlags: 0
