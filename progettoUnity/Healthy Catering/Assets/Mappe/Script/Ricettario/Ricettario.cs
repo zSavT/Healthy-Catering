@@ -29,15 +29,32 @@ public class Ricettario : MonoBehaviour
         switchToPiattiView();
     }
 
+    private void Update()
+    {
+        print("avanti: " + avanti.IsInteractable().ToString());
+        print("indietro: " + indietro.IsInteractable().ToString());
+    }
+
     private void attivaDisattivaAvantiIndietro()
     {
-        if (numeroPaginaIngredienti == 0 || numeroPaginaPiatti == 0)
-            setBottoniAvantiIndietroInteractable(true, false);
-        //resetto i valori dei 2 indici ogni volta che cambio dal pannello degli ingredienti a quello dei piatti
-        else if (numeroPaginaIngredienti == databaseIngredienti.Count || numeroPaginaPiatti == databasePiatti.Count)
-            setBottoniAvantiIndietroInteractable(false, true);
+        if (isVistaPiatto)
+        {
+            if (numeroPaginaPiatti == 0)
+                setBottoniAvantiIndietroInteractable(true, false);
+            else if (numeroPaginaPiatti == databasePiatti.Count - 1)
+                setBottoniAvantiIndietroInteractable(false, true);
+            else
+                setBottoniAvantiIndietroInteractable(true, true);
+        }
         else
-            setBottoniAvantiIndietroInteractable(true, true);
+        {
+            if (numeroPaginaIngredienti == 0)
+                setBottoniAvantiIndietroInteractable(true, false);
+            else if (numeroPaginaIngredienti == databaseIngredienti.Count - 1)
+                setBottoniAvantiIndietroInteractable(false, true);
+            else
+                setBottoniAvantiIndietroInteractable(true, true);
+        }
     }
 
     private void setBottoniAvantiIndietroInteractable(bool avantiAttivo, bool indietroAttivo)
@@ -49,19 +66,39 @@ public class Ricettario : MonoBehaviour
     public void switchToIngredientiView()
     {
         isVistaPiatto = false;
-        numeroPaginaIngredienti = 0;
-       
+        resetIndiciPagina();
+
         setTestoSchermata();
-        switchPiatti.interactable = false;
+        setSwitchPiattiIngredienti();
     }
 
     public void switchToPiattiView()
     {
         isVistaPiatto = true;
-        numeroPaginaPiatti = 0;
+        resetIndiciPagina();
 
         setTestoSchermata();
-        switchPiatti.interactable = false;
+        setSwitchPiattiIngredienti();
+    }
+
+    private void setSwitchPiattiIngredienti()
+    {
+        if (isVistaPiatto)
+        {
+            switchIngredienti.interactable = true;
+            switchPiatti.interactable = false;
+        }
+        else
+        {
+            switchIngredienti.interactable = false;
+            switchPiatti.interactable = true;
+        }
+    }
+
+    private void resetIndiciPagina()
+    {
+        numeroPaginaIngredienti = 0;
+        numeroPaginaPiatti = 0;
     }
 
     private void setTestoSchermata(string titolo, string testo)
@@ -93,13 +130,13 @@ public class Ricettario : MonoBehaviour
     {
         if (isVistaPiatto)
         {
-            if (numeroPaginaPiatti != databasePiatti.Count)
+            if (numeroPaginaPiatti != databasePiatti.Count - 1)
                 numeroPaginaPiatti++;
             setTestoSchermata();
         }
         else
         {
-            if (numeroPaginaIngredienti != databaseIngredienti.Count)
+            if (numeroPaginaIngredienti != databaseIngredienti.Count - 1)
                 numeroPaginaIngredienti++;
             setTestoSchermata();
         }
@@ -119,10 +156,5 @@ public class Ricettario : MonoBehaviour
                 numeroPaginaIngredienti--;
             setTestoSchermata();
         }
-    }
-
-    private void Update()
-    {
-        
     }
 }
