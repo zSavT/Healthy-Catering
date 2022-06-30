@@ -81,7 +81,18 @@ public class InterazionePassanti : MonoBehaviour
 
     private void getTutteLeScritteInterazione()
     {
-        string filePath = Path.Combine(Application.streamingAssetsPath, "stringheInterazioniPassanti.txt");
+        string filePath = "";
+        if(PlayerSettings.livelloSelezionato == 0)
+        {
+            filePath = Path.Combine(Application.streamingAssetsPath, "stringheInterazioniPassantiLivello0.txt");
+        } else if (PlayerSettings.livelloSelezionato == 1)
+        {
+            filePath = Path.Combine(Application.streamingAssetsPath, "stringheInterazioniPassantiLivello1.txt");
+        }else if (PlayerSettings.livelloSelezionato == 2)
+        {
+            filePath = Path.Combine(Application.streamingAssetsPath, "stringheInterazioniPassantiLivello2.txt");
+        }
+        
 
         List<string> tutteLeScritte = shuffleList(File.ReadAllLines(filePath).ToList());
 
