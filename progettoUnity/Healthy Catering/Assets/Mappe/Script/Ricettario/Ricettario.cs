@@ -35,8 +35,6 @@ public class Ricettario : MonoBehaviour
 
     private void Update()
     {
-        print("avanti: " + avanti.IsInteractable().ToString());
-        print("indietro: " + indietro.IsInteractable().ToString());
     }
 
     private void attivaDisattivaAvantiIndietro()
