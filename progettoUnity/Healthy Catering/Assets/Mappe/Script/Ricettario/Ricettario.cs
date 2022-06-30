@@ -26,15 +26,11 @@ public class Ricettario : MonoBehaviour
     private string colorePiatto = "<color=#ffa64c>";
     private string fineColore = "</color>";
 
-    void Start()
-    {
-        pannelloPrincipale.SetActive(true);
+    private bool ricettarioAperto = false;
 
-        switchToPiattiView();
-    }
-
-    private void Update()
+    private void Start()
     {
+        chiudiRicettario();
     }
 
     private void attivaDisattivaAvantiIndietro()
@@ -158,5 +154,28 @@ public class Ricettario : MonoBehaviour
                 numeroPaginaIngredienti--;
             setTestoSchermata();
         }
+    }
+
+    public void apriRicettario()
+    {
+        pannelloPrincipale.SetActive(true);
+
+        switchToPiattiView();
+
+        ricettarioAperto = true;
+    }
+
+    public void chiudiRicettario()
+    {
+        pannelloPrincipale.SetActive(false);
+
+        resetIndiciPagina();
+
+        ricettarioAperto = false;
+    }
+
+    public bool getRicettarioAperto()
+    {
+        return ricettarioAperto;
     }
 }

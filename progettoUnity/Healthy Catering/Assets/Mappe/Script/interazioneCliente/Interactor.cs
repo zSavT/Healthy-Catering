@@ -25,7 +25,10 @@ public class Interactor : MonoBehaviour
     [Header("Interazione NPC passivi")]
     [SerializeField] private LayerMask layerUnityNPCPassivi = 7;
     [SerializeField] private InterazionePassanti interazionePassanti;
-    private InteractableNPCPassivi npcPassivo;  
+    private InteractableNPCPassivi npcPassivo;
+
+    [Header("Interazione ricettario")]
+    [SerializeField] private Ricettario ricettarioScript;
 
     [Header("Eventi")]
     [SerializeField] private UnityEvent playerStop;
@@ -159,7 +162,8 @@ public class Interactor : MonoBehaviour
                     PuntatoreMouse.abilitaCursore();
                     CambioCursore.cambioCursoreNormale();
                 }
-            } else if(portaInquadrata())
+            }
+            else if (portaInquadrata())
             {
                 inquadratoNPC.Invoke();
                 if (Input.GetKeyDown(tastoInterazione) && !(negozio.getPannelloAperto()))
@@ -167,6 +171,17 @@ public class Interactor : MonoBehaviour
                     suonoNegozio.Play();
                     this.gameObject.transform.position = destinazioneTeleport.transform.position;
                 }
+            } else if(/*ricettarioPuntato()*/Input.GetKeyDown (KeyCode.Tab))
+            {
+                inquadratoNPC.Invoke();
+                //if (Input.GetKeyDown (tastoInterazione) && !(ricettarioScript.getRicettarioAperto()))
+                //{
+                    ricettarioScript.apriRicettario();
+
+                    playerStop.Invoke();
+                    PuntatoreMouse.abilitaCursore();
+                    CambioCursore.cambioCursoreNormale();
+                //}
             }
             else
             {
@@ -202,6 +217,15 @@ public class Interactor : MonoBehaviour
                     playerRiprendiMovimento.Invoke();
                 }
             }
+            if (ricettarioScript.getRicettarioAperto())
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    ricettarioScript.chiudiRicettario();
+                    PuntatoreMouse.disabilitaCursore();
+                    playerRiprendiMovimento.Invoke();
+                }
+            }
         }
     }
 
@@ -227,6 +251,20 @@ public class Interactor : MonoBehaviour
         CambioCursore.cambioCursoreNormale();
         PuntatoreMouse.disabilitaCursore();
         magazzino.chiudiPannelloMagazzino();
+    }
+
+    private bool ricettarioPuntato()
+    {
+        RaycastHit ricettarioInquadrato;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out ricettarioInquadrato, 2, layerUnityNPC))
+        {
+            // se l'oggetto visualizzato è interagibile
+            if (ricettarioInquadrato.collider.GetComponent<PannelloMagazzino>() != false)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private bool portaInquadrata()
