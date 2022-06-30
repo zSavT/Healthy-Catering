@@ -324,5 +324,28 @@
                 "quantita": 1
             }
         ]
+    },
+    {
+        "nome": "Risotto agli asparagi",
+        "descrizione": "Il risotto agli asparagi è un primo piatto cremoso e genuino, perfetto per la stagione primaverile.",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 1,
+                "quantita": 1
+            },
+            {
+                "oggetto": 2,
+                "quantita": 2
+            },
+            {
+                "oggetto": 3,
+                "quantita": 1
+            },
+            {
+                "oggetto": 0,
+                "quantita": 1
+            }
+        ]
     }
+
 ]

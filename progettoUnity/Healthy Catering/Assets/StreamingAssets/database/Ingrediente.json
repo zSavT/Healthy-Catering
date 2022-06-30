@@ -2,9 +2,9 @@
     {
         "idIngrediente": 0,
         "nome": "Olio",
-        "descrizione": "",
-        "costo": 1,
-        "costoEco": 1,
+        "descrizione": "Gli oli di origine biologica sono costituiti principalmente da gliceridi e in secondo luogo da altri componenti secondari, quali: acidi grassi liberi, fosfolipidi, steroli, idrocarburi, pigmenti, cere e vitamine.",
+        "costo": 2.2,
+        "costoEco": 12,
         "nutriScore": 1,
         "dieta": 0,
         "listaIdPatologieCompatibili": [
@@ -15,9 +15,9 @@
     {
         "idIngrediente": 1,
         "nome": "Riso",
-        "descrizione": "",
-        "costo": 1,
-        "costoEco": 15,
+        "descrizione": "Il riso o risoide è un alimento costituito dalla cariosside prodotta da diverse piante dei generi Oryza e Zizania, opportunamente lavorata.",
+        "costo": 1.4,
+        "costoEco": 22,
         "nutriScore": 2,
         "dieta": 0,
         "listaIdPatologieCompatibili": [
@@ -28,8 +28,8 @@
     {
         "idIngrediente": 2,
         "nome": "Asparagi",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "L'asparago comune o asparagio è una angiosperma monocotiledone che appartiene alla famiglia delle Asparagacee.",
+        "costo": 2.2,
         "costoEco": 1,
         "nutriScore": 0,
         "dieta": 0,
@@ -41,7 +41,7 @@
     {
         "idIngrediente": 3,
         "nome": "Cipolla",
-        "descrizione": "",
+        "descrizione": "La cipolla è una pianta bulbosa della famiglia Amaryllidaceae. Vive sotto terra ed è formata da foglie modificate, che presentano un'epidermide. È una pianta erbacea biennale il cui ciclo di vita, in coltivazione, viene interrotto a un anno al fine di destinarla al consumo.",
         "costo": 1,
         "costoEco": 1,
         "nutriScore": 0,
@@ -55,7 +55,7 @@
         "idIngrediente": 4,
         "nome": "Tagliatelle",
         "descrizione": "Le tagliatelle sono una pasta all'uovo tipica dell'Emilia e diffusa nella cucina tradizionale del Centro e Nord Italia. Il loro nome deriva dal verbo \"tagliare\", dato che tradizionalmente si ottengono stendendo la pasta in sfoglia sottile e tagliandola, dopo averla arrotolata.",
-        "costo": 1,
+        "costo": 3.2,
         "costoEco": 23,
         "nutriScore": 2,
         "dieta": 0,
@@ -67,9 +67,9 @@
     {
         "idIngrediente": 5,
         "nome": "Fagioli",
-        "descrizione": "",
+        "descrizione": "In gastronomia, i legumi sono un insieme di grandi semi commestibili di diverse piante della famiglia delle Fabaceae, che vengono utilizzati tendenzialmente come verdura. Dal punto di vista botanico, invece, con legume, ci si riferisce al frutto di tali piante, che fa da contenitore ai semi.",
         "costo": 1,
-        "costoEco": 10,
+        "costoEco": 11,
         "nutriScore": 1,
         "dieta": 0,
         "listaIdPatologieCompatibili": [
@@ -80,8 +80,8 @@
     {
         "idIngrediente": 6,
         "nome": "Carota",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "La carota è un ortaggio a radice, tipicamente di colore arancione, sebbene esistano cultivar viola, nero, rosso, bianco e giallo, tutte forme addomesticate della carota selvatica, Daucus carota, originaria dell'Europa e dell'Asia sudoccidentale.",
+        "costo": 1.2,
         "costoEco": 4,
         "nutriScore": 0,
         "dieta": 0,
@@ -93,8 +93,8 @@
     {
         "idIngrediente": 7,
         "nome": "Sedano",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "Il sedano appartiene alla famiglia delle ombrellifere, come il prezzemolo e il finocchio, il suo nome scientifico è Apium Graveolens, ne esistono diverse varietà che principalmente si distinguono per il colore.",
+        "costo": 1.1,
         "costoEco": 1,
         "nutriScore": 0,
         "dieta": 0,
@@ -106,8 +106,8 @@
     {
         "idIngrediente": 8,
         "nome": "Prezzemolo",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "Il prezzemolo è una pianta biennale della famiglia delle Apiaceae, originaria delle zone mediterranee. Cresce spontaneamente nei boschi e nei prati delle zone a clima temperato; teme infatti il freddo intenso.",
+        "costo": 2,
         "costoEco": 1,
         "nutriScore": 0,
         "dieta": 0,
@@ -119,10 +119,10 @@
     {
         "idIngrediente": 9,
         "nome": "Farina",
-        "descrizione": "",
-        "costo": 1,
-        "costoEco": 20,
-        "nutriScore": 2,
+        "descrizione": "La farina alimentare è il prodotto della macinazione dei frutti secchi o dei semi di varie piante: si ha farina di grano, di mais, di orzo, di farro, di riso, di avena, di segale, di castagne, di ceci, di mandorle, di grano saraceno.",
+        "costo": 2,
+        "costoEco": 21,
+        "nutriScore": 1,
         "dieta": 0,
         "listaIdPatologieCompatibili": [
             1
@@ -131,8 +131,8 @@
     {
         "idIngrediente": 10,
         "nome": "Zucchero",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "Lo zucchero è il nome generico per i carboidrati solubili dal sapore dolce, molti dei quali sono usati negli alimenti. Gli zuccheri semplici, chiamati anche monosaccaridi, includono glucosio, fruttosio e galattosio.",
+        "costo": 1.2,
         "costoEco": 40,
         "nutriScore": 1,
         "dieta": 0,
@@ -143,10 +143,10 @@
     {
         "idIngrediente": 11,
         "nome": "Confettura ai frutti di bosco",
-        "descrizione": "",
-        "costo": 1,
-        "costoEco": 32,
-        "nutriScore": 0,
+        "descrizione": "Dal sapore acidulo e poco dolce, questa marmellata è perfetta da spalmare sulle fette biscottate o farcire crostate e dolci.",
+        "costo": 5,
+        "costoEco": 1,
+        "nutriScore": 3,
         "dieta": 0,
         "listaIdPatologieCompatibili": [
             1
@@ -156,7 +156,7 @@
         "idIngrediente": 12,
         "nome": "Spaghetti",
         "descrizione": "Gli spaghetti sono un particolare formato di pasta prodotta esclusivamente con semole di grano duro e acqua, dalla forma lunga e sottile e di sezione tonda.",
-        "costo": 1,
+        "costo": 1.1,
         "costoEco": 23,
         "nutriScore": 2,
         "dieta": 0,
@@ -168,8 +168,8 @@
     {
         "idIngrediente": 13,
         "nome": "Vongole",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "Vongola è il nome comune utilizzato per identificare svariate specie di molluschi bivalvi della famiglia dei Veneridae.",
+        "costo": 2.3,
         "costoEco": 18,
         "nutriScore": 2,
         "dieta": 2,
@@ -181,8 +181,8 @@
     {
         "idIngrediente": 14,
         "nome": "Cozze",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "É un mollusco bivalve ed equivalve. I mitili vengono chiamati comunemente in Italiano regionale anche cozze, muscoli, peoci, pedoli, móscioli, a seconda della zona geografica",
+        "costo": 1.6,
         "costoEco": 18,
         "nutriScore": 2,
         "dieta": 2,
@@ -194,8 +194,8 @@
     {
         "idIngrediente": 15,
         "nome": "Aglio",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "L'aglio è una pianta bulbosa della famiglia Amaryllidaceae. Il suo utilizzo primo è quello di condimento, ma è ugualmente usato a scopo salutistico per le proprietà congiuntamente attribuitegli dalla scienza e dalle tradizioni popolari.",
+        "costo": 1.2,
         "costoEco": 1,
         "nutriScore": 0,
         "dieta": 0,
@@ -207,8 +207,8 @@
     {
         "idIngrediente": 16,
         "nome": "Passata di Pomodoro",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "La passata di pomodoro, o conserva di pomodoro, è una conserva alimentare a base di pomodoro.",
+        "costo": 1.8,
         "costoEco": 28,
         "nutriScore": 2,
         "dieta": 0,
@@ -221,9 +221,9 @@
         "idIngrediente": 17,
         "nome": "Mozzarella",
         "descrizione": "La mozzarella \u00e8 un formaggio a pasta filata originario dell'Italia meridionale e prodotta da secoli anche in Italia centrale; oggi la sua produzione \u00e8 diffusa in tutta Italia e in vari paesi del mondo.",
-        "costo": 1,
-        "costoEco": 21,
-        "nutriScore": 3,
+        "costo": 2.5,
+        "costoEco": 31,
+        "nutriScore": 2,
         "dieta": 1,
         "listaIdPatologieCompatibili": [
             0
@@ -232,8 +232,8 @@
     {
         "idIngrediente": 18,
         "nome": "Basilico",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "Il basilico è una pianta erbacea annuale, appartenente alla famiglia delle Lamiaceae, normalmente coltivata come pianta aromatica.",
+        "costo": 1.5,
         "costoEco": 1,
         "nutriScore": 0,
         "dieta": 0,
@@ -246,9 +246,9 @@
         "idIngrediente": 19,
         "nome": "Salmone",
         "descrizione": "Il nome volgare salmone pu\u00f2 essere utilizzato per diverse specie ittiche della famiglia Salmonidae.",
-        "costo": 1,
-        "costoEco": 17,
-        "nutriScore": 2,
+        "costo": 8.2,
+        "costoEco": 22,
+        "nutriScore": 1,
         "dieta": 2,
         "listaIdPatologieCompatibili": [
             0,
@@ -258,8 +258,8 @@
     {
         "idIngrediente": 20,
         "nome": "Patate",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "La patata è un tubero commestibile ottenuto dalle piante della specie Solanum tuberosum, molto utilizzato a scopo alimentare previa cottura.",
+        "costo": 3.5,
         "costoEco": 15,
         "nutriScore": 1,
         "dieta": 0,
@@ -271,9 +271,9 @@
     {
         "idIngrediente": 21,
         "nome": "Zucchine",
-        "descrizione": "",
-        "costo": 1,
-        "costoEco": 1,
+        "descrizione": "La zucchina o zucchino è una specie di pianta appartenente alla famiglia Cucurbitaceae i cui frutti sono utilizzati immaturi. È una pianta annuale con fusto erbaceo flessibile strisciante o rampicante, gracile. Venne importata in Europa intorno al 1500 dopo la scoperta dell'America.",
+        "costo": 1.2,
+        "costoEco": 1.2,
         "nutriScore": 0,
         "dieta": 0,
         "listaIdPatologieCompatibili": [
@@ -284,9 +284,9 @@
     {
         "idIngrediente": 22,
         "nome": "Maggiorana",
-        "descrizione": "",
-        "costo": 1,
-        "costoEco": 1,
+        "descrizione": "L'origano maggiorana è una erbacea perenne aromatica appartenente alla famiglia delle Lamiaceae. e al genere Origanum. È conosciuta anche con il nome di Persia.",
+        "costo": 3,
+        "costoEco": 1.5,
         "nutriScore": 0,
         "dieta": 0,
         "listaIdPatologieCompatibili": [
@@ -297,8 +297,8 @@
     {
         "idIngrediente": 23,
         "nome": "Uova",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "L'uovo è un alimento consumabile direttamente o come ingrediente in numerosi piatti delle cucine di tutto il mondo. Il più utilizzato è l'uovo di gallina, ma si consumano anche le uova di altri volatili: quaglia, anatra, oca, struzzo, eccetera.",
+        "costo": 1.70,
         "costoEco": 24,
         "nutriScore": 2,
         "dieta": 1,
@@ -309,23 +309,21 @@
     {
         "idIngrediente": 24,
         "nome": "Guanciale",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "Il guanciale è il taglio di carne suina ricavato dalla guancia del maiale, percorso da venature magre di muscolo con una componente di grasso pregiato, di composizione diversa dal lardo e dalla pancetta: la consistenza è più dura rispetto alla pancetta e il sapore più caratteristico.",
+        "costo": 2.6,
         "costoEco": 40,
         "nutriScore": 4,
         "dieta": 2,
         "listaIdPatologieCompatibili": [
-            0,
-            1
         ]
     },
     {
         "idIngrediente": 25,
         "nome": "Pecorino",
         "descrizione": "Con il termine pecorino si indica un formaggio prodotto con latte di pecora, il quale si differenzia da quello vaccino soprattutto per la percentuale di grasso e di caseina: pi\u00f9 del doppio, il che ai fini della caseificazione configura un latte particolarmente ricco. Storicamente di origine mediterranea, \u00e8 un prodotto diffuso anche altrove.",
-        "costo": 1,
-        "costoEco": 29,
-        "nutriScore": 3,
+        "costo": 4.8,
+        "costoEco": 33,
+        "nutriScore": 2,
         "dieta": 1,
         "listaIdPatologieCompatibili": [
             0
@@ -335,9 +333,9 @@
         "idIngrediente": 26,
         "nome": "Cioccolato",
         "descrizione": "Il cioccolato, o la cioccolata (specie se fusa o da spalmare), \u00e8 un alimento derivato dai semi dell'albero del cacao, ampiamente diffuso e consumato in tutto il mondo. Il termine \"cioccolata\" viene utilizzato come sinonimo di \"cioccolato\" oppure per indicare una bevanda liquida a base di polvere di semi di cacao, nell'uso occidentale contemporaneo invariabilmente con l'aggiunta di zucchero (al contrario di come veniva consumato il cacao in bevande salate e speziate nelle culture precolombiane).",
-        "costo": 1,
-        "costoEco": 37,
-        "nutriScore": 2,
+        "costo": 1.6,
+        "costoEco": 26,
+        "nutriScore": 3,
         "dieta": 1,
         "listaIdPatologieCompatibili": [
             0,
@@ -348,7 +346,7 @@
         "idIngrediente": 27,
         "nome": "Burro",
         "descrizione": "Il burro \u00e8 la parte grassa del latte, separata dal latticello tramite un processo di inversione di fase, derivante dalla panna. Il risultato del procedimento \u00e8 un'emulsione, principalmente di acqua, in cui risultano disciolti zuccheri e proteine, nei grassi, nella cui fase fluida cristallizzano in parte.",
-        "costo": 1,
+        "costo": 1.6,
         "costoEco": 40,
         "nutriScore": 3,
         "dieta": 0,
@@ -359,8 +357,8 @@
     {
         "idIngrediente": 28,
         "nome": "Cacao",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "Il cacao in polvere o polvere di cacao è un ingrediente culinario ottenuto polverizzando la massa di cacao quando viene parzialmente privata del burro di cacao.",
+        "costo": 1.3,
         "costoEco": 29,
         "nutriScore": 2,
         "dieta": 0,
@@ -373,9 +371,9 @@
         "idIngrediente": 29,
         "nome": "Lievito",
         "descrizione": "I lieviti sono un gruppo di funghi, formati da un unico tipo di cellula eucariotica, che possono avere forma ellittica o sferica. Sono state catalogate pi\u00f9 di mille specie di lieviti.",
-        "costo": 1,
+        "costo": 1.1,
         "costoEco": 1,
-        "nutriScore": 0,
+        "nutriScore": 2,
         "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
@@ -385,10 +383,10 @@
     {
         "idIngrediente": 30,
         "nome": "Pollo",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "La carne di pollo è la carne ricavata dalla macellazione del pollo. É una carne bianca.",
+        "costo": 4.2,
         "costoEco": 20,
-        "nutriScore": 3,
+        "nutriScore": 1,
         "dieta": 2,
         "listaIdPatologieCompatibili": [
             0,
@@ -398,10 +396,10 @@
     {
         "idIngrediente": 31,
         "nome": "Rosmarino",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "Il rosmarino è una pianta perenne aromatica appartenente alla famiglia delle Lamiaceae. È spontaneo dell'area mediterranea dove cresce nelle zone litoranee lungo tutte le coste tirreniche e ioniche; sulle coste adriatiche fino al Molise; su tutte le isole; anche sulle rive occidentali del Garda.",
+        "costo": 1.2,
         "costoEco": 1,
-        "nutriScore": 0,
+        "nutriScore": 2,
         "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
@@ -411,10 +409,10 @@
     {
         "idIngrediente": 32,
         "nome": "Alloro",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "L'alloro o lauro è una pianta aromatica e officinale appartenente alla famiglia delle Lauracee, diffusa nel bacino del Mediterraneo.",
+        "costo": 1.6,
         "costoEco": 1,
-        "nutriScore": 0,
+        "nutriScore": 2,
         "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
@@ -424,7 +422,7 @@
     {
         "idIngrediente": 33,
         "nome": "Lattuga",
-        "descrizione": "",
+        "descrizione": "Lactuca sativa è una specie di pianta angiosperma dicotiledone della famiglia delle Asteraceae",
         "costo": 1,
         "costoEco": 1,
         "nutriScore": 0,
@@ -437,8 +435,8 @@
     {
         "idIngrediente": 34,
         "nome": "Pomodoro",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "Il termine primitivo mela aurea si trasformò, durante il corso degli anni, nella più immediata traduzione letterale: pomo d'oro o, più semplicemente, pomodoro, in omaggio al colore inizialmente dorato dell'ortaggio.",
+        "costo": 0.9,
         "costoEco": 1,
         "nutriScore": 0,
         "dieta": 0,
@@ -451,8 +449,8 @@
         "idIngrediente": 35,
         "nome": "Pane",
         "descrizione": "Il pane \u00e8 un prodotto alimentare ottenuto dalla fermentazione, dalla formatura a cui segue una lievitazione, e successiva cottura in forno di un impasto a base di farina (normale o integrale), cereali e acqua, confezionato con diverse modalit\u00e0, arricchito e caratterizzato frequentemente da ingredienti che si differenziano seguendo le tradizioni locali.",
-        "costo": 1,
-        "costoEco": 25,
+        "costo": 1.5,
+        "costoEco": 19,
         "nutriScore": 1,
         "dieta": 0,
         "listaIdPatologieCompatibili": [
@@ -462,8 +460,8 @@
     {
         "idIngrediente": 36,
         "nome": "Carne di manzo",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "Il manzo è il nome comune che indica l'utilizzo culinario della carne dei bovini, specialmente del bue domestico. La denominazione \"manzo\" si applica alla carne di bovino, in genere maschio castrato, macellata tra il terzo ed il quarto anno di età. Il manzo può essere anche ottenuto da mucche, tori e giovenche.",
+        "costo": 5.2,
         "costoEco": 40,
         "nutriScore": 4,
         "dieta": 2,
@@ -474,10 +472,10 @@
     {
         "idIngrediente": 37,
         "nome": "Calamari",
-        "descrizione": "",
-        "costo": 1,
-        "costoEco": 18,
-        "nutriScore": 2,
+        "descrizione": "Il calamaro si mangia in molte cucine; in inglese, il nome culinario calamari è spesso usato per i piatti di calamari. Ci sono molti modi per preparare e cucinare i calamari. Il calamaro fritto è comune nel Mediterraneo. In Libano e Siria viene servito con salsa tartara. ",
+        "costo": 2,
+        "costoEco": 22,
+        "nutriScore": 1,
         "dieta": 2,
         "listaIdPatologieCompatibili": [
             0,
@@ -487,10 +485,10 @@
     {
         "idIngrediente": 38,
         "nome": "Gamberi",
-        "descrizione": "",
-        "costo": 1,
-        "costoEco": 20,
-        "nutriScore": 2,
+        "descrizione": "Il nome volgare gambero identifica varie specie di crostacei acquatici appartenenti prevalentemente all'ordine dei Decapodi e marginalmente agli ordini degli Euphausiacea, degli Stomatopoda, dei Mysida e degli Amphipoda.",
+        "costo": 1.9,
+        "costoEco": 22,
+        "nutriScore": 1,
         "dieta": 2,
         "listaIdPatologieCompatibili": [
             0,
@@ -500,10 +498,10 @@
     {
         "idIngrediente": 39,
         "nome": "Alici",
-        "descrizione": "",
-        "costo": 1,
-        "costoEco": 18,
-        "nutriScore": 2,
+        "descrizione": "L'acciuga europea o alice è un pesce osseo marino appartenente alla famiglia Engraulidae di grande importanza economica.",
+        "costo": 2,
+        "costoEco": 22,
+        "nutriScore": 1,
         "dieta": 2,
         "listaIdPatologieCompatibili": [
             0,
@@ -513,8 +511,8 @@
     {
         "idIngrediente": 40,
         "nome": "Peperoni",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "Il peperone è il nome comune dato alla bacca ottenuta da alcune varietà della specie Capsicum annuum e utilizzata come verdura.",
+        "costo": 1.2,
         "costoEco": 1,
         "nutriScore": 0,
         "dieta": 0,
@@ -526,10 +524,24 @@
     {
         "idIngrediente": 41,
         "nome": "Melanzane",
-        "descrizione": "",
-        "costo": 1,
+        "descrizione": "La melanzana è una pianta angiosperma dicotiledone appartenente alla famiglia delle Solanaceae, coltivata per il frutto commestibile. Originariamente fu domesticata a partire da specie selvatiche di Solanum incanum, probabilmente con due percorsi indipendenti: uno in Asia meridionale e uno in Asia orientale.",
+        "costo": 1.3,
         "costoEco": 1,
         "nutriScore": 0,
+        "dieta": 0,
+        "listaIdPatologieCompatibili": [
+            0,
+            1
+        ]
+    }
+    ,
+    {
+        "idIngrediente": 42,
+        "nome": "Salciccia",
+        "descrizione": "La salsiccia, nell'uso popolare in alcune regioni anche salciccia, è un insaccato di carne, tipico di molte regioni italiane e diffuso in tutto il mondo.",
+        "costo": 3.2,
+        "costoEco": 40,
+        "nutriScore": 4,
         "dieta": 0,
         "listaIdPatologieCompatibili": [
             0,
