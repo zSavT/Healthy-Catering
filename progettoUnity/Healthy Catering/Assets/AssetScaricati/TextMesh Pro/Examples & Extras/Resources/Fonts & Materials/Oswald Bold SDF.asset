@@ -358,34 +358,6 @@ MonoBehaviour:
       m_Height: 77
     m_Scale: 1
     m_AtlasIndex: 0
-  - m_Index: 8
-    m_Metrics:
-      m_Width: 81.21875
-      m_Height: 80.640625
-      m_HorizontalBearingX: 4.125
-      m_HorizontalBearingY: 80.640625
-      m_HorizontalAdvance: 89.6875
-    m_GlyphRect:
-      m_X: 10
-      m_Y: 653
-      m_Width: 82
-      m_Height: 81
-    m_Scale: 1
-    m_AtlasIndex: 0
-  - m_Index: 20
-    m_Metrics:
-      m_Width: 23.109375
-      m_Height: 79.140625
-      m_HorizontalBearingX: 1.890625
-      m_HorizontalBearingY: 79.140625
-      m_HorizontalAdvance: 29.703125
-    m_GlyphRect:
-      m_X: 69
-      m_Y: 379
-      m_Width: 24
-      m_Height: 80
-    m_Scale: 1
-    m_AtlasIndex: 0
   - m_Index: 21
     m_Metrics:
       m_Width: 42.09375
@@ -394,8 +366,8 @@ MonoBehaviour:
       m_HorizontalBearingY: 80.640625
       m_HorizontalAdvance: 46.890625
     m_GlyphRect:
-      m_X: 69
-      m_Y: 478
+      m_X: 10
+      m_Y: 653
       m_Width: 43
       m_Height: 81
     m_Scale: 1
@@ -408,8 +380,8 @@ MonoBehaviour:
       m_HorizontalBearingY: 80.6875
       m_HorizontalAdvance: 47.8125
     m_GlyphRect:
-      m_X: 123
-      m_Y: 257
+      m_X: 69
+      m_Y: 379
       m_Width: 44
       m_Height: 83
     m_Scale: 1
@@ -423,7 +395,7 @@ MonoBehaviour:
       m_HorizontalAdvance: 49.875
     m_GlyphRect:
       m_X: 123
-      m_Y: 359
+      m_Y: 257
       m_Width: 44
       m_Height: 83
     m_Scale: 1
@@ -574,14 +546,6 @@ MonoBehaviour:
     m_GlyphIndex: 76
     m_Scale: 1
   - m_ElementType: 1
-    m_Unicode: 37
-    m_GlyphIndex: 8
-    m_Scale: 1
-  - m_ElementType: 1
-    m_Unicode: 49
-    m_GlyphIndex: 20
-    m_Scale: 1
-  - m_ElementType: 1
     m_Unicode: 50
     m_GlyphIndex: 21
     m_Scale: 1
@@ -685,16 +649,12 @@ MonoBehaviour:
     m_Height: 96
   - m_X: 0
     m_Y: 643
-    m_Width: 101
+    m_Width: 62
     m_Height: 100
   - m_X: 59
     m_Y: 369
-    m_Width: 43
-    m_Height: 99
-  - m_X: 59
-    m_Y: 468
-    m_Width: 62
-    m_Height: 100
+    m_Width: 63
+    m_Height: 102
   - m_X: 113
     m_Y: 247
     m_Width: 63

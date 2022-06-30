@@ -28,6 +28,7 @@ public class PannelloMenu : MonoBehaviour
 
     [Header("Pannello ingredienti giusti sbagliati")]
     [SerializeField] private GameObject pannelloIngredientiGiustiSbagliati;
+    [SerializeField] private AudioSource suonoPiattoScorretto;
     public static bool pannelloIngredientiGiustiSbagliatiAperto;
 
     [Header("Pannello conferma piatto")]
@@ -351,7 +352,7 @@ public class PannelloMenu : MonoBehaviour
     {
         if (pannelloIngredientiGiustiSbagliati != null)
         {
-            
+            suonoPiattoScorretto.Play();
             pannelloIngredientiGiustiSbagliati.SetActive(true);
             pannelloIngredientiGiustiSbagliatiApertoChiuso();
             chiudiMenuCliente();

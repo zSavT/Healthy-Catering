@@ -254,33 +254,4 @@ public class ProgressoTutorial : MonoBehaviour
     {
         obbiettivo1Testo.text = output;
     }
-
-    /*
-    questi 3 metodi non servono pi� con il sistema implementato
-    /// <summary>
-    /// cambia colore testo obbiettivo in verde e imposta il toogle su vero.
-    /// Il codice verde � 181, 216, 156, 255<br></br>
-    /// </summary>
-    private void setObbiettivoCompletato()
-    {
-        obbiettivoTesto.color = new Color32(181, 216, 156, 255);
-        obbiettivoToggle.isOn = true;
-    }
-    
-    /// <summary>
-    /// Cambia il colore in bianco del testo e setta il toogle su falso<br></br>
-    /// </summary>
-    private void resetObbiettivoCompletato()
-    {
-        obbiettivoTesto.color = Color.white;
-        obbiettivoToggle.isOn = false;
-    }
-    /// <summary>
-    /// Imposta la variabile di skip del tutorial su true
-    /// </summary>
-    public void skipComandiTutorial()
-    {
-        skipTutorialComandi = true;
-    }
-    */
 }

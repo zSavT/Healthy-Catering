@@ -11,6 +11,8 @@ public class Interactable : MonoBehaviour
     [SerializeField] private GameObject modelloCliente;
     [SerializeField] private GameObject modelloCliente3D;
     [SerializeField] private GestoreClienti gestioneCliente;
+    [SerializeField] private AudioSource suonoContento;
+
 
     //Controller della mappa percorribile degli NPC
     NavMeshAgent agent;
@@ -171,6 +173,7 @@ public class Interactable : MonoBehaviour
         controllerAnimazione.SetBool("affinitaDietaPiatto", true);
         effettoPositivo.Play();
         servito = true;
+        suonoContento.Play();
     }
 
 

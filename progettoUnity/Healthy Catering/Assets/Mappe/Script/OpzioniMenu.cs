@@ -34,6 +34,7 @@ public class OpzioniMenu : MonoBehaviour
     [Header("Impostazioni Fov")]
     [SerializeField] private TextMeshProUGUI sliderFovTesto;
     [SerializeField] private Slider sliderFov;
+    private bool caricatiValori = false;
 
 
     void Start()
@@ -89,6 +90,8 @@ public class OpzioniMenu : MonoBehaviour
         //AUDIO
         sliderVolumeMusica.value = PlayerSettings.caricaImpostazioniVolumeMusica();
         sliderVolumeSuoni.value = PlayerSettings.caricaImpostazioniVolumeSuoni();
+
+        caricatiValori = true;
     }
 
     /// <summary>
@@ -155,7 +158,8 @@ public class OpzioniMenu : MonoBehaviour
     /// <param name="indiceQualita">Indice qualità scelta dropdown</param>
     public void setQualita(int indiceQualita)
     {
-        suonoClick.Play();
+        if (caricatiValori)
+            suonoClick.Play();
         QualitySettings.SetQualityLevel(indiceQualita);
     }
 
@@ -187,7 +191,8 @@ public class OpzioniMenu : MonoBehaviour
     /// <param name="risoluzioneSelezionata">Indice scelta risoluzione dropdown</param>
     public void setRisoluzione(int risoluzioneSelezionata)
     {
-        suonoClick.Play();
+        if (caricatiValori)
+            suonoClick.Play();
         Resolution risoluzione = risoluzioni[risoluzioneSelezionata];
         Screen.SetResolution(risoluzione.width, risoluzione.height, schermoIntero.isOn, risoluzione.refreshRate);
         setRefreshRateToScelta(risoluzione.refreshRate);
@@ -218,7 +223,8 @@ public class OpzioniMenu : MonoBehaviour
     /// <param name="scelta">Indice scelta daltonismo dropdown</param>
     public void setDaltonismo(int scelta)
     {
-        suonoClick.Play();
+        if (caricatiValori)
+            suonoClick.Play();
         PlayerSettings.salvaImpostazioniDaltonismo(scelta);
     }
 }
