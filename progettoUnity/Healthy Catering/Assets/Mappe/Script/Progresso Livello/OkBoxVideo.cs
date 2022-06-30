@@ -55,11 +55,11 @@ public class OkBoxVideo : MonoBehaviour
         "testo sprint",
         "testo parlaZio",
         "testo vaiAlRistorante",
-        "COMPATIBILE per poter interagire con i clienti si dovrà utilizzare il mouse come puntatore e selezionare il <color=#B5D99C>piatto</color> che si vuole servire al cliente quando richiesto attraverso la relativa schermata.",
-        "NON COMPATIBILEPer poter interagire con i clienti si dovrà utilizzare il mouse come puntatore e selezionare il <color=#B5D99C>piatto</color> che si vuole servire al cliente quando richiesto attraverso la relativa schermata.",
+        "COMPATIBILE per poter interagire con i clienti si dovrï¿½ utilizzare il mouse come puntatore e selezionare il <color=#B5D99C>piatto</color> che si vuole servire al cliente quando richiesto attraverso la relativa schermata.",
+        "NON COMPATIBILEPer poter interagire con i clienti si dovrï¿½ utilizzare il mouse come puntatore e selezionare il <color=#B5D99C>piatto</color> che si vuole servire al cliente quando richiesto attraverso la relativa schermata.",
         "testo sono finiti gli ingredienti per fare i piatti",
         "testo Dov'e' il negozio",
-        "Interagire con gli <color=#B5D99C>NPC</color> in giro per la città permetterà di ottenere <color=#B5D99C>suggerimenti</color> utili per servire piatti migliori, sia dal punto di vista dell’affinità le patologie che dal punto di vista del nutriScore e dell’ecoScore."
+        "Interagire con gli <color=#B5D99C>NPC</color> in giro per la cittï¿½ permetterï¿½ di ottenere <color=#B5D99C>suggerimenti</color> utili per servire piatti migliori, sia dal punto di vista dellï¿½affinitï¿½ le patologie che dal punto di vista del nutriScore e dellï¿½ecoScore."
     };
 
     [SerializeField] private UnityEvent playerStop;
@@ -109,7 +109,6 @@ public class OkBoxVideo : MonoBehaviour
     private void cambiaImmagine(int posizione)
     {
         Sprite nuovaImmagine = Resources.Load<Sprite>("immaginiOGifOkBoxVideo/" + "immagineOGifOkBoxVideo " + titoli[posizione]);
-        print(nuovaImmagine);
         if (nuovaImmagine == null)
         {
             setImmagineDefault();
