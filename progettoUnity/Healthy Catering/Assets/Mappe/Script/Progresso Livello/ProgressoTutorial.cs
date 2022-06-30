@@ -17,10 +17,6 @@ public class ProgressoTutorial : MonoBehaviour
     [Header("Obbiettivi Tutorial")]
     //testo obbiettivo da cambiare di volta in volta
     [SerializeField] private TextMeshProUGUI obbiettivo1Testo;
-    
-
-    private bool videoInRiproduzione;
-    private bool skipVideo;
 
     private List<string> scritteDaMostrare;
     //tiene conto del progresso del giocatore praticamente
@@ -41,13 +37,8 @@ public class ProgressoTutorial : MonoBehaviour
     [SerializeField] private UnityEvent playerStop;
     private int siOno = 0;
 
-    OggettoQuantita<int> ingredienteInPiu = new OggettoQuantita<int>(10, 1);//mango
-
     private void Start()
     {
-        print("iniziato tutorial");
-        riproduciVideo();
-        
         inTutorial = true;
         canvasVideoTutorial.SetActive(true);
         //le disattivo per attivarle solo nel momento opportuno - Questi elementi sono nel loro specifico pannello, che va attivato poi quando serve.
@@ -75,7 +66,6 @@ public class ProgressoTutorial : MonoBehaviour
 
     private void Update()
     {
-        print(saGiocareSettato);
         if (!saGiocareSettato)
         {
             if (PlayerSaGiocareFPS.siOnoSettato())
@@ -154,9 +144,9 @@ public class ProgressoTutorial : MonoBehaviour
                         OkBoxVideo.vaiAlRistoranteMostrato = true;
                     }
 
-                    if (CheckTutorial.checkVaiRistorante()) { 
-                        numeroScritteMostrate++;
+                    if (CheckTutorial.checkVaiRistorante()) {
                         giocatore.setInventarioLivello(0);
+                        numeroScritteMostrate++;
                     }
                 }
                 else if (numeroScritteMostrate == 5)
@@ -169,9 +159,9 @@ public class ProgressoTutorial : MonoBehaviour
 
                     if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
                         if (giocatore != null)
-                            if (CheckTutorial.checkServitoPiattoCompatibile(giocatore)) { 
-                                numeroScritteMostrate++;
+                            if (CheckTutorial.checkServitoPiattoCompatibile(giocatore)) {
                                 giocatore.setInventarioLivello(0.5);
+                                numeroScritteMostrate++;
                             }
                 }
                 else if (numeroScritteMostrate == 6)
@@ -204,7 +194,7 @@ public class ProgressoTutorial : MonoBehaviour
                     //nel magazzino dovremmo mettere un ingrediente che non e' presente nella ricetta ne del 
                     //Piatto compatibile ne in quella del piatto non compatibile, cosi che quando il giocatore 
                     //apre il magazzino non sia vuoto del tutto, se no sembra che il magazzino abbia solo la 
-                    //funzione di avvisarti che non hai più ingredienti
+                    //funzione di avvisarti che non hai piï¿½ ingredienti
                     //magari possiamo cambiare la scritta a "il magazzino sarebbe cosi se ci fossero degli
                     //ingredienti" e poi far scomparire l'ingrediente temp che abbiamo inserito dopo 5 secondi
                 }
@@ -252,40 +242,6 @@ public class ProgressoTutorial : MonoBehaviour
         
     }
 
-    public void setGiocatore (Player player)
-    {
-        giocatore = player;
-    }
-
-    private void riproduciVideo()
-    {
-        /*
-        canvasVideoTutorial.SetActive(true);
-
-        //metodo per riprodurre il video, per ora ho solo attivato il canvas che contiene gli elementi per riprodurlo
-
-        */
-        videoInRiproduzione = true;
-        print("ciao video");
-    }
-
-    public void saltaVideo()
-    {
-        //TODO metodo da chiamare dal bottone per saltare il video
-        skipVideo = true;
-    }
-
-    private void stopRiproduzioneVideo()
-    {
-        //TODO
-    }
-
-    private bool chiediSeSaHaGiocatoFPS()
-    {
-        //TODO
-        return false;
-    }
-
     /// <summary>
     /// Metodo che attiva il TextMeshProUGUI dell'obbiettivo e quello del toggle<br></br>
     /// </summary>
@@ -298,33 +254,4 @@ public class ProgressoTutorial : MonoBehaviour
     {
         obbiettivo1Testo.text = output;
     }
-
-    /*
-    questi 3 metodi non servono più con il sistema implementato
-    /// <summary>
-    /// cambia colore testo obbiettivo in verde e imposta il toogle su vero.
-    /// Il codice verde è 181, 216, 156, 255<br></br>
-    /// </summary>
-    private void setObbiettivoCompletato()
-    {
-        obbiettivoTesto.color = new Color32(181, 216, 156, 255);
-        obbiettivoToggle.isOn = true;
-    }
-    
-    /// <summary>
-    /// Cambia il colore in bianco del testo e setta il toogle su falso<br></br>
-    /// </summary>
-    private void resetObbiettivoCompletato()
-    {
-        obbiettivoTesto.color = Color.white;
-        obbiettivoToggle.isOn = false;
-    }
-    /// <summary>
-    /// Imposta la variabile di skip del tutorial su true
-    /// </summary>
-    public void skipComandiTutorial()
-    {
-        skipTutorialComandi = true;
-    }
-    */
 }

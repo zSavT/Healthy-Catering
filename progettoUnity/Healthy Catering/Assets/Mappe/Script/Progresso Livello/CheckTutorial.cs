@@ -14,18 +14,18 @@ public class CheckTutorial : MonoBehaviour
 
     //check servito piatto compatibile e non
     private static List<OggettoQuantita<int>> ingredientiPiattoCompatibile = new List<OggettoQuantita<int>>{
-        new OggettoQuantita<int> (0,1),
-        new OggettoQuantita<int> (1,1),
-        new OggettoQuantita<int> (2,1),
-        new OggettoQuantita<int> (3,1),
-        new OggettoQuantita<int> (4,1),
-        new OggettoQuantita<int> (5,1),
-        new OggettoQuantita<int> (6,1)
+        new OggettoQuantita<int> (12,10),
+        new OggettoQuantita<int> (15,10),
+        new OggettoQuantita<int> (0,10),
+        new OggettoQuantita<int> (18,10),
+        new OggettoQuantita<int> (16,10),
+        new OggettoQuantita<int> (46,10)
     };
     private static List<OggettoQuantita<int>> ingredientiPiattoNonCompatibile = new List<OggettoQuantita<int>>
     {
-        new OggettoQuantita<int> (7,1),
-        new OggettoQuantita<int> (8,1),
+        new OggettoQuantita<int> (30,1),
+        new OggettoQuantita<int> (35,1),
+        new OggettoQuantita<int> (33,2)
     };
     private static Piatto piattoCompatibile = new Piatto("", "", ingredientiPiattoCompatibile);
     private static Piatto piattoNonCompatibile = new Piatto("", "", ingredientiPiattoNonCompatibile);

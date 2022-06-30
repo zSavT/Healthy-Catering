@@ -11,6 +11,7 @@ TagManager:
   - PannelloIngredientiPiatto
   - Interagibile
   - SoundTrack
+  - Eliminabile
   layers:
   - Default
   - TransparentFX

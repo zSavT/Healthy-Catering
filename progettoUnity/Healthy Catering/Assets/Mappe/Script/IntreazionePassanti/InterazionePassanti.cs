@@ -15,6 +15,7 @@ public class InterazionePassanti : MonoBehaviour
     private bool pannelloInterazionePassantiAperto;
     [SerializeField] private Button bottoneAvanti;
     [SerializeField] private TextMeshProUGUI testoInterazionePassanti;
+    [SerializeField] private AudioSource suonoAperturaDialogo;
 
     //TROVA STRINGHE
     /*
@@ -42,8 +43,8 @@ public class InterazionePassanti : MonoBehaviour
     //Tutorial
     private List<string> scritteZio = new List<string>
     {
-        "Eccoti qua! Questo edificio è il nostro <color=#B5D99C>ristorante</color> o meglio, ormai è il tuo ristorante.",
-        "Spero che questo lavoro ti piacerà e ricordati, si sembre garbatƏ con i <color=#B5D99C>clienti</color>, sapranno ricompensarti."
+        "Eccoti qua! Questo edificio è il nostro <color=#B5D99C>ristorante</color>, o meglio, il tuo.",
+        "Spero che questo lavoro ti piacerà! E ricordati, sii sempre garbatƏ con i <color=#B5D99C>clienti</color>. Sapranno ricompensarti."
     };
     private int numeroScritteZioMostrate = 0; 
 
@@ -137,7 +138,6 @@ public class InterazionePassanti : MonoBehaviour
     private int trovaVeraLunghezzaStringaPerColore(string temp)
     {
         string coloreInizio = "<color=#"; //<color=#B5D99C>
-        int numeroDiScritteColorate = 0;
         string coloreFine = "</color>"; //</color>
 
         if ((temp.Contains(coloreInizio)) && (temp.Contains(coloreFine)))
@@ -177,6 +177,7 @@ public class InterazionePassanti : MonoBehaviour
 
     public void apriPannelloInterazionePassanti(string nomeNPC)
     {
+        suonoAperturaDialogo.Play();
         parlatoConNPC = true;
         pannelloInterazionePassanti.SetActive(true);
 

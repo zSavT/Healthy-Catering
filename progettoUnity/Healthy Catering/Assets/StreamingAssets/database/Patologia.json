@@ -8,15 +8,5 @@
     "idPatologia": 1,
     "nome": "Ipertensione",
     "descrizione": "L'ipertensione arteriosa, chiamata spesso colloquialmente solo ipertensione, è una condizione clinica in cui la pressione del sangue nelle arterie della circolazione sistemica risulta elevata."
-  },
-  {
-    "idPatologia": 2,
-    "nome": "Allergia al nichel",
-    "descrizione": "L'allergia alimentare è una reazione avversa che si sviluppa per una risposta immunitaria specifica e riproducibile all’ingestione di un determinato alimento"
-  },
-  {
-    "idPatologia": 3,
-    "nome": "Malattia di Crohn",
-    "descrizione": "La malattia di Crohn o morbo di Crohn, nota anche come enterite regionale, è una malattia infiammatoria cronica dell'intestino che può colpire qualsiasi parte del tratto gastrointestinale, provocando una vasta gamma di sintomi."
   }
 ]

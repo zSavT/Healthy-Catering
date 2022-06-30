@@ -18,18 +18,18 @@ public class Player
     //INVENTARI LIVELLI
      List<OggettoQuantita<int>> inventarioLivello0 = new List<OggettoQuantita<int>>
     {
-        new OggettoQuantita<int> (0,1),
-        new OggettoQuantita<int> (1,1),
-        new OggettoQuantita<int> (2,1),
-        new OggettoQuantita<int> (3,1),
-        new OggettoQuantita<int> (4,1),
-        new OggettoQuantita<int> (5,1),
-        new OggettoQuantita<int> (6,1),
+        new OggettoQuantita<int> (12,10),
+        new OggettoQuantita<int> (15,10),
+        new OggettoQuantita<int> (0,10),
+        new OggettoQuantita<int> (18,10),
+        new OggettoQuantita<int> (16,10),
+        new OggettoQuantita<int> (46,10)
     };
     List<OggettoQuantita<int>> inventarioLivello05 = new List<OggettoQuantita<int>>
     {
-        new OggettoQuantita<int> (7,1),
-        new OggettoQuantita<int> (8,1),
+        new OggettoQuantita<int> (30,1),
+        new OggettoQuantita<int> (35,1),
+        new OggettoQuantita<int> (33,2)
     };
 
     List<OggettoQuantita<int>> inventarioLivello1 = new List<OggettoQuantita<int>>
