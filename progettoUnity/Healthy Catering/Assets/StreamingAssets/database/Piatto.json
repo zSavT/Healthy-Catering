@@ -347,5 +347,77 @@
             }
         ]
     }
-
+    ,
+    {
+        "nome": "Panino con il Pollo",
+        "descrizione": "Il classico e semplice panino con il pollo.",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 30,
+                "quantita": 1
+            },
+            {
+                "oggetto": 35,
+                "quantita": 1
+            },
+            {
+                "oggetto": 33,
+                "quantita": 2
+            }
+        ]
+    }
+    ,
+    {
+        "nome": "Pane, mango, spinaci e Formaggio Spalmabile",
+        "descrizione": "Ricetta estiva realizzata con una combinazione di ingredienti tanto salutare quanto inaspettata",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 35,
+                "quantita": 1
+            },
+            {
+                "oggetto": 43,
+                "quantita": 1
+            },
+            {
+                "oggetto": 45,
+                "quantita": 1
+            },
+            {
+                "oggetto": 44,
+                "quantita": 1
+            }
+        ]
+    }
+    ,
+    {
+        "nome": "Spaghetti all'assassina",
+        "descrizione": "State tranquilli, gli spaghetti all'assassina non si ispirano ai classici del cinema horror! Si tratta di un primo piatto che è entrato di recente a far parte della tradizione barese, oltre che un modo appetitoso per utilizzare il sugo avanzato. Il significato del suo nome non è ben chiaro, ma quel che è certo è che il suo gusto ha conquistato tutti: grazie alla cottura degli spaghetti direttamente in padella, infatti, otterrete una consistenza croccante e saporita particolarmente apprezzata dagli amanti della crosticina!",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 12,
+                "quantita": 1
+            },
+            {
+                "oggetto": 15,
+                "quantita": 1
+            },
+            {
+                "oggetto": 0,
+                "quantita": 1
+            },
+            {
+                "oggetto": 18,
+                "quantita": 1
+            },
+            {
+                "oggetto": 16,
+                "quantita": 1
+            },
+            {
+                "oggetto": 46,
+                "quantita": 1
+            }
+        ]
+    }
 ]

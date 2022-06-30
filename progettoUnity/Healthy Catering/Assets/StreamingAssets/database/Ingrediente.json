@@ -548,4 +548,58 @@
             1
         ]
     }
+    ,
+    {
+        "idIngrediente": 43,
+        "nome": "Mango",
+        "descrizione": "Il mango è un frutto di tipo drupa che proviene da numerose specie di alberi tropicali appartenenti al genere Mangifera, coltivati prevalentemente per la loro frutta. La maggior parte di queste specie si trova nella natura in maniera selvatica. Il genere appartiene alla famiglia Anacardiaceae degli anacardi.",
+        "costo": 1.2,
+        "costoEco": 1,
+        "nutriScore": 1,
+        "dieta": 0,
+        "listaIdPatologieCompatibili": [
+            0,
+            1
+        ]
+    }
+    ,
+    {
+        "idIngrediente": 44,
+        "nome": "Formaggio Spalmabile",
+        "descrizione": "Il formaggio spalmabile, anche detto formaggio cremoso, è un tipo di formaggio fresco, molto tenero e spesso delicato. Il formaggio cremoso non matura in modo naturale ed è destinato ad essere consumato fresco, quindi si differenzia da altri formaggi a pasta molle",
+        "costo": 1.2,
+        "costoEco": 21,
+        "nutriScore": 1,
+        "dieta": 0,
+        "listaIdPatologieCompatibili": [
+        ]
+    }
+    ,
+    {
+        "idIngrediente": 45,
+        "nome": "Spinaci",
+        "descrizione": "Lo spinacio è una pianta erbacea della famiglia delle Amaranthaceae, sottofamiglia delle Chenopodioideae.",
+        "costo": 1.2,
+        "costoEco": 3,
+        "nutriScore": 1,
+        "dieta": 0,
+        "listaIdPatologieCompatibili": [
+            0,
+            1
+        ]
+    }
+    ,
+    {
+        "idIngrediente": 46,
+        "nome": "Peperoncino",
+        "descrizione": "Il peperoncino è il nome comune dato alla bacca ottenuta da alcune varietà piccanti del genere di piante Capsicum utilizzata principalmente come condimento.",
+        "costo": 1.7,
+        "costoEco": 3,
+        "nutriScore": 2,
+        "dieta": 0,
+        "listaIdPatologieCompatibili": [
+            0,
+            1
+        ]
+    }
 ]
