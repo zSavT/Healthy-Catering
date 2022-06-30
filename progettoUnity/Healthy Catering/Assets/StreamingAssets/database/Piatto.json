@@ -1,72 +1,423 @@
 [
-  {
-    "nome": "Spaghetti all'assassina",
-    "descrizione": "State tranquilli, gli spaghetti all'assassina non si ispirano ai classici del cinema horror! Si tratta di un primo piatto che è entrato di recente a far parte della tradizione barese, oltre che un modo appetitoso per utilizzare il sugo avanzato. Il significato del suo nome non è ben chiaro, ma quel che è certo è che il suo gusto ha conquistato tutti: grazie alla cottura degli spaghetti direttamente in padella, infatti, otterrete una consistenza croccante e saporita particolarmente apprezzata dagli amanti della crosticina!",
-    "listaIdIngredientiQuantita": [
-      {
-        "oggetto": 0,
-        "quantita": 1
-      },
-      {
-        "oggetto": 1,
-        "quantita": 1
-      },
-      {
-        "oggetto": 2,
-        "quantita": 1
-      },
-      {
-        "oggetto": 3,
-        "quantita": 1
-      },
-      {
-        "oggetto": 4,
-        "quantita": 1
-      },
-      {
-        "oggetto": 5,
-        "quantita": 1
-      },
-      {
-        "oggetto": 6,
-        "quantita": 1
-      }
-    ]
-  },
-  {
-    "nome": "Panino con il pollo",
-    "descrizione": "Panino tagliato a meta con carne di pollo al centro dei due bun",
-    "listaIdIngredientiQuantita": [
-      {
-        "oggetto": 7,
-        "quantita": 1
-      },
-      {
-        "oggetto": 8,
-        "quantita": 1
-      }
-    ]
-  },
-  {
-    "nome": "Pane, mango, spinaci e philadelphia",
-    "descrizione": "Ricetta dal sito ufficiale di philadelphia italia rielaborata",
-    "listaIdIngredientiQuantita": [
-      {
-        "oggetto": 7,
-        "quantita": 1
-      },
-      {
-        "oggetto": 9,
-        "quantita": 1
-      },
-      {
-        "oggetto": 10,
-        "quantita": 1
-      },
-      {
-        "oggetto": 11,
-        "quantita": 1
-      }
-    ]
-  }
+    {
+        "nome": "Tagliatelle e fagioli",
+        "descrizione": "La pasta ruvida e porosa, accoglie in s\u00e9 tutto il sapore genuino dei fagioli.",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 4,
+                "quantita": 1
+            },
+            {
+                "oggetto": 5,
+                "quantita": 2
+            },
+            {
+                "oggetto": 6,
+                "quantita": 2
+            },
+            {
+                "oggetto": 3,
+                "quantita": 1
+            },
+            {
+                "oggetto": 7,
+                "quantita": 1
+            },
+            {
+                "oggetto": 8,
+                "quantita": 1
+            },
+            {
+                "oggetto": 0,
+                "quantita": 1
+            }
+        ]
+    },
+    {
+        "nome": "Crostata vegana ai frutti di bosco",
+        "descrizione": "Dolce composto da una base di pasta frolla ricoperto con confettura ai frutti di bosco, con l'aggiunta di sottili strisce di pasta frolla intrecciate.",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 9,
+                "quantita": 1
+            },
+            {
+                "oggetto": 10,
+                "quantita": 1
+            },
+            {
+                "oggetto": 0,
+                "quantita": 1
+            },
+            {
+                "oggetto": 11,
+                "quantita": 1
+            }
+        ]
+    },
+    {
+        "nome": "Spaghetti alla pescatora",
+        "descrizione": "Primo piatto light di mare, condito con cozze, vongole e pomodorini freschi.",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 12,
+                "quantita": 1
+            },
+            {
+                "oggetto": 13,
+                "quantita": 4
+            },
+            {
+                "oggetto": 14,
+                "quantita": 4
+            },
+            {
+                "oggetto": 15,
+                "quantita": 1
+            },
+            {
+                "oggetto": 0,
+                "quantita": 1
+            },
+            {
+                "oggetto": 8,
+                "quantita": 1
+            },
+            {
+                "oggetto": 34,
+                "quantita": 1
+            }
+        ]
+    },
+    {
+        "nome": "Pizza",
+        "descrizione": "Piatto originario della cucina Napoletana famoso in tutto il mondo.",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 9,
+                "quantita": 1
+            },
+            {
+                "oggetto": 0,
+                "quantita": 1
+            },
+            {
+                "oggetto": 16,
+                "quantita": 1
+            },
+            {
+                "oggetto": 17,
+                "quantita": 1
+            }
+        ]
+    },
+    {
+        "nome": "Salmone in crosta di patate e zucchine",
+        "descrizione": "Tenero trancio di salmone, cotto per pochi minuti, guarnito con sottili fettine di zucchine e patate.",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 19,
+                "quantita": 1
+            },
+            {
+                "oggetto": 20,
+                "quantita": 3
+            },
+            {
+                "oggetto": 21,
+                "quantita": 2
+            },
+            {
+                "oggetto": 0,
+                "quantita": 1
+            },
+            {
+                "oggetto": 22,
+                "quantita": 1
+            }
+        ]
+    },
+    {
+        "nome": "Pasta alla carbonara",
+        "descrizione": "Primo piatto tipico della cucina romana dal sapore goloso.",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 12,
+                "quantita": 1
+            },
+            {
+                "oggetto": 23,
+                "quantita": 3
+            },
+            {
+                "oggetto": 24,
+                "quantita": 2
+            },
+            {
+                "oggetto": 25,
+                "quantita": 1
+            }
+        ]
+    },
+    {
+        "nome": "Patatine fritte",
+        "descrizione": "Sfiziose patate tagliate a fette di forma allungata e fritte.",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 0,
+                "quantita": 1
+            },
+            {
+                "oggetto": 20,
+                "quantita": 1
+            }
+        ]
+    },
+    {
+        "nome": "Torta al cioccolato",
+        "descrizione": "Goloso, soffice e semplice dolce al cioccolato.",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 26,
+                "quantita": 1
+            },
+            {
+                "oggetto": 27,
+                "quantita": 1
+            },
+            {
+                "oggetto": 10,
+                "quantita": 1
+            },
+            {
+                "oggetto": 9,
+                "quantita": 1
+            },
+            {
+                "oggetto": 28,
+                "quantita": 1
+            },
+            {
+                "oggetto": 23,
+                "quantita": 2
+            },
+            {
+                "oggetto": 29,
+                "quantita": 1
+            }
+        ]
+    },
+    {
+        "nome": "Salsiccia con patate al forno",
+        "descrizione": "Secondo piatto di salsicce cotte in forno con patate aromatizzate.",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 42,
+                "quantita": 2
+            },
+            {
+                "oggetto": 20,
+                "quantita": 2
+            },
+            {
+                "oggetto": 31,
+                "quantita": 1
+            },
+            {
+                "oggetto": 32,
+                "quantita": 1
+            },
+            {
+                "oggetto": 0,
+                "quantita": 1
+            }
+        ]
+    },
+    {
+        "nome": "Insalatona",
+        "descrizione": "Mix di verdure crude leggero e rinfrescante.",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 33,
+                "quantita": 2
+            },
+            {
+                "oggetto": 0,
+                "quantita": 2
+            },
+            {
+                "oggetto": 34,
+                "quantita": 2
+            }
+        ]
+    },
+    {
+        "nome": "Panino con hamburger di manzo",
+        "descrizione": "Panino con hamburger di carne bovina adagiato su foglie di lattuga e fette di pomodoro.",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 36,
+                "quantita": 1
+            },
+            {
+                "oggetto": 0,
+                "quantita": 1
+            },
+            {
+                "oggetto": 35,
+                "quantita": 1
+            },
+            {
+                "oggetto": 33,
+                "quantita": 1
+            },
+            {
+                "oggetto": 34,
+                "quantita": 1
+            }
+        ]
+    },
+    {
+        "nome": "Frittura di pesce",
+        "descrizione": "Delizioso secondo piatto di mare con calamari, gamberi e alici panati e fritti.",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 38,
+                "quantita": 2
+            },
+            {
+                "oggetto": 39,
+                "quantita": 2
+            },
+            {
+                "oggetto": 37,
+                "quantita": 1
+            },
+            {
+                "oggetto": 0,
+                "quantita": 1
+            }
+        ]
+    },
+    {
+        "nome": "Verdure grigliate",
+        "descrizione": "Gustoso contorno di ortaggi in sottili fette grigliate e impreziosite dall\u2019aggiunta di condimento a freddo.",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 18,
+                "quantita": 1
+            },
+            {
+                "oggetto": 0,
+                "quantita": 1
+            },
+            {
+                "oggetto": 40,
+                "quantita": 1
+            },
+            {
+                "oggetto": 41,
+                "quantita": 2
+            },
+            {
+                "oggetto": 15,
+                "quantita": 2
+            }
+        ]
+    },
+    {
+        "nome": "Risotto agli asparagi",
+        "descrizione": "Il risotto agli asparagi è un primo piatto cremoso e genuino, perfetto per la stagione primaverile.",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 1,
+                "quantita": 1
+            },
+            {
+                "oggetto": 2,
+                "quantita": 2
+            },
+            {
+                "oggetto": 3,
+                "quantita": 1
+            },
+            {
+                "oggetto": 0,
+                "quantita": 1
+            }
+        ]
+    }
+    ,
+    {
+        "nome": "Panino con il Pollo",
+        "descrizione": "Il classico e semplice panino con il pollo.",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 30,
+                "quantita": 1
+            },
+            {
+                "oggetto": 35,
+                "quantita": 1
+            },
+            {
+                "oggetto": 33,
+                "quantita": 2
+            }
+        ]
+    }
+    ,
+    {
+        "nome": "Pane, mango, spinaci e Formaggio Spalmabile",
+        "descrizione": "Ricetta estiva realizzata con una combinazione di ingredienti tanto salutare quanto inaspettata",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 35,
+                "quantita": 1
+            },
+            {
+                "oggetto": 43,
+                "quantita": 1
+            },
+            {
+                "oggetto": 45,
+                "quantita": 1
+            },
+            {
+                "oggetto": 44,
+                "quantita": 1
+            }
+        ]
+    }
+    ,
+    {
+        "nome": "Spaghetti all'assassina",
+        "descrizione": "State tranquilli, gli spaghetti all'assassina non si ispirano ai classici del cinema horror! Si tratta di un primo piatto che è entrato di recente a far parte della tradizione barese, oltre che un modo appetitoso per utilizzare il sugo avanzato. Il significato del suo nome non è ben chiaro, ma quel che è certo è che il suo gusto ha conquistato tutti: grazie alla cottura degli spaghetti direttamente in padella, infatti, otterrete una consistenza croccante e saporita particolarmente apprezzata dagli amanti della crosticina!",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 12,
+                "quantita": 1
+            },
+            {
+                "oggetto": 15,
+                "quantita": 1
+            },
+            {
+                "oggetto": 0,
+                "quantita": 1
+            },
+            {
+                "oggetto": 18,
+                "quantita": 1
+            },
+            {
+                "oggetto": 16,
+                "quantita": 1
+            },
+            {
+                "oggetto": 46,
+                "quantita": 1
+            }
+        ]
+    }
 ]

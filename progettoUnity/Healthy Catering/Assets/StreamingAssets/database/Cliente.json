@@ -1,32 +1,89 @@
 [
-  {
-    "nome": "alessandro",
-    "dieta": 0,
-    "listaIdPatologie": []
-  },
-  {
-    "nome": "giorgio",
-    "dieta": 1,
-    "listaIdPatologie": [
-      0
-    ]
-  },
-  {
-    "nome": "marco",
-    "dieta": 1,
-    "listaIdPatologie": [
-      0,
-      1
-    ]
-  },
-  {
-    "nome": "saverio",
-    "dieta": 2,
-    "listaIdPatologie": [
-      0,
-      1,
-      2,
-      3
-    ]
-  }
+    {
+        "nome": "alessandro",
+        "dieta": 0,
+        "listaIdPatologie": []
+    },
+    {
+        "nome": "giorgio",
+        "dieta": 1,
+        "listaIdPatologie": [
+            0
+        ]
+    },
+    {
+        "nome": "marco",
+        "dieta": 1,
+        "listaIdPatologie": [
+            0,
+            1
+        ]
+    },
+    {
+        "nome": "saverio",
+        "dieta": 2,
+        "listaIdPatologie": [
+            0,
+            1
+        ]
+    },
+    {
+        "nome": "Tammy",
+        "dieta": 1,
+        "listaIdPatologie": [
+            1
+        ]
+    },
+    {
+        "nome": "James",
+        "dieta": 0,
+        "listaIdPatologie": [
+            1,
+            0
+        ]
+    },
+    {
+        "nome": "William",
+        "dieta": 0,
+        "listaIdPatologie": [
+            0
+        ]
+    },
+    {
+        "nome": "Robert",
+        "dieta": 2,
+        "listaIdPatologie": [
+            0,
+            1
+        ]
+    },
+    {
+        "nome": "Catherine",
+        "dieta": 1,
+        "listaIdPatologie": [
+            0
+        ]
+    },
+    {
+        "nome": "Bill",
+        "dieta": 2,
+        "listaIdPatologie": [
+            0,
+            1
+        ]
+    },
+    {
+        "nome": "Marty",
+        "dieta": 0,
+        "listaIdPatologie": [
+            1
+        ]
+    },
+    {
+        "nome": "Nancy",
+        "dieta": 0,
+        "listaIdPatologie": [
+            0
+        ]
+    }
 ]

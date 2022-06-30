@@ -194,7 +194,7 @@ public class Ingrediente
             }
         }
 
-        throw new Exception("Ingrediente non trovato idToIngrediente");
+        throw new Exception("Ingrediente non trovato idToIngrediente " + id.ToString());
     }
 
     public static string listIngredientiToStringa (List <Ingrediente> ingredienti)

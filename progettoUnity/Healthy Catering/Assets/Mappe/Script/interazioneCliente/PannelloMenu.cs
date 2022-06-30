@@ -171,6 +171,8 @@ public class PannelloMenu : MonoBehaviour
                 i++;
             }
         }
+
+        print(giocatore.stampaInventario());
     }
 
     private void selezionaPiatto(GameObject bottone, List<Piatto> piatti, Cliente cliente)
