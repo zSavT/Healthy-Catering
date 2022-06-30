@@ -22,6 +22,10 @@ public class Ricettario : MonoBehaviour
 
     private bool isVistaPiatto = true;// all'inizio viene mostrata la pagina dei piatti
 
+    private string coloreIngrediente = "<color=#ffcc66>";
+    private string colorePiatto = "<color=#ffa64c>";
+    private string fineColore = "</color>";
+
     void Start()
     {
         pannelloPrincipale.SetActive(true);
@@ -103,8 +107,8 @@ public class Ricettario : MonoBehaviour
 
     private void setTestoSchermata(string titolo, string testo)
     {
-        titoloSchermata.text = titolo;
-        testoSchermata.text = testo;
+        titoloSchermata.text = titolo + fineColore;
+        testoSchermata.text = testo + fineColore;
     }
 
     private void setTestoSchermata()
@@ -112,15 +116,15 @@ public class Ricettario : MonoBehaviour
         if (isVistaPiatto)
         {
             setTestoSchermata(
-                databasePiatti[numeroPaginaPiatti].nome,
-                databasePiatti[numeroPaginaPiatti].getListaIngredientiQuantitaToString()
+                colorePiatto + databasePiatti[numeroPaginaPiatti].nome,
+                coloreIngrediente + databasePiatti[numeroPaginaPiatti].getListaIngredientiQuantitaToString()
             );
         }
         else
         {
             setTestoSchermata(
-               databaseIngredienti[numeroPaginaIngredienti].nome,
-               databaseIngredienti[numeroPaginaIngredienti].getListaPiattiRealizzabiliConIngredienteToSingolaString(databaseIngredienti, databasePiatti)
+               coloreIngrediente + databaseIngredienti[numeroPaginaIngredienti].nome,
+               colorePiatto + databaseIngredienti[numeroPaginaIngredienti].getListaPiattiRealizzabiliConIngredienteToSingolaString(databaseIngredienti, databasePiatti)
             );
         }
         attivaDisattivaAvantiIndietro();

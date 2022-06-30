@@ -548,6 +548,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Ingredienti o piatti realizzabili
       objectReference: {fileID: 0}
+    - target: {fileID: 2675222067951267968, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: b246c4190f4e46ec9352fe15a7b09ce0, type: 2}
     - target: {fileID: 2787683893560405573, guid: ad6e68cc1c1adc048b779fd48105b498, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
