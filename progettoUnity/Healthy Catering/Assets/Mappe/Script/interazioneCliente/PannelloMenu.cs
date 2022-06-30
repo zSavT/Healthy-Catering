@@ -155,24 +155,39 @@ public class PannelloMenu : MonoBehaviour
 
     private void aggiornaBottoniPiatti()
     {
-        if(bottoniPiatti != null)
+
+        if (bottoniPiatti != null)
         {
+            List<Button> piattiDisponibili = new List<Button>();
+            List<Button> piattiNonDisponibili = new List<Button>();
+
             int i = 0;
             foreach (Button bottonePiatto in bottoniPiatti)
             {
+                bottonePiatto.transform.SetParent(null, true);
+
                 if (!piatti[i].piattoInInventario(giocatore.inventario))
                 {
                     bottonePiatto.interactable = false;
+                    piattiNonDisponibili.Add(bottonePiatto);
                 }
                 else
                 {
                     bottonePiatto.interactable = true;
+                    piattiDisponibili.Add(bottonePiatto);
                 }
                 i++;
             }
+
+            piattiDisponibili.AddRange(piattiNonDisponibili);
+            bottoniPiatti = piattiDisponibili.ToArray();
+
+            foreach (Button temp in bottoniPiatti)
+            {
+                temp.transform.SetParent(pannelloPiatti.transform);
+            }
         }
 
-        print(giocatore.stampaInventario());
     }
 
     private void selezionaPiatto(GameObject bottone, List<Piatto> piatti, Cliente cliente)
