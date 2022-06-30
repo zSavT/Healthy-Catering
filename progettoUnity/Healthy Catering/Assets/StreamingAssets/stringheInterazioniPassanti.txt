@@ -1,4 +1,0 @@
-<color=#B5D99C>ciao</color>
-Lorem <color=#B5D99C>ipsum dolor sit amet</color>, consectetur adipiscing elit.
-Phasellus at felis a <color=#B5D99C>velit tincidunt feugiat</color> condimentum in ex. Sed semper justo ac sem suscipit finibus. Donec non rutrum nulla, ut sollicitudin tortor. Mauris lobortis purus sit amet nunc tempor maximus eget et urna. Phasellus eu orci tempor, volutpat est eget, mollis eros. Suspendisse et elit lobortis ipsum hendrerit finibus. Donec id urna vel odio posuere mollis sit amet ac risus. Ut pulvinar leo in volutpat scelerisque. Nullam vitae ante sed purus hendrerit vulputate in id nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus nec arcu sit amet sem ullamcorper elementum quis quis augue. Curabitur sit amet quam eros. Morbi nec mauris venenatis turpis accumsan sollicitudin. <color=#B5D99C>Aenean sit amet felis</color> sed dolor bibendum luctus.
-ciao
