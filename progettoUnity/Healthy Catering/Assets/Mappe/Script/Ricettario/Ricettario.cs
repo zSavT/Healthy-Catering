@@ -24,10 +24,6 @@ public class Ricettario : MonoBehaviour
 
     private bool isVistaPiatto = true;// all'inizio viene mostrata la pagina dei piatti
 
-    private string coloreIngrediente = "<color=#ffcc66>";
-    private string colorePiatto = "<color=#ffa64c>";
-    private string fineColore = "</color>";
-
     private bool ricettarioAperto = false;
 
     private bool visualizzazioneNormale = true;
@@ -105,8 +101,8 @@ public class Ricettario : MonoBehaviour
 
     private void setTestoSchermata(string titolo, string testo, string testoBottoneSwitchVista)
     {
-        titoloSchermata.text = titolo + fineColore;
-        testoSchermata.text = testo + fineColore;
+        titoloSchermata.text = titolo + Utility.fineColore;
+        testoSchermata.text = testo + Utility.fineColore;
         testoBottoneAltriDati.text = testoBottoneSwitchVista;
     }
 
@@ -115,17 +111,17 @@ public class Ricettario : MonoBehaviour
         if (isVistaPiatto)
         {
             setTestoSchermata(
-                colorePiatto + databasePiatti[numeroPaginaPiatti].nome,
-                coloreIngrediente + databasePiatti[numeroPaginaPiatti].getListaIngredientiQuantitaToString(),
-                "Visualizza altri dati del piatto"
+                Utility.colorePiatti + databasePiatti[numeroPaginaPiatti].nome,
+                Utility.coloreIngredienti + databasePiatti[numeroPaginaPiatti].getListaIngredientiQuantitaToString(),
+                "Scheda tecnica del piatto"
             );
         }
         else
         {
             setTestoSchermata(
-               coloreIngrediente + databaseIngredienti[numeroPaginaIngredienti].nome,
-               colorePiatto + databaseIngredienti[numeroPaginaIngredienti].getListaPiattiRealizzabiliConIngredienteToSingolaString(databaseIngredienti, databasePiatti),
-                "Visualizza altri dati dell'ingrediente"
+               Utility.coloreIngredienti + databaseIngredienti[numeroPaginaIngredienti].nome,
+               Utility.colorePiatti + databaseIngredienti[numeroPaginaIngredienti].getListaPiattiRealizzabiliConIngredienteToSingolaString(databaseIngredienti, databasePiatti),
+                "Scheda tecnica dell'ingrediente"
             );
         }
         attivaDisattivaAvantiIndietro();
