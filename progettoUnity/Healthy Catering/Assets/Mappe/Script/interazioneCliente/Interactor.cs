@@ -171,17 +171,18 @@ public class Interactor : MonoBehaviour
                     suonoNegozio.Play();
                     this.gameObject.transform.position = destinazioneTeleport.transform.position;
                 }
-            } else if(/*ricettarioPuntato()*/Input.GetKeyDown (KeyCode.Tab))
+            } else if(ricettarioPuntato())
             {
+                print("ciao");
                 inquadratoNPC.Invoke();
-                //if (Input.GetKeyDown (tastoInterazione) && !(ricettarioScript.getRicettarioAperto()))
-                //{
+                if (Input.GetKeyDown (tastoInterazione) && !(ricettarioScript.getRicettarioAperto()))
+                {
                     ricettarioScript.apriRicettario();
 
                     playerStop.Invoke();
                     PuntatoreMouse.abilitaCursore();
                     CambioCursore.cambioCursoreNormale();
-                //}
+                }
             }
             else
             {
@@ -259,7 +260,7 @@ public class Interactor : MonoBehaviour
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out ricettarioInquadrato, 2, layerUnityNPC))
         {
             // se l'oggetto visualizzato è interagibile
-            if (ricettarioInquadrato.collider.GetComponent<PannelloMagazzino>() != false)
+            if (ricettarioInquadrato.collider.GetComponent<Ricettario>() != false)
             {
                 return true;
             }
