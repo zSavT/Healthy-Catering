@@ -133,7 +133,7 @@ public class ProgressoTutorial : MonoBehaviour
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.parlaZio);
                         OkBoxVideo.parlaZioMostrato = true;
                     }
-
+                    InterazionePassanti.parlatoConZio = false;
                     if (CheckTutorial.checkParlaConZio()) { numeroScritteMostrate++; }
                 }
                 else if (numeroScritteMostrate == 4)
