@@ -37,6 +37,8 @@ public class ProgressoTutorial : MonoBehaviour
     [SerializeField] private UnityEvent playerStop;
     private int siOno = 0;
 
+    [SerializeField] FineLivello fineLivello;
+
     private void Start()
     {
         inTutorial = true;
@@ -60,184 +62,187 @@ public class ProgressoTutorial : MonoBehaviour
 
         numeroScritteMostrate = 0;
         
-        finitoTutorial = false;
-
+        finitoTutorial = true;//TODO reimpostare a falso
     }
 
     private void Update()
     {
-        if (!saGiocareSettato)
+        if (!finitoTutorial)
         {
-            if (PlayerSaGiocareFPS.siOnoSettato())
+            if (!saGiocareSettato)
             {
-                siOno = PlayerSaGiocareFPS.getSiOno();
+                if (PlayerSaGiocareFPS.siOnoSettato())
+                {
+                    siOno = PlayerSaGiocareFPS.getSiOno();
                 
-                if (siOno == 1)
-                    numeroScritteMostrate = posizioneScritteDaMostrareSaGiocare;
-                else if (siOno == -1)
-                    numeroScritteMostrate = 0;
+                    if (siOno == 1)
+                        numeroScritteMostrate = posizioneScritteDaMostrareSaGiocare;
+                    else if (siOno == -1)
+                        numeroScritteMostrate = 0;
 
-                if (siOno != 0)
-                    saGiocareSettato = true;
-            }
-            else
-            {
-                playerStop.Invoke();
-                playerSaGiocareFPS.apriPannelloPlayerSaGiocareFPS();
-            }
-        }
-        else
-        {
-            for (int i = 0; i < scritteDaMostrare.Count; i++)
-            {
-                if (i == numeroScritteMostrate)
-                {
-                    setObiettivoTesto(scritteDaMostrare[i]);
-                    giocatore = interazioniPlayer.getPlayer();
-                }
-
-                if (numeroScritteMostrate == 0)
-                {
-                    if (!OkBoxVideo.WASDmostrato)
-                    {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.WASD);
-                        OkBoxVideo.WASDmostrato = true;
-                    }
-
-                    if (CheckTutorial.checkWASDeMouse()) { numeroScritteMostrate++; }
-                }
-                else if (numeroScritteMostrate == 1)
-                {
-                    if (!OkBoxVideo.saltoMostrato)
-                    {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.salto);
-                        OkBoxVideo.saltoMostrato = true;
-                    }
-
-                    if (CheckTutorial.checkSalto()) { numeroScritteMostrate++; }
-                }
-                else if (numeroScritteMostrate == 2)
-                {
-                    if (!OkBoxVideo.sprintMostrato)
-                    {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.sprint);
-                        OkBoxVideo.sprintMostrato = true;
-                    }
-
-                    if (CheckTutorial.checkSprint()) { numeroScritteMostrate++; }
-                }
-                else if (numeroScritteMostrate == 3)
-                {
-                    if (!OkBoxVideo.parlaZioMostrato)
-                    {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.parlaZio);
-                        OkBoxVideo.parlaZioMostrato = true;
-                    }
-
-                    if (CheckTutorial.checkParlaConZio()) { numeroScritteMostrate++; }
-                }
-                else if (numeroScritteMostrate == 4)
-                {
-                    if (!OkBoxVideo.vaiAlRistoranteMostrato)
-                    {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.vaiAlRistorante);
-                        OkBoxVideo.vaiAlRistoranteMostrato = true;
-                    }
-
-                    if (CheckTutorial.checkVaiRistorante()) {
-                        giocatore.setInventarioLivello(0);
-                        numeroScritteMostrate++;
-                    }
-                }
-                else if (numeroScritteMostrate == 5)
-                {
-                    if (!OkBoxVideo.meccanicheServireCompatibileMostrato)
-                    {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.meccanicheServireCompatibile);
-                        OkBoxVideo.meccanicheServireCompatibileMostrato = true;
-                    }
-
-                    if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
-                        if (giocatore != null)
-                            if (CheckTutorial.checkServitoPiattoCompatibile(giocatore)) {
-                                giocatore.setInventarioLivello(0.5);
-                                numeroScritteMostrate++;
-                            }
-                }
-                else if (numeroScritteMostrate == 6)
-                {
-                    if (!OkBoxVideo.meccanicheServireNonCompatibileMostrato)
-                    {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.meccanicheServireNonCompatibile);
-                        OkBoxVideo.meccanicheServireNonCompatibileMostrato = true;
-                    }
-
-                    if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
-                        if (giocatore != null)
-                            if (CheckTutorial.checkServitoPiattoNonCompatibile(giocatore))
-                            {
-                                numeroScritteMostrate++;
-                            }
-                }
-
-                else if (numeroScritteMostrate == 7)
-                {
-                    if (!OkBoxVideo.finitiIngredientiMostrato)
-                    {
-                        PannelloMagazzino.pannelloMagazzinoApertoPerTutorial = false;
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.finitiIngredienti);
-                        OkBoxVideo.finitiIngredientiMostrato  = true;
-                    }
-
-                    if (CheckTutorial.checkVistoMagazzino()) { numeroScritteMostrate++; }
-
-                    //nel magazzino dovremmo mettere un ingrediente che non e' presente nella ricetta ne del 
-                    //Piatto compatibile ne in quella del piatto non compatibile, cosi che quando il giocatore 
-                    //apre il magazzino non sia vuoto del tutto, se no sembra che il magazzino abbia solo la 
-                    //funzione di avvisarti che non hai pi� ingredienti
-                    //magari possiamo cambiare la scritta a "il magazzino sarebbe cosi se ci fossero degli
-                    //ingredienti" e poi far scomparire l'ingrediente temp che abbiamo inserito dopo 5 secondi
-                }
-                else if (numeroScritteMostrate == 8)
-                {
-                    if (!OkBoxVideo.doveEIlNegozioMostrato)
-                    {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.doveEIlNegozio);
-                        OkBoxVideo.doveEIlNegozioMostrato = true;
-                    }
-                    
-                    if (CheckTutorial.checkIsNelNegozio()) //TODO implementazione
-                        if (CheckTutorial.checkCompratiIngredienti(giocatore)) { numeroScritteMostrate++; };
-                }
-                else if (numeroScritteMostrate == 9)
-                {
-                    if (!OkBoxVideo.interazioneNPCMostrato)
-                    {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.interazioneNPC);
-                        OkBoxVideo.interazioneNPCMostrato = true;
-                    }
-                    
-                    if (CheckTutorial.checkParlatoConNPC())
-                    {
-                        numeroScritteMostrate++;
-                        finitoTutorial = true;
-                    }
+                    if (siOno != 0)
+                        saGiocareSettato = true;
                 }
                 else
                 {
-                    setObiettivoTesto("");//resetto il testo dell'obbiettivo 
+                    playerStop.Invoke();
+                    playerSaGiocareFPS.apriPannelloPlayerSaGiocareFPS();
                 }
             }
+            else
+            {
+                for (int i = 0; i < scritteDaMostrare.Count; i++)
+                {
+                    if (i == numeroScritteMostrate)
+                    {
+                        setObiettivoTesto(scritteDaMostrare[i]);
+                        giocatore = interazioniPlayer.getPlayer();
+                    }
 
+                    if (numeroScritteMostrate == 0)
+                    {
+                        if (!OkBoxVideo.WASDmostrato)
+                        {
+                            okBoxVideo.apriOkBoxVideo(OkBoxVideo.WASD);
+                            OkBoxVideo.WASDmostrato = true;
+                        }
+
+                        if (CheckTutorial.checkWASDeMouse()) { numeroScritteMostrate++; }
+                    }
+                    else if (numeroScritteMostrate == 1)
+                    {
+                        if (!OkBoxVideo.saltoMostrato)
+                        {
+                            okBoxVideo.apriOkBoxVideo(OkBoxVideo.salto);
+                            OkBoxVideo.saltoMostrato = true;
+                        }
+
+                        if (CheckTutorial.checkSalto()) { numeroScritteMostrate++; }
+                    }
+                    else if (numeroScritteMostrate == 2)
+                    {
+                        if (!OkBoxVideo.sprintMostrato)
+                        {
+                            okBoxVideo.apriOkBoxVideo(OkBoxVideo.sprint);
+                            OkBoxVideo.sprintMostrato = true;
+                        }
+
+                        if (CheckTutorial.checkSprint()) { numeroScritteMostrate++; }
+                    }
+                    else if (numeroScritteMostrate == 3)
+                    {
+                        if (!OkBoxVideo.parlaZioMostrato)
+                        {
+                            okBoxVideo.apriOkBoxVideo(OkBoxVideo.parlaZio);
+                            OkBoxVideo.parlaZioMostrato = true;
+                        }
+
+                        if (CheckTutorial.checkParlaConZio()) { numeroScritteMostrate++; }
+                    }
+                    else if (numeroScritteMostrate == 4)
+                    {
+                        if (!OkBoxVideo.vaiAlRistoranteMostrato)
+                        {
+                            okBoxVideo.apriOkBoxVideo(OkBoxVideo.vaiAlRistorante);
+                            OkBoxVideo.vaiAlRistoranteMostrato = true;
+                        }
+
+                        if (CheckTutorial.checkVaiRistorante()) {
+                            giocatore.setInventarioLivello(0);
+                            numeroScritteMostrate++;
+                        }
+                    }
+                    else if (numeroScritteMostrate == 5)
+                    {
+                        if (!OkBoxVideo.meccanicheServireCompatibileMostrato)
+                        {
+                            okBoxVideo.apriOkBoxVideo(OkBoxVideo.meccanicheServireCompatibile);
+                            OkBoxVideo.meccanicheServireCompatibileMostrato = true;
+                        }
+
+                        if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
+                            if (giocatore != null)
+                                if (CheckTutorial.checkServitoPiattoCompatibile(giocatore)) {
+                                    giocatore.setInventarioLivello(0.5);
+                                    numeroScritteMostrate++;
+                                }
+                    }
+                    else if (numeroScritteMostrate == 6)
+                    {
+                        if (!OkBoxVideo.meccanicheServireNonCompatibileMostrato)
+                        {
+                            okBoxVideo.apriOkBoxVideo(OkBoxVideo.meccanicheServireNonCompatibile);
+                            OkBoxVideo.meccanicheServireNonCompatibileMostrato = true;
+                        }
+
+                        if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
+                            if (giocatore != null)
+                                if (CheckTutorial.checkServitoPiattoNonCompatibile(giocatore))
+                                {
+                                    numeroScritteMostrate++;
+                                }
+                    }
+
+                    else if (numeroScritteMostrate == 7)
+                    {
+                        if (!OkBoxVideo.finitiIngredientiMostrato)
+                        {
+                            PannelloMagazzino.pannelloMagazzinoApertoPerTutorial = false;
+                            okBoxVideo.apriOkBoxVideo(OkBoxVideo.finitiIngredienti);
+                            OkBoxVideo.finitiIngredientiMostrato  = true;
+                        }
+
+                        if (CheckTutorial.checkVistoMagazzino()) { numeroScritteMostrate++; }
+
+                        //nel magazzino dovremmo mettere un ingrediente che non e' presente nella ricetta ne del 
+                        //Piatto compatibile ne in quella del piatto non compatibile, cosi che quando il giocatore 
+                        //apre il magazzino non sia vuoto del tutto, se no sembra che il magazzino abbia solo la 
+                        //funzione di avvisarti che non hai pi� ingredienti
+                        //magari possiamo cambiare la scritta a "il magazzino sarebbe cosi se ci fossero degli
+                        //ingredienti" e poi far scomparire l'ingrediente temp che abbiamo inserito dopo 5 secondi
+                    }
+                    else if (numeroScritteMostrate == 8)
+                    {
+                        if (!OkBoxVideo.doveEIlNegozioMostrato)
+                        {
+                            okBoxVideo.apriOkBoxVideo(OkBoxVideo.doveEIlNegozio);
+                            OkBoxVideo.doveEIlNegozioMostrato = true;
+                        }
+                    
+                        if (CheckTutorial.checkIsNelNegozio()) //TODO implementazione
+                            if (CheckTutorial.checkCompratiIngredienti(giocatore)) { numeroScritteMostrate++; };
+                    }
+                    else if (numeroScritteMostrate == 9)
+                    {
+                        if (!OkBoxVideo.interazioneNPCMostrato)
+                        {
+                            okBoxVideo.apriOkBoxVideo(OkBoxVideo.interazioneNPC);
+                            OkBoxVideo.interazioneNPCMostrato = true;
+                        }
+                    
+                        if (CheckTutorial.checkParlatoConNPC())
+                        {
+                            numeroScritteMostrate++;
+                            finitoTutorial = true;
+                        }
+                    }
+                    else
+                    {
+                        setObiettivoTesto("");//resetto il testo dell'obbiettivo 
+                    }
+                }
+
+            }
         }
-
-        
-        if (finitoTutorial)
+        else
         {
             obbiettivo1Testo.gameObject.SetActive(false);
             inTutorial = false;
             progressoLivelloClassico.attivaSoloObbiettivi();
             iTween.Destroy(this.gameObject);
+
+            giocatore = interazioniPlayer.getPlayer();//TODO rimuovere questa linea, il giocatore verrà aggiornato prima
+            fineLivello.apriPannello(0, giocatore);
         }
         
     }
