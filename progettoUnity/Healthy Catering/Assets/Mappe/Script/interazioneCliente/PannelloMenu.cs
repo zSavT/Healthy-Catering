@@ -163,6 +163,7 @@ public class PannelloMenu : MonoBehaviour
             int i = 0;
             foreach (Button bottonePiatto in bottoniPiatti)
             {
+
                 print(bottonePiatto.name);
                 bottonePiatto.transform.SetParent(null, true);
 
@@ -187,6 +188,7 @@ public class PannelloMenu : MonoBehaviour
                 temp.transform.SetParent(pannelloPiatti.transform);
             }
         }
+
     }
 
     private void selezionaPiatto(GameObject bottone, List<Piatto> piatti, Cliente cliente)
