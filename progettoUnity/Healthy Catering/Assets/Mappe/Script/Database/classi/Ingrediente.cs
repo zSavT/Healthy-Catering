@@ -72,11 +72,10 @@ public class Ingrediente
 
     public override string ToString()
     {
-        return "Ingrediente:" + "\n\t" + this.nome + "\n" +
-        "Descrizione:" + "\n\t" + this.descrizione + "\n" +
-        "Costo:" + "\n\t" + this.costo + "\n" +
-        "Costo eco:" + "\n\t" + this.costoEco + "\n" +
-        "Nutriscore:" + "\n\t" + this.nutriScore + "\n";/* +
+        return this.descrizione + "\n\n" +
+        "Costo: "  + this.costo + "\n" +
+        "Costo eco: " + this.costoEco + "\n" +
+        "Nutriscore: " + this.nutriScore + "\n";/* +
         "Dieta compatibile:" + "\n\t" + Dieta.IdDietaToDietaString(this.dieta) + "\n" +
         "Patologie compatibili:" + Patologia.listIdToListPatologie(this.listaIdPatologieCompatibili);*/
     }

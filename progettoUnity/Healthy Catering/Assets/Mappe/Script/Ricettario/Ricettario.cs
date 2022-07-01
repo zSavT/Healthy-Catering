@@ -113,7 +113,7 @@ public class Ricettario : MonoBehaviour
             setTestoSchermata(
                 Utility.colorePiatti + databasePiatti[numeroPaginaPiatti].nome,
                 Utility.coloreIngredienti + databasePiatti[numeroPaginaPiatti].getListaIngredientiQuantitaToString(),
-                "Scheda tecnica del piatto"
+                Utility.colorePiatti + "Scheda tecnica del piatto"
             );
         }
         else
@@ -121,7 +121,7 @@ public class Ricettario : MonoBehaviour
             setTestoSchermata(
                Utility.coloreIngredienti + databaseIngredienti[numeroPaginaIngredienti].nome,
                Utility.colorePiatti + databaseIngredienti[numeroPaginaIngredienti].getListaPiattiRealizzabiliConIngredienteToSingolaString(databaseIngredienti, databasePiatti),
-                "Scheda tecnica dell'ingrediente"
+               Utility.coloreIngredienti + "Scheda tecnica dell'ingrediente"
             );
         }
         attivaDisattivaAvantiIndietro();
@@ -178,12 +178,12 @@ public class Ricettario : MonoBehaviour
         if (isVistaPiatto)
         {
             testoSchermata.text = databasePiatti[numeroPaginaPiatti].ToString();
-            testoBottoneAltriDati.text = "Visualizza ingredienti del piatto: " + databasePiatti[numeroPaginaPiatti].nome;
+            testoBottoneAltriDati.text = "Lista ingredienti";
         }
         else
         {
             testoSchermata.text = databaseIngredienti[numeroPaginaIngredienti].ToString();
-            testoBottoneAltriDati.text = "Visualizza ricette realizzabili con l'ingrediente: " + databaseIngredienti[numeroPaginaIngredienti].nome;
+            testoBottoneAltriDati.text = "Lista ricette";
         }
     }
 
