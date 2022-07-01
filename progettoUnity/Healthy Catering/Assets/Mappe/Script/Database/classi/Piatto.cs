@@ -65,16 +65,16 @@ public class Piatto
     {
         string output = "Piatto:" + "\n\t" + this.nome + "\n" +
         "Descrizione: " + "\n\t" + this.descrizione + "\n" +
-        "Costo: " + "\n\t" + this.costo + "\n" +
-        "Costo eco: " + "\n\t" + this.costoEco + "\n" +
-        "Nutriscore: " + "\n\t" + this.nutriScore + "\n";
-
+        "Costo: " + "\n\t" + this.calcolaCostoBase() + "\n" +
+        "Costo eco: " + "\n\t" + this.calcolaCostoEco() + "\n" +
+        "Nutriscore: " + "\n\t" + this.calcolaNutriScore() + "\n";
+        /*
         if (listaIdIngredientiQuantita.Count > 0)
         { 
             output = output + this.getListaIngredientiQuantitaToString();
-        }
+        }*/
 
-        return output = output + "Fine piatto " + this.nome;
+        return output;/* = output + "Fine piatto " + this.nome;*/
     }
 
     public string getListaIngredientiQuantitaToString()

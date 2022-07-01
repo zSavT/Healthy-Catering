@@ -13,6 +13,8 @@ public class Ricettario : MonoBehaviour
     [SerializeField] Button indietro;
     [SerializeField] Button switchPiatti;
     [SerializeField] Button switchIngredienti;
+    [SerializeField] Button bottoneAltriDati;
+    [SerializeField] TextMeshProUGUI testoBottoneAltriDati;
 
     private List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
     private List<Piatto> databasePiatti = Database.getDatabaseOggetto(new Piatto());
@@ -27,6 +29,8 @@ public class Ricettario : MonoBehaviour
     private string fineColore = "</color>";
 
     private bool ricettarioAperto = false;
+
+    private bool visualizzazioneNormale = true;
 
     private void Start()
     {
@@ -99,10 +103,11 @@ public class Ricettario : MonoBehaviour
         numeroPaginaPiatti = 0;
     }
 
-    private void setTestoSchermata(string titolo, string testo)
+    private void setTestoSchermata(string titolo, string testo, string testoBottoneSwitchVista)
     {
         titoloSchermata.text = titolo + fineColore;
         testoSchermata.text = testo + fineColore;
+        testoBottoneAltriDati.text = testoBottoneSwitchVista;
     }
 
     private void setTestoSchermata()
@@ -111,14 +116,16 @@ public class Ricettario : MonoBehaviour
         {
             setTestoSchermata(
                 colorePiatto + databasePiatti[numeroPaginaPiatti].nome,
-                coloreIngrediente + databasePiatti[numeroPaginaPiatti].getListaIngredientiQuantitaToString()
+                coloreIngrediente + databasePiatti[numeroPaginaPiatti].getListaIngredientiQuantitaToString(),
+                "Visualizza altri dati del piatto"
             );
         }
         else
         {
             setTestoSchermata(
                coloreIngrediente + databaseIngredienti[numeroPaginaIngredienti].nome,
-               colorePiatto + databaseIngredienti[numeroPaginaIngredienti].getListaPiattiRealizzabiliConIngredienteToSingolaString(databaseIngredienti, databasePiatti)
+               colorePiatto + databaseIngredienti[numeroPaginaIngredienti].getListaPiattiRealizzabiliConIngredienteToSingolaString(databaseIngredienti, databasePiatti),
+                "Visualizza altri dati dell'ingrediente"
             );
         }
         attivaDisattivaAvantiIndietro();
@@ -155,6 +162,35 @@ public class Ricettario : MonoBehaviour
             setTestoSchermata();
         }
     }
+
+    public void visualizzaAltriDati()
+    {
+        visualizzazioneNormale = !visualizzazioneNormale;
+
+        if (visualizzazioneNormale)
+        {
+            switchAVisualizzazioneAltriDati();
+        }
+        else
+        {
+            setTestoSchermata();
+        }
+    }
+
+    private void switchAVisualizzazioneAltriDati()
+    {
+        if (isVistaPiatto)
+        {
+            testoSchermata.text = databasePiatti[numeroPaginaPiatti].ToString();
+            testoBottoneAltriDati.text = "Visualizza ingredienti del piatto: " + databasePiatti[numeroPaginaPiatti].nome;
+        }
+        else
+        {
+            testoSchermata.text = databaseIngredienti[numeroPaginaIngredienti].ToString();
+            testoBottoneAltriDati.text = "Visualizza ricette realizzabili con l'ingrediente: " + databaseIngredienti[numeroPaginaIngredienti].nome;
+        }
+    }
+
 
     public void apriRicettario()
     {
