@@ -451,4 +451,15 @@ public class Piatto
         }
     }
 
+    public static Piatto nomeToPiatto (string nome, List <Piatto> databasePiatto = null)
+    {
+        foreach (Piatto temp in databasePiatto)
+        {
+            if (nome.Contains (temp.nome))
+                return temp;
+        }
+
+        return new Piatto();
+    }
+
 }
