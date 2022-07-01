@@ -173,7 +173,6 @@ public class Interactor : MonoBehaviour
                 }
             } else if(ricettarioPuntato())
             {
-                print("ciao");
                 inquadratoNPC.Invoke();
                 if (Input.GetKeyDown (tastoInterazione) && !(ricettarioScript.getRicettarioAperto()))
                 {
