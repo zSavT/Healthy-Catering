@@ -71,10 +71,6 @@ public class ProgressoLivello : MonoBehaviour
             attivazioneSchermataFineLivello();
         }
         controlloGameOver();
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            numeroClientiServiti = numeroDiClientiMassimi;
-        }
     }
 
     private void controlloGameOver()
