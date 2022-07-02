@@ -165,11 +165,11 @@ public class Ricettario : MonoBehaviour
 
         if (visualizzazioneNormale)
         {
-            switchAVisualizzazioneAltriDati();
+            setTestoSchermata();
         }
         else
         {
-            setTestoSchermata();
+            switchAVisualizzazioneAltriDati();
         }
     }
 
