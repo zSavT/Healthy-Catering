@@ -37,8 +37,6 @@ public class ProgressoTutorial : MonoBehaviour
     [SerializeField] private UnityEvent playerStop;
     private int siOno = 0;
 
-    [SerializeField] FineLivello fineLivello;
-
     private void Start()
     {
         inTutorial = true;
@@ -62,7 +60,7 @@ public class ProgressoTutorial : MonoBehaviour
 
         numeroScritteMostrate = 0;
         
-        finitoTutorial = true;//TODO reimpostare a falso
+        finitoTutorial = false;
     }
 
     private void Update()
@@ -240,9 +238,6 @@ public class ProgressoTutorial : MonoBehaviour
             inTutorial = false;
             progressoLivelloClassico.attivaSoloObbiettivi();
             iTween.Destroy(this.gameObject);
-
-            giocatore = interazioniPlayer.getPlayer();//TODO rimuovere questa linea, il giocatore verrà aggiornato prima
-            fineLivello.apriPannello(0, giocatore);
         }
         
     }
