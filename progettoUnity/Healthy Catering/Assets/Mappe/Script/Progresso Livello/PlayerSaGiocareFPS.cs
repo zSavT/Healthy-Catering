@@ -21,6 +21,7 @@ public class PlayerSaGiocareFPS : MonoBehaviour
 
     public void apriPannelloPlayerSaGiocareFPS()
     {
+        pauseGame();
         pannello.SetActive(true);
         //playerStop.Invoke () chiamato in progresso tutorial
         PuntatoreMouse.abilitaCursore();
@@ -33,6 +34,7 @@ public class PlayerSaGiocareFPS : MonoBehaviour
         pannello.SetActive(false);
         playerRiprendiMovimento.Invoke();
         siOno = 1;
+        resumeGame();
     }
 
     public void chiudiPannelloNo()
@@ -41,6 +43,7 @@ public class PlayerSaGiocareFPS : MonoBehaviour
         pannello.SetActive(false);
         playerRiprendiMovimento.Invoke();
         siOno = -1;
+        resumeGame();
     }
 
     public static bool siOnoSettato ()
@@ -51,6 +54,22 @@ public class PlayerSaGiocareFPS : MonoBehaviour
     public static int getSiOno()
     {
         return siOno;
+    }
+
+    /// <summary>
+    /// Metodo per ripristinare lo scorrere del tempo in gioco
+    /// </summary>
+    void resumeGame()
+    {
+        Time.timeScale = 1f; //sblocca il tempo
+    }
+
+    /// <summary>
+    /// Metodo per bloccare lo scorrere del tempo in gioco.
+    /// </summary>
+    void pauseGame()
+    {
+        Time.timeScale = 0f; //blocca il tempo
     }
 
 }
