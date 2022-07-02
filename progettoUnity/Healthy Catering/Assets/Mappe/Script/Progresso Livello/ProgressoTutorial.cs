@@ -60,7 +60,7 @@ public class ProgressoTutorial : MonoBehaviour
 
         numeroScritteMostrate = 0;
 
-        finitoTutorial = false;
+        finitoTutorial = true;
 
     }
 
