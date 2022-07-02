@@ -37,12 +37,18 @@ public class ProgressoLivello : MonoBehaviour
     [SerializeField] private GameObject schermataFineLivello;         
     //Testo da inizializzare con il valore del punteggio del giocatore raggiunto a fine livello.
     [SerializeField] private TextMeshProUGUI valorePunteggioPlayer;
+    [SerializeField] private TextMeshProUGUI titoloSchermataFineLivello;
     public UnityEvent disattivaElementiFineLivello;
+    [Header("GameOver")]
+    public int numeroDiClientiMassimi = 10;
+    private bool gameOver = false;
+    [SerializeField] private ParticleSystem particellare1;
+    [SerializeField] private ParticleSystem particellare2;
 
 
     private void Start()
     {
-        giocatore = interazioni.getPlayer();
+        
         //disattivare la schermata per evitare che l'animazione parti fin da subito (N.B. L'animazione � impostata per avviarsi all'attivazione dell'oggetto per semplicit� � per dover scrivere molti meno controlli)
         schermataFineLivello.SetActive(false);
         valorePunteggioPlayer.gameObject.SetActive(false);
@@ -54,6 +60,7 @@ public class ProgressoLivello : MonoBehaviour
         {
             disattivaSoloObbiettivi();
         }
+        
     }
 
     private void Update()
@@ -63,7 +70,53 @@ public class ProgressoLivello : MonoBehaviour
         {
             attivazioneSchermataFineLivello();
         }
+        controlloGameOver();
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            numeroClientiServiti = numeroDiClientiMassimi;
+        }
     }
+
+    private void controlloGameOver()
+    {
+        if( (soldiFiniti() && !giocatore.piattiRealizzabiliConInventario()) || numeroClientiServiti == numeroDiClientiMassimi)
+        {
+            gameOver = true;
+            settaggiSchermataFineLivelloGameOver();
+            attivazioneSchermataFineLivello();
+        }
+    }
+
+    private void settaggiSchermataFineLivelloGameOver()
+    {
+        titoloSchermataFineLivello.text = "Hai perso!";
+        var main1 = particellare1.main;
+        var main2 = particellare2.main;
+        main1.playOnAwake = false;
+        main2.playOnAwake = false;
+    }
+
+
+    private bool soldiFiniti()
+    {
+        if(giocatore.soldi > 0 )
+        {
+            return false;
+        } else
+        {
+            return true;
+        }
+        
+    }
+
+
+
+    public void setGiocatore(Player giocatore)
+    {
+        this.giocatore = giocatore;
+    }
+
+
 
     private void valoriInizialiTesto()
     {
@@ -177,8 +230,11 @@ public class ProgressoLivello : MonoBehaviour
     /// </summary>
     public void tornaAlMenuPrincipale()
     {
-        Database.aggiornaDatabaseOggetto(aggiornaGiocatore());
-        PlayerSettings.salvaProgressoLivello1(true);
+        if(gameOver == false)
+        {
+            Database.aggiornaDatabaseOggetto(aggiornaGiocatore());
+            PlayerSettings.salvaProgressoLivello1(true);
+        }
         SelezioneLivelli.caricaMenuPrincipale();
     }
 

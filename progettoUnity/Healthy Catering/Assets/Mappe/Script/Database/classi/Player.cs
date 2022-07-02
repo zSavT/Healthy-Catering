@@ -109,6 +109,22 @@ public class Player
 
     }
 
+    public bool piattiRealizzabiliConInventario()
+    {
+        bool realizzabilePiatti = false;
+        List<Piatto> databasePiatti = Database.getDatabaseOggetto(new Piatto());
+
+        foreach(Piatto temp in databasePiatti)
+        {
+            if(temp.piattoInInventario(this.inventario))
+            {
+                realizzabilePiatti = true;
+                break;
+            }
+        }
+        return realizzabilePiatti;
+    }
+
     public void guadagna(float guadagno)
     {
         this.soldi += guadagno;

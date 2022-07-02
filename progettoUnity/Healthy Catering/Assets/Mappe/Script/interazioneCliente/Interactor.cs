@@ -4,6 +4,7 @@ using System;
 
 public class Interactor : MonoBehaviour
 {
+    [SerializeField] private ProgressoLivello progresso;
     [Header("Interazione Cliente")]
     [SerializeField] private LayerMask layerUnityNPC = 6;              //layer utilizzato da Unity per le categorie di oggetto
 
@@ -59,7 +60,8 @@ public class Interactor : MonoBehaviour
         {
             giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
             giocatore.punteggio[livelloAttuale] = 0;
-            giocatore.soldi = 0f;
+            giocatore.soldi = 30f;
+            guiInGame.aggiornaValoreSoldi(giocatore.soldi);
         }
         catch(Exception e)
         {
@@ -71,6 +73,7 @@ public class Interactor : MonoBehaviour
         pannelloAperto = false;
         posizioneCameraOriginale = mainCamera.transform.position;
         menuApribile = true;
+        progresso.setGiocatore(giocatore);
     }
 
     void Update()

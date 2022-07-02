@@ -130,6 +130,7 @@ MonoBehaviour:
   punteggioMassimo: 200
   schermataFineLivello: {fileID: 7026049647302790124}
   valorePunteggioPlayer: {fileID: 7026049648450118696}
+  titoloSchermataFineLivello: {fileID: 7026049647547248400}
   disattivaElementiFineLivello:
     m_PersistentCalls:
       m_Calls:
@@ -193,6 +194,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  numeroDiClientiMassimi: 10
+  particellare1: {fileID: 7026049646864199756}
+  particellare2: {fileID: 7026049647856217426}
 --- !u!1 &7026049646424702199
 GameObject:
   m_ObjectHideFlags: 0

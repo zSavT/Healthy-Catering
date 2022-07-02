@@ -59,8 +59,8 @@ public class ProgressoTutorial : MonoBehaviour
         };
 
         numeroScritteMostrate = 0;
-        
-        finitoTutorial = false;
+
+        finitoTutorial = true;
 
     }
 
@@ -71,7 +71,7 @@ public class ProgressoTutorial : MonoBehaviour
             if (PlayerSaGiocareFPS.siOnoSettato())
             {
                 siOno = PlayerSaGiocareFPS.getSiOno();
-                
+
                 if (siOno == 1)
                     numeroScritteMostrate = posizioneScritteDaMostrareSaGiocare;
                 else if (siOno == -1)
@@ -144,7 +144,8 @@ public class ProgressoTutorial : MonoBehaviour
                         OkBoxVideo.vaiAlRistoranteMostrato = true;
                     }
 
-                    if (CheckTutorial.checkVaiRistorante()) {
+                    if (CheckTutorial.checkVaiRistorante())
+                    {
                         giocatore.setInventarioLivello(0);
                         numeroScritteMostrate++;
                     }
@@ -159,7 +160,8 @@ public class ProgressoTutorial : MonoBehaviour
 
                     if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
                         if (giocatore != null)
-                            if (CheckTutorial.checkServitoPiattoCompatibile(giocatore)) {
+                            if (CheckTutorial.checkServitoPiattoCompatibile(giocatore))
+                            {
                                 giocatore.setInventarioLivello(0.5);
                                 numeroScritteMostrate++;
                             }
@@ -186,7 +188,7 @@ public class ProgressoTutorial : MonoBehaviour
                     {
                         PannelloMagazzino.pannelloMagazzinoApertoPerTutorial = false;
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.finitiIngredienti);
-                        OkBoxVideo.finitiIngredientiMostrato  = true;
+                        OkBoxVideo.finitiIngredientiMostrato = true;
                     }
 
                     if (CheckTutorial.checkVistoMagazzino()) { numeroScritteMostrate++; }
@@ -205,7 +207,7 @@ public class ProgressoTutorial : MonoBehaviour
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.doveEIlNegozio);
                         OkBoxVideo.doveEIlNegozioMostrato = true;
                     }
-                    
+
                     if (CheckTutorial.checkIsNelNegozio()) //TODO implementazione
                         if (CheckTutorial.checkCompratiIngredienti(giocatore)) { numeroScritteMostrate++; };
                 }
@@ -216,7 +218,7 @@ public class ProgressoTutorial : MonoBehaviour
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.interazioneNPC);
                         OkBoxVideo.interazioneNPCMostrato = true;
                     }
-                    
+
                     if (CheckTutorial.checkParlatoConNPC())
                     {
                         numeroScritteMostrate++;
@@ -231,7 +233,7 @@ public class ProgressoTutorial : MonoBehaviour
 
         }
 
-        
+
         if (finitoTutorial)
         {
             obbiettivo1Testo.gameObject.SetActive(false);
@@ -239,7 +241,7 @@ public class ProgressoTutorial : MonoBehaviour
             progressoLivelloClassico.attivaSoloObbiettivi();
             iTween.Destroy(this.gameObject);
         }
-        
+
     }
 
     /// <summary>
@@ -250,7 +252,7 @@ public class ProgressoTutorial : MonoBehaviour
         obbiettivo1Testo.gameObject.SetActive(true);
     }
 
-    private void setObiettivoTesto (string output)
+    private void setObiettivoTesto(string output)
     {
         obbiettivo1Testo.text = output;
     }
