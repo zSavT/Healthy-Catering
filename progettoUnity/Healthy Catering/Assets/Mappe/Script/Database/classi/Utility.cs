@@ -6,6 +6,7 @@ public class Utility{
     public static readonly string coloreIngredienti = "<color=#ffcc66>";
     public static readonly string coloreDieta = "<color=#64568c>";
     public static readonly string colorePatologia = "<color=#009082>";
+    public static readonly string coloreVerde = "<color=#B6D89C>";
     public static readonly string grassetto = "<b>";
     public static readonly string fineGrassetto = "</b>";
 
