@@ -124,7 +124,7 @@ MonoBehaviour:
   interazioni: {fileID: 0}
   obbiettivoUno: {fileID: 7026049646424702194}
   obbiettivoUnoToogle: {fileID: 7026049647747035611}
-  numeroClientiDaServire: 2
+  numeroClientiDaServire: 10
   obbiettivoDue: {fileID: 7026049647556060526}
   obbiettivoDueToogle: {fileID: 7026049647011643416}
   punteggioMassimo: 200

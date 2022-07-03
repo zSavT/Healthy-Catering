@@ -30,6 +30,7 @@ public class Interactor : MonoBehaviour
 
     [Header("Interazione ricettario")]
     [SerializeField] private Ricettario ricettarioScript;
+    [SerializeField] private LayerMask ricettario;
 
     [Header("Eventi")]
     [SerializeField] private UnityEvent playerStop;
@@ -259,13 +260,9 @@ public class Interactor : MonoBehaviour
     private bool ricettarioPuntato()
     {
         RaycastHit ricettarioInquadrato;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out ricettarioInquadrato, 2, layerUnityNPC))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out ricettarioInquadrato, 2, ricettario))
         {
-            // se l'oggetto visualizzato è interagibile
-            if (ricettarioInquadrato.collider.GetComponent<Ricettario>() != false)
-            {
-                return true;
-            }
+            return true;
         }
         return false;
     }

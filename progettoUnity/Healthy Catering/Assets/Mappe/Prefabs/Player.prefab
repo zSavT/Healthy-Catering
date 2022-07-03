@@ -2356,6 +2356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38ae02a31f485f340b9747d98b822880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  progresso: {fileID: 0}
   layerUnityNPC:
     serializedVersion: 2
     m_Bits: 64
@@ -2373,6 +2374,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   interazionePassanti: {fileID: 0}
+  ricettarioScript: {fileID: 0}
+  ricettario:
+    serializedVersion: 2
+    m_Bits: 1024
   playerStop:
     m_PersistentCalls:
       m_Calls:
@@ -2802,7 +2807,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 767
+    m_Bits: 1791
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
