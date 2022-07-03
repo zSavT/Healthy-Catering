@@ -226,7 +226,8 @@
         "nutriScore": 2,
         "dieta": 1,
         "listaIdPatologieCompatibili": [
-            0
+            0,
+            1
         ]
     },
     {
