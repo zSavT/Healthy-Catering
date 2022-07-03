@@ -42,11 +42,6 @@ public class Player
 
     };
 
-    List<OggettoQuantita<int>> inventarioLivelloFrittura = new List<OggettoQuantita<int>>
-    {
-        new OggettoQuantita<int> (0,1),
-        new OggettoQuantita<int> (20,1)
-    };
     //FINE INVENTARI LIVELLI
 
     public Player(string nome, int soldi, List<OggettoQuantita<int>> inventario)
@@ -267,9 +262,6 @@ public class Player
                 break;
             case 2:
                 this.inventario = inventarioLivello2;
-                break;
-            case 3:
-                this.inventario = inventarioLivelloFrittura;
                 break;
         }
     }
