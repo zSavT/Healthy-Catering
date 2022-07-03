@@ -94,6 +94,7 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     setObiettivoTesto(scritteDaMostrare[i]);
                     giocatore = interazioniPlayer.getPlayer();
+                    giocatore.setInventarioLivello(3);
                 }
 
                 if (numeroScritteMostrate == 0)
