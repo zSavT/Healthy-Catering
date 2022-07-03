@@ -4,15 +4,20 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.Audio;
 using Wilberforce;
+using TMPro;
 
 public class VideoTutorialScript : MonoBehaviour
 {
     [SerializeField] GameObject cameraGioco;
     [SerializeField] VideoPlayer videoPlayer;
+    [SerializeField] private AudioMixer audioMIxer;
+    [SerializeField] private TextMeshProUGUI titolo;
     [Header("Elementi Caricamento Livello")]
     [SerializeField] private Slider sliderCaricamento;        //slider del caricamento della partita
     [SerializeField] private UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
+
 
     // Examples of VideoPlayer function
     void Start()
@@ -63,12 +68,13 @@ public class VideoTutorialScript : MonoBehaviour
         // its prepareCompleted event.
         videoPlayer.Play();
         StartCoroutine(autoSkip(((float)videoPlayer.length) + 2f));          //Aggiungo un secondo di delay per dare la possibilità ai pc poco performanti di non caricarli troppo
-
+        audioMIxer.SetFloat("volume", -80f);
     }
 
 
     public void caricaLivelloTutorial()
     {
+        titolo.gameObject.SetActive(true);
         StartCoroutine(caricamentoAsincrono(2));
     }
 

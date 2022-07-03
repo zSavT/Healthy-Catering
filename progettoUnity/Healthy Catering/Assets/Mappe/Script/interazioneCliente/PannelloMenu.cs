@@ -391,7 +391,7 @@ public class PannelloMenu : MonoBehaviour
     {
         databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
 
-        titoloIngredientiGiustiSbagliati.text = "Ingredienti del piatto " + Utility.colorePiatti + piattoSelezionato.nome + Utility.fineColore +"\nche vanno bene e non per: " + Utility.getStringaConCapitalLetterIniziale(cliente.nome);
+        titoloIngredientiGiustiSbagliati.text = "Compatibilità ingredienti del piatto " + Utility.colorePiatti + piattoSelezionato.nome + Utility.fineColore +"\nper il cliente " + Utility.getStringaConCapitalLetterIniziale(cliente.nome);
 
         List<Ingrediente> ingredientiPiattoSelezionato = piattoSelezionato.getIngredientiPiatto(databaseIngredienti);
 

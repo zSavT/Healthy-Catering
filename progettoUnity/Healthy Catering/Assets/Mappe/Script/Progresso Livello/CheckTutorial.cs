@@ -53,14 +53,14 @@ public class CheckTutorial : MonoBehaviour
 
     public static bool checkSalto()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space))
             return true;
         return false;
     }
 
     public static bool checkSprint()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyUp(KeyCode.LeftShift))
             return true;
         return false; 
     }

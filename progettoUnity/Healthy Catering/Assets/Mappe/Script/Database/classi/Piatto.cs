@@ -86,7 +86,7 @@ public class Piatto
         {
             Ingrediente temp = Ingrediente.idToIngrediente(ingredienteQuantita.oggetto, databaseIngredienti);
             if (temp.idIngrediente != -1)
-                ingredientiQuantitaString = ingredientiQuantitaString + temp.nome + " in quantita: " + ingredienteQuantita.quantita.ToString() + "\n";
+                ingredientiQuantitaString = ingredientiQuantitaString + temp.nome + " x" + ingredienteQuantita.quantita.ToString() + "\n";
         }
 
         return ingredientiQuantitaString;

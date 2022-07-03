@@ -172,7 +172,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 8a8b96b09803a99439c710b974e61f8c, type: 2}
   m_audioClip: {fileID: 8300000, guid: 6cb48f49e37bdb34fb91bbb89abab50d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -300,7 +300,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 8a8b96b09803a99439c710b974e61f8c, type: 2}
   m_audioClip: {fileID: 8300000, guid: 4b73dac4aabdbaf49b75b8bd890664a0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2214,7 +2214,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 8a8b96b09803a99439c710b974e61f8c, type: 2}
   m_audioClip: {fileID: 8300000, guid: 3ea2acefc68a6654c90b7466e569b4ac, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1.88
   Loop: 0
   Mute: 0
@@ -2465,6 +2465,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7249404530917402725}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1714227744}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2135525251}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   playerRiprendiMovimento:
     m_PersistentCalls:
       m_Calls:
@@ -2656,6 +2692,7 @@ MonoBehaviour:
   suonoCamminata: {fileID: 1714227744}
   suonoSprint: {fileID: 2135525251}
   suonoSalto: {fileID: 7249404530917402725}
+  perTerra: 0
   lockUnlockMovimento:
     m_PersistentCalls:
       m_Calls:

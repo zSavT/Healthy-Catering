@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -36,6 +37,8 @@ public class ProgressoTutorial : MonoBehaviour
     private bool saGiocareSettato = false;
     [SerializeField] private UnityEvent playerStop;
     private int siOno = 0;
+    [SerializeField] private MovimentoPlayer moviemnto;
+
 
     private void Start()
     {
@@ -114,7 +117,7 @@ public class ProgressoTutorial : MonoBehaviour
                         OkBoxVideo.saltoMostrato = true;
                     }
 
-                    if (CheckTutorial.checkSalto()) { numeroScritteMostrate++; }
+                    if (CheckTutorial.checkSalto()) { if(moviemnto.perTerra) numeroScritteMostrate++; }
                 }
                 else if (numeroScritteMostrate == 2)
                 {

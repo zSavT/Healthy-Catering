@@ -31,7 +31,7 @@ public class MovimentoPlayer : MonoBehaviour
     [SerializeField] private AudioSource suonoCamminata;
     [SerializeField] private AudioSource suonoSprint;
     [SerializeField] private AudioSource suonoSalto;
-    private bool perTerra;
+    public bool perTerra;
 
 
     private Vector3 velocita;

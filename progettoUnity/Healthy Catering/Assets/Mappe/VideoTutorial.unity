@@ -241,6 +241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraGioco: {fileID: 630913919}
   videoPlayer: {fileID: 630913923}
+  audioMIxer: {fileID: 24100000, guid: 7e80b91a87fa18a4dac7cec66de33ef3, type: 2}
+  titolo: {fileID: 1002033866}
   sliderCaricamento: {fileID: 633423014}
   allAvvio:
     m_PersistentCalls:
@@ -607,10 +609,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 0, b: 0, a: 0.18431373}
-    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.5882353}
-    m_PressedColor: {r: 0, g: 0, b: 0, a: 0.69411767}
-    m_SelectedColor: {r: 0, g: 0, b: 0, a: 0.6392157}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.18431373}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.5882353}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 0.69411767}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 0.6392157}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
