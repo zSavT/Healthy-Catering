@@ -39,7 +39,7 @@ public class InterazionePassanti : MonoBehaviour
 
     public static bool parlatoConNPC = false;
     public static bool parlatoConZio = false;
-    private int numeroMassimoDiCaratteriPerSchermata = 100;
+    private int numeroMassimoDiCaratteriPerSchermata = 90;
 
     //Tutorial
     private List<string> scritteZio = new List<string>
@@ -121,28 +121,29 @@ public class InterazionePassanti : MonoBehaviour
         List<string> output = new List<string>();
 
         string[] scrittaDivisaPerSpazi = scritta.Split(' ');
-        string temp = "";
-        string tempPrecedente = "";
-        
-        foreach (string parola in scrittaDivisaPerSpazi)
+
+        string temp = scrittaDivisaPerSpazi[0];
+
+        int i = 1; //perche la prima parola l'ho gia inserita
+
+        while (i < scrittaDivisaPerSpazi.Length)
         {
-            temp += " " + parola;
-            if (trovaVeraLunghezzaStringaPerColore(temp) < numeroMassimoDiCaratteriPerSchermata - 1)
+            if (trovaVeraLunghezzaStringaPerColore (temp) > numeroMassimoDiCaratteriPerSchermata)
             {
-                tempPrecedente = temp;
+                //https://docs.microsoft.com/en-us/dotnet/api/system.string.trim?view=net-6.0
+                temp = rimuoviUltimaParola(temp.Trim());
+                output.Add(temp.Trim());
+                temp = "";
+                i--;
             }
             else
             {
-                output.Add(rimuoviPrimoCarattereSeSpazio(tempPrecedente));
-                temp = "";
-                tempPrecedente = "";
+                temp += " " + scrittaDivisaPerSpazi[i];
+                i++;
             }
+            
         }
-
-        if (!temp.Equals("")) // se è stata riempita ma non superava il numeroMassimoDiCaratteriPerSchermata
-        {
-            output.Add(rimuoviPrimoCarattereSeSpazio(temp));
-        }
+        output.Add(temp.Trim());
 
         return output;
     }
@@ -168,13 +169,14 @@ public class InterazionePassanti : MonoBehaviour
         return temp.Length;
     }
 
-    private string rimuoviPrimoCarattereSeSpazio(string temp)
+    private string rimuoviUltimaParola(string temp)
     {
         if (!temp.Equals(""))
         {
-            if (temp[0] == ' ')
+            // https://www.tutorialsrack.com/articles/396/how-to-remove-the-last-word-from-the-string-in-csharp
+            if (temp.Contains(" "))
             {
-                temp = temp.Remove(0, 1);
+                temp = temp.Substring(0, temp.LastIndexOf(' ')).TrimEnd();
             }
         }
 
