@@ -63,18 +63,17 @@ public class Piatto
 
     public override string ToString()
     {
-        string output = "Piatto:" + "\n\t" + this.nome + "\n" +
-        "Descrizione: " + "\n\t" + this.descrizione + "\n" +
-        "Costo: " + "\n\t" + this.costo + "\n" +
-        "Costo eco: " + "\n\t" + this.costoEco + "\n" +
-        "Nutriscore: " + "\n\t" + this.nutriScore + "\n";
-
+        string output = this.descrizione + "\n\n" +
+        "Costo: " + this.calcolaCostoBase() + "\n" +
+        "Costo eco: " + this.calcolaCostoEco() + "\n" +
+        "Nutriscore: " + this.calcolaNutriScore() + "\n";
+        /*
         if (listaIdIngredientiQuantita.Count > 0)
         { 
             output = output + this.getListaIngredientiQuantitaToString();
-        }
+        }*/
 
-        return output = output + "Fine piatto " + this.nome;
+        return output;/* = output + "Fine piatto " + this.nome;*/
     }
 
     public string getListaIngredientiQuantitaToString()
@@ -87,7 +86,7 @@ public class Piatto
         {
             Ingrediente temp = Ingrediente.idToIngrediente(ingredienteQuantita.oggetto, databaseIngredienti);
             if (temp.idIngrediente != -1)
-                ingredientiQuantitaString = ingredientiQuantitaString + "\n\t" + temp.nome + " in quantita: " + ingredienteQuantita.quantita.ToString() + "\n";
+                ingredientiQuantitaString = ingredientiQuantitaString + temp.nome + " in quantita: " + ingredienteQuantita.quantita.ToString() + "\n";
         }
 
         return ingredientiQuantitaString;
@@ -449,6 +448,17 @@ public class Piatto
             if (numero > 0)
                 return numero;
         }
+    }
+
+    public static Piatto nomeToPiatto (string nome, List <Piatto> databasePiatto = null)
+    {
+        foreach (Piatto temp in databasePiatto)
+        {
+            if (nome.Contains (temp.nome))
+                return temp;
+        }
+
+        return new Piatto();
     }
 
 }

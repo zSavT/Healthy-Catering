@@ -155,7 +155,6 @@ public class PannelloMenu : MonoBehaviour
 
     private void aggiornaBottoniPiatti()
     {
-
         if (bottoniPiatti != null)
         {
             List<Button> piattiDisponibili = new List<Button>();
@@ -164,9 +163,11 @@ public class PannelloMenu : MonoBehaviour
             int i = 0;
             foreach (Button bottonePiatto in bottoniPiatti)
             {
+
+                print(bottonePiatto.name);
                 bottonePiatto.transform.SetParent(null, true);
 
-                if (!piatti[i].piattoInInventario(giocatore.inventario))
+                if (!(Piatto.nomeToPiatto (bottonePiatto.name, piatti)).piattoInInventario(giocatore.inventario))
                 {
                     bottonePiatto.interactable = false;
                     piattiNonDisponibili.Add(bottonePiatto);
