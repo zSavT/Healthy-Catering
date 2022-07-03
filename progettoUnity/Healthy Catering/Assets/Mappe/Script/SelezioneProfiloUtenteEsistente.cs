@@ -57,13 +57,14 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         int indice = 0;
         while(indice<dropDownListaPlayer.options.Count)
         {
-            if(dropDownListaPlayer.options[dropDownListaPlayer.value].text == nome)
+            if(dropDownListaPlayer.options[indice].text.CompareTo(nome) == 0)
             {
-                break;
+                return indice;
             }
             indice++;
         }
         return indice;
+       
     }
 
     /// <summary>
