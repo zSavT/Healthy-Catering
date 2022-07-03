@@ -15,7 +15,7 @@ Lo scopo del videogioco è di consolidare le conoscenze di coloro che hanno intr
 - Gioco in prima persona.
 - Gestionale ristorante.
 - Sistema di classificazione dei piatti in base agli ingredienti ed alle loro caratteristiche.
-  - Piatti classificati per nutriScore ed ecoScore.
+  - Piatti classificati per nutriScore ed costoEco.
 - Grafica polygon.
 - Open Map.
 - 3 livelli di gioco.
@@ -66,6 +66,10 @@ Le grafiche utilizzate nel gioco sono state realizzate da <a href="https://linkt
 ### 3D Artist
 
 Il modello 3D interno del ristorante è stato realizzato da Angelica.
+
+### Revisore Testi
+
+Il controllo qualità dei testi presenti nel gioco è stato eseguito da Vincenzo Francesco Pio Grande.
 
 ## Immagini di gioco
 
