@@ -38,12 +38,14 @@ public class ProgressoLivello : MonoBehaviour
     //Testo da inizializzare con il valore del punteggio del giocatore raggiunto a fine livello.
     [SerializeField] private TextMeshProUGUI valorePunteggioPlayer;
     [SerializeField] private TextMeshProUGUI titoloSchermataFineLivello;
+    [SerializeField] private AudioSource suonoVittoria;
     public UnityEvent disattivaElementiFineLivello;
     [Header("GameOver")]
     public int numeroDiClientiMassimi = 10;
     private bool gameOver = false;
     [SerializeField] private ParticleSystem particellare1;
     [SerializeField] private ParticleSystem particellare2;
+    [SerializeField] private AudioSource suonoGameOver;
 
 
     private void Start()
@@ -70,6 +72,10 @@ public class ProgressoLivello : MonoBehaviour
         {
             attivazioneSchermataFineLivello();
         }
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            numeroClientiServiti = numeroDiClientiMassimi;
+        }
         controlloGameOver();
     }
 
@@ -90,6 +96,8 @@ public class ProgressoLivello : MonoBehaviour
         var main2 = particellare2.main;
         main1.playOnAwake = false;
         main2.playOnAwake = false;
+        suonoVittoria.gameObject.SetActive(false);
+        suonoGameOver.gameObject.SetActive(true);
     }
 
 
