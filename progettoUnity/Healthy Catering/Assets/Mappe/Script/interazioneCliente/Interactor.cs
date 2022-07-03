@@ -33,8 +33,8 @@ public class Interactor : MonoBehaviour
     [SerializeField] private LayerMask ricettario;
 
     [Header("Eventi")]
-    [SerializeField] private UnityEvent playerStop;
-    [SerializeField] private UnityEvent playerRiprendiMovimento;
+    public UnityEvent playerStop;
+    public UnityEvent playerRiprendiMovimento;
     //trigger per la scritta dell'interazione
     [SerializeField] private UnityEvent inquadratoNPC;
     [SerializeField] private UnityEvent uscitaRangeMenu;
@@ -46,7 +46,7 @@ public class Interactor : MonoBehaviour
 
     private Vector3 posizioneCameraOriginale;
 
-    private bool menuApribile;                                                      //se il menu opzioni è aperto, le interezioni sono disattivate
+    public static bool menuApribile;                                                      //se il menu opzioni è aperto, le interezioni sono disattivate
     public static bool pannelloAperto;
     private int IDClientePuntato;
     private Player giocatore;
@@ -189,6 +189,7 @@ public class Interactor : MonoBehaviour
             }
             else
             {
+                negozio.animazioneNPCIdle();
                 uscitaRangeMenu.Invoke();
                 if (pannelloAperto)
                 {

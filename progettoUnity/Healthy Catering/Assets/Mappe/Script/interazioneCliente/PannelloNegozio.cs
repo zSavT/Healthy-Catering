@@ -420,7 +420,7 @@ public class PannelloNegozio : MonoBehaviour
         animazione.SetBool("inquadrato", true);
     }
 
-    private void animazioneNPCIdle()
+    public void animazioneNPCIdle()
     {
         animazione.SetBool("parlante", false);
         animazione.SetBool("inquadrato", false);

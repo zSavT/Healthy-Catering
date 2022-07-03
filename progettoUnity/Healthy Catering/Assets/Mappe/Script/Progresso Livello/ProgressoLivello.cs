@@ -32,18 +32,26 @@ public class ProgressoLivello : MonoBehaviour
     private string testoObbietivo2;                                        
     private bool obbiettivoDueRaggiunto = false;
 
+    [Header("Lista obbiettivi livello")]
+    [SerializeField] private GameObject pannelloObbiettiviInizioLivello;
+    [SerializeField] private TextMeshProUGUI titoloObbiettiviInizioLivello;
+    [SerializeField] private TextMeshProUGUI listaObbiettiviInizioLivello;
+    [SerializeField] private UnityEvent playerStop;
+
     [Header("Fine Livello")]
     //pannello che mostra le scritte di fine livello ed il bottone per tornare al menu iniziale, quando attivo, parte in automatico l'animazione impostasta con il file .anim
     [SerializeField] private GameObject schermataFineLivello;         
     //Testo da inizializzare con il valore del punteggio del giocatore raggiunto a fine livello.
     [SerializeField] private TextMeshProUGUI valorePunteggioPlayer;
     [SerializeField] private TextMeshProUGUI titoloSchermataFineLivello;
+    [SerializeField] private AudioSource suonoVittoria;
     public UnityEvent disattivaElementiFineLivello;
     [Header("GameOver")]
     public int numeroDiClientiMassimi = 10;
     private bool gameOver = false;
     [SerializeField] private ParticleSystem particellare1;
     [SerializeField] private ParticleSystem particellare2;
+    [SerializeField] private AudioSource suonoGameOver;
 
 
     private void Start()
@@ -55,7 +63,7 @@ public class ProgressoLivello : MonoBehaviour
         //Se il livello � il livello tutorial la schermata obbiettivi non si attiva (da attivare successivamente)
         if (PlayerSettings.livelloSelezionato != 0)
         {
-            valoriInizialiTesto();
+            attivaPannelloRiepiloghiObbiettivi();
         } else
         {
             disattivaSoloObbiettivi();
@@ -70,7 +78,27 @@ public class ProgressoLivello : MonoBehaviour
         {
             attivazioneSchermataFineLivello();
         }
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            numeroClientiServiti = numeroDiClientiMassimi;
+        }
         controlloGameOver();
+    }
+
+    public void attivaPannelloRiepiloghiObbiettivi()
+    {
+        playerStop.Invoke();
+        PuntatoreMouse.abilitaCursore();
+        pannelloObbiettiviInizioLivello.SetActive(true);
+        listaObbiettiviInizioLivello.text = "Servire " + numeroClientiDaServire + " clienti.\nRaggiungere il punteggio: " + punteggioMassimo + ".";
+    }
+
+    public void disattivaPannelloRiepiloghiObbiettiviEInizializzaVolori()
+    {
+        PuntatoreMouse.disabilitaCursore();
+        pannelloObbiettiviInizioLivello.SetActive(false);
+        attivaSoloObbiettivi();
+        valoriInizialiTesto();
     }
 
     private void controlloGameOver()
@@ -90,12 +118,14 @@ public class ProgressoLivello : MonoBehaviour
         var main2 = particellare2.main;
         main1.playOnAwake = false;
         main2.playOnAwake = false;
+        suonoVittoria.gameObject.SetActive(false);
+        suonoGameOver.gameObject.SetActive(true);
     }
 
 
     private bool soldiFiniti()
     {
-        if(giocatore.soldi > 0 )
+        if(giocatore.soldi > 5 )
         {
             return false;
         } else

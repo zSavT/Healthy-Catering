@@ -16,6 +16,7 @@ public class InterazionePassanti : MonoBehaviour
     [SerializeField] private Button bottoneAvanti;
     [SerializeField] private TextMeshProUGUI testoInterazionePassanti;
     [SerializeField] private AudioSource suonoAperturaDialogo;
+    [SerializeField] private AudioSource suonoDialogo;
 
     //TROVA STRINGHE
     /*
@@ -189,6 +190,7 @@ public class InterazionePassanti : MonoBehaviour
     public void apriPannelloInterazionePassanti(string nomeNPC)
     {
         suonoAperturaDialogo.Play();
+        suonoDialogo.PlayDelayed(0.2f);
         parlatoConNPC = true;
         pannelloInterazionePassanti.SetActive(true);
 
