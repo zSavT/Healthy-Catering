@@ -238,7 +238,7 @@ public class ProgressoTutorial : MonoBehaviour
         {
             obbiettivo1Testo.gameObject.SetActive(false);
             inTutorial = false;
-            progressoLivelloClassico.attivaSoloObbiettivi();
+            progressoLivelloClassico.attivaPannelloRiepiloghiObbiettivi();
             iTween.Destroy(this.gameObject);
         }
 

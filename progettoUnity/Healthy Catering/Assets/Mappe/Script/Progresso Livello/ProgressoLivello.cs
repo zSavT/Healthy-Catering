@@ -84,7 +84,7 @@ public class ProgressoLivello : MonoBehaviour
         controlloGameOver();
     }
 
-    private void attivaPannelloRiepiloghiObbiettivi()
+    public void attivaPannelloRiepiloghiObbiettivi()
     {
         PuntatoreMouse.abilitaCursore();
         pannelloObbiettiviInizioLivello.SetActive(true);
@@ -95,6 +95,7 @@ public class ProgressoLivello : MonoBehaviour
     {
         PuntatoreMouse.disabilitaCursore();
         pannelloObbiettiviInizioLivello.SetActive(false);
+        attivaSoloObbiettivi();
         valoriInizialiTesto();
     }
 
@@ -242,7 +243,6 @@ public class ProgressoLivello : MonoBehaviour
 
     public void attivaSoloObbiettivi()
     {
-        attivaPannelloRiepiloghiObbiettivi();
         obbiettivoUno.gameObject.SetActive(true);
         obbiettivoUnoToogle.gameObject.SetActive(true);
         obbiettivoDue.gameObject.SetActive(true);

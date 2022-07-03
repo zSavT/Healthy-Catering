@@ -41,8 +41,8 @@ public class OkBoxVideo : MonoBehaviour
         "Comando Sprint",
         "Parla con tuo zio",
         "Entra nel ristorante",
-        "Come servire un piatto idoneo ad un cliente",
-        "Cosa succede se servi un piatto non idoneo ad un cliente",
+        "Servire un piatto idoneo ad un cliente",
+        "Servire un piatto non idoneo ad un cliente",
         "Come controllare il magazzino del ristorante",
         "Rifornire il Magazzino visitando il Negozio",
         "Acquisire informazioni interagendo con i passanti"
@@ -56,10 +56,10 @@ public class OkBoxVideo : MonoBehaviour
         "Per interagire con una persona premi “" + Utility.coloreVerde + "E" + Utility.fineColore + "”. Raggiungi tuo zio e interagisci con lui.",
         "Per entrare nel ristorante premi “" + Utility.coloreVerde + "E" + Utility.fineColore + "” una volta inquadrata la porta con il mouse. Fai lo stesso per uscire. Ora entra nel ristorante.",
         "Per servire un cliente al bancone inquadralo e premi il tasto “" + Utility.coloreVerde + "E" + Utility.fineColore + "”. Per scegliere un<color=#B5D99C> piatto</color> selezionalo dal menu sulla sinistra. È importante servire un piatto idoneo alle caratteristiche del cliente, ovvero la dieta e le patologie. Servire piatti idonei permette di ricevere dei bonus. Ora prova a servire un piatto idoneo al cliente al bancone.",
-        "Servire un <color=#B5D99C> piatto</color> non idoneo comporta delle penalità al punteggio e non si riceveranno bonus in denaro. I bonus e i malus vengono calcolati in base alla compatibilità del piatto e ai suoi volori <color=#B5D99C>nutriScore</color> e <color=#B5D99C>costoEco</color>. Consulta il menu aiuto per ulteriori informazioni. Ora prova a serive un piatto non idoneo al cliente al bancone.",
-        "Controlla il <color=#B5D99C>magazzino</color> per tener d'occhio quali ingredienti sono disponibili per la realizzazione dei piatti. Servendo un piatto, diminuiscono nel magazzino le quantità di ingredienti che in esso figurano. Puoi verificare lo stato del magazzino dal <color=#B5D99C>PC</color> presente in <color=#B5D99C>ufficio</color> attraverso il programma “<color=#B5D99C>MyInventory</color>”. Ora raggiungi l'ufficio e controlla lo stato del magazzino dall'apposito programma.",
+        "Servire un <color=#B5D99C>piatto</color> non idoneo comporta delle penalità al punteggio e non si riceveranno bonus in denaro. I bonus e i malus vengono calcolati in base alla compatibilità del piatto e ai suoi volori <color=#B5D99C>nutriScore</color> e <color=#B5D99C>costoEco</color>. Consulta il menu aiuto per ulteriori informazioni. Ora prova a serive un piatto non idoneo al cliente al bancone.",
+        "Controlla il <color=#B5D99C>magazzino</color> per tener d'occhio quali ingredienti sono disponibili per la realizzazione dei piatti. Servendo un piatto, diminuiscono nel magazzino le quantità di ingredienti che in esso figurano. Puoi verificare lo stato del magazzino dal <color=#B5D99C>PC</color> presente in <color=#B5D99C>ufficio</color> attraverso il programma “<color=#B5D99C>MyInventory</color>”. Ora raggiungi l'ufficio e controlla lo stato del magazzino.",
         "Per fare rifornimenti di ingredienti visita il negozio dove acquistare gli ingredienti necessari a realizzare altri piatti con i soldi guadagnati. Ora raggiungi il negozio e compra un ingrediente.",
-        "Interagire con gli <color=#B5D99C>passanti</color> in giro per la città ti permette di ottenere <color=#B5D99C>suggerimenti</color> utili per servire piatti migliori, sia dal punto di vista dell'affinità con le patologie che dal quello del<color=#B5D99C> nutriScore</color> e del<color=#B5D99C> costoEco</color>. Ora prova a parlare con una persona."
+        "Interagire con i <color=#B5D99C>passanti</color> in giro per la città ti permette di ottenere <color=#B5D99C>suggerimenti</color> utili per servire piatti migliori, sia dal punto di vista dell'affinità con le patologie che da quello del<color=#B5D99C> nutriScore</color> e del<color=#B5D99C> costoEco</color>. Ora prova a parlare con una persona."
     };
 
     [SerializeField] private UnityEvent playerStop;
