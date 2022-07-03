@@ -46,7 +46,7 @@ public class Interactor : MonoBehaviour
 
     private Vector3 posizioneCameraOriginale;
 
-    private bool menuApribile;                                                      //se il menu opzioni è aperto, le interezioni sono disattivate
+    public static bool menuApribile;                                                      //se il menu opzioni è aperto, le interezioni sono disattivate
     public static bool pannelloAperto;
     private int IDClientePuntato;
     private Player giocatore;

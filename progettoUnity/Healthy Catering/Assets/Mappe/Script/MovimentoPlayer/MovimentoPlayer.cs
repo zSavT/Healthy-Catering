@@ -138,7 +138,7 @@ public class MovimentoPlayer : MonoBehaviour
 
     private void controlloSuonoMovimento()
     {
-        if (!isFermo() && !isSprinting)
+        if (!isFermo() && !isSprinting && Interactor.menuApribile)
         {
             if (!suonoCamminata.isPlaying)
                 suonoCamminata.Play();
@@ -230,7 +230,7 @@ public class MovimentoPlayer : MonoBehaviour
     {
         velocita.y = Mathf.Sqrt(altezzaSalto * -2f * gravita);
         controllerAnimazione.SetBool("salta", true);
-        if (!suonoSalto.isPlaying)
+        if (!suonoSalto.isPlaying && Interactor.menuApribile)
             suonoSalto.Play();
     }
 
