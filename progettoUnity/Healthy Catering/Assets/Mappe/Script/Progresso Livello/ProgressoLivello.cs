@@ -32,6 +32,11 @@ public class ProgressoLivello : MonoBehaviour
     private string testoObbietivo2;                                        
     private bool obbiettivoDueRaggiunto = false;
 
+    [Header("Lista obbiettivi livello")]
+    [SerializeField] private GameObject pannelloObbiettiviInizioLivello;
+    [SerializeField] private TextMeshProUGUI titoloObbiettiviInizioLivello;
+    [SerializeField] private TextMeshProUGUI listaObbiettiviInizioLivello;
+
     [Header("Fine Livello")]
     //pannello che mostra le scritte di fine livello ed il bottone per tornare al menu iniziale, quando attivo, parte in automatico l'animazione impostasta con il file .anim
     [SerializeField] private GameObject schermataFineLivello;         
@@ -57,7 +62,7 @@ public class ProgressoLivello : MonoBehaviour
         //Se il livello � il livello tutorial la schermata obbiettivi non si attiva (da attivare successivamente)
         if (PlayerSettings.livelloSelezionato != 0)
         {
-            valoriInizialiTesto();
+            attivaPannelloRiepiloghiObbiettivi();
         } else
         {
             disattivaSoloObbiettivi();
@@ -77,6 +82,20 @@ public class ProgressoLivello : MonoBehaviour
             numeroClientiServiti = numeroDiClientiMassimi;
         }
         controlloGameOver();
+    }
+
+    private void attivaPannelloRiepiloghiObbiettivi()
+    {
+        PuntatoreMouse.abilitaCursore();
+        pannelloObbiettiviInizioLivello.SetActive(true);
+        listaObbiettiviInizioLivello.text = "Servire " + numeroClientiDaServire + " clienti.\nRaggiungere il punteggio: " + punteggioMassimo + ".";
+    }
+
+    public void disattivaPannelloRiepiloghiObbiettiviEInizializzaVolori()
+    {
+        PuntatoreMouse.disabilitaCursore();
+        pannelloObbiettiviInizioLivello.SetActive(false);
+        valoriInizialiTesto();
     }
 
     private void controlloGameOver()
@@ -103,7 +122,7 @@ public class ProgressoLivello : MonoBehaviour
 
     private bool soldiFiniti()
     {
-        if(giocatore.soldi > 0 )
+        if(giocatore.soldi > 5 )
         {
             return false;
         } else
@@ -223,6 +242,7 @@ public class ProgressoLivello : MonoBehaviour
 
     public void attivaSoloObbiettivi()
     {
+        attivaPannelloRiepiloghiObbiettivi();
         obbiettivoUno.gameObject.SetActive(true);
         obbiettivoUnoToogle.gameObject.SetActive(true);
         obbiettivoDue.gameObject.SetActive(true);

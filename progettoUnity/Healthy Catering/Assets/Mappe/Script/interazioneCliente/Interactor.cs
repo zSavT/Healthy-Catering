@@ -33,8 +33,8 @@ public class Interactor : MonoBehaviour
     [SerializeField] private LayerMask ricettario;
 
     [Header("Eventi")]
-    [SerializeField] private UnityEvent playerStop;
-    [SerializeField] private UnityEvent playerRiprendiMovimento;
+    public UnityEvent playerStop;
+    public UnityEvent playerRiprendiMovimento;
     //trigger per la scritta dell'interazione
     [SerializeField] private UnityEvent inquadratoNPC;
     [SerializeField] private UnityEvent uscitaRangeMenu;
