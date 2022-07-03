@@ -37,12 +37,12 @@ public class OkBoxVideo : MonoBehaviour
     List<string> titoli = new List<string>
     {
         "Camandi base per il movimento",
-        "Comando per Salto",
-        "Comando per Sprint",
+        "Comando Salto",
+        "Comando Sprint",
         "Parla con tuo zio",
-        "Raggiungi il ristorante",
+        "Entra nel ristorante",
         "Come servire un piatto idoneo ad un cliente",
-        "Come servire un piatto non idoneo ad un cliente",
+        "Cosa succede se servi un piatto non idoneo ad un cliente",
         "Come controllare il magazzino del ristorante",
         "Rifornire il Magazzino visitando il Negozio",
         "Acquisire informazioni interagendo con i passanti"
@@ -50,16 +50,16 @@ public class OkBoxVideo : MonoBehaviour
 
     List<string> testi = new List<string>
     {
-        "Per muoversi all’interno del gioco, bisogna usare rispettivamente " + Utility.coloreVerde + "“W”" + Utility.fineColore + " per andare avanti, " + Utility.coloreVerde + "“S”" + Utility.fineColore + " per andare indietro, " + Utility.coloreVerde + "“A”" + Utility.fineColore + " per andare a sinistra, " + Utility.coloreVerde + "“D”" + Utility.fineColore + " per andare a destra. Il giocatore si muove verso la direzione inquadrata con il " + Utility.coloreVerde + "“mouse”. " + Utility.fineColore + "Ora prova a muoverti per proseguire.",
-        "Per saltare all'interno del gioco bisogna premere il tasto" + Utility.coloreVerde + " “Spazio“" + Utility.fineColore + ". Ora prova a saltare per proseguire.",
-        "Per correre all'interno del gioco bisogna premere il tasto" + Utility.coloreVerde + " “Shift“" + Utility.fineColore + ". Ora prova a correre.",
-        "Raggiungi tuo zio e interagisci con lui. Per interagire con una persona bisogna premere " + Utility.coloreVerde + "“E“" + Utility.fineColore + ".",
-        "Per entrare o uscire nel ristorante bisogna premere " + Utility.coloreVerde + "“E“" + Utility.fineColore + " una volta inquadrato la porta con il mouse. Ora entra nel ristorante.",
-        "Per servire un cliente al bancone, bisogna inquadrarlo e premere il tasto " + Utility.coloreVerde + " “E“" + Utility.fineColore + ". Per scegliere un<color=#B5D99C> piatto</color> bisogna selezionarlo dal menu sulla sinistra. É importante servire un piatto idoneo alle caratteristiche del cliente, ovvero la dieta e le patologie. Servire piatti idonei permette di ricevere dei bonus. Ora prova a servire un piatto idoneo al cliente al bancone.",
-        "Servire un <color=#B5D99C> piatto</color> non idoneo, comporta delle penalità al punteggio e non si riceveranno bonus in denaro. I bonus e i malus, vengono calcolati in base alla compatibilità del piatto ed al volore dei <color=#B5D99C> nutriScore</color> e <color=#B5D99C> costoEco</color> di questi ultimi. Ora prova a serive un piatto non idoneo al cliente al bancone.",
-        "É importante controllare il <color=#B5D99C> magazzino</color> del negozio, per controllare quali ingredienti sono disponibili per poter realizzare i piatti. Infatti servire un piatto, scala dal magazzino la quantità necessaria degli ingredienti. É possibile visionare lo stato del magazzino nel <color=#B5D99C> PC</color> presente in <color=#B5D99C> ufficio</color>. Ora raggiungi l'ufficio e controlla lo stato del magazzino dall'apposito programma.",
-        "Per fare rifornimenti di ingredienti, bisogna visitare il negozio ed acquistare gli ingredienti desiderati per realizzare nuovi piatti, acquistandoli con i soldi guadagnati dal ristorante. Ora raggiungi il negozio e compra un ingrediente.",
-        "Interagire con gli <color=#B5D99C>NPC</color> in giro per la città permette di ottenere <color=#B5D99C>suggerimenti</color> utili per servire piatti migliori, sia dal punto di vista dell'affinità le patologie che dal punto di vista del <color=#B5D99C> nutriScore</color> e dell'<color=#B5D99C> costoEco</color>. Ora prova a parlare con una persona."
+        "Per muoverti all'interno del gioco premi “" + Utility.coloreVerde + "W" + Utility.fineColore + "” per andare avanti, “" + Utility.coloreVerde + "S" + Utility.fineColore + "” per andare indietro, “" + Utility.coloreVerde + "A" + Utility.fineColore + "” per andare a sinistra, “" + Utility.coloreVerde + "D" + Utility.fineColore + "” per andare a destra. Il giocatore si muove verso la direzione inquadrata con il “" + Utility.coloreVerde + "mouse" + Utility.fineColore + "”. Ora prova a muoverti per proseguire.",
+        "Per saltare all'interno del gioco premi il tasto “" + Utility.coloreVerde + "Spazio" + Utility.fineColore + "”. Ora prova a saltare per proseguire.",
+        "Per correre all'interno del gioco premi il tasto “" + Utility.coloreVerde + "Shift" + Utility.fineColore + "”. Ora prova a correre.",
+        "Per interagire con una persona premi “" + Utility.coloreVerde + "E" + Utility.fineColore + "”. Raggiungi tuo zio e interagisci con lui.",
+        "Per entrare nel ristorante premi “" + Utility.coloreVerde + "E" + Utility.fineColore + "” una volta inquadrata la porta con il mouse. Fai lo stesso per uscire. Ora entra nel ristorante.",
+        "Per servire un cliente al bancone inquadralo e premi il tasto “" + Utility.coloreVerde + "E" + Utility.fineColore + "”. Per scegliere un<color=#B5D99C> piatto</color> selezionalo dal menu sulla sinistra. È importante servire un piatto idoneo alle caratteristiche del cliente, ovvero la dieta e le patologie. Servire piatti idonei permette di ricevere dei bonus. Ora prova a servire un piatto idoneo al cliente al bancone.",
+        "Servire un <color=#B5D99C> piatto</color> non idoneo comporta delle penalità al punteggio e non si riceveranno bonus in denaro. I bonus e i malus vengono calcolati in base alla compatibilità del piatto e ai suoi volori <color=#B5D99C>nutriScore</color> e <color=#B5D99C>costoEco</color>. Consulta il menu aiuto per ulteriori informazioni. Ora prova a serive un piatto non idoneo al cliente al bancone.",
+        "Controlla il <color=#B5D99C>magazzino</color> per tener d'occhio quali ingredienti sono disponibili per la realizzazione dei piatti. Servendo un piatto, diminuiscono nel magazzino le quantità di ingredienti che in esso figurano. Puoi verificare lo stato del magazzino dal <color=#B5D99C>PC</color> presente in <color=#B5D99C>ufficio</color> attraverso il programma “<color=#B5D99C>MyInventory</color>”. Ora raggiungi l'ufficio e controlla lo stato del magazzino dall'apposito programma.",
+        "Per fare rifornimenti di ingredienti visita il negozio dove acquistare gli ingredienti necessari a realizzare altri piatti con i soldi guadagnati. Ora raggiungi il negozio e compra un ingrediente.",
+        "Interagire con gli <color=#B5D99C>passanti</color> in giro per la città ti permette di ottenere <color=#B5D99C>suggerimenti</color> utili per servire piatti migliori, sia dal punto di vista dell'affinità con le patologie che dal quello del<color=#B5D99C> nutriScore</color> e del<color=#B5D99C> costoEco</color>. Ora prova a parlare con una persona."
     };
 
     [SerializeField] private UnityEvent playerStop;
