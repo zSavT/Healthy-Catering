@@ -189,6 +189,7 @@ public class Interactor : MonoBehaviour
             }
             else
             {
+                negozio.animazioneNPCIdle();
                 uscitaRangeMenu.Invoke();
                 if (pannelloAperto)
                 {
