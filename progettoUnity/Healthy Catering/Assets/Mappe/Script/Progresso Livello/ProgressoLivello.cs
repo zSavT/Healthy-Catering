@@ -36,6 +36,7 @@ public class ProgressoLivello : MonoBehaviour
     [SerializeField] private GameObject pannelloObbiettiviInizioLivello;
     [SerializeField] private TextMeshProUGUI titoloObbiettiviInizioLivello;
     [SerializeField] private TextMeshProUGUI listaObbiettiviInizioLivello;
+    [SerializeField] private UnityEvent playerStop;
 
     [Header("Fine Livello")]
     //pannello che mostra le scritte di fine livello ed il bottone per tornare al menu iniziale, quando attivo, parte in automatico l'animazione impostasta con il file .anim
@@ -86,6 +87,7 @@ public class ProgressoLivello : MonoBehaviour
 
     public void attivaPannelloRiepiloghiObbiettivi()
     {
+        playerStop.Invoke();
         PuntatoreMouse.abilitaCursore();
         pannelloObbiettiviInizioLivello.SetActive(true);
         listaObbiettiviInizioLivello.text = "Servire " + numeroClientiDaServire + " clienti.\nRaggiungere il punteggio: " + punteggioMassimo + ".";
