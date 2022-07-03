@@ -414,7 +414,7 @@ public class PannelloMenu : MonoBehaviour
         testoIngredientiSbagliatiPatologia.color = new Color32(255, 8, 10, 255);
         if (piattoInBlackList)
         {
-            testoIngredientiSbagliatiPatologia.text = "La frittura non va bene";
+            testoIngredientiSbagliatiPatologia.text = "La frittura non è adatta alla patologia del cliente.";
         } else
         {
             testoIngredientiSbagliatiPatologia.text = Ingrediente.listIngredientiToStringa(ingredientiNonCompatibiliPatologia);
