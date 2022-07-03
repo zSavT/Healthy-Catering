@@ -46,6 +46,7 @@ public class PannelloMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI testoConfermaPiatto;
     [SerializeField] private GameObject EscPerUscireTesto; //Lo imposto come GameObject e non come testo, perch� mi interessa solo attivarlo disattivarlo velocemente
     public UnityEvent chiusuraInterazioneCliente;
+    private List<string> blackListPiatti = new List<string>();
 
     [Header("Gestione aggiornamento piatti")]
     private Button[] bottoniPiatti; 
@@ -54,6 +55,8 @@ public class PannelloMenu : MonoBehaviour
 
     void Start()
     {
+        blackListPiatti.Add("Frittura di pesce");
+        blackListPiatti.Add("Patatine fritte");
         clienteServito = false;
         pannelloIngredientiPiatto.SetActive(false);
         pannelloConfermaPiatto.SetActive(false);
@@ -208,8 +211,16 @@ public class PannelloMenu : MonoBehaviour
     public void confermaPiattoDaBottone()
     {
         List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
-
-        bool affinitaPatologiePiatto = piattoSelezionato.checkAffinitaPatologiePiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.listaIdPatologie);
+        bool affinitaPatologiePiatto = false;
+        bool piattoInBlackList = false;
+        if (!blackListPiatti.Contains(piattoSelezionato.nome))
+        {
+            affinitaPatologiePiatto = piattoSelezionato.checkAffinitaPatologiePiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.listaIdPatologie);
+        } else
+        {
+            affinitaPatologiePiatto = false;
+            piattoInBlackList = true;
+        }
         bool affinitaDietaPiatto = piattoSelezionato.checkAffinitaDietaPiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.dieta);
         bool affinita = affinitaPatologiePiatto && affinitaDietaPiatto;
         float guadagno = piattoSelezionato.calcolaCostoConBonus(affinita, piattoSelezionato.calcolaCostoBase(databaseIngredienti));
@@ -222,7 +233,7 @@ public class PannelloMenu : MonoBehaviour
 
         if (!affinita)
         {
-            caricaIngredientiInPannelloIngredientiGiustiSbagliati(piattoSelezionato, cliente, databaseIngredienti);
+            caricaIngredientiInPannelloIngredientiGiustiSbagliati(piattoSelezionato, cliente, piattoInBlackList, databaseIngredienti);
             apriPannelloIngredientiGiustiSbagliati();
         }
         else
@@ -376,7 +387,7 @@ public class PannelloMenu : MonoBehaviour
 
     }
 
-    private void caricaIngredientiInPannelloIngredientiGiustiSbagliati(Piatto piattoSelezionato, Cliente cliente, List<Ingrediente> databaseIngredienti = null)
+    private void caricaIngredientiInPannelloIngredientiGiustiSbagliati(Piatto piattoSelezionato, Cliente cliente, bool piattoInBlackList, List<Ingrediente> databaseIngredienti = null)
     {
         databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
 
@@ -400,9 +411,14 @@ public class PannelloMenu : MonoBehaviour
 
         testoIngredientiSbagliatiDieta.color = new Color32(255, 8, 10, 255);
         testoIngredientiSbagliatiDieta.text = Ingrediente.listIngredientiToStringa(ingredientiNonCompatibiliDieta);
-
         testoIngredientiSbagliatiPatologia.color = new Color32(255, 8, 10, 255);
-        testoIngredientiSbagliatiPatologia.text = Ingrediente.listIngredientiToStringa(ingredientiNonCompatibiliPatologia);
+        if (piattoInBlackList)
+        {
+            testoIngredientiSbagliatiPatologia.text = "La frittura non è adatta alla patologia del cliente.";
+        } else
+        {
+            testoIngredientiSbagliatiPatologia.text = Ingrediente.listIngredientiToStringa(ingredientiNonCompatibiliPatologia);
+        }
     }
 
     private void chiudiPannelloIngredientiGiustiSbagliati()

@@ -41,6 +41,7 @@ public class Player
     {
 
     };
+
     //FINE INVENTARI LIVELLI
 
     public Player(string nome, int soldi, List<OggettoQuantita<int>> inventario)
