@@ -15,8 +15,12 @@ public class GestoreClienti : MonoBehaviour
 
     public void attivaClienteSuccessivo()
     {
+        Debug.Log("Prima: ");
+        Debug.Log(Interactable.numeroCliente);
         Interactable.numeroCliente++;
-        if(Interactable.numeroCliente < livello.numeroDiClientiMassimi)
+        Debug.Log("Dopo: ");
+        Debug.Log(Interactable.numeroCliente);
+        if (Interactable.numeroCliente < livello.numeroDiClientiMassimi)
             vettoreClienti[Interactable.numeroCliente].SetActive(true);
     }
 

@@ -58,7 +58,7 @@ public class ProgressoTutorial : MonoBehaviour
             "Servi un <color=#B5D99C>Cliente</color> con un piatto non idoneo.",
             "Controlla il <color=#B5D99C>Magazzino</color>.",
             "Compra <color=#B5D99C>Ingredienti</color> dal negozio.",
-            "Chiedi informazioni alle  <color=#B5D99C>Persone</color>."
+            "Chiedi informazioni alle <color=#B5D99C>Persone</color>."
         };
 
         numeroScritteMostrate = 0;

@@ -26,6 +26,7 @@ public class Interactable : MonoBehaviour
     public bool raggiuntoBancone = false;
     public bool servito = false;
     public static int numeroCliente = 0;
+    private bool distruggi = false;
 
     void Start()
     {
@@ -83,8 +84,13 @@ public class Interactable : MonoBehaviour
     /// <returns></returns>
     IEnumerator attendiEDistruggi(float attesa)
     {
+        
         yield return new WaitForSecondsRealtime(attesa);
-        gestioneCliente.attivaClienteSuccessivo();
+        if(distruggi==false)
+        {
+            gestioneCliente.attivaClienteSuccessivo();
+            distruggi = true;
+        } 
         Destroy(contenitoreCliente);
     }
 
