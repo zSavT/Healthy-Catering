@@ -5,6 +5,7 @@ using UnityEngine;
 public class GestoreClienti : MonoBehaviour
 {
     [SerializeField] private GameObject[] vettoreClienti;
+    [SerializeField] private ProgressoLivello livello;
 
 
     private void Start()
@@ -15,7 +16,7 @@ public class GestoreClienti : MonoBehaviour
     public void attivaClienteSuccessivo()
     {
         Interactable.numeroCliente++;
-        if(Interactable.numeroCliente < vettoreClienti.Length)
+        if(Interactable.numeroCliente < livello.numeroDiClientiMassimi)
             vettoreClienti[Interactable.numeroCliente].SetActive(true);
     }
 
