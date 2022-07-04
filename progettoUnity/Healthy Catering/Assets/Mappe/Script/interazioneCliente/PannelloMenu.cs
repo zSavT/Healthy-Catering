@@ -29,6 +29,7 @@ public class PannelloMenu : MonoBehaviour
     [Header("Pannello ingredienti giusti sbagliati")]
     [SerializeField] private GameObject pannelloIngredientiGiustiSbagliati;
     [SerializeField] private AudioSource suonoPiattoScorretto;
+    [SerializeField] private AudioSource suonoVoceNegativo;
     public static bool pannelloIngredientiGiustiSbagliatiAperto;
 
     [Header("Pannello conferma piatto")]
@@ -51,7 +52,6 @@ public class PannelloMenu : MonoBehaviour
     [Header("Gestione aggiornamento piatti")]
     private Button[] bottoniPiatti; 
     List<Piatto> piatti;
-    private bool pannelloAggiornato;
 
     void Start()
     {
@@ -167,7 +167,6 @@ public class PannelloMenu : MonoBehaviour
             foreach (Button bottonePiatto in bottoniPiatti)
             {
 
-                print(bottonePiatto.name);
                 bottonePiatto.transform.SetParent(null, true);
 
                 if (!(Piatto.nomeToPiatto (bottonePiatto.name, piatti)).piattoInInventario(giocatore.inventario))
@@ -210,6 +209,7 @@ public class PannelloMenu : MonoBehaviour
 
     public void confermaPiattoDaBottone()
     {
+        clienteServito = true;
         List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
         bool affinitaPatologiePiatto = false;
         bool piattoInBlackList = false;
@@ -244,12 +244,10 @@ public class PannelloMenu : MonoBehaviour
         }
         else
         {
-            clienteServito = true;
             chiusuraInterazioneCliente.Invoke();
         }
         livelloProgresso.servitoCliente(giocatore.punteggio[PlayerSettings.livelloSelezionato]);
         animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
-
         aggiornaBottoniPiatti();
     }
 
@@ -386,6 +384,7 @@ public class PannelloMenu : MonoBehaviour
         if (pannelloIngredientiGiustiSbagliati != null)
         {
             suonoPiattoScorretto.Play();
+            suonoVoceNegativo.PlayDelayed(0.1f);
             pannelloIngredientiGiustiSbagliati.SetActive(true);
             pannelloIngredientiGiustiSbagliatiApertoChiuso();
             chiudiMenuCliente();
@@ -435,7 +434,6 @@ public class PannelloMenu : MonoBehaviour
             pannelloIngredientiGiustiSbagliatiApertoChiuso();
             apriMenuCliente();
             controllerAnimazioneCliente.animazioneCamminata();
-            clienteServito = true;
             chiusuraInterazioneCliente.Invoke();
             controllerAnimazioneCliente.animazioneScontenta();
         }

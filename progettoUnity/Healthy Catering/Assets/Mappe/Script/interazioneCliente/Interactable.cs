@@ -12,6 +12,8 @@ public class Interactable : MonoBehaviour
     private GameObject modelloCliente3D;           //assicurarsi che il modello 3d sia il primo figlio del contenitore
     [SerializeField] private GestoreClienti gestioneCliente;
     [SerializeField] private AudioSource suonoContento;
+    [SerializeField] private AudioSource suonoVocePositio;
+
 
 
     //Controller della mappa percorribile degli NPC
@@ -90,6 +92,7 @@ public class Interactable : MonoBehaviour
         {
             gestioneCliente.attivaClienteSuccessivo();
             distruggi = true;
+            PannelloMenu.clienteServito = false;
         } 
         Destroy(contenitoreCliente);
     }
@@ -182,6 +185,7 @@ public class Interactable : MonoBehaviour
         effettoPositivo.Play();
         servito = true;
         suonoContento.Play();
+        suonoVocePositio.PlayDelayed(0.1f);
     }
 
 
@@ -194,6 +198,7 @@ public class Interactable : MonoBehaviour
         controllerAnimazione.SetBool("affinitaPatologiePiatto", false);
         controllerAnimazione.SetBool("affinitaDietaPiatto", false);
         effettoNegativo.Play();
+        
         servito = true;
     }
 
