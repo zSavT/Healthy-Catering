@@ -8,8 +8,8 @@ public class Interactable : MonoBehaviour
     private Animator controllerAnimazione;
     [SerializeField] private ParticleSystem effettoPositivo;
     [SerializeField] private ParticleSystem effettoNegativo;
-    [SerializeField] private GameObject modelloCliente;
-    [SerializeField] private GameObject modelloCliente3D;
+    private GameObject contenitoreCliente;
+    private GameObject modelloCliente3D;           //assicurarsi che il modello 3d sia il primo figlio del contenitore
     [SerializeField] private GestoreClienti gestioneCliente;
     [SerializeField] private AudioSource suonoContento;
 
@@ -29,6 +29,8 @@ public class Interactable : MonoBehaviour
 
     void Start()
     {
+        contenitoreCliente = this.gameObject;
+        modelloCliente3D = contenitoreCliente.transform.GetChild(0).gameObject;
         SetMaterialTransparent();
 
         StartCoroutine(attendi(2f));
@@ -67,7 +69,7 @@ public class Interactable : MonoBehaviour
             } else
             {
                 SetMaterialTransparent();
-                iTween.FadeTo(modelloCliente, 0, 1);
+                iTween.FadeTo(contenitoreCliente, 0, 1);
                 StartCoroutine(attendiEDistruggi(2f));
             }
         }
@@ -83,7 +85,7 @@ public class Interactable : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(attesa);
         gestioneCliente.attivaClienteSuccessivo();
-        Destroy(modelloCliente);
+        Destroy(contenitoreCliente);
     }
 
     /// <summary>
@@ -93,7 +95,7 @@ public class Interactable : MonoBehaviour
     /// <returns></returns>
     IEnumerator attendi(float attesa)
     {
-        iTween.FadeTo(modelloCliente, 1, attesa);
+        iTween.FadeTo(contenitoreCliente, 1, attesa);
         yield return new WaitForSecondsRealtime(attesa);
         SetMaterialOpaque();
         animazioneCamminata();
