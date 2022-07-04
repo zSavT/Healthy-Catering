@@ -1,11 +1,20 @@
 [
-    {
-      "nome": "Sav",
-      "soldi": 8.085,
-      "punteggio": [
-        242,
-        2,
-        1
-      ]
-    }
-  ]
+  {
+    "nome": "Sav",
+    "soldi": 8.085,
+    "punteggio": [
+      242,
+      2,
+      1
+    ]
+  },
+  {
+    "nome": "SavT",
+    "soldi": 0.0,
+    "punteggio": [
+      0,
+      0,
+      0
+    ]
+  }
+]

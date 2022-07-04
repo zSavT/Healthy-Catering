@@ -36,6 +36,7 @@ public class ProgressoLivello : MonoBehaviour
     [SerializeField] private GameObject pannelloObbiettiviInizioLivello;
     [SerializeField] private TextMeshProUGUI titoloObbiettiviInizioLivello;
     [SerializeField] private TextMeshProUGUI listaObbiettiviInizioLivello;
+    [SerializeField] private TextMeshProUGUI listaCriteriGameOver;
     [SerializeField] private UnityEvent playerStop;
 
     [Header("Fine Livello")]
@@ -49,6 +50,7 @@ public class ProgressoLivello : MonoBehaviour
     [Header("GameOver")]
     public int numeroDiClientiMassimi = 10;
     private bool gameOver = false;
+    private int minimoSoldi = 5;
     [SerializeField] private ParticleSystem particellare1;
     [SerializeField] private ParticleSystem particellare2;
     [SerializeField] private AudioSource suonoGameOver;
@@ -91,6 +93,7 @@ public class ProgressoLivello : MonoBehaviour
         PuntatoreMouse.abilitaCursore();
         pannelloObbiettiviInizioLivello.SetActive(true);
         listaObbiettiviInizioLivello.text = "Servire " + numeroClientiDaServire + " clienti.\nRaggiungere il punteggio: " + punteggioMassimo + ".";
+        listaCriteriGameOver.text = "Denaro inferiore a " + minimoSoldi + " e inventario vuoto.\nServiti " + numeroDiClientiMassimi + " clienti non avendo raggiunto un punteggio pari o superiore a " + punteggioMassimo;
     }
 
     public void disattivaPannelloRiepiloghiObbiettiviEInizializzaVolori()
@@ -125,7 +128,7 @@ public class ProgressoLivello : MonoBehaviour
 
     private bool soldiFiniti()
     {
-        if(giocatore.soldi > 5 )
+        if(giocatore.soldi > minimoSoldi)
         {
             return false;
         } else

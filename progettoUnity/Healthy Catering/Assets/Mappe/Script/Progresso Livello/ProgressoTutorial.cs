@@ -54,11 +54,11 @@ public class ProgressoTutorial : MonoBehaviour
             "Premi <color=#B5D99C>Shift</color> per correre.",
             "Vai a parlare con tuo <color=#B5D99C>Zio</color>.",
             "Raggiungi il <color=#B5D99C>Ristorante</color>.",
-            "Servi un <color=#B5D99C>Cliente</color> con un piatto idoneo.",
-            "Servi un <color=#B5D99C>Cliente</color> con un piatto non idoneo.",
+            "Servi un piatto idoneo al <color=#B5D99C>cliente</color>.",
+            "Servi un piatto non idoneo al <color=#B5D99C>cliente</color>.",
             "Controlla il <color=#B5D99C>Magazzino</color>.",
             "Compra <color=#B5D99C>Ingredienti</color> dal negozio.",
-            "Chiedi informazioni alle  <color=#B5D99C>Persone</color>."
+            "Chiedi informazioni alle <color=#B5D99C>Persone</color>."
         };
 
         numeroScritteMostrate = 0;
