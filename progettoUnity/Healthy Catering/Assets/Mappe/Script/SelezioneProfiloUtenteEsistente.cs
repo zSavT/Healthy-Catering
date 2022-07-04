@@ -218,6 +218,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         Database.aggiornaDatabaseOggetto(player);
         if(player.Count == 0)
         {
+            PlayerSettings.salvaNomePlayerGiocante("");
             SelezioneLivelli.caricaMenuPrincipale();
         } else
         {
