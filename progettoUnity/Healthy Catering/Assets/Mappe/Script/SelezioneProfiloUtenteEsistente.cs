@@ -225,6 +225,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
             aggiuntaNomiDropdown();
             dropDownListaPlayer.value = indiceNomeGiocatoreInLista(PlayerSettings.caricaNomePlayerGiocante());
             refreshValori();
+            PlayerSettings.salvaNomePlayerGiocante(nomeSelezionato);
         }
     }
 
