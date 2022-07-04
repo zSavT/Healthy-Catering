@@ -218,8 +218,11 @@ public class PannelloMenu : MonoBehaviour
             affinitaPatologiePiatto = piattoSelezionato.checkAffinitaPatologiePiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.listaIdPatologie);
         } else
         {
-            affinitaPatologiePiatto = false;
-            piattoInBlackList = true;
+            affinitaPatologiePiatto = piattoSelezionato.checkAffinitaPatologiePiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.listaIdPatologie);
+            if(!affinitaPatologiePiatto)
+            {
+                piattoInBlackList = true;
+            }
         }
         bool affinitaDietaPiatto = piattoSelezionato.checkAffinitaDietaPiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.dieta);
         bool affinita = affinitaPatologiePiatto && affinitaDietaPiatto;
