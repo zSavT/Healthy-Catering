@@ -30,6 +30,7 @@ public class Interactor : MonoBehaviour
 
     [Header("Interazione ricettario")]
     [SerializeField] private Ricettario ricettarioScript;
+    [SerializeField] private KeyCode testoRicettario;
     [SerializeField] private LayerMask ricettario;
 
     [Header("Eventi")]
@@ -178,17 +179,18 @@ public class Interactor : MonoBehaviour
                     suonoNegozio.Play();
                     this.gameObject.transform.position = destinazioneTeleport.transform.position;
                 }
-            } else if(ricettarioPuntato())
+            } else if (Input.GetKeyDown(testoRicettario) && !(negozio.getPannelloAperto()) && !PannelloMenu.pannelloMenuAperto && !ricettarioScript.getRicettarioAperto())
             {
-                inquadratoNPC.Invoke();
-                if (Input.GetKeyDown (tastoInterazione) && !(ricettarioScript.getRicettarioAperto()))
-                {
-                    ricettarioScript.apriRicettario();
-
-                    playerStop.Invoke();
-                    PuntatoreMouse.abilitaCursore();
-                    CambioCursore.cambioCursoreNormale();
-                }
+                playerStop.Invoke();
+                ricettarioScript.apriRicettario();
+                PuntatoreMouse.abilitaCursore();
+                CambioCursore.cambioCursoreNormale();
+            }  else if (Input.GetKeyDown(testoRicettario) && !(negozio.getPannelloAperto()) && !PannelloMenu.pannelloMenuAperto && !ricettarioScript.getRicettarioAperto())
+            {
+                playerStop.Invoke();
+                ricettarioScript.apriRicettario();
+                PuntatoreMouse.abilitaCursore();
+                CambioCursore.cambioCursoreNormale();
             }
             else
             {
