@@ -112,10 +112,10 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     /// </summary>
     public void nomiPlayer()
     {
-        List<Player> listaPlayer = Database.getDatabaseOggetto<Player>(new Player());
-        for (int i = 0; i < listaPlayer.Count; i++)
+        List<Player> player = Database.getDatabaseOggetto<Player>(new Player());
+        for (int i = 0; i < player.Count; i++)
         {
-            nomiPlayerPresenti.Add(listaPlayer[i].nome);
+            nomiPlayerPresenti.Add(player[i].nome);
         }
     }
 
@@ -206,6 +206,28 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         suonoClick.Play();
         nomeSelezionato = dropDownListaPlayer.options[dropDownListaPlayer.value].text;
         refreshValori();
+    }
+
+
+    public void eliminazioneProfilo()
+    {
+        PlayerSettings.rimuoviChiaviProfiloUtente(nomeSelezionato);
+        player.Remove(new Player(nomeSelezionato));
+        dropDownListaPlayer.ClearOptions();
+        nomiPlayerPresenti.Remove(nomeSelezionato);
+        Database.aggiornaDatabaseOggetto(player);
+        if(player.Count == 0)
+        {
+            PlayerSettings.salvaNomePlayerGiocante("");
+            SelezioneLivelli.caricaMenuPrincipale();
+        } else
+        {
+            nomeSelezionato = player[0].nome;
+            aggiuntaNomiDropdown();
+            dropDownListaPlayer.value = indiceNomeGiocatoreInLista(PlayerSettings.caricaNomePlayerGiocante());
+            refreshValori();
+            PlayerSettings.salvaNomePlayerGiocante(nomeSelezionato);
+        }
     }
 
 }

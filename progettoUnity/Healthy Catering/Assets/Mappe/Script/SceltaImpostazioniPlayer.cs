@@ -107,9 +107,11 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         {
             aggiuntaNomiPresentiInLista();
             attivaTastoIndietro();
+            bottoneSalva.interactable = true;
         } else
         {
             disattivaTastoIndietro();
+            bottoneSalva.interactable = false;
         }
     }
 

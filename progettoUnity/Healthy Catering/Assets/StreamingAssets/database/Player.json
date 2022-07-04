@@ -1,38 +1,11 @@
 [
-  {
-    "nome": "Sav",
-    "soldi": 8.085,
-    "punteggio": [
-      242,
-      2,
-      1
-    ]
-  },
-  {
-    "nome": "keepuwu",
-    "soldi": 100.0,
-    "punteggio": [
-      590,
-      1,
-      2
-    ]
-  },
-  {
-    "nome": "aaa",
-    "soldi": 0.0,
-    "punteggio": [
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "nome": "idk",
-    "soldi": 0.0,
-    "punteggio": [
-      0,
-      0,
-      0
-    ]
-  }
-]
+    {
+      "nome": "Sav",
+      "soldi": 8.085,
+      "punteggio": [
+        242,
+        2,
+        1
+      ]
+    }
+  ]

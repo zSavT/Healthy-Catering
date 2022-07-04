@@ -26,6 +26,24 @@ public class PlayerSettings : MonoBehaviour
     }
 
     /// <summary>
+    /// Metodo che rimuove tutte le chiavi del giocatore passato in input
+    /// </summary>
+    /// <param name="nomeUtente">Nome giocatore da elimianre</param>
+    public static void rimuoviChiaviProfiloUtente(string nomeUtente)
+    {
+        PlayerPrefs.DeleteKey(nomeUtente + "_Daltonismo");
+        PlayerPrefs.DeleteKey(nomeUtente + "_genere");
+        PlayerPrefs.DeleteKey(nomeUtente + "_livello2");
+        PlayerPrefs.DeleteKey(nomeUtente + "_livello1");
+        PlayerPrefs.DeleteKey(nomeUtente + "_livello0");
+        PlayerPrefs.DeleteKey(nomeUtente + "_livello1");
+        PlayerPrefs.DeleteKey(nomeUtente + "_primoAvvioSensibilita");
+        PlayerPrefs.DeleteKey(nomeUtente + "_modello");
+        PlayerPrefs.DeleteKey(nomeUtente + "_pelle");
+    }
+
+
+    /// <summary>
     /// Caricare variabile per confermare che è stato avviato per la prima volta il gioco (e non il livello) e quindi non è stato mai creato un player.<br></br>
     /// <strong>Usato in</strong> <see cref="SceltaImpostazioniPlayer.controlloNomeEsistente"/>
     /// </summary>
