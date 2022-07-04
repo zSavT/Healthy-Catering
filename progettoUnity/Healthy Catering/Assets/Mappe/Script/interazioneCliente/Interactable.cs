@@ -8,10 +8,12 @@ public class Interactable : MonoBehaviour
     private Animator controllerAnimazione;
     [SerializeField] private ParticleSystem effettoPositivo;
     [SerializeField] private ParticleSystem effettoNegativo;
-    [SerializeField] private GameObject modelloCliente;
-    [SerializeField] private GameObject modelloCliente3D;
+    private GameObject contenitoreCliente;
+    private GameObject modelloCliente3D;           //assicurarsi che il modello 3d sia il primo figlio del contenitore
     [SerializeField] private GestoreClienti gestioneCliente;
     [SerializeField] private AudioSource suonoContento;
+    [SerializeField] private AudioSource suonoVocePositio;
+
 
 
     //Controller della mappa percorribile degli NPC
@@ -26,9 +28,12 @@ public class Interactable : MonoBehaviour
     public bool raggiuntoBancone = false;
     public bool servito = false;
     public static int numeroCliente = 0;
+    private bool distruggi = false;
 
     void Start()
     {
+        contenitoreCliente = this.gameObject;
+        modelloCliente3D = contenitoreCliente.transform.GetChild(0).gameObject;
         SetMaterialTransparent();
 
         StartCoroutine(attendi(2f));
@@ -67,7 +72,7 @@ public class Interactable : MonoBehaviour
             } else
             {
                 SetMaterialTransparent();
-                iTween.FadeTo(modelloCliente, 0, 1);
+                iTween.FadeTo(contenitoreCliente, 0, 1);
                 StartCoroutine(attendiEDistruggi(2f));
             }
         }
@@ -81,9 +86,15 @@ public class Interactable : MonoBehaviour
     /// <returns></returns>
     IEnumerator attendiEDistruggi(float attesa)
     {
+        
         yield return new WaitForSecondsRealtime(attesa);
-        gestioneCliente.attivaClienteSuccessivo();
-        Destroy(modelloCliente);
+        if(distruggi==false)
+        {
+            gestioneCliente.attivaClienteSuccessivo();
+            distruggi = true;
+            PannelloMenu.clienteServito = false;
+        } 
+        Destroy(contenitoreCliente);
     }
 
     /// <summary>
@@ -93,7 +104,7 @@ public class Interactable : MonoBehaviour
     /// <returns></returns>
     IEnumerator attendi(float attesa)
     {
-        iTween.FadeTo(modelloCliente, 1, attesa);
+        iTween.FadeTo(contenitoreCliente, 1, attesa);
         yield return new WaitForSecondsRealtime(attesa);
         SetMaterialOpaque();
         animazioneCamminata();
@@ -174,6 +185,7 @@ public class Interactable : MonoBehaviour
         effettoPositivo.Play();
         servito = true;
         suonoContento.Play();
+        suonoVocePositio.PlayDelayed(0.1f);
     }
 
 
@@ -186,6 +198,7 @@ public class Interactable : MonoBehaviour
         controllerAnimazione.SetBool("affinitaPatologiePiatto", false);
         controllerAnimazione.SetBool("affinitaDietaPiatto", false);
         effettoNegativo.Play();
+        
         servito = true;
     }
 

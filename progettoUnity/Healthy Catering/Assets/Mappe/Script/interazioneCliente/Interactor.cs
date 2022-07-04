@@ -64,7 +64,10 @@ public class Interactor : MonoBehaviour
         {
             giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
             giocatore.punteggio[livelloAttuale] = 0;
-            giocatore.soldi = 30f;
+            if (livelloAttuale == 0)
+                giocatore.soldi = 10f;
+            else
+                giocatore.soldi = 30f;
             guiInGame.aggiornaValoreSoldi(giocatore.soldi);
         }
         catch(Exception e)
@@ -322,11 +325,9 @@ public class Interactor : MonoBehaviour
         ritornaAllaPosizioneNormale();
         CambioCursore.cambioCursoreNormale();
         PuntatoreMouse.disabilitaCursore();
-        
         if (!PannelloMenu.clienteServito)
         {
             guiInGame.bloccaAnimazioniParticellari();
-            PannelloMenu.clienteServito = false; //non si può vare il contrario, perchè in caso di apertura consecuitiva del pannello senza servire, la seconda volta risulterà servito
         } 
         else
         {
