@@ -65,17 +65,32 @@ public class OkBoxVideo : MonoBehaviour
     [SerializeField] private UnityEvent playerStop;
     [SerializeField] private UnityEvent playerRiprendiMovimento;
 
+    private Animazione animazione;
+    List<string> nomiAnimazioni = new List<string>
+    {
+        "wasd",
+        "salto",
+        "shift",
+        "default",
+        "default",
+        "default",
+        "default",
+        "default",
+        "default",
+        "default",
+    };
+
     void Start()
     {
         pannello.SetActive(false);
         titolo.text = "";
         testo.text = "";
-        setImmagineDefault();
+        animazione = immagineOGIF.GetComponent<Animazione>();
     }
 
     public void apriOkBoxVideo(int posizione)
     {
-        pauseGame();
+        //pauseGame();
         pannello.SetActive(true);
         playerStop.Invoke();
         PuntatoreMouse.abilitaCursore();
@@ -85,14 +100,13 @@ public class OkBoxVideo : MonoBehaviour
         {
             titolo.text = titoli[posizione];
             testo.text = testi[posizione];
-            cambiaImmagine(posizione);
         }
         else
         {
             titolo.text = "errore";
             testo.text = "";
-            setImmagineDefault();
         }
+        cambiaImmagine(posizione);
     }
 
     public void chiudiOkBoxVideo()
@@ -103,24 +117,13 @@ public class OkBoxVideo : MonoBehaviour
 
         titolo.text = "";
         testo.text = "";
-        resumeGame();
+
+        //resumeGame();
     }
 
     private void cambiaImmagine(int posizione)
     {
-        Sprite nuovaImmagine = Resources.Load<Sprite>("immaginiOGifOkBoxVideo/" + "immagineOGifOkBoxVideo " + titoli[posizione]);
-        if (nuovaImmagine == null)
-        {
-            setImmagineDefault();
-        }
-        else
-        {
-            immagineOGIF.sprite = nuovaImmagine;
-        }
-    }
-
-    private void setImmagineDefault (){
-        immagineOGIF.sprite = Resources.Load<Sprite>("immaginiOGifOkBoxVideo/immagineOGifOkBoxVideoDefault"); 
+        animazione.caricaAnimazione("immaginiOGifOkBoxVideo", nomiAnimazioni [posizione], "default");
     }
 
     /// <summary>
