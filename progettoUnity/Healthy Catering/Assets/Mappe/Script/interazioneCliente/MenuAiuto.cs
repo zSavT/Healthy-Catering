@@ -50,15 +50,15 @@ public class MenuAiuto : MonoBehaviour
     List<string> nomiAnimazioni = new List<string>
     {
         "movimenti",
-        "default",
-        "default",
-        "default",
-        "default",
-        "default",
-        "default",
-        "default",
-        "default",
-        "default",
+        "interazioneConIClientiPrimaParte",
+        "interazioneConIClienti",
+        "vuota",
+        "visualizzareMagazzino",
+        "vuota",
+        "interazionePassanti",
+        "negozio",
+        "ricettario",
+        "vuota",
     };
 
     public static bool apertoMenuAiuto = false;//TUTORIAL
