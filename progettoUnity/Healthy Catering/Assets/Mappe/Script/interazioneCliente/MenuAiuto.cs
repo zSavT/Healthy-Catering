@@ -35,7 +35,7 @@ public class MenuAiuto : MonoBehaviour
     private List<string> messaggiDiAiuto = new List<string>
     {
         "Per potersi muovere all'interno del gioco, bisogna utilizzare i tasti \"" + Utility.coloreVerde + "W" + Utility.fineColore + "\", \"" + Utility.coloreVerde + "A" + Utility.fineColore + "\", \"" + Utility.coloreVerde + "S" + Utility.fineColore + "\", " + Utility.coloreVerde + "D" + Utility.fineColore + "\" per muoversi rispettivamente in \"" +Utility.coloreVerde + "Avanti" + Utility.fineColore + "\", \"" + Utility.coloreVerde + "Sinistra" + Utility.fineColore + "\", \"" + Utility.coloreVerde + "Indietro" + Utility.fineColore + "\", \"" + Utility.coloreVerde + "Destra" + Utility.fineColore + "\". In più premendo il tasto \"" + Utility.coloreVerde + "Spazio" + Utility.fineColore + "\" è possibile saltare. Premendo il tasto \"" + Utility.coloreVerde + "Shift" + Utility.fineColore + "\" è possibile correre.",
-        "Per avviare l'interazione con un cliente al bancone, inquadralo e premi il tasto \"" + Utility.coloreVerde + "E" + Utility.fineColore + "\".","Per poter interagire con i clienti si dovrà utilizzare il mouse e selezionare il " + Utility.colorePiatti + "piatto" + Utility.fineColore + " che si vuole servire al cliente quando richiesto attraverso la relativa schermata.",
+        "Per avviare l'interazione con un cliente al bancone, inquadralo e premi il tasto \"" + Utility.coloreVerde + "E" + Utility.fineColore + "\".Per poter interagire con i clienti si dovrà utilizzare il mouse e selezionare il " + Utility.colorePiatti + "piatto" + Utility.fineColore + " che si vuole servire al cliente quando richiesto attraverso la relativa schermata.",
         "Scegliere il piatto migliore fra quelli disponibili, permette al giocatore di aumentare il suo denaro e il suo punteggio così da poter superare il livello. Nel caso si dovesse servire ad un <color=#B5D99C>cliente</color> con una " + Utility.colorePatologia + "patologia" + Utility.fineColore + " X un " + Utility.colorePiatti+ "piatto" + Utility.fineColore + " dove è presente un " + Utility.coloreIngredienti + "ingrediente" + Utility.fineColore + " non compatibile con essa verrà mostrato un pop up dal quale sarà possibile visualizzare quali degli " + Utility.coloreIngredienti + "ingrediente" + Utility.fineColore + " del " + Utility.colorePiatti + "piatto" + Utility.fineColore + " sono compatibili con la " + Utility.colorePatologia + "patologia" + Utility.fineColore + " e quali no. Stesso discorso nel caso in cui si dovesse scegliere un piatto non compatibile con la " + Utility.coloreDieta + "dieta" + Utility.fineColore + " del " + Utility.coloreVerde + "cliente" + Utility.fineColore + ".",
         "Più saranno affini i " +Utility.colorePiatti +  "piatti " + Utility.fineColore + "che verranno serviti più incrementerà il denaro del giocatore e più ingredienti potrà compare dal " + Utility.coloreVerde + "negozio" + Utility.fineColore + ".",
         "Sarà possibile scegliere solo i " + Utility.colorePiatti + "piatti" + Utility.fineColore + " per i quali " + Utility.coloreVerde + "sono disponibili tutti gli ingredienti nelle quantità necessarie" + Utility.fineColore + "; quindi, si dovrà tenere conto degli ingredienti disponibili nel proprio magazzino e comprare gli ingredienti mancanti. É possibile visionoare lo stato del magazzino aprendo il programma \"" + Utility.coloreVerde + "MyInventory" + Utility.fineColore + "\", accessibile nel computer presente nell'ufficio del ristorante.",
@@ -65,6 +65,7 @@ public class MenuAiuto : MonoBehaviour
 
     void Start()
     {
+       
         pannelloMenuAiuto.SetActive(false);
 
         pannelloMenuAiutoAperto = false;
@@ -77,6 +78,10 @@ public class MenuAiuto : MonoBehaviour
         gestisciBottoniAvantiDietro(ultimaPosizione);
 
         animazione = immagineSchermata.GetComponent<Animazione>();
+        for (int i = 0; i < nomiAnimazioni.Count; i++)
+        {
+            cambiaImmagineSchermataAiuto(i);
+        }
     }
 
     public void apriPannelloMenuAiuto()

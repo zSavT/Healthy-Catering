@@ -97,6 +97,10 @@ public class OkBoxVideo : MonoBehaviour
         titolo.text = "";
         testo.text = "";
         animazione = immagineOGIF.GetComponent<Animazione>();
+        for (int i = 0; i < nomiAnimazioni.Count; i++)
+        {
+            cambiaImmagine(i);
+        }
     }
 
     public void apriOkBoxVideo(int posizione)
