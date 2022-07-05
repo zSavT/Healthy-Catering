@@ -61,6 +61,8 @@ public class MenuAiuto : MonoBehaviour
         "default",
     };
 
+    public static bool apertoMenuAiuto = false;//TUTORIAL
+
     void Start()
     {
         pannelloMenuAiuto.SetActive(false);
@@ -85,6 +87,8 @@ public class MenuAiuto : MonoBehaviour
         titoloTestoAiuto.text = titoliMessaggiDiAiuto[ultimaPosizione];
         testoAiuto.text = messaggiDiAiuto[ultimaPosizione];
         cambiaImmagineSchermataAiuto(ultimaPosizione);
+
+        apertoMenuAiuto = true; //TUTORIAL
     }
 
     public void chiudiPannelloMenuAiuto()

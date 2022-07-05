@@ -22,7 +22,9 @@ public class OkBoxVideo : MonoBehaviour
     public static readonly int finitiIngredienti = 7;
     public static readonly int doveEIlNegozio = 8;
     public static readonly int interazioneNPC = 9;
-    
+    public static readonly int apriRicettario = 10;
+    public static readonly int apriMenuAiuto = 11;
+
     public static bool WASDmostrato = false;
     public static bool saltoMostrato = false;
     public static bool sprintMostrato = false;
@@ -33,7 +35,10 @@ public class OkBoxVideo : MonoBehaviour
     public static bool finitiIngredientiMostrato = false;
     public static bool doveEIlNegozioMostrato = false;
     public static bool interazioneNPCMostrato = false;
-    
+    public static bool apriRicettarioMostrato = false;
+    public static bool apriMenuAiutoMostrato = false;
+
+
     List<string> titoli = new List<string>
     {
         "Camandi base per il movimento",
@@ -45,7 +50,9 @@ public class OkBoxVideo : MonoBehaviour
         "Servire un piatto non idoneo ad un cliente",
         "Come controllare il magazzino del ristorante",
         "Rifornire il Magazzino visitando il Negozio",
-        "Acquisire informazioni interagendo con i passanti"
+        "Acquisire informazioni interagendo con i passanti",
+        "Aprire il ricettario",
+        "Aprire il menu aiuto"
     };
 
     List<string> testi = new List<string>
@@ -59,7 +66,9 @@ public class OkBoxVideo : MonoBehaviour
         "Servire un <color=#B5D99C>piatto</color> non idoneo comporta delle penalità al punteggio e non si riceveranno bonus in denaro. I bonus e i malus vengono calcolati in base alla compatibilità del piatto e ai suoi volori <color=#B5D99C>nutriScore</color> e <color=#B5D99C>costoEco</color>. Consulta il menu aiuto per ulteriori informazioni. Ora prova a serive un piatto non idoneo al cliente al bancone.",
         "Controlla il <color=#B5D99C>magazzino</color> per tener d'occhio quali ingredienti sono disponibili per la realizzazione dei piatti. Servendo un piatto, diminuiscono nel magazzino le quantità di ingredienti che in esso figurano. Puoi verificare lo stato del magazzino dal <color=#B5D99C>PC</color> presente in <color=#B5D99C>ufficio</color> attraverso il programma “<color=#B5D99C>MyInventory</color>”. Ora raggiungi l'ufficio e controlla lo stato del magazzino.",
         "Per fare rifornimenti di ingredienti visita il negozio dove acquistare gli ingredienti necessari a realizzare altri piatti con i soldi guadagnati. Ora raggiungi il negozio e compra un ingrediente.",
-        "Interagire con i <color=#B5D99C>passanti</color> in giro per la città ti permette di ottenere <color=#B5D99C>suggerimenti</color> utili per servire piatti migliori, sia dal punto di vista dell'affinità con le patologie che da quello del<color=#B5D99C> nutriScore</color> e del<color=#B5D99C> costoEco</color>. Ora prova a parlare con una persona."
+        "Interagire con i <color=#B5D99C>passanti</color> in giro per la città ti permette di ottenere <color=#B5D99C>suggerimenti</color> utili per servire piatti migliori, sia dal punto di vista dell'affinità con le patologie che da quello del<color=#B5D99C> nutriScore</color> e del<color=#B5D99C> costoEco</color>. Ora prova a parlare con una persona.",
+        "Puoi utilizzare il ricettario quando vuoi ed in ogni punto della mappa, premi il tasto R per visualizzarlo",
+        "Puoi consultare il menu aiuto quando vuoi ed in ogni punto della mappa, premi il tasto H per visualizzarlo",
     };
 
     [SerializeField] private UnityEvent playerStop;
@@ -71,6 +80,8 @@ public class OkBoxVideo : MonoBehaviour
         "wasd",
         "salto",
         "shift",
+        "default",
+        "default",
         "default",
         "default",
         "default",

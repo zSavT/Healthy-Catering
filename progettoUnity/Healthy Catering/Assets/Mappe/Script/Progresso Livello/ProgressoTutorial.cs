@@ -225,11 +225,31 @@ public class ProgressoTutorial : MonoBehaviour
                     if (CheckTutorial.checkParlatoConNPC())
                     {
                         numeroScritteMostrate++;
-                        finitoTutorial = true;
                     }
+                }
+                else if (numeroScritteMostrate == 10)
+                {
+                    if (!OkBoxVideo.apriRicettarioMostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.apriRicettario);
+                        OkBoxVideo.apriRicettarioMostrato = true;
+                    }
+
+                    if (CheckTutorial.checkMostratoRicettario()) { numeroScritteMostrate++; };
+                }
+                else if (numeroScritteMostrate == 11)
+                {
+                    if (!OkBoxVideo.apriMenuAiutoMostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.apriMenuAiuto);
+                        OkBoxVideo.apriMenuAiutoMostrato = true;
+                    }
+
+                    if (CheckTutorial.checkMostratoMenuAiuto()) { numeroScritteMostrate++; };
                 }
                 else
                 {
+                    finitoTutorial = true;
                     setObiettivoTesto("");//resetto il testo dell'obbiettivo 
                 }
             }
