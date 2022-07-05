@@ -35,17 +35,13 @@ public class Animazione : MonoBehaviour
 
     private void Update()
     {
-        if ((timer += Time.deltaTime) >= (duration / sprites.Count) || numerVolteNonEntrato > 1f)
+        if ((timer += Time.deltaTime) >= (duration / sprites.Count))
         {
             timer = 0;
             image.sprite = sprites[index];
             index = (index + 1) % sprites.Count;
 
             numerVolteNonEntrato = 0;
-        }
-        else
-        {
-            numerVolteNonEntrato = numerVolteNonEntrato + 0.5f;
         }
     }
 
