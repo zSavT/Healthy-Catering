@@ -18,7 +18,6 @@ public class Animazione : MonoBehaviour
     private Image image;
     private int index = 0;
     private float timer = 0;
-    private float numerVolteNonEntrato = 0;
 
     void Start()
     {
@@ -40,8 +39,6 @@ public class Animazione : MonoBehaviour
             timer = 0;
             image.sprite = sprites[index];
             index = (index + 1) % sprites.Count;
-
-            numerVolteNonEntrato = 0;
         }
     }
 
