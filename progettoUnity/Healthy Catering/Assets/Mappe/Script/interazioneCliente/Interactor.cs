@@ -7,7 +7,6 @@ public class Interactor : MonoBehaviour
     [SerializeField] private ProgressoLivello progresso;
     [Header("Interazione Cliente")]
     [SerializeField] private LayerMask layerUnityNPC = 6;              //layer utilizzato da Unity per le categorie di oggetto
-
     [SerializeField] private KeyCode tastoInterazione;              //tasto da premere per invocare l'azione
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform posizioneCamera;
@@ -28,10 +27,20 @@ public class Interactor : MonoBehaviour
     [SerializeField] private InterazionePassanti interazionePassanti;
     private InteractableNPCPassivi npcPassivo;
 
-    [Header("Interazione ricettario")]
+    [Header("Interazione Ricettario")]
     [SerializeField] private Ricettario ricettarioScript;
     [SerializeField] private KeyCode testoRicettario;
     [SerializeField] private LayerMask ricettario;
+
+    [Header("Menu Aiuto")]
+    [SerializeField] private MenuAiuto menuAiuto;
+    [SerializeField] private KeyCode tastoMenuAiuto;
+
+
+    [Header("Teleport")]
+    [SerializeField] private LayerMask layerUnityTeleport = 9;
+    public Transform destinazioneTeleport;
+    [SerializeField] private Transform posizioneInizialePlayer;
 
     [Header("Eventi")]
     public UnityEvent playerStop;
@@ -39,10 +48,6 @@ public class Interactor : MonoBehaviour
     //trigger per la scritta dell'interazione
     [SerializeField] private UnityEvent inquadratoNPC;
     [SerializeField] private UnityEvent uscitaRangeMenu;
-    [Header("Teleport")]
-    [SerializeField] private LayerMask layerUnityTeleport = 9;
-    public Transform destinazioneTeleport;
-    [SerializeField] private Transform posizioneInizialePlayer;
 
 
     private Vector3 posizioneCameraOriginale;
@@ -53,8 +58,6 @@ public class Interactor : MonoBehaviour
     private Player giocatore;
 
     private Interactable npc;
-
-    bool bottoniInterazioneClienteGeneratiLaPrimaVolta;
 
     private int livelloAttuale = PlayerSettings.livelloSelezionato;
 
@@ -179,16 +182,16 @@ public class Interactor : MonoBehaviour
                     suonoNegozio.Play();
                     this.gameObject.transform.position = destinazioneTeleport.transform.position;
                 }
-            } else if (Input.GetKeyDown(testoRicettario) && !(negozio.getPannelloAperto()) && !PannelloMenu.pannelloMenuAperto && !ricettarioScript.getRicettarioAperto())
+            } else if (Input.GetKeyDown(testoRicettario) && !(negozio.getPannelloAperto()) && !pannelloMenuCliente.getPannelloMenuClienteAperto() && !ricettarioScript.getRicettarioAperto() && !menuAiuto.getPannelloMenuAiutoAperto())
             {
                 playerStop.Invoke();
                 ricettarioScript.apriRicettario();
                 PuntatoreMouse.abilitaCursore();
                 CambioCursore.cambioCursoreNormale();
-            }  else if (Input.GetKeyDown(testoRicettario) && !(negozio.getPannelloAperto()) && !PannelloMenu.pannelloMenuAperto && !ricettarioScript.getRicettarioAperto())
+            } else if (Input.GetKeyDown(tastoMenuAiuto) && !(negozio.getPannelloAperto()) && !pannelloMenuCliente.getPannelloMenuClienteAperto() && !ricettarioScript.getRicettarioAperto() && !menuAiuto.getPannelloMenuAiutoAperto())
             {
                 playerStop.Invoke();
-                ricettarioScript.apriRicettario();
+                menuAiuto.apriPannelloMenuAiuto();
                 PuntatoreMouse.abilitaCursore();
                 CambioCursore.cambioCursoreNormale();
             }
@@ -232,6 +235,15 @@ public class Interactor : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     ricettarioScript.chiudiRicettario();
+                    PuntatoreMouse.disabilitaCursore();
+                    playerRiprendiMovimento.Invoke();
+                }
+            }
+            if (menuAiuto.getPannelloMenuAiutoAperto())
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    menuAiuto.chiudiPannelloMenuAiuto();
                     PuntatoreMouse.disabilitaCursore();
                     playerRiprendiMovimento.Invoke();
                 }

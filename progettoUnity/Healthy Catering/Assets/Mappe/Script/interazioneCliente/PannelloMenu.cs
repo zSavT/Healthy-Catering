@@ -21,7 +21,7 @@ public class PannelloMenu : MonoBehaviour
 
     [SerializeField] private GameObject bottonePiatto; 
     [SerializeField] private GameObject pannelloPiatti;
-    public static bool pannelloMenuAperto;
+    private bool pannelloMenuAperto;
 
     [Header("Pannello ingredienti piatto")]
     [SerializeField] private GameObject pannelloIngredientiPiatto;
@@ -96,6 +96,11 @@ public class PannelloMenu : MonoBehaviour
         pannelloMenu.SetActive(false);
         pannelloCliente.SetActive(false);
         pannelloMenuAperto = false;
+    }
+
+    public bool getPannelloMenuClienteAperto()
+    {
+        return pannelloMenuAperto;
     }
 
     public void apriPannelloMenuCliente()
