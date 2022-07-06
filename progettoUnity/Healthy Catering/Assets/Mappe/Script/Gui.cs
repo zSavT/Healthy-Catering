@@ -64,7 +64,6 @@ public class Gui : MonoBehaviour
     /// <param name="punteggio">Valore punteggio raggiunto</param>
     public void aggiornaValorePunteggio(int punteggio)
     {
-        Debug.Log(punteggio);
         UpdateText(punteggio, punteggioTesto);
         if(valorePrecedentePunteggio>punteggio)
         {
@@ -78,6 +77,12 @@ public class Gui : MonoBehaviour
             main.maxParticles = (punteggio / 5)+5;
             animazionePunteggioPositiva.Play();
         }
+        valorePrecedentePunteggio = punteggio;
+    }
+
+    public void aggiornaValorePunteggioSenzaAnimazione(int punteggio)
+    {
+        punteggioTesto.text = punteggio.ToString();
         valorePrecedentePunteggio = punteggio;
     }
 
