@@ -226,6 +226,7 @@ public class ProgressoTutorial : MonoBehaviour
 
                     if (CheckTutorial.checkParlatoConNPC())
                     {
+                        Ricettario.apertoRicettario = false;
                         numeroScritteMostrate++;
                     }
                 }
@@ -237,10 +238,11 @@ public class ProgressoTutorial : MonoBehaviour
                         OkBoxVideo.apriRicettarioMostrato = true;
                     }
 
-                    if (CheckTutorial.checkMostratoRicettario()) { numeroScritteMostrate++; };
+                    if (CheckTutorial.checkMostratoRicettario()) { MenuAiuto.apertoMenuAiuto = false; numeroScritteMostrate++; };
                 }
                 else if (numeroScritteMostrate == 11)
                 {
+
                     if (!OkBoxVideo.apriMenuAiutoMostrato)
                     {
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.apriMenuAiuto);
