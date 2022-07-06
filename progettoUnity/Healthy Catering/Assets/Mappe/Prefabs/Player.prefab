@@ -2375,9 +2375,17 @@ MonoBehaviour:
     m_Bits: 128
   interazionePassanti: {fileID: 0}
   ricettarioScript: {fileID: 0}
+  testoRicettario: 114
   ricettario:
     serializedVersion: 2
     m_Bits: 1024
+  menuAiuto: {fileID: 0}
+  tastoMenuAiuto: 104
+  layerUnityTeleport:
+    serializedVersion: 2
+    m_Bits: 512
+  destinazioneTeleport: {fileID: 0}
+  posizioneInizialePlayer: {fileID: 0}
   playerStop:
     m_PersistentCalls:
       m_Calls:
@@ -2642,11 +2650,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  layerUnityTeleport:
-    serializedVersion: 2
-    m_Bits: 512
-  destinazioneTeleport: {fileID: 0}
-  posizioneInizialePlayer: {fileID: 0}
 --- !u!143 &5218992458153246270
 CharacterController:
   m_ObjectHideFlags: 0

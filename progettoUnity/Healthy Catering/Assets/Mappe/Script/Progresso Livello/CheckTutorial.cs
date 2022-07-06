@@ -87,6 +87,7 @@ public class CheckTutorial : MonoBehaviour
     {
         return !piattoCompatibile.piattoInInventario(giocatore.inventario);
     }
+    
     public static bool checkServitoPiattoNonCompatibile(Player giocatore)
     {
         return !piattoNonCompatibile.piattoInInventario(giocatore.inventario);
@@ -102,7 +103,6 @@ public class CheckTutorial : MonoBehaviour
         return true; //TODO
     }
 
-
     public static bool checkCompratiIngredienti(Player giocatore)
     {
         return !giocatore.inventarioVuoto();
@@ -111,5 +111,15 @@ public class CheckTutorial : MonoBehaviour
     public static bool checkParlatoConNPC()
     {
         return InterazionePassanti.parlatoConNPC;
+    }
+
+    public static bool checkMostratoRicettario()
+    {
+        return Ricettario.apertoRicettario;
+    }
+
+    public static bool checkMostratoMenuAiuto()
+    {
+        return MenuAiuto.apertoMenuAiuto;
     }
 }

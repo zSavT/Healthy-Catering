@@ -58,7 +58,9 @@ public class ProgressoTutorial : MonoBehaviour
             "Servi un piatto non idoneo al <color=#B5D99C>cliente</color>.",
             "Controlla il <color=#B5D99C>Magazzino</color>.",
             "Compra <color=#B5D99C>Ingredienti</color> dal negozio.",
-            "Chiedi informazioni alle <color=#B5D99C>Persone</color>."
+            "Chiedi informazioni alle <color=#B5D99C>Persone</color>.",
+            "Apri il ricettario con il tasto " + Utility.coloreVerde + "R" + Utility.fineColore,
+            "Apri il menu aiuto con il tasto " + Utility.coloreVerde + "H" + Utility.fineColore
         };
 
         numeroScritteMostrate = 0;
@@ -225,11 +227,31 @@ public class ProgressoTutorial : MonoBehaviour
                     if (CheckTutorial.checkParlatoConNPC())
                     {
                         numeroScritteMostrate++;
-                        finitoTutorial = true;
                     }
+                }
+                else if (numeroScritteMostrate == 10)
+                {
+                    if (!OkBoxVideo.apriRicettarioMostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.apriRicettario);
+                        OkBoxVideo.apriRicettarioMostrato = true;
+                    }
+
+                    if (CheckTutorial.checkMostratoRicettario()) { numeroScritteMostrate++; };
+                }
+                else if (numeroScritteMostrate == 11)
+                {
+                    if (!OkBoxVideo.apriMenuAiutoMostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.apriMenuAiuto);
+                        OkBoxVideo.apriMenuAiutoMostrato = true;
+                    }
+
+                    if (CheckTutorial.checkMostratoMenuAiuto()) { numeroScritteMostrate++; };
                 }
                 else
                 {
+                    finitoTutorial = true;
                     setObiettivoTesto("");//resetto il testo dell'obbiettivo 
                 }
             }
