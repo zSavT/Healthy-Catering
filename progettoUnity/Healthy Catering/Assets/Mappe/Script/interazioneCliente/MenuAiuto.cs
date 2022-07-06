@@ -54,7 +54,7 @@ public class MenuAiuto : MonoBehaviour
         "interazioneConIClienti",
         "vuota",
         "visualizzareMagazzino",
-        "vuota",
+        "bonus",
         "interazionePassanti",
         "negozio",
         "ricettario",
