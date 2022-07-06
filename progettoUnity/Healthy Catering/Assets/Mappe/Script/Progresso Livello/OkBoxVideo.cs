@@ -88,7 +88,7 @@ public class OkBoxVideo : MonoBehaviour
         "negozio",
         "interazionePassanti",
         "ricettario",
-        "default",
+        "menuAiuto",
     };
 
     void Start()
