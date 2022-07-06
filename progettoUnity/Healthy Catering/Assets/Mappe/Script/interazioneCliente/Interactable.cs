@@ -34,6 +34,9 @@ public class Interactable : MonoBehaviour
     {
         contenitoreCliente = this.gameObject;
         modelloCliente3D = contenitoreCliente.transform.GetChild(0).gameObject;
+
+        //Inizializza il controller
+        agent = GetComponent<NavMeshAgent>();
         SetMaterialTransparent();
 
         StartCoroutine(attendi(2f));
@@ -43,8 +46,6 @@ public class Interactable : MonoBehaviour
         effettoPositivo.Stop();
         effettoNegativo.Stop();
 
-        //Inizializza il controller
-        agent = GetComponent<NavMeshAgent>();
         
     }
 

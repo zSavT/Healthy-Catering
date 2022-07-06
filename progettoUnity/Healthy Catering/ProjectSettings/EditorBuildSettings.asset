@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Mappe/VideoTutorial.unity
     guid: fee951b2823b5d345a3bc303f6caf04d
+  - enabled: 1
+    path: Assets/Mappe/Citta 1.unity
+    guid: cf3bb3d01cc8c024fba07affb1c99ca5
   m_configObjects: {}
