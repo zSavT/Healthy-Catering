@@ -19,8 +19,49 @@ public class Animazione : MonoBehaviour
     private int index = 0;
     private float timer = 0;
 
+    List<string> nomiAnimazioniOkBoxVideo = new List<string>
+    {
+        "wasd",
+        "salto",
+        "shift",
+        "interazioneZio",
+        "entrareRistorante",
+        "clienteCompatibile",
+        "clienteNonCompatibile",
+        "visualizzareMagazzino",
+        "negozio",
+        "interazionePassanti",
+        "ricettario",
+        "menuAiuto",
+    };
+
+    List<string> nomiAnimazioniMenuAiuto = new List<string>
+    {
+        "movimenti",
+        "interazioneConIClientiPrimaParte",
+        "interazioneConIClienti",
+        "vuota",
+        "visualizzareMagazzino",
+        "vuota",
+        "interazionePassanti",
+        "negozio",
+        "ricettario",
+        "vuota",
+    };
+
     void Start()
     {
+        foreach (string nome in nomiAnimazioniOkBoxVideo)
+        {
+            caricaAnimazione("immaginiOGifOkBoxVideo", nome, "default");
+        }
+
+        foreach (string nome in nomiAnimazioniMenuAiuto)
+        {
+            caricaAnimazione("immaginiAiuto", nome, "default");
+        }
+
+
         image = GetComponent<Image>();
         /*
         //esempio di chiamata 
