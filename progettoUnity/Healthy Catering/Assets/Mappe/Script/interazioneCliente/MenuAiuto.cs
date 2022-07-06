@@ -78,10 +78,12 @@ public class MenuAiuto : MonoBehaviour
         gestisciBottoniAvantiDietro(ultimaPosizione);
 
         animazione = immagineSchermata.GetComponent<Animazione>();
+        /*
         for (int i = 0; i < nomiAnimazioni.Count; i++)
         {
             cambiaImmagineSchermataAiuto(i);
         }
+        */
     }
 
     public void apriPannelloMenuAiuto()
