@@ -52,6 +52,11 @@ public class Interactable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            suonoVocePositio.Play();
+        }
         //Controllo della distanza minima per considerare il waypoint raggiunto, in caso positivo si
         if (Vector3.Distance(transform.position, target) < 0.5f)
         {

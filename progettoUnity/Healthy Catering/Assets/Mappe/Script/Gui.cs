@@ -27,7 +27,7 @@ public class Gui : MonoBehaviour
     public int CountFPS = 30;
     public float durata = 3f;
     public string formatoNumero = "N0";
-    private int valorePrecedentePunteggio;
+    private int valorePrecedentePunteggio = 0;
     private Coroutine CountingCoroutine;
 
 
@@ -64,6 +64,7 @@ public class Gui : MonoBehaviour
     /// <param name="punteggio">Valore punteggio raggiunto</param>
     public void aggiornaValorePunteggio(int punteggio)
     {
+        Debug.Log(punteggio);
         UpdateText(punteggio, punteggioTesto);
         if(valorePrecedentePunteggio>punteggio)
         {

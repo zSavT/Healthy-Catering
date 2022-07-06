@@ -65,6 +65,7 @@ public class ProgressoLivello : MonoBehaviour
         //Se il livello � il livello tutorial la schermata obbiettivi non si attiva (da attivare successivamente)
         if (PlayerSettings.livelloSelezionato != 0)
         {
+            disattivaObbiettiviETesto();
             attivaPannelloRiepiloghiObbiettivi();
         } else
         {
@@ -79,10 +80,6 @@ public class ProgressoLivello : MonoBehaviour
         if(obbiettiviRaggiunti())
         {
             attivazioneSchermataFineLivello();
-        }
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            numeroClientiServiti = numeroDiClientiMassimi;
         }
         controlloGameOver();
     }

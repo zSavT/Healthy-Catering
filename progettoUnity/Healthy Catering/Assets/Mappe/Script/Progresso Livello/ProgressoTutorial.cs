@@ -11,7 +11,6 @@ using UnityEngine.UI;
 public class ProgressoTutorial : MonoBehaviour
 {
     private bool inTutorial;
-
     [Header("Video tutorial")]
     [SerializeField] private GameObject canvasVideoTutorial;
 
