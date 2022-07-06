@@ -260,7 +260,7 @@
         "idIngrediente": 20,
         "nome": "Patate",
         "descrizione": "La patata \u00e8 un tubero commestibile ottenuto dalle piante della specie Solanum tuberosum, molto utilizzato a scopo alimentare previa cottura.",
-        "costo": 3,
+        "costo": 2,
         "costoEco": 15,
         "nutriScore": 1,
         "dieta": 0,
