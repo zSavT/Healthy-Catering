@@ -97,13 +97,25 @@ public class OkBoxVideo : MonoBehaviour
         titolo.text = "";
         testo.text = "";
         animazione = immagineOGIF.GetComponent<Animazione>();
-        /*
-        for (int i = 0; i < nomiAnimazioni.Count; i++)
-        {
-            cambiaImmagine(i);
-        }
-        */
+        WASDmostrato = false;
+        saltoMostrato = false;
+        sprintMostrato = false;
+        parlaZioMostrato = false;
+        vaiAlRistoranteMostrato = false;
+        meccanicheServireCompatibileMostrato = false;
+        meccanicheServireNonCompatibileMostrato = false;
+        finitiIngredientiMostrato = false;
+        doveEIlNegozioMostrato = false;
+        interazioneNPCMostrato = false;
+        apriRicettarioMostrato = false;
+        apriMenuAiutoMostrato = false;
+    /*
+    for (int i = 0; i < nomiAnimazioni.Count; i++)
+    {
+        cambiaImmagine(i);
     }
+    */
+}
 
     public void apriOkBoxVideo(int posizione)
     {

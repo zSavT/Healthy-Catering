@@ -71,7 +71,7 @@ public class ProgressoLivello : MonoBehaviour
         {
             disattivaSoloObbiettivi();
         }
-        
+        punteggioPlayer = 0;
     }
 
     private void Update()
@@ -98,11 +98,11 @@ public class ProgressoLivello : MonoBehaviour
         PuntatoreMouse.disabilitaCursore();
         pannelloObbiettiviInizioLivello.SetActive(false);
         attivaSoloObbiettivi();
-        valoriInizialiTesto();
         if(PlayerSettings.livelloSelezionato == 0)
         {
-            punteggioPlayer = interazioni.getPlayer().punteggio[0];
+            punteggioPlayer = giocatore.punteggio[0];
         }
+        valoriInizialiTesto();
     }
 
     private void controlloGameOver()
@@ -152,7 +152,7 @@ public class ProgressoLivello : MonoBehaviour
     {
         testoObbietivo1 = "Servire " + numeroClientiDaServire + " clienti. Clienti serviti: " + numeroClientiServiti + "/" + numeroClientiDaServire;
         obbiettivoUno.text = testoObbietivo1;
-        testoObbietivo2 = "Raggiungi un punteggio pari a " + punteggioMassimo + ". Punteggio attuale " + 0 + "/" + punteggioMassimo;
+        testoObbietivo2 = "Raggiungi un punteggio pari a " + punteggioMassimo + ". Punteggio attuale " + punteggioPlayer + "/" + punteggioMassimo;
         obbiettivoDue.text = testoObbietivo2;
     }
 

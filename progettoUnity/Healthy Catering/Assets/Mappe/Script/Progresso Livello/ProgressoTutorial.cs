@@ -10,7 +10,7 @@ using UnityEngine.UI;
 /// </summary>
 public class ProgressoTutorial : MonoBehaviour
 {
-    private bool inTutorial;
+    public static bool inTutorial;
     [Header("Video tutorial")]
     [SerializeField] private GameObject canvasVideoTutorial;
 
@@ -42,6 +42,7 @@ public class ProgressoTutorial : MonoBehaviour
     private void Start()
     {
         inTutorial = true;
+        saGiocareSettato = false;
         canvasVideoTutorial.SetActive(true);
         //le disattivo per attivarle solo nel momento opportuno - Questi elementi sono nel loro specifico pannello, che va attivato poi quando serve.
         attivaObbiettiviTutorial();
