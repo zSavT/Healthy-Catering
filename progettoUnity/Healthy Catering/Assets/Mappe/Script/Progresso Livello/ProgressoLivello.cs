@@ -99,6 +99,10 @@ public class ProgressoLivello : MonoBehaviour
         pannelloObbiettiviInizioLivello.SetActive(false);
         attivaSoloObbiettivi();
         valoriInizialiTesto();
+        if(PlayerSettings.livelloSelezionato == 0)
+        {
+            punteggioPlayer = interazioni.getPlayer().punteggio[0];
+        }
     }
 
     private void controlloGameOver()
