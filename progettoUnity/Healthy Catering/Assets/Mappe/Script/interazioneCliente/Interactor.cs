@@ -85,6 +85,8 @@ public class Interactor : MonoBehaviour
         posizioneCameraOriginale = mainCamera.transform.position;
         menuApribile = true;
         progresso.setGiocatore(giocatore);
+        livelloAttuale = PlayerSettings.livelloSelezionato;
+        giocatore.setInventarioLivello(livelloAttuale);
     }
 
     void Update()

@@ -61,6 +61,8 @@ public class ProgressoLivello : MonoBehaviour
         gameOver = false;
         //disattivare la schermata per evitare che l'animazione parti fin da subito (N.B. L'animazione � impostata per avviarsi all'attivazione dell'oggetto per semplicit� � per dover scrivere molti meno controlli)
         schermataFineLivello.SetActive(false);
+        numeroClientiServiti = 0;
+        punteggioPlayer = 0;
         valorePunteggioPlayer.gameObject.SetActive(false);
         //Se il livello � il livello tutorial la schermata obbiettivi non si attiva (da attivare successivamente)
         if (PlayerSettings.livelloSelezionato != 0)
