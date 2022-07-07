@@ -250,6 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8b4182c6a7e694a9da0307e443c6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  guiInGame: {fileID: 0}
   canvasVideoTutorial: {fileID: 1280510889204601914}
   obbiettivo1Testo: {fileID: 1280510890595341467}
   interazioniPlayer: {fileID: 0}
