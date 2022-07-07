@@ -46,7 +46,6 @@ public class ProgressoLivello : MonoBehaviour
     [SerializeField] private TextMeshProUGUI valorePunteggioPlayer;
     [SerializeField] private TextMeshProUGUI titoloSchermataFineLivello;
     [SerializeField] private AudioSource suonoVittoria;
-    private bool gameOverMaxClienti;
     public UnityEvent disattivaElementiFineLivello;
     [Header("GameOver")]
     public int numeroDiClientiMassimi = 10;
@@ -59,7 +58,7 @@ public class ProgressoLivello : MonoBehaviour
 
     private void Start()
     {
-        
+        gameOver = false;
         //disattivare la schermata per evitare che l'animazione parti fin da subito (N.B. L'animazione � impostata per avviarsi all'attivazione dell'oggetto per semplicit� � per dover scrivere molti meno controlli)
         schermataFineLivello.SetActive(false);
         valorePunteggioPlayer.gameObject.SetActive(false);
