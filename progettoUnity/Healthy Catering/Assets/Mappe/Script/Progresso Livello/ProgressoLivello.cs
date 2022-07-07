@@ -82,7 +82,8 @@ public class ProgressoLivello : MonoBehaviour
         {
             attivazioneSchermataFineLivello();
         }
-        controlloGameOver();
+        if(!ProgressoTutorial.inTutorial)
+            controlloGameOver();
     }
 
     public void attivaPannelloRiepiloghiObbiettivi()
