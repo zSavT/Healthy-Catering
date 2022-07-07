@@ -22,7 +22,7 @@ public class CambioColoreScritta : MonoBehaviour
     /// </summary>
     public void cambioColoreNonCliccatoGrigio()
     {
-        testo.color = new Color32(125,125,125,125);
+        testo.color = new Color32(202, 202, 202, 125);
     }
 
     /// <summary>
