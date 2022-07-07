@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Mappe/Citta 1.unity
     guid: cf3bb3d01cc8c024fba07affb1c99ca5
+  - enabled: 1
+    path: Assets/Mappe/Citta 2.unity
+    guid: 4e8745ccf638d8c4abcd4d97cb36e455
   m_configObjects: {}
