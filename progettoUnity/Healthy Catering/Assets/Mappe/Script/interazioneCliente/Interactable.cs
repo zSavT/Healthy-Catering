@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class Interactable : MonoBehaviour
 {
     public int IDCliente;
@@ -29,13 +30,17 @@ public class Interactable : MonoBehaviour
     public bool servito = false;
     public static int numeroCliente = 0;
     private bool distruggi = false;
+    private bool animazione = false;
+    public float durataAnimazione = 0;
 
     void Start()
     {
         contenitoreCliente = this.gameObject;
         raggiuntoBancone = false;
         servito = false;
+        animazione = false;
         distruggi = false;
+        durataAnimazione = 0;
         modelloCliente3D = contenitoreCliente.transform.GetChild(0).gameObject;
 
         //Inizializza il controller
@@ -48,6 +53,8 @@ public class Interactable : MonoBehaviour
         controllerAnimazione = GetComponentInChildren<Animator>();
         effettoPositivo.Stop();
         effettoNegativo.Stop();
+
+
 
         
     }
@@ -70,13 +77,9 @@ public class Interactable : MonoBehaviour
                 if (servito == true)
                 {
                     raggiuntoBancone = false;
-                    if (controllerAnimazione.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !controllerAnimazione.IsInTransition(0))
-                    {
-                        iterazioneIndex();
-                        updateDestinazione();
-                        raggiuntoBancone = false;
-                        animazioneCamminata();
-                    }
+                    if (!animazione)
+                        StartCoroutine(attendiFineAnimazione(durataAnimazione));
+
                 }
             } else
             {
@@ -104,6 +107,22 @@ public class Interactable : MonoBehaviour
             PannelloMenu.clienteServito = false;
         } 
         Destroy(contenitoreCliente);
+    }
+
+    /// <summary>
+    /// attesa per fine animazione
+    /// </summary>
+    /// <param name="attesa">Durata attesa</param>
+    /// <returns></returns>
+    IEnumerator attendiFineAnimazione(float attesa)
+    {
+        Debug.Log(attesa);
+        animazione = true;
+        yield return new WaitForSecondsRealtime(attesa);
+        iterazioneIndex();
+        updateDestinazione();
+        raggiuntoBancone = false;
+        animazioneCamminata();
     }
 
     /// <summary>
@@ -195,6 +214,7 @@ public class Interactable : MonoBehaviour
         servito = true;
         suonoContento.Play();
         suonoVocePositio.PlayDelayed(0.1f);
+        durataAnimazione = 2.917f;
     }
 
 
@@ -209,6 +229,7 @@ public class Interactable : MonoBehaviour
         effettoNegativo.Play();
         
         servito = true;
+        durataAnimazione = 6.517f;
     }
 
 

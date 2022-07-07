@@ -72,7 +72,6 @@ public class ProgressoTutorial : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(saGiocareSettato);
         if (!saGiocareSettato)
         {
             if (PlayerSaGiocareFPS.siOnoSettato())

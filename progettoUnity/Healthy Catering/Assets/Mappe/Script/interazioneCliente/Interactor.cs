@@ -347,7 +347,6 @@ public class Interactor : MonoBehaviour
         } 
         else
         {
-            Debug.Log(giocatore.punteggio[0]);
             guiInGame.aggiornaValorePunteggio(giocatore.punteggio[livelloAttuale]);
             
             guiInGame.aggiornaValoreSoldi(giocatore.soldi);

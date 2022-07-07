@@ -256,7 +256,6 @@ public class PannelloMenu : MonoBehaviour
         }
         livelloProgresso.servitoCliente(giocatore.punteggio[PlayerSettings.livelloSelezionato]);
         animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
-        Debug.Log(giocatore.punteggio[0]);
         aggiornaBottoniPiatti();
     }
 
