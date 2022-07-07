@@ -46,6 +46,7 @@ public class ProgressoLivello : MonoBehaviour
     [SerializeField] private TextMeshProUGUI valorePunteggioPlayer;
     [SerializeField] private TextMeshProUGUI titoloSchermataFineLivello;
     [SerializeField] private AudioSource suonoVittoria;
+    private bool gameOverMaxClienti;
     public UnityEvent disattivaElementiFineLivello;
     [Header("GameOver")]
     public int numeroDiClientiMassimi = 10;
@@ -216,7 +217,15 @@ public class ProgressoLivello : MonoBehaviour
     {
         schermataFineLivello.SetActive(true);
         valorePunteggioPlayer.gameObject.SetActive(true);
-        valorePunteggioPlayer.text = "Punteggio raggiunto: " + punteggioPlayer.ToString();
+        
+        if( (soldiFiniti() && !giocatore.piattiRealizzabiliConInventario()) )
+        {
+            valorePunteggioPlayer.text = "Punteggio raggiunto: " + punteggioPlayer.ToString() + "\nHai perso perchè il tuo inventario è vuoto e il denaro è sotto il valore di " + minimoSoldi + ".";
+        } else
+        {
+            valorePunteggioPlayer.text = "Punteggio raggiunto: " + punteggioPlayer.ToString() + "\nHai perso perchè non hai raggiunto l'obbiettivo del punteggio entro i " + numeroDiClientiMassimi + " clienti serviti.";
+        }
+
         disattivaElementiFineLivello.Invoke();
         PuntatoreMouse.abilitaCursore();
         disattivaObbiettiviETesto();
