@@ -35,7 +35,6 @@ public class Interactable : MonoBehaviour
         contenitoreCliente = this.gameObject;
         raggiuntoBancone = false;
         servito = false;
-        numeroCliente = 0;
         distruggi = false;
         modelloCliente3D = contenitoreCliente.transform.GetChild(0).gameObject;
 

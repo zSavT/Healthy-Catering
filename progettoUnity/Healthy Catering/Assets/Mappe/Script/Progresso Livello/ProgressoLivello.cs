@@ -283,6 +283,7 @@ public class ProgressoLivello : MonoBehaviour
             }
             
         }
+        Interactable.numeroCliente = 0;
         SelezioneLivelli.caricaMenuPrincipale();
     }
 
