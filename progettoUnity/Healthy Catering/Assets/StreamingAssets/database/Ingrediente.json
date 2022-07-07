@@ -607,10 +607,10 @@
         "idIngrediente": 47,
         "nome": "Tonno",
         "descrizione": "Thunnus South, 1845 è un genere della famiglia Scombridae che raggruppa otto specie di grandi pesci pelagici predatori, conosciuti comunemente come tonni.",
-        "costo": 1,
+        "costo": 2,
         "costoEco": 3,
         "nutriScore": 2,
-        "dieta": 0,
+        "dieta": 2,
         "listaIdPatologieCompatibili": [
             0,
             1
