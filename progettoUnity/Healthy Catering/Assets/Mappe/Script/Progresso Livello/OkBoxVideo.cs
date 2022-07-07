@@ -67,8 +67,8 @@ public class OkBoxVideo : MonoBehaviour
         "Controlla il <color=#B5D99C>magazzino</color> per tener d'occhio quali ingredienti sono disponibili per la realizzazione dei piatti. Servendo un piatto, diminuiscono nel magazzino le quantità di ingredienti che in esso figurano. Puoi verificare lo stato del magazzino dal <color=#B5D99C>PC</color> presente in <color=#B5D99C>ufficio</color> attraverso il programma “<color=#B5D99C>MyInventory</color>”. Ora raggiungi l'ufficio e controlla lo stato del magazzino.",
         "Per fare rifornimenti di ingredienti visita il negozio dove acquistare gli ingredienti necessari a realizzare altri piatti con i soldi guadagnati. Ora raggiungi il negozio e compra un ingrediente.",
         "Interagire con i <color=#B5D99C>passanti</color> in giro per la città ti permette di ottenere <color=#B5D99C>suggerimenti</color> utili per servire piatti migliori, sia dal punto di vista dell'affinità con le patologie che da quello del<color=#B5D99C> nutriScore</color> e del<color=#B5D99C> costoEco</color>. Ora prova a parlare con una persona.",
-        "Puoi utilizzare il ricettario quando vuoi ed in ogni punto della mappa, premi il tasto R per visualizzarlo",
-        "Puoi consultare il menu aiuto quando vuoi ed in ogni punto della mappa, premi il tasto H per visualizzarlo",
+        "Puoi utilizzare il ricettario quando vuoi ed in ogni punto della mappa, premi il tasto " + Utility.coloreVerde + "R " + Utility.fineColore + "per visualizzarlo.",
+        "Puoi consultare il menu aiuto quando vuoi ed in ogni punto della mappa, premi il tasto " + Utility.coloreVerde + "H " + Utility.fineColore + "per visualizzarlo.",
     };
 
     [SerializeField] private UnityEvent playerStop;
@@ -97,17 +97,29 @@ public class OkBoxVideo : MonoBehaviour
         titolo.text = "";
         testo.text = "";
         animazione = immagineOGIF.GetComponent<Animazione>();
-        /*
-        for (int i = 0; i < nomiAnimazioni.Count; i++)
-        {
-            cambiaImmagine(i);
-        }
-        */
+        WASDmostrato = false;
+        saltoMostrato = false;
+        sprintMostrato = false;
+        parlaZioMostrato = false;
+        vaiAlRistoranteMostrato = false;
+        meccanicheServireCompatibileMostrato = false;
+        meccanicheServireNonCompatibileMostrato = false;
+        finitiIngredientiMostrato = false;
+        doveEIlNegozioMostrato = false;
+        interazioneNPCMostrato = false;
+        apriRicettarioMostrato = false;
+        apriMenuAiutoMostrato = false;
+    /*
+    for (int i = 0; i < nomiAnimazioni.Count; i++)
+    {
+        cambiaImmagine(i);
     }
+    */
+}
 
     public void apriOkBoxVideo(int posizione)
     {
-        //pauseGame();
+        Interactor.menuApribile = false;
         pannello.SetActive(true);
         playerStop.Invoke();
         PuntatoreMouse.abilitaCursore();
@@ -134,8 +146,7 @@ public class OkBoxVideo : MonoBehaviour
 
         titolo.text = "";
         testo.text = "";
-
-        //resumeGame();
+        Interactor.menuApribile = true;
     }
 
     private void cambiaImmagine(int posizione)

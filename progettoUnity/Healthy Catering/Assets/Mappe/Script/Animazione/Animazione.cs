@@ -51,15 +51,8 @@ public class Animazione : MonoBehaviour
 
     void Start()
     {
-        foreach (string nome in nomiAnimazioniOkBoxVideo)
-        {
-            caricaAnimazione("immaginiOGifOkBoxVideo", nome, "default");
-        }
 
-        foreach (string nome in nomiAnimazioniMenuAiuto)
-        {
-            caricaAnimazione("immaginiAiuto", nome, "default");
-        }
+       
 
 
         image = GetComponent<Image>();
@@ -71,6 +64,17 @@ public class Animazione : MonoBehaviour
         duration = sprites.Count / 33; 
         image = GetComponent<Image>();
         */
+        
+        foreach (string nome in nomiAnimazioniOkBoxVideo)
+        {
+            caricaAnimazione("immaginiOGifOkBoxVideo", nome, "default");
+        }
+
+        foreach (string nome in nomiAnimazioniMenuAiuto)
+        {
+            caricaAnimazione("immaginiAiuto", nome, "default");
+        }
+        
     }
 
     private void Update()
@@ -100,7 +104,7 @@ public class Animazione : MonoBehaviour
             i++;
         }
 
-        duration = sprites.Count / 33;
+        duration = sprites.Count / 20;
 
         if (sprites.Count == 0)
         {

@@ -419,5 +419,27 @@
                 "quantita": 1
             }
         ]
+    },
+    {
+        "nome": "Pasta con tonno",
+        "descrizione": "La pasta al tonno \u00e8 un classico della cucina moderna veloce, uno dei primi piatti che si imparano a cucinare e quindi anche uno di quelli che gli appassionati smettono di cucinare, per passare a piatti più elaborati.",
+        "listaIdIngredientiQuantita": [
+            {
+                "oggetto": 47,
+                "quantita": 1
+            },
+            {
+                "oggetto": 34,
+                "quantita": 2
+            },
+            {
+                "oggetto": 0,
+                "quantita": 1
+            },
+            {
+                "oggetto": 12,
+                "quantita": 1
+            }
+        ]
     }
 ]

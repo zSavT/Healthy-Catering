@@ -17,7 +17,7 @@ public class Utility{
 
     public static float valoreAssoluto (float numero){
         if (numero < 0)
-            return numero - numero*2; // -2 --> -2 - (-2)*2 = -2 - (-4) = -2 + 4 = 2
+            return -numero;
         return numero;
     }
 

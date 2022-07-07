@@ -133,6 +133,7 @@ public class Player
 
     public void aggiungiDiminuisciPunteggio(bool affine, int nutriScore, float costoEco, int livello)
     {
+        Debug.Log(affine);
         float punteggioDaAggiungere;
         if (affine)
             punteggioDaAggiungere = 100;
@@ -141,8 +142,9 @@ public class Player
 
         punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Utility.valoreAssoluto(punteggioDaAggiungere), trovaPercentualeNutriScore(nutriScore));
         punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Utility.valoreAssoluto(punteggioDaAggiungere), trovaPercentualeEcoScore(costoEco));
-
+        Debug.Log(punteggioDaAggiungere);
         this.punteggio [livello] += (int)punteggioDaAggiungere;
+        Debug.Log(this.punteggio[livello]);
     }
 
     public float trovaPercentualeNutriScore(int nutriScore)

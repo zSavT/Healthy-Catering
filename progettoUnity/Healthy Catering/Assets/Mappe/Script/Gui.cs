@@ -27,7 +27,7 @@ public class Gui : MonoBehaviour
     public int CountFPS = 30;
     public float durata = 3f;
     public string formatoNumero = "N0";
-    private int valorePrecedentePunteggio;
+    private int valorePrecedentePunteggio = 0;
     private Coroutine CountingCoroutine;
 
 
@@ -77,6 +77,12 @@ public class Gui : MonoBehaviour
             main.maxParticles = (punteggio / 5)+5;
             animazionePunteggioPositiva.Play();
         }
+        valorePrecedentePunteggio = punteggio;
+    }
+
+    public void aggiornaValorePunteggioSenzaAnimazione(int punteggio)
+    {
+        punteggioTesto.text = punteggio.ToString();
         valorePrecedentePunteggio = punteggio;
     }
 

@@ -34,6 +34,9 @@ public class Interactable : MonoBehaviour
     {
         contenitoreCliente = this.gameObject;
         modelloCliente3D = contenitoreCliente.transform.GetChild(0).gameObject;
+
+        //Inizializza il controller
+        agent = GetComponent<NavMeshAgent>();
         SetMaterialTransparent();
 
         StartCoroutine(attendi(2f));
@@ -43,14 +46,17 @@ public class Interactable : MonoBehaviour
         effettoPositivo.Stop();
         effettoNegativo.Stop();
 
-        //Inizializza il controller
-        agent = GetComponent<NavMeshAgent>();
         
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            suonoVocePositio.Play();
+        }
         //Controllo della distanza minima per considerare il waypoint raggiunto, in caso positivo si
         if (Vector3.Distance(transform.position, target) < 0.5f)
         {
