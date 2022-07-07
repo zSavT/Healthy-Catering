@@ -19,8 +19,9 @@ public class PannelloMenu : MonoBehaviour
     [SerializeField] private GameObject pannelloMenu;
     [SerializeField] private GameObject pannelloCliente;
 
-    [SerializeField] private GameObject bottonePiatto; //= GameObject.FindGameObjectWithTag("BottonePiatto");
-    [SerializeField] private GameObject pannelloPiatti; //= GameObject.FindGameObjectWithTag("PannelloPiatti");
+    [SerializeField] private GameObject bottonePiatto; 
+    [SerializeField] private GameObject pannelloPiatti;
+    private bool pannelloMenuAperto;
 
     [Header("Pannello ingredienti piatto")]
     [SerializeField] private GameObject pannelloIngredientiPiatto;
@@ -94,10 +95,17 @@ public class PannelloMenu : MonoBehaviour
     {
         pannelloMenu.SetActive(false);
         pannelloCliente.SetActive(false);
+        pannelloMenuAperto = false;
+    }
+
+    public bool getPannelloMenuClienteAperto()
+    {
+        return pannelloMenuAperto;
     }
 
     public void apriPannelloMenuCliente()
     {
+        pannelloMenuAperto = true;
         pannelloPrincipaleMenuCliente.SetActive(true);
         apriMenuCliente();
     }
@@ -248,6 +256,7 @@ public class PannelloMenu : MonoBehaviour
         }
         livelloProgresso.servitoCliente(giocatore.punteggio[PlayerSettings.livelloSelezionato]);
         animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
+        Debug.Log(giocatore.punteggio[0]);
         aggiornaBottoniPiatti();
     }
 

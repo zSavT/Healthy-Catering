@@ -10,8 +10,8 @@ using UnityEngine.UI;
 /// </summary>
 public class ProgressoTutorial : MonoBehaviour
 {
-    private bool inTutorial;
-
+    public static bool inTutorial;
+    [SerializeField] private Gui guiInGame;
     [Header("Video tutorial")]
     [SerializeField] private GameObject canvasVideoTutorial;
 
@@ -43,6 +43,7 @@ public class ProgressoTutorial : MonoBehaviour
     private void Start()
     {
         inTutorial = true;
+        saGiocareSettato = false;
         canvasVideoTutorial.SetActive(true);
         //le disattivo per attivarle solo nel momento opportuno - Questi elementi sono nel loro specifico pannello, che va attivato poi quando serve.
         attivaObbiettiviTutorial();
@@ -58,7 +59,9 @@ public class ProgressoTutorial : MonoBehaviour
             "Servi un piatto non idoneo al <color=#B5D99C>cliente</color>.",
             "Controlla il <color=#B5D99C>Magazzino</color>.",
             "Compra <color=#B5D99C>Ingredienti</color> dal negozio.",
-            "Chiedi informazioni alle <color=#B5D99C>Persone</color>."
+            "Chiedi informazioni alle <color=#B5D99C>Persone</color>.",
+            "Apri il ricettario con il tasto " + Utility.coloreVerde + "R" + Utility.fineColore + ".",
+            "Apri il menu aiuto con il tasto " + Utility.coloreVerde + "H" + Utility.fineColore + "."
         };
 
         numeroScritteMostrate = 0;
@@ -165,6 +168,7 @@ public class ProgressoTutorial : MonoBehaviour
                         if (giocatore != null)
                             if (CheckTutorial.checkServitoPiattoCompatibile(giocatore))
                             {
+                                guiInGame.aggiornaValorePunteggioSenzaAnimazione(giocatore.punteggio[0]);
                                 giocatore.setInventarioLivello(0.5);
                                 numeroScritteMostrate++;
                             }
@@ -181,6 +185,7 @@ public class ProgressoTutorial : MonoBehaviour
                         if (giocatore != null)
                             if (CheckTutorial.checkServitoPiattoNonCompatibile(giocatore))
                             {
+                                guiInGame.aggiornaValorePunteggioSenzaAnimazione(giocatore.punteggio[0]);
                                 numeroScritteMostrate++;
                             }
                 }
@@ -224,12 +229,34 @@ public class ProgressoTutorial : MonoBehaviour
 
                     if (CheckTutorial.checkParlatoConNPC())
                     {
+                        Ricettario.apertoRicettario = false;
                         numeroScritteMostrate++;
-                        finitoTutorial = true;
                     }
+                }
+                else if (numeroScritteMostrate == 10)
+                {
+                    if (!OkBoxVideo.apriRicettarioMostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.apriRicettario);
+                        OkBoxVideo.apriRicettarioMostrato = true;
+                    }
+
+                    if (CheckTutorial.checkMostratoRicettario()) { MenuAiuto.apertoMenuAiuto = false; numeroScritteMostrate++; };
+                }
+                else if (numeroScritteMostrate == 11)
+                {
+
+                    if (!OkBoxVideo.apriMenuAiutoMostrato)
+                    {
+                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.apriMenuAiuto);
+                        OkBoxVideo.apriMenuAiutoMostrato = true;
+                    }
+
+                    if (CheckTutorial.checkMostratoMenuAiuto()) { numeroScritteMostrate++; };
                 }
                 else
                 {
+                    finitoTutorial = true;
                     setObiettivoTesto("");//resetto il testo dell'obbiettivo 
                 }
             }

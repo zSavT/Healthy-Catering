@@ -46,6 +46,7 @@ public class ProgressoLivello : MonoBehaviour
     [SerializeField] private TextMeshProUGUI valorePunteggioPlayer;
     [SerializeField] private TextMeshProUGUI titoloSchermataFineLivello;
     [SerializeField] private AudioSource suonoVittoria;
+    private bool gameOverMaxClienti;
     public UnityEvent disattivaElementiFineLivello;
     [Header("GameOver")]
     public int numeroDiClientiMassimi = 10;
@@ -65,12 +66,13 @@ public class ProgressoLivello : MonoBehaviour
         //Se il livello � il livello tutorial la schermata obbiettivi non si attiva (da attivare successivamente)
         if (PlayerSettings.livelloSelezionato != 0)
         {
+            disattivaObbiettiviETesto();
             attivaPannelloRiepiloghiObbiettivi();
         } else
         {
             disattivaSoloObbiettivi();
         }
-        
+        punteggioPlayer = 0;
     }
 
     private void Update()
@@ -79,10 +81,6 @@ public class ProgressoLivello : MonoBehaviour
         if(obbiettiviRaggiunti())
         {
             attivazioneSchermataFineLivello();
-        }
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            numeroClientiServiti = numeroDiClientiMassimi;
         }
         controlloGameOver();
     }
@@ -101,6 +99,10 @@ public class ProgressoLivello : MonoBehaviour
         PuntatoreMouse.disabilitaCursore();
         pannelloObbiettiviInizioLivello.SetActive(false);
         attivaSoloObbiettivi();
+        if(PlayerSettings.livelloSelezionato == 0)
+        {
+            punteggioPlayer = giocatore.punteggio[0];
+        }
         valoriInizialiTesto();
     }
 
@@ -151,7 +153,7 @@ public class ProgressoLivello : MonoBehaviour
     {
         testoObbietivo1 = "Servire " + numeroClientiDaServire + " clienti. Clienti serviti: " + numeroClientiServiti + "/" + numeroClientiDaServire;
         obbiettivoUno.text = testoObbietivo1;
-        testoObbietivo2 = "Raggiungi un punteggio pari a " + punteggioMassimo + ". Punteggio attuale " + 0 + "/" + punteggioMassimo;
+        testoObbietivo2 = "Raggiungi un punteggio pari a " + punteggioMassimo + ". Punteggio attuale " + punteggioPlayer + "/" + punteggioMassimo;
         obbiettivoDue.text = testoObbietivo2;
     }
 
@@ -215,7 +217,15 @@ public class ProgressoLivello : MonoBehaviour
     {
         schermataFineLivello.SetActive(true);
         valorePunteggioPlayer.gameObject.SetActive(true);
-        valorePunteggioPlayer.text = "Punteggio raggiunto: " + punteggioPlayer.ToString();
+        
+        if( (soldiFiniti() && !giocatore.piattiRealizzabiliConInventario()) )
+        {
+            valorePunteggioPlayer.text = "Punteggio raggiunto: " + punteggioPlayer.ToString() + "\nHai perso perchè il tuo inventario è vuoto e il denaro è sotto il valore di " + minimoSoldi + ".";
+        } else
+        {
+            valorePunteggioPlayer.text = "Punteggio raggiunto: " + punteggioPlayer.ToString() + "\nHai perso perchè non hai raggiunto l'obbiettivo del punteggio entro i " + numeroDiClientiMassimi + " clienti serviti.";
+        }
+
         disattivaElementiFineLivello.Invoke();
         PuntatoreMouse.abilitaCursore();
         disattivaObbiettiviETesto();
@@ -262,7 +272,14 @@ public class ProgressoLivello : MonoBehaviour
         if(gameOver == false)
         {
             Database.aggiornaDatabaseOggetto(aggiornaGiocatore());
-            PlayerSettings.salvaProgressoLivello1(true);
+            if(PlayerSettings.livelloSelezionato == 0)
+            {
+                PlayerSettings.salvaProgressoLivello1(true);
+            } else if (PlayerSettings.livelloSelezionato == 1)
+            {
+                PlayerSettings.salvaProgressoLivello2(true);
+            }
+            
         }
         SelezioneLivelli.caricaMenuPrincipale();
     }

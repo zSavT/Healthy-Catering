@@ -114,7 +114,7 @@ public class Piatto
             int posizioneNellaListaMigliori;
 
             output = costoBase;
-            output += Utility.calcolaCostoPercentuale(costoBase, 5);
+            output += Utility.calcolaCostoPercentuale(costoBase, 7);
             
             posizioneNellaListaMigliori = this.getListaAffinitaOrdinata ().IndexOf(this);
             if (posizioneNellaListaMigliori == 0 ||posizioneNellaListaMigliori == 1 || posizioneNellaListaMigliori == 2){

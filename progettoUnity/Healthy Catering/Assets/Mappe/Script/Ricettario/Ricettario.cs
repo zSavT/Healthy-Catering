@@ -28,6 +28,8 @@ public class Ricettario : MonoBehaviour
 
     private bool visualizzazioneNormale = true;
 
+    public static bool apertoRicettario = false;//TUTORIAL
+
     private void Start()
     {
         chiudiRicettario();
@@ -195,6 +197,8 @@ public class Ricettario : MonoBehaviour
         switchToPiattiView();
 
         ricettarioAperto = true;
+
+        apertoRicettario = true;//TUTORIAL
     }
 
     public void chiudiRicettario()
