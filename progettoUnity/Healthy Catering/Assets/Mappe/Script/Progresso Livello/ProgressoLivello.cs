@@ -263,7 +263,14 @@ public class ProgressoLivello : MonoBehaviour
         if(gameOver == false)
         {
             Database.aggiornaDatabaseOggetto(aggiornaGiocatore());
-            PlayerSettings.salvaProgressoLivello1(true);
+            if(PlayerSettings.livelloSelezionato == 0)
+            {
+                PlayerSettings.salvaProgressoLivello1(true);
+            } else if (PlayerSettings.livelloSelezionato == 1)
+            {
+                PlayerSettings.salvaProgressoLivello2(true);
+            }
+            
         }
         SelezioneLivelli.caricaMenuPrincipale();
     }
