@@ -7,12 +7,12 @@ public class Interactable : MonoBehaviour
 {
     public int IDCliente;
     private Animator controllerAnimazione;
-    [SerializeField] private ParticleSystem effettoPositivo;
-    [SerializeField] private ParticleSystem effettoNegativo;
+     private ParticleSystem effettoPositivo;
+     private ParticleSystem effettoNegativo;
     private GameObject contenitoreCliente;
     private GameObject modelloCliente3D;           //assicurarsi che il modello 3d sia il primo figlio del contenitore
     [SerializeField] private GestoreClienti gestioneCliente;
-    [SerializeField] private AudioSource suonoContento;
+     private AudioSource suonoContento;
     [SerializeField] private AudioSource suonoVocePositio;
 
 
@@ -42,6 +42,9 @@ public class Interactable : MonoBehaviour
         distruggi = false;
         durataAnimazione = 0;
         modelloCliente3D = contenitoreCliente.transform.GetChild(0).gameObject;
+        effettoNegativo = contenitoreCliente.GetComponentsInChildren<ParticleSystem>()[0];
+        effettoPositivo = contenitoreCliente.GetComponentsInChildren<ParticleSystem>()[1];
+        suonoContento = contenitoreCliente.GetComponentsInChildren<AudioSource>()[0];
 
         //Inizializza il controller
         agent = GetComponent<NavMeshAgent>();
@@ -207,6 +210,7 @@ public class Interactable : MonoBehaviour
     /// </summary>
     public void animazioneContenta()
     {
+        durataAnimazione = 2.917f;
         controllerAnimazione.SetBool("servito", true);
         controllerAnimazione.SetBool("affinitaPatologiePiatto", true);
         controllerAnimazione.SetBool("affinitaDietaPiatto", true);
@@ -214,7 +218,6 @@ public class Interactable : MonoBehaviour
         servito = true;
         suonoContento.Play();
         suonoVocePositio.PlayDelayed(0.1f);
-        durataAnimazione = 2.917f;
     }
 
 
@@ -223,13 +226,13 @@ public class Interactable : MonoBehaviour
     /// </summary>
     public void animazioneScontenta()
     {
+        durataAnimazione = 6.517f;
         controllerAnimazione.SetBool("servito", true);
         controllerAnimazione.SetBool("affinitaPatologiePiatto", false);
         controllerAnimazione.SetBool("affinitaDietaPiatto", false);
         effettoNegativo.Play();
         
         servito = true;
-        durataAnimazione = 6.517f;
     }
 
 
