@@ -367,7 +367,7 @@ public class PannelloNegozio : MonoBehaviour
             compratoIngredientePerTutorial = true;
         }
 
-        soldiGiocatore.text = "Soldi " + giocatore.nome + ": " + giocatore.soldi;
+        soldiGiocatore.text = "Denaro: " + giocatore.soldi;
 
         chiudiPannelloSeiSicuro();
     }
@@ -411,7 +411,7 @@ public class PannelloNegozio : MonoBehaviour
         aggiornaBottoniPaginaCarosello();
         chiudiPannelloSeiSicuro();
 
-        soldiGiocatore.text = "Soldi " + giocatore.nome + ": " + giocatore.soldi; 
+        soldiGiocatore.text = "Denaro: " + giocatore.soldi; 
     }
 
     public void chiudiPannelloNegozio()

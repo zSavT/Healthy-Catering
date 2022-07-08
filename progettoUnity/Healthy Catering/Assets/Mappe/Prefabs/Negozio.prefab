@@ -1362,6 +1362,7 @@ MonoBehaviour:
   bottoneAvantiPannelloNegozio: {fileID: 2063133329}
   bottoneIndietroPannelloNegozio: {fileID: 1671942583}
   guiInGame: {fileID: 0}
+  soldiGiocatore: {fileID: 3508197763516560095}
   pannelloSeiSicuro: {fileID: 808672222}
   testoPannelloSeiSicuro: {fileID: 384304166}
 --- !u!1 &581568307
@@ -5344,8 +5345,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -653.151, y: -465.56}
-  m_SizeDelta: {x: 485.697, y: 80.872}
+  m_AnchoredPosition: {x: -692.527, y: -481}
+  m_SizeDelta: {x: 406.944, y: 49.996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3400159523945640957
 CanvasRenderer:
@@ -5402,7 +5403,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 69
+  m_fontSize: 42.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
