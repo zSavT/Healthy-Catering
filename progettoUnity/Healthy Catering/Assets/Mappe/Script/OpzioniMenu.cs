@@ -64,9 +64,19 @@ public class OpzioniMenu : MonoBehaviour
             }
         }
         risoluzioniDisponibili.AddOptions(opzioni);
-        risoluzioniDisponibili.value = PlayerSettings.caricaImpostazioniRisoluzione();
-        risoluzioniDisponibili.RefreshShownValue();
-        risoluzioniDisponibili.value = PlayerSettings.caricaImpostazioniRisoluzione();
+        if(PlayerSettings.caricaImpostazioniPrimoAvvioRisoluzione()==0)
+        {
+            risoluzioniDisponibili.value = indiceRisoluzioneCorrente;
+            risoluzioniDisponibili.RefreshShownValue();
+            PlayerSettings.salvaImpostazioniPrimoAvvioRisoluzione(1);
+            risoluzioniDisponibili.value = indiceRisoluzioneCorrente;
+        } else
+        {
+            risoluzioniDisponibili.value = PlayerSettings.caricaImpostazioniRisoluzione();
+            risoluzioniDisponibili.RefreshShownValue();
+            risoluzioniDisponibili.value = PlayerSettings.caricaImpostazioniRisoluzione();
+        }
+        
 
         //GRAFICA
         livelloGrafica.value = QualitySettings.GetQualityLevel();
