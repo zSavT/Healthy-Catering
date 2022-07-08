@@ -44,6 +44,7 @@ public class PannelloNegozio : MonoBehaviour
 
     [SerializeField] private GameObject pannelloSeiSicuro;
     [SerializeField] private TextMeshProUGUI testoPannelloSeiSicuro;
+    private bool pannelloConfermaAperto = false;
     private Ingrediente ingredienteAttualmenteSelezionato;
     private int quantitaAttualmenteSelezionata;
     public static bool compratoIngredientePerTutorial = false;
@@ -325,6 +326,8 @@ public class PannelloNegozio : MonoBehaviour
     {
         testoPannelloSeiSicuro.text = "Sei sicuro di voler comprare x" + quantitaAttualmenteSelezionata.ToString() + "\n" + Utility.coloreIngredienti + ingredienteAttualmenteSelezionato.nome + Utility.fineColore;
         pannelloSeiSicuro.SetActive(true);
+        
+        pannelloConfermaAperto = true;
     }
 
     private Button modificaImmagineIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
@@ -394,6 +397,8 @@ public class PannelloNegozio : MonoBehaviour
             {
                 attivaDisattivaBottoneCompra(ingrediente, 0);
             }
+
+        pannelloConfermaAperto = false;
     }
 
     //GESTIONE PANNELLO E RELATIVI
@@ -419,6 +424,11 @@ public class PannelloNegozio : MonoBehaviour
     public bool getPannelloAperto()
     {
         return pannelloAperto;
+    }
+
+    public bool getPannelloConfermaAperto()
+    {
+        return pannelloConfermaAperto;
     }
 
     public void animazioneNPCInquadrato()

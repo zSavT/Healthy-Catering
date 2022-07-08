@@ -213,7 +213,7 @@ public class Interactor : MonoBehaviour
                     }
                 } 
             }
-            if(negozio.getPannelloAperto())
+            if(negozio.getPannelloAperto() && !negozio.getPannelloConfermaAperto ())
             {
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
