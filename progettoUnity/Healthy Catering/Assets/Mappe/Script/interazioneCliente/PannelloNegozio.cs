@@ -40,6 +40,7 @@ public class PannelloNegozio : MonoBehaviour
     private int ultimaPaginaPossibile;
 
     private Player giocatore;
+    [SerializeField] private TextMeshProUGUI soldiGiocatore;
 
     [SerializeField] private GameObject pannelloSeiSicuro;
     [SerializeField] private TextMeshProUGUI testoPannelloSeiSicuro;
@@ -362,6 +363,9 @@ public class PannelloNegozio : MonoBehaviour
             resetQuantitaTuttiBottoni();
             compratoIngredientePerTutorial = true;
         }
+
+        soldiGiocatore.text = "Soldi " + giocatore.nome + ": " + giocatore.soldi;
+
         chiudiPannelloSeiSicuro();
     }
 
@@ -401,6 +405,8 @@ public class PannelloNegozio : MonoBehaviour
         canvasPannelloNegozio.SetActive(true);
         aggiornaBottoniPaginaCarosello();
         chiudiPannelloSeiSicuro();
+
+        soldiGiocatore.text = "Soldi " + giocatore.nome + ": " + giocatore.soldi; 
     }
 
     public void chiudiPannelloNegozio()
