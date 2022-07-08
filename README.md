@@ -78,6 +78,8 @@ Il controllo qualità dei testi presenti nel gioco è stato eseguito da Vincenzo
 
 ![Creazione Profilo Utente](doc/img/Screenshoot/CreazioneProfiloUtente.PNG "Creazione profilo utente")
 
+![Selezione Profilo Utente](doc/img/Screenshoot/SelezioneProfiloUtente.PNG "Selezione profilo utente")
+
 ![Selezione Livelli](doc/img/Screenshoot/SelezioneLivelli.png "Selezione Livelli")
 
 ![Classifica](doc/img/Screenshoot/Classifica.png "Classifica")
