@@ -297,6 +297,11 @@ public class PlayerSettings : MonoBehaviour
         return PlayerPrefs.GetInt("risoluzionePrimoAvvio");
     }
 
+    public static void salvaImpostazioniPrimoAvvioRisoluzione(int val)
+    {
+        PlayerPrefs.SetInt("risoluzionePrimoAvvio", val);
+    }
+
     //IMPOSTAZIONI DALTONISMO
 
     /// <summary>
