@@ -76,7 +76,7 @@ public class MenuAiuto : MonoBehaviour
         testoNumeroPannelloAttuale.text = 1.ToString();
 
         gestisciBottoniAvantiDietro(ultimaPosizione);
-
+        ultimaPosizione = 0;
         animazione = immagineSchermata.GetComponent<Animazione>();
         /*
         for (int i = 0; i < nomiAnimazioni.Count; i++)

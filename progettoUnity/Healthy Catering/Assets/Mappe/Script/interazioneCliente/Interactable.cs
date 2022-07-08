@@ -7,12 +7,12 @@ public class Interactable : MonoBehaviour
 {
     public int IDCliente;
     private Animator controllerAnimazione;
-     private ParticleSystem effettoPositivo;
-     private ParticleSystem effettoNegativo;
+    private ParticleSystem effettoPositivo;
+    private ParticleSystem effettoNegativo;
     private GameObject contenitoreCliente;
     private GameObject modelloCliente3D;           //assicurarsi che il modello 3d sia il primo figlio del contenitore
     [SerializeField] private GestoreClienti gestioneCliente;
-     private AudioSource suonoContento;
+    private AudioSource suonoContento;
     [SerializeField] private AudioSource suonoVocePositio;
 
 
