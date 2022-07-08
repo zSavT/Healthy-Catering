@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
+using UnityEngine.UI;
 
 /// <summary>
 /// Classe per la gestione delle impostazioni presenti nel menu in Game.<para>
@@ -15,6 +17,14 @@ public class MenuInGame : MonoBehaviour
     [SerializeField] private MenuAiuto menuAiuto;
     [SerializeField] private UnityEvent aperturaMenuGioco;
     [SerializeField] private UnityEvent chiusuraMenuGioco;
+    [Header("Elementi")]
+    [SerializeField] private TextMeshProUGUI testoUscita;
+    [SerializeField] private Button tastoGraficaAudio;
+    [SerializeField] private Button tastoImpostazioniControlli;
+    [SerializeField] private GameObject impostazioniControlli;
+    [SerializeField] private GameObject impostazioniGraficaAudio;
+    [SerializeField] private Button tornaIndietro;
+    [SerializeField] private GameObject elementiUscita;
     private bool giocoInPausa = false;
     private bool menuApribile;
     
@@ -26,12 +36,24 @@ public class MenuInGame : MonoBehaviour
         giocoInPausa = false;
         menuApribile = true;
         menuPausa.SetActive(false);
+        attivaElementiIniziali();
     }
 
     // Update is called once per frame
     void Update()
     {
         checkTastoMenu();
+    }
+
+    private void attivaElementiIniziali()
+    {
+        testoUscita.gameObject.SetActive(true);
+        tastoGraficaAudio.gameObject.SetActive(true);
+        tastoImpostazioniControlli.gameObject.SetActive(true);
+        impostazioniControlli.SetActive(false);
+        impostazioniGraficaAudio.SetActive(true);
+        tornaIndietro.gameObject.SetActive(true);
+        elementiUscita.SetActive(false);
     }
 
     /// <summary>
