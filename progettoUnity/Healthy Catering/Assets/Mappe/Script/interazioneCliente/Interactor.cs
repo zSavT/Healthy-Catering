@@ -41,6 +41,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private LayerMask layerUnityTeleport = 9;
     public Transform destinazioneTeleport;
     [SerializeField] private Transform posizioneInizialePlayer;
+    public static bool nelRistorante = false;
 
     [Header("Eventi")]
     public UnityEvent playerStop;
@@ -63,13 +64,18 @@ public class Interactor : MonoBehaviour
 
     void Start()
     {
+        nelRistorante = false;
         this.gameObject.transform.position = posizioneInizialePlayer.transform.position;
         try
         {
             giocatore = Database.getPlayerDaNome(PlayerSettings.caricaNomePlayerGiocante());
             giocatore.punteggio[livelloAttuale] = 0;
             if (livelloAttuale == 0)
-                giocatore.soldi = 10f;
+            {
+                livelloAttuale = PlayerSettings.livelloSelezionato;
+                giocatore.setInventarioLivello(livelloAttuale);
+                giocatore.soldi = 15f;
+            }     
             else
                 giocatore.soldi = 30f;
             guiInGame.aggiornaValoreSoldi(giocatore.soldi);
@@ -85,8 +91,6 @@ public class Interactor : MonoBehaviour
         posizioneCameraOriginale = mainCamera.transform.position;
         menuApribile = true;
         progresso.setGiocatore(giocatore);
-        livelloAttuale = PlayerSettings.livelloSelezionato;
-        giocatore.setInventarioLivello(livelloAttuale);
     }
 
     void Update()
@@ -183,6 +187,8 @@ public class Interactor : MonoBehaviour
                 {
                     suonoNegozio.Play();
                     this.gameObject.transform.position = destinazioneTeleport.transform.position;
+                    nelRistorante = !nelRistorante;
+                    Debug.Log(nelRistorante);
                 }
             } else if (Input.GetKeyDown(testoRicettario) && !(negozio.getPannelloAperto()) && !pannelloMenuCliente.getPannelloMenuClienteAperto() && !ricettarioScript.getRicettarioAperto() && !menuAiuto.getPannelloMenuAiutoAperto())
             {

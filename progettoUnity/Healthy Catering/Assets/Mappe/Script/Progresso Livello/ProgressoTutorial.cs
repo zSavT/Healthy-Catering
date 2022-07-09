@@ -221,9 +221,13 @@ public class ProgressoTutorial : MonoBehaviour
                     if (!OkBoxVideo.doveEIlNegozioMostrato)
                     {
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.doveEIlNegozio);
-                    } else
+                    }
+                    if(!Interactor.nelRistorante && OkBoxVideo.doveEIlNegozioMostrato)
                     {
                         indicatoreDistanza.setTarget("negozio");
+                    } else
+                    {
+                        indicatoreDistanza.setTarget("reset");
                     }
                     if (CheckTutorial.checkIsNelNegozio()) //TODO implementazione
                         if (CheckTutorial.checkCompratiIngredienti(giocatore)) { numeroScritteMostrate++; };
