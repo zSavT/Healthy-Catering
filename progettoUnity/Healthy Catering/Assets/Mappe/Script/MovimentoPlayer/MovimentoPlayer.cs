@@ -261,7 +261,7 @@ public class MovimentoPlayer : MonoBehaviour
     /// <summary>
     /// Avvia le animazioni dell'idle.
     /// </summary>
-    private void idle()
+    public void idle()
     {
         controllerAnimazione.SetBool("fermo", true);
         controllerAnimazione.SetBool("cammina", false);
