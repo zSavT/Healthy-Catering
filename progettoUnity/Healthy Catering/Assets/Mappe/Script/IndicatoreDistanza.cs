@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class IndicatoreDistanza : MonoBehaviour
 {
+    [SerializeField] private GameObject pannelloWayPoint;
+
     // Indicator icon
     [SerializeField] private Image img;
     // The target (location, enemy, etc..)
@@ -19,6 +21,11 @@ public class IndicatoreDistanza : MonoBehaviour
     [SerializeField] private TextMeshProUGUI meter;
     // To adjust the position of the icon
     public Vector3 offset;
+
+    private void Start()
+    {
+        disattivaWayPoint();
+    }
 
     private void Update()
     {
@@ -68,6 +75,7 @@ public class IndicatoreDistanza : MonoBehaviour
 
     public void setTarget (string cosa)
     {
+        attivaWayPoint();
         if (cosa.Equals("zio"))
         {
             target = posizioneZio;
@@ -83,6 +91,17 @@ public class IndicatoreDistanza : MonoBehaviour
         else
         {
             target = null;
+            disattivaWayPoint();
         }
+    }
+
+    private void attivaWayPoint()
+    {
+        pannelloWayPoint.SetActive(true);
+    }
+
+    private void disattivaWayPoint()
+    {
+        pannelloWayPoint.SetActive(false);
     }
 }
