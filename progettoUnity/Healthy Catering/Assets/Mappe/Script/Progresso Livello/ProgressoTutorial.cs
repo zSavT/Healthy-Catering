@@ -39,7 +39,7 @@ public class ProgressoTutorial : MonoBehaviour
     private int siOno = 0;
     [SerializeField] private MovimentoPlayer moviemnto;
 
-
+    [SerializeField] IndicatoreDistanza indicatoreDistanza;
     private void Start()
     {
         inTutorial = true;
@@ -67,7 +67,6 @@ public class ProgressoTutorial : MonoBehaviour
         numeroScritteMostrate = 0;
 
         finitoTutorial = false;
-
     }
 
     private void Update()
@@ -139,6 +138,8 @@ public class ProgressoTutorial : MonoBehaviour
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.parlaZio);
                         OkBoxVideo.parlaZioMostrato = true;
                         InterazionePassanti.parlatoConZio = false;
+
+                        indicatoreDistanza.setTarget("zio");
                     }
                     if (CheckTutorial.checkParlaConZio()) { numeroScritteMostrate++; }
                 }
@@ -148,6 +149,8 @@ public class ProgressoTutorial : MonoBehaviour
                     {
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.vaiAlRistorante);
                         OkBoxVideo.vaiAlRistoranteMostrato = true;
+
+                        indicatoreDistanza.setTarget("ristorante");
                     }
 
                     if (CheckTutorial.checkVaiRistorante())
@@ -162,6 +165,8 @@ public class ProgressoTutorial : MonoBehaviour
                     {
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.meccanicheServireCompatibile);
                         OkBoxVideo.meccanicheServireCompatibileMostrato = true;
+
+                        indicatoreDistanza.setTarget("reset");
                     }
 
                     if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
@@ -214,6 +219,8 @@ public class ProgressoTutorial : MonoBehaviour
                     {
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.doveEIlNegozio);
                         OkBoxVideo.doveEIlNegozioMostrato = true;
+
+                        indicatoreDistanza.setTarget("negozio");
                     }
 
                     if (CheckTutorial.checkIsNelNegozio()) //TODO implementazione
@@ -225,6 +232,8 @@ public class ProgressoTutorial : MonoBehaviour
                     {
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.interazioneNPC);
                         OkBoxVideo.interazioneNPCMostrato = true;
+
+                        indicatoreDistanza.setTarget("reset");
                     }
 
                     if (CheckTutorial.checkParlatoConNPC())

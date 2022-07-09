@@ -20,11 +20,6 @@ public class IndicatoreDistanza : MonoBehaviour
     // To adjust the position of the icon
     public Vector3 offset;
 
-    private void Start()
-    {
-        setTarget("negozio");
-    }
-
     private void Update()
     {
         if (target != null)
