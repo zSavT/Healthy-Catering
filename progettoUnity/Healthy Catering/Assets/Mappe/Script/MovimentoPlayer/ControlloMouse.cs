@@ -70,12 +70,6 @@ public class ControlloMouse : MonoBehaviour
         cameraGioco.transform.position = posizioneCameraIniziale.transform.position;
     }
 
-    public void attivaMovimento()
-    {
-        puoCambiareVisuale = true;
-    }
-
-
     /// <summary>
     /// Metodo che calcola la posizione della camera in base al fov.
     /// </summary>
@@ -94,6 +88,13 @@ public class ControlloMouse : MonoBehaviour
         this.puoCambiareVisuale = false;
     }
 
+    /// <summary>
+    /// Attiva il movimento della visuale del giocatore
+    /// </summary>
+    public void attivaMovimento()
+    {
+        this.puoCambiareVisuale = true;
+    }
 
 
     /// <summary>

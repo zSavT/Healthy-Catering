@@ -56,7 +56,8 @@ public class InterazionePassanti : MonoBehaviour
         pannelloInterazionePassantiAperto = false;
         
         getTutteLeScritteInterazione();
-
+        parlatoConZio = false;
+        parlatoConNPC = false;
         bottoneAvanti.onClick.AddListener(mostraProssimaScrittaDaMostrateOra);
     }
 

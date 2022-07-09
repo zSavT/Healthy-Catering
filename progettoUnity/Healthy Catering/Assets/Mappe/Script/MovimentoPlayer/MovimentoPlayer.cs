@@ -82,9 +82,20 @@ public class MovimentoPlayer : MonoBehaviour
         lockUnlockMovimento.Invoke();
     }
 
+    /// <summary>
+    /// Blocca la possibilità di muoversi del player
+    /// </summary>
     public void bloccaMovimento()
     {
         this.puoMuoversi = false;
+    }
+
+    /// <summary>
+    /// Permette al player di potersi muovere
+    /// </summary>
+    public void sbloccaMovimento()
+    {
+        this.puoMuoversi = true;
     }
 
     /// <summary>

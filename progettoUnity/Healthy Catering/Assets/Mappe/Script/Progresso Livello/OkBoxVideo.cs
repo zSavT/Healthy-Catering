@@ -37,7 +37,7 @@ public class OkBoxVideo : MonoBehaviour
     public static bool interazioneNPCMostrato = false;
     public static bool apriRicettarioMostrato = false;
     public static bool apriMenuAiutoMostrato = false;
-    private int indiceCorrente = 0;
+    public static int indiceCorrente = 0;
 
 
     List<string> titoli = new List<string>
@@ -121,9 +121,10 @@ public class OkBoxVideo : MonoBehaviour
 
     public void apriOkBoxVideo(int posizione)
     {
+        playerStop.Invoke();
+        indiceCorrente = posizione;
         Interactor.menuApribile = false;
         pannello.SetActive(true);
-        playerStop.Invoke();
         PuntatoreMouse.abilitaCursore();
         CambioCursore.cambioCursoreNormale();
 
@@ -138,7 +139,6 @@ public class OkBoxVideo : MonoBehaviour
             testo.text = "";
         }
         cambiaImmagine(posizione);
-        indiceCorrente = posizione;
     }
 
     public void chiudiOkBoxVideo()
@@ -167,21 +167,5 @@ public class OkBoxVideo : MonoBehaviour
     private void cambiaImmagine(int posizione)
     {
         animazione.caricaAnimazione("immaginiOGifOkBoxVideo", nomiAnimazioni [posizione], "default");
-    }
-
-    /// <summary>
-    /// Metodo per ripristinare lo scorrere del tempo in gioco
-    /// </summary>
-    void resumeGame()
-    {
-        Time.timeScale = 1f; //sblocca il tempo
-    }
-
-    /// <summary>
-    /// Metodo per bloccare lo scorrere del tempo in gioco.
-    /// </summary>
-    void pauseGame()
-    {
-        Time.timeScale = 0f; //blocca il tempo
     }
 }

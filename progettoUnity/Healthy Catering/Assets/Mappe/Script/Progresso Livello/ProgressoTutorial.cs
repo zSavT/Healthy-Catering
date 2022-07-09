@@ -78,7 +78,10 @@ public class ProgressoTutorial : MonoBehaviour
                 siOno = PlayerSaGiocareFPS.getSiOno();
 
                 if (siOno == 1)
+                {
                     numeroScritteMostrate = posizioneScritteDaMostrareSaGiocare;
+                    OkBoxVideo.indiceCorrente = posizioneScritteDaMostrareSaGiocare;
+                }
                 else if (siOno == -1)
                     numeroScritteMostrate = 0;
 

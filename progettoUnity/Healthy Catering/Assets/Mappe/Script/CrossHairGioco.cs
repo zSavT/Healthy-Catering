@@ -45,4 +45,21 @@ public class CrossHairGioco : MonoBehaviour
     {
         crossHair.enabled = !crossHair.enabled;
     }
+
+
+    /// <summary>
+    /// Attiva il puntatore
+    /// </summary>
+    public void attivaPuntatore()
+    {
+        crossHair.enabled = true;
+    }
+
+    /// <summary>
+    /// Disattiva il puntatore
+    /// </summary>
+    public void disattivaPuntatore()
+    {
+        crossHair.enabled = false;
+    }
 }
