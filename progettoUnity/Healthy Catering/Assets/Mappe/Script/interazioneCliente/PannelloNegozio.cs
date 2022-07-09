@@ -19,7 +19,8 @@ public class PannelloNegozio : MonoBehaviour
     private bool pannelloAperto = false;
     private Animator animazione;
 
-    //INTERAZIONE NEGOZIO
+
+    [Header("Interazione Negozio")]
     [SerializeField] private GameObject pannelloNegozio;
     [SerializeField] private GameObject pannelloXElementi;
     [SerializeField] private Button templateSingoloIngrediente;
@@ -48,6 +49,7 @@ public class PannelloNegozio : MonoBehaviour
     private Ingrediente ingredienteAttualmenteSelezionato;
     private int quantitaAttualmenteSelezionata;
     public static bool compratoIngredientePerTutorial = false;
+    [SerializeField] TextMeshProUGUI testoEsc;
 
     void Start()
     {
@@ -326,7 +328,7 @@ public class PannelloNegozio : MonoBehaviour
     {
         testoPannelloSeiSicuro.text = "Sei sicuro di voler comprare x" + quantitaAttualmenteSelezionata.ToString() + "\n" + Utility.coloreIngredienti + ingredienteAttualmenteSelezionato.nome + Utility.fineColore;
         pannelloSeiSicuro.SetActive(true);
-        
+        testoEsc.gameObject.SetActive(false);
         pannelloConfermaAperto = true;
     }
 
@@ -367,7 +369,7 @@ public class PannelloNegozio : MonoBehaviour
             compratoIngredientePerTutorial = true;
         }
 
-        soldiGiocatore.text = "Denaro: " + giocatore.soldi;
+        soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi;
 
         chiudiPannelloSeiSicuro();
     }
@@ -397,7 +399,6 @@ public class PannelloNegozio : MonoBehaviour
             {
                 attivaDisattivaBottoneCompra(ingrediente, 0);
             }
-
         pannelloConfermaAperto = false;
     }
 
@@ -410,8 +411,7 @@ public class PannelloNegozio : MonoBehaviour
         canvasPannelloNegozio.SetActive(true);
         aggiornaBottoniPaginaCarosello();
         chiudiPannelloSeiSicuro();
-
-        soldiGiocatore.text = "Denaro: " + giocatore.soldi; 
+        soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi; 
     }
 
     public void chiudiPannelloNegozio()
