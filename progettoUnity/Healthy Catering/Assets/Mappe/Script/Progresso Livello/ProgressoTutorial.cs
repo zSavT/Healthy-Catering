@@ -136,20 +136,22 @@ public class ProgressoTutorial : MonoBehaviour
                     if (!OkBoxVideo.parlaZioMostrato)
                     {
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.parlaZio);
-                        OkBoxVideo.parlaZioMostrato = true;
                         InterazionePassanti.parlatoConZio = false;
-
+                    }
+                    if(OkBoxVideo.parlaZioMostrato)
+                    {
                         indicatoreDistanza.setTarget("zio");
                     }
-                    if (CheckTutorial.checkParlaConZio()) { numeroScritteMostrate++; }
+                    if (CheckTutorial.checkParlaConZio()) { indicatoreDistanza.setTarget("reset"); numeroScritteMostrate++; }
                 }
                 else if (numeroScritteMostrate == 4)
                 {
                     if (!OkBoxVideo.vaiAlRistoranteMostrato)
                     {
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.vaiAlRistorante);
-                        OkBoxVideo.vaiAlRistoranteMostrato = true;
 
+                    } else
+                    {
                         indicatoreDistanza.setTarget("ristorante");
                     }
 
@@ -161,12 +163,13 @@ public class ProgressoTutorial : MonoBehaviour
                 }
                 else if (numeroScritteMostrate == 5)
                 {
+                    indicatoreDistanza.setTarget("reset");
                     if (!OkBoxVideo.meccanicheServireCompatibileMostrato)
                     {
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.meccanicheServireCompatibile);
                         OkBoxVideo.meccanicheServireCompatibileMostrato = true;
 
-                        indicatoreDistanza.setTarget("reset");
+                        
                     }
 
                     if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
@@ -218,11 +221,10 @@ public class ProgressoTutorial : MonoBehaviour
                     if (!OkBoxVideo.doveEIlNegozioMostrato)
                     {
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.doveEIlNegozio);
-                        OkBoxVideo.doveEIlNegozioMostrato = true;
-
+                    } else
+                    {
                         indicatoreDistanza.setTarget("negozio");
                     }
-
                     if (CheckTutorial.checkIsNelNegozio()) //TODO implementazione
                         if (CheckTutorial.checkCompratiIngredienti(giocatore)) { numeroScritteMostrate++; };
                 }

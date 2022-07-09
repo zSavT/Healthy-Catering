@@ -37,6 +37,7 @@ public class OkBoxVideo : MonoBehaviour
     public static bool interazioneNPCMostrato = false;
     public static bool apriRicettarioMostrato = false;
     public static bool apriMenuAiutoMostrato = false;
+    private int indiceCorrente = 0;
 
 
     List<string> titoli = new List<string>
@@ -109,13 +110,14 @@ public class OkBoxVideo : MonoBehaviour
         interazioneNPCMostrato = false;
         apriRicettarioMostrato = false;
         apriMenuAiutoMostrato = false;
-    /*
-    for (int i = 0; i < nomiAnimazioni.Count; i++)
-    {
-        cambiaImmagine(i);
+        indiceCorrente = 0;
+        /*
+        for (int i = 0; i < nomiAnimazioni.Count; i++)
+        {
+            cambiaImmagine(i);
+        }
+        */
     }
-    */
-}
 
     public void apriOkBoxVideo(int posizione)
     {
@@ -136,6 +138,7 @@ public class OkBoxVideo : MonoBehaviour
             testo.text = "";
         }
         cambiaImmagine(posizione);
+        indiceCorrente = posizione;
     }
 
     public void chiudiOkBoxVideo()
@@ -147,6 +150,18 @@ public class OkBoxVideo : MonoBehaviour
         titolo.text = "";
         testo.text = "";
         Interactor.menuApribile = true;
+        if(indiceCorrente == parlaZio)
+        {
+            parlaZioMostrato = true;
+        }
+        if (indiceCorrente == vaiAlRistorante)
+        {
+            vaiAlRistoranteMostrato = true;
+        }
+        if (indiceCorrente == doveEIlNegozio)
+        {
+            doveEIlNegozioMostrato = true;
+        }
     }
 
     private void cambiaImmagine(int posizione)
