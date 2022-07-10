@@ -291,13 +291,13 @@ public class PannelloNegozio : MonoBehaviour
             //della merce che vuole comprare è minore del costo dell'ingrediente
             //se ne aggiunge 1 non può più comprarlo
             //quindi ha raggiunto il massimo
-            if (giocatore.soldi - (costoIngrediente * (quantitaSelezionata)) < 0)
+            if (giocatore.soldi - prezzoDaPagare - (costoIngrediente * (quantitaSelezionata)) < 0)
                 singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].interactable = false;
             else
                 singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].interactable = true;
 
 
-            if (giocatore.soldi - (costoIngrediente * (quantitaSelezionata + 1)) >= 0)
+            if (giocatore.soldi - prezzoDaPagare - (costoIngrediente * (quantitaSelezionata + 1)) >= 0)
                 singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text = (quantitaSelezionata + 1).ToString();
 
             quantitaSelezionata = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text);
@@ -365,37 +365,51 @@ public class PannelloNegozio : MonoBehaviour
         if ((ingredienteAttualmenteSelezionato != null) && (quantitaAttualmenteSelezionata > 0))
         {
             prezzoDaPagare += (ingredienteAttualmenteSelezionato.costo * quantitaAttualmenteSelezionata);
+
+            int i = 0;
+            while (i < quantitaAttualmenteSelezionata)
+            {
+                carrello.Add(ingredienteAttualmenteSelezionato);
+                i++;
+            }
             
             resetQuantitaTuttiBottoni();
             quantitaAttualmenteSelezionata = 0;
 
-            carrello.Add(ingredienteAttualmenteSelezionato);
+
+            testoTotaleCarello.text = "Totale del carrello:\n" + prezzoDaPagare.ToString();
         }
 
         chiudiPannelloSeiSicuro();
-
-        foreach (Ingrediente temp in carrello)
-        {
-            print(temp.ToString());
-        }
-
-        testoTotaleCarello.text = "Totale del carrello:\n" + prezzoDaPagare.ToString();
     }
 
     public void compraIngredientiNelCarrello()
     {
         giocatore.guadagna(-prezzoDaPagare);
         guiInGame.aggiornaValoreSoldi(giocatore.soldi);
-        
+
+
+        print("---------------------------------------------------------------");
+        print("inventario prima");
+        print(giocatore.stampaInventario());
+
         foreach (Ingrediente temp in carrello)
         {
             giocatore.aggiornaInventario(new OggettoQuantita<int>(temp.idIngrediente, quantitaAttualmenteSelezionata), true);
+            print("---------------------------------------------------------------");
+            print("inventario nel mentre");
+            print(giocatore.stampaInventario());
         }
-       
+        print("---------------------------------------------------------------");
+        print("inventario dopo");
+        print(giocatore.stampaInventario());
+
         resetQuantitaTuttiBottoni();
         quantitaAttualmenteSelezionata = 0;
         compratoIngredientePerTutorial = true;
         soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi.ToString("0.00");
+
+        resetSituazioneCarello();
     }
 
     public void resetQuantitaTuttiBottoni()
@@ -437,6 +451,11 @@ public class PannelloNegozio : MonoBehaviour
         chiudiPannelloSeiSicuro();
         soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi.ToString("0.00");
 
+        resetSituazioneCarello();
+    }
+
+    private void resetSituazioneCarello()
+    {
         //reset delle cose nel carrello
         prezzoDaPagare = 0;
         carrello = new List<Ingrediente>();
