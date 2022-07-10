@@ -19,7 +19,8 @@ public class PannelloNegozio : MonoBehaviour
     private bool pannelloAperto = false;
     private Animator animazione;
 
-    //INTERAZIONE NEGOZIO
+
+    [Header("Interazione Negozio")]
     [SerializeField] private GameObject pannelloNegozio;
     [SerializeField] private GameObject pannelloXElementi;
     [SerializeField] private Button templateSingoloIngrediente;
@@ -40,12 +41,15 @@ public class PannelloNegozio : MonoBehaviour
     private int ultimaPaginaPossibile;
 
     private Player giocatore;
+    [SerializeField] private TextMeshProUGUI soldiGiocatore;
 
     [SerializeField] private GameObject pannelloSeiSicuro;
     [SerializeField] private TextMeshProUGUI testoPannelloSeiSicuro;
+    private bool pannelloConfermaAperto = false;
     private Ingrediente ingredienteAttualmenteSelezionato;
     private int quantitaAttualmenteSelezionata;
     public static bool compratoIngredientePerTutorial = false;
+    [SerializeField] TextMeshProUGUI testoEsc;
 
     void Start()
     {
@@ -324,6 +328,8 @@ public class PannelloNegozio : MonoBehaviour
     {
         testoPannelloSeiSicuro.text = "Sei sicuro di voler comprare x" + quantitaAttualmenteSelezionata.ToString() + "\n" + Utility.coloreIngredienti + ingredienteAttualmenteSelezionato.nome + Utility.fineColore;
         pannelloSeiSicuro.SetActive(true);
+        testoEsc.gameObject.SetActive(false);
+        pannelloConfermaAperto = true;
     }
 
     private Button modificaImmagineIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
@@ -362,6 +368,9 @@ public class PannelloNegozio : MonoBehaviour
             resetQuantitaTuttiBottoni();
             compratoIngredientePerTutorial = true;
         }
+
+        soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi.ToString("0.00");
+
         chiudiPannelloSeiSicuro();
     }
 
@@ -390,6 +399,7 @@ public class PannelloNegozio : MonoBehaviour
             {
                 attivaDisattivaBottoneCompra(ingrediente, 0);
             }
+        pannelloConfermaAperto = false;
     }
 
     //GESTIONE PANNELLO E RELATIVI
@@ -401,6 +411,7 @@ public class PannelloNegozio : MonoBehaviour
         canvasPannelloNegozio.SetActive(true);
         aggiornaBottoniPaginaCarosello();
         chiudiPannelloSeiSicuro();
+        soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi.ToString("0.00"); 
     }
 
     public void chiudiPannelloNegozio()
@@ -413,6 +424,11 @@ public class PannelloNegozio : MonoBehaviour
     public bool getPannelloAperto()
     {
         return pannelloAperto;
+    }
+
+    public bool getPannelloConfermaAperto()
+    {
+        return pannelloConfermaAperto;
     }
 
     public void animazioneNPCInquadrato()

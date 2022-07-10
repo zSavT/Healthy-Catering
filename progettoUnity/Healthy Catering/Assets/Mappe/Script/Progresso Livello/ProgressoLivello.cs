@@ -46,7 +46,6 @@ public class ProgressoLivello : MonoBehaviour
     [SerializeField] private TextMeshProUGUI valorePunteggioPlayer;
     [SerializeField] private TextMeshProUGUI titoloSchermataFineLivello;
     [SerializeField] private AudioSource suonoVittoria;
-    private bool gameOverMaxClienti;
     public UnityEvent disattivaElementiFineLivello;
     [Header("GameOver")]
     public int numeroDiClientiMassimi = 10;
@@ -59,9 +58,11 @@ public class ProgressoLivello : MonoBehaviour
 
     private void Start()
     {
-        
+        gameOver = false;
         //disattivare la schermata per evitare che l'animazione parti fin da subito (N.B. L'animazione � impostata per avviarsi all'attivazione dell'oggetto per semplicit� � per dover scrivere molti meno controlli)
         schermataFineLivello.SetActive(false);
+        numeroClientiServiti = 0;
+        punteggioPlayer = 0;
         valorePunteggioPlayer.gameObject.SetActive(false);
         //Se il livello � il livello tutorial la schermata obbiettivi non si attiva (da attivare successivamente)
         if (PlayerSettings.livelloSelezionato != 0)
@@ -82,7 +83,8 @@ public class ProgressoLivello : MonoBehaviour
         {
             attivazioneSchermataFineLivello();
         }
-        controlloGameOver();
+        if(!ProgressoTutorial.inTutorial)
+            controlloGameOver();
     }
 
     public void attivaPannelloRiepiloghiObbiettivi()
@@ -281,6 +283,7 @@ public class ProgressoLivello : MonoBehaviour
             }
             
         }
+        Interactable.numeroCliente = 0;
         SelezioneLivelli.caricaMenuPrincipale();
     }
 

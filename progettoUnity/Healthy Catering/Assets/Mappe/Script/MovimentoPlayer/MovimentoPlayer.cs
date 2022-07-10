@@ -82,9 +82,20 @@ public class MovimentoPlayer : MonoBehaviour
         lockUnlockMovimento.Invoke();
     }
 
+    /// <summary>
+    /// Blocca la possibilità di muoversi del player
+    /// </summary>
     public void bloccaMovimento()
     {
         this.puoMuoversi = false;
+    }
+
+    /// <summary>
+    /// Permette al player di potersi muovere
+    /// </summary>
+    public void sbloccaMovimento()
+    {
+        this.puoMuoversi = true;
     }
 
     /// <summary>
@@ -250,7 +261,7 @@ public class MovimentoPlayer : MonoBehaviour
     /// <summary>
     /// Avvia le animazioni dell'idle.
     /// </summary>
-    private void idle()
+    public void idle()
     {
         controllerAnimazione.SetBool("fermo", true);
         controllerAnimazione.SetBool("cammina", false);

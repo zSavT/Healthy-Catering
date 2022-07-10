@@ -17,6 +17,7 @@ public class PlayerSaGiocareFPS : MonoBehaviour
     void Start()
     {
         pannello.SetActive(false);
+        siOno = 0;
     }
 
     public void apriPannelloPlayerSaGiocareFPS()

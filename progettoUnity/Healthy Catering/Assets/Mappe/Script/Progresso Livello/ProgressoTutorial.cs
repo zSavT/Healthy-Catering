@@ -39,7 +39,7 @@ public class ProgressoTutorial : MonoBehaviour
     private int siOno = 0;
     [SerializeField] private MovimentoPlayer moviemnto;
 
-
+    [SerializeField] IndicatoreDistanza indicatoreDistanza;
     private void Start()
     {
         inTutorial = true;
@@ -67,7 +67,6 @@ public class ProgressoTutorial : MonoBehaviour
         numeroScritteMostrate = 0;
 
         finitoTutorial = false;
-
     }
 
     private void Update()
@@ -79,7 +78,10 @@ public class ProgressoTutorial : MonoBehaviour
                 siOno = PlayerSaGiocareFPS.getSiOno();
 
                 if (siOno == 1)
+                {
                     numeroScritteMostrate = posizioneScritteDaMostrareSaGiocare;
+                    OkBoxVideo.indiceCorrente = posizioneScritteDaMostrareSaGiocare;
+                }
                 else if (siOno == -1)
                     numeroScritteMostrate = 0;
 
@@ -137,17 +139,26 @@ public class ProgressoTutorial : MonoBehaviour
                     if (!OkBoxVideo.parlaZioMostrato)
                     {
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.parlaZio);
-                        OkBoxVideo.parlaZioMostrato = true;
                         InterazionePassanti.parlatoConZio = false;
                     }
-                    if (CheckTutorial.checkParlaConZio()) { numeroScritteMostrate++; }
+                    if(OkBoxVideo.parlaZioMostrato && !Interactor.nelRistorante)
+                    {
+                        indicatoreDistanza.setTarget("zio");
+                    } else
+                    {
+                        indicatoreDistanza.setTarget("reset");
+                    }
+                    if (CheckTutorial.checkParlaConZio()) { indicatoreDistanza.setTarget("reset"); numeroScritteMostrate++; }
                 }
                 else if (numeroScritteMostrate == 4)
                 {
                     if (!OkBoxVideo.vaiAlRistoranteMostrato)
                     {
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.vaiAlRistorante);
-                        OkBoxVideo.vaiAlRistoranteMostrato = true;
+
+                    } else
+                    {
+                        indicatoreDistanza.setTarget("ristorante");
                     }
 
                     if (CheckTutorial.checkVaiRistorante())
@@ -158,10 +169,13 @@ public class ProgressoTutorial : MonoBehaviour
                 }
                 else if (numeroScritteMostrate == 5)
                 {
+                    indicatoreDistanza.setTarget("reset");
                     if (!OkBoxVideo.meccanicheServireCompatibileMostrato)
                     {
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.meccanicheServireCompatibile);
                         OkBoxVideo.meccanicheServireCompatibileMostrato = true;
+
+                        
                     }
 
                     if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
@@ -213,9 +227,14 @@ public class ProgressoTutorial : MonoBehaviour
                     if (!OkBoxVideo.doveEIlNegozioMostrato)
                     {
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.doveEIlNegozio);
-                        OkBoxVideo.doveEIlNegozioMostrato = true;
                     }
-
+                    if(!Interactor.nelRistorante && OkBoxVideo.doveEIlNegozioMostrato)
+                    {
+                        indicatoreDistanza.setTarget("negozio");
+                    } else
+                    {
+                        indicatoreDistanza.setTarget("reset");
+                    }
                     if (CheckTutorial.checkIsNelNegozio()) //TODO implementazione
                         if (CheckTutorial.checkCompratiIngredienti(giocatore)) { numeroScritteMostrate++; };
                 }
@@ -225,6 +244,8 @@ public class ProgressoTutorial : MonoBehaviour
                     {
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.interazioneNPC);
                         OkBoxVideo.interazioneNPCMostrato = true;
+
+                        indicatoreDistanza.setTarget("reset");
                     }
 
                     if (CheckTutorial.checkParlatoConNPC())

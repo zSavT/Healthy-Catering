@@ -34,12 +34,28 @@ public class Player
 
     List<OggettoQuantita<int>> inventarioLivello1 = new List<OggettoQuantita<int>>
     {
-
+        new OggettoQuantita<int> (30,1),
+        new OggettoQuantita<int> (35,1),
+        new OggettoQuantita<int> (33,2),
+        new OggettoQuantita<int> (12,1),
+        new OggettoQuantita<int> (15,1),
+        new OggettoQuantita<int> (0,1),
+        new OggettoQuantita<int> (18,1),
+        new OggettoQuantita<int> (16,1),
+        new OggettoQuantita<int> (46,1)
     };
     
     List<OggettoQuantita<int>> inventarioLivello2 = new List<OggettoQuantita<int>>
     {
-
+        new OggettoQuantita<int> (30,1),
+        new OggettoQuantita<int> (35,1),
+        new OggettoQuantita<int> (33,2),
+        new OggettoQuantita<int> (12,2),
+        new OggettoQuantita<int> (15,1),
+        new OggettoQuantita<int> (0,1),
+        new OggettoQuantita<int> (18,1),
+        new OggettoQuantita<int> (16,1),
+        new OggettoQuantita<int> (46,1)
     };
 
     //FINE INVENTARI LIVELLI
@@ -133,7 +149,6 @@ public class Player
 
     public void aggiungiDiminuisciPunteggio(bool affine, int nutriScore, float costoEco, int livello)
     {
-        Debug.Log(affine);
         float punteggioDaAggiungere;
         if (affine)
             punteggioDaAggiungere = 100;
@@ -142,7 +157,6 @@ public class Player
 
         punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Utility.valoreAssoluto(punteggioDaAggiungere), trovaPercentualeNutriScore(nutriScore));
         punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Utility.valoreAssoluto(punteggioDaAggiungere), trovaPercentualeEcoScore(costoEco));
-        Debug.Log(punteggioDaAggiungere);
         this.punteggio [livello] += (int)punteggioDaAggiungere;
         Debug.Log(this.punteggio[livello]);
     }

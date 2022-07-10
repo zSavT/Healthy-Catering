@@ -37,6 +37,7 @@ public class OkBoxVideo : MonoBehaviour
     public static bool interazioneNPCMostrato = false;
     public static bool apriRicettarioMostrato = false;
     public static bool apriMenuAiutoMostrato = false;
+    public static int indiceCorrente = 0;
 
 
     List<string> titoli = new List<string>
@@ -57,18 +58,18 @@ public class OkBoxVideo : MonoBehaviour
 
     List<string> testi = new List<string>
     {
-        "Per muoverti all'interno del gioco premi “" + Utility.coloreVerde + "W" + Utility.fineColore + "” per andare avanti, “" + Utility.coloreVerde + "S" + Utility.fineColore + "” per andare indietro, “" + Utility.coloreVerde + "A" + Utility.fineColore + "” per andare a sinistra, “" + Utility.coloreVerde + "D" + Utility.fineColore + "” per andare a destra. Il giocatore si muove verso la direzione inquadrata con il “" + Utility.coloreVerde + "mouse" + Utility.fineColore + "”. Ora prova a muoverti per proseguire.",
+        "Per muoverti all'interno del gioco premi “" + Utility.coloreVerde + "W" + Utility.fineColore + "” per andare avanti, “" + Utility.coloreVerde + "S" + Utility.fineColore + "” per andare indietro, “" + Utility.coloreVerde + "A" + Utility.fineColore + "” per andare a sinistra, “" + Utility.coloreVerde + "D" + Utility.fineColore + "” per andare a destra. Il giocatore si muove verso la direzione inquadrata con il “" + Utility.coloreVerde + "mouse" + Utility.fineColore + "”. Ora prova a muoverti premendo “" + Utility.coloreVerde + "W" + Utility.fineColore + "” , “" + Utility.coloreVerde + "S" + Utility.fineColore + "” , “" + Utility.coloreVerde + "A" + Utility.fineColore + "” , “" + Utility.coloreVerde + "D" + Utility.fineColore + "” di seguito.",
         "Per saltare all'interno del gioco premi il tasto “" + Utility.coloreVerde + "Spazio" + Utility.fineColore + "”. Ora prova a saltare per proseguire.",
         "Per correre all'interno del gioco premi il tasto “" + Utility.coloreVerde + "Shift" + Utility.fineColore + "”. Ora prova a correre.",
         "Per interagire con una persona premi “" + Utility.coloreVerde + "E" + Utility.fineColore + "”. Raggiungi tuo zio e interagisci con lui.",
         "Per entrare nel ristorante premi “" + Utility.coloreVerde + "E" + Utility.fineColore + "” una volta inquadrata la porta con il mouse. Fai lo stesso per uscire. Ora entra nel ristorante.",
-        "Per servire un cliente al bancone inquadralo e premi il tasto “" + Utility.coloreVerde + "E" + Utility.fineColore + "”. Per scegliere un<color=#B5D99C> piatto</color> selezionalo dal menu sulla sinistra. È importante servire un piatto idoneo alle caratteristiche del cliente, ovvero la dieta e le patologie. Servire piatti idonei permette di ricevere dei bonus. Ora prova a servire un piatto idoneo al cliente al bancone.",
-        "Servire un <color=#B5D99C>piatto</color> non idoneo comporta delle penalità al punteggio e non si riceveranno bonus in denaro. I bonus e i malus vengono calcolati in base alla compatibilità del piatto e ai suoi volori <color=#B5D99C>nutriScore</color> e <color=#B5D99C>costoEco</color>. Consulta il menu aiuto per ulteriori informazioni. Ora prova a serive un piatto non idoneo al cliente al bancone.",
+        "Per servire un cliente al bancone inquadralo e premi il tasto “" + Utility.coloreVerde + "E" + Utility.fineColore + "”. Per scegliere un " + Utility.colorePiatti + "piatto " + Utility.fineColore + "selezionalo dal menu sulla sinistra. È importante servire un " + Utility.colorePiatti + "piatto " + Utility.fineColore + "idoneo alle caratteristiche del cliente, ovvero la " + Utility.coloreDieta + "dieta " + Utility.fineColore + "e le " + Utility.colorePatologia + "patologie" + Utility.fineColore + ". Servire piatti idonei permette di ricevere dei bonus. Ora prova a servire un piatto idoneo al cliente al bancone.",
+        "Servire un "  + Utility.colorePiatti + "piatto " + Utility.fineColore + "non idoneo comporta delle penalità al punteggio e non si riceveranno bonus in denaro. I bonus e i malus vengono calcolati in base alla compatibilità del piatto e ai suoi volori <color=#B5D99C>nutriScore</color> e <color=#B5D99C>costoEco</color>. Consulta il " + Utility.coloreVerde + "menu aiuto " + Utility.fineColore + "per ulteriori informazioni. Ora prova a serive un piatto non idoneo al cliente al bancone.",
         "Controlla il <color=#B5D99C>magazzino</color> per tener d'occhio quali ingredienti sono disponibili per la realizzazione dei piatti. Servendo un piatto, diminuiscono nel magazzino le quantità di ingredienti che in esso figurano. Puoi verificare lo stato del magazzino dal <color=#B5D99C>PC</color> presente in <color=#B5D99C>ufficio</color> attraverso il programma “<color=#B5D99C>MyInventory</color>”. Ora raggiungi l'ufficio e controlla lo stato del magazzino.",
-        "Per fare rifornimenti di ingredienti visita il negozio dove acquistare gli ingredienti necessari a realizzare altri piatti con i soldi guadagnati. Ora raggiungi il negozio e compra un ingrediente.",
-        "Interagire con i <color=#B5D99C>passanti</color> in giro per la città ti permette di ottenere <color=#B5D99C>suggerimenti</color> utili per servire piatti migliori, sia dal punto di vista dell'affinità con le patologie che da quello del<color=#B5D99C> nutriScore</color> e del<color=#B5D99C> costoEco</color>. Ora prova a parlare con una persona.",
-        "Puoi utilizzare il ricettario quando vuoi ed in ogni punto della mappa, premi il tasto " + Utility.coloreVerde + "R " + Utility.fineColore + "per visualizzarlo.",
-        "Puoi consultare il menu aiuto quando vuoi ed in ogni punto della mappa, premi il tasto " + Utility.coloreVerde + "H " + Utility.fineColore + "per visualizzarlo.",
+        "Per fare rifornimenti di " + Utility.coloreIngredienti + "ingredienti " + Utility.fineColore + "visita il " + Utility.coloreVerde + "negozio " + Utility.fineColore + "dove acquistare gli "  + Utility.coloreIngredienti + "ingredienti " + Utility.fineColore + "necessari a realizzare altri " + Utility.colorePiatti + "piatti " + Utility.fineColore + "con i soldi guadagnati. Nel <color=#B5D99C>negozio</color> puoi comprare una tipologia di "+ Utility.coloreIngredienti + "ingrediente" + Utility.fineColore + " alla volta. Ora esci dal <color=#B5D99C>ristorante</color>, raggiungi il <color=#B5D99C>negozio</color> e compra un " + Utility.coloreIngredienti + "ingredienti" + Utility.fineColore + ".",
+        "Interagire con i <color=#B5D99C>passanti</color> in giro per la città ti permette di ottenere <color=#B5D99C>suggerimenti</color> utili per servire i " + Utility.colorePiatti + "piatti " + Utility.fineColore + "migliori, sia dal punto di vista dell'affinità con le " + Utility.colorePatologia + "patologie" + Utility.fineColore + " che da quello del<color=#B5D99C> nutriScore</color> e del<color=#B5D99C> costoEco</color>. Ora prova a parlare con una persona.",
+        "Puoi utilizzare il <color=#B5D99C>ricettario</color> quando vuoi ed in ogni punto della mappa, premi il tasto “" + Utility.coloreVerde + "R" + Utility.fineColore + "” per visualizzarlo. Puoi utilizzare il " + Utility.coloreVerde + "ricettario" + Utility.fineColore + " per visionare le quantità degli " + Utility.coloreIngredienti + "ingredienti " + Utility.fineColore + "di un " + Utility.colorePiatti + "piatto " + Utility.fineColore + ", oltre a poter visionare il <color=#B5D99C>nutriScore</color> e <color=#B5D99C>costoEco</color> nella scheda tecnica del " + Utility.colorePiatti + "piatto" + Utility.fineColore + " o " + Utility.coloreIngredienti + "ingredienti" + Utility.fineColore + ".",
+        "Puoi consultare il <color=#B5D99C>menu aiuto</color> quando vuoi ed in ogni punto della mappa, premi il tasto “" + Utility.coloreVerde + "H" + Utility.fineColore + "” per visualizzarlo. Puoi ri-visionare tutte le informazioni e le meccaniche del gioco mostrate in precedenza.",
     };
 
     [SerializeField] private UnityEvent playerStop;
@@ -109,19 +110,21 @@ public class OkBoxVideo : MonoBehaviour
         interazioneNPCMostrato = false;
         apriRicettarioMostrato = false;
         apriMenuAiutoMostrato = false;
-    /*
-    for (int i = 0; i < nomiAnimazioni.Count; i++)
-    {
-        cambiaImmagine(i);
+        indiceCorrente = 0;
+        /*
+        for (int i = 0; i < nomiAnimazioni.Count; i++)
+        {
+            cambiaImmagine(i);
+        }
+        */
     }
-    */
-}
 
     public void apriOkBoxVideo(int posizione)
     {
+        playerStop.Invoke();
+        indiceCorrente = posizione;
         Interactor.menuApribile = false;
         pannello.SetActive(true);
-        playerStop.Invoke();
         PuntatoreMouse.abilitaCursore();
         CambioCursore.cambioCursoreNormale();
 
@@ -147,26 +150,22 @@ public class OkBoxVideo : MonoBehaviour
         titolo.text = "";
         testo.text = "";
         Interactor.menuApribile = true;
+        if(indiceCorrente == parlaZio)
+        {
+            parlaZioMostrato = true;
+        }
+        if (indiceCorrente == vaiAlRistorante)
+        {
+            vaiAlRistoranteMostrato = true;
+        }
+        if (indiceCorrente == doveEIlNegozio)
+        {
+            doveEIlNegozioMostrato = true;
+        }
     }
 
     private void cambiaImmagine(int posizione)
     {
         animazione.caricaAnimazione("immaginiOGifOkBoxVideo", nomiAnimazioni [posizione], "default");
-    }
-
-    /// <summary>
-    /// Metodo per ripristinare lo scorrere del tempo in gioco
-    /// </summary>
-    void resumeGame()
-    {
-        Time.timeScale = 1f; //sblocca il tempo
-    }
-
-    /// <summary>
-    /// Metodo per bloccare lo scorrere del tempo in gioco.
-    /// </summary>
-    void pauseGame()
-    {
-        Time.timeScale = 0f; //blocca il tempo
     }
 }
