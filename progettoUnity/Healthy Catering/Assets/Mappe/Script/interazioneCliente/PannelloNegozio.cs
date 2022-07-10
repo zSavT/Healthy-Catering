@@ -54,6 +54,7 @@ public class PannelloNegozio : MonoBehaviour
     private List<Ingrediente> carrello = new List<Ingrediente>();
     private float prezzoDaPagare;
     [SerializeField] TextMeshProUGUI testoTotaleCarello;
+    private bool inNegozio = false;
 
     void Start()
     {
@@ -330,10 +331,63 @@ public class PannelloNegozio : MonoBehaviour
 
     public void apriPannelloSeiSicuro()
     {
-        testoPannelloSeiSicuro.text = "Sei sicuro di voler aggiungere al carrello x" + quantitaAttualmenteSelezionata.ToString() + "\n" + Utility.coloreIngredienti + ingredienteAttualmenteSelezionato.nome + Utility.fineColore;
+        print("in negozio: " + inNegozio.ToString());
+        if (inNegozio)
+        {
+            testoPannelloSeiSicuro.text = "Sei sicuro di voler aggiungere al carrello x" + quantitaAttualmenteSelezionata.ToString() + "\n" + Utility.coloreIngredienti + ingredienteAttualmenteSelezionato.nome + Utility.fineColore;
+        }
+        else
+        {
+            testoPannelloSeiSicuro.text = creaStringaPannelloSeiSicuroCarrello();
+        }
         pannelloSeiSicuro.SetActive(true);
         testoEsc.gameObject.SetActive(false);
         pannelloConfermaAperto = true;
+    }
+
+    private string creaStringaPannelloSeiSicuroCarrello()
+    {
+        string output = "Sei sicuro di voler comprare la seguente lista di ingredienti:\n";
+
+        List<OggettoQuantita<int>> carrelloOggettoQuantita = trasformaCarrelloInOggettoQuantita();
+
+        foreach (OggettoQuantita<int> temp in carrelloOggettoQuantita)
+        {
+            output += Ingrediente.idToIngrediente(temp.oggetto).nome + " x" + temp.quantita.ToString() + "\n";
+        }
+
+        output += "?";
+        return output;
+    }
+
+    private List<OggettoQuantita<int>> trasformaCarrelloInOggettoQuantita()
+    {
+        List<OggettoQuantita<int>> output = new List<OggettoQuantita<int>>();
+        List<int> oggetti = new List<int>();
+        List<int> quantita = new List<int>();
+
+        foreach (Ingrediente temp in carrello)
+        {
+            int posizioneTemp = oggetti.IndexOf(temp.idIngrediente);//returna -1 se non trova l'oggetto
+            if (posizioneTemp != -1)
+            {
+                quantita[posizioneTemp] = quantita[posizioneTemp] + 1;
+            }
+            else
+            {
+                oggetti.Add(temp.idIngrediente);
+                quantita.Add(1);
+            }
+        }
+
+        int i = 0;
+        while (i < oggetti.Count)
+        {
+            output.Add(new OggettoQuantita<int>(oggetti[i], quantita[i]));
+            i++; 
+        }
+
+        return output;
     }
 
     private Button modificaImmagineIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
@@ -362,43 +416,59 @@ public class PannelloNegozio : MonoBehaviour
     //METODI DEI BOTTONI DEL PANNELLO SEI SICURO
     public void aggiungiIngredienteACarrello()
     {
-        if ((ingredienteAttualmenteSelezionato != null) && (quantitaAttualmenteSelezionata > 0))
+        if (inNegozio)
         {
-            prezzoDaPagare += (ingredienteAttualmenteSelezionato.costo * quantitaAttualmenteSelezionata);
 
-            int i = 0;
-            while (i < quantitaAttualmenteSelezionata)
+            if ((ingredienteAttualmenteSelezionato != null) && (quantitaAttualmenteSelezionata > 0))
             {
-                carrello.Add(ingredienteAttualmenteSelezionato);
-                i++;
-            }
+                prezzoDaPagare += (ingredienteAttualmenteSelezionato.costo * quantitaAttualmenteSelezionata);
+
+                int i = 0;
+                while (i < quantitaAttualmenteSelezionata)
+                {
+                    carrello.Add(ingredienteAttualmenteSelezionato);
+                    i++;
+                }
             
-            resetQuantitaTuttiBottoni();
-            quantitaAttualmenteSelezionata = 0;
+                resetQuantitaTuttiBottoni();
+                quantitaAttualmenteSelezionata = 0;
 
 
-            testoTotaleCarello.text = "Totale del carrello:\n" + prezzoDaPagare.ToString();
+                testoTotaleCarello.text = "Costo totale del carrello:\n" + prezzoDaPagare.ToString();
+            }
+
+            chiudiPannelloSeiSicuro();
         }
-
-        chiudiPannelloSeiSicuro();
     }
 
     public void compraIngredientiNelCarrello()
     {
-        giocatore.guadagna(-prezzoDaPagare);
-        guiInGame.aggiornaValoreSoldi(giocatore.soldi);
-
-        foreach (Ingrediente temp in carrello)
+        if (!inNegozio)
         {
-            giocatore.aggiornaInventario(new OggettoQuantita<int>(temp.idIngrediente, 1), true);//visto che aggiungo un elemento alla volta la quantita da aggiungere ora è 1
+            giocatore.guadagna(-prezzoDaPagare);
+            guiInGame.aggiornaValoreSoldi(giocatore.soldi);
+
+            foreach (Ingrediente temp in carrello)
+            {
+                giocatore.aggiornaInventario(new OggettoQuantita<int>(temp.idIngrediente, 1), true);//visto che aggiungo un elemento alla volta la quantita da aggiungere ora è 1
+            }
+
+            resetQuantitaTuttiBottoni();
+            quantitaAttualmenteSelezionata = 0;
+            compratoIngredientePerTutorial = true;
+            soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi.ToString("0.00");
+
+            resetSituazioneCarello();
+
+            inNegozio = true;
+
+            chiudiPannelloSeiSicuro();
         }
+    }
 
-        resetQuantitaTuttiBottoni();
-        quantitaAttualmenteSelezionata = 0;
-        compratoIngredientePerTutorial = true;
-        soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi.ToString("0.00");
-
-        resetSituazioneCarello();
+    public void setInNegozioToInCarrello()
+    {
+        inNegozio = false;
     }
 
     public void resetQuantitaTuttiBottoni()
@@ -427,6 +497,11 @@ public class PannelloNegozio : MonoBehaviour
                 attivaDisattivaBottoneCompra(ingrediente, 0);
             }
         pannelloConfermaAperto = false;
+
+        if (!inNegozio)
+        {
+            inNegozio = true;
+        }
     }
 
     //GESTIONE PANNELLO E RELATIVI
