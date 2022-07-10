@@ -369,7 +369,7 @@ public class PannelloNegozio : MonoBehaviour
             compratoIngredientePerTutorial = true;
         }
 
-        soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi;
+        soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi.ToString("0.00");
 
         chiudiPannelloSeiSicuro();
     }
@@ -411,7 +411,7 @@ public class PannelloNegozio : MonoBehaviour
         canvasPannelloNegozio.SetActive(true);
         aggiornaBottoniPaginaCarosello();
         chiudiPannelloSeiSicuro();
-        soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi; 
+        soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi.ToString("0.00"); 
     }
 
     public void chiudiPannelloNegozio()
