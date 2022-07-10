@@ -51,6 +51,10 @@ public class PannelloNegozio : MonoBehaviour
     public static bool compratoIngredientePerTutorial = false;
     [SerializeField] TextMeshProUGUI testoEsc;
 
+    private List<Ingrediente> carrello = new List<Ingrediente>();
+    private float prezzoDaPagare;
+    [SerializeField] TextMeshProUGUI testoTotaleCarello;
+
     void Start()
     {
         //GESTIONE PANNELLO E RELATIVI
@@ -356,22 +360,42 @@ public class PannelloNegozio : MonoBehaviour
     }
 
     //METODI DEI BOTTONI DEL PANNELLO SEI SICURO
-    public void compraIngrediente()
+    public void aggiungiIngredienteACarrello()
     {
         if ((ingredienteAttualmenteSelezionato != null) && (quantitaAttualmenteSelezionata > 0))
         {
-            float prezzoDaPagare = ingredienteAttualmenteSelezionato.costo * quantitaAttualmenteSelezionata;
-            giocatore.guadagna(-prezzoDaPagare);
-            guiInGame.aggiornaValoreSoldi(giocatore.soldi);
-            giocatore.aggiornaInventario(new OggettoQuantita<int> (ingredienteAttualmenteSelezionato.idIngrediente, quantitaAttualmenteSelezionata), true);
-            quantitaAttualmenteSelezionata = 0;
+            prezzoDaPagare += (ingredienteAttualmenteSelezionato.costo * quantitaAttualmenteSelezionata);
+            
             resetQuantitaTuttiBottoni();
-            compratoIngredientePerTutorial = true;
+            quantitaAttualmenteSelezionata = 0;
+
+            carrello.Add(ingredienteAttualmenteSelezionato);
         }
 
-        soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi.ToString("0.00");
-
         chiudiPannelloSeiSicuro();
+
+        foreach (Ingrediente temp in carrello)
+        {
+            print(temp.ToString());
+        }
+
+        testoTotaleCarello.text = "Totale del carrello:\n" + prezzoDaPagare.ToString();
+    }
+
+    public void compraIngredientiNelCarrello()
+    {
+        giocatore.guadagna(-prezzoDaPagare);
+        guiInGame.aggiornaValoreSoldi(giocatore.soldi);
+        
+        foreach (Ingrediente temp in carrello)
+        {
+            giocatore.aggiornaInventario(new OggettoQuantita<int>(temp.idIngrediente, quantitaAttualmenteSelezionata), true);
+        }
+       
+        resetQuantitaTuttiBottoni();
+        quantitaAttualmenteSelezionata = 0;
+        compratoIngredientePerTutorial = true;
+        soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi.ToString("0.00");
     }
 
     public void resetQuantitaTuttiBottoni()
@@ -411,7 +435,12 @@ public class PannelloNegozio : MonoBehaviour
         canvasPannelloNegozio.SetActive(true);
         aggiornaBottoniPaginaCarosello();
         chiudiPannelloSeiSicuro();
-        soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi.ToString("0.00"); 
+        soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi.ToString("0.00");
+
+        //reset delle cose nel carrello
+        prezzoDaPagare = 0;
+        carrello = new List<Ingrediente>();
+        testoTotaleCarello.text = "Totale del carrello:\n" + 0.ToString();
     }
 
     public void chiudiPannelloNegozio()
