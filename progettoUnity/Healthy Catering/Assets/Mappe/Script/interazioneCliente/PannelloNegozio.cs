@@ -330,7 +330,7 @@ public class PannelloNegozio : MonoBehaviour
 
     public void apriPannelloSeiSicuro()
     {
-        testoPannelloSeiSicuro.text = "Sei sicuro di voler comprare x" + quantitaAttualmenteSelezionata.ToString() + "\n" + Utility.coloreIngredienti + ingredienteAttualmenteSelezionato.nome + Utility.fineColore;
+        testoPannelloSeiSicuro.text = "Sei sicuro di voler aggiungere al carrello x" + quantitaAttualmenteSelezionata.ToString() + "\n" + Utility.coloreIngredienti + ingredienteAttualmenteSelezionato.nome + Utility.fineColore;
         pannelloSeiSicuro.SetActive(true);
         testoEsc.gameObject.SetActive(false);
         pannelloConfermaAperto = true;
@@ -388,21 +388,10 @@ public class PannelloNegozio : MonoBehaviour
         giocatore.guadagna(-prezzoDaPagare);
         guiInGame.aggiornaValoreSoldi(giocatore.soldi);
 
-
-        print("---------------------------------------------------------------");
-        print("inventario prima");
-        print(giocatore.stampaInventario());
-
         foreach (Ingrediente temp in carrello)
         {
             giocatore.aggiornaInventario(new OggettoQuantita<int>(temp.idIngrediente, 1), true);//visto che aggiungo un elemento alla volta la quantita da aggiungere ora è 1
-            print("---------------------------------------------------------------");
-            print("inventario nel mentre");
-            print(giocatore.stampaInventario());
         }
-        print("---------------------------------------------------------------");
-        print("inventario dopo");
-        print(giocatore.stampaInventario());
 
         resetQuantitaTuttiBottoni();
         quantitaAttualmenteSelezionata = 0;
