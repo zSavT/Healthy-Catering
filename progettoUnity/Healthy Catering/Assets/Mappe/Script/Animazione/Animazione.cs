@@ -40,13 +40,13 @@ public class Animazione : MonoBehaviour
         "movimenti",
         "interazioneConIClientiPrimaParte",
         "interazioneConIClienti",
-        "vuota",
+        "movimenti",
         "visualizzareMagazzino",
-        "vuota",
+        "movimenti",
         "interazionePassanti",
         "negozio",
         "ricettario",
-        "vuota",
+        "movimenti",
     };
 
     void Start()
