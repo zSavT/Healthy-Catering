@@ -141,9 +141,12 @@ public class ProgressoTutorial : MonoBehaviour
                         okBoxVideo.apriOkBoxVideo(OkBoxVideo.parlaZio);
                         InterazionePassanti.parlatoConZio = false;
                     }
-                    if(OkBoxVideo.parlaZioMostrato)
+                    if(OkBoxVideo.parlaZioMostrato && !Interactor.nelRistorante)
                     {
                         indicatoreDistanza.setTarget("zio");
+                    } else
+                    {
+                        indicatoreDistanza.setTarget("reset");
                     }
                     if (CheckTutorial.checkParlaConZio()) { indicatoreDistanza.setTarget("reset"); numeroScritteMostrate++; }
                 }
