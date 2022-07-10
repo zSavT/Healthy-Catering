@@ -395,7 +395,7 @@ public class PannelloNegozio : MonoBehaviour
 
         foreach (Ingrediente temp in carrello)
         {
-            giocatore.aggiornaInventario(new OggettoQuantita<int>(temp.idIngrediente, quantitaAttualmenteSelezionata), true);
+            giocatore.aggiornaInventario(new OggettoQuantita<int>(temp.idIngrediente, 1), true);//visto che aggiungo un elemento alla volta la quantita da aggiungere ora è 1
             print("---------------------------------------------------------------");
             print("inventario nel mentre");
             print(giocatore.stampaInventario());
