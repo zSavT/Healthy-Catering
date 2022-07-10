@@ -90,9 +90,14 @@ Il controllo qualità dei testi presenti nel gioco è stato eseguito da Vincenzo
 
 ![GUI Interazione Passanti](doc/img/Screenshoot/InterazionePassanti.png "GUI Interazione Passanti")
 
+![Ricettario](doc/img/Screenshoot/Ricettario.png "Ricettario")
+
+
 ![GUI in Game](doc/img/Screenshoot/ScreenInGame.png "GUI in Game")
 
 ![Menu Opzioni](doc/img/Screenshoot/MenuOpzioni.PNG "GUI Menu opzioni")
+
+![Menu Aiuto](doc/img/Screenshoot/MenuAiuto.png "MenuAituo")
 
 
 
