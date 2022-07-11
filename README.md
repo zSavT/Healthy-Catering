@@ -29,9 +29,9 @@ I requisiti Hardware e Software del gioco:
 
 ### Requisiti minimi
 
--	Processore: architettura X64 con SSE2, Apple Silicon
--	RAM: 512MB per l’esecuzione
--	Hard Disk: 1GB
+-	Processore: architettura X64 con SSE2
+-	RAM: 1 GB per l’esecuzione
+-	Hard Disk: 1,6 GB
 -	Scheda video: Scheda grafica integrata nel processore
 -	Risoluzione: 320x240 o superiori - Aspect Ratio: 4:3 e/o 16:9
 
@@ -39,8 +39,8 @@ I requisiti Hardware e Software del gioco:
 ### Requisiti consigliati
 
 -	Processore: i3-540 o superiori
--	RAM: 1GB per l’esecuzione
--	Hard Disk: 1GB
+-	RAM: 14GB per l’esecuzione
+-	Hard Disk: 1,6 GB
 -	Scheda Video: GEFORCE GT710
 -	Risoluzione: 1920x1080 o superiori - Aspect Ratio: 16:9
 
