@@ -52,7 +52,7 @@ public class MenuAiuto : MonoBehaviour
         "movimenti",
         "interazioneConIClientiPrimaParte",
         "interazioneConIClienti",
-        "vuota",
+        "interazioneConIClientiSecondaParte",
         "visualizzareMagazzino",
         "bonus",
         "interazionePassanti",
