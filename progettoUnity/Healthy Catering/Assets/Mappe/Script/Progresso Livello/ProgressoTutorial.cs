@@ -288,6 +288,8 @@ public class ProgressoTutorial : MonoBehaviour
         if (finitoTutorial)
         {
             obbiettivo1Testo.gameObject.SetActive(false);
+            giocatore.setInventarioLivello(1);
+            giocatore.soldi = 30f;
             inTutorial = false;
             progressoLivelloClassico.attivaPannelloRiepiloghiObbiettivi();
             iTween.Destroy(this.gameObject);
