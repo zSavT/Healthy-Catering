@@ -334,7 +334,7 @@ public class PannelloNegozio : MonoBehaviour
         print("in negozio: " + inNegozio.ToString());
         if (inNegozio)
         {
-            testoPannelloSeiSicuro.text = "Sei sicuro di voler aggiungere al carrello x" + quantitaAttualmenteSelezionata.ToString() + "\n" + Utility.coloreIngredienti + ingredienteAttualmenteSelezionato.nome + Utility.fineColore;
+            testoPannelloSeiSicuro.text = "Sei sicuro di voler aggiungere al carrello " + Utility.coloreIngredienti + ingredienteAttualmenteSelezionato.nome + Utility.fineColore + " x" + quantitaAttualmenteSelezionata.ToString();
         }
         else
         {
@@ -347,13 +347,13 @@ public class PannelloNegozio : MonoBehaviour
 
     private string creaStringaPannelloSeiSicuroCarrello()
     {
-        string output = "Sei sicuro di voler comprare la seguente lista di ingredienti:\n";
+        string output = "Sei sicuro di voler comprare i seguenti ingredienti:\n";
 
         List<OggettoQuantita<int>> carrelloOggettoQuantita = trasformaCarrelloInOggettoQuantita();
 
         foreach (OggettoQuantita<int> temp in carrelloOggettoQuantita)
         {
-            output += Ingrediente.idToIngrediente(temp.oggetto).nome + " x" + temp.quantita.ToString() + "\n";
+            output += Utility.coloreIngredienti +  Ingrediente.idToIngrediente(temp.oggetto).nome + Utility.fineColore + " x" + temp.quantita.ToString() + "\n";
         }
 
         output += "?";
@@ -434,7 +434,7 @@ public class PannelloNegozio : MonoBehaviour
                 quantitaAttualmenteSelezionata = 0;
 
 
-                testoTotaleCarello.text = "Costo totale del carrello:\n" + prezzoDaPagare.ToString();
+                testoTotaleCarello.text = Utility.coloreVerde + "Totale Carrello: " + Utility.fineColore + prezzoDaPagare.ToString("0.00");
             }
 
             chiudiPannelloSeiSicuro();
@@ -523,7 +523,7 @@ public class PannelloNegozio : MonoBehaviour
         //reset delle cose nel carrello
         prezzoDaPagare = 0;
         carrello = new List<Ingrediente>();
-        testoTotaleCarello.text = "Totale del carrello:\n" + 0.ToString();
+        testoTotaleCarello.text = Utility.coloreVerde + "Totale Carrello: " + Utility.fineColore + 0.ToString("0.00");
     }
 
     public void chiudiPannelloNegozio()
