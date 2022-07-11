@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 using UnityEngine.UI;
@@ -28,7 +28,7 @@ public class MenuInGame : MonoBehaviour
     private bool giocoInPausa = false;
     private bool menuApribile;
 
-    [SerializeField] private IndicatoreDistanza indicatoreDistanza;
+
 
     // Start is called before the first frame update
     void Start()
@@ -57,13 +57,13 @@ public class MenuInGame : MonoBehaviour
     }
 
     /// <summary>
-    /// Metodo per controllare se il è stato premuto il tasto per aprire il menu opzioni e verificare che sia apribile in quel momento.
+    /// Metodo per controllare se il ï¿½ stato premuto il tasto per aprire il menu opzioni e verificare che sia apribile in quel momento.
     /// </summary>
     private void checkTastoMenu()
     {
         if (Input.GetKeyDown(tastoMenu))
         {
-            if(menuApribile)
+            if (menuApribile)
             {
                 if (!Interactor.pannelloAperto)
                 {
@@ -75,8 +75,6 @@ public class MenuInGame : MonoBehaviour
                         }
                         else
                         {
-                            indicatoreDistanza.setTarget(indicatoreDistanza.getUltimoTarget());
-
                             resumeGame();
                             PuntatoreMouse.disabilitaCursore();
                         }
@@ -85,9 +83,6 @@ public class MenuInGame : MonoBehaviour
                     {
                         pauseGame();
                         PuntatoreMouse.abilitaCursore();
-
-                        indicatoreDistanza.setUltimoTarget();
-                        indicatoreDistanza.setTarget("reset");
                     }
                 }
             }
@@ -125,10 +120,11 @@ public class MenuInGame : MonoBehaviour
     }
 
     /// <summary>
-    /// Metodo per impostare che il menu non è apribile
+    /// Metodo per impostare che il menu non ï¿½ apribile
     /// </summary>
     public void menuDisattivo()
     {
         menuApribile = false;
     }
+
 }
