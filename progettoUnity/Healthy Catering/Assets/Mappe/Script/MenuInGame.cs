@@ -28,7 +28,7 @@ public class MenuInGame : MonoBehaviour
     private bool giocoInPausa = false;
     private bool menuApribile;
 
-
+    private bool menuAperto = false;
 
     // Start is called before the first frame update
     void Start()
@@ -75,12 +75,14 @@ public class MenuInGame : MonoBehaviour
                         }
                         else
                         {
+                            menuAperto = false;
                             resumeGame();
                             PuntatoreMouse.disabilitaCursore();
                         }
                     }
                     else
                     {
+                        menuAperto = true;
                         pauseGame();
                         PuntatoreMouse.abilitaCursore();
                     }
@@ -125,6 +127,11 @@ public class MenuInGame : MonoBehaviour
     public void menuDisattivo()
     {
         menuApribile = false;
+    }
+
+    public bool getMenuInGameAperto()
+    {
+        return menuAperto;
     }
 
 }
