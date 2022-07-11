@@ -27,8 +27,8 @@ public class MenuInGame : MonoBehaviour
     [SerializeField] private GameObject elementiUscita;
     private bool giocoInPausa = false;
     private bool menuApribile;
-    
 
+    [SerializeField] private IndicatoreDistanza indicatoreDistanza;
 
     // Start is called before the first frame update
     void Start()
@@ -75,6 +75,8 @@ public class MenuInGame : MonoBehaviour
                         }
                         else
                         {
+                            indicatoreDistanza.setTarget(indicatoreDistanza.getUltimoTarget());
+
                             resumeGame();
                             PuntatoreMouse.disabilitaCursore();
                         }
@@ -83,6 +85,9 @@ public class MenuInGame : MonoBehaviour
                     {
                         pauseGame();
                         PuntatoreMouse.abilitaCursore();
+
+                        indicatoreDistanza.setUltimoTarget();
+                        indicatoreDistanza.setTarget("reset");
                     }
                 }
             }
@@ -126,5 +131,4 @@ public class MenuInGame : MonoBehaviour
     {
         menuApribile = false;
     }
-
 }

@@ -22,6 +22,8 @@ public class IndicatoreDistanza : MonoBehaviour
     // To adjust the position of the icon
     public Vector3 offset;
 
+    private Transform ultimoTarget = null;
+
     private void Start()
     {
         disattivaWayPoint();
@@ -93,6 +95,30 @@ public class IndicatoreDistanza : MonoBehaviour
             target = null;
             disattivaWayPoint();
         }
+    }
+
+    public void setTarget(Transform newTarget)
+    {
+        if (newTarget == null)
+        {
+            target = null;
+            disattivaWayPoint();
+        }
+        else
+        {
+            attivaWayPoint();
+            target = newTarget;
+        }
+    }
+
+    public void setUltimoTarget()
+    {
+        ultimoTarget = target;
+    }
+
+    public Transform getUltimoTarget()
+    {
+        return ultimoTarget;
     }
 
     private void attivaWayPoint()
