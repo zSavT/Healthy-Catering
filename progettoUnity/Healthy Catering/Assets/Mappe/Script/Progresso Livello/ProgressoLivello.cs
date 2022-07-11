@@ -219,14 +219,21 @@ public class ProgressoLivello : MonoBehaviour
     {
         schermataFineLivello.SetActive(true);
         valorePunteggioPlayer.gameObject.SetActive(true);
-        
-        if( (soldiFiniti() && !giocatore.piattiRealizzabiliConInventario()) )
+        if(gameOver)
         {
-            valorePunteggioPlayer.text = "Punteggio raggiunto: " + punteggioPlayer.ToString() + "\nHai perso perchè non puoi servire alcun piatto con l'inventario attuale e il denaro è sotto il valore di " + minimoSoldi + ".";
+            if ((soldiFiniti() && !giocatore.piattiRealizzabiliConInventario()))
+            {
+                valorePunteggioPlayer.text = "Punteggio raggiunto: " + punteggioPlayer.ToString() + "\nHai perso perchè non puoi servire alcun piatto con l'inventario attuale e il denaro è sotto il valore di " + minimoSoldi + ".";
+            }
+            else
+            {
+                valorePunteggioPlayer.text = "Punteggio raggiunto: " + punteggioPlayer.ToString() + "\nHai perso perchè non hai raggiunto l'obbiettivo del punteggio entro i " + numeroDiClientiMassimi + " clienti serviti.";
+            }
         } else
         {
-            valorePunteggioPlayer.text = "Punteggio raggiunto: " + punteggioPlayer.ToString() + "\nHai perso perchè non hai raggiunto l'obbiettivo del punteggio entro i " + numeroDiClientiMassimi + " clienti serviti.";
+            valorePunteggioPlayer.text = "Punteggio raggiunto: " + punteggioPlayer.ToString() + ", complimenti!";
         }
+
 
         disattivaElementiFineLivello.Invoke();
         PuntatoreMouse.abilitaCursore();
@@ -271,15 +278,19 @@ public class ProgressoLivello : MonoBehaviour
     /// </summary>
     public void tornaAlMenuPrincipale()
     {
-        if(gameOver == false)
+        Debug.Log(PlayerSettings.livelloSelezionato);
+        if(!gameOver)
         {
             Database.aggiornaDatabaseOggetto(aggiornaGiocatore());
             if(PlayerSettings.livelloSelezionato == 0)
             {
                 PlayerSettings.salvaProgressoLivello1(true);
-            } else if (PlayerSettings.livelloSelezionato == 1)
+            }
+            if (PlayerSettings.livelloSelezionato == 1)
             {
                 PlayerSettings.salvaProgressoLivello2(true);
+                Debug.Log("Ue");
+                Debug.Log(PlayerSettings.caricaProgressoLivello2());
             }
             
         }
@@ -297,9 +308,10 @@ public class ProgressoLivello : MonoBehaviour
         int i = 0;
         foreach(Player temp in listaPlayer)
         {
-            if(temp.nome == listaPlayer[i].nome)
+            if(temp.nome == giocatore.nome)
             {
-                listaPlayer[i].punteggio[PlayerSettings.livelloSelezionato] = punteggioPlayer;
+                if(temp.punteggio[PlayerSettings.livelloSelezionato] < giocatore.punteggio[PlayerSettings.livelloSelezionato])
+                    listaPlayer[i].punteggio[PlayerSettings.livelloSelezionato] = punteggioPlayer;
                 break;
             }
             i++;

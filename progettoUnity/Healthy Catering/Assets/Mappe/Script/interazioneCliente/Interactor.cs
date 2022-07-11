@@ -145,7 +145,7 @@ public class Interactor : MonoBehaviour
             } else if (pcPuntato())
             {
                 inquadratoNPC.Invoke();
-                if (Input.GetKeyDown(tastoInterazione))
+                if (Input.GetKeyDown(tastoInterazione) && !magazzino.getPannelloMagazzinoAperto())
                 {
                     magazzino.apriPannelloMagazzino(giocatore);
                     playerStop.Invoke();

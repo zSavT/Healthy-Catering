@@ -58,6 +58,14 @@ public class Player
         new OggettoQuantita<int> (46,1)
     };
 
+
+    List<OggettoQuantita<int>> inventarioTest = new List<OggettoQuantita<int>>
+    {
+        new OggettoQuantita<int> (0,10),
+        new OggettoQuantita<int> (34,10),
+        new OggettoQuantita<int> (33,10)
+    };
+
     //FINE INVENTARI LIVELLI
 
     public Player(string nome, int soldi, List<OggettoQuantita<int>> inventario)
@@ -278,6 +286,9 @@ public class Player
                 break;
             case 2:
                 this.inventario = inventarioLivello2;
+                break;
+            case 3:
+                this.inventario = inventarioTest;
                 break;
         }
     }
