@@ -282,13 +282,13 @@ public class Player
                 this.inventario = inventarioLivello05;
                 break;
             case 1:
-                this.inventario = inventarioLivello1;
+                aggiornaInventario (inventarioLivello1, true);
                 break;
             case 2:
-                this.inventario = inventarioLivello2;
+                aggiornaInventario(inventarioLivello2, true);
                 break;
             case 3:
-                this.inventario = inventarioTest;
+                aggiornaInventario(inventarioTest, true);
                 break;
         }
     }
