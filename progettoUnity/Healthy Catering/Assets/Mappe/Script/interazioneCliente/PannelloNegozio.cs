@@ -51,6 +51,11 @@ public class PannelloNegozio : MonoBehaviour
     public static bool compratoIngredientePerTutorial = false;
     [SerializeField] TextMeshProUGUI testoEsc;
 
+    private List<Ingrediente> carrello = new List<Ingrediente>();
+    private float prezzoDaPagare;
+    [SerializeField] TextMeshProUGUI testoTotaleCarello;
+    private bool inNegozio = false;
+
     void Start()
     {
         //GESTIONE PANNELLO E RELATIVI
@@ -287,13 +292,13 @@ public class PannelloNegozio : MonoBehaviour
             //della merce che vuole comprare è minore del costo dell'ingrediente
             //se ne aggiunge 1 non può più comprarlo
             //quindi ha raggiunto il massimo
-            if (giocatore.soldi - (costoIngrediente * (quantitaSelezionata)) < 0)
+            if (giocatore.soldi - prezzoDaPagare - (costoIngrediente * (quantitaSelezionata)) < 0)
                 singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].interactable = false;
             else
                 singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].interactable = true;
 
 
-            if (giocatore.soldi - (costoIngrediente * (quantitaSelezionata + 1)) >= 0)
+            if (giocatore.soldi - prezzoDaPagare - (costoIngrediente * (quantitaSelezionata + 1)) >= 0)
                 singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text = (quantitaSelezionata + 1).ToString();
 
             quantitaSelezionata = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text);
@@ -326,10 +331,63 @@ public class PannelloNegozio : MonoBehaviour
 
     public void apriPannelloSeiSicuro()
     {
-        testoPannelloSeiSicuro.text = "Sei sicuro di voler comprare x" + quantitaAttualmenteSelezionata.ToString() + "\n" + Utility.coloreIngredienti + ingredienteAttualmenteSelezionato.nome + Utility.fineColore;
+        print("in negozio: " + inNegozio.ToString());
+        if (inNegozio)
+        {
+            testoPannelloSeiSicuro.text = "Sei sicuro di voler aggiungere al carrello " + Utility.coloreIngredienti + ingredienteAttualmenteSelezionato.nome + Utility.fineColore + " x" + quantitaAttualmenteSelezionata.ToString();
+        }
+        else
+        {
+            testoPannelloSeiSicuro.text = creaStringaPannelloSeiSicuroCarrello();
+        }
         pannelloSeiSicuro.SetActive(true);
         testoEsc.gameObject.SetActive(false);
         pannelloConfermaAperto = true;
+    }
+
+    private string creaStringaPannelloSeiSicuroCarrello()
+    {
+        string output = "Sei sicuro di voler comprare i seguenti ingredienti:\n";
+
+        List<OggettoQuantita<int>> carrelloOggettoQuantita = trasformaCarrelloInOggettoQuantita();
+
+        foreach (OggettoQuantita<int> temp in carrelloOggettoQuantita)
+        {
+            output += Utility.coloreIngredienti +  Ingrediente.idToIngrediente(temp.oggetto).nome + Utility.fineColore + " x" + temp.quantita.ToString() + "\n";
+        }
+
+        output += "?";
+        return output;
+    }
+
+    private List<OggettoQuantita<int>> trasformaCarrelloInOggettoQuantita()
+    {
+        List<OggettoQuantita<int>> output = new List<OggettoQuantita<int>>();
+        List<int> oggetti = new List<int>();
+        List<int> quantita = new List<int>();
+
+        foreach (Ingrediente temp in carrello)
+        {
+            int posizioneTemp = oggetti.IndexOf(temp.idIngrediente);//returna -1 se non trova l'oggetto
+            if (posizioneTemp != -1)
+            {
+                quantita[posizioneTemp] = quantita[posizioneTemp] + 1;
+            }
+            else
+            {
+                oggetti.Add(temp.idIngrediente);
+                quantita.Add(1);
+            }
+        }
+
+        int i = 0;
+        while (i < oggetti.Count)
+        {
+            output.Add(new OggettoQuantita<int>(oggetti[i], quantita[i]));
+            i++; 
+        }
+
+        return output;
     }
 
     private Button modificaImmagineIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
@@ -356,22 +414,61 @@ public class PannelloNegozio : MonoBehaviour
     }
 
     //METODI DEI BOTTONI DEL PANNELLO SEI SICURO
-    public void compraIngrediente()
+    public void aggiungiIngredienteACarrello()
     {
-        if ((ingredienteAttualmenteSelezionato != null) && (quantitaAttualmenteSelezionata > 0))
+        if (inNegozio)
         {
-            float prezzoDaPagare = ingredienteAttualmenteSelezionato.costo * quantitaAttualmenteSelezionata;
+
+            if ((ingredienteAttualmenteSelezionato != null) && (quantitaAttualmenteSelezionata > 0))
+            {
+                prezzoDaPagare += (ingredienteAttualmenteSelezionato.costo * quantitaAttualmenteSelezionata);
+
+                int i = 0;
+                while (i < quantitaAttualmenteSelezionata)
+                {
+                    carrello.Add(ingredienteAttualmenteSelezionato);
+                    i++;
+                }
+            
+                resetQuantitaTuttiBottoni();
+                quantitaAttualmenteSelezionata = 0;
+
+
+                testoTotaleCarello.text = Utility.coloreVerde + "Totale Carrello: " + Utility.fineColore + prezzoDaPagare.ToString("0.00");
+            }
+
+            chiudiPannelloSeiSicuro();
+        }
+    }
+
+    public void compraIngredientiNelCarrello()
+    {
+        if (!inNegozio)
+        {
             giocatore.guadagna(-prezzoDaPagare);
             guiInGame.aggiornaValoreSoldi(giocatore.soldi);
-            giocatore.aggiornaInventario(new OggettoQuantita<int> (ingredienteAttualmenteSelezionato.idIngrediente, quantitaAttualmenteSelezionata), true);
-            quantitaAttualmenteSelezionata = 0;
+
+            foreach (Ingrediente temp in carrello)
+            {
+                giocatore.aggiornaInventario(new OggettoQuantita<int>(temp.idIngrediente, 1), true);//visto che aggiungo un elemento alla volta la quantita da aggiungere ora è 1
+            }
+
             resetQuantitaTuttiBottoni();
+            quantitaAttualmenteSelezionata = 0;
             compratoIngredientePerTutorial = true;
+            soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi.ToString("0.00");
+
+            resetSituazioneCarello();
+
+            inNegozio = true;
+
+            chiudiPannelloSeiSicuro();
         }
+    }
 
-        soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi.ToString("0.00");
-
-        chiudiPannelloSeiSicuro();
+    public void setInNegozioToInCarrello()
+    {
+        inNegozio = false;
     }
 
     public void resetQuantitaTuttiBottoni()
@@ -400,6 +497,11 @@ public class PannelloNegozio : MonoBehaviour
                 attivaDisattivaBottoneCompra(ingrediente, 0);
             }
         pannelloConfermaAperto = false;
+
+        if (!inNegozio)
+        {
+            inNegozio = true;
+        }
     }
 
     //GESTIONE PANNELLO E RELATIVI
@@ -411,13 +513,24 @@ public class PannelloNegozio : MonoBehaviour
         canvasPannelloNegozio.SetActive(true);
         aggiornaBottoniPaginaCarosello();
         chiudiPannelloSeiSicuro();
-        soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi.ToString("0.00"); 
+        soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi.ToString("0.00");
+
+        resetSituazioneCarello();
+    }
+
+    private void resetSituazioneCarello()
+    {
+        //reset delle cose nel carrello
+        prezzoDaPagare = 0;
+        carrello = new List<Ingrediente>();
+        testoTotaleCarello.text = Utility.coloreVerde + "Totale Carrello: " + Utility.fineColore + 0.ToString("0.00");
     }
 
     public void chiudiPannelloNegozio()
     {
         pannelloAperto = false;
         canvasPannelloNegozio.SetActive(false);
+        guiInGame.aggiornaValoreSoldi(giocatore.soldi);
         animazioneNPCIdle();
     }
 

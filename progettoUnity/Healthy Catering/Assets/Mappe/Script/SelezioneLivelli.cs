@@ -38,6 +38,7 @@ public class SelezioneLivelli : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(PlayerSettings.caricaProgressoLivello2());
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         if (PlayerSettings.caricaProgressoLivello1() == 1)
         {
@@ -60,10 +61,10 @@ public class SelezioneLivelli : MonoBehaviour
         {
             PlayerSettings.livelloSelezionato = 0;
             caricareVideoTutorial();
-        } else if (sceneIndex == 6) {
+        } else if (sceneIndex == 8) {
             PlayerSettings.livelloSelezionato = 1;
             avvioLivelloSelezionato(sceneIndex);
-        } else
+        } else if (sceneIndex == 9)
         {
             PlayerSettings.livelloSelezionato = 2;
             avvioLivelloSelezionato(sceneIndex);

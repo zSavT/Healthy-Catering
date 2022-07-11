@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 using UnityEngine.UI;
@@ -27,8 +27,8 @@ public class MenuInGame : MonoBehaviour
     [SerializeField] private GameObject elementiUscita;
     private bool giocoInPausa = false;
     private bool menuApribile;
-    
 
+    private bool menuAperto = false;
 
     // Start is called before the first frame update
     void Start()
@@ -57,13 +57,13 @@ public class MenuInGame : MonoBehaviour
     }
 
     /// <summary>
-    /// Metodo per controllare se il è stato premuto il tasto per aprire il menu opzioni e verificare che sia apribile in quel momento.
+    /// Metodo per controllare se il ï¿½ stato premuto il tasto per aprire il menu opzioni e verificare che sia apribile in quel momento.
     /// </summary>
     private void checkTastoMenu()
     {
         if (Input.GetKeyDown(tastoMenu))
         {
-            if(menuApribile)
+            if (menuApribile)
             {
                 if (!Interactor.pannelloAperto)
                 {
@@ -75,12 +75,14 @@ public class MenuInGame : MonoBehaviour
                         }
                         else
                         {
+                            menuAperto = false;
                             resumeGame();
                             PuntatoreMouse.disabilitaCursore();
                         }
                     }
                     else
                     {
+                        menuAperto = true;
                         pauseGame();
                         PuntatoreMouse.abilitaCursore();
                     }
@@ -120,11 +122,16 @@ public class MenuInGame : MonoBehaviour
     }
 
     /// <summary>
-    /// Metodo per impostare che il menu non è apribile
+    /// Metodo per impostare che il menu non ï¿½ apribile
     /// </summary>
     public void menuDisattivo()
     {
         menuApribile = false;
+    }
+
+    public bool getMenuInGameAperto()
+    {
+        return menuAperto;
     }
 
 }

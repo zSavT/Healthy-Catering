@@ -22,6 +22,10 @@ public class IndicatoreDistanza : MonoBehaviour
     // To adjust the position of the icon
     public Vector3 offset;
 
+    [SerializeField] private MenuInGame menuInGame;
+    private Transform ultimoTarget = null;
+    private bool checkMenuInGameAperto = false;
+
     private void Start()
     {
         disattivaWayPoint();
@@ -29,6 +33,23 @@ public class IndicatoreDistanza : MonoBehaviour
 
     private void Update()
     {
+        //gestione menu in game
+        if (menuInGame.getMenuInGameAperto())
+        {
+            setUltimoTarget();
+            setTarget("reset");
+            checkMenuInGameAperto = true;
+        }
+        if (checkMenuInGameAperto)
+        {
+            if (!menuInGame.getMenuInGameAperto())
+            {
+                setTarget(getUltimoTarget());
+                checkMenuInGameAperto = false;
+            }
+        }
+        
+        //gestione waypoint
         if (target != null)
         {
             // Giving limits to the icon so it sticks on the screen
@@ -73,7 +94,7 @@ public class IndicatoreDistanza : MonoBehaviour
         }
     }
 
-    public void setTarget (string cosa)
+    public void setTarget(string cosa)
     {
         attivaWayPoint();
         if (cosa.Equals("zio"))
@@ -95,6 +116,29 @@ public class IndicatoreDistanza : MonoBehaviour
         }
     }
 
+    public void setTarget(Transform newTarget)
+    {
+        if (newTarget == null)
+        {
+            target = null;
+            disattivaWayPoint();
+        }
+        else
+        {
+            attivaWayPoint();
+            target = newTarget;
+        }
+    }
+
+    public void setUltimoTarget()
+    {
+        ultimoTarget = target;
+    }
+
+    public Transform getUltimoTarget()
+    {
+        return ultimoTarget;
+    }
     private void attivaWayPoint()
     {
         pannelloWayPoint.SetActive(true);
