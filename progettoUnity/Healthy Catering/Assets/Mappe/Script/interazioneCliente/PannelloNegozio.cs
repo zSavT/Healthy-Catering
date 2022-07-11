@@ -530,6 +530,7 @@ public class PannelloNegozio : MonoBehaviour
     {
         pannelloAperto = false;
         canvasPannelloNegozio.SetActive(false);
+        guiInGame.aggiornaValoreSoldi(giocatore.soldi);
         animazioneNPCIdle();
     }
 

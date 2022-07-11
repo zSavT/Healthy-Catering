@@ -93,7 +93,7 @@ public class ProgressoLivello : MonoBehaviour
         PuntatoreMouse.abilitaCursore();
         pannelloObbiettiviInizioLivello.SetActive(true);
         listaObbiettiviInizioLivello.text = "Servire " + numeroClientiDaServire + " clienti.\nRaggiungere il punteggio: " + punteggioMassimo + ".";
-        listaCriteriGameOver.text = "Denaro inferiore a " + minimoSoldi + " e inventario vuoto.\nServiti " + numeroDiClientiMassimi + " clienti non avendo raggiunto un punteggio pari o superiore a " + punteggioMassimo;
+        listaCriteriGameOver.text = "Denaro inferiore a " + minimoSoldi + " e nessuna possibilità di servire almeno un piatto.\nServiti " + numeroDiClientiMassimi + " clienti non avendo raggiunto un punteggio pari o superiore a " + punteggioMassimo;
     }
 
     public void disattivaPannelloRiepiloghiObbiettiviEInizializzaVolori()
@@ -222,7 +222,7 @@ public class ProgressoLivello : MonoBehaviour
         
         if( (soldiFiniti() && !giocatore.piattiRealizzabiliConInventario()) )
         {
-            valorePunteggioPlayer.text = "Punteggio raggiunto: " + punteggioPlayer.ToString() + "\nHai perso perchè il tuo inventario è vuoto e il denaro è sotto il valore di " + minimoSoldi + ".";
+            valorePunteggioPlayer.text = "Punteggio raggiunto: " + punteggioPlayer.ToString() + "\nHai perso perchè non puoi servire alcun piatto con l'inventario attuale e il denaro è sotto il valore di " + minimoSoldi + ".";
         } else
         {
             valorePunteggioPlayer.text = "Punteggio raggiunto: " + punteggioPlayer.ToString() + "\nHai perso perchè non hai raggiunto l'obbiettivo del punteggio entro i " + numeroDiClientiMassimi + " clienti serviti.";

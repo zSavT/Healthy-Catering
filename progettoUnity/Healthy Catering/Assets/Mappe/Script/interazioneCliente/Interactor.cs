@@ -73,11 +73,13 @@ public class Interactor : MonoBehaviour
             if (livelloAttuale == 0)
             {
                 livelloAttuale = PlayerSettings.livelloSelezionato;
-                giocatore.setInventarioLivello(livelloAttuale);
                 giocatore.soldi = 15f;
             }     
             else
+            {
+                giocatore.setInventarioLivello(livelloAttuale);
                 giocatore.soldi = 30f;
+            }    
             guiInGame.aggiornaValoreSoldi(giocatore.soldi);
         }
         catch(Exception e)
@@ -96,12 +98,6 @@ public class Interactor : MonoBehaviour
     void Update()
     {
         interazioneUtenteConNPCVari();
-        /*//teletrasporto a ristorante
-        if(Input.GetKeyDown(KeyCode.Tab))
-        {
-            this.gameObject.transform.position = destinazioneTeleport.transform.position;
-        }
-        */
     }
 
     public void menuApribileOnOff()
