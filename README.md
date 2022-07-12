@@ -52,7 +52,6 @@ L'aspect ratio 4:3 non è pienamento supportato, l'esperienza potrebbe variare r
 ### Requisiti Software
 
 - Windows 10/11
-- High Sierra 10.13+
 
 ## Aiutanti
 
