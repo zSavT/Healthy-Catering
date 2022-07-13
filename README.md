@@ -39,7 +39,7 @@ I requisiti Hardware e Software del gioco:
 ### Requisiti consigliati
 
 -	Processore: i3-540 o superiori
--	RAM: 14GB per l’esecuzione
+-	RAM: 4GB per l’esecuzione
 -	Hard Disk: 1,6 GB
 -	Scheda Video: GEFORCE GT710
 -	Risoluzione: 1920x1080 o superiori - Aspect Ratio: 16:9
