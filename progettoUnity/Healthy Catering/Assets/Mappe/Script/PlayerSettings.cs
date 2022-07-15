@@ -292,11 +292,19 @@ public class PlayerSettings : MonoBehaviour
         return PlayerPrefs.GetInt("risoluzione");
     }
 
+    /// <summary>
+    /// Metodo che restituisce se le impostazioni delle risoluzione, sono state salvate per la prima volta
+    /// </summary>
+    /// <returns>0: Mai salvate, 1: Salvate</returns>
     public static int caricaImpostazioniPrimoAvvioRisoluzione()
     {
         return PlayerPrefs.GetInt("risoluzionePrimoAvvio");
     }
 
+    /// <summary>
+    /// Metodo che salva se le impostazioni delle risoluzione, sono state salvate per la prima volta
+    /// </summary>
+    /// <param name="val">Valore da settare.<br>0: Settate, 1: Settate</br></param>
     public static void salvaImpostazioniPrimoAvvioRisoluzione(int val)
     {
         PlayerPrefs.SetInt("risoluzionePrimoAvvio", val);
@@ -344,11 +352,19 @@ public class PlayerSettings : MonoBehaviour
         return PlayerPrefs.GetFloat("volume");
     }
 
+    /// <summary>
+    /// Metodo che salva le impostazioni audio dei suoni del gioco
+    /// </summary>
+    /// <param name="volume">Variabile dei suoni</param>
     public static void salvaImpostazioniVolumeSuoni(float volume)
     {
         PlayerPrefs.SetFloat("volumeSuoni", volume);
     }
 
+    /// <summary>
+    /// Metodo che restituisce il valore dei suoni salvato in memoria.
+    /// </summary>
+    /// <returns>Valore volume suoni</returns>
     public static float caricaImpostazioniVolumeSuoni()
     {
         return PlayerPrefs.GetFloat("volumeSuoni");

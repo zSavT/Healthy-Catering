@@ -1,7 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Classe per la gestione dello spawn dei clienti all'interno del ristorante<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Preferibilmente al modello del ristorante interno.
+/// </para>
+/// </summary>
 public class GestoreClienti : MonoBehaviour
 {
     [SerializeField] private GameObject[] vettoreClienti;
@@ -14,6 +18,9 @@ public class GestoreClienti : MonoBehaviour
         Interactable.numeroCliente = 0;
     }
 
+    /// <summary>
+    /// Metodo che attiva il cliente successivo a quello appena de-allocato se esistono altri clienti da allocare.
+    /// </summary>
     public void attivaClienteSuccessivo()
     {
         Interactable.numeroCliente++;
