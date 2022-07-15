@@ -208,7 +208,10 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         refreshValori();
     }
 
-
+    /// <summary>
+    /// Metodo che permette la corretta eliminazione del profilo utente selezionato al momento.<br>
+    /// Se il profilo eliminato è anche l'ultimo, verrà caricato il menu principale.</br>
+    /// </summary>
     public void eliminazioneProfilo()
     {
         PlayerSettings.rimuoviChiaviProfiloUtente(nomeSelezionato);

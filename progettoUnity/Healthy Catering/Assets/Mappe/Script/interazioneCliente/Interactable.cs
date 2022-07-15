@@ -2,7 +2,12 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-
+/// <summary>
+/// Classe per la gestione dei clienti in game<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Contenitore cliente in game.
+/// </para>
+/// </summary>
 public class Interactable : MonoBehaviour
 {
     public int IDCliente;

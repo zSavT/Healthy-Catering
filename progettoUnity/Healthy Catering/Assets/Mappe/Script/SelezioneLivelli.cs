@@ -72,6 +72,10 @@ public class SelezioneLivelli : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Metodo che carica il caricamento del livello selezionato
+    /// </summary>
+    /// <param name="sceneIndex">Indice scena da caricare</param>
     private void avvioLivelloSelezionato(int sceneIndex)
     {
         allAvvio.Invoke();

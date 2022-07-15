@@ -45,6 +45,9 @@ public class MenuInGame : MonoBehaviour
         checkTastoMenu();
     }
 
+    /// <summary>
+    /// Metodo che attiva gli elementi base del menu opzioni
+    /// </summary>
     private void attivaElementiIniziali()
     {
         testoUscita.gameObject.SetActive(true);
@@ -129,6 +132,10 @@ public class MenuInGame : MonoBehaviour
         menuApribile = false;
     }
 
+    /// <summary>
+    /// Metodo che restituisce la variabile booleana del menu opzioni aperto o meno
+    /// </summary>
+    /// <returns>Menu aperto<br>True: Menu Opzioni Aperto<br>False: Menu opzioni non aperto</br></br></returns>
     public bool getMenuInGameAperto()
     {
         return menuAperto;

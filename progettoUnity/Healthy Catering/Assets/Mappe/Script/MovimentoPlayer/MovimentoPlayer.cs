@@ -147,6 +147,9 @@ public class MovimentoPlayer : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Metodo che controlla la riproduzio dei suoni del movimento del giocatore.
+    /// </summary>
     private void controlloSuonoMovimento()
     {
         if (!isFermo() && !isSprinting && Interactor.menuApribile)

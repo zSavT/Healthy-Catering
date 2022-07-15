@@ -12,8 +12,6 @@ using System;
 public class Gui : MonoBehaviour
 {
 
-
-    // CAMBIARE NOME POI IN GUI e NON IN HUB
     [Header("Testo valori")]
     [SerializeField] private TextMeshProUGUI soldiTesto;
     [SerializeField] private TextMeshProUGUI punteggioTesto;
@@ -59,6 +57,15 @@ public class Gui : MonoBehaviour
     }
 
     /// <summary>
+    /// Metodo per aggiornare il valore dei soldi presenti nella GUI senza animazione dei particellari.
+    /// </summary>
+    /// <param name="soldi">Valore soldi raggiunti</param>
+    public void aggiornaValoreSoldiSenzaAnimazioni(float soldi)
+    {
+        soldiTesto.text = soldi.ToString("0.00");
+    }
+
+    /// <summary>
     /// Metodo per aggiornare i valori nella GUI
     /// </summary>
     /// <param name="punteggio">Valore punteggio raggiunto</param>
@@ -80,6 +87,10 @@ public class Gui : MonoBehaviour
         valorePrecedentePunteggio = punteggio;
     }
 
+    /// <summary>
+    /// Aggiorna il valore del punteggio senza l'animazione dei valori scalare e senza l'attivazione dei particellari.
+    /// </summary>
+    /// <param name="punteggio">Valore punteggio raggiunto</param>
     public void aggiornaValorePunteggioSenzaAnimazione(int punteggio)
     {
         punteggioTesto.text = punteggio.ToString();

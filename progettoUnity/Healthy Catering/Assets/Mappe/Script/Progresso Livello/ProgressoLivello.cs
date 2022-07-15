@@ -87,6 +87,9 @@ public class ProgressoLivello : MonoBehaviour
             controlloGameOver();
     }
 
+    /// <summary>
+    /// Attiva il pannello del riepilogo livello iniziale.
+    /// </summary>
     public void attivaPannelloRiepiloghiObbiettivi()
     {
         playerStop.Invoke();
@@ -96,6 +99,9 @@ public class ProgressoLivello : MonoBehaviour
         listaCriteriGameOver.text = "Denaro inferiore a " + minimoSoldi + " e nessuna possibilità di servire almeno un piatto.\nServiti " + numeroDiClientiMassimi + " clienti non avendo raggiunto un punteggio pari o superiore a " + punteggioMassimo;
     }
 
+    /// <summary>
+    /// Disattiva gli obbiettivi del gioco e gli inizalizza
+    /// </summary>
     public void disattivaPannelloRiepiloghiObbiettiviEInizializzaVolori()
     {
         PuntatoreMouse.disabilitaCursore();
@@ -108,6 +114,10 @@ public class ProgressoLivello : MonoBehaviour
         valoriInizialiTesto();
     }
 
+
+    /// <summary>
+    /// Controllo del gameOver della partita
+    /// </summary>
     private void controlloGameOver()
     {
         if( (soldiFiniti() && !giocatore.piattiRealizzabiliConInventario()) || numeroClientiServiti == numeroDiClientiMassimi)
@@ -118,6 +128,9 @@ public class ProgressoLivello : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Imposta la schermata di fine livello per il gameOver.
+    /// </summary>
     private void settaggiSchermataFineLivelloGameOver()
     {
         titoloSchermataFineLivello.text = "Hai perso!";
@@ -130,6 +143,10 @@ public class ProgressoLivello : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Metodo per il controllo del criterio del gameOver del giocatore
+    /// </summary>
+    /// <returns>True: Il giocatore ha meno del minimo dei soldi. <br>False: Il giocatore ha più del minimo dei soldi.</br></returns>
     private bool soldiFiniti()
     {
         if(giocatore.soldi > minimoSoldi)
@@ -142,15 +159,19 @@ public class ProgressoLivello : MonoBehaviour
         
     }
 
-
-
+    /// <summary>
+    /// Metodo set per il giocatore.
+    /// </summary>
+    /// <param name="giocatore">Giocatore</param>
     public void setGiocatore(Player giocatore)
     {
         this.giocatore = giocatore;
     }
 
 
-
+    /// <summary>
+    /// Inizializza i valori iniziali degli obbiettivi nella gui.
+    /// </summary>
     private void valoriInizialiTesto()
     {
         testoObbietivo1 = "Servire " + numeroClientiDaServire + " clienti. Clienti serviti: " + numeroClientiServiti + "/" + numeroClientiDaServire;
@@ -213,8 +234,9 @@ public class ProgressoLivello : MonoBehaviour
             return false;
     }
 
-
-    //Il metodo eventualmente pu� essere eliminato per inserire il suo contenuto altrove, oppure pu� essere espanso in base alle necessit�.
+    /// <summary>
+    /// Metodo che attiva la schermata di fine livello sia per il gameOver che per la vittoria.
+    /// </summary>
     private void attivazioneSchermataFineLivello()
     {
         schermataFineLivello.SetActive(true);
@@ -265,6 +287,9 @@ public class ProgressoLivello : MonoBehaviour
         obbiettivoDueToogle.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Attiva solo la sezione degli obbiettivi del gioco (non la scritta obbiettivi verde).
+    /// </summary>
     public void attivaSoloObbiettivi()
     {
         obbiettivoUno.gameObject.SetActive(true);

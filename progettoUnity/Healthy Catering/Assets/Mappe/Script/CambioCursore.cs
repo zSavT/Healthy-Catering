@@ -19,11 +19,20 @@ public class CambioCursore : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         cursoreSuElemento = Resources.Load("PuntatoreSelezionato") as Texture2D;
     }
 
+
+    /// <summary>
+    /// Metodo che setta il cursore normale quando il puntatore del mouse non è più sopra l'elemento con questo script collegato
+    /// </summary>
+    /// <param name="eventData">Puntatore esce dalla zona dell'elmento</param>
     public void OnPointerExit(PointerEventData eventData)
     {
         Cursor.SetCursor(cursoreNormale, Vector2.zero, CursorMode.Auto);
     }
 
+    /// <summary>
+    /// Metodo che setta il curosore over quando il puntatore del mouse è sopra ad un elemento con questo script collegato.
+    /// </summary>
+    /// <param name="eventData">Puntatore del mouse sopra l'elemento</param>
     public void OnPointerEnter(PointerEventData eventData)
     {
         Cursor.SetCursor(cursoreSuElemento, Vector2.zero, CursorMode.Auto);

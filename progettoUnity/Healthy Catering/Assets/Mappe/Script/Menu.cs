@@ -90,6 +90,10 @@ public class Menu : MonoBehaviour
     }
 
     //metodo per triggerare a mano i livelli, da eliminare poi.
+
+    /// <summary>
+    /// Metodo per attivare i livelli tramite cheatcode
+    /// </summary>
     private void attivaDisattivaLivelli()
     {
         if(Input.GetKeyDown(KeyCode.L))
@@ -170,6 +174,10 @@ public class Menu : MonoBehaviour
         companyName.text = companyName.text + " " + Application.companyName;
     }
 
+
+    /// <summary>
+    /// Metodo che carica la scena della classifica
+    /// </summary>
     public void classifica()
     {
         SelezioneLivelli.caricaClassifica();

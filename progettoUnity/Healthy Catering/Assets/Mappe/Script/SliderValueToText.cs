@@ -18,11 +18,18 @@ public class SliderValueToText : MonoBehaviour
         textSliderValue = GetComponent<TextMeshProUGUI>();
     }
 
+
+    /// <summary>
+    /// Aggiorna il valore del testo in corrispondenza dello slider.
+    /// </summary>
     public void aggiornaValore()
     {
         textSliderValue.text = sliderUI.value.ToString();
     }
 
+    /// <summary>
+    /// Aggiorna il valore in percetuale del testo in corrispondenza dello slider.
+    /// </summary>
     public void aggiornaValorePercentuale()
     {
         float valoreCaricamento = sliderUI.value * 100f;
