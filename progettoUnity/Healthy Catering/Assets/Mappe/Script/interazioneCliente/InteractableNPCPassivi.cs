@@ -1,5 +1,11 @@
 using UnityEngine;
 
+/// <summary>
+/// Classe per la gestione dei NPC passivi<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Modello Contenitore NPC passivo.
+/// </para>
+/// </summary>
 public class InteractableNPCPassivi : MonoBehaviour
 {
 
@@ -15,6 +21,10 @@ public class InteractableNPCPassivi : MonoBehaviour
         animazione = GetComponentInParent<Animator>();
     }
 
+    /// <summary>
+    /// Imposta lo sguardo del npc verso il giocatore ed avvio l'animazione della parlata.
+    /// </summary>
+    /// <param name="posizionePlayer">Posizione del giocatore per orientamento squardo.</param>
     public void animazioneParlata(Transform posizionePlayer)
     {
         if(girabile)
@@ -22,6 +32,10 @@ public class InteractableNPCPassivi : MonoBehaviour
         animazione.SetBool("parlando", true);
     }
 
+    /// <summary>
+    /// Disattiva l'animazione del npc della parlta ed ritorna a quella originaria.
+    /// </summary>
+    /// <param name="posizionePlayer">Posizione del giocatore per orientamento squadro.</param>
     public void stopAnimazioneParlata(Transform posizionePlayer)
     {
         if(girabile)
