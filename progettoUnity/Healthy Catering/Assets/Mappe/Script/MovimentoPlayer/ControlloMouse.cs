@@ -9,7 +9,7 @@ using UnityEngine;
 public class ControlloMouse : MonoBehaviour
 {
     private Transform modelloPlayer;
-    private Transform posizioneCameraIniziale;
+    private Transform posizioneCameraIniziale;          //deve essere il primo elemento nel contenitore del giocatore!
     private float posizioneCameraFovMassimo = 0.51f;
     private Camera cameraGioco;
     private float sensibilitaMouse = 250f;              //250 valore mediano
