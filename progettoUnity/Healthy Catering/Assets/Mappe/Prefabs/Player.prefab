@@ -2168,7 +2168,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2232239043076995264}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2972815918540076571
 GameObject:
@@ -2331,10 +2331,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5218992457513206985}
   - {fileID: 6450235984789153481}
   - {fileID: 5218992457125795455}
   - {fileID: 7729007391715548323}
-  - {fileID: 5218992457513206985}
   - {fileID: 424096644823220136}
   - {fileID: 4878910828240045144}
   - {fileID: 6568370083318320247}
@@ -2814,7 +2814,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2232239043076995264}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &5218992457125795448
 Camera:
@@ -2879,11 +2879,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee93aadd3aa1ef45bd5dc98b30e3160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelloPlayer: {fileID: 2232239043076995264}
   posizioneCameraIniziale: {fileID: 5218992457513206985}
   posizioneCameraFovMassimo: 0.51
-  sensibilitaMouse: 250
-  rangeVisuale: 90
 --- !u!114 &6450235984614192960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2927,7 +2924,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2232239043076995264}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6450235984606018290
 GameObject:
@@ -3280,7 +3277,7 @@ Transform:
   - {fileID: 6450235985480175134}
   - {fileID: 6450235984667381228}
   m_Father: {fileID: 2232239043076995264}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6450235984789153480
 Animator:
