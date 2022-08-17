@@ -9,7 +9,7 @@ using UnityEngine.Events;
 /// </summary>
 public class MovimentoPlayer : MonoBehaviour
 {
-    [SerializeField] private CharacterController controller;
+    private CharacterController controller;
 
     [Header("Movimento")]
     [SerializeField] private float velocitaBase = 5f;
@@ -22,16 +22,17 @@ public class MovimentoPlayer : MonoBehaviour
     [Header("Salto")]
     [SerializeField] private KeyCode tastoSalto;
     [SerializeField] private float altezzaSalto = 0.35f;
-    [SerializeField] private Transform controlloPavimento;
     [SerializeField] private float distanzaPavimento = 0.4f;
     [SerializeField] private LayerMask pavimentoMask;
-    [SerializeField] private float gravita = -9.8f;
+    public bool perTerra;
+    private float gravita = -9.8f;
+    private Transform controlloPavimento;           //deve avere il tag "CheckPavimento" inserito
 
     [Header("Suoni Movienti")]
     [SerializeField] private AudioSource suonoCamminata;
     [SerializeField] private AudioSource suonoSprint;
     [SerializeField] private AudioSource suonoSalto;
-    public bool perTerra;
+    
 
 
     private Vector3 velocita;
@@ -46,6 +47,8 @@ public class MovimentoPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        controlloPavimento = GameObject.FindGameObjectWithTag("CheckPavimento").transform;
+        controller = GetComponent<CharacterController>();
         puoMuoversi = true;
         controllerAnimazione = GetComponentInChildren<Animator>();
     }

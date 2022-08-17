@@ -11,7 +11,7 @@ public class ModelloPlayer : MonoBehaviour
     [Header("Modello 3D")]
     [SerializeField] private GameObject modelloFemminile;
     [SerializeField] private GameObject modelloMaschile;
-    [Header("Colore pelle modello 3D")]
+    [Header("Texture pelle modello 3D")]
     //EVENTUALMENTE POSSONO ESSERE TOLTI SE CARICHIAMO LE TEXTURE DALLA CARTELLA RISORSE
     [SerializeField] private Material textureBianco;
     [SerializeField] private Material textureNero;
