@@ -29,7 +29,6 @@ public class Classifica : MonoBehaviour
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
     }
 
-
     /// <summary>
     /// Elimina il testo presente nelle liste punteggio.
     /// </summary>
@@ -68,7 +67,6 @@ public class Classifica : MonoBehaviour
             }
             i++;
         }
-
     }
 
     /// <summary>
@@ -100,6 +98,7 @@ public class Classifica : MonoBehaviour
     {
         PlayerSettings.livelloSelezionato = 2;
         listaPlayer = Player.getListaSortata ();
+        
         int i = 0;
         while (i < numeroGiocatoriDaVisualizzare)
         {

@@ -8,7 +8,6 @@ using UnityEngine;
 /// </summary>
 public class MuroInvisibile : MonoBehaviour
 {
-
     [Header("Muri Invisibili Acqua")]
     //Layer per l'acqua
     [SerializeField] private LayerMask oceano;
@@ -18,16 +17,12 @@ public class MuroInvisibile : MonoBehaviour
     private Transform triggerTocco;         //deve avere il tag "CheckPavimento" inserito
     private bool toccato;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         player = this.gameObject;
         triggerTocco = GameObject.FindGameObjectWithTag("CheckPavimento").transform;
-
     }
 
-    // Update is called once per frame
     void Update()
     {
         controlloCollisioneAcqua();

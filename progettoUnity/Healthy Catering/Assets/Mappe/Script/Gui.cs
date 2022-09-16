@@ -11,7 +11,6 @@ using System;
 /// </summary>
 public class Gui : MonoBehaviour
 {
-
     [Header("Testo valori")]
     [SerializeField] private TextMeshProUGUI soldiTesto;
     [SerializeField] private TextMeshProUGUI punteggioTesto;
@@ -27,7 +26,6 @@ public class Gui : MonoBehaviour
     public string formatoNumero = "N0";
     private int valorePrecedentePunteggio = 0;
     private Coroutine CountingCoroutine;
-
 
     void start()
     {
@@ -52,7 +50,7 @@ public class Gui : MonoBehaviour
     {
         soldiTesto.text = soldi.ToString("0.00");
         var main = animazioneSoldi.main;
-        main.maxParticles = ((int)soldi / 2)+5;
+        main.maxParticles = ((int)soldi / 2) + 5;
         animazioneSoldi.Play();
     }
 
@@ -72,18 +70,19 @@ public class Gui : MonoBehaviour
     public void aggiornaValorePunteggio(int punteggio)
     {
         UpdateText(punteggio, punteggioTesto);
+
+        var main = animazionePunteggioNegativa.main;
         if(valorePrecedentePunteggio>punteggio)
         {
-            var main = animazionePunteggioNegativa.main;
             //per ottenere il valore assoluto ed ottenere il numero di particelle corretto
             main.maxParticles = (Math.Abs(punteggio/2))+5;               
             animazionePunteggioNegativa.Play();
         } else
         {
-            var main = animazionePunteggioNegativa.main;
-            main.maxParticles = (punteggio / 5)+5;
+            main.maxParticles = (Math.Abs(punteggio / 5))+5;
             animazionePunteggioPositiva.Play();
         }
+
         valorePrecedentePunteggio = punteggio;
     }
 
@@ -96,7 +95,6 @@ public class Gui : MonoBehaviour
         punteggioTesto.text = punteggio.ToString();
         valorePrecedentePunteggio = punteggio;
     }
-
 
     /// <summary>
     /// Avvia l'aggiornamento dimanico valore int
@@ -167,6 +165,4 @@ public class Gui : MonoBehaviour
         //Se i particellari sono ancora visibili, stoppa i particellari per sincronizzarli con l'aggiornamento del valore
         bloccaAnimazioniParticellari();
     }
-
-
 }

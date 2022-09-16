@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 public class Costanti
 {
@@ -71,6 +71,15 @@ public class Costanti
     public static readonly string coloreVerde = "<color=#B6D89C>";
     public static readonly string grassetto = "<b>";
     public static readonly string fineGrassetto = "</b>";
+    
+    public static readonly string coloreInizio = "<color=#";
+
+    // TUTORIAL
+    public static readonly List<string> scritteZio = new List<string>
+    {
+        "Eccoti qua! Questo edificio è il nostro <color=#B5D99C>ristorante</color>, o meglio, il tuo.",
+        "Spero che questo lavoro ti piacerà! E ricordati, sii sempre garbatƏ con i <color=#B5D99C>clienti</color>. Sapranno ricompensarti."
+    };
 
     // ALTRO
     public static readonly int numeroLivelli = 3;

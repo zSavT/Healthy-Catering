@@ -13,29 +13,30 @@ using UnityEngine.Audio;
 /// </summary>
 public class OpzioniMenu : MonoBehaviour
 {
-
     [Header("Impostazioni Grafica e Schermo")]
     [SerializeField] private TMP_Dropdown risoluzioniDisponibili;
     [SerializeField] private TMP_Dropdown livelloGrafica;
     [SerializeField] private Toggle schermoIntero;
-    [SerializeField] private Toggle vSynch;
+    [SerializeField] private Toggle vSync;
     [SerializeField] private Toggle framerateLibero;
     [SerializeField] private Resolution[] risoluzioni;
     [SerializeField] private TMP_Dropdown daltonismo;
+    
     [Header("Impostazioni Audio")]
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider sliderVolumeMusica;
     [SerializeField] private AudioMixer audioMixerSuoni;
     [SerializeField] private Slider sliderVolumeSuoni;
     [SerializeField] private AudioSource suonoClick;
+    
     [Header("Impostazioni Sensibilità")]
     [SerializeField] private TextMeshProUGUI sliderSensibilitaTesto;
     [SerializeField] private Slider sliderSensibilita;
+    
     [Header("Impostazioni Fov")]
     [SerializeField] private TextMeshProUGUI sliderFovTesto;
     [SerializeField] private Slider sliderFov;
     private bool caricatiValori = false;
-
 
     void Start()
     {
@@ -51,19 +52,10 @@ public class OpzioniMenu : MonoBehaviour
         //RISOLUZIONE
         risoluzioni = Screen.resolutions;
         risoluzioniDisponibili.ClearOptions();      //svuota le scelte
-        List<string> opzioni = new List<string>();
-        int indiceRisoluzioneCorrente = 0;
-        for (int i = 0; i < risoluzioni.Length; i++)
-        {
-            string risoluzione = risoluzioni[i].width + " x " + risoluzioni[i].height + " (" + risoluzioni[i].refreshRate + ")";
-            opzioni.Add(risoluzione);
-            if (risoluzioni[i].width == Screen.currentResolution.width &&
-                risoluzioni[i].height == Screen.currentResolution.height)
-            {
-                indiceRisoluzioneCorrente = i;
-            }
-        }
-        risoluzioniDisponibili.AddOptions(opzioni);
+
+        risoluzioniDisponibili.AddOptions(getOpzioniRisoluzioni());
+        int indiceRisoluzioneCorrente = getIndiceRisoluzioneCorrente();
+
         if(PlayerSettings.caricaImpostazioniPrimoAvvioRisoluzione()==0)
         {
             risoluzioniDisponibili.value = indiceRisoluzioneCorrente;
@@ -72,11 +64,12 @@ public class OpzioniMenu : MonoBehaviour
             risoluzioniDisponibili.value = indiceRisoluzioneCorrente;
         } else
         {
+            //vengono chiamati 2 volte i metodi perché al primo avvio vanno resettati i valori
+            //per poi poterli impostare nel modo corretto
             risoluzioniDisponibili.value = PlayerSettings.caricaImpostazioniRisoluzione();
             risoluzioniDisponibili.RefreshShownValue();
             risoluzioniDisponibili.value = PlayerSettings.caricaImpostazioniRisoluzione();
         }
-        
 
         //GRAFICA
         livelloGrafica.value = QualitySettings.GetQualityLevel();
@@ -86,15 +79,10 @@ public class OpzioniMenu : MonoBehaviour
 
         //VSYNCH
         int vSyncVal = QualitySettings.vSyncCount;
-        if (vSyncVal == 0)
-        {
-            vSynch.isOn = false;
-        }
-        else if (vSyncVal == 1)
-        {
-            vSynch.isOn = true;
-        }
-
+        vSync.isOn = false;
+        if (vSyncVal == 1) vSync.isOn = true;
+        
+        //FRAMERATE LIBERO
         framerateLibero.isOn = PlayerSettings.caricaImpostazioniFramerateLibero();
 
         //AUDIO
@@ -102,6 +90,35 @@ public class OpzioniMenu : MonoBehaviour
         sliderVolumeSuoni.value = PlayerSettings.caricaImpostazioniVolumeSuoni();
 
         caricatiValori = true;
+    }
+
+    private List<string> getOpzioniRisoluzioni()
+    {
+        List<string> opzioni = new List<string>();
+        
+        for (int i = 0; i < risoluzioni.Length; i++)
+        {
+            string risoluzione = risoluzioni[i].width + " x " + risoluzioni[i].height + " (" + risoluzioni[i].refreshRate + ")";
+            opzioni.Add(risoluzione);
+        }
+
+        return opzioni;
+    }
+
+    private int getIndiceRisoluzioneCorrente()
+    {
+        int indiceRisoluzioneCorrente = 0;
+
+        for (int i = 0; i < risoluzioni.Length; i++)
+        {
+            if (risoluzioni[i].width == Screen.currentResolution.width &&
+                risoluzioni[i].height == Screen.currentResolution.height)
+            {
+                indiceRisoluzioneCorrente = i;
+            }
+        }
+
+        return indiceRisoluzioneCorrente;
     }
 
     /// <summary>

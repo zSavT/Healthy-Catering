@@ -11,6 +11,7 @@ public class ModelloPlayer : MonoBehaviour
     [Header("Modello 3D")]
     [SerializeField] private GameObject modelloFemminile;
     [SerializeField] private GameObject modelloMaschile;
+    
     [Header("Texture pelle modello 3D")]
     //EVENTUALMENTE POSSONO ESSERE TOLTI SE CARICHIAMO LE TEXTURE DALLA CARTELLA RISORSE
     [SerializeField] private Material textureBianco;
@@ -18,8 +19,6 @@ public class ModelloPlayer : MonoBehaviour
     [SerializeField] private Material textureMulatto;
     string nomeGiocatore = "";           
 
-
-    // Start is called before the first frame update
     void Start()
     {
         nomeGiocatore = PlayerSettings.caricaNomePlayerGiocante();
@@ -55,11 +54,9 @@ public class ModelloPlayer : MonoBehaviour
         } else if (PlayerSettings.caricaColorePelle(nomeGiocatore) == 1 )
         {
             GetComponentInChildren<Renderer>().material = textureNero;
-        }
-        else if (PlayerSettings.caricaColorePelle(nomeGiocatore) == 2)
+        } else if (PlayerSettings.caricaColorePelle(nomeGiocatore) == 2)
         {
             GetComponentInChildren<Renderer>().material =  textureMulatto;
         }
     }
-
 }
