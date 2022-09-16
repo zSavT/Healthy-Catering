@@ -11,15 +11,15 @@ public class PannelloMostraRicette : MonoBehaviour
     [SerializeField] private TextMeshProUGUI listaRicettePannelloMostraRicette;
 
 
-    public void apriPannelloMostraRicette(Ingrediente ingrediente, List<Ingrediente> databaseIngredienti, List<Piatto> databasePiatti)
+    public void apriPannelloMostraRicette(Ingrediente ingrediente)
     {
-        List<Piatto> piattiRealizzabili = ingrediente.getListaPiattiRealizzabiliConIngrediente(databaseIngredienti, databasePiatti);
+        List<Piatto> piattiRealizzabili = ingrediente.getListaPiattiRealizzabiliConIngrediente();
         string stringaPiattiRealizzabili = "";
 
-        titoloPannelloMostraRicette.text = "Ricette realizzabili con l'ingrediente:\n" + Utility.coloreIngredienti + ingrediente.nome + Utility.fineColore;
+        titoloPannelloMostraRicette.text = "Ricette realizzabili con l'ingrediente:\n" + Costanti.coloreIngredienti + ingrediente.nome + Costanti.fineColore;
         foreach (Piatto piattoRealizzabile in piattiRealizzabili)
         {
-            stringaPiattiRealizzabili += Utility.colorePiatti + piattoRealizzabile.nome + "\n" + Utility.fineColore;
+            stringaPiattiRealizzabili += Costanti.colorePiatti + piattoRealizzabile.nome + "\n" + Costanti.fineColore;
         }
         listaRicettePannelloMostraRicette.text = stringaPiattiRealizzabili;
 

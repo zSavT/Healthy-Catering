@@ -47,7 +47,6 @@ public class InterazionePassanti : MonoBehaviour
         "Eccoti qua! Questo edificio è il nostro <color=#B5D99C>ristorante</color>, o meglio, il tuo.",
         "Spero che questo lavoro ti piacerà! E ricordati, sii sempre garbatƏ con i <color=#B5D99C>clienti</color>. Sapranno ricompensarti."
     };
-    private int numeroScritteZioMostrate = 0; 
 
 
     private void Start()

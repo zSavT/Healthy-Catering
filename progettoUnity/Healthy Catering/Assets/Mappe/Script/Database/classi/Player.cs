@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
 using Newtonsoft.Json;
 
 public class Player
@@ -11,62 +10,8 @@ public class Player
     public float soldi = 0;
 
     [JsonIgnore] public List<OggettoQuantita<int>> inventario = new List<OggettoQuantita<int>>();
-
-    public static readonly int numeroLivelli = 3;
-    public int[] punteggio = new int [numeroLivelli];
-
-    //INVENTARI LIVELLI
-     List<OggettoQuantita<int>> inventarioLivello0 = new List<OggettoQuantita<int>>
-    {
-        new OggettoQuantita<int> (12,10),
-        new OggettoQuantita<int> (15,10),
-        new OggettoQuantita<int> (0,10),
-        new OggettoQuantita<int> (18,10),
-        new OggettoQuantita<int> (16,10),
-        new OggettoQuantita<int> (46,10)
-    };
-    List<OggettoQuantita<int>> inventarioLivello05 = new List<OggettoQuantita<int>>
-    {
-        new OggettoQuantita<int> (30,1),
-        new OggettoQuantita<int> (35,1),
-        new OggettoQuantita<int> (33,2)
-    };
-
-    List<OggettoQuantita<int>> inventarioLivello1 = new List<OggettoQuantita<int>>
-    {
-        new OggettoQuantita<int> (30,1),
-        new OggettoQuantita<int> (35,1),
-        new OggettoQuantita<int> (33,2),
-        new OggettoQuantita<int> (12,1),
-        new OggettoQuantita<int> (15,1),
-        new OggettoQuantita<int> (0,1),
-        new OggettoQuantita<int> (18,1),
-        new OggettoQuantita<int> (16,1),
-        new OggettoQuantita<int> (46,1)
-    };
     
-    List<OggettoQuantita<int>> inventarioLivello2 = new List<OggettoQuantita<int>>
-    {
-        new OggettoQuantita<int> (30,1),
-        new OggettoQuantita<int> (35,1),
-        new OggettoQuantita<int> (33,2),
-        new OggettoQuantita<int> (12,2),
-        new OggettoQuantita<int> (15,1),
-        new OggettoQuantita<int> (0,1),
-        new OggettoQuantita<int> (18,1),
-        new OggettoQuantita<int> (16,1),
-        new OggettoQuantita<int> (46,1)
-    };
-
-
-    List<OggettoQuantita<int>> inventarioTest = new List<OggettoQuantita<int>>
-    {
-        new OggettoQuantita<int> (0,10),
-        new OggettoQuantita<int> (34,10),
-        new OggettoQuantita<int> (33,10)
-    };
-
-    //FINE INVENTARI LIVELLI
+    public int[] punteggio = new int [Costanti.numeroLivelli];
 
     public Player(string nome, int soldi, List<OggettoQuantita<int>> inventario)
     {
@@ -103,6 +48,10 @@ public class Player
         return (this.nome.Equals(((Player)obj).nome));
     }
 
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
 
     public override string ToString()
     {
@@ -110,12 +59,10 @@ public class Player
 
         if (inventario.Count > 0)
         {
-            //se non lo prendo prima viene ricreato ogni volta che viene chiamato il metodo idToIngrediente
-            List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
             foreach (OggettoQuantita<int> temp in inventario)
             {
                 int id = temp.oggetto;
-                Ingrediente ingredienteTemp = Ingrediente.idToIngrediente(id, databaseIngredienti);
+                Ingrediente ingredienteTemp = Ingrediente.idToIngrediente(id);
                 if (ingredienteTemp.idIngrediente != -1)
                     inventarioString = inventarioString + "\n\t" + ingredienteTemp.nome + "\n";
             }
@@ -134,20 +81,18 @@ public class Player
 
     }
 
+    //controlla se c'è almeno un piatto realizzabile con l'inventario
     public bool piattiRealizzabiliConInventario()
     {
-        bool realizzabilePiatti = false;
-        List<Piatto> databasePiatti = Database.getDatabaseOggetto(new Piatto());
-
-        foreach(Piatto temp in databasePiatti)
+        foreach(Piatto temp in Costanti.databasePiatti)
         {
             if(temp.piattoInInventario(this.inventario))
             {
-                realizzabilePiatti = true;
-                break;
+                return true;
             }
         }
-        return realizzabilePiatti;
+
+        return false;
     }
 
     public void guadagna(float guadagno)
@@ -163,10 +108,16 @@ public class Player
         else
             punteggioDaAggiungere = -10;
 
-        punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Utility.valoreAssoluto(punteggioDaAggiungere), trovaPercentualeNutriScore(nutriScore));
-        punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Utility.valoreAssoluto(punteggioDaAggiungere), trovaPercentualeEcoScore(costoEco));
+        punteggioDaAggiungere += Utility.calcolaCostoPercentuale(
+            Math.Abs(punteggioDaAggiungere), 
+            trovaPercentualeNutriScore(nutriScore)
+        );
+        punteggioDaAggiungere += Utility.calcolaCostoPercentuale(
+            Math.Abs(punteggioDaAggiungere), 
+            trovaPercentualeEcoScore(costoEco)
+        );
+
         this.punteggio [livello] += (int)punteggioDaAggiungere;
-        Debug.Log(this.punteggio[livello]);
     }
 
     public float trovaPercentualeNutriScore(int nutriScore)
@@ -203,6 +154,16 @@ public class Player
         compraVendiSingoloIngrediente(ingrediente, compra);
     }
 
+    //@overloading (trovo il tag per l'override ma non per l'overloading :| , pero è quello)
+    public void aggiornaInventario(List<OggettoQuantita<int>> ingredienti, bool compra)
+    {
+        //compra == true se compra, false se vendi
+        foreach (OggettoQuantita<int> ingrediente in ingredienti)
+        {
+            compraVendiSingoloIngrediente(ingrediente, compra);
+        }
+    }
+
     private void compraVendiSingoloIngrediente(OggettoQuantita<int> oggettoDaComprare, bool compra)
     {
         //compra == true se compra, false se vendi
@@ -231,21 +192,8 @@ public class Player
             }
             i++;
         }
-        if (compra)
+        if (compra) // se l'ingrediente comprato non è già nell'inventario lo inserisco come nuovo
             this.inventario.Add(oggettoDaComprare);
-        //else
-        //////stessa cosa di prima, non creo problemi se qualche cosa è andata storta sopra, 
-        //////ci dovrebbero essere dei controlli prima comunque
-    }
-
-    //@overloading (trovo il tag per l'override ma non per l'overloading :| , pero è quello)
-    public void aggiornaInventario(List<OggettoQuantita<int>> ingredienti, bool compra)
-    {   
-        //compra == true se compra, false se vendi
-        foreach (OggettoQuantita<int> ingrediente in ingredienti)
-        {
-            compraVendiSingoloIngrediente(ingrediente, compra);
-        }
     }
 
     public bool inventarioVuoto()
@@ -257,6 +205,7 @@ public class Player
                 return false;
             }
         }
+
         return true;
     }
 
@@ -276,84 +225,28 @@ public class Player
         switch (livello)
         {
             case 0:
-                this.inventario = inventarioLivello0;
+                this.inventario = Costanti.inventarioLivello0;
                 break;
             case 0.5:
-                this.inventario = inventarioLivello05;
+                this.inventario = Costanti.inventarioLivello05;
                 break;
             case 1:
-                aggiornaInventario (inventarioLivello1, true);
+                aggiornaInventario (Costanti.inventarioLivello1, true);
                 break;
             case 2:
-                aggiornaInventario(inventarioLivello2, true);
+                aggiornaInventario(Costanti.inventarioLivello2, true);
                 break;
             case 3:
-                aggiornaInventario(inventarioTest, true);
+                aggiornaInventario(Costanti.inventarioTest, true);
                 break;
         }
     }
 
-    //DATABASE
-    public static List<OggettoQuantita<int>> popolaInventario()
-    {
-        List<Ingrediente> ingredientiNuovi = getNewIngredienti();
-
-        List<int> quantitaIngredientiNuovi = new List<int>();
-
-        quantitaIngredientiNuovi = chiediQuantitaIngredienti(ingredientiNuovi);
-
-        return creaInventarioFromListaIngredientiEQuantita(ingredientiNuovi, quantitaIngredientiNuovi);
-    }
-
-    private static List<Ingrediente> getNewIngredienti()
-    {
-        List<Ingrediente> ingredientiGiaPresenti = new List<Ingrediente>();
-
-        while (true)
-        {
-            Console.WriteLine("Inserisci la keyword 'inizia' o la keyword 'continua' per inserire un nuovo ingrediente e la parola 'fine' per concludere l'inserimento");
-            string input = Console.ReadLine();
-            if (input.ToLower().Equals("fine"))
-                break;
-            else if ((input.ToLower().Equals("inizia")) || (input.Equals("continua")))
-                ingredientiGiaPresenti.Add(Ingrediente.creaNuovoIngrediente());
-            else
-                Console.WriteLine("Input sbagliato");
-        }
-
-        return ingredientiGiaPresenti;
-    }
-
-    private static List<int> chiediQuantitaIngredienti(List<Ingrediente> ingredientiGiaPresenti)
-    {
-        List<int> quantita = new List<int>();
-        foreach (Ingrediente ingrediente in ingredientiGiaPresenti)
-        {
-            int numero = -1;
-            while (numero < 0)
-                numero = Database.getNewIntFromUtente("Quanti " + ingrediente.ToString() + "\n" + " devono essere presenti nell'inventario?");
-            quantita.Add(numero);
-        }
-        return quantita;
-    }
-
-    private static List<OggettoQuantita<int>> creaInventarioFromListaIngredientiEQuantita(List<Ingrediente> ingredientiGiaPresenti, List<int> quantitaIngredientiNuovi)
-    {
-        if (ingredientiGiaPresenti.Count == quantitaIngredientiNuovi.Count)
-        {
-            List<OggettoQuantita<int>> output = new List<OggettoQuantita<int>>();
-            for (int i = 0; i < ingredientiGiaPresenti.Count; i++)
-                output.Add(new OggettoQuantita<int>(ingredientiGiaPresenti[i].idIngrediente, quantitaIngredientiNuovi[i]));
-            return output;
-        }
-        throw new Exception("Le dimensioni della lista contente gli ingredienti e le quantita di essi non corrispondo");
-    }
-
-    public static List <Player> getListaSortata(List <Player> databasePlayer = null){
-        databasePlayer ??= Database.getDatabaseOggetto (new Player());
+    public static List <Player> getListaSortata(){
+        List <Player> databasePlayerTemp = Costanti.databasePlayer;
         
-        databasePlayer.Sort (new PlayerComparer());
-        return databasePlayer;
+        databasePlayerTemp.Sort (new PlayerComparer());
+        return databasePlayerTemp;
     }
 
     private class PlayerComparer : IComparer<Player>

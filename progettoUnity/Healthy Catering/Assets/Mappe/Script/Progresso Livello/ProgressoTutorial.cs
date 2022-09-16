@@ -60,8 +60,8 @@ public class ProgressoTutorial : MonoBehaviour
             "Controlla il <color=#B5D99C>Magazzino</color>.",
             "Compra <color=#B5D99C>Ingredienti</color> dal negozio.",
             "Chiedi informazioni alle <color=#B5D99C>Persone</color>.",
-            "Apri il ricettario con il tasto " + Utility.coloreVerde + "R" + Utility.fineColore + ".",
-            "Apri il menu aiuto con il tasto " + Utility.coloreVerde + "H" + Utility.fineColore + "."
+            "Apri il ricettario con il tasto " + Costanti.coloreVerde + "R" + Costanti.fineColore + ".",
+            "Apri il menu aiuto con il tasto " + Costanti.coloreVerde + "H" + Costanti.fineColore + "."
         };
 
         numeroScritteMostrate = 0;

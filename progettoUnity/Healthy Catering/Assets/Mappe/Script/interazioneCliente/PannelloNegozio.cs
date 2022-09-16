@@ -29,7 +29,6 @@ public class PannelloNegozio : MonoBehaviour
     [SerializeField] private Button bottoneAvantiPannelloNegozio;
     [SerializeField] private Button bottoneIndietroPannelloNegozio;
 
-    private List<Ingrediente> databaseIngredienti;
     [SerializeField] private Gui guiInGame;
 
     //readonly == final in java
@@ -65,8 +64,7 @@ public class PannelloNegozio : MonoBehaviour
         pannelloXElementi.SetActive(false);
 
         //INTERAZIONE NEGOZIO
-        databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
-        ultimaPaginaPossibile = (databaseIngredienti.Count / numeroBottoniNellaPagina);
+        ultimaPaginaPossibile = (Costanti.databaseIngredienti.Count / numeroBottoniNellaPagina);
 
         copiaTemplateSingoloIngrediente = Instantiate(templateSingoloIngrediente);
         numeroIngredientiPerPannelloXElementi = numeroBottoniNellaPagina / numeroPannelliXElementiNellaPagina;
@@ -192,12 +190,12 @@ public class PannelloNegozio : MonoBehaviour
         {
             indicePiattoDaAggiungereNelDatabase = trovaIndicePiattoDaInserire(i);
 
-            //-1 quando è stato aggiunto anche l'ultimo piatto del database
+            //-1 quando e' stato aggiunto anche l'ultimo piatto del database
             if (indicePiattoDaAggiungereNelDatabase != -1)
             {
                 ingredientiBottoniFake[i] = popolaSingoloIngrediente(
                     ingredientiBottoniFake[i], 
-                    databaseIngredienti[indicePiattoDaAggiungereNelDatabase]
+                    Costanti.databaseIngredienti[indicePiattoDaAggiungereNelDatabase]
                 );
             }
             else
@@ -224,7 +222,7 @@ public class PannelloNegozio : MonoBehaviour
     {
         int indice = (ultimaPaginaVisualizzata * numeroBottoniNellaPagina) + numeroIngredientiInseritiFinoAdOra;
 
-        if (indice != databaseIngredienti.Count)
+        if (indice != Costanti.databaseIngredienti.Count)
             return indice;
 
         return -1;
@@ -258,7 +256,7 @@ public class PannelloNegozio : MonoBehaviour
 
     private Button modificaTesto(Button singoloIngredienteTemp, string nomeIngrediente, string costoIngrediente)
     {
-        singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Utility.coloreIngredienti + nomeIngrediente + Utility.fineColore;
+        singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Costanti.coloreIngredienti + nomeIngrediente + Costanti.fineColore;
         singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Costo: " + costoIngrediente;
         singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text = 0.ToString();
         return singoloIngredienteTemp;
@@ -289,8 +287,8 @@ public class PannelloNegozio : MonoBehaviour
             int quantitaSelezionata = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text);
 
             //se il resto della divisione fra i soldi del giocatore e il costo
-            //della merce che vuole comprare è minore del costo dell'ingrediente
-            //se ne aggiunge 1 non può più comprarlo
+            //della merce che vuole comprare ï¿½ minore del costo dell'ingrediente
+            //se ne aggiunge 1 non puï¿½ piï¿½ comprarlo
             //quindi ha raggiunto il massimo
             if (giocatore.soldi - prezzoDaPagare - (costoIngrediente * (quantitaSelezionata)) < 0)
                 singoloIngredienteTemp.GetComponentsInChildren<Button>()[1].interactable = false;
@@ -334,7 +332,7 @@ public class PannelloNegozio : MonoBehaviour
         print("in negozio: " + inNegozio.ToString());
         if (inNegozio)
         {
-            testoPannelloSeiSicuro.text = "Sei sicuro di voler aggiungere al carrello " + Utility.coloreIngredienti + ingredienteAttualmenteSelezionato.nome + Utility.fineColore + " x" + quantitaAttualmenteSelezionata.ToString();
+            testoPannelloSeiSicuro.text = "Sei sicuro di voler aggiungere al carrello " + Costanti.coloreIngredienti + ingredienteAttualmenteSelezionato.nome + Costanti.fineColore + " x" + quantitaAttualmenteSelezionata.ToString();
         }
         else
         {
@@ -353,7 +351,7 @@ public class PannelloNegozio : MonoBehaviour
 
         foreach (OggettoQuantita<int> temp in carrelloOggettoQuantita)
         {
-            output += Utility.coloreIngredienti +  Ingrediente.idToIngrediente(temp.oggetto).nome + Utility.fineColore + " x" + temp.quantita.ToString() + "\n";
+            output += Costanti.coloreIngredienti +  Ingrediente.idToIngrediente(temp.oggetto).nome + Costanti.fineColore + " x" + temp.quantita.ToString() + "\n";
         }
 
         output += "?";
@@ -434,7 +432,7 @@ public class PannelloNegozio : MonoBehaviour
                 quantitaAttualmenteSelezionata = 0;
 
 
-                testoTotaleCarello.text = Utility.coloreVerde + "Totale Carrello: " + Utility.fineColore + prezzoDaPagare.ToString("0.00");
+                testoTotaleCarello.text = Costanti.coloreVerde + "Totale Carrello: " + Costanti.fineColore + prezzoDaPagare.ToString("0.00");
             }
 
             chiudiPannelloSeiSicuro();
@@ -450,13 +448,13 @@ public class PannelloNegozio : MonoBehaviour
 
             foreach (Ingrediente temp in carrello)
             {
-                giocatore.aggiornaInventario(new OggettoQuantita<int>(temp.idIngrediente, 1), true);//visto che aggiungo un elemento alla volta la quantita da aggiungere ora è 1
+                giocatore.aggiornaInventario(new OggettoQuantita<int>(temp.idIngrediente, 1), true);//visto che aggiungo un elemento alla volta la quantita da aggiungere ora ï¿½ 1
             }
 
             resetQuantitaTuttiBottoni();
             quantitaAttualmenteSelezionata = 0;
             compratoIngredientePerTutorial = true;
-            soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi.ToString("0.00");
+            soldiGiocatore.text = Costanti.coloreVerde + "Denaro: " + Costanti.fineColore + giocatore.soldi.ToString("0.00");
 
             resetSituazioneCarello();
 
@@ -513,7 +511,7 @@ public class PannelloNegozio : MonoBehaviour
         canvasPannelloNegozio.SetActive(true);
         aggiornaBottoniPaginaCarosello();
         chiudiPannelloSeiSicuro();
-        soldiGiocatore.text = Utility.coloreVerde + "Denaro: " + Utility.fineColore + giocatore.soldi.ToString("0.00");
+        soldiGiocatore.text = Costanti.coloreVerde + "Denaro: " + Costanti.fineColore + giocatore.soldi.ToString("0.00");
 
         resetSituazioneCarello();
     }
@@ -523,7 +521,7 @@ public class PannelloNegozio : MonoBehaviour
         //reset delle cose nel carrello
         prezzoDaPagare = 0;
         carrello = new List<Ingrediente>();
-        testoTotaleCarello.text = Utility.coloreVerde + "Totale Carrello: " + Utility.fineColore + 0.ToString("0.00");
+        testoTotaleCarello.text = Costanti.coloreVerde + "Totale Carrello: " + Costanti.fineColore + 0.ToString("0.00");
     }
 
     public void chiudiPannelloNegozio()

@@ -21,7 +21,6 @@ public class Classifica : MonoBehaviour
 
     void Start()
     {
-        listaPlayer = Database.getDatabaseOggetto(new Player());
         azzeraTextElementi();
 
         popolaClassificaLivello0();
@@ -55,7 +54,7 @@ public class Classifica : MonoBehaviour
     private void popolaClassificaLivello0()
     {
         PlayerSettings.livelloSelezionato = 0;
-        listaPlayer = Player.getListaSortata (listaPlayer);
+        listaPlayer = Player.getListaSortata ();
         int i = 0;
         while (i < numeroGiocatoriDaVisualizzare)
         {
@@ -78,7 +77,7 @@ public class Classifica : MonoBehaviour
     private void popolaClassificaLivello1()
     {
         PlayerSettings.livelloSelezionato = 1;
-        listaPlayer = Player.getListaSortata (listaPlayer);
+        listaPlayer = Player.getListaSortata ();
         int i = 0;
         while (i < numeroGiocatoriDaVisualizzare)
         {
@@ -100,7 +99,7 @@ public class Classifica : MonoBehaviour
     private void popolaClassificaLivello2()
     {
         PlayerSettings.livelloSelezionato = 2;
-        listaPlayer = Player.getListaSortata (listaPlayer);
+        listaPlayer = Player.getListaSortata ();
         int i = 0;
         while (i < numeroGiocatoriDaVisualizzare)
         {
