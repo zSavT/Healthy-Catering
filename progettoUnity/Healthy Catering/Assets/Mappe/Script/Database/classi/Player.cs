@@ -100,6 +100,11 @@ public class Player
         this.soldi += guadagno;
     }
 
+    public void paga (float costo)
+    {
+        this.soldi -= costo;
+    }
+
     public void aggiungiDiminuisciPunteggio(bool affine, int nutriScore, float costoEco, int livello)
     {
         float punteggioDaAggiungere;

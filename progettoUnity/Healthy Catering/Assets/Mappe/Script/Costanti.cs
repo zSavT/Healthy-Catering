@@ -81,6 +81,16 @@ public class Costanti
         "Spero che questo lavoro ti piacerà! E ricordati, sii sempre garbatƏ con i <color=#B5D99C>clienti</color>. Sapranno ricompensarti."
     };
 
+    // NEGOZIO
+    public static readonly int numeroBottoniNellaPaginaNegozio = 9;
+    public static readonly int numeroPannelliXElementiNellaPaginaNegozio = 3;
+
+    //BOTTONI NELL'ARRAY BOTTONEFAKEINGREDIENTE.GetComponentsInChildren <Button> ():
+    public static readonly int posizionebottoneGenerale = 0;
+    public static readonly int posizioneBottoneAumentaQuantita = 1;
+    public static readonly int posizioneBottoneDiminuisciQuantita = 2;
+    public static readonly int posizioneBottoneAggiungiIngredienteAlCarrello = 3;
+    
     // ALTRO
     public static readonly int numeroLivelli = 3;
 
