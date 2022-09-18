@@ -271,12 +271,11 @@ public class PannelloNegozio : MonoBehaviour
     {
         //bottone diminuisci quantita 
         singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneDiminuisciQuantita].onClick.AddListener(() => {
-            int quantitaSelezionata = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[Costanti.posizioneBottoneDiminuisciQuantita].text);
+            int quantitaSelezionata = System.Int32.Parse(
+                singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text
+            );
 
-            if (quantitaSelezionata == 0)
-                singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneDiminuisciQuantita].interactable = false;
-            else
-                singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneDiminuisciQuantita].interactable = true;
+            attivaDisattivaBottoniPiuMenoSeServe(singoloIngredienteTemp, quantitaSelezionata, 0);
 
             if (quantitaSelezionata > 0)
             {
@@ -296,15 +295,7 @@ public class PannelloNegozio : MonoBehaviour
         singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAumentaQuantita].onClick.AddListener(() => {
             int quantitaSelezionata = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text);
 
-            //se il resto della divisione fra i soldi del giocatore e il costo
-            //della merce che vuole comprare e' minore del costo dell'ingrediente
-            //se ne aggiunge 1 non puo' piu' comprarlo
-            //quindi ha raggiunto il massimo
-            if (giocatore.soldi - prezzoDaPagare - (costoIngrediente * (quantitaSelezionata)) < 0)
-                singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAumentaQuantita].interactable = false;
-            else
-                singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAumentaQuantita].interactable = true;
-
+            attivaDisattivaBottoniPiuMenoSeServe(singoloIngredienteTemp, quantitaSelezionata, costoIngrediente);
 
             if (giocatore.soldi - prezzoDaPagare - (costoIngrediente * (quantitaSelezionata + 1)) >= 0)
                 singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text = (quantitaSelezionata + 1).ToString();
@@ -312,6 +303,29 @@ public class PannelloNegozio : MonoBehaviour
             quantitaSelezionata = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text);
             attivaDisattivaBottoneCompra(singoloIngredienteTemp, quantitaSelezionata);
         });
+
+        return singoloIngredienteTemp;
+    }
+
+    private Button attivaDisattivaBottoniPiuMenoSeServe(Button singoloIngredienteTemp, int quantitaSelezionata, float costoIngrediente)
+    {
+        if (quantitaSelezionata == 0)
+            singoloIngredienteTemp.GetComponentsInChildren<Button>()[
+                Costanti.posizioneBottoneDiminuisciQuantita
+            ].interactable = false;
+        else
+            singoloIngredienteTemp.GetComponentsInChildren<Button>()[
+                Costanti.posizioneBottoneDiminuisciQuantita
+        ].interactable = true;
+
+        //se il resto della divisione fra i soldi del giocatore e il costo
+        //della merce che vuole comprare e' minore del costo dell'ingrediente
+        //se ne aggiunge 1 non puo' piu' comprarlo
+        //quindi ha raggiunto il massimo
+        if (giocatore.soldi - prezzoDaPagare - (costoIngrediente * (quantitaSelezionata)) < 0)
+            singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAumentaQuantita].interactable = false;
+        else
+            singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAumentaQuantita].interactable = true;
 
         return singoloIngredienteTemp;
     }
