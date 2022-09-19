@@ -9,22 +9,29 @@ public class PannelloMostraRicette : MonoBehaviour
     private bool pannelloMostraRicetteAperto = false;
     [SerializeField] private TextMeshProUGUI titoloPannelloMostraRicette;
     [SerializeField] private TextMeshProUGUI listaRicettePannelloMostraRicette;
-
-
+        
     public void apriPannelloMostraRicette(Ingrediente ingrediente)
     {
         List<Piatto> piattiRealizzabili = ingrediente.getListaPiattiRealizzabiliConIngrediente();
-        string stringaPiattiRealizzabili = "";
 
         titoloPannelloMostraRicette.text = "Ricette realizzabili con l'ingrediente:\n" + Costanti.coloreIngredienti + ingrediente.nome + Costanti.fineColore;
+        
+        listaRicettePannelloMostraRicette.text = creaStringaRicetteRealizzabili(piattiRealizzabili);
+
+        pannelloMostraRicette.SetActive(true);
+        pannelloMostraRicetteAperto = true;
+    }
+
+    private string creaStringaRicetteRealizzabili (List <Piatto> piattiRealizzabili)
+    {
+        string stringaPiattiRealizzabili = "";
+
         foreach (Piatto piattoRealizzabile in piattiRealizzabili)
         {
             stringaPiattiRealizzabili += Costanti.colorePiatti + piattoRealizzabile.nome + "\n" + Costanti.fineColore;
         }
-        listaRicettePannelloMostraRicette.text = stringaPiattiRealizzabili;
 
-        pannelloMostraRicette.SetActive(true);
-        pannelloMostraRicetteAperto = true;
+        return stringaPiattiRealizzabili;
     }
 
     public void chiudiPannelloMostraRicette()
