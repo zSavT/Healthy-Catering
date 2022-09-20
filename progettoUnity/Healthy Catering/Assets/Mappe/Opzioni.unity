@@ -9741,6 +9741,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -9786,7 +9787,7 @@ MonoBehaviour:
   risoluzioniDisponibili: {fileID: 1961824172}
   livelloGrafica: {fileID: 1555884324}
   schermoIntero: {fileID: 1237080155}
-  vSynch: {fileID: 1843281677}
+  vSync: {fileID: 1843281677}
   framerateLibero: {fileID: 592033082}
   daltonismo: {fileID: 541497964}
   audioMixer: {fileID: 24100000, guid: 7e80b91a87fa18a4dac7cec66de33ef3, type: 2}
