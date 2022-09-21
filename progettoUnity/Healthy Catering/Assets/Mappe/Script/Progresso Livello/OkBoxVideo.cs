@@ -42,7 +42,7 @@ public class OkBoxVideo : MonoBehaviour
 
     List<string> titoli = new List<string>
     {
-        "Camandi base per il movimento",
+        "Comandi base per il movimento",
         "Comando Salto",
         "Comando Sprint",
         "Parla con tuo zio",
