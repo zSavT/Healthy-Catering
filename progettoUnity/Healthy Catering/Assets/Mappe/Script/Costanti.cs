@@ -134,6 +134,9 @@ public class Costanti
         "vuota",
     };
 
+    //PANNELLO MAGAZZINO
+    public static readonly int bottoniMassimiPerPannelloXElementi = 4;
+    public static readonly string testoInventarioVuotoString = "Inventario magazzino vuoto";
 
     // ALTRO
     public static readonly int numeroLivelli = 3;
