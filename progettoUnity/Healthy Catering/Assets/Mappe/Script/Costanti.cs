@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Costanti
 {
@@ -9,7 +10,9 @@ public class Costanti
 
     public static readonly List<Player> databasePlayer = Database.getDatabaseOggetto (new Player());
 
-    public static readonly List <Patologia> databasePatologie = Database.getDatabaseOggetto(new Patologia());
+    public static readonly List<Patologia> databasePatologie = Database.getDatabaseOggetto(new Patologia());
+
+    public static readonly List<Cliente> databaseClienti = Database.getDatabaseOggetto(new Cliente());
 
     // INVENTARI LIVELLI
     public static readonly List<OggettoQuantita<int>> inventarioLivello0 = new List<OggettoQuantita<int>>
@@ -137,6 +140,11 @@ public class Costanti
     //PANNELLO MAGAZZINO
     public static readonly int bottoniMassimiPerPannelloXElementi = 4;
     public static readonly string testoInventarioVuotoString = "Inventario magazzino vuoto";
+
+    //PANNELLO MENU
+    public static readonly Color32 coloreTestoIngredientiGiusti = new Color32(104, 176, 60, 255);
+    public static readonly Color32 coloreTestoIngredientiSbagliatiDieta = new Color32(255, 8, 10, 255);
+    public static readonly Color32 coloreTestoIngredientiSbagliatiPatologia = new Color32(255, 8, 10, 255);
 
     // ALTRO
     public static readonly int numeroLivelli = 3;

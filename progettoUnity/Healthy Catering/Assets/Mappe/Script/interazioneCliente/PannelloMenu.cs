@@ -62,7 +62,7 @@ public class PannelloMenu : MonoBehaviour
         pannelloIngredientiPiatto.SetActive(false);
         pannelloConfermaPiatto.SetActive(false);
         pannelloIngredientiGiustiSbagliati.SetActive(false);
-        piatti = Database.getDatabaseOggetto(new Piatto());
+        piatti = Costanti.databasePiatti;
         generaBottoniPiatti();
     }
 
@@ -119,30 +119,25 @@ public class PannelloMenu : MonoBehaviour
     public void setCliente(int idClientePuntato, Player giocatorePartita, Interactable controlleNPCPuntato)
     {
         apriPannelloMenuCliente();
-        cliente = Database.getDatabaseOggetto(new Cliente())[idClientePuntato];
-        giocatore = giocatorePartita;
-        controllerAnimazioneCliente = controlleNPCPuntato;
+        aggiornaBottoniPiatti();
+        
+        cliente = Costanti.databaseClienti[idClientePuntato];
         caricaClienteInPanello(cliente);
-        aggiornaBottoniPiatti();         // in questo momento i bottoniPiatti non sono ancora stati popolati e quindi questa chiamata fallisce. 
+        controllerAnimazioneCliente = controlleNPCPuntato;
+        
+        giocatore = giocatorePartita;
     }
 
     private void generaBottoniPiatti()
     {
-        List <Button> bottoniPiattiTemp = new List<Button>();
         bottoniPiatti = new Button[piatti.Count];
-
-        foreach (Piatto piatto in piatti)
-        {
-            bottoniPiattiTemp.Add(generaBottonePiatto(piatto, bottonePiatto));
-        }
-        Destroy(bottonePiatto);
+        List<Button> bottoniPiattiTemp = generaBottoniPiattiTemp();
 
         int i = 0;
         foreach (Button bottonePiatto in bottoniPiattiTemp)
         {
             Button bottoneTemp;
             bottoneTemp = (Instantiate(bottonePiatto, pannelloPiatti.transform, false) as Button);
-            bottoneTemp.transform.SetParent(pannelloPiatti.transform);
 
             bottoneTemp.GetComponent<Button>().onClick.AddListener(() => {
                 selezionaPiatto(bottoneTemp, piatti, cliente);
@@ -150,9 +145,8 @@ public class PannelloMenu : MonoBehaviour
 
             //in posizione 0 c'e' il bottone per selezionare il piatto
             //e in posizione 1 c'e' il bottone per vedere gli ingredienti
-            Button bottoneMostraIngredienti = bottoneTemp.GetComponentsInChildren<Button>()[1];
-            bottoneMostraIngredienti.onClick.AddListener(() => {
-                cambiaPannelloIngredientiPiattoConPiatto(bottoneMostraIngredienti);
+            bottoneTemp.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => {
+                cambiaPannelloIngredientiPiattoConPiatto(bottoneTemp.GetComponentsInChildren<Button>()[1]);
                 apriPannelloIngredientiPiatto();
             });
 
@@ -163,6 +157,19 @@ public class PannelloMenu : MonoBehaviour
         aggiornaBottoniPiatti();
     }
 
+    private List<Button> generaBottoniPiattiTemp()
+    {
+        List<Button> bottoniPiattiTemp = new List<Button>();
+
+        foreach (Piatto piatto in piatti)
+        {
+            bottoniPiattiTemp.Add(generaBottonePiatto(piatto, bottonePiatto));
+        }
+        Destroy(bottonePiatto);
+
+        return bottoniPiattiTemp;
+    }
+
     private void aggiornaBottoniPiatti()
     {
         if (bottoniPiatti != null)
@@ -170,11 +177,9 @@ public class PannelloMenu : MonoBehaviour
             List<Button> piattiDisponibili = new List<Button>();
             List<Button> piattiNonDisponibili = new List<Button>();
 
-            int i = 0;
             foreach (Button bottonePiatto in bottoniPiatti)
             {
-
-                bottonePiatto.transform.SetParent(null, true);
+                bottonePiatto.transform.SetParent(null);
 
                 if (!(Piatto.nomeToPiatto (bottonePiatto.name)).piattoInInventario(giocatore.inventario))
                 {
@@ -186,18 +191,22 @@ public class PannelloMenu : MonoBehaviour
                     bottonePiatto.interactable = true;
                     piattiDisponibili.Add(bottonePiatto);
                 }
-                i++;
             }
 
-            piattiDisponibili.AddRange(piattiNonDisponibili);
-            bottoniPiatti = piattiDisponibili.ToArray();
-
-            foreach (Button temp in bottoniPiatti)
-            {
-                temp.transform.SetParent(pannelloPiatti.transform);
-            }
+            aggiungiPiattiAPannelloPiatti(piattiDisponibili, piattiNonDisponibili);
         }
 
+    }
+
+    private void aggiungiPiattiAPannelloPiatti(List <Button> piattiDisponibili, List <Button> piattiNonDisponibili)
+    {
+        piattiDisponibili.AddRange(piattiNonDisponibili);
+        bottoniPiatti = piattiDisponibili.ToArray();
+
+        foreach (Button temp in bottoniPiatti)
+        {
+            temp.transform.SetParent(pannelloPiatti.transform);
+        }
     }
 
     private void selezionaPiatto(Button bottone, List<Piatto> piatti, Cliente cliente)
@@ -222,13 +231,15 @@ public class PannelloMenu : MonoBehaviour
         if (!blackListPiatti.Contains(piattoSelezionato.nome))
         {
             affinitaPatologiePiatto = piattoSelezionato.checkAffinitaPatologiePiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.listaIdPatologie);
-        } else
+        } 
+        else
         {
             if(cliente.listaIdPatologie.Contains(0) || cliente.listaIdPatologie.Contains(1))
             {
                 piattoInBlackList = true;
                 affinitaPatologiePiatto = false;
-            }else
+            }
+            else
             {
                 affinitaPatologiePiatto = piattoSelezionato.checkAffinitaPatologiePiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.listaIdPatologie);
             }
@@ -327,7 +338,6 @@ public class PannelloMenu : MonoBehaviour
             pannelloIngredientiPiattoApertoChiuso();
             chiudiMenuCliente();
         }
-
     }
 
     private void chiudiPannelloIngredientiPiatto()
@@ -415,12 +425,13 @@ public class PannelloMenu : MonoBehaviour
         //nella lista degli ingredienti piatto selezionato ci sono solo gli ingredienti che vanno bene ora
         List<Ingrediente> ingredientiCompatibili = ingredientiPiattoSelezionato;
 
-        testoIngredientiGiusti.color = new Color32(104, 176, 60, 255);
+        testoIngredientiGiusti.color = Costanti.coloreTestoIngredientiGiusti;
         testoIngredientiGiusti.text = Ingrediente.listIngredientiToStringa (ingredientiCompatibili);
 
-        testoIngredientiSbagliatiDieta.color = new Color32(255, 8, 10, 255);
+        testoIngredientiSbagliatiDieta.color = Costanti.coloreTestoIngredientiSbagliatiDieta;
         testoIngredientiSbagliatiDieta.text = Ingrediente.listIngredientiToStringa(ingredientiNonCompatibiliDieta);
-        testoIngredientiSbagliatiPatologia.color = new Color32(255, 8, 10, 255);
+        testoIngredientiSbagliatiPatologia.color = Costanti.coloreTestoIngredientiSbagliatiPatologia;
+
         if (piattoInBlackList)
         {
             testoIngredientiSbagliatiPatologia.text = "La frittura non è adatta alla patologia del cliente.";

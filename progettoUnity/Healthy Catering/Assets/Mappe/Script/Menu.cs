@@ -52,13 +52,13 @@ public class Menu : MonoBehaviour
     /// </summary>
     private void letturaNomiUtenti()
     {
-        player = Database.getDatabaseOggetto(new Player());
+        player = Costanti.databasePlayer;
     }
 
     /// <summary>
     /// Metodo per controllare se sono presenti o meno dei player nel database.
     /// </summary>
-    /// <returns>True: è presente almeno un player, false: non esiste alcun player</returns>
+    /// <returns>True: ï¿½ presente almeno un player, false: non esiste alcun player</returns>
     private bool presentePlayer()
     {
         if (player.Count > 0)
@@ -161,7 +161,7 @@ public class Menu : MonoBehaviour
     }
 
     /// <summary>
-    /// Metodo per aggiornare il testo della versione del gioco e il nome della società.
+    /// Metodo per aggiornare il testo della versione del gioco e il nome della societï¿½.
     /// </summary>
     private void gameVersion()
     {

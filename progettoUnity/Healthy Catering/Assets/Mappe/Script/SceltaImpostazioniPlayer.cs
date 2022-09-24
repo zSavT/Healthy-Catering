@@ -55,7 +55,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     }
 
     /// <summary>
-    /// Controlla se il nome inserito dall'utente, corrisponde con uno già presente nella lista.
+    /// Controlla se il nome inserito dall'utente, corrisponde con uno giï¿½ presente nella lista.
     /// </summary>
     public void controlloNomeEsistente()
     {
@@ -135,7 +135,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     /// </summary>
     private void letturaNomiUtenti()
     {
-        player = Database.getDatabaseOggetto(new Player());
+        player = Costanti.databasePlayer;
         
     }
 
@@ -157,7 +157,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
 
     /// <summary>
     /// Salva tutte le impostazioni fatte dal giocatore, salva il giocatore su file<br></br>
-    /// Se la scena è stata caricata dal livello tutorial, dopo il salvataggio ritorna al livello tutorial.<br></br>
+    /// Se la scena ï¿½ stata caricata dal livello tutorial, dopo il salvataggio ritorna al livello tutorial.<br></br>
     /// In caso contrario carica la scena del menu principale. Utilizza 
     /// <see cref="PlayerSettings"/>.
     /// </summary>

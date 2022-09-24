@@ -103,7 +103,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     /// </summary>
     private void letturaNomiUtenti()
     {
-        players = Database.getDatabaseOggetto<Player>(new Player());
+        players = Costanti.databasePlayer;
     }
 
 
@@ -112,7 +112,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     /// </summary>
     public void nomiPlayer()
     {
-        List<Player> players = Database.getDatabaseOggetto<Player>(new Player());
+        List<Player> players = Costanti.databasePlayer;
         for (int i = 0; i < players.Count; i++)
         {
             nomiPlayerPresenti.Add(players[i].nome);
@@ -210,7 +210,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
 
     /// <summary>
     /// Metodo che permette la corretta eliminazione del profilo utente selezionato al momento.<br>
-    /// Se il profilo eliminato è anche l'ultimo, verrà caricato il menu principale.</br>
+    /// Se il profilo eliminato ï¿½ anche l'ultimo, verrï¿½ caricato il menu principale.</br>
     /// </summary>
     public void eliminazioneProfilo()
     {
