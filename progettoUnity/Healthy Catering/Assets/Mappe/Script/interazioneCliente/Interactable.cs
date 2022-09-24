@@ -20,8 +20,6 @@ public class Interactable : MonoBehaviour
     private AudioSource suonoContento;
     [SerializeField] private AudioSource suonoVocePositivo;
 
-
-
     //Controller della mappa percorribile degli NPC
     NavMeshAgent agent;
     //Waypoint percorso degli NPC

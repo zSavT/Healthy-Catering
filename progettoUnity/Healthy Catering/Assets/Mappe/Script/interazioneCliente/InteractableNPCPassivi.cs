@@ -16,8 +16,10 @@ public class InteractableNPCPassivi : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(girabile)
+        if (girabile)
+        {
             rotazioneOriginale = GetComponentInParent<Transform>().rotation;
+        }
         animazione = GetComponentInParent<Animator>();
     }
 
@@ -27,8 +29,10 @@ public class InteractableNPCPassivi : MonoBehaviour
     /// <param name="posizionePlayer">Posizione del giocatore per orientamento squardo.</param>
     public void animazioneParlata(Transform posizionePlayer)
     {
-        if(girabile)
+        if (girabile)
+        {
             gameObject.transform.parent.LookAt(posizionePlayer);
+        }
         animazione.SetBool("parlando", true);
     }
 
@@ -38,8 +42,10 @@ public class InteractableNPCPassivi : MonoBehaviour
     /// <param name="posizionePlayer">Posizione del giocatore per orientamento squadro.</param>
     public void stopAnimazioneParlata(Transform posizionePlayer)
     {
-        if(girabile)
+        if (girabile)
+        {
             gameObject.transform.parent.transform.rotation = rotazioneOriginale;
+        }
         animazione.SetBool("parlando", false);
     }
 
