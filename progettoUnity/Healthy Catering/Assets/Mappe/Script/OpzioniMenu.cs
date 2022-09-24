@@ -79,9 +79,15 @@ public class OpzioniMenu : MonoBehaviour
 
         //VSYNCH
         int vSyncVal = QualitySettings.vSyncCount;
-        vSync.isOn = false;
-        if (vSyncVal == 1) vSync.isOn = true;
-        
+        if (vSyncVal == 0)
+        {
+            vSynch.isOn = false;
+        }
+        else if (vSyncVal == 1)
+        {
+            vSynch.isOn = true;
+        }
+
         //FRAMERATE LIBERO
         framerateLibero.isOn = PlayerSettings.caricaImpostazioniFramerateLibero();
 
