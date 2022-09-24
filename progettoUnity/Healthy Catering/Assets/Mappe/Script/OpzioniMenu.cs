@@ -81,11 +81,11 @@ public class OpzioniMenu : MonoBehaviour
         int vSyncVal = QualitySettings.vSyncCount;
         if (vSyncVal == 0)
         {
-            vSynch.isOn = false;
+            vSync.isOn = false;
         }
         else if (vSyncVal == 1)
         {
-            vSynch.isOn = true;
+            vSync.isOn = true;
         }
 
         //FRAMERATE LIBERO

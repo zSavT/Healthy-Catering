@@ -135,12 +135,13 @@ public class PannelloMenu : MonoBehaviour
         {
             bottoniPiattiTemp.Add(generaBottonePiatto(piatto, bottonePiatto));
         }
+        Destroy(bottonePiatto);
 
         int i = 0;
         foreach (Button bottonePiatto in bottoniPiattiTemp)
         {
-            GameObject bottoneTemp = new GameObject();
-            bottoneTemp = (Instantiate(bottonePiatto, pannelloPiatti.transform, false) as Button).gameObject;
+            Button bottoneTemp;
+            bottoneTemp = (Instantiate(bottonePiatto, pannelloPiatti.transform, false) as Button);
             bottoneTemp.transform.SetParent(pannelloPiatti.transform);
 
             bottoneTemp.GetComponent<Button>().onClick.AddListener(() => {
@@ -155,11 +156,9 @@ public class PannelloMenu : MonoBehaviour
                 apriPannelloIngredientiPiatto();
             });
 
-            bottoniPiatti[i] = bottoneTemp.GetComponent<Button>();
+            bottoniPiatti[i] = bottoneTemp;
             i++;
         }
-
-        Destroy(bottonePiatto);
 
         aggiornaBottoniPiatti();
     }
@@ -201,7 +200,7 @@ public class PannelloMenu : MonoBehaviour
 
     }
 
-    private void selezionaPiatto(GameObject bottone, List<Piatto> piatti, Cliente cliente)
+    private void selezionaPiatto(Button bottone, List<Piatto> piatti, Cliente cliente)
     {
         foreach (Piatto piatto in piatti)
         {
