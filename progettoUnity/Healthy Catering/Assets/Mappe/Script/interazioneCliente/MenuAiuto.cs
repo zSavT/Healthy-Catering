@@ -50,8 +50,8 @@ public class MenuAiuto : MonoBehaviour
 
     private void setMediaPannelloAiuto(int pagina)
     {
-        titoloTestoAiuto.text = Costanti.titoliMessaggiDiAiuto[pagina];
-        testoAiuto.text = Costanti.messaggiDiAiuto[pagina];
+        titoloTestoAiuto.text = Costanti.titoliMenuAiuto[pagina];
+        testoAiuto.text = Costanti.testiMenuAiuto[pagina];
         cambiaImmagineSchermataAiuto(pagina);
 
         aggiornaTestoNumeroPannelloAttuale(pagina);
@@ -65,7 +65,7 @@ public class MenuAiuto : MonoBehaviour
     {
         animazione.caricaAnimazione(
             "immaginiAiuto",
-            Costanti.nomiAnimazioni[ultimaPosizione],
+            Costanti.nomiAnimazioniMenuAiuto[ultimaPosizione],
             "default"
         );
     }
@@ -78,7 +78,7 @@ public class MenuAiuto : MonoBehaviour
     private void gestisciBottoniAvantiDietro(int posizione)
     {
         //tasto avanti
-        if (posizione == Costanti.messaggiDiAiuto.Count - 1)
+        if (posizione == Costanti.testiMenuAiuto.Count - 1)
         {
             tastoAvanti.interactable = false;
         }
@@ -112,7 +112,7 @@ public class MenuAiuto : MonoBehaviour
     void mostraProssimoMessaggioDiAiuto()
     {
         int prossimaPosizione = ultimaPosizione;
-        if (ultimaPosizione != Costanti.messaggiDiAiuto.Count - 1)
+        if (ultimaPosizione != Costanti.testiMenuAiuto.Count - 1)
         {
             prossimaPosizione = ultimaPosizione + 1;
         }
