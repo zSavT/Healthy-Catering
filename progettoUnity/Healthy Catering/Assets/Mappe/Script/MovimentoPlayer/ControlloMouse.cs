@@ -10,10 +10,8 @@ public class ControlloMouse : MonoBehaviour
 {
     private Transform modelloPlayer;
     private Transform posizioneCameraIniziale;          //deve essere il primo elemento nel contenitore del giocatore!
-    private float posizioneCameraFovMassimo = 0.51f;
     private Camera cameraGioco;
     private float sensibilitaMouse = 250f;              //250 valore mediano
-    private float rangeVisuale = 90f;                   //Range visuale spostamento camera negli assi
 
     private float xRotation = 0f;
     private float mouseX;
@@ -21,8 +19,6 @@ public class ControlloMouse : MonoBehaviour
     bool puoCambiareVisuale;
     private float posizioneZcamera;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         modelloPlayer = this.transform.parent.transform;
@@ -31,7 +27,7 @@ public class ControlloMouse : MonoBehaviour
         if (PlayerSettings.caricaPrimoAvvioSettaggiSensibilita() == 0)
         {
             PlayerSettings.salvaPrimoAvvioSettaggiSensibilita();
-            PlayerSettings.salvaImpostazioniSensibilita(250f);
+            PlayerSettings.salvaImpostazioniSensibilita(sensibilitaMouse);
         }
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -40,7 +36,6 @@ public class ControlloMouse : MonoBehaviour
         aggiornamentoFovInGame();
     }
 
-    // Update is called once per frame
     void Update()
     {
         sensibilitaMouse = PlayerSettings.caricaImpostazioniSensibilita();
@@ -49,7 +44,7 @@ public class ControlloMouse : MonoBehaviour
             mouseX = Input.GetAxis("Mouse X") * sensibilitaMouse * Time.deltaTime;
             mouseY = Input.GetAxis("Mouse Y") * sensibilitaMouse * Time.deltaTime;
             xRotation -= mouseY;
-            xRotation = Mathf.Clamp(xRotation, -rangeVisuale, rangeVisuale);
+            xRotation = Mathf.Clamp(xRotation, -Costanti.rangeVisuale, Costanti.rangeVisuale);
             transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
             modelloPlayer.Rotate(Vector3.up * mouseX);
         }
@@ -59,14 +54,17 @@ public class ControlloMouse : MonoBehaviour
         }
     }
 
-
     /// <summary>
     /// Aggiorna il valore de fov
     /// </summary>
     public void aggiornamentoFovInGame()
     {
         cameraGioco.fieldOfView = PlayerSettings.caricaImpostazioniFov();
-        posizioneCameraIniziale.localPosition = new Vector3(posizioneCameraIniziale.localPosition.x, posizioneCameraIniziale.localPosition.y, calcoloPosizioneCameraFovAsseZ(PlayerSettings.caricaImpostazioniFov()));
+        posizioneCameraIniziale.localPosition = new Vector3(
+            posizioneCameraIniziale.localPosition.x, 
+            posizioneCameraIniziale.localPosition.y, 
+            calcoloPosizioneCameraFovAsseZ(PlayerSettings.caricaImpostazioniFov())
+        );
         cameraGioco.transform.position = posizioneCameraIniziale.transform.position;
     }
 
@@ -77,7 +75,7 @@ public class ControlloMouse : MonoBehaviour
     /// <returns>Valore posizione della camera</returns>
     private float calcoloPosizioneCameraFovAsseZ(float valoreFov)
     {   
-        return (posizioneZcamera + ((valoreFov - 60)/40) * (posizioneCameraFovMassimo - posizioneZcamera));
+        return (posizioneZcamera + ((valoreFov - 60)/40) * (Costanti.posizioneCameraFovMassimo - posizioneZcamera));
     }
 
     /// <summary>
@@ -96,7 +94,6 @@ public class ControlloMouse : MonoBehaviour
         this.puoCambiareVisuale = true;
     }
 
-
     /// <summary>
     /// Sblocca o blocca la visuale del giocatore.
     /// </summary>
@@ -104,5 +101,4 @@ public class ControlloMouse : MonoBehaviour
     {
         this.puoCambiareVisuale = !puoCambiareVisuale;
     }
-
 }

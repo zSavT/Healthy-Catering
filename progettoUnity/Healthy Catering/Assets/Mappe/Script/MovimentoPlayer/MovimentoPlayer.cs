@@ -12,28 +12,24 @@ public class MovimentoPlayer : MonoBehaviour
     private CharacterController controller;
 
     [Header("Movimento")]
-    [SerializeField] private float velocitaBase = 5f;
-    [SerializeField] private float velocitaSprint = 8f;
+    [SerializeField] private float velocitaBase = Costanti.velocitaBaseStandard;
+    [SerializeField] private float velocitaSprint = Costanti.velocitaSprintStandard;
     [SerializeField] private KeyCode tastoSprint;
     private float velocitaAttuale = 0;
     private bool isSprinting;
 
-
     [Header("Salto")]
     [SerializeField] private KeyCode tastoSalto;
-    [SerializeField] private float altezzaSalto = 0.35f;
-    [SerializeField] private float distanzaPavimento = 0.4f;
+    [SerializeField] private float altezzaSalto = Costanti.altezzaSaltoStandard;
+    [SerializeField] private float distanzaPavimento = Costanti.distanzaPavimentoStandard;
     [SerializeField] private LayerMask pavimentoMask;
     public bool perTerra;
-    private float gravita = -9.8f;
     private Transform controlloPavimento;           //deve avere il tag "CheckPavimento" inserito
 
     [Header("Suoni Movienti")]
     [SerializeField] private AudioSource suonoCamminata;
     [SerializeField] private AudioSource suonoSprint;
     [SerializeField] private AudioSource suonoSalto;
-    
-
 
     private Vector3 velocita;
     private float x;
@@ -43,8 +39,6 @@ public class MovimentoPlayer : MonoBehaviour
     public UnityEvent lockUnlockMovimento;
     private Animator controllerAnimazione;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         controlloPavimento = GameObject.FindGameObjectWithTag("CheckPavimento").transform;
@@ -53,7 +47,6 @@ public class MovimentoPlayer : MonoBehaviour
         controllerAnimazione = GetComponentInChildren<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (puoMuoversi)
@@ -149,7 +142,6 @@ public class MovimentoPlayer : MonoBehaviour
         controllerAnimazione.SetBool("corre", false);
     }
 
-
     /// <summary>
     /// Metodo che controlla la riproduzio dei suoni del movimento del giocatore.
     /// </summary>
@@ -158,7 +150,9 @@ public class MovimentoPlayer : MonoBehaviour
         if (!isFermo() && !isSprinting && Interactor.menuApribile)
         {
             if (!suonoCamminata.isPlaying)
+            {
                 suonoCamminata.Play();
+            }
         }
         else
         {
@@ -182,7 +176,7 @@ public class MovimentoPlayer : MonoBehaviour
     /// </summary>
     private void controlloGravita()
     {
-        velocita.y += gravita * Time.deltaTime;
+        velocita.y += Costanti.gravita * Time.deltaTime;
         controller.Move(velocita * Time.deltaTime);
     }
 
@@ -222,7 +216,6 @@ public class MovimentoPlayer : MonoBehaviour
         }
     }
 
-
     /// <summary>
     /// Se il giocatore � per terra, pu� sprintare
     /// </summary>
@@ -245,7 +238,7 @@ public class MovimentoPlayer : MonoBehaviour
     /// </summary>
     private void salto()
     {
-        velocita.y = Mathf.Sqrt(altezzaSalto * -2f * gravita);
+        velocita.y = Mathf.Sqrt(altezzaSalto * -2f * Costanti.gravita);
         controllerAnimazione.SetBool("salta", true);
         if (!suonoSalto.isPlaying && Interactor.menuApribile)
             suonoSalto.Play();

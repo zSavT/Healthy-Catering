@@ -144,7 +144,19 @@ public class Costanti
     //PANNELLO MENU
     public static readonly Color32 coloreTestoIngredientiGiusti = new Color32(104, 176, 60, 255);
     public static readonly Color32 coloreTestoIngredientiSbagliatiDieta = new Color32(255, 8, 10, 255);
-    public static readonly Color32 coloreTestoIngredientiSbagliatiPatologia = new Color32(255, 8, 10, 255)
+    public static readonly Color32 coloreTestoIngredientiSbagliatiPatologia = new Color32(255, 8, 10, 255);
+
+    //CONTROLLO MOUSE
+    public static readonly Transform posizioneCameraIniziale;          //deve essere il primo elemento nel contenitore del giocatore!
+    public static readonly float posizioneCameraFovMassimo = 0.51f;
+    public static readonly float rangeVisuale = 90f;                   //Range visuale spostamento camera negli assi
+
+    //MOVIMENTO PLAYER
+    public static readonly float gravita = -9.81f;
+    public static readonly float velocitaBaseStandard = 5f;
+    public static readonly float velocitaSprintStandard = 8f;
+    public static readonly float altezzaSaltoStandard = 0.35f;
+    public static readonly float distanzaPavimentoStandard = 0.4f;
 
     // ALTRO
     public static readonly int numeroLivelli = 3;
