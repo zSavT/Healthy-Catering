@@ -144,7 +144,7 @@ public class Costanti
     //PANNELLO MENU
     public static readonly Color32 coloreTestoIngredientiGiusti = new Color32(104, 176, 60, 255);
     public static readonly Color32 coloreTestoIngredientiSbagliatiDieta = new Color32(255, 8, 10, 255);
-    public static readonly Color32 coloreTestoIngredientiSbagliatiPatologia = new Color32(255, 8, 10, 255)
+    public static readonly Color32 coloreTestoIngredientiSbagliatiPatologia = new Color32(255, 8, 10, 255);
 
     // ALTRO
     public static readonly int numeroLivelli = 3;
