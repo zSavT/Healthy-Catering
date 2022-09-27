@@ -121,13 +121,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     /// <returns><br><strong>True</strong>: Presente almeno un player nel database.<br><strong>False</strong>: Non presente almeno un player nel database.</br></br></returns>
     private bool presentePlayer()
     {
-        if (player.Count > 0)
-        {
-            return true;
-        } else
-        {
-            return false;
-        }
+        return player.Count > 0;
     }
 
     /// <summary>

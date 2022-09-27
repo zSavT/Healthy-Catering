@@ -251,10 +251,7 @@ public class MovimentoPlayer : MonoBehaviour
     /// <returns><strong>True</strong>: il giocatore � fermo.<br><strong>False</strong>: il giocatore non � fermo.</br></returns>
     private bool isFermo()
     {
-        if (x == 0 && z == 0)
-            return true;
-        else
-            return false;
+        return x == 0 && z == 0;
     }
 
     /// <summary>

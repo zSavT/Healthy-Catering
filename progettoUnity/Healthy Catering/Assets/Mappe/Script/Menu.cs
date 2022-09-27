@@ -61,14 +61,7 @@ public class Menu : MonoBehaviour
     /// <returns>True: � presente almeno un player, false: non esiste alcun player</returns>
     private bool presentePlayer()
     {
-        if (player.Count > 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return player.Count > 0;
     }
 
     /// <summary>

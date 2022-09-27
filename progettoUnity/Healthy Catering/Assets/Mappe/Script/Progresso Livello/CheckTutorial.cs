@@ -33,16 +33,12 @@ public class CheckTutorial : MonoBehaviour
 
     public static bool checkSalto()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
-            return true;
-        return false;
+        return Input.GetKeyUp(KeyCode.Space);
     }
 
     public static bool checkSprint()
     {
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-            return true;
-        return false; 
+        return Input.GetKeyUp(KeyCode.LeftShift);
     }
 
     public static bool checkParlaConZio()

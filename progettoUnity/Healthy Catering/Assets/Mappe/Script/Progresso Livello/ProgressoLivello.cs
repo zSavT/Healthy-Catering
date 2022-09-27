@@ -151,14 +151,7 @@ public class ProgressoLivello : MonoBehaviour
     /// <returns>True: Il giocatore ha meno del minimo dei soldi. <br>False: Il giocatore ha più del minimo dei soldi.</br></returns>
     private bool soldiFiniti()
     {
-        if(giocatore.soldi > minimoSoldi)
-        {
-            return false;
-        } else
-        {
-            return true;
-        }
-        
+        return !(giocatore.soldi > minimoSoldi);
     }
 
     /// <summary>
@@ -230,10 +223,7 @@ public class ProgressoLivello : MonoBehaviour
     /// <returns>Restituisce true se entrambi gli obbiettivi sono stati raggiunti, falso se anche uno dei due obbiettivi non � stato raggiunto.</returns>
     public bool obbiettiviRaggiunti()
     {
-        if (obbiettivoUnoRaggiunto && obbiettivoDueRaggiunto)
-            return true;
-        else
-            return false;
+        return (obbiettivoUnoRaggiunto && obbiettivoDueRaggiunto);
     }
 
     /// <summary>

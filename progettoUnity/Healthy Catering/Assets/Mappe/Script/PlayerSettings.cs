@@ -43,10 +43,10 @@ public class PlayerSettings : MonoBehaviour
     }
 
     /// <summary>
-    /// Caricare variabile per confermare che è stato avviato per la prima volta il gioco (e non il livello) e quindi non è stato mai creato un player.<br></br>
+    /// Caricare variabile per confermare che ï¿½ stato avviato per la prima volta il gioco (e non il livello) e quindi non ï¿½ stato mai creato un player.<br></br>
     /// <strong>Usato in</strong> <see cref="SceltaImpostazioniPlayer.controlloNomeEsistente"/>
     /// </summary>
-    /// <returns>0 è la prima volta che si avvia il livello, 1 è stato già avviato una volta.</returns>
+    /// <returns>0 ï¿½ la prima volta che si avvia il livello, 1 ï¿½ stato giï¿½ avviato una volta.</returns>
     public static int caricaPrimoAvvio()
     {
         return PlayerPrefs.GetInt("primoAvvio");
@@ -61,16 +61,16 @@ public class PlayerSettings : MonoBehaviour
     }
 
     /// <summary>
-    /// Carica variabile per controllo del primo avvio per settare il valore della sensibilità del mouse.
+    /// Carica variabile per controllo del primo avvio per settare il valore della sensibilitï¿½ del mouse.
     /// </summary>
-    /// <returns>0 è la prima volta che si avvia il livello, 1 è stato già avviato una volta.</returns>
+    /// <returns>0 ï¿½ la prima volta che si avvia il livello, 1 ï¿½ stato giï¿½ avviato una volta.</returns>
     public static int caricaPrimoAvvioSettaggiSensibilita()
     {
         return PlayerPrefs.GetInt(caricaNomePlayerGiocante() + "_primoAvvioSensibilita");
     }
 
     /// <summary>
-    /// Salva variabile per controllo del primo avvio per settare il valore della sensibilità del mouse.
+    /// Salva variabile per controllo del primo avvio per settare il valore della sensibilitï¿½ del mouse.
     /// </summary>
     public static void salvaPrimoAvvioSettaggiSensibilita()
     {
@@ -128,7 +128,7 @@ public class PlayerSettings : MonoBehaviour
     //LIVELLO 1
 
     /// <summary>
-    /// Salva se il livello 1 è stato completato o meno per il profilo del giocatore giocante.
+    /// Salva se il livello 1 ï¿½ stato completato o meno per il profilo del giocatore giocante.
     /// </summary>
     /// <param name="completato">True completato, false non completato</param>
     public static void salvaProgressoLivello1(bool completato)
@@ -140,7 +140,7 @@ public class PlayerSettings : MonoBehaviour
     }
 
     /// <summary>
-    /// Carica se il livello 1 è stato completato o meno per il profilo del giocatore giocante.
+    /// Carica se il livello 1 ï¿½ stato completato o meno per il profilo del giocatore giocante.
     /// </summary>
     /// <returns>1 completato, 0 non completato.</returns>
     public static int caricaProgressoLivello1()
@@ -151,7 +151,7 @@ public class PlayerSettings : MonoBehaviour
     //LIVELLO 2
 
     /// <summary>
-    /// Salva se il livello 2 è stato completato o meno per il profilo del giocatore giocante.
+    /// Salva se il livello 2 ï¿½ stato completato o meno per il profilo del giocatore giocante.
     /// </summary>
     /// <param name="completato">True completato, false non completato</param>
     public static void salvaProgressoLivello2(bool completato)
@@ -163,7 +163,7 @@ public class PlayerSettings : MonoBehaviour
     }
 
     /// <summary>
-    /// Carica se il livello 2 è stato completato o meno per il profilo del giocatore giocante.
+    /// Carica se il livello 2 ï¿½ stato completato o meno per il profilo del giocatore giocante.
     /// </summary>
     /// <returns>1 completato, 0 non completato.</returns>
     public static int caricaProgressoLivello2()
@@ -198,7 +198,7 @@ public class PlayerSettings : MonoBehaviour
     //GENERE GIOCATORE
 
     /// <summary>
-    /// Salva l'impostazione genere del giocatore. Se la scelta del genere è diversa da neutro, allora verà salvato anche il genere del modelo<br></br>
+    /// Salva l'impostazione genere del giocatore. Se la scelta del genere ï¿½ diversa da neutro, allora verï¿½ salvato anche il genere del modelo<br></br>
     /// Valori possibili:<br></br>
     /// <strong>0: Maschio<br>1: Femmina</br><br>2: Neutro</br></strong>
     /// </summary>
@@ -248,18 +248,18 @@ public class PlayerSettings : MonoBehaviour
     //SENSIBILITA' MOUSE
 
     /// <summary>
-    /// Metodo che salva il valore della sensibilità scelta dal giocatore.
+    /// Metodo che salva il valore della sensibilitï¿½ scelta dal giocatore.
     /// </summary>
-    /// <param name="sensibilita">Valore della sensibilità scelta dal giocatore nello slider</param>
+    /// <param name="sensibilita">Valore della sensibilitï¿½ scelta dal giocatore nello slider</param>
     public static void salvaImpostazioniSensibilita(float sensibilita)
     {
         PlayerPrefs.SetFloat("sensibilita", sensibilita);
     }
 
     /// <summary>
-    /// Metodo che carica il valore della sensibilità salvata in precedenza dal giocatore.
+    /// Metodo che carica il valore della sensibilitï¿½ salvata in precedenza dal giocatore.
     /// </summary>
-    /// <returns>Valore della sensibilità</returns>
+    /// <returns>Valore della sensibilitï¿½</returns>
     public static float caricaImpostazioniSensibilita()
     {
         return PlayerPrefs.GetFloat("sensibilita");
@@ -387,14 +387,7 @@ public class PlayerSettings : MonoBehaviour
     /// <returns><strong>True</strong> toggle su true, fullscreen attivo.<br><strong>False</strong> toggle su false, fullscreen disattivato.</br></returns>
     public static bool caricaImpostazioniFullScreen()
     {
-        if (PlayerPrefs.GetInt("fullScreen") == 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return PlayerPrefs.GetInt("fullScreen") == 0;
     }
 
     //IMPOSTAZIONI FRAMERATE
@@ -422,13 +415,6 @@ public class PlayerSettings : MonoBehaviour
     /// <returns><strong>True</strong> toggle su true, Framerate libero attivo.<br><strong>False</strong> toggle su false, Framerate libero disattivato.</br></returns>
     public static bool caricaImpostazioniFramerateLibero()
     {
-        if (PlayerPrefs.GetInt("framerateLibero") == 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return PlayerPrefs.GetInt("framerateLibero") == 0;
     }
 }
