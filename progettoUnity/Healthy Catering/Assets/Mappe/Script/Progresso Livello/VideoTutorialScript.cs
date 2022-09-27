@@ -18,7 +18,6 @@ public class VideoTutorialScript : MonoBehaviour
     [SerializeField] private Slider sliderCaricamento;        //slider del caricamento della partita
     [SerializeField] private UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
 
-
     // Examples of VideoPlayer function
     void Start()
     {
@@ -72,7 +71,6 @@ public class VideoTutorialScript : MonoBehaviour
         audioMIxer.SetFloat("volume", -80f);
     }
 
-
     public void caricaLivelloTutorial()
     {
         titolo.gameObject.SetActive(true);
@@ -84,8 +82,6 @@ public class VideoTutorialScript : MonoBehaviour
         yield return new WaitForSecondsRealtime(tempo);
         caricaLivelloTutorial();
     }
-
-
 
     /// <summary>
     /// Carica il livello con la barra di caricamento

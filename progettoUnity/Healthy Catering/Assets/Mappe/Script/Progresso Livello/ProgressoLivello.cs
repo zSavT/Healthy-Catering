@@ -15,6 +15,7 @@ public class ProgressoLivello : MonoBehaviour
     private int punteggioPlayer;
     private Player giocatore;
     [SerializeField] Interactor interazioni;
+
     [Header("Obbiettivo numero Clienti da Servire")]
     [SerializeField] private TextMeshProUGUI obbiettivoUno;
     [SerializeField] private Toggle obbiettivoUnoToogle;
@@ -47,6 +48,7 @@ public class ProgressoLivello : MonoBehaviour
     [SerializeField] private TextMeshProUGUI titoloSchermataFineLivello;
     [SerializeField] private AudioSource suonoVittoria;
     public UnityEvent disattivaElementiFineLivello;
+
     [Header("GameOver")]
     public int numeroDiClientiMassimi = 10;
     private bool gameOver = false;
@@ -262,7 +264,6 @@ public class ProgressoLivello : MonoBehaviour
         disattivaObbiettiviETesto();
        // GameObject.FindObjectOfType<Camera>().transform.position = new Vector3(0, 4000, 0);       //sposta la telecamera in ciealo
     }
-
 
     /// <summary>
     /// Disattiva gli elementi degli obbiettivi.
