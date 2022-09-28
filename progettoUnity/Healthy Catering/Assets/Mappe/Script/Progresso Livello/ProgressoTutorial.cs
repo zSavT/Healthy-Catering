@@ -71,6 +71,8 @@ public class ProgressoTutorial : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("Attuale indice");
+        Debug.Log(numeroScritteMostrate);
         if (!saGiocareSettato)
         {
             if (PlayerSaGiocareFPS.siOnoSettato())

@@ -18,7 +18,7 @@ public class Interactable : MonoBehaviour
     private GameObject modelloCliente3D;           //assicurarsi che il modello 3d sia il primo figlio del contenitore
     [SerializeField] private GestoreClienti gestioneCliente;
     private AudioSource suonoContento;
-    [SerializeField] private AudioSource suonoVocePositivo;
+    private AudioSource suonoVocePositivo;
 
     //Controller della mappa percorribile degli NPC
     NavMeshAgent agent;
@@ -38,6 +38,15 @@ public class Interactable : MonoBehaviour
 
     void Start()
     {
+        if (suonoVocePositivo == null)
+            try
+            {
+                suonoVocePositivo = GameObject.FindWithTag("SuonoVocePositivo").GetComponentInChildren<AudioSource>();
+            }
+            catch(MissingComponentException)
+            {
+                Debug.Log("Suono Voce Positivo non trovato.");
+            }
         contenitoreCliente = this.gameObject;
         raggiuntoBancone = false;
         servito = false;
