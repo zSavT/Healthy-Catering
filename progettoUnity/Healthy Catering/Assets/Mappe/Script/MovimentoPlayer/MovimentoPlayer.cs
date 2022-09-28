@@ -12,16 +12,17 @@ public class MovimentoPlayer : MonoBehaviour
     private CharacterController controller;
 
     [Header("Movimento")]
-    [SerializeField] private float velocitaBase = Costanti.velocitaBaseStandard;
-    [SerializeField] private float velocitaSprint = Costanti.velocitaSprintStandard;
+    [SerializeField] private float velocitaBase = 5f;
+    [SerializeField] private float velocitaSprint = 8f;
     [SerializeField] private KeyCode tastoSprint;
     private float velocitaAttuale = 0;
     private bool isSprinting;
 
     [Header("Salto")]
     [SerializeField] private KeyCode tastoSalto;
-    [SerializeField] private float altezzaSalto = Costanti.altezzaSaltoStandard;
-    [SerializeField] private float distanzaPavimento = Costanti.distanzaPavimentoStandard;
+    [SerializeField] private float altezzaSalto = 0.35f;
+    [SerializeField] private float distanzaPavimento = 0.4f;
+    [SerializeField] private float gravita = -9.8f;
     [SerializeField] private LayerMask pavimentoMask;
     public bool perTerra;
     private Transform controlloPavimento;           //deve avere il tag "CheckPavimento" inserito
@@ -176,7 +177,7 @@ public class MovimentoPlayer : MonoBehaviour
     /// </summary>
     private void controlloGravita()
     {
-        velocita.y += Costanti.gravita * Time.deltaTime;
+        velocita.y += gravita * Time.deltaTime;
         controller.Move(velocita * Time.deltaTime);
     }
 
@@ -238,7 +239,7 @@ public class MovimentoPlayer : MonoBehaviour
     /// </summary>
     private void salto()
     {
-        velocita.y = Mathf.Sqrt(altezzaSalto * -2f * Costanti.gravita);
+        velocita.y = Mathf.Sqrt(altezzaSalto * -2f * gravita);
         controllerAnimazione.SetBool("salta", true);
         if (!suonoSalto.isPlaying && Interactor.menuApribile)
             suonoSalto.Play();

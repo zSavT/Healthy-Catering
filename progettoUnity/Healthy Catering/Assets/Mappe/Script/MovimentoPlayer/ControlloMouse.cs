@@ -8,11 +8,16 @@ using UnityEngine;
 /// </summary>
 public class ControlloMouse : MonoBehaviour
 {
-    private Transform modelloPlayer;
-    private Transform posizioneCameraIniziale;          //deve essere il primo elemento nel contenitore del giocatore!
+    
+    [Header("Impostazioni Camera")]
+    [SerializeField] private Transform posizioneCameraIniziale;         //deve essere il primo elemento nel contenitore del giocatore per l'autoset
+    [SerializeField] private float posizioneCameraFovMassimo = 0.51f;  
     private Camera cameraGioco;
-    private float sensibilitaMouse = 250f;              //250 valore mediano
+    [Header("Impostazioni Mouse")]
+    [SerializeField] private float sensibilitaMouse = 250f;     //250 valore mediano
+    [SerializeField] private float rangeVisuale = 90f;
 
+    private Transform modelloPlayer;
     private float xRotation = 0f;
     private float mouseX;
     private float mouseY;
@@ -22,7 +27,15 @@ public class ControlloMouse : MonoBehaviour
     void Start()
     {
         modelloPlayer = this.transform.parent.transform;
-        posizioneCameraIniziale = modelloPlayer.gameObject.GetComponentsInChildren<Transform>()[1];
+        if (posizioneCameraIniziale == null)
+            try
+            {
+                posizioneCameraIniziale = modelloPlayer.gameObject.GetComponentsInChildren<Transform>()[1];
+            }
+            catch (MissingComponentException)
+            {
+                Debug.Log("Posizione Camera non trovata.");
+            }
         posizioneZcamera = posizioneCameraIniziale.transform.position.z;
         if (PlayerSettings.caricaPrimoAvvioSettaggiSensibilita() == 0)
         {
@@ -44,7 +57,7 @@ public class ControlloMouse : MonoBehaviour
             mouseX = Input.GetAxis("Mouse X") * sensibilitaMouse * Time.deltaTime;
             mouseY = Input.GetAxis("Mouse Y") * sensibilitaMouse * Time.deltaTime;
             xRotation -= mouseY;
-            xRotation = Mathf.Clamp(xRotation, -Costanti.rangeVisuale, Costanti.rangeVisuale);
+            xRotation = Mathf.Clamp(xRotation, -rangeVisuale, rangeVisuale);
             transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
             modelloPlayer.Rotate(Vector3.up * mouseX);
         }
@@ -75,7 +88,7 @@ public class ControlloMouse : MonoBehaviour
     /// <returns>Valore posizione della camera</returns>
     private float calcoloPosizioneCameraFovAsseZ(float valoreFov)
     {   
-        return (posizioneZcamera + ((valoreFov - 60)/40) * (Costanti.posizioneCameraFovMassimo - posizioneZcamera));
+        return (posizioneZcamera + ((valoreFov - 60)/40) * (posizioneCameraFovMassimo - posizioneZcamera));
     }
 
     /// <summary>
