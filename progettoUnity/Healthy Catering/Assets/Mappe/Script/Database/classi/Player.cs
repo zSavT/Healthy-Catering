@@ -244,6 +244,9 @@ public class Player
             case 3:
                 aggiornaInventario(Costanti.inventarioTest, true);
                 break;
+            case 4:
+                this.inventario = Costanti.inventarioVuoto;
+                break;
         }
     }
 

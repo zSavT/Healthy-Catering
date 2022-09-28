@@ -61,6 +61,7 @@ public class Interactor : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(Costanti.piattoNonCompatibileTutorial);
         mainCamera = GetComponentInChildren<Camera>();
         posizioneCamera = this.gameObject.GetComponentsInChildren<Transform>()[1];
         nelRistorante = false;
@@ -78,7 +79,7 @@ public class Interactor : MonoBehaviour
             {
                 giocatore.setInventarioLivello(livelloAttuale);
                 giocatore.soldi = 30f;
-            }    
+            }
             guiInGame.aggiornaValoreSoldi(giocatore.soldi);
         }
         catch(Exception e)

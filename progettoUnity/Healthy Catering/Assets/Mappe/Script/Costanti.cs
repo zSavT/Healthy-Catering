@@ -65,6 +65,10 @@ public class Costanti
         new OggettoQuantita<int> (33,10)
     };
 
+    public static readonly List<OggettoQuantita<int>> inventarioVuoto = new List<OggettoQuantita<int>>
+    {
+    };
+
     // INDENTAZIONE COLORI E CSS GENERALE
     public static readonly string fineColore = "</color>";
     public static readonly string colorePiatti = "<color=#FFA64C>";

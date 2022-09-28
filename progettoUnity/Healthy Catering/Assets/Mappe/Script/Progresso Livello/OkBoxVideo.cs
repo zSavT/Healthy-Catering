@@ -33,11 +33,23 @@ public class OkBoxVideo : MonoBehaviour
 
     void Start()
     {
+        WASDmostrato = false;
+        saltoMostrato = false;
+        sprintMostrato = false;
+        parlaZioMostrato = false;
+        vaiAlRistoranteMostrato = false;
+        meccanicheServireCompatibileMostrato = false;
+        meccanicheServireNonCompatibileMostrato = false;
+        finitiIngredientiMostrato = false;
+        doveEIlNegozioMostrato = false;
+        interazioneNPCMostrato = false;
+        apriRicettarioMostrato = false;
+        apriMenuAiutoMostrato = false;
+        indiceCorrente = 0;
         pannello.SetActive(false);
         titolo.text = "";
         testo.text = "";
         animazione = immagineOGIF.GetComponent<Animazione>();
-        indiceCorrente = 0;
     }
 
     public void apriOkBoxVideo(int posizione)

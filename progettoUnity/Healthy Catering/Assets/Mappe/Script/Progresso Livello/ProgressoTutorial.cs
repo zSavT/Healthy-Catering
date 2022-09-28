@@ -73,6 +73,7 @@ public class ProgressoTutorial : MonoBehaviour
     {
         Debug.Log("Attuale indice");
         Debug.Log(numeroScritteMostrate);
+        Debug.Log(OkBoxVideo.meccanicheServireNonCompatibileMostrato);
         if (!saGiocareSettato)
         {
             if (PlayerSaGiocareFPS.siOnoSettato())
@@ -176,8 +177,6 @@ public class ProgressoTutorial : MonoBehaviour
                     {
                         okBoxVideo.apriOkBoxVideo(Costanti.meccanicheServireCompatibile);
                         OkBoxVideo.meccanicheServireCompatibileMostrato = true;
-
-                        
                     }
 
                     if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
