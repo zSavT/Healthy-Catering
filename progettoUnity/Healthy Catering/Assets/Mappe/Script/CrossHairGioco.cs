@@ -11,7 +11,7 @@ public class CrossHairGioco : MonoBehaviour
 {
     [Header("CrossHair")]
     //riferimento allo sprit del crossHair
-    private RawImage crossHair;
+    [SerializeField] private RawImage crossHair;
     //colore base del crossHair
     [SerializeField] private Color32 coloreNormale;
     //colore del crossHair quando viene in contatto con un entità interagibile
@@ -19,7 +19,16 @@ public class CrossHairGioco : MonoBehaviour
 
     void Start()
     {
-        crossHair = GetComponent<RawImage>();
+        if (crossHair == null)
+            try
+            {
+                crossHair = GetComponent<RawImage>();
+            }
+            catch (MissingComponentException)
+            {
+                Debug.Log("Nessuna immagine trovata.");
+                crossHair = null;   //Il GetComponent imposta in automatico null in caso di errore, ma per sicurezza è buono lasciarlo comunque
+            }
         crossHair.color = coloreNormale;
     }
 
