@@ -27,7 +27,6 @@ public class MenuAiuto : MonoBehaviour
         pannelloMenuAiuto.SetActive(false);
 
         pannelloMenuAiutoAperto = false;
-
         tastoAvanti.onClick.AddListener(mostraProssimoMessaggioDiAiuto);
         tastoIndietro.onClick.AddListener(mostraPrecedenteMessaggioDiAiuto);
 

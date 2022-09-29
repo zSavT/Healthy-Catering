@@ -234,7 +234,7 @@ public class Interactor : MonoBehaviour
     private void gestisciNPCpassantePuntato()
     {
         inquadratoNPC.Invoke();
-        if (Input.GetKeyDown(tastoInterazione) && !(interazionePassanti.getPannelloInterazionePassantiAperto()))
+        if (Input.GetKeyDown(tastoInterazione) && !(interazionePassanti.getPannelloInterazionePassantiAperto()) && !(menuAiuto.getPannelloMenuAiutoAperto()) && !(ricettarioScript.getRicettarioAperto()))
         {
             interazionePassanti.apriPannelloInterazionePassanti(npcPassivo.transform.parent.name);
             npcPassivo.animazioneParlata(gameObject.transform);
@@ -349,10 +349,8 @@ public class Interactor : MonoBehaviour
         }
     }
 
-    
-            
 
-private void gestisciChiusuraMenuAiuto()
+    private void gestisciChiusuraMenuAiuto()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
