@@ -23,18 +23,18 @@ public class Interactable : MonoBehaviour
     //Controller della mappa percorribile degli NPC
     NavMeshAgent agent;
     //Waypoint percorso degli NPC
-    public Transform[] waypoints;
+    [SerializeField] private Transform[] waypoints;
     //Indice per la gestione dei waypoint raggiunti
     int waypointIndex;
     //Vettore per calcolare la distanza tra il waypoint ed NPC
     Vector3 target;
 
-    public bool raggiuntoBancone = false;
-    public bool servito = false;
+    private bool raggiuntoBancone = false;
+    private bool servito = false;
     public static int numeroCliente = 0;
     private bool distruggi = false;
     private bool animazione = false;
-    public float durataAnimazione = 0;
+    private float durataAnimazione = 0;
 
     void Start()
     {
@@ -263,12 +263,24 @@ public class Interactable : MonoBehaviour
         }
         */
     }
-
+    
+    /// <summary>
+    /// Il metodo restituisce l'id del cliente.
+    /// </summary>
+    /// <returns>ID Cliente</returns>
     public int getIdCliente()
     {
         return IDCliente;
     }
 
+    /// <summary>
+    /// Il metodo restiusce vero se il cliente ha raggiunto il bancone per essere servito o meno.
+    /// </summary>
+    /// <returns>True: Bancone raggiunto, False: Bancone non raggiunto</returns>
+    public bool getClienteRaggiuntoBancone()
+    {
+        return raggiuntoBancone;
+    }
 
 }
 

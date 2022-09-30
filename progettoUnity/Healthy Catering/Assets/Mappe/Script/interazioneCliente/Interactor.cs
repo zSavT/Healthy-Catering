@@ -183,7 +183,7 @@ public class Interactor : MonoBehaviour
 
     private void gestisciNPCpuntato()
     {
-        if (npc.raggiuntoBancone)
+        if (npc.getClienteRaggiuntoBancone())
         {
             inquadratoNPC.Invoke();
             if (Input.GetKeyDown(tastoInterazione))
