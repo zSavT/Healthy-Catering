@@ -12,6 +12,7 @@ public class MovimentoPlayer : MonoBehaviour
     private CharacterController controller;
 
     [Header("Movimento")]
+    private ModelloPlayer gestoreModelli;
     [SerializeField] private float velocitaBase = 5f;
     [SerializeField] private float velocitaSprint = 8f;
     [SerializeField] private KeyCode tastoSprint;
@@ -45,7 +46,12 @@ public class MovimentoPlayer : MonoBehaviour
         controlloPavimento = GameObject.FindGameObjectWithTag("CheckPavimento").transform;
         controller = GetComponent<CharacterController>();
         puoMuoversi = true;
-        controllerAnimazione = GetComponentInChildren<Animator>();
+        gestoreModelli = GetComponent<ModelloPlayer>();
+        if (PlayerSettings.caricaGenereModello3D(PlayerSettings.caricaNomePlayerGiocante()) == 1)
+            controllerAnimazione = gestoreModelli.getModelloAttivo().GetComponent<Animator>();
+        else if (PlayerSettings.caricaGenereModello3D(PlayerSettings.caricaNomePlayerGiocante()) == 0)
+            controllerAnimazione = gestoreModelli.getModelloAttivo().GetComponent<Animator>();
+
     }
 
     void Update()
@@ -198,7 +204,8 @@ public class MovimentoPlayer : MonoBehaviour
         if (Input.GetKey(tastoSprint))
         {
             sprint();
-        } else if(Input.GetKeyUp(tastoSprint))
+        }
+        else if (Input.GetKeyUp(tastoSprint))
         {
             suonoSprint.Stop();
         }
