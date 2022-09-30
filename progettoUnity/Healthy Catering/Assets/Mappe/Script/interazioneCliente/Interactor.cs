@@ -173,7 +173,7 @@ public class Interactor : MonoBehaviour
             // se l'oggetto visualizzato è interagibile
             if (NPCpuntato.collider.GetComponent<Interactable>() != false)
             {
-                IDClientePuntato = NPCpuntato.collider.GetComponent<Interactable>().IDCliente;
+                IDClientePuntato = NPCpuntato.collider.GetComponent<Interactable>().getIdCliente();
                 npc = NPCpuntato.collider.GetComponent<Interactable>();
                 ; return true;
             }

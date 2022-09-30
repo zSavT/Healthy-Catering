@@ -10,7 +10,7 @@ using UnityEngine.AI;
 /// </summary>
 public class Interactable : MonoBehaviour
 {
-    public int IDCliente;
+    [SerializeField] private int IDCliente;
     private Animator controllerAnimazione;
     private ParticleSystem effettoPositivo;
     private ParticleSystem effettoNegativo;
@@ -263,6 +263,13 @@ public class Interactable : MonoBehaviour
         }
         */
     }
+
+    public int getIdCliente()
+    {
+        return IDCliente;
+    }
+
+
 }
 
 
