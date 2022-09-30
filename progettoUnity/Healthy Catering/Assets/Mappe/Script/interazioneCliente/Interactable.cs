@@ -18,7 +18,7 @@ public class Interactable : MonoBehaviour
     private GameObject modelloCliente3D;           //assicurarsi che il modello 3d sia il primo figlio del contenitore
     [SerializeField] private GestoreClienti gestioneCliente;
     private AudioSource suonoContento;
-    [SerializeField] private AudioSource suonoVocePositio;
+    [SerializeField] private AudioSource suonoVocePositivo;
 
 
 
@@ -57,24 +57,14 @@ public class Interactable : MonoBehaviour
 
         StartCoroutine(attendi(2f));
 
-        
         controllerAnimazione = GetComponentInChildren<Animator>();
         effettoPositivo.Stop();
         effettoNegativo.Stop();
-
-
-
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            suonoVocePositio.Play();
-        }
         //Controllo della distanza minima per considerare il waypoint raggiunto, in caso positivo si
         if (Vector3.Distance(transform.position, target) < 0.5f)
         {
@@ -106,14 +96,15 @@ public class Interactable : MonoBehaviour
     /// <returns></returns>
     IEnumerator attendiEDistruggi(float attesa)
     {
-        
         yield return new WaitForSecondsRealtime(attesa);
+        
         if(distruggi==false)
         {
             gestioneCliente.attivaClienteSuccessivo();
             distruggi = true;
             PannelloMenu.clienteServito = false;
         } 
+        
         Destroy(contenitoreCliente);
     }
 
@@ -152,11 +143,8 @@ public class Interactable : MonoBehaviour
     /// Imposta il materiale dell'oggetto su transparente.
     /// </summary>
     private void SetMaterialTransparent()
-
     {
-
         foreach (Material m in modelloCliente3D.GetComponent<Renderer>().materials)
-
         {
 
             m.SetFloat("_Mode", 2);
@@ -174,24 +162,16 @@ public class Interactable : MonoBehaviour
             m.DisableKeyword("_ALPHAPREMULTIPLY_ON");
 
             m.renderQueue = 3000;
-
         }
-
     }
-
-
 
     /// <summary>
     /// Imposta il material dell'oggetto su Opaque.
     /// </summary>
     private void SetMaterialOpaque()
-
     {
-
         foreach (Material m in modelloCliente3D.GetComponent<Renderer>().materials)
-
         {
-
             m.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
 
             m.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
@@ -205,9 +185,7 @@ public class Interactable : MonoBehaviour
             m.DisableKeyword("_ALPHAPREMULTIPLY_ON");
 
             m.renderQueue = -1;
-
         }
-
     }
 
     /// <summary>
@@ -222,9 +200,8 @@ public class Interactable : MonoBehaviour
         effettoPositivo.Play();
         servito = true;
         suonoContento.Play();
-        suonoVocePositio.PlayDelayed(0.1f);
+        suonoVocePositivo.PlayDelayed(0.1f);
     }
-
 
     /// <summary>
     /// Avvia animazione Scontenta del cliente dopo piatto servito non corretto.
@@ -240,7 +217,6 @@ public class Interactable : MonoBehaviour
         servito = true;
     }
 
-
     /// <summary>
     /// Avvia animazione idle per il cliente.
     /// </summary>
@@ -248,7 +224,6 @@ public class Interactable : MonoBehaviour
     {
         controllerAnimazione.SetBool("finito", false);
     }
-
 
     /// <summary>
     /// Avvia animazione camminata per il cliente.

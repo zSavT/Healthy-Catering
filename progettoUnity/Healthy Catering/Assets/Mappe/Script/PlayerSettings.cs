@@ -42,7 +42,6 @@ public class PlayerSettings : MonoBehaviour
         PlayerPrefs.DeleteKey(nomeUtente + "_pelle");
     }
 
-
     /// <summary>
     /// Caricare variabile per confermare che è stato avviato per la prima volta il gioco (e non il livello) e quindi non è stato mai creato un player.<br></br>
     /// <strong>Usato in</strong> <see cref="SceltaImpostazioniPlayer.controlloNomeEsistente"/>
@@ -79,8 +78,6 @@ public class PlayerSettings : MonoBehaviour
     }
     //PROFILO UTENTE
 
-
-
     //GENERE MODELLO
 
     /// <summary>
@@ -92,9 +89,7 @@ public class PlayerSettings : MonoBehaviour
     /// <param name="scelta">Valore indice scelta del dropdown</param>
     public static void salvaGenereModello3D(string nomeGiocatore, int scelta)
     {
-
         PlayerPrefs.SetInt(nomeGiocatore + "_modello", scelta);
-
     }
 
     /// <summary>
@@ -230,9 +225,8 @@ public class PlayerSettings : MonoBehaviour
 
     //IMPOSTAZIONI GIOCO
 
-
-
     //FOV
+
     /// <summary>
     /// Metodo che salva il valore scelto per il fov del gioco.
     /// </summary>
@@ -261,7 +255,6 @@ public class PlayerSettings : MonoBehaviour
     {
         PlayerPrefs.SetFloat("sensibilita", sensibilita);
     }
-
 
     /// <summary>
     /// Metodo che carica il valore della sensibilità salvata in precedenza dal giocatore.
@@ -331,6 +324,7 @@ public class PlayerSettings : MonoBehaviour
     {
         return PlayerPrefs.GetInt(caricaNomePlayerGiocante() + "_Daltonismo");
     }
+    
     //VOLUME PRINCIPALE GIOCO
 
     /// <summary>
@@ -341,7 +335,6 @@ public class PlayerSettings : MonoBehaviour
     {
         PlayerPrefs.SetFloat("volume", volume);
     }
-
 
     /// <summary>
     /// Metodo che carica il valore dello slider del volume della musica.

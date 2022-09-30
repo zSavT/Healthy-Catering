@@ -23,6 +23,7 @@ public class VideoTutorialScript : MonoBehaviour
     void Start()
     {
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
+        videoPlayer = cameraGioco.GetComponent<VideoPlayer>();
         /*
         // Will attach a VideoPlayer to the main camera.
         GameObject camera = GameObject.Find("Main Camera");

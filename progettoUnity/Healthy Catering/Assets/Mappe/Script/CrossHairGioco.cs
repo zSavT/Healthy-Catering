@@ -11,7 +11,7 @@ public class CrossHairGioco : MonoBehaviour
 {
     [Header("CrossHair")]
     //riferimento allo sprit del crossHair
-    [SerializeField] private RawImage crossHair;
+    private RawImage crossHair;
     //colore base del crossHair
     [SerializeField] private Color32 coloreNormale;
     //colore del crossHair quando viene in contatto con un entità interagibile
@@ -19,6 +19,7 @@ public class CrossHairGioco : MonoBehaviour
 
     void Start()
     {
+        crossHair = GetComponent<RawImage>();
         crossHair.color = coloreNormale;
     }
 
@@ -45,7 +46,6 @@ public class CrossHairGioco : MonoBehaviour
     {
         crossHair.enabled = !crossHair.enabled;
     }
-
 
     /// <summary>
     /// Attiva il puntatore

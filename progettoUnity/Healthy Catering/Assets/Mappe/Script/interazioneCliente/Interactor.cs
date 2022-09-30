@@ -64,6 +64,8 @@ public class Interactor : MonoBehaviour
 
     void Start()
     {
+        mainCamera = GetComponentInChildren<Camera>();
+        posizioneCamera = this.gameObject.GetComponentsInChildren<Transform>()[1];
         nelRistorante = false;
         this.gameObject.transform.position = posizioneInizialePlayer.transform.position;
         try

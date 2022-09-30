@@ -47,7 +47,6 @@ public class Menu : MonoBehaviour
         attivaDisattivaLivelli();
     }
 
-
     /// <summary>
     /// Metodo per inzializzare la lista dei player presenti nel database.
     /// </summary>
@@ -55,7 +54,6 @@ public class Menu : MonoBehaviour
     {
         player = Database.getDatabaseOggetto(new Player());
     }
-
 
     /// <summary>
     /// Metodo per controllare se sono presenti o meno dei player nel database.
@@ -90,7 +88,6 @@ public class Menu : MonoBehaviour
     }
 
     //metodo per triggerare a mano i livelli, da eliminare poi.
-
     /// <summary>
     /// Metodo per attivare i livelli tramite cheatcode
     /// </summary>
@@ -121,7 +118,6 @@ public class Menu : MonoBehaviour
                 PlayerSettings.salvaProgressoLivello2(false);
             }
         }
-
     }
 
     /// <summary>
@@ -148,7 +144,6 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
-
     /// <summary>
     /// Metodo per aprire la scena del menu opzioni.
     /// </summary>
@@ -173,7 +168,6 @@ public class Menu : MonoBehaviour
         testoVersioneGioco.text = testoVersioneGioco.text + Application.version;
         companyName.text = companyName.text + " " + Application.companyName;
     }
-
 
     /// <summary>
     /// Metodo che carica la scena della classifica

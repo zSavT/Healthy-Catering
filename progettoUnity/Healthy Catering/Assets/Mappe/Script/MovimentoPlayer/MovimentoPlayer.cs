@@ -9,9 +9,10 @@ using UnityEngine.Events;
 /// </summary>
 public class MovimentoPlayer : MonoBehaviour
 {
-    [SerializeField] private CharacterController controller;
+    private CharacterController controller;
 
     [Header("Movimento")]
+    private ModelloPlayer gestoreModelli;
     [SerializeField] private float velocitaBase = 5f;
     [SerializeField] private float velocitaSprint = 8f;
     [SerializeField] private KeyCode tastoSprint;
@@ -22,16 +23,17 @@ public class MovimentoPlayer : MonoBehaviour
     [Header("Salto")]
     [SerializeField] private KeyCode tastoSalto;
     [SerializeField] private float altezzaSalto = 0.35f;
-    [SerializeField] private Transform controlloPavimento;
     [SerializeField] private float distanzaPavimento = 0.4f;
     [SerializeField] private LayerMask pavimentoMask;
-    [SerializeField] private float gravita = -9.8f;
+    public bool perTerra;
+    private float gravita = -9.8f;
+    private Transform controlloPavimento;           //deve avere il tag "CheckPavimento" inserito
 
     [Header("Suoni Movienti")]
     [SerializeField] private AudioSource suonoCamminata;
     [SerializeField] private AudioSource suonoSprint;
     [SerializeField] private AudioSource suonoSalto;
-    public bool perTerra;
+
 
 
     private Vector3 velocita;
@@ -46,8 +48,15 @@ public class MovimentoPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        controlloPavimento = GameObject.FindGameObjectWithTag("CheckPavimento").transform;
+        controller = GetComponent<CharacterController>();
         puoMuoversi = true;
-        controllerAnimazione = GetComponentInChildren<Animator>();
+        gestoreModelli = GetComponent<ModelloPlayer>();
+        if (PlayerSettings.caricaGenereModello3D(PlayerSettings.caricaNomePlayerGiocante()) == 1)
+            controllerAnimazione = gestoreModelli.getModelloAttivo().GetComponent<Animator>();
+        else if (PlayerSettings.caricaGenereModello3D(PlayerSettings.caricaNomePlayerGiocante()) == 0)
+            controllerAnimazione = gestoreModelli.getModelloAttivo().GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -200,7 +209,8 @@ public class MovimentoPlayer : MonoBehaviour
         if (Input.GetKey(tastoSprint))
         {
             sprint();
-        } else if(Input.GetKeyUp(tastoSprint))
+        }
+        else if (Input.GetKeyUp(tastoSprint))
         {
             suonoSprint.Stop();
         }

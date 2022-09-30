@@ -39,6 +39,11 @@ public class Cliente
             && (Enumerable.SequenceEqual(this.listaIdPatologie, ((Cliente)obj).listaIdPatologie));
     }
 
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
     public override string ToString()
     {
         string listaIdPatologieString = Patologia.listIdToListPatologie(this.listaIdPatologie);
@@ -57,10 +62,8 @@ public class Cliente
 
     }
 
-    public List<Ingrediente> getListaIngredientiNonCompatibiliPatologie(List<Ingrediente> ingredientiPiatto, List <Ingrediente> databaseIngrediente = null)
+    public List<Ingrediente> getListaIngredientiNonCompatibiliPatologie(List<Ingrediente> ingredientiPiatto)
     {
-        databaseIngrediente ??= Database.getDatabaseOggetto(new Ingrediente());
-
         List<Ingrediente> ingredientiNonCompatibili = new List<Ingrediente>();
 
         foreach (int idPatologia in this.listaIdPatologie)
@@ -79,10 +82,8 @@ public class Cliente
         return ingredientiNonCompatibili;
     }
 
-    public List<Ingrediente> getListaIngredientiNonCompatibiliDieta(List<Ingrediente> ingredientiPiatto, List<Ingrediente> databaseIngrediente = null)
+    public List<Ingrediente> getListaIngredientiNonCompatibiliDieta(List<Ingrediente> ingredientiPiatto)
     {
-        databaseIngrediente ??= Database.getDatabaseOggetto(new Ingrediente());
-
         List<Ingrediente> ingredientiNonCompatibili = new List<Ingrediente>();
 
         foreach (Ingrediente ingrediente in ingredientiPiatto)

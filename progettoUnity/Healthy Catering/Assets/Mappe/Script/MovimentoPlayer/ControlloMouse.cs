@@ -8,14 +8,12 @@ using UnityEngine;
 /// </summary>
 public class ControlloMouse : MonoBehaviour
 {
-    [Header("Impostazioni Camera")]
-    [SerializeField] private Transform modelloPlayer;
-    [SerializeField] private Transform posizioneCameraIniziale;
-    [SerializeField] private float posizioneCameraFovMassimo;
+    private Transform modelloPlayer;
+    private Transform posizioneCameraIniziale;          //deve essere il primo elemento nel contenitore del giocatore!
+    private float posizioneCameraFovMassimo = 0.51f;
     private Camera cameraGioco;
-    [Header("Impostazioni Mouse")]
-    [SerializeField] private float sensibilitaMouse = 250f;
-    [SerializeField] private float rangeVisuale = 90f;
+    private float sensibilitaMouse = 250f;              //250 valore mediano
+    private float rangeVisuale = 90f;                   //Range visuale spostamento camera negli assi
 
     private float xRotation = 0f;
     private float mouseX;
@@ -27,6 +25,8 @@ public class ControlloMouse : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        modelloPlayer = this.transform.parent.transform;
+        posizioneCameraIniziale = modelloPlayer.gameObject.GetComponentsInChildren<Transform>()[1];
         posizioneZcamera = posizioneCameraIniziale.transform.position.z;
         if (PlayerSettings.caricaPrimoAvvioSettaggiSensibilita() == 0)
         {

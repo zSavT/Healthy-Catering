@@ -112,8 +112,6 @@ public class PannelloMagazzino : MonoBehaviour
         {
             pannelloXElementi.SetActive(true);
             
-            List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
-            List<Piatto> databasePiatti = Database.getDatabaseOggetto(new Piatto()); //mi serve per vedere le ricette
             List<OggettoQuantita<int>> inventario = giocatore.inventario;
 
             int numeroBottoniAggiuntiFinoAdOraInPannelloXElementi = 0;
@@ -122,7 +120,7 @@ public class PannelloMagazzino : MonoBehaviour
             {
                 if(oggettoDellInventario.quantita != 0)
                 {
-                    Button bottoneDaAggiungereTemp = creaBottoneConValoriIngrediente(oggettoDellInventario, bottoneIngredienteTemplate, databaseIngredienti, databasePiatti);
+                    Button bottoneDaAggiungereTemp = creaBottoneConValoriIngrediente(oggettoDellInventario, bottoneIngredienteTemplate);
 
                     bottoneDaAggiungereTemp.transform.SetParent(pannelloXElementi.transform, false);
                     numeroBottoniAggiuntiFinoAdOraInPannelloXElementi++;
@@ -150,18 +148,18 @@ public class PannelloMagazzino : MonoBehaviour
         }
     }
 
-    private Button creaBottoneConValoriIngrediente(OggettoQuantita<int> oggettoDellInventario, Button bottoneIngredienteTemplate, List<Ingrediente> databaseIngredienti, List<Piatto> databasePiatti)
+    private Button creaBottoneConValoriIngrediente(OggettoQuantita<int> oggettoDellInventario, Button bottoneIngredienteTemplate)
     {
-        Ingrediente ingrediente = Ingrediente.idToIngrediente(oggettoDellInventario.oggetto, databaseIngredienti);
+        Ingrediente ingrediente = Ingrediente.idToIngrediente(oggettoDellInventario.oggetto);
 
         Button output = Instantiate(bottoneIngredienteTemplate);
         output.name = ingrediente.nome;
 
-        output.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Ingrediente: " + Utility.coloreIngredienti + ingrediente.nome + Utility.fineColore;
+        output.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Ingrediente: " + Costanti.coloreIngredienti + ingrediente.nome + Costanti.fineColore;
         output.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Quantità presente: " + oggettoDellInventario.quantita.ToString();
 
         output.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => {
-            pannelloMostraRicette.apriPannelloMostraRicette(ingrediente, databaseIngredienti, databasePiatti);
+            pannelloMostraRicette.apriPannelloMostraRicette(ingrediente);
             pannelloInventarioCanvas.SetActive(false);
         });
 
