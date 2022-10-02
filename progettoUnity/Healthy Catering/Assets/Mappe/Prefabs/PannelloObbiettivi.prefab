@@ -576,7 +576,7 @@ RectTransform:
   - {fileID: 7026049647302790125}
   - {fileID: 4180933347624313082}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -601,6 +601,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -663,10 +664,10 @@ MonoBehaviour:
   interazioni: {fileID: 0}
   obbiettivoUno: {fileID: 7026049646424702194}
   obbiettivoUnoToogle: {fileID: 7026049647747035611}
-  numeroClientiDaServire: 15
+  numeroClientiDaServire: 5
   obbiettivoDue: {fileID: 7026049647556060526}
   obbiettivoDueToogle: {fileID: 7026049647011643416}
-  punteggioMassimo: 1500
+  punteggioMassimo: 700
   pannelloObbiettiviInizioLivello: {fileID: 4613072585691328434}
   titoloObbiettiviInizioLivello: {fileID: 3290696081715724565}
   listaObbiettiviInizioLivello: {fileID: 8189120333869390588}
@@ -801,7 +802,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  numeroDiClientiMassimi: 25
+  numeroDiClientiMassimi: 10
   particellare1: {fileID: 7026049646864199756}
   particellare2: {fileID: 7026049647856217426}
   suonoGameOver: {fileID: 2080686608}
@@ -2546,6 +2547,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 5160
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -5930,6 +5932,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -8047,6 +8050,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 5160
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -11431,6 +11435,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -12506,6 +12511,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
