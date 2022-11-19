@@ -12,13 +12,11 @@ public class CambioCursore : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private Texture2D cursoreNormale;
     private Texture2D cursoreSuElemento;
 
-
     private void Start()
     {
         cursoreNormale = Resources.Load("Puntatore") as Texture2D;
         cursoreSuElemento = Resources.Load("PuntatoreSelezionato") as Texture2D;
     }
-
 
     /// <summary>
     /// Metodo che setta il cursore normale quando il puntatore del mouse non è più sopra l'elemento con questo script collegato
@@ -38,7 +36,6 @@ public class CambioCursore : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         Cursor.SetCursor(cursoreSuElemento, Vector2.zero, CursorMode.Auto);
     }
 
-
     /// <summary>
     /// Carica il cursore con la mano della selezione.
     /// </summary>
@@ -47,7 +44,6 @@ public class CambioCursore : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         Cursor.SetCursor(Resources.Load("PuntatoreSelezionato") as Texture2D, Vector2.zero, CursorMode.Auto);
     }
 
-
     /// <summary>
     /// Carica il cursore normale (La freccia)
     /// </summary>
@@ -55,6 +51,4 @@ public class CambioCursore : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         Cursor.SetCursor(Resources.Load("Puntatore") as Texture2D, Vector2.zero, CursorMode.Auto);
     }
-
-
 }

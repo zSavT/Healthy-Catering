@@ -13,7 +13,6 @@ using Wilberforce;
 /// </summary>
 public class SelezioneLivelli : MonoBehaviour
 {
-
     /*
      * Menu Principale = 0
      * Menu Opzioni = 1
@@ -26,19 +25,18 @@ public class SelezioneLivelli : MonoBehaviour
      */
     [SerializeField] private Camera cameraGioco;
     [SerializeField] private GameObject elementiDomandaUscita;
+ 
     [Header("Bottoni Livelli")]
     [SerializeField] private Button bottoneLivello0;
     [SerializeField] private Button bottoneLivello1;
     [SerializeField] private Button bottoneLivello2;
+    
     [Header("Elementi Caricamento Livello")]
     [SerializeField] private Slider sliderCaricamento;        //slider del caricamento della partita
     [SerializeField] private UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(PlayerSettings.caricaProgressoLivello2());
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         if (PlayerSettings.caricaProgressoLivello1() == 1)
         {
@@ -61,15 +59,15 @@ public class SelezioneLivelli : MonoBehaviour
         {
             PlayerSettings.livelloSelezionato = 0;
             caricareVideoTutorial();
-        } else if (sceneIndex == 8) {
+        } else if (sceneIndex == 8) 
+        {
             PlayerSettings.livelloSelezionato = 1;
             avvioLivelloSelezionato(sceneIndex);
-        } else if (sceneIndex == 9)
+        } else if (sceneIndex == 9) 
         {
             PlayerSettings.livelloSelezionato = 2;
             avvioLivelloSelezionato(sceneIndex);
         }
-        
     }
 
     /// <summary>
@@ -113,7 +111,6 @@ public class SelezioneLivelli : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
-
 
     /// <summary>
     /// Carica il menu della selezione livelli.

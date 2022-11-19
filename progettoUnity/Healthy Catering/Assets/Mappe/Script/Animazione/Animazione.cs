@@ -51,10 +51,6 @@ public class Animazione : MonoBehaviour
 
     void Start()
     {
-
-       
-
-
         image = GetComponent<Image>();
         /*
         //esempio di chiamata 
@@ -90,8 +86,8 @@ public class Animazione : MonoBehaviour
     public void caricaAnimazione(string cartella, string nomeGif, string nomeGifDefault)
     {
         sprites = new List<Sprite>();
-        Sprite immagineTemp;
         int i = 1;
+        Sprite immagineTemp = Resources.Load<Sprite>(cartella + "/" + nomeGif + "/" + i.ToString()); ;
 
         while (true)
         {
@@ -122,6 +118,5 @@ public class Animazione : MonoBehaviour
 
         index = 0;
         timer = 0;
-
     }
 }

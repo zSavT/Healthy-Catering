@@ -4077,6 +4077,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -5588,11 +5589,11 @@ MonoBehaviour:
   templateSingoloIngrediente: {fileID: 5834516823233580668}
   bottoneAvantiPannelloNegozio: {fileID: 5834516823638917316}
   bottoneIndietroPannelloNegozio: {fileID: 5834516822979087919}
+  testoEsc: {fileID: 5834516822009635971}
   guiInGame: {fileID: 0}
   soldiGiocatore: {fileID: 5834516822715950929}
   pannelloSeiSicuro: {fileID: 5834516823120413389}
   testoPannelloSeiSicuro: {fileID: 5834516823819559498}
-  testoEsc: {fileID: 5834516822009635971}
   testoTotaleCarello: {fileID: 7473517427385015296}
 --- !u!1 &5834516823407104050
 GameObject:

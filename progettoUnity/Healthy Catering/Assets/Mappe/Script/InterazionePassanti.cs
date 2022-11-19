@@ -41,15 +41,6 @@ public class InterazionePassanti : MonoBehaviour
     public static bool parlatoConZio = false;
     private int numeroMassimoDiCaratteriPerSchermata = 90;
 
-    //Tutorial
-    private List<string> scritteZio = new List<string>
-    {
-        "Eccoti qua! Questo edificio è il nostro <color=#B5D99C>ristorante</color>, o meglio, il tuo.",
-        "Spero che questo lavoro ti piacerà! E ricordati, sii sempre garbatƏ con i <color=#B5D99C>clienti</color>. Sapranno ricompensarti."
-    };
-    private int numeroScritteZioMostrate = 0; 
-
-
     private void Start()
     {
         pannelloInterazionePassanti.SetActive(false);
@@ -90,12 +81,11 @@ public class InterazionePassanti : MonoBehaviour
         } else if (PlayerSettings.livelloSelezionato == 1)
         {
             filePath = Path.Combine(Application.streamingAssetsPath, "stringheInterazioniPassantiLivello1.txt");
-        }else if (PlayerSettings.livelloSelezionato == 2)
+        } else if (PlayerSettings.livelloSelezionato == 2)
         {
             filePath = Path.Combine(Application.streamingAssetsPath, "stringheInterazioniPassantiLivello2.txt");
         }
-        
-
+       
         List<string> tutteLeScritte = shuffleList(File.ReadAllLines(filePath).ToList());
 
         foreach (string scritta in tutteLeScritte)
@@ -142,7 +132,6 @@ public class InterazionePassanti : MonoBehaviour
                 temp += " " + scrittaDivisaPerSpazi[i];
                 i++;
             }
-            
         }
         output.Add(temp.Trim());
 
@@ -151,19 +140,13 @@ public class InterazionePassanti : MonoBehaviour
 
     private int trovaVeraLunghezzaStringaPerColore(string temp)
     {
-        string coloreInizio = "<color=#"; //<color=#B5D99C>
-        string coloreFine = "</color>"; //</color>
-
-        if ((temp.Contains(coloreInizio)) && (temp.Contains(coloreFine)))
+        if ((temp.Contains(Costanti.coloreInizio)) && (temp.Contains(Costanti.fineColore)))
         {
-            int numeroColoreInizio = Regex.Matches(temp, coloreInizio).Count;
-            int numeroColoreFine = Regex.Matches(temp, coloreFine).Count;
+            int numeroColoreInizio = Regex.Matches(temp, Costanti.coloreInizio).Count;
+            int numeroColoreFine = Regex.Matches(temp, Costanti.fineColore).Count;
             if (numeroColoreInizio == numeroColoreFine)
             {
-                // 8 = lunghezza colore inizio,
-                // 7 = lunghezza codice HEX colore e >
-                // 8 = lunghezza colore fine
-                return temp.Length - (numeroColoreInizio * (8 + 7 + 8));
+                return temp.Length - (numeroColoreInizio * (Costanti.coloreVerde.Length + Costanti.fineColore.Length));
             }
         }
 
@@ -240,7 +223,7 @@ public class InterazionePassanti : MonoBehaviour
         }
         else
         {
-            return scritteZio;
+            return Costanti.scritteZio;
         }
     }
 

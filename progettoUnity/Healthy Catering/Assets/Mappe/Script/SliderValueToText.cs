@@ -18,7 +18,6 @@ public class SliderValueToText : MonoBehaviour
         textSliderValue = GetComponent<TextMeshProUGUI>();
     }
 
-
     /// <summary>
     /// Aggiorna il valore del testo in corrispondenza dello slider.
     /// </summary>

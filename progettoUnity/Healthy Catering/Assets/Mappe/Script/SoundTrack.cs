@@ -9,7 +9,6 @@ using UnityEngine.Audio;
 /// </summary>
 public class SoundTrack : MonoBehaviour
 {
-
     [SerializeField] private AudioMixer audioMixer;
 
     private void Start()
