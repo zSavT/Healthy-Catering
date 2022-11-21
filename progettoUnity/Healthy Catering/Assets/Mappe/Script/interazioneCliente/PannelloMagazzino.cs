@@ -161,7 +161,7 @@ public class PannelloMagazzino : MonoBehaviour
         output.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Quantità presente: " + oggettoDellInventario.quantita.ToString();
 
         output.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => {
-            pannelloMostraRicette.apriPannelloMostraRicette(ingrediente, databaseIngredienti, databasePiatti);
+            pannelloMostraRicette.apriPannelloMostraRicette(ingrediente);
             pannelloInventarioCanvas.SetActive(false);
         });
 

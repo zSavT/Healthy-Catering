@@ -112,13 +112,13 @@ public class Ingrediente
             throw new InvalidOperationException("Id nutriscore inserito non valido");
     }
 
-    public List<Piatto> getListaPiattiRealizzabiliConIngrediente(List<Ingrediente> databaseIngredienti, List<Piatto> databasePiatti)
+    public List<Piatto> getListaPiattiRealizzabiliConIngrediente()
     {
         List<Piatto> ricettePossibiliConIngrediente = new List<Piatto>();
 
-        foreach (Piatto piatto in databasePiatti)
+        foreach (Piatto piatto in Costanti.databasePiatti)
         {
-            List<Ingrediente> ingredientiPiatto = piatto.getIngredientiPiatto(databaseIngredienti);
+            List<Ingrediente> ingredientiPiatto = piatto.getIngredientiPiatto(Costanti.databaseIngredienti);
             foreach (Ingrediente ingredientePiatto in ingredientiPiatto)
             {
                 if (this.Equals(ingredientePiatto))

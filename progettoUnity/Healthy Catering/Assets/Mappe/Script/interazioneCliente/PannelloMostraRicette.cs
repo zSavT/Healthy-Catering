@@ -10,21 +10,28 @@ public class PannelloMostraRicette : MonoBehaviour
     [SerializeField] private TextMeshProUGUI titoloPannelloMostraRicette;
     [SerializeField] private TextMeshProUGUI listaRicettePannelloMostraRicette;
 
-
-    public void apriPannelloMostraRicette(Ingrediente ingrediente, List<Ingrediente> databaseIngredienti, List<Piatto> databasePiatti)
+    public void apriPannelloMostraRicette(Ingrediente ingrediente)
     {
-        List<Piatto> piattiRealizzabili = ingrediente.getListaPiattiRealizzabiliConIngrediente(databaseIngredienti, databasePiatti);
-        string stringaPiattiRealizzabili = "";
+        List<Piatto> piattiRealizzabili = ingrediente.getListaPiattiRealizzabiliConIngrediente();
 
-        titoloPannelloMostraRicette.text = "Ricette realizzabili con l'ingrediente:\n" + Utility.coloreIngredienti + ingrediente.nome + Utility.fineColore;
-        foreach (Piatto piattoRealizzabile in piattiRealizzabili)
-        {
-            stringaPiattiRealizzabili += Utility.colorePiatti + piattoRealizzabile.nome + "\n" + Utility.fineColore;
-        }
-        listaRicettePannelloMostraRicette.text = stringaPiattiRealizzabili;
+        titoloPannelloMostraRicette.text = "Ricette realizzabili con l'ingrediente:\n" + Costanti.coloreIngredienti + ingrediente.nome + Costanti.fineColore;
+
+        listaRicettePannelloMostraRicette.text = creaStringaRicetteRealizzabili(piattiRealizzabili);
 
         pannelloMostraRicette.SetActive(true);
         pannelloMostraRicetteAperto = true;
+    }
+
+    private string creaStringaRicetteRealizzabili(List<Piatto> piattiRealizzabili)
+    {
+        string stringaPiattiRealizzabili = "";
+
+        foreach (Piatto piattoRealizzabile in piattiRealizzabili)
+        {
+            stringaPiattiRealizzabili += Costanti.colorePiatti + piattoRealizzabile.nome + "\n" + Costanti.fineColore;
+        }
+
+        return stringaPiattiRealizzabili;
     }
 
     public void chiudiPannelloMostraRicette()
