@@ -155,11 +155,9 @@ public class PannelloNegozio : MonoBehaviour
         return output;
     }
 
-    private GameObject aggiungiBottoneFakeIngredientiAlPannelloXElementi(GameObject pannelloXElementiTemp, Button singoloIngredienteTemp)
+    private void aggiungiBottoneFakeIngredientiAlPannelloXElementi(GameObject pannelloXElementiTemp, Button singoloIngredienteTemp)
     {
         aggiungiSingoloIngredienteAPanelloXElementi(singoloIngredienteTemp, pannelloXElementiTemp);
-
-        return pannelloXElementiTemp;
     }
 
     private void aggiungiSingoloIngredienteAPanelloXElementi(Button singoloIngrediente, GameObject pannelloXElementi)
@@ -226,48 +224,43 @@ public class PannelloNegozio : MonoBehaviour
 
     private Button popolaSingoloIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
     {
-        singoloIngredienteTemp = rimuoviTuttiIVecchiListener(singoloIngredienteTemp);
+        rimuoviTuttiIVecchiListener(singoloIngredienteTemp);
 
-        singoloIngredienteTemp = modificaTesto(singoloIngredienteTemp, ingrediente.nome, ingrediente.costo.ToString());
+        modificaTesto(singoloIngredienteTemp, ingrediente.nome, ingrediente.costo.ToString());
 
-        singoloIngredienteTemp = aggiungiGestioneBottoniQuantita(singoloIngredienteTemp, ingrediente.costo);//#
+        aggiungiGestioneBottoniQuantita(singoloIngredienteTemp, ingrediente.costo);//#
 
-        singoloIngredienteTemp = aggiungiListenerCompraIngrediente(singoloIngredienteTemp, ingrediente);//#
+        aggiungiListenerCompraIngrediente(singoloIngredienteTemp, ingrediente);//#
 
         attivaDisattivaBottoneCompra(singoloIngredienteTemp, 0);
 
-        singoloIngredienteTemp = modificaImmagineIngrediente(singoloIngredienteTemp, ingrediente);
+        modificaImmagineIngrediente(singoloIngredienteTemp, ingrediente);
 
         return singoloIngredienteTemp;
     }
 
-    private Button rimuoviTuttiIVecchiListener(Button singoloIngredienteTemp)
+    private void rimuoviTuttiIVecchiListener(Button singoloIngredienteTemp)
     {
         singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAumentaQuantita].onClick.RemoveAllListeners();
         singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneDiminuisciQuantita].onClick.RemoveAllListeners();
         singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAggiungiIngredienteAlCarrello].onClick.RemoveAllListeners();
-
-        return singoloIngredienteTemp;
     }
 
-    private Button modificaTesto(Button singoloIngredienteTemp, string nomeIngrediente, string costoIngrediente)
+    private void modificaTesto(Button singoloIngredienteTemp, string nomeIngrediente, string costoIngrediente)
     {
         singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Costanti.coloreIngredienti + nomeIngrediente + Costanti.fineColore;
         singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Costo: " + costoIngrediente;
         singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text = "0";
-        return singoloIngredienteTemp;
     }
 
-    private Button aggiungiGestioneBottoniQuantita(Button singoloIngredienteTemp, float costoIngrediente)
+    private void aggiungiGestioneBottoniQuantita(Button singoloIngredienteTemp, float costoIngrediente)
     {
-        singoloIngredienteTemp = aggiungiGestioneBottoneQuantitaDiminuisci(singoloIngredienteTemp);
+        aggiungiGestioneBottoneQuantitaDiminuisci(singoloIngredienteTemp);
 
-        singoloIngredienteTemp = aggiungiGestioneBottoneQuantitaAumenta(singoloIngredienteTemp, costoIngrediente);
-
-        return singoloIngredienteTemp;
+        aggiungiGestioneBottoneQuantitaAumenta(singoloIngredienteTemp, costoIngrediente);
     }
 
-    private Button aggiungiGestioneBottoneQuantitaDiminuisci(Button singoloIngredienteTemp)
+    private void aggiungiGestioneBottoneQuantitaDiminuisci(Button singoloIngredienteTemp)
     {
         //bottone diminuisci quantita 
         singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneDiminuisciQuantita].onClick.AddListener(() => {
@@ -285,11 +278,9 @@ public class PannelloNegozio : MonoBehaviour
             quantitaSelezionata = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text);
             attivaDisattivaBottoneCompra(singoloIngredienteTemp, quantitaSelezionata);
         });
-
-        return singoloIngredienteTemp;
     }
 
-    private Button aggiungiGestioneBottoneQuantitaAumenta(Button singoloIngredienteTemp, float costoIngrediente)
+    private void aggiungiGestioneBottoneQuantitaAumenta(Button singoloIngredienteTemp, float costoIngrediente)
     {
         //bottone aumenta quantita 
         singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAumentaQuantita].onClick.AddListener(() => {
@@ -303,11 +294,9 @@ public class PannelloNegozio : MonoBehaviour
             quantitaSelezionata = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text);
             attivaDisattivaBottoneCompra(singoloIngredienteTemp, quantitaSelezionata);
         });
-
-        return singoloIngredienteTemp;
     }
 
-    private Button attivaDisattivaBottoniPiuMenoSeServe(Button singoloIngredienteTemp, int quantitaSelezionata, float costoIngrediente)
+    private void attivaDisattivaBottoniPiuMenoSeServe(Button singoloIngredienteTemp, int quantitaSelezionata, float costoIngrediente)
     {
         if (quantitaSelezionata == 0)
             singoloIngredienteTemp.GetComponentsInChildren<Button>()[
@@ -326,11 +315,9 @@ public class PannelloNegozio : MonoBehaviour
             singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAumentaQuantita].interactable = false;
         else
             singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAumentaQuantita].interactable = true;
-
-        return singoloIngredienteTemp;
     }
 
-    private Button aggiungiListenerCompraIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
+    private void aggiungiListenerCompraIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
     {
         //bottone mostra compra 
         singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAggiungiIngredienteAlCarrello].onClick.AddListener(() =>
@@ -339,8 +326,6 @@ public class PannelloNegozio : MonoBehaviour
             quantitaAttualmenteSelezionata = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text);
             apriPannelloSeiSicuro();
         });
-
-        return singoloIngredienteTemp;
     }
 
     private void attivaDisattivaBottoneCompra(Button singoloIngredienteTemp, int quantita)
@@ -349,6 +334,18 @@ public class PannelloNegozio : MonoBehaviour
             singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAggiungiIngredienteAlCarrello].interactable = true;
         else
             singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAggiungiIngredienteAlCarrello].interactable = false;
+    }
+
+    private void modificaImmagineIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
+    {
+        singoloIngredienteTemp.GetComponentsInChildren<Image>()[6].name = "immagine ingrediente " + ingrediente.nome;
+
+        Sprite nuovaImmagine = Resources.Load<Sprite>("immaginiIngredienti/" + ingrediente.nome);
+        if (nuovaImmagine == null)
+        {
+            nuovaImmagine = Resources.Load<Sprite>("immaginiIngredienti/ImmagineIngredienteDefault");
+        }
+        singoloIngredienteTemp.GetComponentsInChildren<Image>()[6].sprite = nuovaImmagine;
     }
 
     public void apriPannelloSeiSicuro()
@@ -411,20 +408,6 @@ public class PannelloNegozio : MonoBehaviour
         return output;
     }
 
-    private Button modificaImmagineIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
-    {
-        singoloIngredienteTemp.GetComponentsInChildren<Image>()[6].name = "immagine ingrediente " + ingrediente.nome;
-
-        Sprite nuovaImmagine = Resources.Load<Sprite>("immaginiIngredienti/" + ingrediente.nome);
-        if (nuovaImmagine == null)
-        {
-            nuovaImmagine = Resources.Load<Sprite>("immaginiIngredienti/ImmagineIngredienteDefault");
-        }
-        singoloIngredienteTemp.GetComponentsInChildren<Image>()[6].sprite = nuovaImmagine;
-
-        return singoloIngredienteTemp;
-    }
-
     private void disattivaIBottoniSuccessivi(int indicePrimoIngredienteDaDisattivare)
     {
         while (indicePrimoIngredienteDaDisattivare < Costanti.numeroBottoniNellaPaginaNegozio)
@@ -453,7 +436,7 @@ public class PannelloNegozio : MonoBehaviour
                 resetQuantitaTuttiBottoni();
                 quantitaAttualmenteSelezionata = 0;
 
-                testoTotaleCarello.text = Utility.coloreVerde + "Totale Carrello: " + Costanti.fineColore + prezzoDaPagare.ToString("0.00");
+                testoTotaleCarello.text = Costanti.coloreVerde + "Totale Carrello: " + Costanti.fineColore + prezzoDaPagare.ToString("0.00");
             }
             chiudiPannelloSeiSicuro();
         }
