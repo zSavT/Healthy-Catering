@@ -17,7 +17,7 @@ public class MenuAiuto : MonoBehaviour
     [SerializeField] private Image immagineSchermata;
 
     private int ultimaPosizione;
-
+    
     private Animazione animazione;
 
     public static bool apertoMenuAiuto = false;//TUTORIAL
