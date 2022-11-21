@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
@@ -55,7 +55,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     }
 
     /// <summary>
-    /// Controlla se il nome inserito dall'utente, corrisponde con uno già presente nella lista.
+    /// Controlla se il nome inserito dall'utente, corrisponde con uno giï¿½ presente nella lista.
     /// </summary>
     public void controlloNomeEsistente()
     {
@@ -79,7 +79,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
                     }
                 }
             }
-        }  
+        }
         else
         {
             bottoneSalva.interactable = false;
@@ -108,7 +108,8 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
             aggiuntaNomiPresentiInLista();
             attivaTastoIndietro();
             bottoneSalva.interactable = true;
-        } else
+        }
+        else
         {
             disattivaTastoIndietro();
             bottoneSalva.interactable = false;
@@ -124,7 +125,8 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         if (player.Count > 0)
         {
             return true;
-        } else
+        }
+        else
         {
             return false;
         }
@@ -135,8 +137,8 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     /// </summary>
     private void letturaNomiUtenti()
     {
-        player = Database.getDatabaseOggetto(new Player());
-        
+        player = Costanti.databasePlayer;
+
     }
 
     /// <summary>
@@ -157,7 +159,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
 
     /// <summary>
     /// Salva tutte le impostazioni fatte dal giocatore, salva il giocatore su file<br></br>
-    /// Se la scena è stata caricata dal livello tutorial, dopo il salvataggio ritorna al livello tutorial.<br></br>
+    /// Se la scena ï¿½ stata caricata dal livello tutorial, dopo il salvataggio ritorna al livello tutorial.<br></br>
     /// In caso contrario carica la scena del menu principale. Utilizza 
     /// <see cref="PlayerSettings"/>.
     /// </summary>
@@ -172,11 +174,12 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
             PlayerSettings.salvaGenereModello3D(nomeGiocatoreScritto, sceltaModelloPlayer);
         }
         Database.salvaNuovoOggettoSuFile(new Player(nomeGiocatoreScritto));
-        if(!PlayerSettings.profiloUtenteCreato)
+        if (!PlayerSettings.profiloUtenteCreato)
         {
             PlayerSettings.profiloUtenteCreato = true;
             SelezioneLivelli.caricaLivelloCitta();
-        } else
+        }
+        else
         {
             SelezioneLivelli.caricaMenuPrincipale();
         }

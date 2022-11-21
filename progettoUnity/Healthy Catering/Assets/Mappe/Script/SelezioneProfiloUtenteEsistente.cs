@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine;
@@ -21,7 +21,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     [SerializeField] private TMP_Dropdown dropDownModello3D;
     [SerializeField] private Camera cameraGioco;
     [SerializeField] private AudioSource suonoClick;
-    private List<Player> player = new List<Player>();
+    private List<Player> players = new List<Player>();
     private List<string> nomiPlayerPresenti = new List<string>();
     private string nomeSelezionato = "";
     private int sceltaGenere;
@@ -48,27 +48,27 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     }
 
     /// <summary>
-    /// Trova l'indice corrispondente al nome della lista dei player. 
+    /// Trova l'indice corrispondente al nome della lista dei players. 
     /// </summary>
     /// <param name="nome">Nome del giocatore selezionato</param>
     /// <returns>Indice della lista dei nomi presenti</returns>
     private int indiceNomeGiocatoreInLista(string nome)
     {
         int indice = 0;
-        while(indice<dropDownListaPlayer.options.Count)
+        while (indice < dropDownListaPlayer.options.Count)
         {
-            if(dropDownListaPlayer.options[indice].text.CompareTo(nome) == 0)
+            if (dropDownListaPlayer.options[indice].text.CompareTo(nome) == 0)
             {
                 return indice;
             }
             indice++;
         }
         return indice;
-       
+
     }
 
     /// <summary>
-    /// Aggiorna i volori degli elementi presenti nella scena con quelli attuali.
+    /// Aggiorna i valori degli elementi presenti nella scena con quelli attuali.
     /// </summary>
     public void refreshValori()
     {
@@ -90,7 +90,8 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
         if (genereNeutroScelto)
         {
             PlayerSettings.salvaGenereModello3D(nomeSelezionato, sceltaModelloPlayer);
-        } else
+        }
+        else
         {
             PlayerSettings.salvaGenereModello3D(nomeSelezionato, sceltaGenere);
         }
@@ -99,28 +100,28 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
 
 
     /// <summary>
-    /// Inizializza la lista dei player presenti nel database.
+    /// Inizializza la lista dei players presenti nel database.
     /// </summary>
     private void letturaNomiUtenti()
     {
-        player = Database.getDatabaseOggetto<Player>(new Player());
+        players = Costanti.databasePlayer;
     }
 
 
     /// <summary>
-    /// Aggiunge i nomi presenti dalla lista player.
+    /// Aggiunge i nomi presenti dalla lista players.
     /// </summary>
     public void nomiPlayer()
     {
-        List<Player> player = Database.getDatabaseOggetto<Player>(new Player());
-        for (int i = 0; i < player.Count; i++)
+        List<Player> players = Costanti.databasePlayer;
+        for (int i = 0; i < players.Count; i++)
         {
-            nomiPlayerPresenti.Add(player[i].nome);
+            nomiPlayerPresenti.Add(players[i].nome);
         }
     }
 
     /// <summary>
-    /// Aggiunge i player presenti nel database nella lista.
+    /// Aggiunge i players presenti nel database nella lista.
     /// </summary>
     private void aggiuntaNomiDropdown()
     {
@@ -130,7 +131,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     /// <summary>
     /// Metodo che salva localmente il valore della scelta del genere del modello del giocatore.
     /// </summary>
-    /// <param name="indice">Indice scela del modello player<br><strong>0: Maschio<br>1: Femmina</br></strong></br></param>
+    /// <param name="indice">Indice scela del modello players<br><strong>0: Maschio<br>1: Femmina</br></strong></br></param>
     public void setSceltaModelloGiocatore(int indice)
     {
         suonoClick.Play();
@@ -210,22 +211,23 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
 
     /// <summary>
     /// Metodo che permette la corretta eliminazione del profilo utente selezionato al momento.<br>
-    /// Se il profilo eliminato è anche l'ultimo, verrà caricato il menu principale.</br>
+    /// Se il profilo eliminato ï¿½ anche l'ultimo, verrï¿½ caricato il menu principale.</br>
     /// </summary>
     public void eliminazioneProfilo()
     {
         PlayerSettings.rimuoviChiaviProfiloUtente(nomeSelezionato);
-        player.Remove(new Player(nomeSelezionato));
+        players.Remove(new Player(nomeSelezionato));
         dropDownListaPlayer.ClearOptions();
         nomiPlayerPresenti.Remove(nomeSelezionato);
-        Database.aggiornaDatabaseOggetto(player);
-        if(player.Count == 0)
+        Database.aggiornaDatabaseOggetto(players);
+        if (players.Count == 0)
         {
             PlayerSettings.salvaNomePlayerGiocante("");
             SelezioneLivelli.caricaMenuPrincipale();
-        } else
+        }
+        else
         {
-            nomeSelezionato = player[0].nome;
+            nomeSelezionato = players[0].nome;
             aggiuntaNomiDropdown();
             dropDownListaPlayer.value = indiceNomeGiocatoreInLista(PlayerSettings.caricaNomePlayerGiocante());
             refreshValori();

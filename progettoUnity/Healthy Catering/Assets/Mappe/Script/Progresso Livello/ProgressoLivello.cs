@@ -21,7 +21,7 @@ public class ProgressoLivello : MonoBehaviour
     [SerializeField] private int numeroClientiDaServire = 3;
     private int numeroClientiServiti;
     //testo da visualizzare, da modificare le stringhe se si volesse aggiungere un colore alle parole
-    private string testoObbietivo1;                                         
+    private string testoObbietivo1;
     private bool obbiettivoUnoRaggiunto = false;
 
     [Header("Obbiettivo Punteggio da Raggiungere")]
@@ -29,7 +29,7 @@ public class ProgressoLivello : MonoBehaviour
     [SerializeField] private Toggle obbiettivoDueToogle;
     [SerializeField] private int punteggioMassimo = 200;
     //testo da visualizzare, da modificare le stringhe se si volesse aggiungere un colore alle parole
-    private string testoObbietivo2;                                        
+    private string testoObbietivo2;
     private bool obbiettivoDueRaggiunto = false;
 
     [Header("Lista obbiettivi livello")]
@@ -41,7 +41,7 @@ public class ProgressoLivello : MonoBehaviour
 
     [Header("Fine Livello")]
     //pannello che mostra le scritte di fine livello ed il bottone per tornare al menu iniziale, quando attivo, parte in automatico l'animazione impostasta con il file .anim
-    [SerializeField] private GameObject schermataFineLivello;         
+    [SerializeField] private GameObject schermataFineLivello;
     //Testo da inizializzare con il valore del punteggio del giocatore raggiunto a fine livello.
     [SerializeField] private TextMeshProUGUI valorePunteggioPlayer;
     [SerializeField] private TextMeshProUGUI titoloSchermataFineLivello;
@@ -69,7 +69,8 @@ public class ProgressoLivello : MonoBehaviour
         {
             disattivaObbiettiviETesto();
             attivaPannelloRiepiloghiObbiettivi();
-        } else
+        }
+        else
         {
             disattivaSoloObbiettivi();
         }
@@ -79,11 +80,11 @@ public class ProgressoLivello : MonoBehaviour
     private void Update()
     {
         //controllo costante dell'obbiettivi raggiunti, eventualmente questo controllo pu� essere spostato altrove in base a come verr� strutturato il gioco successivamente.
-        if(obbiettiviRaggiunti())
+        if (obbiettiviRaggiunti())
         {
             attivazioneSchermataFineLivello();
         }
-        if(!ProgressoTutorial.inTutorial)
+        if (!ProgressoTutorial.inTutorial)
             controlloGameOver();
     }
 
@@ -107,7 +108,7 @@ public class ProgressoLivello : MonoBehaviour
         PuntatoreMouse.disabilitaCursore();
         pannelloObbiettiviInizioLivello.SetActive(false);
         attivaSoloObbiettivi();
-        if(PlayerSettings.livelloSelezionato == 0)
+        if (PlayerSettings.livelloSelezionato == 0)
         {
             punteggioPlayer = giocatore.punteggio[0];
         }
@@ -120,7 +121,7 @@ public class ProgressoLivello : MonoBehaviour
     /// </summary>
     private void controlloGameOver()
     {
-        if( (soldiFiniti() && !giocatore.piattiRealizzabiliConInventario()) || numeroClientiServiti == numeroDiClientiMassimi)
+        if ((soldiFiniti() && !giocatore.piattiRealizzabiliConInventario()) || numeroClientiServiti == numeroDiClientiMassimi)
         {
             gameOver = true;
             settaggiSchermataFineLivelloGameOver();
@@ -149,14 +150,15 @@ public class ProgressoLivello : MonoBehaviour
     /// <returns>True: Il giocatore ha meno del minimo dei soldi. <br>False: Il giocatore ha più del minimo dei soldi.</br></returns>
     private bool soldiFiniti()
     {
-        if(giocatore.soldi > minimoSoldi)
+        if (giocatore.soldi > minimoSoldi)
         {
             return false;
-        } else
+        }
+        else
         {
             return true;
         }
-        
+
     }
 
     /// <summary>
@@ -203,7 +205,7 @@ public class ProgressoLivello : MonoBehaviour
     /// <param name="punteggio">Punteggio raggiunto dal giocatore</param>
     private void controlloProgressiObbiettivo(int punteggio)
     {
-        if(numeroClientiServiti == numeroClientiDaServire)
+        if (numeroClientiServiti == numeroClientiDaServire)
         {
             obbiettivoUnoToogle.isOn = true;
             obbiettivoUno.color = coloreRaggiuntoObbiettivo;
@@ -214,7 +216,8 @@ public class ProgressoLivello : MonoBehaviour
             obbiettivoDueToogle.isOn = true;
             obbiettivoDue.color = coloreRaggiuntoObbiettivo;
             obbiettivoDueRaggiunto = true;
-        } else
+        }
+        else
         {
             //Solo l'obbiettivo due si pu� resettare perch� il punteggio pu� diminuire ma il numero dei clienti serviti no
             obbiettivoDueToogle.isOn = false;
@@ -241,7 +244,7 @@ public class ProgressoLivello : MonoBehaviour
     {
         schermataFineLivello.SetActive(true);
         valorePunteggioPlayer.gameObject.SetActive(true);
-        if(gameOver)
+        if (gameOver)
         {
             if ((soldiFiniti() && !giocatore.piattiRealizzabiliConInventario()))
             {
@@ -251,7 +254,8 @@ public class ProgressoLivello : MonoBehaviour
             {
                 valorePunteggioPlayer.text = "Punteggio raggiunto: " + punteggioPlayer.ToString() + "\nHai perso perchè non hai raggiunto l'obbiettivo del punteggio entro i " + numeroDiClientiMassimi + " clienti serviti.";
             }
-        } else
+        }
+        else
         {
             valorePunteggioPlayer.text = "Punteggio raggiunto: " + punteggioPlayer.ToString() + ", complimenti!";
         }
@@ -260,7 +264,7 @@ public class ProgressoLivello : MonoBehaviour
         disattivaElementiFineLivello.Invoke();
         PuntatoreMouse.abilitaCursore();
         disattivaObbiettiviETesto();
-       // GameObject.FindObjectOfType<Camera>().transform.position = new Vector3(0, 4000, 0);       //sposta la telecamera in ciealo
+        // GameObject.FindObjectOfType<Camera>().transform.position = new Vector3(0, 4000, 0);       //sposta la telecamera in ciealo
     }
 
 
@@ -304,10 +308,10 @@ public class ProgressoLivello : MonoBehaviour
     public void tornaAlMenuPrincipale()
     {
         Debug.Log(PlayerSettings.livelloSelezionato);
-        if(!gameOver)
+        if (!gameOver)
         {
             Database.aggiornaDatabaseOggetto(aggiornaGiocatore());
-            if(PlayerSettings.livelloSelezionato == 0)
+            if (PlayerSettings.livelloSelezionato == 0)
             {
                 PlayerSettings.salvaProgressoLivello1(true);
             }
@@ -317,7 +321,7 @@ public class ProgressoLivello : MonoBehaviour
                 Debug.Log("Ue");
                 Debug.Log(PlayerSettings.caricaProgressoLivello2());
             }
-            
+
         }
         Interactable.numeroCliente = 0;
         SelezioneLivelli.caricaMenuPrincipale();
@@ -329,13 +333,13 @@ public class ProgressoLivello : MonoBehaviour
     /// <returns>Lista giocatori aggiornata</returns>
     private List<Player> aggiornaGiocatore()
     {
-        List<Player> listaPlayer = Database.getDatabaseOggetto(new Player());
+        List<Player> listaPlayer = Costanti.databasePlayer;
         int i = 0;
-        foreach(Player temp in listaPlayer)
+        foreach (Player temp in listaPlayer)
         {
-            if(temp.nome == giocatore.nome)
+            if (temp.nome == giocatore.nome)
             {
-                if(temp.punteggio[PlayerSettings.livelloSelezionato] < giocatore.punteggio[PlayerSettings.livelloSelezionato])
+                if (temp.punteggio[PlayerSettings.livelloSelezionato] < giocatore.punteggio[PlayerSettings.livelloSelezionato])
                     listaPlayer[i].punteggio[PlayerSettings.livelloSelezionato] = punteggioPlayer;
                 break;
             }

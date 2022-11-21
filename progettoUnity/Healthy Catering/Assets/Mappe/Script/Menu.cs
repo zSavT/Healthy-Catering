@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -21,20 +21,21 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject elementiProfiloNonEsistente;
     private List<Player> player = new List<Player>();
     //serve per eliminare altri elementi in visualilzzazione
-    [SerializeField] private UnityEvent clickCrediti;             
+    [SerializeField] private UnityEvent clickCrediti;
 
     void Start()
     {
         gameVersion();
         //disattivo a priori, per non visualizzarli in caso di errori di lettura dei nomi utenti ed evitare lo schermo occupato tutto da scritte
-        elementiProfiloNonEsistente.SetActive(false);               
+        elementiProfiloNonEsistente.SetActive(false);
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         letturaNomiUtenti();
         if (!presentePlayer())
         {
             elementiProfiloNonEsistente.SetActive(true);
             elementiMenuPrincipale.SetActive(false);
-        } else
+        }
+        else
         {
             elementiProfiloNonEsistente.SetActive(false);
         }
@@ -47,20 +48,18 @@ public class Menu : MonoBehaviour
         attivaDisattivaLivelli();
     }
 
-
     /// <summary>
     /// Metodo per inzializzare la lista dei player presenti nel database.
     /// </summary>
     private void letturaNomiUtenti()
     {
-        player = Database.getDatabaseOggetto(new Player());
+        player = Costanti.databasePlayer;
     }
-
 
     /// <summary>
     /// Metodo per controllare se sono presenti o meno dei player nel database.
     /// </summary>
-    /// <returns>True: è presente almeno un player, false: non esiste alcun player</returns>
+    /// <returns>True: ï¿½ presente almeno un player, false: non esiste alcun player</returns>
     private bool presentePlayer()
     {
         if (player.Count > 0)
@@ -90,19 +89,19 @@ public class Menu : MonoBehaviour
     }
 
     //metodo per triggerare a mano i livelli, da eliminare poi.
-
     /// <summary>
     /// Metodo per attivare i livelli tramite cheatcode
     /// </summary>
     private void attivaDisattivaLivelli()
     {
-        if(Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L))
         {
-            if(PlayerSettings.caricaProgressoLivello1() == 0)
+            if (PlayerSettings.caricaProgressoLivello1() == 0)
             {
                 PlayerSettings.salvaProgressoLivello1(true);
                 print("livello 1 attivato");
-            } else
+            }
+            else
             {
                 print("livello 1 disattivato");
                 PlayerSettings.salvaProgressoLivello1(false);
@@ -121,7 +120,6 @@ public class Menu : MonoBehaviour
                 PlayerSettings.salvaProgressoLivello2(false);
             }
         }
-
     }
 
     /// <summary>
@@ -148,7 +146,6 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
-
     /// <summary>
     /// Metodo per aprire la scena del menu opzioni.
     /// </summary>
@@ -166,14 +163,13 @@ public class Menu : MonoBehaviour
     }
 
     /// <summary>
-    /// Metodo per aggiornare il testo della versione del gioco e il nome della società.
+    /// Metodo per aggiornare il testo della versione del gioco e il nome della societï¿½.
     /// </summary>
     private void gameVersion()
     {
         testoVersioneGioco.text = testoVersioneGioco.text + Application.version;
         companyName.text = companyName.text + " " + Application.companyName;
     }
-
 
     /// <summary>
     /// Metodo che carica la scena della classifica
