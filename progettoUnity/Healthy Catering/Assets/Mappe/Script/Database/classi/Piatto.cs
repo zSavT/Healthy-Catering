@@ -450,9 +450,9 @@ public class Piatto
         }
     }
 
-    public static Piatto nomeToPiatto (string nome, List <Piatto> databasePiatto = null)
+    public static Piatto nomeToPiatto (string nome)
     {
-        foreach (Piatto temp in databasePiatto)
+        foreach (Piatto temp in Costanti.databasePiatti)
         {
             if (nome.Contains (temp.nome))
                 return temp;

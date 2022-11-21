@@ -6,7 +6,7 @@ using TMPro;
 
 public class PannelloMagazzino : MonoBehaviour
 {
-    [Header("Gestione pannello PC")]
+    [Header ("Gestione pannello PC")]
     [SerializeField] private GameObject pannelloMagazzino;
     private bool pannelloMagazzinoAperto;
     [SerializeField] private Image sfondoImmaginePC;
@@ -18,22 +18,22 @@ public class PannelloMagazzino : MonoBehaviour
     [SerializeField] private AudioSource suonoAperturaPC;
     [SerializeField] private AudioSource suonoChiusuraPC;
 
-    [Header("Pannello mostra inventario")]
+    [Header ("Pannello mostra inventario")]
     //mi serve per settare il parent dell'oggetto sotto a questo oggetto, poi se la vede unity a sistemarli all'interno della schermata
     [SerializeField] private GameObject pannelloMostraInventario;
-
+    
     [SerializeField] private GameObject pannelloXElementi;
     private GameObject copiaPannelloXElementi;
     private int numeroPannelliXElementiPresenti = 1;
-
+    
     [SerializeField] private GameObject pannelloInventarioCanvas;
 
     [SerializeField] private TextMeshProUGUI testoInventarioVuoto;
 
-    [Header("Bottone ingrediente")]
+    [Header ("Bottone ingrediente")]
     private Button bottoneIngredienteTemplate;
 
-    [Header("altro")]
+    [Header ("altro")]
     [SerializeField] private PannelloMostraRicette pannelloMostraRicette;
 
     private Player giocatore;
@@ -97,7 +97,7 @@ public class PannelloMagazzino : MonoBehaviour
         giocatore = player;
 
         pannelloInventarioCanvas.SetActive(false);
-
+    
         popolaSchermata();
 
         setSchermataInizialePC();
@@ -149,18 +149,18 @@ public class PannelloMagazzino : MonoBehaviour
     }
 
     private void popolaSchermata()
-    {
+    {   
         if (!giocatore.inventarioVuoto())
         {
             List<OggettoQuantita<int>> inventario = giocatore.inventario;
-
+            
             pannelloXElementi.SetActive(true);
 
             int numeroBottoniAggiuntiFinoAdOraInPannelloXElementi = 0;
 
             foreach (OggettoQuantita<int> oggettoDellInventario in inventario)
             {
-                if (oggettoDellInventario.quantita != 0)
+                if(oggettoDellInventario.quantita != 0)
                 {
                     Button bottoneDaAggiungereTemp = creaBottoneConValoriIngrediente(oggettoDellInventario, bottoneIngredienteTemplate);
 

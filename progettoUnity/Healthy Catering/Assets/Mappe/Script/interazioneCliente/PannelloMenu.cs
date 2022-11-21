@@ -19,7 +19,7 @@ public class PannelloMenu : MonoBehaviour
     [SerializeField] private GameObject pannelloMenu;
     [SerializeField] private GameObject pannelloCliente;
 
-    [SerializeField] private GameObject bottonePiatto; 
+    [SerializeField] private GameObject bottonePiatto;
     [SerializeField] private GameObject pannelloPiatti;
     private bool pannelloMenuAperto;
 
@@ -51,7 +51,7 @@ public class PannelloMenu : MonoBehaviour
     private List<string> blackListPiatti = new List<string>();
 
     [Header("Gestione aggiornamento piatti")]
-    private Button[] bottoniPiatti; 
+    private Button[] bottoniPiatti;
     List<Piatto> piatti;
 
     void Start()
@@ -68,7 +68,7 @@ public class PannelloMenu : MonoBehaviour
 
     void Update()
     {
-        if(pannelloIngredientiPiattoAperto)
+        if (pannelloIngredientiPiattoAperto)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -128,19 +128,20 @@ public class PannelloMenu : MonoBehaviour
 
     private void generaBottoniPiatti()
     {
-        List <Button> bottoniPiattiTemp = new List<Button>();
+        List<Button> bottoniPiattiTemp = new List<Button>();
         bottoniPiatti = new Button[piatti.Count];
 
         foreach (Piatto piatto in piatti)
         {
             bottoniPiattiTemp.Add(generaBottonePiatto(piatto, bottonePiatto));
         }
+        Destroy(bottonePiatto);
 
         int i = 0;
         foreach (Button bottonePiatto in bottoniPiattiTemp)
         {
-            GameObject bottoneTemp = new GameObject();
-            bottoneTemp = (Instantiate(bottonePiatto, pannelloPiatti.transform, false) as Button).gameObject;
+            Button bottoneTemp;
+            bottoneTemp = (Instantiate(bottonePiatto, pannelloPiatti.transform, false) as Button);
             bottoneTemp.transform.SetParent(pannelloPiatti.transform);
 
             bottoneTemp.GetComponent<Button>().onClick.AddListener(() => {
@@ -151,15 +152,13 @@ public class PannelloMenu : MonoBehaviour
             //e in posizione 1 c'e' il bottone per vedere gli ingredienti
             Button bottoneMostraIngredienti = bottoneTemp.GetComponentsInChildren<Button>()[1];
             bottoneMostraIngredienti.onClick.AddListener(() => {
-                cambiaPannelloIngredientiPiattoConPiatto(bottoneMostraIngredienti, piatti);
+                cambiaPannelloIngredientiPiattoConPiatto(bottoneMostraIngredienti);
                 apriPannelloIngredientiPiatto();
             });
 
-            bottoniPiatti[i] = bottoneTemp.GetComponent<Button>();
+            bottoniPiatti[i] = bottoneTemp;
             i++;
         }
-
-        Destroy(bottonePiatto);
 
         aggiornaBottoniPiatti();
     }
@@ -177,7 +176,7 @@ public class PannelloMenu : MonoBehaviour
 
                 bottonePiatto.transform.SetParent(null, true);
 
-                if (!(Piatto.nomeToPiatto (bottonePiatto.name, piatti)).piattoInInventario(giocatore.inventario))
+                if (!(Piatto.nomeToPiatto(bottonePiatto.name)).piattoInInventario(giocatore.inventario))
                 {
                     bottonePiatto.interactable = false;
                     piattiNonDisponibili.Add(bottonePiatto);
@@ -201,7 +200,7 @@ public class PannelloMenu : MonoBehaviour
 
     }
 
-    private void selezionaPiatto(GameObject bottone, List<Piatto> piatti, Cliente cliente)
+    private void selezionaPiatto(Button bottone, List<Piatto> piatti, Cliente cliente)
     {
         foreach (Piatto piatto in piatti)
         {
@@ -218,36 +217,37 @@ public class PannelloMenu : MonoBehaviour
     public void confermaPiattoDaBottone()
     {
         clienteServito = true;
-        List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
         bool affinitaPatologiePiatto = false;
         bool piattoInBlackList = false;
         if (!blackListPiatti.Contains(piattoSelezionato.nome))
         {
             affinitaPatologiePiatto = piattoSelezionato.checkAffinitaPatologiePiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.listaIdPatologie);
-        } else
+        }
+        else
         {
-            if(cliente.listaIdPatologie.Contains(0) || cliente.listaIdPatologie.Contains(1))
+            if (cliente.listaIdPatologie.Contains(0) || cliente.listaIdPatologie.Contains(1))
             {
                 piattoInBlackList = true;
                 affinitaPatologiePiatto = false;
-            }else
+            }
+            else
             {
                 affinitaPatologiePiatto = piattoSelezionato.checkAffinitaPatologiePiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.listaIdPatologie);
             }
         }
         bool affinitaDietaPiatto = piattoSelezionato.checkAffinitaDietaPiatto(piattoSelezionato.listaIdIngredientiQuantita, cliente.dieta);
         bool affinita = affinitaPatologiePiatto && affinitaDietaPiatto;
-        float guadagno = piattoSelezionato.calcolaCostoConBonus(affinita, piattoSelezionato.calcolaCostoBase(databaseIngredienti));
+        float guadagno = piattoSelezionato.calcolaCostoConBonus(affinita, piattoSelezionato.calcolaCostoBase());
 
         chiudiPannelloConfermaPiatto();
 
         giocatore.guadagna(guadagno);
-        giocatore.aggiungiDiminuisciPunteggio(affinita, piattoSelezionato.calcolaNutriScore(databaseIngredienti), piattoSelezionato.calcolaCostoEco(databaseIngredienti), PlayerSettings.livelloSelezionato);
+        giocatore.aggiungiDiminuisciPunteggio(affinita, piattoSelezionato.calcolaNutriScore(), piattoSelezionato.calcolaCostoEco(), PlayerSettings.livelloSelezionato);
         giocatore.aggiornaInventario(piattoSelezionato.listaIdIngredientiQuantita, false);
 
         if (!affinita)
         {
-            caricaIngredientiInPannelloIngredientiGiustiSbagliati(piattoSelezionato, cliente, piattoInBlackList, databaseIngredienti);
+            caricaIngredientiInPannelloIngredientiGiustiSbagliati(piattoSelezionato, cliente, piattoInBlackList);
             apriPannelloIngredientiGiustiSbagliati();
         }
         else
@@ -262,24 +262,24 @@ public class PannelloMenu : MonoBehaviour
     private void setPannelloConfermaConNomePiatto(string nomePiatto)
     {
         apriPannelloConfermaPiatto();
-        testoConfermaPiatto.text = "Sei sicuro di voler servire il piatto: \n" + Utility.colorePiatti + nomePiatto + Utility.fineColore;
+        testoConfermaPiatto.text = "Sei sicuro di voler servire il piatto: \n" + Costanti.colorePiatti + nomePiatto + Costanti.fineColore;
     }
 
-    private void cambiaPannelloIngredientiPiattoConPiatto(Button bottoneMostraIngredienti, List<Piatto> piatti)
+    private void cambiaPannelloIngredientiPiattoConPiatto(Button bottoneMostraIngredienti)
     {
-        Piatto piattoSelezionato = Piatto.getPiattoFromNomeBottone(bottoneMostraIngredienti.name, piatti);
+        Piatto piattoSelezionato = Piatto.getPiattoFromNomeBottone(bottoneMostraIngredienti.name);
 
         string ingredientiPiatto = piattoSelezionato.getListaIngredientiQuantitaToString();
 
         //piatto
-        pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Ingredienti nel piatto " + Utility.colorePiatti + piattoSelezionato.nome + Utility.fineColore;
+        pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Ingredienti nel piatto " + Costanti.colorePiatti + piattoSelezionato.nome + Costanti.fineColore;
         //Ingredienti
-        pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Ingredienti:\n" + Utility.coloreIngredienti + ingredientiPiatto + Utility.fineColore;
+        pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Ingredienti:\n" + Costanti.coloreIngredienti + ingredientiPiatto + Costanti.fineColore;
     }
 
     private void animazioni(bool affinitaPatologiePiatto, bool affinitaDietaPiatto, float guadagno)
     {
-        if(affinitaPatologiePiatto && affinitaDietaPiatto)
+        if (affinitaPatologiePiatto && affinitaDietaPiatto)
         {
             controllerAnimazioneCliente.animazioneContenta();
         }
@@ -290,12 +290,12 @@ public class PannelloMenu : MonoBehaviour
         GameObject outputGameObject = (GameObject)Instantiate(bottonePiatto);
 
         Button output = outputGameObject.GetComponent<Button>();
-        output.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Utility.colorePiatti + piatto.nome + Utility.fineColore;
+        output.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Costanti.colorePiatti + piatto.nome + Costanti.fineColore;
         output.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Costo: " + piatto.calcolaCostoBase().ToString();
 
         Sprite nuovaImmagine = Resources.Load<Sprite>("immaginiPiatti/" + piatto.nome);
-        if (nuovaImmagine == null) 
-        { 
+        if (nuovaImmagine == null)
+        {
             nuovaImmagine = Resources.Load<Sprite>("immaginiPiatti/ImmaginePiattoDefault");
         }
         output.GetComponentsInChildren<Image>()[1].sprite = nuovaImmagine;
@@ -311,9 +311,9 @@ public class PannelloMenu : MonoBehaviour
 
     private void caricaClienteInPanello(Cliente cliente)
     {
-        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Utility.grassetto + Utility.getStringaConCapitalLetterIniziale(cliente.nome) + Utility.fineGrassetto;
-        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[1].text = Utility.grassetto + "Dieta: " + Utility.fineGrassetto + Utility.coloreDieta + Utility.getStringaConCapitalLetterIniziale(Dieta.IdDietaToDietaString(cliente.dieta)) + Utility.fineColore;
-        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[2].text = Utility.grassetto + "Patologie: " + Utility.fineGrassetto + Utility.colorePatologia + Patologia.listIdToListPatologie(cliente.listaIdPatologie) + Utility.fineColore;
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Costanti.grassetto + Utility.getStringaConCapitalLetterIniziale(cliente.nome) + Costanti.fineGrassetto;
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[1].text = Costanti.grassetto + "Dieta: " + Costanti.fineGrassetto + Costanti.coloreDieta + Utility.getStringaConCapitalLetterIniziale(Dieta.IdDietaToDietaString(cliente.dieta)) + Costanti.fineColore;
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[2].text = Costanti.grassetto + "Patologie: " + Costanti.fineGrassetto + Costanti.colorePatologia + Patologia.listIdToListPatologie(cliente.listaIdPatologie) + Costanti.fineColore;
     }
 
     private void pannelloIngredientiPiattoApertoChiuso()
@@ -400,27 +400,25 @@ public class PannelloMenu : MonoBehaviour
 
     }
 
-    private void caricaIngredientiInPannelloIngredientiGiustiSbagliati(Piatto piattoSelezionato, Cliente cliente, bool piattoInBlackList, List<Ingrediente> databaseIngredienti = null)
+    private void caricaIngredientiInPannelloIngredientiGiustiSbagliati(Piatto piattoSelezionato, Cliente cliente, bool piattoInBlackList)
     {
-        databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
+        titoloIngredientiGiustiSbagliati.text = "Compatibilità ingredienti del piatto " + Costanti.colorePiatti + piattoSelezionato.nome + Costanti.fineColore + "\nper il cliente " + Utility.getStringaConCapitalLetterIniziale(cliente.nome);
 
-        titoloIngredientiGiustiSbagliati.text = "Compatibilità ingredienti del piatto " + Utility.colorePiatti + piattoSelezionato.nome + Utility.fineColore +"\nper il cliente " + Utility.getStringaConCapitalLetterIniziale(cliente.nome);
-
-        List<Ingrediente> ingredientiPiattoSelezionato = piattoSelezionato.getIngredientiPiatto(databaseIngredienti);
+        List<Ingrediente> ingredientiPiattoSelezionato = piattoSelezionato.getIngredientiPiatto();
 
         //ogni volta che calcolo gli ingredienti non compatibili li rimuovo dalla lista generale degli ingredienti
         //in questo modo non vengono aggiunti alle altre liste a prescindere
-        List<Ingrediente> ingredientiNonCompatibiliPatologia = cliente.getListaIngredientiNonCompatibiliPatologie(ingredientiPiattoSelezionato, databaseIngredienti);
+        List<Ingrediente> ingredientiNonCompatibiliPatologia = cliente.getListaIngredientiNonCompatibiliPatologie(ingredientiPiattoSelezionato);
         foreach (Ingrediente item in ingredientiNonCompatibiliPatologia) ingredientiPiattoSelezionato.Remove(item);
-        
-        List<Ingrediente> ingredientiNonCompatibiliDieta = cliente.getListaIngredientiNonCompatibiliDieta(ingredientiPiattoSelezionato, databaseIngredienti);
+
+        List<Ingrediente> ingredientiNonCompatibiliDieta = cliente.getListaIngredientiNonCompatibiliDieta(ingredientiPiattoSelezionato);
         foreach (Ingrediente item in ingredientiNonCompatibiliDieta) ingredientiPiattoSelezionato.Remove(item);
-        
+
         //nella lista degli ingredienti piatto selezionato ci sono solo gli ingredienti che vanno bene ora
         List<Ingrediente> ingredientiCompatibili = ingredientiPiattoSelezionato;
 
         testoIngredientiGiusti.color = new Color32(104, 176, 60, 255);
-        testoIngredientiGiusti.text = Ingrediente.listIngredientiToStringa (ingredientiCompatibili);
+        testoIngredientiGiusti.text = Ingrediente.listIngredientiToStringa(ingredientiCompatibili);
 
         testoIngredientiSbagliatiDieta.color = new Color32(255, 8, 10, 255);
         testoIngredientiSbagliatiDieta.text = Ingrediente.listIngredientiToStringa(ingredientiNonCompatibiliDieta);
@@ -428,7 +426,8 @@ public class PannelloMenu : MonoBehaviour
         if (piattoInBlackList)
         {
             testoIngredientiSbagliatiPatologia.text = "La frittura non è adatta alla patologia del cliente.";
-        } else
+        }
+        else
         {
             testoIngredientiSbagliatiPatologia.text = Ingrediente.listIngredientiToStringa(ingredientiNonCompatibiliPatologia);
         }
