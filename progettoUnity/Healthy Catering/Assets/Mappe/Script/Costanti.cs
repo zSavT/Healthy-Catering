@@ -15,7 +15,7 @@ public class Costanti
     public static readonly List<Cliente> databaseClienti = Database.getDatabaseOggetto(new Cliente());
 
     // INVENTARI LIVELLI
-    public static readonly List<OggettoQuantita<int>> inventarioLivello0 = new List<OggettoQuantita<int>>
+    public  List<OggettoQuantita<int>> inventarioLivello0 = new List<OggettoQuantita<int>>
     {
         new OggettoQuantita<int> (12,10),
         new OggettoQuantita<int> (15,10),
@@ -25,14 +25,14 @@ public class Costanti
         new OggettoQuantita<int> (46,10)
     };
 
-    public static readonly List<OggettoQuantita<int>> inventarioLivello05 = new List<OggettoQuantita<int>>
+    public  List<OggettoQuantita<int>> inventarioLivello05 = new List<OggettoQuantita<int>>
     {
         new OggettoQuantita<int> (30,1),
         new OggettoQuantita<int> (35,1),
         new OggettoQuantita<int> (33,2)
     };
 
-    public static readonly List<OggettoQuantita<int>> inventarioLivello1 = new List<OggettoQuantita<int>>
+    public  List<OggettoQuantita<int>> inventarioLivello1 = new List<OggettoQuantita<int>>
     {
         new OggettoQuantita<int> (30,1),
         new OggettoQuantita<int> (35,1),
@@ -45,7 +45,7 @@ public class Costanti
         new OggettoQuantita<int> (46,1)
     };
 
-    public static readonly List<OggettoQuantita<int>> inventarioLivello2 = new List<OggettoQuantita<int>>
+    public  List<OggettoQuantita<int>> inventarioLivello2 = new List<OggettoQuantita<int>>
     {
         new OggettoQuantita<int> (30,1),
         new OggettoQuantita<int> (35,1),
@@ -58,14 +58,14 @@ public class Costanti
         new OggettoQuantita<int> (46,1)
     };
 
-    public static readonly List<OggettoQuantita<int>> inventarioTest = new List<OggettoQuantita<int>>
+    public  List<OggettoQuantita<int>> inventarioTest = new List<OggettoQuantita<int>>
     {
         new OggettoQuantita<int> (0,10),
         new OggettoQuantita<int> (34,10),
         new OggettoQuantita<int> (33,10)
     };
 
-    public static readonly List<OggettoQuantita<int>> inventarioVuoto = new List<OggettoQuantita<int>>
+    public  List<OggettoQuantita<int>> inventarioVuoto = new List<OggettoQuantita<int>>
     {
     };
 

@@ -14,6 +14,7 @@ public class Player
 
     public static readonly int numeroLivelli = 3;
     public int[] punteggio = new int [numeroLivelli];
+    Costanti dioc = new Costanti();
 
     //INVENTARI LIVELLI
      List<OggettoQuantita<int>> inventarioLivello0 = new List<OggettoQuantita<int>>
@@ -280,19 +281,19 @@ public class Player
         switch (livello)
         {
             case 0:
-                this.inventario = inventarioLivello0;
+                this.inventario = dioc.inventarioLivello0;
                 break;
             case 0.5:
-                this.inventario = inventarioLivello05;
+                this.inventario = dioc.inventarioLivello05;
                 break;
             case 1:
-                aggiornaInventario (inventarioLivello1, true);
+                aggiornaInventario (dioc.inventarioLivello1, true);
                 break;
             case 2:
-                aggiornaInventario(inventarioLivello2, true);
+                aggiornaInventario(dioc.inventarioLivello2, true);
                 break;
             case 3:
-                aggiornaInventario(inventarioTest, true);
+                aggiornaInventario(dioc.inventarioTest, true);
                 break;
         }
     }
@@ -353,11 +354,12 @@ public class Player
         throw new Exception("Le dimensioni della lista contente gli ingredienti e le quantita di essi non corrispondo");
     }
 
-    public static List <Player> getListaSortata(List <Player> databasePlayer = null){
-        databasePlayer ??= Database.getDatabaseOggetto (new Player());
-        
-        databasePlayer.Sort (new PlayerComparer());
-        return databasePlayer;
+    public static List<Player> getListaSortata()
+    {
+        List<Player> databasePlayerTemp = Costanti.databasePlayer;
+
+        databasePlayerTemp.Sort (new PlayerComparer());
+        return databasePlayerTemp;
     }
 
     private class PlayerComparer : IComparer<Player>
