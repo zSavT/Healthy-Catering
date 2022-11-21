@@ -21,15 +21,12 @@ public class PannelloMagazzino : MonoBehaviour
     [Header("Pannello mostra inventario")]
     //mi serve per settare il parent dell'oggetto sotto a questo oggetto, poi se la vede unity a sistemarli all'interno della schermata
     [SerializeField] private GameObject pannelloMostraInventario;
-    GameObject copiaPannelloMostraInventario;
 
     [SerializeField] private GameObject pannelloXElementi;
     private GameObject copiaPannelloXElementi;
     private int numeroPannelliXElementiPresenti = 1;
 
     [SerializeField] private GameObject pannelloInventarioCanvas;
-
-    private bool schermataMagazzinoPopolata;
 
     [SerializeField] private TextMeshProUGUI testoInventarioVuoto;
 
@@ -40,6 +37,8 @@ public class PannelloMagazzino : MonoBehaviour
     [SerializeField] private PannelloMostraRicette pannelloMostraRicette;
 
     private Player giocatore;
+
+    private List<GameObject> pannelliXElementiAttivi = new List<GameObject>();
 
     private void Start()
     {
@@ -52,7 +51,7 @@ public class PannelloMagazzino : MonoBehaviour
         //al posto di uno solo come in menu (interazione cliente))
         pannelloXElementi = rimuoviTuttiFigliDaPannello(pannelloXElementi);
 
-        schermataMagazzinoPopolata = false;
+        copiaPannelloXElementi = Instantiate(pannelloXElementi);
     }
 
     public void cambiaSfondoDesktop()
@@ -99,13 +98,7 @@ public class PannelloMagazzino : MonoBehaviour
 
         pannelloInventarioCanvas.SetActive(false);
 
-        copiaPannelloMostraInventario = Instantiate(pannelloMostraInventario);
-        copiaPannelloXElementi = Instantiate(pannelloXElementi);
-
-        if (!schermataMagazzinoPopolata)
-            popolaSchermata();
-        else
-            aggiornaSchermataMagazzino();
+        popolaSchermata();
 
         setSchermataInizialePC();
     }
@@ -127,6 +120,18 @@ public class PannelloMagazzino : MonoBehaviour
         pannelloMagazzino.SetActive(false);
         pannelloMagazzinoAperto = false;
         suonoChiusuraPC.Play();
+
+        resetPannelloMagazzino();
+    }
+
+    private void resetPannelloMagazzino()
+    {
+        foreach (GameObject pannelloXElementiTemp in pannelliXElementiAttivi)
+        {
+            Destroy(pannelloXElementiTemp);
+        }
+
+        pannelliXElementiAttivi = new List<GameObject>();
     }
 
     public bool getPannelloMagazzinoAperto()
@@ -166,13 +171,12 @@ public class PannelloMagazzino : MonoBehaviour
                         &&
                         (oggettoDellInventario != inventario[inventario.Count - 1])) // se e' diverso dall'ultimo elemento, previene che venga creato un pannello vuoto
                     {
+                        pannelliXElementiAttivi.Add(pannelloXElementi);
                         aggiungiPannelloXElementi();
                         numeroBottoniAggiuntiFinoAdOraInPannelloXElementi = 0;
                     }
                 }
             }
-
-            schermataMagazzinoPopolata = true;
 
             if (!testoInventarioVuoto.text.Equals(""))
                 testoInventarioVuoto.text = "";
@@ -213,46 +217,5 @@ public class PannelloMagazzino : MonoBehaviour
 
         //ora la variabile di prima viene usata per il nuovo pannello
         pannelloXElementi = nuovoPannelloXElementi;
-    }
-
-    private void aggiornaSchermataMagazzino()
-    {
-        /*
-        si potrebbe aggiungere una gestione dinamica della cosa,
-        senza distruggere e ricreare tutti i bottoni ogni volta ma significherebbe
-        gestire la disposizione degli elementi nei pannelliXElementi e aggiornarli
-        ogni volta che uno degli elementi non e' più presente nell'inventario:
-        es:
-        ho un pannelloXElementi con:
-            ingrediente1
-            ingrediente2
-            ingrediente3
-            ingrediente4
-        mettiamo caso che ingrediente 2 finisca, cosa succede? 
-        diventa grigio o viene rimosso completamente?
-        se diventa grigio, la prossima volta che viene aperto il gioco quell'ingrediente 
-        non è più nella lista
-        se devo eliminarlo dalla lista, sopratutto se e' nel primo dei pannelliXElementi
-        devo far scalare di posto tutti gli elementi dei pannelli successivi, il che 
-        e' sia scomodo che, molto probabilmente, piu' pesante di ricreare i bottoni da capo
-        quindi, almeno secondo e' meglio fare cosi
-        */
-        Transform genitorePannelloMostraInventario = pannelloMostraInventario.transform.parent;
-
-        foreach (Transform child in pannelloMostraInventario.GetComponentsInChildren<Transform>())
-        {
-            Destroy(child.gameObject);
-        }
-
-
-        pannelloMostraInventario = copiaPannelloMostraInventario;
-        //pannelloMostraInventario = rimuoviTuttiFigliDaPannello(pannelloMostraInventario);
-
-        copiaPannelloMostraInventario.transform.SetParent(genitorePannelloMostraInventario, false);
-
-        numeroPannelliXElementiPresenti = 0;
-        aggiungiPannelloXElementi();//nuovo primo pannello
-
-        popolaSchermata();
     }
 }
