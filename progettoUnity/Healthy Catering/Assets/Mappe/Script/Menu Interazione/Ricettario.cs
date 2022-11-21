@@ -15,7 +15,10 @@ public class Ricettario : MonoBehaviour
     [SerializeField] Button switchIngredienti;
     [SerializeField] Button bottoneAltriDati;
     [SerializeField] TextMeshProUGUI testoBottoneAltriDati;
-    
+
+    private List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
+    private List<Piatto> databasePiatti = Database.getDatabaseOggetto(new Piatto());
+
     private int numeroPaginaIngredienti = 0;
     private int numeroPaginaPiatti = 0;
 
@@ -38,7 +41,7 @@ public class Ricettario : MonoBehaviour
         {
             if (numeroPaginaPiatti == 0)
                 setBottoniAvantiIndietroInteractable(true, false);
-            else if (numeroPaginaPiatti == Costanti.databasePiatti.Count - 1)
+            else if (numeroPaginaPiatti == databasePiatti.Count - 1)
                 setBottoniAvantiIndietroInteractable(false, true);
             else
                 setBottoniAvantiIndietroInteractable(true, true);
@@ -47,7 +50,7 @@ public class Ricettario : MonoBehaviour
         {
             if (numeroPaginaIngredienti == 0)
                 setBottoniAvantiIndietroInteractable(true, false);
-            else if (numeroPaginaIngredienti == Costanti.databaseIngredienti.Count - 1)
+            else if (numeroPaginaIngredienti == databaseIngredienti.Count - 1)
                 setBottoniAvantiIndietroInteractable(false, true);
             else
                 setBottoniAvantiIndietroInteractable(true, true);
@@ -100,8 +103,8 @@ public class Ricettario : MonoBehaviour
 
     private void setTestoSchermata(string titolo, string testo, string testoBottoneSwitchVista)
     {
-        titoloSchermata.text = titolo + Costanti.fineColore;
-        testoSchermata.text = testo + Costanti.fineColore;
+        titoloSchermata.text = titolo + Utility.fineColore;
+        testoSchermata.text = testo + Utility.fineColore;
         testoBottoneAltriDati.text = testoBottoneSwitchVista;
     }
 
@@ -110,17 +113,17 @@ public class Ricettario : MonoBehaviour
         if (isVistaPiatto)
         {
             setTestoSchermata(
-                Costanti.colorePiatti + Costanti.databasePiatti[numeroPaginaPiatti].nome,
-                Costanti.coloreIngredienti + Costanti.databasePiatti[numeroPaginaPiatti].getListaIngredientiQuantitaToString(),
-                Costanti.colorePiatti + "Scheda tecnica del piatto"
+                Utility.colorePiatti + databasePiatti[numeroPaginaPiatti].nome,
+                Utility.coloreIngredienti + databasePiatti[numeroPaginaPiatti].getListaIngredientiQuantitaToString(),
+                Utility.colorePiatti + "Scheda tecnica del piatto"
             );
         }
         else
         {
             setTestoSchermata(
-               Costanti.coloreIngredienti + Costanti.databaseIngredienti[numeroPaginaIngredienti].nome,
-               Costanti.colorePiatti + Costanti.databaseIngredienti[numeroPaginaIngredienti].getListaPiattiRealizzabiliConIngredienteToSingolaString(),
-               Costanti.coloreIngredienti + "Scheda tecnica dell'ingrediente"
+               Utility.coloreIngredienti + databaseIngredienti[numeroPaginaIngredienti].nome,
+               Utility.colorePiatti + databaseIngredienti[numeroPaginaIngredienti].getListaPiattiRealizzabiliConIngredienteToSingolaString(databaseIngredienti, databasePiatti),
+               Utility.coloreIngredienti + "Scheda tecnica dell'ingrediente"
             );
         }
         attivaDisattivaAvantiIndietro();
@@ -130,13 +133,13 @@ public class Ricettario : MonoBehaviour
     {
         if (isVistaPiatto)
         {
-            if (numeroPaginaPiatti != Costanti.databasePiatti.Count - 1)
+            if (numeroPaginaPiatti != databasePiatti.Count - 1)
                 numeroPaginaPiatti++;
             setTestoSchermata();
         }
         else
         {
-            if (numeroPaginaIngredienti != Costanti.databaseIngredienti.Count - 1)
+            if (numeroPaginaIngredienti != databaseIngredienti.Count - 1)
                 numeroPaginaIngredienti++;
             setTestoSchermata();
         }
@@ -176,12 +179,12 @@ public class Ricettario : MonoBehaviour
     {
         if (isVistaPiatto)
         {
-            testoSchermata.text = Costanti.databasePiatti[numeroPaginaPiatti].ToString();
+            testoSchermata.text = databasePiatti[numeroPaginaPiatti].ToString();
             testoBottoneAltriDati.text = "Lista ingredienti";
         }
         else
         {
-            testoSchermata.text = Costanti.databaseIngredienti[numeroPaginaIngredienti].ToString();
+            testoSchermata.text = databaseIngredienti[numeroPaginaIngredienti].ToString();
             testoBottoneAltriDati.text = "Lista ricette";
         }
     }

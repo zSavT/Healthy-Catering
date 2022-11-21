@@ -16,6 +16,7 @@ public class Ingrediente
 
     public List<int> listaIdPatologieCompatibili = null;
 
+    //base sarebbe, più o meno, il super di java
     public Ingrediente(
         int idIngrediente, string nome, string descrizione,
         float costo, int costoEco, int nutriScore, int dieta, List<int> listaIdPatologieCompatibili)
@@ -69,11 +70,6 @@ public class Ingrediente
             && (Enumerable.SequenceEqual(this.listaIdPatologieCompatibili, ((Ingrediente)obj).listaIdPatologieCompatibili));
     }
 
-    public override int GetHashCode()
-    {
-        return base.GetHashCode();
-    }
-
     public override string ToString()
     {
         return this.descrizione + "\n\n" +
@@ -113,21 +109,8 @@ public class Ingrediente
         if (id == 4)
             return 'E';
         else
-            throw new InvalidOperationException("Nutriscore inserito non valido");
+            throw new InvalidOperationException("Id nutriscore inserito non valido");
     }
-
-    public string getListaPiattiRealizzabiliConIngredienteToSingolaString()
-    {
-        List<Piatto> ricettePossibiliConIngrediente = getListaPiattiRealizzabiliConIngrediente();
-
-        string output = "";
-        foreach (Piatto piatto in ricettePossibiliConIngrediente)
-        {
-            output += piatto.nome + "\n";
-        }
-        return output;
-    }
-
 
     public List<Piatto> getListaPiattiRealizzabiliConIngrediente()
     {
@@ -135,7 +118,7 @@ public class Ingrediente
 
         foreach (Piatto piatto in Costanti.databasePiatti)
         {
-            List<Ingrediente> ingredientiPiatto = piatto.getIngredientiPiatto();
+            List<Ingrediente> ingredientiPiatto = piatto.getIngredientiPiatto(Costanti.databaseIngredienti);
             foreach (Ingrediente ingredientePiatto in ingredientiPiatto)
             {
                 if (this.Equals(ingredientePiatto))
@@ -147,13 +130,85 @@ public class Ingrediente
 
         return ricettePossibiliConIngrediente;
     }
+    public string getListaPiattiRealizzabiliConIngredienteToSingolaString(List<Ingrediente> databaseIngredienti, List<Piatto> databasePiatti)
+    {
+        List<Piatto> ricettePossibiliConIngrediente = new List<Piatto>();
 
-    public static Ingrediente idToIngrediente(int id)
+        foreach (Piatto piatto in databasePiatti)
+        {
+            List<Ingrediente> ingredientiPiatto = piatto.getIngredientiPiatto(databaseIngredienti);
+            foreach (Ingrediente ingredientePiatto in ingredientiPiatto)
+            {
+                if (this.Equals(ingredientePiatto))
+                {
+                    ricettePossibiliConIngrediente.Add(piatto);
+                }
+            }
+        }
+
+        string output = "";
+        foreach (Piatto piatto in ricettePossibiliConIngrediente)
+        {
+            output += piatto.nome + "\n";
+        }
+        return output;
+    }
+
+    public static Ingrediente checkIngredienteOnonimoGiaPresente(string nomeIngrediente)
+    {
+        List<Ingrediente> ingredientiConNomeSimileInDatabase = getIngredientiConNomeSimileInDatabase(nomeIngrediente);
+        if (ingredientiConNomeSimileInDatabase.Count > 0)
+            return scegliIngredienteConNomeSimile(nomeIngrediente, ingredientiConNomeSimileInDatabase);
+        else return null;
+    }
+
+    public static List<Ingrediente> getIngredientiConNomeSimileInDatabase(string nomeIngrediente, List<Ingrediente> databaseIngredienti = null)
+    {
+        databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
+
+        List<Ingrediente> output = new List<Ingrediente>();
+        foreach (Ingrediente ingredienteTemp in databaseIngredienti)
+        {
+            if ((ingredienteTemp.nome.ToLower().Contains(nomeIngrediente.ToLower())))
+            {
+                output.Add(ingredienteTemp);
+            }
+        }
+
+        return output;
+    }
+
+    public static Ingrediente scegliIngredienteConNomeSimile(string nomeIngrediente, List<Ingrediente> ingredientiConNomeSimile)
+    {
+        int numero = -1;
+        while ((numero < 0) || (numero >= ingredientiConNomeSimile.Count))
+        {
+            numero = Database.getNewIntFromUtente(getStampaIngredientiSimiliPerSceltaUtente(nomeIngrediente, ingredientiConNomeSimile));
+            if (numero == 0)
+                return null;
+        }
+        return ingredientiConNomeSimile[numero - 1];
+    }
+
+    private static string getStampaIngredientiSimiliPerSceltaUtente(string nomeIngrediente, List<Ingrediente> ingredientiConNomeSimile)
+    {
+        string output = "Il nome dell'ingrediente che hai inserito (" + nomeIngrediente + ") non è stato trovato ma sono stati trovati ingredienti con nomi simili, intendi uno di questi? Inserisci '0' per uscire da questo menu";
+
+        int i = 1;
+        foreach (Ingrediente ingredienteSimile in ingredientiConNomeSimile)
+            output = "\n" + i.ToString() + ") " + ingredienteSimile.nome;
+
+        return output;
+    }
+
+    public static Ingrediente idToIngrediente(int id, List<Ingrediente> databaseIngredienti = null)
     {
         if (id == -1)
             return new Ingrediente();
 
-        foreach (Ingrediente ingrediente in Costanti.databaseIngredienti)
+        databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
+
+        foreach (Ingrediente ingrediente in databaseIngredienti)
         {
             if (id == ingrediente.idIngrediente)
             {
@@ -164,7 +219,7 @@ public class Ingrediente
         throw new Exception("Ingrediente non trovato idToIngrediente " + id.ToString());
     }
 
-    public static string listIngredientiToStringa(List<Ingrediente> ingredienti)
+    public static string listIngredientiToStringa (List <Ingrediente> ingredienti)
     {
         string output = "";
         foreach (Ingrediente ingrediente in ingredienti)
@@ -172,5 +227,13 @@ public class Ingrediente
             output += ingrediente.nome + "\n";
         }
         return output;
+    }
+
+    public static Ingrediente creaNuovoIngrediente(string nome = null)
+    {
+        nome ??= Database.getNewStringaFromUtente("Inserisci il nome dell'ingrediente che vuoi aggiungere");
+
+        Database.aggiungiIngrediente(new Ingrediente(nome));
+        return Database.getUltimoOggettoAggiuntoAlDatabase(new Ingrediente());
     }
 }
