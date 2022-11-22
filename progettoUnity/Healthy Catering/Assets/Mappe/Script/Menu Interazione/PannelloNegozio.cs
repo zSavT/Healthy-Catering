@@ -14,6 +14,7 @@ public class PannelloNegozio : MonoBehaviour
     [SerializeField] private GameObject pannelloNegozio;
     [SerializeField] private GameObject pannelloXElementi;
     [SerializeField] private Button templateSingoloIngrediente;
+    [SerializeField] private Button bottoneCarrello;
     private Button copiaTemplateSingoloIngrediente;
     private bool pannelloAperto = false;
 
@@ -53,7 +54,7 @@ public class PannelloNegozio : MonoBehaviour
     void Start()
     {
         animazione = GetComponentInParent<Animator>();
-        
+        bottoneCarrello.interactable = false;
         //GESTIONE PANNELLO E FIGLI
         canvasPannelloNegozio.SetActive(false);
         pannelloXElementi.SetActive(false);
@@ -439,6 +440,10 @@ public class PannelloNegozio : MonoBehaviour
                 testoTotaleCarello.text = Costanti.coloreVerde + "Totale Carrello: " + Costanti.fineColore + prezzoDaPagare.ToString("0.00");
             }
             chiudiPannelloSeiSicuro();
+            if (carrello.Count > 0)
+                bottoneCarrello.interactable = true;
+            else
+                bottoneCarrello.interactable = false;
         }
     }
 
@@ -495,7 +500,7 @@ public class PannelloNegozio : MonoBehaviour
         if (ingredientiBottoniFake != null)
             foreach (Button ingrediente in ingredientiBottoniFake)
                 attivaDisattivaBottoneCompra(ingrediente, 0);
-            
+        bottoneCarrello.interactable = false;
         pannelloSeiSicuroAperto = false;
 
         if (!inNegozio)
