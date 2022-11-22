@@ -322,7 +322,7 @@ public class PannelloMenu : MonoBehaviour
     {
         pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Costanti.grassetto + Utility.getStringaConCapitalLetterIniziale(cliente.nome) + Costanti.fineGrassetto;
         pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[1].text = Costanti.grassetto + "Dieta: " + Costanti.fineGrassetto + Costanti.coloreDieta + Utility.getStringaConCapitalLetterIniziale(Dieta.IdDietaToDietaString(cliente.dieta)) + Costanti.fineColore;
-        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[2].text = Costanti.grassetto + "Tieni conto che il cliente ha problemi con..." + Costanti.fineGrassetto + Costanti.colorePatologia + Patologia.listIdToListPatologie(cliente.listaIdPatologie) + Costanti.fineColore;
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[2].text = Costanti.grassetto + "Tieni conto che il cliente ha problemi con...\n" + Costanti.fineGrassetto + Costanti.colorePatologia + Patologia.listIdToListPatologie(cliente.listaIdPatologie) + Costanti.fineColore;
     }
 
     private void pannelloIngredientiPiattoApertoChiuso()
@@ -390,11 +390,18 @@ public class PannelloMenu : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// Il metodo inverte il valore booleano di "pannelloIngredientiGiustiSbagliatiAperto" che controlla se il pannello Ingredienti Giusti e Sbagliati Aperto
+    /// </summary>
     private void pannelloIngredientiGiustiSbagliatiApertoChiuso()
     {
         pannelloIngredientiGiustiSbagliatiAperto = !pannelloIngredientiGiustiSbagliatiAperto;
-    }
+    } 
 
+    /// <summary>
+    /// Il metodo permette di aprire il pannello degli Ingredienti Giusti e Sbagliati correttamente, disattivando gli elementi non necessari.
+    /// </summary>
     private void apriPannelloIngredientiGiustiSbagliati()
     {
         if (pannelloIngredientiGiustiSbagliati != null)
@@ -408,6 +415,12 @@ public class PannelloMenu : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Il metodo permette di caricare tutti gli ingredienti del pannello Ingredienti Giusti e Sbagliati per la visualizzazione degli ingredienti che hanno dato problemi
+    /// </summary>
+    /// <param name="piattoSelezionato">Il piatto servito al cliente</param>
+    /// <param name="cliente">Il cliente a cui è stato servito il piatto</param>
+    /// <param name="piattoInBlackList">Controllo se il piatto è nella blacklist dei piatti</param>
     private void caricaIngredientiInPannelloIngredientiGiustiSbagliati(Piatto piattoSelezionato, Cliente cliente, bool piattoInBlackList)
     {
         titoloIngredientiGiustiSbagliati.text = "Compatibilità ingredienti del piatto " + Costanti.colorePiatti + piattoSelezionato.nome + Costanti.fineColore +"\nper il cliente " + Utility.getStringaConCapitalLetterIniziale(cliente.nome);
@@ -441,6 +454,9 @@ public class PannelloMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo permette di chiudere correttamente il pannello IngredientiGiustiESbagliati
+    /// </summary>
     private void chiudiPannelloIngredientiGiustiSbagliati()
     {
         if (pannelloIngredientiGiustiSbagliati != null)
