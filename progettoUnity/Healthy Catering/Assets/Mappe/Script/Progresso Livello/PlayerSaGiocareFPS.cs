@@ -72,5 +72,4 @@ public class PlayerSaGiocareFPS : MonoBehaviour
     {
         Time.timeScale = 0f; //blocca il tempo
     }
-
 }

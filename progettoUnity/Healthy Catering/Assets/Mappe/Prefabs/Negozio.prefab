@@ -2710,7 +2710,7 @@ Transform:
   - {fileID: 5834516823547491565}
   - {fileID: 5834516822995317081}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &5834516822549344664
 MeshFilter:
@@ -5587,6 +5587,7 @@ MonoBehaviour:
   pannelloNegozio: {fileID: 5834516823219368724}
   pannelloXElementi: {fileID: 5834516823333632411}
   templateSingoloIngrediente: {fileID: 5834516823233580668}
+  bottoneCarrello: {fileID: 5028484359852259403}
   bottoneAvantiPannelloNegozio: {fileID: 5834516823638917316}
   bottoneIndietroPannelloNegozio: {fileID: 5834516822979087919}
   testoEsc: {fileID: 5834516822009635971}

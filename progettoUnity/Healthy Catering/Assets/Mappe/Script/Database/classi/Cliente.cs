@@ -70,8 +70,8 @@ public class Cliente
         {
             foreach (Ingrediente ingrediente in ingredientiPiatto)
             {
-                List <int> listaPatologieCompatibiliConIngrediente = ingrediente.listaIdPatologieCompatibili;
-                
+                List<int> listaPatologieCompatibiliConIngrediente = ingrediente.listaIdPatologieCompatibili;
+
                 if (!(listaPatologieCompatibiliConIngrediente.Contains(idPatologia)))
                 {
                     ingredientiNonCompatibili.Add(ingrediente);
@@ -93,7 +93,7 @@ public class Cliente
                 ingredientiNonCompatibili.Add(ingrediente);
             }
         }
-        
+
         return ingredientiNonCompatibili;
     }
 }

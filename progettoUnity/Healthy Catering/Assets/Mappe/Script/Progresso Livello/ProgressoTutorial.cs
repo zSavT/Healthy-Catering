@@ -71,6 +71,9 @@ public class ProgressoTutorial : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("Attuale indice");
+        Debug.Log(numeroScritteMostrate);
+        Debug.Log(OkBoxVideo.meccanicheServireNonCompatibileMostrato);
         if (!saGiocareSettato)
         {
             if (PlayerSaGiocareFPS.siOnoSettato())
@@ -108,7 +111,7 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.WASDmostrato)
                     {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.WASD);
+                        okBoxVideo.apriOkBoxVideo(Costanti.WASD);
                         OkBoxVideo.WASDmostrato = true;
                     }
 
@@ -118,7 +121,7 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.saltoMostrato)
                     {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.salto);
+                        okBoxVideo.apriOkBoxVideo(Costanti.salto);
                         OkBoxVideo.saltoMostrato = true;
                     }
 
@@ -128,7 +131,7 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.sprintMostrato)
                     {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.sprint);
+                        okBoxVideo.apriOkBoxVideo(Costanti.sprint);
                         OkBoxVideo.sprintMostrato = true;
                     }
 
@@ -138,7 +141,7 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.parlaZioMostrato)
                     {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.parlaZio);
+                        okBoxVideo.apriOkBoxVideo(Costanti.parlaZio);
                         InterazionePassanti.parlatoConZio = false;
                     }
                     if(OkBoxVideo.parlaZioMostrato && !Interactor.nelRistorante)
@@ -154,7 +157,7 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.vaiAlRistoranteMostrato)
                     {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.vaiAlRistorante);
+                        okBoxVideo.apriOkBoxVideo(Costanti.vaiAlRistorante);
 
                     } else
                     {
@@ -172,10 +175,8 @@ public class ProgressoTutorial : MonoBehaviour
                     indicatoreDistanza.setTarget("reset");
                     if (!OkBoxVideo.meccanicheServireCompatibileMostrato)
                     {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.meccanicheServireCompatibile);
+                        okBoxVideo.apriOkBoxVideo(Costanti.meccanicheServireCompatibile);
                         OkBoxVideo.meccanicheServireCompatibileMostrato = true;
-
-                        
                     }
 
                     if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
@@ -191,7 +192,7 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.meccanicheServireNonCompatibileMostrato)
                     {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.meccanicheServireNonCompatibile);
+                        okBoxVideo.apriOkBoxVideo(Costanti.meccanicheServireNonCompatibile);
                         OkBoxVideo.meccanicheServireNonCompatibileMostrato = true;
                     }
 
@@ -209,7 +210,7 @@ public class ProgressoTutorial : MonoBehaviour
                     if (!OkBoxVideo.finitiIngredientiMostrato)
                     {
                         PannelloMagazzino.pannelloMagazzinoApertoPerTutorial = false;
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.finitiIngredienti);
+                        okBoxVideo.apriOkBoxVideo(Costanti.finitiIngredienti);
                         OkBoxVideo.finitiIngredientiMostrato = true;
                     }
 
@@ -226,7 +227,7 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.doveEIlNegozioMostrato)
                     {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.doveEIlNegozio);
+                        okBoxVideo.apriOkBoxVideo(Costanti.doveEIlNegozio);
                     }
                     if(!Interactor.nelRistorante && OkBoxVideo.doveEIlNegozioMostrato)
                     {
@@ -242,7 +243,7 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.interazioneNPCMostrato)
                     {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.interazioneNPC);
+                        okBoxVideo.apriOkBoxVideo(Costanti.interazioneNPC);
                         OkBoxVideo.interazioneNPCMostrato = true;
 
                         indicatoreDistanza.setTarget("reset");
@@ -258,7 +259,7 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.apriRicettarioMostrato)
                     {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.apriRicettario);
+                        okBoxVideo.apriOkBoxVideo(Costanti.apriRicettario);
                         OkBoxVideo.apriRicettarioMostrato = true;
                     }
 
@@ -269,7 +270,7 @@ public class ProgressoTutorial : MonoBehaviour
 
                     if (!OkBoxVideo.apriMenuAiutoMostrato)
                     {
-                        okBoxVideo.apriOkBoxVideo(OkBoxVideo.apriMenuAiuto);
+                        okBoxVideo.apriOkBoxVideo(Costanti.apriMenuAiuto);
                         OkBoxVideo.apriMenuAiutoMostrato = true;
                     }
 

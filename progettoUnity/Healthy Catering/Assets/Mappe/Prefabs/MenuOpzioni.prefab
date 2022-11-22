@@ -2867,7 +2867,7 @@ RectTransform:
   m_Children:
   - {fileID: 328924249999488035}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2892,6 +2892,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -3122,7 +3123,7 @@ MonoBehaviour:
   risoluzioniDisponibili: {fileID: 328924249629098808}
   livelloGrafica: {fileID: 328924250014312971}
   schermoIntero: {fileID: 328924248688779023}
-  vSynch: {fileID: 328924248903424081}
+  vSync: {fileID: 328924248903424081}
   framerateLibero: {fileID: 328924249773580253}
   daltonismo: {fileID: 328924249915005168}
   audioMixer: {fileID: 24100000, guid: 7e80b91a87fa18a4dac7cec66de33ef3, type: 2}

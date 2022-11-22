@@ -15,6 +15,7 @@ public class ProgressoLivello : MonoBehaviour
     private int punteggioPlayer;
     private Player giocatore;
     [SerializeField] Interactor interazioni;
+
     [Header("Obbiettivo numero Clienti da Servire")]
     [SerializeField] private TextMeshProUGUI obbiettivoUno;
     [SerializeField] private Toggle obbiettivoUnoToogle;
@@ -47,8 +48,9 @@ public class ProgressoLivello : MonoBehaviour
     [SerializeField] private TextMeshProUGUI titoloSchermataFineLivello;
     [SerializeField] private AudioSource suonoVittoria;
     public UnityEvent disattivaElementiFineLivello;
+
     [Header("GameOver")]
-    public int numeroDiClientiMassimi = 10;
+    private int numeroDiClientiMassimi = 10;
     private bool gameOver = false;
     private int minimoSoldi = 5;
     [SerializeField] private ParticleSystem particellare1;
@@ -149,14 +151,7 @@ public class ProgressoLivello : MonoBehaviour
     /// <returns>True: Il giocatore ha meno del minimo dei soldi. <br>False: Il giocatore ha più del minimo dei soldi.</br></returns>
     private bool soldiFiniti()
     {
-        if(giocatore.soldi > minimoSoldi)
-        {
-            return false;
-        } else
-        {
-            return true;
-        }
-        
+        return !(giocatore.soldi > minimoSoldi);
     }
 
     /// <summary>
@@ -228,10 +223,7 @@ public class ProgressoLivello : MonoBehaviour
     /// <returns>Restituisce true se entrambi gli obbiettivi sono stati raggiunti, falso se anche uno dei due obbiettivi non � stato raggiunto.</returns>
     public bool obbiettiviRaggiunti()
     {
-        if (obbiettivoUnoRaggiunto && obbiettivoDueRaggiunto)
-            return true;
-        else
-            return false;
+        return (obbiettivoUnoRaggiunto && obbiettivoDueRaggiunto);
     }
 
     /// <summary>
@@ -262,7 +254,6 @@ public class ProgressoLivello : MonoBehaviour
         disattivaObbiettiviETesto();
        // GameObject.FindObjectOfType<Camera>().transform.position = new Vector3(0, 4000, 0);       //sposta la telecamera in ciealo
     }
-
 
     /// <summary>
     /// Disattiva gli elementi degli obbiettivi.
@@ -314,7 +305,6 @@ public class ProgressoLivello : MonoBehaviour
             if (PlayerSettings.livelloSelezionato == 1)
             {
                 PlayerSettings.salvaProgressoLivello2(true);
-                Debug.Log("Ue");
                 Debug.Log(PlayerSettings.caricaProgressoLivello2());
             }
             
@@ -342,5 +332,23 @@ public class ProgressoLivello : MonoBehaviour
             i++;
         }
         return listaPlayer;
+    }
+
+    /// <summary>
+    /// Metodo che restituisce il numero di clienti massimo da servire nel livello.
+    /// </summary>
+    /// <returns>Intero, numero dei clienti massimi di un livello</returns>
+    public int getNumeroDiClientiMassimi()
+    {
+        return this.numeroDiClientiMassimi;
+    }
+
+    /// <summary>
+    /// Metodo che imposta il numero di clienti massimo da servire nel livello.
+    /// </summary>
+    /// <param name="numeroClientiMassimo">Numero di clienti massimi da servire in un livello</param>
+    public void setNumeroDiClientiMassimi(int numeroClientiMassimo)
+    {
+         this.numeroDiClientiMassimi = numeroClientiMassimo;
     }
 }
