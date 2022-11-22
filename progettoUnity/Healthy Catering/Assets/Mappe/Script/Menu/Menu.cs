@@ -52,7 +52,7 @@ public class Menu : MonoBehaviour
     /// </summary>
     private void letturaNomiUtenti()
     {
-        player = Costanti.databasePlayer;
+        player = Database.getDatabaseOggetto(new Player());
     }
 
     /// <summary>

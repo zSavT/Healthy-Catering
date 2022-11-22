@@ -103,7 +103,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     /// </summary>
     private void letturaNomiUtenti()
     {
-        players = Costanti.databasePlayer;
+        players = Database.getDatabaseOggetto(new Player());
     }
 
 
@@ -112,7 +112,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     /// </summary>
     public void nomiPlayer()
     {
-        List<Player> players = Costanti.databasePlayer;
+        List<Player> players = Database.getDatabaseOggetto(new Player());
         for (int i = 0; i < players.Count; i++)
         {
             nomiPlayerPresenti.Add(players[i].nome);

@@ -12,14 +12,6 @@ public class OggettoQuantita<Oggetto>
         this.quantita = quantita;
     }
 
-    /*
-    public OggettoQuantita (){
-        Can we have a generic constructor? No, generic constructors are not allowed. 
-        Which means that you cannot define the parameter T on the constructor itself.
-        https://www.codingame.com/playgrounds/2290/demystifying-c-generics/generics-classes
-    }
-    */
-
     public override bool Equals(object obj) //funziona solo con gli int
     {
         // If the passed object is null
@@ -33,6 +25,11 @@ public class OggettoQuantita<Oggetto>
         }
         return (this.oggetto.Equals(((OggettoQuantita<int>)obj).oggetto))
             && (this.quantita == ((OggettoQuantita<int>)obj).quantita);
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
     }
 
     public override string ToString()
@@ -52,7 +49,7 @@ public class OggettoQuantita<Oggetto>
 
         for (int i = 0; i < lista1.Count; i++)
             for (int j = i; j < lista2.Count; j++)
-                if (!(lista1[i].Equals(lista2[j]))) 
+                if (!(lista1[i].Equals(lista2[j])))
                     return false;
 
         return true;

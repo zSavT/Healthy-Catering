@@ -8,8 +8,6 @@ public class Costanti
     
     public static readonly List<Piatto> databasePiatti = Database.getDatabaseOggetto(new Piatto());
 
-    public static readonly List<Player> databasePlayer = Database.getDatabaseOggetto (new Player());
-
     public static readonly List<Patologia> databasePatologie = Database.getDatabaseOggetto(new Patologia());
 
     public static readonly List<Cliente> databaseClienti = Database.getDatabaseOggetto(new Cliente());

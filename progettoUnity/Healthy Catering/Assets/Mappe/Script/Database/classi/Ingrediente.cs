@@ -130,13 +130,13 @@ public class Ingrediente
 
         return ricettePossibiliConIngrediente;
     }
-    public string getListaPiattiRealizzabiliConIngredienteToSingolaString(List<Ingrediente> databaseIngredienti, List<Piatto> databasePiatti)
+    public string getListaPiattiRealizzabiliConIngredienteToSingolaString()
     {
         List<Piatto> ricettePossibiliConIngrediente = new List<Piatto>();
 
-        foreach (Piatto piatto in databasePiatti)
+        foreach (Piatto piatto in Costanti.databasePiatti)
         {
-            List<Ingrediente> ingredientiPiatto = piatto.getIngredientiPiatto(databaseIngredienti);
+            List<Ingrediente> ingredientiPiatto = piatto.getIngredientiPiatto(Costanti.databaseIngredienti);
             foreach (Ingrediente ingredientePiatto in ingredientiPiatto)
             {
                 if (this.Equals(ingredientePiatto))
@@ -164,7 +164,7 @@ public class Ingrediente
 
     public static List<Ingrediente> getIngredientiConNomeSimileInDatabase(string nomeIngrediente, List<Ingrediente> databaseIngredienti = null)
     {
-        databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
+        databaseIngredienti ??= Costanti.databaseIngredienti;
 
         List<Ingrediente> output = new List<Ingrediente>();
         foreach (Ingrediente ingredienteTemp in databaseIngredienti)
@@ -206,7 +206,7 @@ public class Ingrediente
         if (id == -1)
             return new Ingrediente();
 
-        databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
+        databaseIngredienti ??= Costanti.databaseIngredienti;
 
         foreach (Ingrediente ingrediente in databaseIngredienti)
         {
@@ -229,11 +229,4 @@ public class Ingrediente
         return output;
     }
 
-    public static Ingrediente creaNuovoIngrediente(string nome = null)
-    {
-        nome ??= Database.getNewStringaFromUtente("Inserisci il nome dell'ingrediente che vuoi aggiungere");
-
-        Database.aggiungiIngrediente(new Ingrediente(nome));
-        return Database.getUltimoOggettoAggiuntoAlDatabase(new Ingrediente());
-    }
 }

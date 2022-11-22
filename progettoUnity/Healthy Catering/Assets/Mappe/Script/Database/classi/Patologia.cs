@@ -110,7 +110,7 @@ public class Patologia
         if (ids.Count > 0)
         {
             //se non lo prendo prima viene ricreato ogni volta che viene chiamato il metodo idToPatologia
-            DatabasePatologie ??= Database.getDatabaseOggetto(new Patologia());
+            DatabasePatologie ??= Costanti.databasePatologie;
 
             foreach (int id in ids)
             {
@@ -127,7 +127,7 @@ public class Patologia
         if (id == -1)
             return new Patologia();
 
-        databasePatologie ??= Database.getDatabaseOggetto(new Patologia());
+        databasePatologie ??= Costanti.databasePatologie;
 
         foreach (Patologia patologia in databasePatologie)
             if (id == patologia.idPatologia)
@@ -136,24 +136,10 @@ public class Patologia
         throw new Exception("Patologia non trovata idToPatologia");
     }
 
-    private List<Patologia> idListToPatologieList(List<int> idList, List<Patologia> databasePatologie)
-    {
-        databasePatologie ??= Database.getDatabaseOggetto(new Patologia());
-
-        idList = idList.Distinct().ToList(); //rimuove eventuali duplicati
-        List<Patologia> listaPatologie = new List<Patologia>();
-
-        foreach (int id in idList)
-            foreach (Patologia patologia in databasePatologie)
-                if (id == patologia.idPatologia)
-                    listaPatologie.Add(patologia);
-
-        return listaPatologie;
-    }
 
     public static List<int> getListIdTutteLePatologie(List<Patologia> databasePatologie = null)
     {
-        databasePatologie ??= Database.getDatabaseOggetto(new Patologia());
+        databasePatologie ??= Costanti.databasePatologie;
 
         List<int> output = new List<int>();
 

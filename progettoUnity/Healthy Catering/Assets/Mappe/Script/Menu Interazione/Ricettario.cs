@@ -16,8 +16,8 @@ public class Ricettario : MonoBehaviour
     [SerializeField] Button bottoneAltriDati;
     [SerializeField] TextMeshProUGUI testoBottoneAltriDati;
 
-    private List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
-    private List<Piatto> databasePiatti = Database.getDatabaseOggetto(new Piatto());
+    private List<Ingrediente> databaseIngredienti = Costanti.databaseIngredienti;
+    private List<Piatto> databasePiatti = Costanti.databasePiatti;
 
     private int numeroPaginaIngredienti = 0;
     private int numeroPaginaPiatti = 0;
@@ -103,8 +103,8 @@ public class Ricettario : MonoBehaviour
 
     private void setTestoSchermata(string titolo, string testo, string testoBottoneSwitchVista)
     {
-        titoloSchermata.text = titolo + Utility.fineColore;
-        testoSchermata.text = testo + Utility.fineColore;
+        titoloSchermata.text = titolo + Costanti.fineColore;
+        testoSchermata.text = testo + Costanti.fineColore;
         testoBottoneAltriDati.text = testoBottoneSwitchVista;
     }
 
@@ -113,17 +113,17 @@ public class Ricettario : MonoBehaviour
         if (isVistaPiatto)
         {
             setTestoSchermata(
-                Utility.colorePiatti + databasePiatti[numeroPaginaPiatti].nome,
-                Utility.coloreIngredienti + databasePiatti[numeroPaginaPiatti].getListaIngredientiQuantitaToString(),
-                Utility.colorePiatti + "Scheda tecnica del piatto"
+                Costanti.colorePiatti + databasePiatti[numeroPaginaPiatti].nome,
+                Costanti.coloreIngredienti + databasePiatti[numeroPaginaPiatti].getListaIngredientiQuantitaToString(),
+                Costanti.colorePiatti + "Scheda tecnica del piatto"
             );
         }
         else
         {
             setTestoSchermata(
-               Utility.coloreIngredienti + databaseIngredienti[numeroPaginaIngredienti].nome,
-               Utility.colorePiatti + databaseIngredienti[numeroPaginaIngredienti].getListaPiattiRealizzabiliConIngredienteToSingolaString(databaseIngredienti, databasePiatti),
-               Utility.coloreIngredienti + "Scheda tecnica dell'ingrediente"
+               Costanti.coloreIngredienti + databaseIngredienti[numeroPaginaIngredienti].nome,
+               Costanti.colorePiatti + databaseIngredienti[numeroPaginaIngredienti].getListaPiattiRealizzabiliConIngredienteToSingolaString(),
+               Costanti.coloreIngredienti + "Scheda tecnica dell'ingrediente"
             );
         }
         attivaDisattivaAvantiIndietro();

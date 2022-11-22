@@ -129,7 +129,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     /// </summary>
     private void letturaNomiUtenti()
     {
-        player = Costanti.databasePlayer;
+        player = Database.getDatabaseOggetto(new Player());
         
     }
 

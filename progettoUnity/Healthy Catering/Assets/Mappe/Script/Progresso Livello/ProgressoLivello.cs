@@ -320,7 +320,7 @@ public class ProgressoLivello : MonoBehaviour
     /// <returns>Lista giocatori aggiornata</returns>
     private List<Player> aggiornaGiocatore()
     {
-        List<Player> listaPlayer = Costanti.databasePlayer;
+        List<Player> listaPlayer = Database.getDatabaseOggetto(new Player());
         int i = 0;
         foreach(Player temp in listaPlayer)
         {

@@ -21,7 +21,7 @@ public class Piatto
         this.descrizione = descrizione;
         this.listaIdIngredientiQuantita = listaIdIngredientiQuantita;
         
-        List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto (new Ingrediente ());
+        List<Ingrediente> databaseIngredienti = Costanti.databaseIngredienti;
         this.costo = calcolaCostoBase(databaseIngredienti);
         this.costoEco = calcolaCostoEco(databaseIngredienti);
         this.nutriScore = calcolaNutriScore(databaseIngredienti);
@@ -80,7 +80,7 @@ public class Piatto
     {
         string ingredientiQuantitaString = "";
         //se non lo prendo prima viene ricreato ogni volta che viene chiamato il metodo idToIngrediente
-        List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
+        List<Ingrediente> databaseIngredienti = Costanti.databaseIngredienti;
 
         foreach (OggettoQuantita<int> ingredienteQuantita in listaIdIngredientiQuantita)
         {
@@ -99,7 +99,7 @@ public class Piatto
 
     public float calcolaCostoBase(List <Ingrediente> databaseIngredienti = null)
     {
-        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
+        databaseIngredienti ??= Costanti.databaseIngredienti;
 
         float costo = 0;
         foreach (OggettoQuantita<int> ingredienteQuantita in this.listaIdIngredientiQuantita)
@@ -162,7 +162,7 @@ public class Piatto
 
     public float calcolaCostoEco(List <Ingrediente> databaseIngredienti = null)
     {
-        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
+        databaseIngredienti ??= Costanti.databaseIngredienti;
         
         float costoEco = 0;
         foreach (OggettoQuantita<int> ingredienteQuantita in this.listaIdIngredientiQuantita)
@@ -173,7 +173,7 @@ public class Piatto
 
     public int calcolaNutriScore(List <Ingrediente> databaseIngredienti = null)
     {
-        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
+        databaseIngredienti ??= Costanti.databaseIngredienti;
         
         int sommanutriScore = 0;
         int numeroIngredienti = 0;
@@ -189,7 +189,7 @@ public class Piatto
 
     private List<int> getPatologieCompatibili(List<Ingrediente> databaseIngredienti = null)
     {
-        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
+        databaseIngredienti ??= Costanti.databaseIngredienti;
 
         List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto(databaseIngredienti);
         List<int> IdtutteLePatologie = Patologia.getListIdTutteLePatologie();
@@ -204,7 +204,7 @@ public class Piatto
 
     private int getDietaMinimaCompatibile(List<Ingrediente> databaseIngredienti = null)
     {
-        databaseIngredienti ??= Database.getDatabaseOggetto (new Ingrediente ());
+        databaseIngredienti ??= Costanti.databaseIngredienti;
 
         List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto(databaseIngredienti);
         int output = -1;
@@ -218,7 +218,7 @@ public class Piatto
 
     public List<Ingrediente> getIngredientiPiatto(List<Ingrediente> databaseIngredienti = null)
     {
-        databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
+        databaseIngredienti ??= Costanti.databaseIngredienti;
 
         List<Ingrediente> ingredientiPiatto = new List<Ingrediente>();
 
@@ -271,7 +271,7 @@ public class Piatto
 
     public static Piatto getPiattoFromNomeBottone(string nomePiattoBottone, List <Piatto> databasePiatti = null)
     {
-        databasePiatti ??= Database.getDatabaseOggetto(new Piatto());
+        databasePiatti ??= Costanti.databasePiatti;
 
         Piatto piattoSelezionato = new Piatto();
         foreach (Piatto piatto in databasePiatti)
@@ -329,7 +329,7 @@ public class Piatto
     
     private static List<Piatto> getPiattiConNomeSimileInDatabase(string nomePiatto, List<Piatto> databasePiatti = null)
     {
-        databasePiatti ??= Database.getDatabaseOggetto(new Piatto());
+        databasePiatti ??= Costanti.databasePiatti;
 
         List<Piatto> output = new List<Piatto>();
         string nomePiattoPerConfronto = nomePiatto.ToLower();
@@ -352,53 +352,6 @@ public class Piatto
         return output;
     }
 
-    public static List<OggettoQuantita<int>> getListaIdIngredientiQuantitaPiattoFromUtente(string nomePiatto, List<Ingrediente> databaseIngredienti = null)
-    {
-        databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
-
-        List<OggettoQuantita<int>> listaIdIngredientiQuantitaPiatto = new List<OggettoQuantita<int>>();
-
-        List<string> inputUtente = getNomeIngredientiFromUtente(nomePiatto);
-
-        foreach (string nomeIngrediente in inputUtente)
-        {
-            Ingrediente ingredienteTemp;
-
-            if (nomeIngredientePresenteNelDatabase(nomeIngrediente, databaseIngredienti))
-            {
-                ingredienteTemp = getIngredienteByNome(nomeIngrediente, databaseIngredienti);
-            }
-            else
-            {
-                List<Ingrediente> ingredientiConNomeSimile = Ingrediente.getIngredientiConNomeSimileInDatabase(nomeIngrediente, databaseIngredienti);
-
-                if (ingredientiConNomeSimile.Count > 0)
-                {
-                    Ingrediente ingredienteScelto = Ingrediente.scegliIngredienteConNomeSimile(nomeIngrediente, ingredientiConNomeSimile);
-                    if (ingredienteScelto == null)
-                    {
-                        Database.aggiungiIngrediente(new Ingrediente(nomeIngrediente));
-                        ingredienteTemp = Database.getUltimoOggettoAggiuntoAlDatabase(new Ingrediente(), databaseIngredienti);
-                    }
-                    else
-                    {
-                        ingredienteTemp = ingredienteScelto;
-                    }
-                }
-                else
-                {
-                    Database.aggiungiIngrediente(new Ingrediente(nomeIngrediente));
-                    ingredienteTemp = Database.getUltimoOggettoAggiuntoAlDatabase(new Ingrediente(), databaseIngredienti);
-                }
-            }
-
-            int quantita = getQuantitaIngredienteNelPiattoFromUtente(ingredienteTemp.nome, nomePiatto);
-            listaIdIngredientiQuantitaPiatto.Add(new OggettoQuantita<int>(ingredienteTemp.idIngrediente, quantita));
-        }
-
-        return listaIdIngredientiQuantitaPiatto;
-    }
-
     private static List<string> getNomeIngredientiFromUtente(string nomePiatto)
     {
         Console.WriteLine("Inserisci il nome degli ingredienti del piatto " + nomePiatto + " e la keyword 'fine' quando vuoi finire l'inserimento");
@@ -417,27 +370,6 @@ public class Piatto
         return nomiIngredienti;
     }
 
-    private static bool nomeIngredientePresenteNelDatabase(string nomeIngrediente, List<Ingrediente> databaseIngredienti = null)
-    {
-        databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente()); //check se il valore del database è nullo, nel caso la crea
-
-        foreach (Ingrediente ingrediente in databaseIngredienti)
-            if (nomeIngrediente.ToLower().Equals(ingrediente.nome.ToLower()))
-                return true;
-
-        return false;
-    }
-
-    private static Ingrediente getIngredienteByNome(string nomeIngrediente, List<Ingrediente> databaseIngredienti = null)
-    {
-        databaseIngredienti ??= Database.getDatabaseOggetto(new Ingrediente());
-
-        foreach (Ingrediente ingrediente in databaseIngredienti)
-            if (nomeIngrediente.ToLower().Equals(ingrediente.nome.ToLower()))
-                return ingrediente;
-
-        throw new Exception("Ingrediente non trovato getIngredienteByNome");
-    }
 
     private static int getQuantitaIngredienteNelPiattoFromUtente(string nomeIngrediente, string nomePiatto)
     {

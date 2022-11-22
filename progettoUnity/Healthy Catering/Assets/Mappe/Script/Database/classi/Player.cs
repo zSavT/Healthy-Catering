@@ -111,7 +111,7 @@ public class Player
         if (inventario.Count > 0)
         {
             //se non lo prendo prima viene ricreato ogni volta che viene chiamato il metodo idToIngrediente
-            List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
+            List<Ingrediente> databaseIngredienti = Costanti.databaseIngredienti;
             foreach (OggettoQuantita<int> temp in inventario)
             {
                 int id = temp.oggetto;
@@ -137,7 +137,7 @@ public class Player
     public bool piattiRealizzabiliConInventario()
     {
         bool realizzabilePiatti = false;
-        List<Piatto> databasePiatti = Database.getDatabaseOggetto(new Piatto());
+        List<Piatto> databasePiatti = Costanti.databasePiatti;
 
         foreach(Piatto temp in databasePiatti)
         {
@@ -167,8 +167,8 @@ public class Player
         else
             punteggioDaAggiungere = -10;
 
-        punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Utility.valoreAssoluto(punteggioDaAggiungere), trovaPercentualeNutriScore(nutriScore));
-        punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Utility.valoreAssoluto(punteggioDaAggiungere), trovaPercentualeEcoScore(costoEco));
+        punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Math.Abs(punteggioDaAggiungere), trovaPercentualeNutriScore(nutriScore));
+        punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Math.Abs(punteggioDaAggiungere), trovaPercentualeEcoScore(costoEco));
         this.punteggio [livello] += (int)punteggioDaAggiungere;
         Debug.Log(this.punteggio[livello]);
     }
@@ -298,35 +298,7 @@ public class Player
     }
 
     //DATABASE
-    public static List<OggettoQuantita<int>> popolaInventario()
-    {
-        List<Ingrediente> ingredientiNuovi = getNewIngredienti();
 
-        List<int> quantitaIngredientiNuovi = new List<int>();
-
-        quantitaIngredientiNuovi = chiediQuantitaIngredienti(ingredientiNuovi);
-
-        return creaInventarioFromListaIngredientiEQuantita(ingredientiNuovi, quantitaIngredientiNuovi);
-    }
-
-    private static List<Ingrediente> getNewIngredienti()
-    {
-        List<Ingrediente> ingredientiGiaPresenti = new List<Ingrediente>();
-
-        while (true)
-        {
-            Console.WriteLine("Inserisci la keyword 'inizia' o la keyword 'continua' per inserire un nuovo ingrediente e la parola 'fine' per concludere l'inserimento");
-            string input = Console.ReadLine();
-            if (input.ToLower().Equals("fine"))
-                break;
-            else if ((input.ToLower().Equals("inizia")) || (input.Equals("continua")))
-                ingredientiGiaPresenti.Add(Ingrediente.creaNuovoIngrediente());
-            else
-                Console.WriteLine("Input sbagliato");
-        }
-
-        return ingredientiGiaPresenti;
-    }
 
     private static List<int> chiediQuantitaIngredienti(List<Ingrediente> ingredientiGiaPresenti)
     {
