@@ -50,7 +50,7 @@ public class ProgressoLivello : MonoBehaviour
     public UnityEvent disattivaElementiFineLivello;
 
     [Header("GameOver")]
-    public int numeroDiClientiMassimi = 10;
+    private int numeroDiClientiMassimi = 10;
     private bool gameOver = false;
     private int minimoSoldi = 5;
     [SerializeField] private ParticleSystem particellare1;
@@ -305,7 +305,6 @@ public class ProgressoLivello : MonoBehaviour
             if (PlayerSettings.livelloSelezionato == 1)
             {
                 PlayerSettings.salvaProgressoLivello2(true);
-                Debug.Log("Ue");
                 Debug.Log(PlayerSettings.caricaProgressoLivello2());
             }
             
@@ -333,5 +332,23 @@ public class ProgressoLivello : MonoBehaviour
             i++;
         }
         return listaPlayer;
+    }
+
+    /// <summary>
+    /// Metodo che restituisce il numero di clienti massimo da servire nel livello.
+    /// </summary>
+    /// <returns>Intero, numero dei clienti massimi di un livello</returns>
+    public int getNumeroDiClientiMassimi()
+    {
+        return this.numeroDiClientiMassimi;
+    }
+
+    /// <summary>
+    /// Metodo che imposta il numero di clienti massimo da servire nel livello.
+    /// </summary>
+    /// <param name="numeroClientiMassimo">Numero di clienti massimi da servire in un livello</param>
+    public void setNumeroDiClientiMassimi(int numeroClientiMassimo)
+    {
+         this.numeroDiClientiMassimi = numeroClientiMassimo;
     }
 }
