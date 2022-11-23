@@ -8,14 +8,17 @@ using UnityEngine;
 /// </summary>
 public class ControlloMouse : MonoBehaviour
 {
-    
+    private ControllerInput controlloStick;
     [Header("Impostazioni Camera")]
     [SerializeField] private Transform posizioneCameraIniziale;         //deve essere il primo elemento nel contenitore del giocatore per l'autoset
     [SerializeField] private float posizioneCameraFovMassimo = 0.51f;  
     private Camera cameraGioco;
     [Header("Impostazioni Mouse")]
-    [SerializeField] private float sensibilitaMouse = 250f;     //250 valore mediano
+    [SerializeField] private float sensibilitaMouse = 100f;     //250 valore mediano
     [SerializeField] private float rangeVisuale = 90f;
+
+    [Header("Impostazioni Controller")]
+    [SerializeField] private float sensibilitaStick = 250f;
 
     private Transform modelloPlayer;
     private float xRotation = 0f;
@@ -23,9 +26,13 @@ public class ControlloMouse : MonoBehaviour
     private float mouseY;
     bool puoCambiareVisuale;
     private float posizioneZcamera;
+    private Vector2 movimentoStick;
 
     void Start()
     {
+        controlloStick = new ControllerInput();
+        controlloStick.Enable();
+        movimentoStick = new Vector2();
         modelloPlayer = this.transform.parent.transform;
         if (posizioneCameraIniziale == null)
             try
@@ -54,8 +61,9 @@ public class ControlloMouse : MonoBehaviour
         sensibilitaMouse = PlayerSettings.caricaImpostazioniSensibilita();
         if (puoCambiareVisuale)
         {
-            mouseX = Input.GetAxis("Mouse X") * sensibilitaMouse * Time.deltaTime;
-            mouseY = Input.GetAxis("Mouse Y") * sensibilitaMouse * Time.deltaTime;
+            movimentoStick = controlloStick.Player.MovimentoCamera.ReadValue<Vector2>();
+            mouseX = movimentoStick.x * sensibilitaStick * Time.deltaTime;
+            mouseY = movimentoStick.y * sensibilitaStick * Time.deltaTime;
             xRotation -= mouseY;
             xRotation = Mathf.Clamp(xRotation, -rangeVisuale, rangeVisuale);
             transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
@@ -65,6 +73,14 @@ public class ControlloMouse : MonoBehaviour
         {
             aggiornamentoFovInGame();
         }
+    }
+
+    /// <summary>
+    /// Il metodo alla distruzione dell'oggetto, disattiva il controller.
+    /// </summary>
+    private void OnDestroy()
+    {
+        controlloStick.Disable();
     }
 
     /// <summary>

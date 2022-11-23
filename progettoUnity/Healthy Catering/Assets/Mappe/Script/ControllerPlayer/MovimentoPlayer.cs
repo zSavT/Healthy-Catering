@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Classe per la gestione del movimento del giocatore<para>
@@ -10,6 +11,7 @@ using UnityEngine.Events;
 public class MovimentoPlayer : MonoBehaviour
 {
     private CharacterController controller;
+    private ControllerInput controlliController;
 
     [Header("Movimento")]
     private ModelloPlayer gestoreModelli;
@@ -43,6 +45,8 @@ public class MovimentoPlayer : MonoBehaviour
 
     void Start()
     {
+        controlliController = new ControllerInput();
+        controlliController.Enable();
         controlloPavimento = GameObject.FindGameObjectWithTag("CheckPavimento").transform;
         controller = GetComponent<CharacterController>();
         puoMuoversi = true;
@@ -75,6 +79,13 @@ public class MovimentoPlayer : MonoBehaviour
             controlloGravita();
         }
     }
+
+    private void OnDestroy()
+    {
+        controlliController.Disable();
+    }
+
+
 
     /// <summary>
     /// Blocca o sblocca il movimento
@@ -114,8 +125,10 @@ public class MovimentoPlayer : MonoBehaviour
     /// </summary>
     private void controlloTastiMovimento()
     {
-        x = Input.GetAxis("Horizontal");
-        z = Input.GetAxis("Vertical");
+        //x = Input.GetAxis("Horizontal");
+       // z = Input.GetAxis("Vertical");
+        x = controlliController.Player.Movimento.ReadValue<Vector2>().x;
+        z = controlliController.Player.Movimento.ReadValue<Vector2>().y;
         movimento = transform.right * x + transform.forward * z;
         if (z > 0)
         {
@@ -214,7 +227,7 @@ public class MovimentoPlayer : MonoBehaviour
             velocitaAttuale = velocitaBase;
             isSprinting = false;
         }
-        if (Input.GetKeyDown(tastoSalto) && perTerra)
+        if ((Input.GetKeyDown(tastoSalto) && perTerra) || (controlliController.Player.Salto.IsPressed() && perTerra))
         {
             salto();
         }
