@@ -40,7 +40,7 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                     ""name"": ""MovimentoCamera"",
                     ""type"": ""Value"",
                     ""id"": ""4b320b8c-2d49-446f-92e1-f6ce934ee018"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Analog"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -53,6 +53,33 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Corsa"",
+                    ""type"": ""Button"",
+                    ""id"": ""4f16f2ea-43e1-4ebc-8522-381f598926a4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Mouse X"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""11a88e9c-2157-4d52-a5f1-48c1d115920a"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Mouse Y"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""5062ce26-33ca-4640-9ddd-3f7474175a4e"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -61,7 +88,7 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                     ""id"": ""978bfe49-cc26-4a3d-ab7b-7d7a29327403"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""StickDeadzone"",
                     ""groups"": "";Gamepad"",
                     ""action"": ""Movimento"",
                     ""isComposite"": false,
@@ -193,19 +220,8 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                     ""id"": ""c1f7a91b-d0fd-4a62-997e-7fb9b69bf235"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""StickDeadzone"",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""MovimentoCamera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d18f8138-c59a-4e02-b7c7-a4c69711c1c8"",
-                    ""path"": ""<Mouse>/delta"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""MovimentoCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -218,6 +234,61 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
                     ""action"": ""Salto"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""52c87a7a-c500-4f34-95cd-b28aea3ec488"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Salto"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2903c9a0-f66e-4271-bb1f-83af1b379689"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Corsa"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90277568-ef2c-43b4-a7c0-5e3018f177cc"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Corsa"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""470d2b0c-51d9-41bf-9949-5cac721c956e"",
+                    ""path"": ""<Mouse>/delta/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Mouse X"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8dc99995-f1ba-4e96-8aab-8ca9e32f09ba"",
+                    ""path"": ""<Mouse>/delta/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Mouse Y"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -808,6 +879,9 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
         m_Player_Movimento = m_Player.FindAction("Movimento", throwIfNotFound: true);
         m_Player_MovimentoCamera = m_Player.FindAction("MovimentoCamera", throwIfNotFound: true);
         m_Player_Salto = m_Player.FindAction("Salto", throwIfNotFound: true);
+        m_Player_Corsa = m_Player.FindAction("Corsa", throwIfNotFound: true);
+        m_Player_MouseX = m_Player.FindAction("Mouse X", throwIfNotFound: true);
+        m_Player_MouseY = m_Player.FindAction("Mouse Y", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -882,6 +956,9 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movimento;
     private readonly InputAction m_Player_MovimentoCamera;
     private readonly InputAction m_Player_Salto;
+    private readonly InputAction m_Player_Corsa;
+    private readonly InputAction m_Player_MouseX;
+    private readonly InputAction m_Player_MouseY;
     public struct PlayerActions
     {
         private @ControllerInput m_Wrapper;
@@ -889,6 +966,9 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
         public InputAction @Movimento => m_Wrapper.m_Player_Movimento;
         public InputAction @MovimentoCamera => m_Wrapper.m_Player_MovimentoCamera;
         public InputAction @Salto => m_Wrapper.m_Player_Salto;
+        public InputAction @Corsa => m_Wrapper.m_Player_Corsa;
+        public InputAction @MouseX => m_Wrapper.m_Player_MouseX;
+        public InputAction @MouseY => m_Wrapper.m_Player_MouseY;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -907,6 +987,15 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                 @Salto.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSalto;
                 @Salto.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSalto;
                 @Salto.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSalto;
+                @Corsa.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCorsa;
+                @Corsa.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCorsa;
+                @Corsa.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCorsa;
+                @MouseX.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseX;
+                @MouseX.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseX;
+                @MouseX.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseX;
+                @MouseY.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseY;
+                @MouseY.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseY;
+                @MouseY.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseY;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -920,6 +1009,15 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                 @Salto.started += instance.OnSalto;
                 @Salto.performed += instance.OnSalto;
                 @Salto.canceled += instance.OnSalto;
+                @Corsa.started += instance.OnCorsa;
+                @Corsa.performed += instance.OnCorsa;
+                @Corsa.canceled += instance.OnCorsa;
+                @MouseX.started += instance.OnMouseX;
+                @MouseX.performed += instance.OnMouseX;
+                @MouseX.canceled += instance.OnMouseX;
+                @MouseY.started += instance.OnMouseY;
+                @MouseY.performed += instance.OnMouseY;
+                @MouseY.canceled += instance.OnMouseY;
             }
         }
     }
@@ -1079,6 +1177,9 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
         void OnMovimento(InputAction.CallbackContext context);
         void OnMovimentoCamera(InputAction.CallbackContext context);
         void OnSalto(InputAction.CallbackContext context);
+        void OnCorsa(InputAction.CallbackContext context);
+        void OnMouseX(InputAction.CallbackContext context);
+        void OnMouseY(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

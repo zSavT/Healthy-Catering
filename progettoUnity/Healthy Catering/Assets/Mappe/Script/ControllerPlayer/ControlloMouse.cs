@@ -61,13 +61,8 @@ public class ControlloMouse : MonoBehaviour
         sensibilitaMouse = PlayerSettings.caricaImpostazioniSensibilita();
         if (puoCambiareVisuale)
         {
-            movimentoStick = controlloStick.Player.MovimentoCamera.ReadValue<Vector2>();
-            mouseX = movimentoStick.x * sensibilitaStick * Time.deltaTime;
-            mouseY = movimentoStick.y * sensibilitaStick * Time.deltaTime;
-            xRotation -= mouseY;
-            xRotation = Mathf.Clamp(xRotation, -rangeVisuale, rangeVisuale);
-            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-            modelloPlayer.Rotate(Vector3.up * mouseX);
+            controlliInputVisuale();
+            movimentoEffettivoMouse();
         }
         if(!Interactor.pannelloAperto)
         {
@@ -81,6 +76,36 @@ public class ControlloMouse : MonoBehaviour
     private void OnDestroy()
     {
         controlloStick.Disable();
+    }
+
+    /// <summary>
+    /// Il metodo permette l'effettivo movimento della visuale dato dai valori di MouseX e MouseY
+    /// </summary>
+    private void movimentoEffettivoMouse()
+    {
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -rangeVisuale, rangeVisuale);
+        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        modelloPlayer.Rotate(Vector3.up * mouseX);
+    }
+
+    /// <summary>
+    /// Il metodo aggiorna i valori MouseX e MouseY in base alla tipologia di input utilizzato
+    /// </summary>
+    private void controlliInputVisuale()
+    {
+        if (controlloStick.Player.MovimentoCamera.IsPressed())
+        {
+            movimentoStick = controlloStick.Player.MovimentoCamera.ReadValue<Vector2>();
+            mouseX = movimentoStick.x * sensibilitaStick * Time.deltaTime;
+            mouseY = movimentoStick.y * sensibilitaStick * Time.deltaTime;
+        }
+        else
+        {
+            mouseX = controlloStick.Player.MouseX.ReadValue<float>() * sensibilitaMouse * Time.deltaTime;
+            mouseY = controlloStick.Player.MouseY.ReadValue<float>() * sensibilitaMouse * Time.deltaTime;
+
+        }
     }
 
     /// <summary>
