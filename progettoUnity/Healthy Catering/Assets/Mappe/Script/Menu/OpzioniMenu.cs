@@ -101,6 +101,10 @@ public class OpzioniMenu : MonoBehaviour
         caricatiValori = true;
     }
 
+    /// <summary>
+    /// Il metodo restiusce una lista delle risoluzioni supportate
+    /// </summary>
+    /// <returns>List<String> risoluzioni disponibili</returns>
     private List<string> getOpzioniRisoluzioni()
     {
         List<string> opzioni = new List<string>();
@@ -114,6 +118,10 @@ public class OpzioniMenu : MonoBehaviour
         return opzioni;
     }
 
+    /// <summary>
+    /// Il metodo restituisce l'indice della risoluzione corrente
+    /// </summary>
+    /// <returns>Intero indice risoluzione corrente</returns>
     private int getIndiceRisoluzioneCorrente()
     {
         int indiceRisoluzioneCorrente = 0;

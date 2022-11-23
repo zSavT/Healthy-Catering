@@ -48,7 +48,7 @@ public class MenuInGame : MonoBehaviour
     /// <summary>
     /// Disattiva input controller quando l'oggetto si distrugge
     /// </summary>
-    private void OnDestroy()
+    private void OnDisable()
     {
         controllerInput.Disable();
     }

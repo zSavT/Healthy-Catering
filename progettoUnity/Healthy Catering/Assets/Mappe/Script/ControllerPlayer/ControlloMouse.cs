@@ -14,11 +14,11 @@ public class ControlloMouse : MonoBehaviour
     [SerializeField] private float posizioneCameraFovMassimo = 0.51f;  
     private Camera cameraGioco;
     [Header("Impostazioni Mouse")]
-    [SerializeField] private float sensibilitaMouse = 10f;     //250 valore mediano
+    [SerializeField] private float sensibilitaMouse = 10f;     //50 valore mediano, max 100
     [SerializeField] private float rangeVisuale = 90f;
 
     [Header("Impostazioni Controller")]
-    [SerializeField] private float sensibilitaStick = 100f;
+    [SerializeField] private float sensibilitaStick = 100f;     //250 max value
 
     private Transform modelloPlayer;
     private float xRotation = 0f;
@@ -29,6 +29,37 @@ public class ControlloMouse : MonoBehaviour
     private Vector2 movimentoStick;
 
     void Start()
+    {
+        inizializzazioneElementi();
+    }
+
+    void Update()
+    {
+        sensibilitaMouse = PlayerSettings.caricaImpostazioniSensibilita();
+        sensibilitaStick = PlayerSettings.caricaImpostazioniSensibilitaStick();
+        if (puoCambiareVisuale)
+        {
+            controlliInputVisuale();
+            movimentoEffettivoMouse();
+        }
+        if(!Interactor.pannelloAperto)
+        {
+            aggiornamentoFovInGame();
+        }
+    }
+
+    /// <summary>
+    /// Il metodo alla disattivazione dell'oggetto, disattiva il controller.
+    /// </summary>
+    private void OnDisable()
+    {
+        controlloStick.Disable();
+    }
+
+    /// <summary>
+    /// Inizializzazione elementi iniziali classe.
+    /// </summary>
+    private void inizializzazioneElementi()
     {
         controlloStick = new ControllerInput();
         controlloStick.Enable();
@@ -55,29 +86,6 @@ public class ControlloMouse : MonoBehaviour
         this.puoCambiareVisuale = true;
         cameraGioco = GetComponent<Camera>();
         aggiornamentoFovInGame();
-    }
-
-    void Update()
-    {
-        sensibilitaMouse = PlayerSettings.caricaImpostazioniSensibilita();
-        sensibilitaStick = PlayerSettings.caricaImpostazioniSensibilitaStick();
-        if (puoCambiareVisuale)
-        {
-            controlliInputVisuale();
-            movimentoEffettivoMouse();
-        }
-        if(!Interactor.pannelloAperto)
-        {
-            aggiornamentoFovInGame();
-        }
-    }
-
-    /// <summary>
-    /// Il metodo alla distruzione dell'oggetto, disattiva il controller.
-    /// </summary>
-    private void OnDestroy()
-    {
-        controlloStick.Disable();
     }
 
     /// <summary>

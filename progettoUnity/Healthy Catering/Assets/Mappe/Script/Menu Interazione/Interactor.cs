@@ -58,6 +58,27 @@ public class Interactor : MonoBehaviour
 
     void Start()
     {
+        inizializzaValori();
+    }
+
+    void Update()
+    {
+        interazioneUtenteConNPCVari();
+    }
+
+    /// <summary>
+    /// Disattiva il controller alla eliminazione dell'oggetto
+    /// </summary>
+    private void OnDisable()
+    {
+        controllerInput.Disable();
+    }
+
+    /// <summary>
+    /// Il metodo inizializza tutti i valori della classe
+    /// </summary>
+    private void inizializzaValori()
+    {
         controllerInput = new ControllerInput();
         controllerInput.Enable();
         Debug.Log(Costanti.piattoNonCompatibileTutorial);
@@ -73,7 +94,7 @@ public class Interactor : MonoBehaviour
             {
                 livelloAttuale = PlayerSettings.livelloSelezionato;
                 giocatore.soldi = 15f;
-            }     
+            }
             else
             {
                 giocatore.setInventarioLivello(livelloAttuale);
@@ -81,7 +102,7 @@ public class Interactor : MonoBehaviour
             }
             guiInGame.aggiornaValoreSoldi(giocatore.soldi);
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             Debug.Log(e.Message);
             PlayerSettings.profiloUtenteCreato = false;
@@ -91,19 +112,6 @@ public class Interactor : MonoBehaviour
         pannelloAperto = false;
         menuApribile = true;
         progresso.setGiocatore(giocatore);
-    }
-
-    void Update()
-    {
-        interazioneUtenteConNPCVari();
-    }
-
-    /// <summary>
-    /// Disattiva il controller alla eliminazione dell'oggetto
-    /// </summary>
-    private void OnDestroy()
-    {
-        controllerInput.Disable();
     }
 
     public void menuApribileOnOff()
@@ -460,12 +468,19 @@ public class Interactor : MonoBehaviour
         mainCamera.transform.position = posizioneCamera.position;
     }
 
+    /// <summary>
+    /// Il metodo chiude il pannello Menu Cliente
+    /// </summary>
     private void chiudiPannello()
     {
         pannelloMenuCliente.ChiudiPannelloMenuCliente();
         pannelloApertoChiuso();
     }
 
+    /// <summary>
+    /// Il metodo restituisce il riferimento della classe Player attiva
+    /// </summary>
+    /// <returns>Player attivo</returns>
     public Player getPlayer()
     {
         return giocatore;

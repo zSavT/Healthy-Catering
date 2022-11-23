@@ -43,17 +43,7 @@ public class MovimentoPlayer : MonoBehaviour
 
     void Start()
     {
-        controllerInput = new ControllerInput();
-        controllerInput.Enable();
-        controlloPavimento = GameObject.FindGameObjectWithTag("CheckPavimento").transform;
-        characterController = GetComponent<CharacterController>();
-        puoMuoversi = true;
-        gestoreModelli = GetComponent<ModelloPlayer>();
-        if (PlayerSettings.caricaGenereModello3D(PlayerSettings.caricaNomePlayerGiocante()) == 1)
-            controllerAnimazione = gestoreModelli.getModelloAttivo().GetComponent<Animator>();
-        else if (PlayerSettings.caricaGenereModello3D(PlayerSettings.caricaNomePlayerGiocante()) == 0)
-            controllerAnimazione = gestoreModelli.getModelloAttivo().GetComponent<Animator>();
-
+        inizializzazioneElementi();
     }
 
     void Update()
@@ -79,11 +69,28 @@ public class MovimentoPlayer : MonoBehaviour
     }
 
     /// <summary>
-    /// Il metodo disabilità il controller quando è distrutto.
+    /// Il metodo disabilità il controller quando è disattivato.
     /// </summary>
-    private void OnDestroy()
+    private void OnDisable()
     {
         controllerInput.Disable();
+    }
+
+    /// <summary>
+    /// Inizializza i valori iniziali degli oggetti della classe
+    /// </summary>
+    private void inizializzazioneElementi()
+    {
+        controllerInput = new ControllerInput();
+        controllerInput.Enable();
+        controlloPavimento = GameObject.FindGameObjectWithTag("CheckPavimento").transform;
+        characterController = GetComponent<CharacterController>();
+        puoMuoversi = true;
+        gestoreModelli = GetComponent<ModelloPlayer>();
+        if (PlayerSettings.caricaGenereModello3D(PlayerSettings.caricaNomePlayerGiocante()) == 1)
+            controllerAnimazione = gestoreModelli.getModelloAttivo().GetComponent<Animator>();
+        else if (PlayerSettings.caricaGenereModello3D(PlayerSettings.caricaNomePlayerGiocante()) == 0)
+            controllerAnimazione = gestoreModelli.getModelloAttivo().GetComponent<Animator>();
     }
 
 

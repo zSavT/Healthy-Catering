@@ -61,16 +61,16 @@ public class PlayerSettings : MonoBehaviour
     }
 
     /// <summary>
-    /// Carica variabile per controllo del primo avvio per settare il valore della sensibilit� del mouse.
+    /// Carica variabile per controllo del primo avvio per settare il valore della sensibilità del mouse e dello stick.
     /// </summary>
-    /// <returns>0 � la prima volta che si avvia il livello, 1 � stato gi� avviato una volta.</returns>
+    /// <returns>0 è la prima volta che si avvia il livello, 1 è stato giù avviato una volta.</returns>
     public static int caricaPrimoAvvioSettaggiSensibilita()
     {
         return PlayerPrefs.GetInt(caricaNomePlayerGiocante() + "_primoAvvioSensibilita");
     }
 
     /// <summary>
-    /// Salva variabile per controllo del primo avvio per settare il valore della sensibilit� del mouse.
+    /// Salva variabile per controllo del primo avvio per settare il valore della sensibilità del mouse e dello stick.
     /// </summary>
     public static void salvaPrimoAvvioSettaggiSensibilita()
     {
