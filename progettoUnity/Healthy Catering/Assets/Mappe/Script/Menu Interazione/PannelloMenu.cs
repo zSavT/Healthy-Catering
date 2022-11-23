@@ -322,7 +322,7 @@ public class PannelloMenu : MonoBehaviour
     {
         pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Costanti.grassetto + Utility.getStringaConCapitalLetterIniziale(cliente.nome) + Costanti.fineGrassetto;
         pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[1].text = Costanti.grassetto + "Dieta: " + Costanti.fineGrassetto + Costanti.coloreDieta + Utility.getStringaConCapitalLetterIniziale(Dieta.IdDietaToDietaString(cliente.dieta)) + Costanti.fineColore;
-        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[2].text = Costanti.grassetto + "Tieni conto che il cliente ha problemi con...\n" + Costanti.fineGrassetto + Costanti.colorePatologia + Patologia.listIdToListPatologie(cliente.listaIdPatologie) + Costanti.fineColore;
+        pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[2].text = Costanti.grassetto + "Tieni conto che il cliente ha problemi con:\n" + Costanti.fineGrassetto + Costanti.colorePatologia + Patologia.listIdToListPatologie(cliente.listaIdPatologie) + Costanti.fineColore;
     }
 
     private void pannelloIngredientiPiattoApertoChiuso()

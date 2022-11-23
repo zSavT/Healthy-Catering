@@ -190,6 +190,9 @@ public class Ricettario : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Il metodo permette di aprire il pannello del ricettario ed impostando "ricettarioAperto" e "apertoRicettario" su true
+    /// </summary>
     public void apriRicettario()
     {
         pannelloPrincipale.SetActive(true);
@@ -201,6 +204,9 @@ public class Ricettario : MonoBehaviour
         apertoRicettario = true;//TUTORIAL
     }
 
+    /// <summary>
+    /// Il metodo chiude il pannello ricettario resettando l'indice e settando "ricettarioAperto" su false
+    /// </summary>
     public void chiudiRicettario()
     {
         pannelloPrincipale.SetActive(false);
@@ -210,6 +216,10 @@ public class Ricettario : MonoBehaviour
         ricettarioAperto = false;
     }
 
+    /// <summary>
+    /// Il metodo permette di ricevere in output la variabile booleana "ricettarioAperto" che permette di sapere se il ricettario è aperto o meno
+    /// </summary>
+    /// <returns>Booleano ricettario aperto</returns>
     public bool getRicettarioAperto()
     {
         return ricettarioAperto;
