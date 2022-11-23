@@ -2,6 +2,7 @@
 using UnityEngine.Events;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Classe per la gestione delle impostazioni presenti nel menu in Game.<para>
@@ -11,12 +12,14 @@ using UnityEngine.UI;
 /// </summary>
 public class MenuInGame : MonoBehaviour
 {
+    ControllerInput controllerInput;
+
     [Header("Menu Opzioni")]
-    [SerializeField] private KeyCode tastoMenu;
     [SerializeField] private GameObject menuPausa;
     [SerializeField] private MenuAiuto menuAiuto;
     [SerializeField] private UnityEvent aperturaMenuGioco;
     [SerializeField] private UnityEvent chiusuraMenuGioco;
+
     [Header("Elementi")]
     [SerializeField] private TextMeshProUGUI testoUscita;
     [SerializeField] private Button tastoGraficaAudio;
@@ -33,9 +36,6 @@ public class MenuInGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        giocoInPausa = false;
-        menuApribile = true;
-        menuPausa.SetActive(false);
         attivaElementiIniziali();
     }
 
@@ -46,10 +46,23 @@ public class MenuInGame : MonoBehaviour
     }
 
     /// <summary>
+    /// Disattiva input controller quando l'oggetto si distrugge
+    /// </summary>
+    private void OnDestroy()
+    {
+        controllerInput.Disable();
+    }
+
+    /// <summary>
     /// Metodo che attiva gli elementi base del menu opzioni
     /// </summary>
     private void attivaElementiIniziali()
     {
+        controllerInput = new ControllerInput();
+        controllerInput.Enable();
+        giocoInPausa = false;
+        menuApribile = true;
+        menuPausa.SetActive(false);
         testoUscita.gameObject.SetActive(true);
         tastoGraficaAudio.gameObject.SetActive(true);
         tastoImpostazioniControlli.gameObject.SetActive(true);
@@ -64,7 +77,7 @@ public class MenuInGame : MonoBehaviour
     /// </summary>
     private void checkTastoMenu()
     {
-        if (Input.GetKeyDown(tastoMenu))
+        if (controllerInput.Player.UscitaMenu.WasPressedThisFrame())
         {
             if (menuApribile)
             {

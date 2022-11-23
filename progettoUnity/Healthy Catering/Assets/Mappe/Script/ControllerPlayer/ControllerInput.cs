@@ -80,6 +80,42 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interazione"",
+                    ""type"": ""Button"",
+                    ""id"": ""d9649b23-f52d-48b2-abcf-d9ee15f8fb70"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UscitaMenu"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""8328d365-b762-42e5-a559-7b56eaeb02ca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MenuAiuto"",
+                    ""type"": ""Button"",
+                    ""id"": ""384f8907-c4d9-4e40-acc5-9a991a26a3e0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ricettario"",
+                    ""type"": ""Button"",
+                    ""id"": ""1e37eddc-1282-4626-8b5b-090cfe0a9fbf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -289,6 +325,94 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Mouse Y"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6fdcefba-7176-41bc-bb23-2fa474d47209"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Interazione"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1b855526-01dc-4358-a2b5-e6da9fd3ddc1"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Interazione"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9519369a-f9f3-42ec-a57f-9e813eab1eb3"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""UscitaMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1cde4e6e-1b5f-4740-8f93-0121aca187f6"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UscitaMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c3128368-6e85-4bac-b204-199229493b44"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""MenuAiuto"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6083bcca-db68-43e8-b2bf-cf531c02949b"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MenuAiuto"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25f4b10b-fa61-47f0-86bc-af7f88798b5a"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Ricettario"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""64e75d01-d4de-47d0-b753-d1eb3672b6f1"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Ricettario"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -882,6 +1006,10 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
         m_Player_Corsa = m_Player.FindAction("Corsa", throwIfNotFound: true);
         m_Player_MouseX = m_Player.FindAction("Mouse X", throwIfNotFound: true);
         m_Player_MouseY = m_Player.FindAction("Mouse Y", throwIfNotFound: true);
+        m_Player_Interazione = m_Player.FindAction("Interazione", throwIfNotFound: true);
+        m_Player_UscitaMenu = m_Player.FindAction("UscitaMenu", throwIfNotFound: true);
+        m_Player_MenuAiuto = m_Player.FindAction("MenuAiuto", throwIfNotFound: true);
+        m_Player_Ricettario = m_Player.FindAction("Ricettario", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -959,6 +1087,10 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Corsa;
     private readonly InputAction m_Player_MouseX;
     private readonly InputAction m_Player_MouseY;
+    private readonly InputAction m_Player_Interazione;
+    private readonly InputAction m_Player_UscitaMenu;
+    private readonly InputAction m_Player_MenuAiuto;
+    private readonly InputAction m_Player_Ricettario;
     public struct PlayerActions
     {
         private @ControllerInput m_Wrapper;
@@ -969,6 +1101,10 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
         public InputAction @Corsa => m_Wrapper.m_Player_Corsa;
         public InputAction @MouseX => m_Wrapper.m_Player_MouseX;
         public InputAction @MouseY => m_Wrapper.m_Player_MouseY;
+        public InputAction @Interazione => m_Wrapper.m_Player_Interazione;
+        public InputAction @UscitaMenu => m_Wrapper.m_Player_UscitaMenu;
+        public InputAction @MenuAiuto => m_Wrapper.m_Player_MenuAiuto;
+        public InputAction @Ricettario => m_Wrapper.m_Player_Ricettario;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -996,6 +1132,18 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                 @MouseY.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseY;
                 @MouseY.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseY;
                 @MouseY.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseY;
+                @Interazione.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInterazione;
+                @Interazione.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInterazione;
+                @Interazione.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInterazione;
+                @UscitaMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUscitaMenu;
+                @UscitaMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUscitaMenu;
+                @UscitaMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUscitaMenu;
+                @MenuAiuto.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuAiuto;
+                @MenuAiuto.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuAiuto;
+                @MenuAiuto.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuAiuto;
+                @Ricettario.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRicettario;
+                @Ricettario.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRicettario;
+                @Ricettario.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRicettario;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1018,6 +1166,18 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                 @MouseY.started += instance.OnMouseY;
                 @MouseY.performed += instance.OnMouseY;
                 @MouseY.canceled += instance.OnMouseY;
+                @Interazione.started += instance.OnInterazione;
+                @Interazione.performed += instance.OnInterazione;
+                @Interazione.canceled += instance.OnInterazione;
+                @UscitaMenu.started += instance.OnUscitaMenu;
+                @UscitaMenu.performed += instance.OnUscitaMenu;
+                @UscitaMenu.canceled += instance.OnUscitaMenu;
+                @MenuAiuto.started += instance.OnMenuAiuto;
+                @MenuAiuto.performed += instance.OnMenuAiuto;
+                @MenuAiuto.canceled += instance.OnMenuAiuto;
+                @Ricettario.started += instance.OnRicettario;
+                @Ricettario.performed += instance.OnRicettario;
+                @Ricettario.canceled += instance.OnRicettario;
             }
         }
     }
@@ -1180,6 +1340,10 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
         void OnCorsa(InputAction.CallbackContext context);
         void OnMouseX(InputAction.CallbackContext context);
         void OnMouseY(InputAction.CallbackContext context);
+        void OnInterazione(InputAction.CallbackContext context);
+        void OnUscitaMenu(InputAction.CallbackContext context);
+        void OnMenuAiuto(InputAction.CallbackContext context);
+        void OnRicettario(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

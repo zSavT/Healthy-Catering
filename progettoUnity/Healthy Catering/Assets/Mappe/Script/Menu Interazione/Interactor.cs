@@ -4,10 +4,10 @@ using System;
 
 public class Interactor : MonoBehaviour
 {
+    private ControllerInput controllerInput;
     [SerializeField] private ProgressoLivello progresso;
     [Header("Interazione Cliente")]
     [SerializeField] private LayerMask layerUnityNPC = 6;              //layer utilizzato da Unity per le categorie di oggetto
-    [SerializeField] private KeyCode tastoInterazione;              //tasto da premere per invocare l'azione
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform posizioneCamera;
     [SerializeField] private Transform posizioneCameraMenuCliente;
@@ -29,13 +29,10 @@ public class Interactor : MonoBehaviour
 
     [Header("Interazione Ricettario")]
     [SerializeField] private Ricettario ricettarioScript;
-    [SerializeField] private KeyCode testoRicettario;
     [SerializeField] private LayerMask ricettario;
 
     [Header("Menu Aiuto")]
     [SerializeField] private MenuAiuto menuAiuto;
-    [SerializeField] private KeyCode tastoMenuAiuto;
-
 
     [Header("Teleport")]
     [SerializeField] private LayerMask layerUnityTeleport = 9;
@@ -61,6 +58,8 @@ public class Interactor : MonoBehaviour
 
     void Start()
     {
+        controllerInput = new ControllerInput();
+        controllerInput.Enable();
         Debug.Log(Costanti.piattoNonCompatibileTutorial);
         mainCamera = GetComponentInChildren<Camera>();
         posizioneCamera = this.gameObject.GetComponentsInChildren<Transform>()[1];
@@ -97,6 +96,14 @@ public class Interactor : MonoBehaviour
     void Update()
     {
         interazioneUtenteConNPCVari();
+    }
+
+    /// <summary>
+    /// Disattiva il controller alla eliminazione dell'oggetto
+    /// </summary>
+    private void OnDestroy()
+    {
+        controllerInput.Disable();
     }
 
     public void menuApribileOnOff()
@@ -140,11 +147,11 @@ public class Interactor : MonoBehaviour
         {
             gestisciPortaPuntata();
         }
-        else if (Input.GetKeyDown(testoRicettario) && nuovaSchermataApribile())
+        else if (controllerInput.Player.Ricettario.IsPressed() && nuovaSchermataApribile())
         {
             gestisciAperturaRicettario();
         }
-        else if (Input.GetKeyDown(tastoMenuAiuto) && nuovaSchermataApribile())
+        else if (controllerInput.Player.MenuAiuto.IsPressed() && nuovaSchermataApribile())
         {
             gestisciAperturaMenuAiuto();
         }
@@ -156,7 +163,7 @@ public class Interactor : MonoBehaviour
             {
                 if (!PannelloMenu.pannelloIngredientiPiattoAperto && !PannelloMenu.pannelloConfermaPiattoAperto && !PannelloMenu.pannelloIngredientiGiustiSbagliatiAperto)
                 {
-                    if (Input.GetKeyDown(KeyCode.Escape))
+                    if (controllerInput.Player.UscitaMenu.IsPressed())
                     {
                         esciDaInterazioneCliente();
                     }
@@ -186,7 +193,7 @@ public class Interactor : MonoBehaviour
         if (npc.getClienteRaggiuntoBancone())
         {
             inquadratoNPC.Invoke();
-            if (Input.GetKeyDown(tastoInterazione))
+            if (controllerInput.Player.Interazione.IsPressed())
             {
                 interazioneCliente(IDClientePuntato);
             }
@@ -222,7 +229,7 @@ public class Interactor : MonoBehaviour
     private void gestisciPCpuntato()
     {
         inquadratoNPC.Invoke();
-        if (Input.GetKeyDown(tastoInterazione) && !magazzino.getPannelloMagazzinoAperto())
+        if (controllerInput.Player.Interazione.IsPressed() && !magazzino.getPannelloMagazzinoAperto())
         {
             magazzino.apriPannelloMagazzino(giocatore);
             playerStop.Invoke();
@@ -234,7 +241,7 @@ public class Interactor : MonoBehaviour
     private void gestisciNPCpassantePuntato()
     {
         inquadratoNPC.Invoke();
-        if (Input.GetKeyDown(tastoInterazione) && !(interazionePassanti.getPannelloInterazionePassantiAperto()) && !(menuAiuto.getPannelloMenuAiutoAperto()) && !(ricettarioScript.getRicettarioAperto()))
+        if (controllerInput.Player.Interazione.IsPressed() && !(interazionePassanti.getPannelloInterazionePassantiAperto()) && !(menuAiuto.getPannelloMenuAiutoAperto()) && !(ricettarioScript.getRicettarioAperto()))
         {
             interazionePassanti.apriPannelloInterazionePassanti(npcPassivo.transform.parent.name);
             npcPassivo.animazioneParlata(gameObject.transform);
@@ -248,7 +255,7 @@ public class Interactor : MonoBehaviour
     {
         inquadratoNPC.Invoke();
         negozio.animazioneNPCInquadrato();
-        if (Input.GetKeyDown(tastoInterazione) && !(negozio.getPannelloAperto()))
+        if (controllerInput.Player.Interazione.IsPressed() && !(negozio.getPannelloAperto()))
         {
             negozio.apriPannelloNegozio(giocatore);
             playerStop.Invoke();
@@ -260,7 +267,7 @@ public class Interactor : MonoBehaviour
     private void gestisciPortaPuntata()
     {
         inquadratoNPC.Invoke();
-        if (Input.GetKeyDown(tastoInterazione) && !(negozio.getPannelloAperto()))
+        if (controllerInput.Player.Interazione.IsPressed() && !(negozio.getPannelloAperto()))
         {
             suonoNegozio.Play();
             this.gameObject.transform.position = destinazioneTeleport.transform.position;
@@ -320,7 +327,7 @@ public class Interactor : MonoBehaviour
 
     private void gestisciChiusuraNegozio()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (controllerInput.Player.UscitaMenu.IsPressed())
         {
             negozio.chiudiPannelloNegozio();
             PuntatoreMouse.disabilitaCursore();
@@ -330,7 +337,7 @@ public class Interactor : MonoBehaviour
 
     private void gestisciChiusuraPannelloPassanti()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (controllerInput.Player.UscitaMenu.IsPressed())
         {
             interazionePassanti.chiudiPannelloInterazionePassanti();
             npcPassivo.stopAnimazioneParlata(gameObject.transform);
@@ -341,7 +348,7 @@ public class Interactor : MonoBehaviour
 
     private void gestisciChiusuraRicettario()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (controllerInput.Player.UscitaMenu.IsPressed())
         {
             ricettarioScript.chiudiRicettario();
             PuntatoreMouse.disabilitaCursore();
@@ -352,7 +359,7 @@ public class Interactor : MonoBehaviour
 
     private void gestisciChiusuraMenuAiuto()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (controllerInput.Player.UscitaMenu.IsPressed())
         {
             menuAiuto.chiudiPannelloMenuAiuto();
             PuntatoreMouse.disabilitaCursore();

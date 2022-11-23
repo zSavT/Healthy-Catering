@@ -17,7 +17,6 @@ public class MovimentoPlayer : MonoBehaviour
     private ModelloPlayer gestoreModelli;
     [SerializeField] private float velocitaBase = 5f;
     [SerializeField] private float velocitaSprint = 8f;
-    [SerializeField] private KeyCode tastoSprint;
     private float velocitaAttuale = 0;
     private bool isSprinting;
 
