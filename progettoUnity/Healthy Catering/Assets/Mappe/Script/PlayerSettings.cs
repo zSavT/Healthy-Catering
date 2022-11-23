@@ -265,6 +265,26 @@ public class PlayerSettings : MonoBehaviour
         return PlayerPrefs.GetFloat("sensibilita");
     }
 
+    //SENSIBILITA' STICK
+
+    /// <summary>
+    /// Metodo che salva il valore della sensibilità Stick scelta dal giocatore.
+    /// </summary>
+    /// <param name="sensibilita">Valore della sensibilità Stick scelta dal giocatore nello slider</param>
+    public static void salvaImpostazioniSensibilitaStick(float sensibilita)
+    {
+        PlayerPrefs.SetFloat("sensibilitaStick", sensibilita);
+    }
+
+    /// <summary>
+    /// Metodo che carica il valore della sensibilità Stick salvata in precedenza dal giocatore.
+    /// </summary>
+    /// <returns>Valore della sensibilità</returns>
+    public static float caricaImpostazioniSensibilitaStick()
+    {
+        return PlayerPrefs.GetFloat("sensibilitaStick");
+    }
+
     //RISOLUZIONE
 
     /// <summary>

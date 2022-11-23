@@ -32,7 +32,9 @@ public class OpzioniMenu : MonoBehaviour
     [Header("Impostazioni Sensibilità")]
     [SerializeField] private TextMeshProUGUI sliderSensibilitaTesto;
     [SerializeField] private Slider sliderSensibilita;
-    
+    [SerializeField] private TextMeshProUGUI sliderSensibilitaStickTesto;
+    [SerializeField] private Slider sliderSensibilitaStick;
+
     [Header("Impostazioni Fov")]
     [SerializeField] private TextMeshProUGUI sliderFovTesto;
     [SerializeField] private Slider sliderFov;
@@ -48,6 +50,7 @@ public class OpzioniMenu : MonoBehaviour
         //IMPOSTAZIONI CONTROLLI
         sliderFov.value = PlayerSettings.caricaImpostazioniFov();
         sliderSensibilita.value = PlayerSettings.caricaImpostazioniSensibilita();
+        sliderSensibilitaStick.value = PlayerSettings.caricaImpostazioniSensibilitaStick();
 
         //RISOLUZIONE
         risoluzioni = Screen.resolutions;
@@ -248,6 +251,15 @@ public class OpzioniMenu : MonoBehaviour
     {
         sliderSensibilitaTesto.text = sliderSensibilita.value.ToString();
         PlayerSettings.salvaImpostazioniSensibilita(sliderSensibilita.value);
+    }
+
+    /// <summary>
+    /// Aggiorna valore testo sensibilità.
+    /// </summary>
+    public void aggiornaValoreScrittaSensibilitaStick()
+    {
+        sliderSensibilitaStickTesto.text = sliderSensibilitaStick.value.ToString();
+        PlayerSettings.salvaImpostazioniSensibilitaStick(sliderSensibilitaStick.value);
     }
 
     /// <summary>

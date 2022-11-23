@@ -2360,7 +2360,6 @@ MonoBehaviour:
   layerUnityNPC:
     serializedVersion: 2
     m_Bits: 64
-  tastoInterazione: 101
   mainCamera: {fileID: 0}
   posizioneCamera: {fileID: 0}
   posizioneCameraMenuCliente: {fileID: 4878910828240045144}
@@ -2375,12 +2374,10 @@ MonoBehaviour:
     m_Bits: 128
   interazionePassanti: {fileID: 0}
   ricettarioScript: {fileID: 0}
-  testoRicettario: 114
   ricettario:
     serializedVersion: 2
     m_Bits: 1024
   menuAiuto: {fileID: 0}
-  tastoMenuAiuto: 104
   layerUnityTeleport:
     serializedVersion: 2
     m_Bits: 512
@@ -2718,8 +2715,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocitaBase: 5
   velocitaSprint: 8
-  tastoSprint: 304
-  tastoSalto: 32
   altezzaSalto: 0.35
   distanzaPavimento: 0.4
   gravita: -9.8
@@ -2911,8 +2906,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posizioneCameraIniziale: {fileID: 5218992457513206985}
   posizioneCameraFovMassimo: 0.51
-  sensibilitaMouse: 250
+  sensibilitaMouse: 10
   rangeVisuale: 90
+  sensibilitaStick: 100
 --- !u!114 &6450235984614192960
 MonoBehaviour:
   m_ObjectHideFlags: 0

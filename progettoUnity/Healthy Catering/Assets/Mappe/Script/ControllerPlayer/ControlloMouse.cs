@@ -14,11 +14,11 @@ public class ControlloMouse : MonoBehaviour
     [SerializeField] private float posizioneCameraFovMassimo = 0.51f;  
     private Camera cameraGioco;
     [Header("Impostazioni Mouse")]
-    [SerializeField] private float sensibilitaMouse = 100f;     //250 valore mediano
+    [SerializeField] private float sensibilitaMouse = 10f;     //250 valore mediano
     [SerializeField] private float rangeVisuale = 90f;
 
     [Header("Impostazioni Controller")]
-    [SerializeField] private float sensibilitaStick = 250f;
+    [SerializeField] private float sensibilitaStick = 100f;
 
     private Transform modelloPlayer;
     private float xRotation = 0f;
@@ -48,6 +48,7 @@ public class ControlloMouse : MonoBehaviour
         {
             PlayerSettings.salvaPrimoAvvioSettaggiSensibilita();
             PlayerSettings.salvaImpostazioniSensibilita(sensibilitaMouse);
+            PlayerSettings.salvaImpostazioniSensibilita(sensibilitaStick);
         }
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -59,6 +60,7 @@ public class ControlloMouse : MonoBehaviour
     void Update()
     {
         sensibilitaMouse = PlayerSettings.caricaImpostazioniSensibilita();
+        sensibilitaStick = PlayerSettings.caricaImpostazioniSensibilitaStick();
         if (puoCambiareVisuale)
         {
             controlliInputVisuale();
