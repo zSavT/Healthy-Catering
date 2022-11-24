@@ -69,7 +69,7 @@ public class Interactor : MonoBehaviour
     /// <summary>
     /// Disattiva il controller alla eliminazione dell'oggetto
     /// </summary>
-    private void OnDisable()
+     private void OnDestroy()
     {
         controllerInput.Disable();
     }

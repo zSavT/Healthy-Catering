@@ -69,9 +69,9 @@ public class MovimentoPlayer : MonoBehaviour
     }
 
     /// <summary>
-    /// Il metodo disabilità il controller quando è disattivato.
+    /// Disattiva il controller alla eliminazione dell'oggetto
     /// </summary>
-    private void OnDisable()
+    private void OnDestroy()
     {
         controllerInput.Disable();
     }
