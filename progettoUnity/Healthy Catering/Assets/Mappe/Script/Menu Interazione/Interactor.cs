@@ -7,9 +7,9 @@ public class Interactor : MonoBehaviour
     private ControllerInput controllerInput;
     [SerializeField] private ProgressoLivello progresso;
     [Header("Interazione Cliente")]
+    private Camera mainCamera;
+    private Transform posizioneCamera;
     [SerializeField] private LayerMask layerUnityNPC = 6;              //layer utilizzato da Unity per le categorie di oggetto
-    [SerializeField] private Camera mainCamera;
-    [SerializeField] private Transform posizioneCamera;
     [SerializeField] private Transform posizioneCameraMenuCliente;
     [SerializeField] private GameObject pannelloMenuECliente;
     [SerializeField] private PannelloMenu pannelloMenuCliente;
