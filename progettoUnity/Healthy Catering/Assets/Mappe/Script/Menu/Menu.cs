@@ -4,6 +4,8 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Wilberforce;
 using TMPro;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Classe per la gestione delle impostazioni presenti nel menu iniziale del Gioco.<para>
@@ -13,6 +15,7 @@ using TMPro;
 /// </summary>
 public class Menu : MonoBehaviour
 {
+    [SerializeField] private EventSystem eventSystem;
     [SerializeField] private Camera cameraGioco;
     [SerializeField] private TextMeshProUGUI testoVersioneGioco;
     [SerializeField] private TextMeshProUGUI companyName;
@@ -21,7 +24,8 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject elementiProfiloNonEsistente;
     private List<Player> player = new List<Player>();
     //serve per eliminare altri elementi in visualilzzazione
-    [SerializeField] private UnityEvent clickCrediti;             
+    [SerializeField] private UnityEvent clickCrediti;
+
 
     void Start()
     {
@@ -44,6 +48,7 @@ public class Menu : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(Utility.gamePadConnesso());
         attivaDisattivaLivelli();
     }
 
@@ -80,7 +85,6 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene(5);
     }
 
-    //metodo per triggerare a mano i livelli, da eliminare poi.
     /// <summary>
     /// Metodo per attivare i livelli tramite cheatcode
     /// </summary>
@@ -168,5 +172,14 @@ public class Menu : MonoBehaviour
     public void classifica()
     {
         SelezioneLivelli.caricaClassifica();
+    }
+
+    /// <summary>
+    /// Il metodo imposta il gameObject passato come quello selezionato dal EventSystem
+    /// </summary>
+    /// <param name="bottoneIniziale">GameObject da impostare come elemento principale</param>
+    public void impostaEventSystemSelezionato(GameObject bottoneIniziale)
+    {
+        eventSystem.SetSelectedGameObject(bottoneIniziale);
     }
 }
