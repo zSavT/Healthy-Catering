@@ -6,6 +6,8 @@ using Wilberforce;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using Unity.VisualScripting;
 
 /// <summary>
 /// Classe per la gestione delle impostazioni presenti nel menu iniziale del Gioco.<para>
@@ -22,6 +24,9 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject elementiCrediti;
     [SerializeField] private GameObject elementiMenuPrincipale;
     [SerializeField] private GameObject elementiProfiloNonEsistente;
+    [SerializeField] private GameObject elementiUscita;
+    [SerializeField] private Image immagineController;
+    private GameObject ultimoElementoSelezionato;
     private List<Player> player = new List<Player>();
     //serve per eliminare altri elementi in visualilzzazione
     [SerializeField] private UnityEvent clickCrediti;
@@ -29,6 +34,7 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
+        attivaDisattivaIconaController();
         gameVersion();
         //disattivo a priori, per non visualizzarli in caso di errori di lettura dei nomi utenti ed evitare lo schermo occupato tutto da scritte
         elementiProfiloNonEsistente.SetActive(false);               
@@ -44,12 +50,91 @@ public class Menu : MonoBehaviour
         }
         elementiCrediti.SetActive(false);
         CambioCursore.cambioCursoreNormale();
+        Debug.Log(elementiCrediti.GetComponentsInChildren<Transform>()[10].gameObject);
     }
 
     void Update()
     {
-        Debug.Log(Utility.gamePadConnesso());
+        
+        attivaDisattivaIconaController();
         attivaDisattivaLivelli();
+    }
+
+    void Awake()
+    {
+        InputSystem.onDeviceChange += OnDeviceChange;
+    }
+
+    void OnDestroy()
+    {
+        InputSystem.onDeviceChange -= OnDeviceChange;
+    }
+
+    /// <summary>
+    /// Il metodo controlla e gestiscisce le periferiche di Input 
+    /// </summary>
+    /// <param name="device"></param>
+    /// <param name="change"></param>
+    public void OnDeviceChange(InputDevice device, InputDeviceChange change)
+    {
+        switch (change)
+        {
+            case InputDeviceChange.Added:
+                // New Device.
+                break;
+            case InputDeviceChange.Disconnected:
+                ultimoElementoSelezionato = eventSystem.currentSelectedGameObject;
+                break;
+            case InputDeviceChange.Reconnected:
+                aggioraEventSystemPerControllerConnesso(ultimoElementoSelezionato);
+                Debug.Log("Test");
+                break;
+            case InputDeviceChange.Removed:
+                // Remove from Input System entirely; by default, Devices stay in the system once discovered.
+                break;
+            default:
+                // See InputDeviceChange reference for other event types.
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Il metodo aumenta la trasparenza dell'icona del controller se inserito
+    /// </summary>
+    private void attivaDisattivaIconaController()
+    {
+        if (Utility.gamePadConnesso())
+            immagineController.color = new Color32(255, 255, 255, 255);
+        else
+            immagineController.color = new Color32(255, 255, 255, 127);
+    }
+
+    /// <summary>
+    /// Il metodo aggiorna l'elemento selezionato
+    /// </summary>
+    private void aggioraEventSystemPerControllerConnesso()
+    {
+        if (Utility.gamePadConnesso())
+            if (!elementiUscita.activeSelf && !elementiCrediti.activeSelf && elementiMenuPrincipale.activeSelf)
+            {
+                eventSystem.SetSelectedGameObject(elementiMenuPrincipale.GetComponentsInChildren<Transform>()[1].gameObject);
+                Debug.Log(elementiMenuPrincipale.GetComponentsInChildren<Transform>()[1].gameObject);
+            }
+                
+            else if (!elementiUscita.activeSelf && elementiCrediti.activeSelf && !elementiMenuPrincipale.activeSelf)
+                eventSystem.SetSelectedGameObject(elementiCrediti.GetComponentsInChildren<Transform>()[10].gameObject);
+            else if (!elementiUscita.activeSelf && !elementiCrediti.activeSelf && !elementiMenuPrincipale.activeSelf)
+                eventSystem.SetSelectedGameObject(elementiUscita.GetComponentsInChildren<Transform>()[0].gameObject);
+    }
+
+    /// <summary>
+    /// Il metodo imposta come elemento selzionato dell'EventSystem l'oggetto passato in input
+    /// </summary>
+    /// <param name="elementoDaSelezionare">GameObject da impostare come elemento selezionato</param>
+    private void aggioraEventSystemPerControllerConnesso(GameObject elementoDaSelezionare)
+    {
+        if (Utility.gamePadConnesso())
+            eventSystem.SetSelectedGameObject(elementoDaSelezionare);
     }
 
     /// <summary>
@@ -63,7 +148,7 @@ public class Menu : MonoBehaviour
     /// <summary>
     /// Metodo per controllare se sono presenti o meno dei player nel database.
     /// </summary>
-    /// <returns>True: � presente almeno un player, false: non esiste alcun player</returns>
+    /// <returns>True: è presente almeno un player, false: non esiste alcun player</returns>
     private bool presentePlayer()
     {
         return player.Count > 0;
