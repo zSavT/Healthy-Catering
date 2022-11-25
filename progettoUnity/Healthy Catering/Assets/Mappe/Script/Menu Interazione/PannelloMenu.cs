@@ -85,12 +85,18 @@ public class PannelloMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo attiva il gameObject del pannello cliente
+    /// </summary>
     private void apriMenuCliente()
     {
         pannelloMenu.SetActive(true);
         pannelloCliente.SetActive(true);
     }
 
+    /// <summary>
+    /// Il metodo disattiva il gameObject del pannello cliente
+    /// </summary>
     private void chiudiMenuCliente()
     {
         pannelloMenu.SetActive(false);
@@ -98,11 +104,18 @@ public class PannelloMenu : MonoBehaviour
         pannelloMenuAperto = false;
     }
 
+    /// <summary>
+    /// Il metodo restiuisce il bolleano per controllare se il pannello menu cliente è aperto o meno
+    /// </summary>
+    /// <returns>Booleano pannelloMenuAperto</returns>
     public bool getPannelloMenuClienteAperto()
     {
         return pannelloMenuAperto;
     }
 
+    /// <summary>
+    /// Il metodo attiva il pannello principale dell'interazione con il cliente
+    /// </summary>
     public void apriPannelloMenuCliente()
     {
         pannelloMenuAperto = true;
@@ -110,12 +123,21 @@ public class PannelloMenu : MonoBehaviour
         apriMenuCliente();
     }
 
+    /// <summary>
+    /// Il metodo disattiva il pannello principale dell'interazione con il cliente
+    /// </summary>
     public void ChiudiPannelloMenuCliente()
     {
         pannelloPrincipaleMenuCliente.SetActive(false);
         chiudiMenuCliente();
     }
 
+    /// <summary>
+    /// Il metodo imposta tutte le informazioni del cliente per i controlli
+    /// </summary>
+    /// <param name="idClientePuntato">int id del cliente puntato</param>
+    /// <param name="giocatorePartita">Player classe player del giocatore</param>
+    /// <param name="controlleNPCPuntato">Interactable classe del modello del cliente </param>
     public void setCliente(int idClientePuntato, Player giocatorePartita, Interactable controlleNPCPuntato)
     {
         apriPannelloMenuCliente();
