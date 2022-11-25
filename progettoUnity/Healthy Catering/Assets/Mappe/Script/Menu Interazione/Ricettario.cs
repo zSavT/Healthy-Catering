@@ -35,6 +35,9 @@ public class Ricettario : MonoBehaviour
         chiudiRicettario();
     }
 
+    /// <summary>
+    /// Il metodo controlla se i tasti avanti e deitro devono essere interagibili o meno
+    /// </summary>
     private void attivaDisattivaAvantiIndietro()
     {
         if (isVistaPiatto)
@@ -57,12 +60,20 @@ public class Ricettario : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Imposta il bottene per andare avanti ed indietro nel ricettario attivi o meno
+    /// </summary>
+    /// <param name="avantiAttivo">Booleano per il tasto avanti interagibile</param>
+    /// <param name="indietroAttivo">Booleano per il tasto indietro interagibile</param>
     private void setBottoniAvantiIndietroInteractable(bool avantiAttivo, bool indietroAttivo)
     {
         avanti.interactable = avantiAttivo;
         indietro.interactable = indietroAttivo;
     }
 
+    /// <summary>
+    /// Il metodo permette di cambiare la visualizzazione del ricettario in modalità ingredienti
+    /// </summary>
     public void switchToIngredientiView()
     {
         isVistaPiatto = false;
@@ -70,8 +81,12 @@ public class Ricettario : MonoBehaviour
 
         setTestoSchermata();
         setSwitchPiattiIngredienti();
+        visualizzazioneNormale = false;
     }
 
+    /// <summary>
+    /// Il metodo permette di cambiare la visualizzazione del ricettario in modalità piatti
+    /// </summary>
     public void switchToPiattiView()
     {
         isVistaPiatto = true;
@@ -79,8 +94,12 @@ public class Ricettario : MonoBehaviour
 
         setTestoSchermata();
         setSwitchPiattiIngredienti();
+        visualizzazioneNormale = false;
     }
 
+    /// <summary>
+    /// Imposta i valori booleani della modalità attualmente visualizzata nel ricettario (Se in modalità piatti o ingredienti)
+    /// </summary>
     private void setSwitchPiattiIngredienti()
     {
         if (isVistaPiatto)
@@ -95,12 +114,21 @@ public class Ricettario : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// IL metodo resetta l'indice del ricettario per gli ingredienti e per i piatti
+    /// </summary>
     private void resetIndiciPagina()
     {
         numeroPaginaIngredienti = 0;
         numeroPaginaPiatti = 0;
     }
 
+    /// <summary>
+    /// Il metodo imposta il testo nella schermata
+    /// </summary>
+    /// <param name="titolo">Titolo del piatto o dell'ingrediente</param>
+    /// <param name="testo">Testo del piatto o dell'ingrediente</param>
+    /// <param name="testoBottoneSwitchVista">Testo del bottone per la scheda tecnica o lista ingredienti\Piatti realizzabili</param>
     private void setTestoSchermata(string titolo, string testo, string testoBottoneSwitchVista)
     {
         titoloSchermata.text = titolo + Costanti.fineColore;
@@ -108,6 +136,9 @@ public class Ricettario : MonoBehaviour
         testoBottoneAltriDati.text = testoBottoneSwitchVista;
     }
 
+    /// <summary>
+    /// Il metodo popola la schermata con il testo corretto da visualizzare del ingrediente o del piatto
+    /// </summary>
     private void setTestoSchermata()
     {
         if (isVistaPiatto)
@@ -129,6 +160,9 @@ public class Ricettario : MonoBehaviour
         attivaDisattivaAvantiIndietro();
     }
 
+    /// <summary>
+    /// Il metodo permette di visualizzare la pagina successiva del ricettario
+    /// </summary>
     public void avantiPagina()
     {
         if (isVistaPiatto)
@@ -143,8 +177,12 @@ public class Ricettario : MonoBehaviour
                 numeroPaginaIngredienti++;
             setTestoSchermata();
         }
+        visualizzazioneNormale = false;
     }
 
+    /// <summary>
+    /// Il metodo aggiorna l'indice del ricettario ed aggiorna la schermata in base all'indice
+    /// </summary>
     public void indietroPagina()
     {
         if (isVistaPiatto)
@@ -159,13 +197,17 @@ public class Ricettario : MonoBehaviour
                 numeroPaginaIngredienti--;
             setTestoSchermata();
         }
+        visualizzazioneNormale = false;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public void visualizzaAltriDati()
     {
         visualizzazioneNormale = !visualizzazioneNormale;
 
-        if (visualizzazioneNormale)
+        if (!visualizzazioneNormale)
         {
             setTestoSchermata();
         }
@@ -175,6 +217,9 @@ public class Ricettario : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo aggiorna la schermata in base alla tipologia di elemento selezionato tra ingrediente o piatto
+    /// </summary>
     private void switchAVisualizzazioneAltriDati()
     {
         if (isVistaPiatto)
@@ -214,6 +259,7 @@ public class Ricettario : MonoBehaviour
         resetIndiciPagina();
 
         ricettarioAperto = false;
+        visualizzazioneNormale = false;
     }
 
     /// <summary>
