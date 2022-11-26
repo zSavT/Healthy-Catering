@@ -4,6 +4,8 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using System.Collections;
 using Wilberforce;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Classe per il caricamento dei livelli<para>
@@ -25,7 +27,11 @@ public class SelezioneLivelli : MonoBehaviour
      */
     [SerializeField] private Camera cameraGioco;
     [SerializeField] private GameObject elementiDomandaUscita;
- 
+
+    [Header("Controller comandi")]
+    private EventSystem eventSystem;
+    private GameObject ultimoElementoSelezionato;
+
     [Header("Bottoni Livelli")]
     [SerializeField] private Button bottoneLivello0;
     [SerializeField] private Button bottoneLivello1;
@@ -37,6 +43,7 @@ public class SelezioneLivelli : MonoBehaviour
 
     void Start()
     {
+        eventSystem = EventSystem.current;
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         if (PlayerSettings.caricaProgressoLivello1() == 1)
         {
@@ -47,6 +54,53 @@ public class SelezioneLivelli : MonoBehaviour
             bottoneLivello2.interactable = true;
         }
         elementiDomandaUscita.SetActive(false);                                         //disattiva gli elementi della domanda all'uscita per non visualizzarli fin da subito
+    }
+
+    void Awake()
+    {
+        InputSystem.onDeviceChange += OnDeviceChange;
+    }
+
+    void OnDestroy()
+    {
+        InputSystem.onDeviceChange -= OnDeviceChange;
+    }
+
+    /// <summary>
+    /// Il metodo controlla e gestiscisce le periferiche di Input 
+    /// </summary>
+    /// <param name="device"></param>
+    /// <param name="change"></param>
+    public void OnDeviceChange(InputDevice device, InputDeviceChange change)
+    {
+        switch (change)
+        {
+            case InputDeviceChange.Added:
+                // New Device.
+                break;
+            case InputDeviceChange.Disconnected:
+                ultimoElementoSelezionato = eventSystem.currentSelectedGameObject;
+                break;
+            case InputDeviceChange.Reconnected:
+                aggioraEventSystemPerControllerConnesso(ultimoElementoSelezionato);
+                break;
+            case InputDeviceChange.Removed:
+                // Remove from Input System entirely; by default, Devices stay in the system once discovered.
+                break;
+            default:
+                // See InputDeviceChange reference for other event types.
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Il metodo imposta come elemento selzionato dell'EventSystem l'oggetto passato in input
+    /// </summary>
+    /// <param name="elementoDaSelezionare">GameObject da impostare come elemento selezionato</param>
+    private void aggioraEventSystemPerControllerConnesso(GameObject elementoDaSelezionare)
+    {
+        if (Utility.gamePadConnesso())
+            eventSystem.SetSelectedGameObject(elementoDaSelezionare);
     }
 
     /// <summary>
