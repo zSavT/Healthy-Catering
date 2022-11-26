@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using UnityEngine.InputSystem.XR;
 
 /// <summary>
 /// Classe per la gestione delle impostazioni presenti nel menu iniziale del Gioco.<para>
@@ -104,9 +105,14 @@ public class Menu : MonoBehaviour
     private void attivaDisattivaIconaController()
     {
         if (Utility.gamePadConnesso())
+        {
             immagineController.color = new Color32(255, 255, 255, 255);
-        else
+            immagineController.gameObject.GetComponent<ToolTip>().setMessaggio("Controller connesso.");
+        } else
+        {
             immagineController.color = new Color32(255, 255, 255, 127);
+            immagineController.gameObject.GetComponent<ToolTip>().setMessaggio("Controller non connesso."); ;
+        }
     }
 
     /// <summary>
