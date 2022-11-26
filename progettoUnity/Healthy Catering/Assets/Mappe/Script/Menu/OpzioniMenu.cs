@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Classe per la gestione delle impostazioni del gioco.<para>
@@ -39,10 +41,13 @@ public class OpzioniMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI sliderFovTesto;
     [SerializeField] private Slider sliderFov;
     private bool caricatiValori = false;
+    private GameObject ultimoElementoSelezionato;
+    private EventSystem eventSystem;
 
     void Start()
     {
         CambioCursore.cambioCursoreNormale();
+        eventSystem = EventSystem.current;
 
         //DALTONISMO
         daltonismo.value = PlayerSettings.caricaImpostazioniDaltonismo();
@@ -99,6 +104,53 @@ public class OpzioniMenu : MonoBehaviour
         sliderVolumeSuoni.value = PlayerSettings.caricaImpostazioniVolumeSuoni();
 
         caricatiValori = true;
+    }
+
+    void Awake()
+    {
+        InputSystem.onDeviceChange += OnDeviceChange;
+    }
+
+    void OnDestroy()
+    {
+        InputSystem.onDeviceChange -= OnDeviceChange;
+    }
+
+    /// <summary>
+    /// Il metodo controlla e gestiscisce le periferiche di Input 
+    /// </summary>
+    /// <param name="device"></param>
+    /// <param name="change"></param>
+    public void OnDeviceChange(InputDevice device, InputDeviceChange change)
+    {
+        switch (change)
+        {
+            case InputDeviceChange.Added:
+                // New Device.
+                break;
+            case InputDeviceChange.Disconnected:
+                ultimoElementoSelezionato = eventSystem.currentSelectedGameObject;
+                break;
+            case InputDeviceChange.Reconnected:
+                aggioraEventSystemPerControllerConnesso(ultimoElementoSelezionato);
+                break;
+            case InputDeviceChange.Removed:
+                // Remove from Input System entirely; by default, Devices stay in the system once discovered.
+                break;
+            default:
+                // See InputDeviceChange reference for other event types.
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Il metodo imposta come elemento selzionato dell'EventSystem l'oggetto passato in input
+    /// </summary>
+    /// <param name="elementoDaSelezionare">GameObject da impostare come elemento selezionato</param>
+    private void aggioraEventSystemPerControllerConnesso(GameObject elementoDaSelezionare)
+    {
+        if (Utility.gamePadConnesso())
+            eventSystem.SetSelectedGameObject(elementoDaSelezionare);
     }
 
     /// <summary>
