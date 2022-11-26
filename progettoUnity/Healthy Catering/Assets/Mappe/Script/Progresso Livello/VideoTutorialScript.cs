@@ -1,12 +1,14 @@
 using System.Collections;
-using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.Video;
-using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.Audio;
+using UnityEngine.Video;
+using UnityEngine.UI;
 using Wilberforce;
+using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class VideoTutorialScript : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class VideoTutorialScript : MonoBehaviour
     [SerializeField] VideoPlayer videoPlayer;
     [SerializeField] private AudioMixer audioMIxer;
     [SerializeField] private TextMeshProUGUI titolo;
+    private EventSystem eventSystem;
     [Header("Elementi Caricamento Livello")]
     [SerializeField] private Slider sliderCaricamento;        //slider del caricamento della partita
     [SerializeField] private UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
@@ -21,6 +24,7 @@ public class VideoTutorialScript : MonoBehaviour
     // Examples of VideoPlayer function
     void Start()
     {
+        eventSystem = FindObjectOfType<EventSystem>();
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         videoPlayer = cameraGioco.GetComponent<VideoPlayer>();
         /*
@@ -69,6 +73,43 @@ public class VideoTutorialScript : MonoBehaviour
         videoPlayer.Play();
         StartCoroutine(autoSkip(((float)videoPlayer.length) + 2f));          //Aggiungo un secondo di delay per dare la possibilità ai pc poco performanti di non caricarli troppo
         audioMIxer.SetFloat("volume", -80f);
+    }
+
+    void Awake()
+    {
+        InputSystem.onDeviceChange += OnDeviceChange;
+    }
+
+    void OnDestroy()
+    {
+        InputSystem.onDeviceChange -= OnDeviceChange;
+    }
+
+    /// <summary>
+    /// Il metodo controlla e gestiscisce le periferiche di Input 
+    /// </summary>
+    /// <param name="device"></param>
+    /// <param name="change"></param>
+    public void OnDeviceChange(InputDevice device, InputDeviceChange change)
+    {
+        switch (change)
+        {
+            case InputDeviceChange.Added:
+                // New Device.
+                break;
+            case InputDeviceChange.Disconnected:
+
+                break;
+            case InputDeviceChange.Reconnected:
+                eventSystem.SetSelectedGameObject(eventSystem.currentSelectedGameObject);
+                break;
+            case InputDeviceChange.Removed:
+                // Remove from Input System entirely; by default, Devices stay in the system once discovered.
+                break;
+            default:
+                // See InputDeviceChange reference for other event types.
+                break;
+        }
     }
 
     public void caricaLivelloTutorial()

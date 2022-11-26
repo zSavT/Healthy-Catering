@@ -59,7 +59,6 @@ public class Menu : MonoBehaviour
 
     void Update()
     {
-        
         attivaDisattivaIconaController();
         attivaDisattivaLivelli();
     }
