@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using TMPro;
 using Wilberforce;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Classe per la gestione delle impostazioni presenti nel menu del profilo utente per la modifica e selezione.<para>
@@ -23,6 +25,8 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     [SerializeField] private Button bottoneSalva;
     [SerializeField] private Camera cameraGioco;
     [SerializeField] private AudioSource suonoClick;
+    private EventSystem eventSystem;
+    private GameObject ultimoElementoSelezionato;
     private List<Player> player = new List<Player>();
     private List<string> nomiPlayerPresenti = new List<string>();
     private string nomeGiocatoreScritto;
@@ -41,6 +45,54 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
         genereNeutroScelto = false;
         disattivaElementi();
         controlloEsistenzaProfiliPlayer();
+        controlloNomeEsistente();
+    }
+
+    void Awake()
+    {
+        InputSystem.onDeviceChange += OnDeviceChange;
+    }
+
+    void OnDestroy()
+    {
+        InputSystem.onDeviceChange -= OnDeviceChange;
+    }
+
+    /// <summary>
+    /// Il metodo controlla e gestiscisce le periferiche di Input 
+    /// </summary>
+    /// <param name="device"></param>
+    /// <param name="change"></param>
+    public void OnDeviceChange(InputDevice device, InputDeviceChange change)
+    {
+        switch (change)
+        {
+            case InputDeviceChange.Added:
+                // New Device.
+                break;
+            case InputDeviceChange.Disconnected:
+                ultimoElementoSelezionato = eventSystem.currentSelectedGameObject;
+                break;
+            case InputDeviceChange.Reconnected:
+                aggioraEventSystemPerControllerConnesso(ultimoElementoSelezionato);
+                break;
+            case InputDeviceChange.Removed:
+                // Remove from Input System entirely; by default, Devices stay in the system once discovered.
+                break;
+            default:
+                // See InputDeviceChange reference for other event types.
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Il metodo imposta come elemento selzionato dell'EventSystem l'oggetto passato in input
+    /// </summary>
+    /// <param name="elementoDaSelezionare">GameObject da impostare come elemento selezionato</param>
+    private void aggioraEventSystemPerControllerConnesso(GameObject elementoDaSelezionare)
+    {
+        if (Utility.gamePadConnesso())
+            eventSystem.SetSelectedGameObject(elementoDaSelezionare);
     }
 
     /// <summary>
@@ -59,7 +111,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     /// </summary>
     public void controlloNomeEsistente()
     {
-        if (nomeGiocatoreScritto != "")
+        if (nomeGiocatoreScritto != string.Empty)
         {
             bottoneSalva.interactable = true;
             if (PlayerSettings.caricaPrimoAvvio() == 1)
