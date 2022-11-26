@@ -38,6 +38,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        eventSystem = EventSystem.current;
         PuntatoreMouse.abilitaCursore();
         nomeGiocatoreScritto = "";
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
