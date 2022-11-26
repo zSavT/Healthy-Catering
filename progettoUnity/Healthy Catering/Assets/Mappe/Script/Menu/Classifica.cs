@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using Wilberforce;
 
 /// <summary>
@@ -16,17 +18,65 @@ public class Classifica : MonoBehaviour
     [SerializeField] private TextMeshProUGUI listaPunteggioLivello0;
     [SerializeField] private TextMeshProUGUI listaPunteggioLivello1;
     [SerializeField] private TextMeshProUGUI listaPunteggioLivello2;
+    [SerializeField] private GameObject bottoneIndietro;
+    private EventSystem eventSystem;
     private List<Player> listaPlayer;
     private int numeroGiocatoriDaVisualizzare = 5;
 
     void Start()
     {
+        eventSystem = FindObjectOfType<EventSystem>();
         azzeraTextElementi();
-
         popolaClassificaLivello0();
         popolaClassificaLivello1();
         popolaClassificaLivello2();
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
+    }
+
+    void Awake()
+    {
+        InputSystem.onDeviceChange += OnDeviceChange;
+    }
+
+    void OnDestroy()
+    {
+        InputSystem.onDeviceChange -= OnDeviceChange;
+    }
+
+    /// <summary>
+    /// Il metodo controlla e gestiscisce le periferiche di Input 
+    /// </summary>
+    /// <param name="device"></param>
+    /// <param name="change"></param>
+    public void OnDeviceChange(InputDevice device, InputDeviceChange change)
+    {
+        switch (change)
+        {
+            case InputDeviceChange.Added:
+                // New Device.
+                break;
+            case InputDeviceChange.Disconnected:
+                break;
+            case InputDeviceChange.Reconnected:
+                aggioraEventSystemPerControllerConnesso(bottoneIndietro);
+                break;
+            case InputDeviceChange.Removed:
+                // Remove from Input System entirely; by default, Devices stay in the system once discovered.
+                break;
+            default:
+                // See InputDeviceChange reference for other event types.
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Il metodo imposta come elemento selzionato dell'EventSystem l'oggetto passato in input
+    /// </summary>
+    /// <param name="elementoDaSelezionare">GameObject da impostare come elemento selezionato</param>
+    private void aggioraEventSystemPerControllerConnesso(GameObject elementoDaSelezionare)
+    {
+        if (Utility.gamePadConnesso())
+            eventSystem.SetSelectedGameObject(elementoDaSelezionare);
     }
 
     /// <summary>

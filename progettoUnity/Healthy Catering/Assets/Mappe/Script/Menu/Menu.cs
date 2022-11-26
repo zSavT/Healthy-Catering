@@ -18,7 +18,6 @@ using UnityEngine.InputSystem.XR;
 /// </summary>
 public class Menu : MonoBehaviour
 {
-    [SerializeField] private EventSystem eventSystem;
     [SerializeField] private Camera cameraGioco;
     [SerializeField] private TextMeshProUGUI testoVersioneGioco;
     [SerializeField] private TextMeshProUGUI companyName;
@@ -27,7 +26,9 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject elementiProfiloNonEsistente;
     [SerializeField] private GameObject elementiUscita;
     [SerializeField] private Image immagineController;
+    private ControllerInput controllerInput;
     private GameObject ultimoElementoSelezionato;
+    private EventSystem eventSystem;
     private List<Player> player = new List<Player>();
     //serve per eliminare altri elementi in visualilzzazione
     [SerializeField] private UnityEvent clickCrediti;
@@ -35,6 +36,8 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
+        controllerInput = new ControllerInput();
+        eventSystem = FindObjectOfType<EventSystem>();
         attivaDisattivaIconaController();
         gameVersion();
         //disattivo a priori, per non visualizzarli in caso di errori di lettura dei nomi utenti ed evitare lo schermo occupato tutto da scritte
@@ -88,7 +91,6 @@ public class Menu : MonoBehaviour
                 break;
             case InputDeviceChange.Reconnected:
                 aggioraEventSystemPerControllerConnesso(ultimoElementoSelezionato);
-                Debug.Log("Test");
                 break;
             case InputDeviceChange.Removed:
                 // Remove from Input System entirely; by default, Devices stay in the system once discovered.
