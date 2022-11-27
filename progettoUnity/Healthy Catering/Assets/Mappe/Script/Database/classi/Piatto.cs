@@ -61,6 +61,11 @@ public class Piatto
             && OggettoQuantita<int>.listeIdQuantitaUguali(this.listaIdIngredientiQuantita, ((Piatto)obj).listaIdIngredientiQuantita);
     }
 
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
     public override string ToString()
     {
         string output = this.descrizione + "\n\n" +

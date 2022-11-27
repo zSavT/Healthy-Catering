@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
-using System.Linq;
 
 /// <summary>
 /// Classe per la gestione delle impostazioni del scelte dal player.
@@ -130,7 +128,7 @@ public class PlayerSettings : MonoBehaviour
     //LIVELLO 1
 
     /// <summary>
-    /// Salva se il livello 1 � stato completato o meno per il profilo del giocatore giocante.
+    /// Salva se il livello 1 è stato completato o meno per il profilo del giocatore giocante.
     /// </summary>
     /// <param name="completato">True completato, false non completato</param>
     public static void salvaProgressoLivello1(bool completato)
@@ -142,7 +140,7 @@ public class PlayerSettings : MonoBehaviour
     }
 
     /// <summary>
-    /// Carica se il livello 1 � stato completato o meno per il profilo del giocatore giocante.
+    /// Carica se il livello 1 è stato completato o meno per il profilo del giocatore giocante.
     /// </summary>
     /// <returns>1 completato, 0 non completato.</returns>
     public static int caricaProgressoLivello1()
@@ -153,7 +151,7 @@ public class PlayerSettings : MonoBehaviour
     //LIVELLO 2
 
     /// <summary>
-    /// Salva se il livello 2 � stato completato o meno per il profilo del giocatore giocante.
+    /// Salva se il livello 2 è stato completato o meno per il profilo del giocatore giocante.
     /// </summary>
     /// <param name="completato">True completato, false non completato</param>
     public static void salvaProgressoLivello2(bool completato)
@@ -165,7 +163,7 @@ public class PlayerSettings : MonoBehaviour
     }
 
     /// <summary>
-    /// Carica se il livello 2 � stato completato o meno per il profilo del giocatore giocante.
+    /// Carica se il livello 2 è stato completato o meno per il profilo del giocatore giocante.
     /// </summary>
     /// <returns>1 completato, 0 non completato.</returns>
     public static int caricaProgressoLivello2()
@@ -454,7 +452,7 @@ public class PlayerSettings : MonoBehaviour
             if (nomeController.Contains("Playstation"))
                 return "Playstation";
         }
-        return "Altro";
+        return "Generico";
 
     }
 }

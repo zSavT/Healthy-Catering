@@ -70,6 +70,11 @@ public class Ingrediente
             && (Enumerable.SequenceEqual(this.listaIdPatologieCompatibili, ((Ingrediente)obj).listaIdPatologieCompatibili));
     }
 
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
     public override string ToString()
     {
         return this.descrizione + "\n\n" +

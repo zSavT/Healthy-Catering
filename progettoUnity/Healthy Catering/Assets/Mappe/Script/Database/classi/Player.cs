@@ -103,6 +103,10 @@ public class Player
         return (this.nome.Equals(((Player)obj).nome));
     }
 
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
 
     public override string ToString()
     {

@@ -109,7 +109,7 @@ public class Menu : MonoBehaviour
         if (Utility.gamePadConnesso())
         {
             immagineController.color = new Color32(255, 255, 255, 255);
-            immagineController.gameObject.GetComponent<ToolTip>().setMessaggio("Controller connesso.");
+            immagineController.gameObject.GetComponent<ToolTip>().setMessaggio("Controller " + PlayerSettings.tipologiaControllerInserito() + " connesso.");
         } else
         {
             immagineController.color = new Color32(255, 255, 255, 127);
