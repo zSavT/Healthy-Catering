@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using System.Linq;
 
 /// <summary>
 /// Classe per la gestione delle impostazioni del scelte dal player.
@@ -436,5 +438,23 @@ public class PlayerSettings : MonoBehaviour
     public static bool caricaImpostazioniFramerateLibero()
     {
         return PlayerPrefs.GetInt("framerateLibero") == 0;
+    }
+
+
+    /// <summary>
+    /// Il metodo restituisce il nome del controller inserito
+    /// </summary>
+    /// <returns>string del nome del controller</returns>
+    public static string tipologiaControllerInserito()
+    {
+        foreach (string nomeController in Input.GetJoystickNames())
+        {
+            if (nomeController.Contains("XBOX"))
+                return "Xbox";
+            if (nomeController.Contains("Playstation"))
+                return "Playstation";
+        }
+        return "Altro";
+
     }
 }

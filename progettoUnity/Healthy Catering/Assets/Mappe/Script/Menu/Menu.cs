@@ -36,6 +36,7 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(PlayerSettings.tipologiaControllerInserito());
         controllerInput = new ControllerInput();
         eventSystem = FindObjectOfType<EventSystem>();
         attivaDisattivaIconaController();

@@ -15,7 +15,9 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class OpzioniMenu : MonoBehaviour
 {
-    [Header("Impostazioni Grafica e Schermo")]
+    [Header("Impostazioni Grafica")]
+    [SerializeField] private GameObject tastoGrafica;
+    [SerializeField] private GameObject impostazioniGrafica;
     [SerializeField] private TMP_Dropdown risoluzioniDisponibili;
     [SerializeField] private TMP_Dropdown livelloGrafica;
     [SerializeField] private Toggle schermoIntero;
@@ -30,7 +32,11 @@ public class OpzioniMenu : MonoBehaviour
     [SerializeField] private AudioMixer audioMixerSuoni;
     [SerializeField] private Slider sliderVolumeSuoni;
     [SerializeField] private AudioSource suonoClick;
-    
+
+    [Header("Impostazioni Controlli")]
+    [SerializeField] private GameObject tastoControlli;
+    [SerializeField] private GameObject impostazioniControlli;
+
     [Header("Impostazioni Sensibilità")]
     [SerializeField] private TextMeshProUGUI sliderSensibilitaTesto;
     [SerializeField] private Slider sliderSensibilita;
@@ -43,12 +49,17 @@ public class OpzioniMenu : MonoBehaviour
     private bool caricatiValori = false;
     private GameObject ultimoElementoSelezionato;
     private EventSystem eventSystem;
+    private ControllerInput controllerInput;
+
+    [Header("Suoni Scena")]
+    [SerializeField] private AudioSource[] vetAudio;
 
     void Start()
     {
         CambioCursore.cambioCursoreNormale();
         eventSystem = EventSystem.current;
-
+        controllerInput = new ControllerInput();
+        controllerInput.Enable();
         //DALTONISMO
         daltonismo.value = PlayerSettings.caricaImpostazioniDaltonismo();
 
@@ -88,13 +99,9 @@ public class OpzioniMenu : MonoBehaviour
         //VSYNCH
         int vSyncVal = QualitySettings.vSyncCount;
         if (vSyncVal == 0)
-        {
             vSync.isOn = false;
-        }
         else if (vSyncVal == 1)
-        {
             vSync.isOn = true;
-        }
 
         //FRAMERATE LIBERO
         framerateLibero.isOn = PlayerSettings.caricaImpostazioniFramerateLibero();
@@ -106,6 +113,7 @@ public class OpzioniMenu : MonoBehaviour
         caricatiValori = true;
     }
 
+
     void Awake()
     {
         InputSystem.onDeviceChange += OnDeviceChange;
@@ -114,6 +122,18 @@ public class OpzioniMenu : MonoBehaviour
     void OnDestroy()
     {
         InputSystem.onDeviceChange -= OnDeviceChange;
+        controllerInput.Disable();
+    }
+
+    private void Update()
+    {
+        if(controllerInput.UI.Avanti.IsPressed())
+        {
+            clickSuTastoControlli();
+        } else if (controllerInput.UI.Indietro.IsPressed())
+        {
+            clickSuTastoGrafico();
+        }
     }
 
     /// <summary>
@@ -144,6 +164,68 @@ public class OpzioniMenu : MonoBehaviour
     }
 
     /// <summary>
+    /// Il metodo attiva tutte le impostazioni per il click sul tasto controlli, ovvero attivare le impostazioni per il controller, attivare gli elementi dei controller, disattivare gli elementi della grafica e avviare il suono
+    /// </summary>
+    public void clickSuTastoControlli()
+    {
+        setControllerImpostazioniController();
+        disattivaElementiGrafica();
+        attivaElementiControlli();
+        vetAudio[0].Play();
+        vetAudio[1].PlayDelayed(0.1f);
+    }
+
+    /// <summary>
+    /// Il metodo attiva tutte le impostazioni per il click sul tasto grafico, ovvero attivare le impostazioni per il controller, disattivare gli elementi dei controller, attivare gli elementi della grafica e avviare il suono
+    /// </summary>
+    public void clickSuTastoGrafico()
+    {
+        setControllerImpostazioniGrafica();
+        disattivaElementiControlli();
+        attivaElementiGrafica();
+        vetAudio[0].Play();
+        vetAudio[1].PlayDelayed(0.1f);
+    }
+
+    /// <summary>
+    /// Il metodo disattiva tutti gli elementi relativi alla grafici del menu
+    /// </summary>
+    private void disattivaElementiGrafica()
+    {
+        impostazioniGrafica.SetActive(false);
+        tastoGrafica.GetComponentInChildren<CambioColoreScritta>().cambioColoreNonCliccatoGrigio();
+    }
+
+    /// <summary>
+    /// Il metodo attiva tutti gli elementi relativi alla grafica del menu
+    /// </summary>
+    private void attivaElementiGrafica()
+    {
+        impostazioniGrafica.SetActive(true);
+        tastoGrafica.GetComponentInChildren<CambioColoreScritta>().cambioColoreCliccatoNero();
+        vetAudio[0].Play();
+        vetAudio[1].PlayDelayed(0.1f);
+    }
+
+    /// <summary>
+    /// Il metodo disattiva tutti gli elementi relativi ai controlli del menu
+    /// </summary>
+    private void disattivaElementiControlli()
+    {
+        impostazioniControlli.SetActive(false);
+        tastoControlli.GetComponentInChildren<CambioColoreScritta>().cambioColoreNonCliccatoGrigio();
+    }
+
+    /// <summary>
+    /// Il metodo attiva tutti gli elementi relativi ai controlli del menu
+    /// </summary>
+    private void attivaElementiControlli()
+    {
+        impostazioniControlli.SetActive(true);
+        tastoControlli.GetComponentInChildren<CambioColoreScritta>().cambioColoreCliccatoNero();
+    }
+
+    /// <summary>
     /// Il metodo imposta come elemento selzionato dell'EventSystem l'oggetto passato in input
     /// </summary>
     /// <param name="elementoDaSelezionare">GameObject da impostare come elemento selezionato</param>
@@ -151,6 +233,22 @@ public class OpzioniMenu : MonoBehaviour
     {
         if (Utility.gamePadConnesso())
             eventSystem.SetSelectedGameObject(elementoDaSelezionare);
+    }
+
+    /// <summary>
+    /// Imposta come elemento selezionato dall'event system il primo della sezione controlli
+    /// </summary>
+    public void setControllerImpostazioniController()
+    {
+        aggioraEventSystemPerControllerConnesso(sliderFov.gameObject);
+    }
+
+    /// <summary>
+    /// Imposta come elemento selezionato dall'event system il primo della sezione grafica
+    /// </summary>
+    public void setControllerImpostazioniGrafica()
+    {
+        aggioraEventSystemPerControllerConnesso(risoluzioniDisponibili.gameObject);
     }
 
     /// <summary>

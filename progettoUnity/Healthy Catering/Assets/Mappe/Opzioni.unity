@@ -653,16 +653,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 101418525}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 15.152833}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2010211030}
-  m_RootOrder: 12
+  m_Father: {fileID: 546549079}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -253.51, y: -212}
+  m_AnchoredPosition: {x: 4.490036, y: 41.999985}
   m_SizeDelta: {x: 232.195, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &101418527
@@ -2858,7 +2858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 1369948337}
+  m_FirstSelected: {fileID: 1961824170}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &535617420
@@ -2940,6 +2940,7 @@ RectTransform:
   - {fileID: 1532532151}
   - {fileID: 692471165}
   - {fileID: 954054942}
+  - {fileID: 1805434192}
   m_Father: {fileID: 2010211030}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3138,6 +3139,7 @@ RectTransform:
   - {fileID: 2140609552}
   - {fileID: 2037678514}
   - {fileID: 1467024735}
+  - {fileID: 101418526}
   m_Father: {fileID: 2010211030}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5622,7 +5624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 1961824172}
@@ -5653,46 +5655,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 53918416}
-        m_TargetAssemblyTypeName: CambioColoreScritta, Assembly-CSharp
-        m_MethodName: cambioColoreCliccatoNero
+      - m_Target: {fileID: 1988159438}
+        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
+        m_MethodName: clickSuTastoControlli
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 150
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1580919920}
-        m_TargetAssemblyTypeName: CambioColoreScritta, Assembly-CSharp
-        m_MethodName: cambioColoreNonCliccatoGrigio
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2010211029}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 777566301}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6658,16 +6624,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213944675}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 15.152833}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2010211030}
-  m_RootOrder: 5
+  m_Father: {fileID: 1555884323}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -254, y: -39.839233}
+  m_AnchoredPosition: {x: 0.23176575, y: 41}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1213944677
@@ -7041,7 +7007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 1961824172}
@@ -7072,46 +7038,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 53918416}
-        m_TargetAssemblyTypeName: CambioColoreScritta, Assembly-CSharp
-        m_MethodName: cambioColoreNonCliccatoGrigio
+      - m_Target: {fileID: 1988159438}
+        m_TargetAssemblyTypeName: OpzioniMenu, Assembly-CSharp
+        m_MethodName: clickSuTastoGrafico
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 150
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1580919920}
-        m_TargetAssemblyTypeName: CambioColoreScritta, Assembly-CSharp
-        m_MethodName: cambioColoreCliccatoNero
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 777566301}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2010211029}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7634,6 +7564,7 @@ RectTransform:
   - {fileID: 303309059}
   - {fileID: 1109015727}
   - {fileID: 258663327}
+  - {fileID: 1213944676}
   m_Father: {fileID: 2010211030}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8539,16 +8470,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1753006908}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 15.152833}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2010211030}
-  m_RootOrder: 4
+  m_Father: {fileID: 2036615888}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -253.7, y: -131.83923}
+  m_AnchoredPosition: {x: 4.300064, y: 42}
   m_SizeDelta: {x: 253.376, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1753006910
@@ -9109,16 +9040,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802887355}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 15.152833}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2010211030}
-  m_RootOrder: 6
+  m_Father: {fileID: 1961824171}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -253, y: 48.160767}
+  m_AnchoredPosition: {x: -0.768219, y: 42}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1802887357
@@ -9246,16 +9177,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1805434191}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 15.15285}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2010211030}
-  m_RootOrder: 7
+  m_Father: {fileID: 541497963}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -250.63176, y: -290}
+  m_AnchoredPosition: {x: 1.6000214, y: 43.99994}
   m_SizeDelta: {x: 464.693, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1805434193
@@ -10317,6 +10248,7 @@ RectTransform:
   - {fileID: 1136188806}
   - {fileID: 728469457}
   - {fileID: 362464489}
+  - {fileID: 1802887356}
   m_Father: {fileID: 2010211030}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10580,6 +10512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98291a72b1c8140448a74bdb5cb204f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tastoGrafica: {fileID: 1369948337}
+  impostazioniGrafica: {fileID: 2010211029}
   risoluzioniDisponibili: {fileID: 1961824172}
   livelloGrafica: {fileID: 1555884324}
   schermoIntero: {fileID: 1237080155}
@@ -10591,12 +10525,17 @@ MonoBehaviour:
   audioMixerSuoni: {fileID: 24100000, guid: 8a8b96b09803a99439c710b974e61f8c, type: 2}
   sliderVolumeSuoni: {fileID: 546549080}
   suonoClick: {fileID: 343990790}
+  tastoControlli: {fileID: 971469185}
+  impostazioniControlli: {fileID: 777566301}
   sliderSensibilitaTesto: {fileID: 38735336}
   sliderSensibilita: {fileID: 1893535362}
   sliderSensibilitaStickTesto: {fileID: 1632082721}
   sliderSensibilitaStick: {fileID: 290157501}
   sliderFovTesto: {fileID: 795170712}
   sliderFov: {fileID: 1060960641}
+  vetAudio:
+  - {fileID: 343990790}
+  - {fileID: 743201865}
 --- !u!114 &1988159439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10641,15 +10580,10 @@ Transform:
   - {fileID: 1961824171}
   - {fileID: 1555884323}
   - {fileID: 2036615888}
-  - {fileID: 1753006909}
-  - {fileID: 1213944676}
-  - {fileID: 1802887356}
-  - {fileID: 1805434192}
   - {fileID: 1843281676}
   - {fileID: 541497963}
   - {fileID: 592033081}
   - {fileID: 546549079}
-  - {fileID: 101418526}
   m_Father: {fileID: 1988159437}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10686,6 +10620,7 @@ RectTransform:
   - {fileID: 479955398}
   - {fileID: 531959215}
   - {fileID: 51172052}
+  - {fileID: 1753006909}
   m_Father: {fileID: 2010211030}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

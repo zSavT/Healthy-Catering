@@ -511,6 +511,24 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Avanti"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""4514a0e0-f4f3-496e-a435-5c781914180a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Indietro"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""178cb383-f246-4fa6-90ce-cea08d0869d7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -931,6 +949,28 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""96833ff8-158e-4249-b671-b088c106fab3"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Avanti"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e9500345-aed4-4050-b7c4-5eb93ae0f767"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Indietro"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1022,6 +1062,8 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        m_UI_Avanti = m_UI.FindAction("Avanti", throwIfNotFound: true);
+        m_UI_Indietro = m_UI.FindAction("Indietro", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1196,6 +1238,8 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_RightClick;
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
+    private readonly InputAction m_UI_Avanti;
+    private readonly InputAction m_UI_Indietro;
     public struct UIActions
     {
         private @ControllerInput m_Wrapper;
@@ -1210,6 +1254,8 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
         public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+        public InputAction @Avanti => m_Wrapper.m_UI_Avanti;
+        public InputAction @Indietro => m_Wrapper.m_UI_Indietro;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1249,6 +1295,12 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                 @TrackedDeviceOrientation.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
+                @Avanti.started -= m_Wrapper.m_UIActionsCallbackInterface.OnAvanti;
+                @Avanti.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnAvanti;
+                @Avanti.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnAvanti;
+                @Indietro.started -= m_Wrapper.m_UIActionsCallbackInterface.OnIndietro;
+                @Indietro.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnIndietro;
+                @Indietro.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnIndietro;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1283,6 +1335,12 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                 @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+                @Avanti.started += instance.OnAvanti;
+                @Avanti.performed += instance.OnAvanti;
+                @Avanti.canceled += instance.OnAvanti;
+                @Indietro.started += instance.OnIndietro;
+                @Indietro.performed += instance.OnIndietro;
+                @Indietro.canceled += instance.OnIndietro;
             }
         }
     }
@@ -1357,5 +1415,7 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+        void OnAvanti(InputAction.CallbackContext context);
+        void OnIndietro(InputAction.CallbackContext context);
     }
 }
