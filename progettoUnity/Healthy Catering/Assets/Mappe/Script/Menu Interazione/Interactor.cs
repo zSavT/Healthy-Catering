@@ -2,6 +2,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 
+/// <summary>
+/// Classe principale per gestire le azioni del giocatore<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Contenitore Player in game.
+/// </para>
+/// </summary>
 public class Interactor : MonoBehaviour
 {
     private ControllerInput controllerInput;
@@ -81,7 +87,6 @@ public class Interactor : MonoBehaviour
     {
         controllerInput = new ControllerInput();
         controllerInput.Enable();
-        Debug.Log(Costanti.piattoNonCompatibileTutorial);
         mainCamera = GetComponentInChildren<Camera>();
         posizioneCamera = this.gameObject.GetComponentsInChildren<Transform>()[1];
         nelRistorante = false;
@@ -114,16 +119,25 @@ public class Interactor : MonoBehaviour
         progresso.setGiocatore(giocatore);
     }
 
+    /// <summary>
+    /// Il metodo inverte il valore di verità della variabile menuApribile
+    /// </summary>
     public void menuApribileOnOff()
     {
         menuApribile = !menuApribile;
     }
 
+    /// <summary>
+    /// Il metodo disattiva il valore di verità della variabile menuApribile
+    /// </summary>
     public void menuNonApribile()
     {
         menuApribile = false;
     }
 
+    /// <summary>
+    /// Il metodo richiama tutti i metodi per i controlli degli elementi interagibili dal playler
+    /// </summary>
     private void interazioneUtenteConNPCVari()
     {
         if (menuApribile)
@@ -133,6 +147,10 @@ public class Interactor : MonoBehaviour
             gestioneChiusureMenu();
         }
     }
+
+    /// <summary>
+    /// Il metodo controlla e gestisce gli input per l'interazione
+    /// </summary>
     private void gestisciOggettiPuntatiEMenuAribiliConTasto()
     {
         if (NPCClientePuntato())
@@ -180,6 +198,10 @@ public class Interactor : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo controlla se il player punta un cliente
+    /// </summary>
+    /// <returns>booleano npc puntato</returns>
     private bool NPCClientePuntato()
     {
         RaycastHit NPCpuntato;
@@ -196,6 +218,9 @@ public class Interactor : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Il metodo permette di gestire tutta l'interazione con interazione con il cliente
+    /// </summary>
     private void gestisciNPCpuntato()
     {
         if (npc.getClienteRaggiuntoBancone())
@@ -212,6 +237,10 @@ public class Interactor : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo permette di avviare l'interazione con il cliente aprendo l'apposito menu
+    /// </summary>
+    /// <param name="IDCliente">int id del cliente servito</param>
     private void interazioneCliente(int IDCliente)
     {
         muoviCameraPerInterazioneCliente();
@@ -224,16 +253,25 @@ public class Interactor : MonoBehaviour
         pannelloApertoChiuso();
     }
 
+    /// <summary>
+    /// Il metodo permette di muovere la telecamera
+    /// </summary>
     private void muoviCameraPerInterazioneCliente()
     {
         mainCamera.transform.position = posizioneCameraMenuCliente.transform.position;
     }
 
+    /// <summary>
+    /// Il metodo inverte il valore booleano della variabile pannelloAperto
+    /// </summary>
     private void pannelloApertoChiuso()
     {
         pannelloAperto = !pannelloAperto;
     }
 
+    /// <summary>
+    /// Il metodo gestice l'interazione con il PC del magazzino per l'interazione
+    /// </summary>
     private void gestisciPCpuntato()
     {
         inquadratoNPC.Invoke();
@@ -246,6 +284,9 @@ public class Interactor : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo gestisce gli NPC passivi per l'interazione
+    /// </summary>
     private void gestisciNPCpassantePuntato()
     {
         inquadratoNPC.Invoke();
@@ -259,6 +300,9 @@ public class Interactor : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo gestice interazione con il negoziante
+    /// </summary>
     private void gestiscinegoziantePuntato()
     {
         inquadratoNPC.Invoke();
@@ -272,6 +316,9 @@ public class Interactor : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo gestice il teletrasporto dentro e fuori dal ristorante
+    /// </summary>
     private void gestisciPortaPuntata()
     {
         inquadratoNPC.Invoke();
@@ -280,10 +327,13 @@ public class Interactor : MonoBehaviour
             suonoNegozio.Play();
             this.gameObject.transform.position = destinazioneTeleport.transform.position;
             nelRistorante = !nelRistorante;
-            Debug.Log(nelRistorante);
         }
     }
     
+    /// <summary>
+    /// Il metodo controlla se una nuova schermata è apribile controllando che tutte le altre sono chiuse
+    /// </summary>
+    /// <returns>booleano, True: Si può aprire una nuova schermata, False: Non è possibile aprire una nuova schermata</returns>
     private bool nuovaSchermataApribile()
     {
         return (
@@ -297,6 +347,9 @@ public class Interactor : MonoBehaviour
         );
     }
 
+    /// <summary>
+    /// Il metodo permette di gestire l'apertura del menu ricettario disattivando gli elementi grafici e bloccando il movimento del giocatore
+    /// </summary>
     private void gestisciAperturaRicettario()
     {
         playerStop.Invoke();
@@ -305,6 +358,9 @@ public class Interactor : MonoBehaviour
         CambioCursore.cambioCursoreNormale();
     }
 
+    /// <summary>
+    /// Il metodo gestice l'apertura del menu aiuto disattivando gli elementi grafici e il movimento del player
+    /// </summary>
     private void gestisciAperturaMenuAiuto()
     {
         playerStop.Invoke();
@@ -313,6 +369,9 @@ public class Interactor : MonoBehaviour
         CambioCursore.cambioCursoreNormale();
     }
 
+    /// <summary>
+    /// Il metodo permette di gestire la chisura di tutti i menu
+    /// </summary>
     private void gestioneChiusureMenu()
     {
         if (negozio.getPannelloAperto() && !negozio.getPannelloConfermaAperto())
@@ -333,6 +392,9 @@ public class Interactor : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodoo permette di uscire dal menu interazione con NPC passivi
+    /// </summary>
     private void gestisciChiusuraNegozio()
     {
         if (controllerInput.Player.UscitaMenu.IsPressed())
@@ -343,6 +405,9 @@ public class Interactor : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodoo permette di uscire dal menu interazione con NPC passivi
+    /// </summary>
     private void gestisciChiusuraPannelloPassanti()
     {
         if (controllerInput.Player.UscitaMenu.IsPressed())
@@ -354,6 +419,10 @@ public class Interactor : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// Il metodoo permette di uscire dal menu ricettario
+    /// </summary>
     private void gestisciChiusuraRicettario()
     {
         if (controllerInput.Player.UscitaMenu.IsPressed())
@@ -364,7 +433,9 @@ public class Interactor : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Il metodoo permette di uscire dal menu aiuto
+    /// </summary>
     private void gestisciChiusuraMenuAiuto()
     {
         if (controllerInput.Player.UscitaMenu.IsPressed())
@@ -375,6 +446,10 @@ public class Interactor : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo controlla se il giocatore sta puntando un NPC passivo
+    /// </summary>
+    /// <returns>booleano, True: NPC passivo puntato, False: NPC passivo non puntato</returns>
     private bool NPCPassantePuntato()
     {
         RaycastHit NPCPassivoInquadrato;
@@ -390,6 +465,10 @@ public class Interactor : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Il metodo controlla se il giocatore sta puntando il negoziante
+    /// </summary>
+    /// <returns>booleano, True: negoziante puntato, False: negoziante non puntato</returns>
     private bool negoziantePuntato()
     {
         RaycastHit pcInquadrato;
@@ -404,6 +483,9 @@ public class Interactor : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Il metodo permette la chiusura dell'interfaccia dell'interazione con il PC, aggiornando i valori della gui e ri-attivando i movimenti del player
+    /// </summary>
     public void esciDaInterazionePC()
     {
         playerRiprendiMovimento.Invoke();
@@ -414,6 +496,10 @@ public class Interactor : MonoBehaviour
         magazzino.chiudiPannelloMagazzino();
     }
 
+    /// <summary>
+    /// Il metodo controlla se il giocatore sta puntando la porta del ristorante
+    /// </summary>
+    /// <returns>booleano, True: porta puntato, False: porta non puntato</returns>
     private bool portaPuntata()
     {
         RaycastHit portaPuntata;
@@ -429,6 +515,10 @@ public class Interactor : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Il metodo controlla se il giocatore sta puntando il PC del magazzino
+    /// </summary>
+    /// <returns>booleano, True: PC puntato, False: PC non puntato</returns>
     private bool pcPuntato()
     {
         RaycastHit pcInquadrato;
@@ -443,6 +533,9 @@ public class Interactor : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Il metodo permette la chiusura dell'interfaccia con l'interazione con il cliente, aggiornando i valori della gui e ri-attivando i movimenti del player
+    /// </summary>
     public void esciDaInterazioneCliente()
     {
         chiudiPannello();
@@ -463,6 +556,9 @@ public class Interactor : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo resetta alla posizione originale la telecamera del giocatore
+    /// </summary>
     private void ritornaAllaPosizioneNormale()
     {
         mainCamera.transform.position = posizioneCamera.position;

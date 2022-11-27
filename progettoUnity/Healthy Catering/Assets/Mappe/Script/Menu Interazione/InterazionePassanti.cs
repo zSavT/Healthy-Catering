@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using System.Linq;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
 
+
+/// <summary>
+/// Classe per gestire l'interazione con gli NPC passivi<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Modello NPC passivo interno (non contenitore)
+/// </para>
+/// </summary>
 public class InterazionePassanti : MonoBehaviour
 {
     //UNITY
