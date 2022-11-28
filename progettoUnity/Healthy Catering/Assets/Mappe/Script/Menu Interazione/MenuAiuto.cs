@@ -23,10 +23,13 @@ public class MenuAiuto : MonoBehaviour
 
     public static bool apertoMenuAiuto = false;//TUTORIAL
 
+    private ControllerInput controllerInput;
+
     void Start()
     {
         pannelloMenuAiuto.SetActive(false);
-
+        controllerInput = new ControllerInput();
+        controllerInput.Enable();
         pannelloMenuAiutoAperto = false;
         tastoAvanti.onClick.AddListener(mostraProssimoMessaggioDiAiuto);
         tastoIndietro.onClick.AddListener(mostraPrecedenteMessaggioDiAiuto);
@@ -36,6 +39,24 @@ public class MenuAiuto : MonoBehaviour
         gestisciBottoniAvantiDietro(ultimaPosizione);
 
         animazione = immagineSchermata.GetComponent<Animazione>();
+    }
+
+    private void Update()
+    {
+        if (pannelloMenuAiutoAperto)
+            if (controllerInput.UI.Avanti.WasPressedThisFrame())
+                mostraProssimoMessaggioDiAiuto();
+            else if (controllerInput.UI.Indietro.WasPressedThisFrame())
+                mostraPrecedenteMessaggioDiAiuto();
+
+    }
+
+    /// <summary>
+    /// Disattiva il controller alla eliminazione dell'oggetto
+    /// </summary>
+    private void OnDestroy()
+    {
+        controllerInput.Disable();
     }
 
     public void apriPannelloMenuAiuto()

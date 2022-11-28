@@ -47,8 +47,12 @@ public class InterazionePassanti : MonoBehaviour
     public static bool parlatoConZio = false;
     private int numeroMassimoDiCaratteriPerSchermata = 90;
 
+    private ControllerInput controllerInput;
+
     private void Start()
     {
+        controllerInput = new ControllerInput();
+        controllerInput.Enable();
         pannelloInterazionePassanti.SetActive(false);
         pannelloInterazionePassantiAperto = false;
         
@@ -64,11 +68,22 @@ public class InterazionePassanti : MonoBehaviour
         {
             modificaInteractableBottoneInBasePosizioneScrittaMostrata();
         }
+        if (pannelloInterazionePassantiAperto)
+            if (controllerInput.UI.Submit.WasPressedThisFrame() && !controlloNumeroPagine())
+                mostraProssimaScrittaDaMostrateOra();
+    }
+
+    /// <summary>
+    /// Disattiva il controller alla eliminazione dell'oggetto
+    /// </summary>
+    private void OnDestroy()
+    {
+        controllerInput.Disable();
     }
 
     private void modificaInteractableBottoneInBasePosizioneScrittaMostrata()
     {
-        if (indiceScrittaMostrataOra == scritteMostrateOra.Count - 1)
+        if (controlloNumeroPagine())
         {
             bottoneAvanti.interactable = false;
         }
@@ -76,6 +91,11 @@ public class InterazionePassanti : MonoBehaviour
         {
             bottoneAvanti.interactable = true;
         }
+    }
+
+    private bool controlloNumeroPagine()
+    {
+        return indiceScrittaMostrataOra == scritteMostrateOra.Count - 1;
     }
 
     private void getTutteLeScritteInterazione()
