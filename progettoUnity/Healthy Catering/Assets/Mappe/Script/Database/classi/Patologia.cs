@@ -116,9 +116,10 @@ public class Patologia
             {
                 Patologia temp = idToPatologia(id, DatabasePatologie);
                 if (temp.idPatologia != -1)
-                    idsString = idsString + "\n\t" + temp.nome + "\n";
+                    idsString = idsString + temp.nome + "\n";
             }
-        }
+        } else
+            idsString = "nessuna patologia";
         return idsString;
     }
 
