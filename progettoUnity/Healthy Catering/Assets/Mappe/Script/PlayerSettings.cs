@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -455,4 +456,22 @@ public class PlayerSettings : MonoBehaviour
         return "Generico";
 
     }
-}
+
+    /// <summary>
+    /// Il metodo cambia gli sprite asset in base alla tipologia di controller inserito
+    /// </summary>
+    /// <param name="testo">TextMeshProUGUI da cambiare sprite asset</param>
+    public static void addattamentoSpriteComandi(TextMeshProUGUI testo)
+    {
+        if (Utility.gamePadConnesso())
+            if (tipologiaControllerInserito() == "Xbox")
+                testo.spriteAsset = Costanti.spriteXbox;
+            else if (tipologiaControllerInserito() == "Playstation")
+                testo.spriteAsset = Costanti.spritePlaystation;
+            else
+                testo.spriteAsset = Costanti.spriteXbox;
+        else
+            testo.spriteAsset = Costanti.spriteTastiera;
+    }
+
+    }

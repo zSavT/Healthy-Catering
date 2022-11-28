@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+
 public class MenuAiuto : MonoBehaviour
 {
     private bool pannelloMenuAiutoAperto;
@@ -39,6 +40,7 @@ public class MenuAiuto : MonoBehaviour
 
     public void apriPannelloMenuAiuto()
     {
+        PlayerSettings.addattamentoSpriteComandi(testoAiuto);
         pannelloMenuAiuto.SetActive(true);
         pannelloMenuAiutoAperto = true;
 

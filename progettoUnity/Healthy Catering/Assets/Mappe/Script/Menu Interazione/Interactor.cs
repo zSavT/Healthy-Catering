@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System;
+using TMPro;
 
 /// <summary>
 /// Classe principale per gestire le azioni del giocatore<para>
@@ -85,6 +86,8 @@ public class Interactor : MonoBehaviour
     /// </summary>
     private void inizializzaValori()
     {
+        Costanti.spriteTastiera = Resources.Load<TMP_SpriteAsset>("tastiTastiera");
+        Costanti.spriteXbox = Resources.Load<TMP_SpriteAsset>("tastiXbox");
         controllerInput = new ControllerInput();
         controllerInput.Enable();
         mainCamera = GetComponentInChildren<Camera>();

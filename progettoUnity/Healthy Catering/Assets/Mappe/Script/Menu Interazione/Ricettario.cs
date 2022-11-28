@@ -247,6 +247,8 @@ public class Ricettario : MonoBehaviour
         ricettarioAperto = true;
 
         apertoRicettario = true;//TUTORIAL
+
+        PlayerSettings.addattamentoSpriteComandi(testoSchermata);
     }
 
     /// <summary>
