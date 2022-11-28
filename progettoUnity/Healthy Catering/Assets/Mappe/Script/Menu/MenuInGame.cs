@@ -31,7 +31,7 @@ public class MenuInGame : MonoBehaviour
     private bool giocoInPausa = false;
     private bool menuApribile;
 
-    private bool menuAperto = false;
+    public static bool menuAperto = false;
 
     // Start is called before the first frame update
     void Start()
@@ -73,7 +73,7 @@ public class MenuInGame : MonoBehaviour
     }
 
     /// <summary>
-    /// Metodo per controllare se il � stato premuto il tasto per aprire il menu opzioni e verificare che sia apribile in quel momento.
+    /// Metodo per controllare se il è stato premuto il tasto per aprire il menu opzioni e verificare che sia apribile in quel momento.
     /// </summary>
     private void checkTastoMenu()
     {

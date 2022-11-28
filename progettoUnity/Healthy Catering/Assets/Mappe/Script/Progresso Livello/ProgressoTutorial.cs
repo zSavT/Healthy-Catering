@@ -71,9 +71,6 @@ public class ProgressoTutorial : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Attuale indice");
-        Debug.Log(numeroScritteMostrate);
-        Debug.Log(OkBoxVideo.meccanicheServireNonCompatibileMostrato);
         if (!saGiocareSettato)
         {
             if (PlayerSaGiocareFPS.siOnoSettato())

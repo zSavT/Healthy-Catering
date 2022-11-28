@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using System.Xml.Linq;
 
 /// <summary>
 /// Classe per la gestione delle impostazioni del gioco.<para>
@@ -31,7 +32,6 @@ public class OpzioniMenu : MonoBehaviour
     [SerializeField] private Slider sliderVolumeMusica;
     [SerializeField] private AudioMixer audioMixerSuoni;
     [SerializeField] private Slider sliderVolumeSuoni;
-    [SerializeField] private AudioSource suonoClick;
 
     [Header("Impostazioni Controlli")]
     [SerializeField] private GameObject tastoControlli;
@@ -163,6 +163,23 @@ public class OpzioniMenu : MonoBehaviour
         }
     }
 
+    private void playSuoniClick()
+    {
+        if (SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            if (MenuInGame.menuAperto)
+            {
+                vetAudio[0].Play();
+                vetAudio[1].PlayDelayed(0.1f);
+            }
+        }
+        else
+        {
+                vetAudio[0].Play();
+                vetAudio[1].PlayDelayed(0.1f);
+        }
+    }
+
     /// <summary>
     /// Il metodo attiva tutte le impostazioni per il click sul tasto controlli, ovvero attivare le impostazioni per il controller, attivare gli elementi dei controller, disattivare gli elementi della grafica e avviare il suono
     /// </summary>
@@ -170,9 +187,8 @@ public class OpzioniMenu : MonoBehaviour
     {
         setControllerImpostazioniController();
         disattivaElementiGrafica();
-        attivaElementiControlli();
-        vetAudio[0].Play();
-        vetAudio[1].PlayDelayed(0.1f);
+        attivaElementiControlli(SceneManager.GetActiveScene().buildIndex != 1);
+        playSuoniClick();
     }
 
     /// <summary>
@@ -182,9 +198,8 @@ public class OpzioniMenu : MonoBehaviour
     {
         setControllerImpostazioniGrafica();
         disattivaElementiControlli();
-        attivaElementiGrafica();
-        vetAudio[0].Play();
-        vetAudio[1].PlayDelayed(0.1f);
+        attivaElementiGrafica(SceneManager.GetActiveScene().buildIndex != 1);
+        playSuoniClick();
     }
 
     /// <summary>
@@ -199,12 +214,15 @@ public class OpzioniMenu : MonoBehaviour
     /// <summary>
     /// Il metodo attiva tutti gli elementi relativi alla grafica del menu
     /// </summary>
-    private void attivaElementiGrafica()
+    /// <param name="inGame">Booleano True, menu attivo in game, False: No</param>
+    private void attivaElementiGrafica(bool inGame)
     {
         impostazioniGrafica.SetActive(true);
-        tastoGrafica.GetComponentInChildren<CambioColoreScritta>().cambioColoreCliccatoNero();
-        vetAudio[0].Play();
-        vetAudio[1].PlayDelayed(0.1f);
+        if(!inGame)
+            tastoGrafica.GetComponentInChildren<CambioColoreScritta>().cambioColoreCliccatoNero();
+        else
+            tastoGrafica.GetComponentInChildren<CambioColoreScritta>().cambioColoreCliccatoBianco();
+        playSuoniClick();
     }
 
     /// <summary>
@@ -219,10 +237,14 @@ public class OpzioniMenu : MonoBehaviour
     /// <summary>
     /// Il metodo attiva tutti gli elementi relativi ai controlli del menu
     /// </summary>
-    private void attivaElementiControlli()
+    /// <param name="inGame">Booleano True, menu attivo in game, False: No</param>
+    private void attivaElementiControlli(bool inGame)
     {
         impostazioniControlli.SetActive(true);
-        tastoControlli.GetComponentInChildren<CambioColoreScritta>().cambioColoreCliccatoNero();
+        if(!inGame)
+            tastoControlli.GetComponentInChildren<CambioColoreScritta>().cambioColoreCliccatoNero();
+        else
+            tastoControlli.GetComponentInChildren<CambioColoreScritta>().cambioColoreCliccatoBianco();
     }
 
     /// <summary>
@@ -353,7 +375,7 @@ public class OpzioniMenu : MonoBehaviour
     public void setQualita(int indiceQualita)
     {
         if (caricatiValori)
-            suonoClick.Play();
+            vetAudio[0].Play();
         QualitySettings.SetQualityLevel(indiceQualita);
     }
 
@@ -386,7 +408,7 @@ public class OpzioniMenu : MonoBehaviour
     public void setRisoluzione(int risoluzioneSelezionata)
     {
         if (caricatiValori)
-            suonoClick.Play();
+            vetAudio[0].Play();
         Resolution risoluzione = risoluzioni[risoluzioneSelezionata];
         Screen.SetResolution(risoluzione.width, risoluzione.height, schermoIntero.isOn, risoluzione.refreshRate);
         setRefreshRateToScelta(risoluzione.refreshRate);
@@ -427,7 +449,7 @@ public class OpzioniMenu : MonoBehaviour
     public void setDaltonismo(int scelta)
     {
         if (caricatiValori)
-            suonoClick.Play();
+            vetAudio[0].Play();
         PlayerSettings.salvaImpostazioniDaltonismo(scelta);
     }
 }
