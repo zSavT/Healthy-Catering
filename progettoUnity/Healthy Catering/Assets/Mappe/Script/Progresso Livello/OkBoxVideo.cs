@@ -4,10 +4,12 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class OkBoxVideo : MonoBehaviour
 {
     [SerializeField] private GameObject pannello;
+    [SerializeField] private Button bottoneConferma;
     [SerializeField] private TextMeshProUGUI titolo;
     [SerializeField] private TextMeshProUGUI testo;
     [SerializeField] private Image immagineOGIF;
@@ -72,6 +74,7 @@ public class OkBoxVideo : MonoBehaviour
             testo.text = "";
         }
         cambiaImmagine(posizione);
+        EventSystem.current.SetSelectedGameObject(bottoneConferma.gameObject);
     }
 
     public void chiudiOkBoxVideo()

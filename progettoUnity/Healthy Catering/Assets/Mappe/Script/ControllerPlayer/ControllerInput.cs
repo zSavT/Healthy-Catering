@@ -529,6 +529,24 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Piatti"",
+                    ""type"": ""Button"",
+                    ""id"": ""c545c4be-d046-4b4a-981c-8548d2b8bb66"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ingredienti"",
+                    ""type"": ""Button"",
+                    ""id"": ""607ce380-fd1f-48ca-8228-bb3d7fba3509"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -971,6 +989,28 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Indietro"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f306564-aa79-4839-a16c-3bd2a6e321e9"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Piatti"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""582115ef-40a6-44ec-a156-a6664571028f"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Ingredienti"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1064,6 +1104,8 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_UI_Avanti = m_UI.FindAction("Avanti", throwIfNotFound: true);
         m_UI_Indietro = m_UI.FindAction("Indietro", throwIfNotFound: true);
+        m_UI_Piatti = m_UI.FindAction("Piatti", throwIfNotFound: true);
+        m_UI_Ingredienti = m_UI.FindAction("Ingredienti", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1240,6 +1282,8 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_TrackedDeviceOrientation;
     private readonly InputAction m_UI_Avanti;
     private readonly InputAction m_UI_Indietro;
+    private readonly InputAction m_UI_Piatti;
+    private readonly InputAction m_UI_Ingredienti;
     public struct UIActions
     {
         private @ControllerInput m_Wrapper;
@@ -1256,6 +1300,8 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
         public InputAction @Avanti => m_Wrapper.m_UI_Avanti;
         public InputAction @Indietro => m_Wrapper.m_UI_Indietro;
+        public InputAction @Piatti => m_Wrapper.m_UI_Piatti;
+        public InputAction @Ingredienti => m_Wrapper.m_UI_Ingredienti;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1301,6 +1347,12 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                 @Indietro.started -= m_Wrapper.m_UIActionsCallbackInterface.OnIndietro;
                 @Indietro.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnIndietro;
                 @Indietro.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnIndietro;
+                @Piatti.started -= m_Wrapper.m_UIActionsCallbackInterface.OnPiatti;
+                @Piatti.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnPiatti;
+                @Piatti.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnPiatti;
+                @Ingredienti.started -= m_Wrapper.m_UIActionsCallbackInterface.OnIngredienti;
+                @Ingredienti.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnIngredienti;
+                @Ingredienti.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnIngredienti;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1341,6 +1393,12 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                 @Indietro.started += instance.OnIndietro;
                 @Indietro.performed += instance.OnIndietro;
                 @Indietro.canceled += instance.OnIndietro;
+                @Piatti.started += instance.OnPiatti;
+                @Piatti.performed += instance.OnPiatti;
+                @Piatti.canceled += instance.OnPiatti;
+                @Ingredienti.started += instance.OnIngredienti;
+                @Ingredienti.performed += instance.OnIngredienti;
+                @Ingredienti.canceled += instance.OnIngredienti;
             }
         }
     }
@@ -1417,5 +1475,7 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
         void OnAvanti(InputAction.CallbackContext context);
         void OnIndietro(InputAction.CallbackContext context);
+        void OnPiatti(InputAction.CallbackContext context);
+        void OnIngredienti(InputAction.CallbackContext context);
     }
 }

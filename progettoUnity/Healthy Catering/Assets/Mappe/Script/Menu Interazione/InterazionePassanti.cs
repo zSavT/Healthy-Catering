@@ -23,6 +23,8 @@ public class InterazionePassanti : MonoBehaviour
     [SerializeField] private TextMeshProUGUI testoInterazionePassanti;
     [SerializeField] private AudioSource suonoAperturaDialogo;
     [SerializeField] private AudioSource suonoDialogo;
+    [SerializeField] private Image immagineComando;
+    [SerializeField] private TextMeshProUGUI testoUscita;
 
     //TROVA STRINGHE
     /*
@@ -224,6 +226,8 @@ public class InterazionePassanti : MonoBehaviour
             parlatoConZio = true;
             parlatoConNPC = false;
         }
+        immagineComando.GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("X");
+        PlayerSettings.addattamentoSpriteComandi(testoUscita);
     }
 
     private List<string> trovaScritteDaMostrare(string nomeNPC)

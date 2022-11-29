@@ -40,8 +40,13 @@ public class ProgressoTutorial : MonoBehaviour
     [SerializeField] private MovimentoPlayer moviemnto;
 
     [SerializeField] IndicatoreDistanza indicatoreDistanza;
+
+    private ControllerInput controllerInput;
+
     private void Start()
     {
+        controllerInput = new ControllerInput();
+        controllerInput.Enable();
         inTutorial = true;
         saGiocareSettato = false;
         canvasVideoTutorial.SetActive(true);
@@ -112,7 +117,7 @@ public class ProgressoTutorial : MonoBehaviour
                         OkBoxVideo.WASDmostrato = true;
                     }
 
-                    if (CheckTutorial.checkWASDeMouse()) { numeroScritteMostrate++; }
+                    if (CheckTutorial.checkWASDeMouse(controllerInput)) { numeroScritteMostrate++; }
                 }
                 else if (numeroScritteMostrate == 1)
                 {
@@ -122,7 +127,7 @@ public class ProgressoTutorial : MonoBehaviour
                         OkBoxVideo.saltoMostrato = true;
                     }
 
-                    if (CheckTutorial.checkSalto()) { if(moviemnto.perTerra) numeroScritteMostrate++; }
+                    if (CheckTutorial.checkSalto(controllerInput)) { if(moviemnto.perTerra) numeroScritteMostrate++; }
                 }
                 else if (numeroScritteMostrate == 2)
                 {
@@ -132,12 +137,13 @@ public class ProgressoTutorial : MonoBehaviour
                         OkBoxVideo.sprintMostrato = true;
                     }
 
-                    if (CheckTutorial.checkSprint()) { numeroScritteMostrate++; }
+                    if (CheckTutorial.checkSprint(controllerInput)) { numeroScritteMostrate++; }
                 }
                 else if (numeroScritteMostrate == 3)
                 {
                     if (!OkBoxVideo.parlaZioMostrato)
                     {
+                        playerSaGiocareFPS.distruggiOggetto();
                         okBoxVideo.apriOkBoxVideo(Costanti.parlaZio);
                         InterazionePassanti.parlatoConZio = false;
                     }

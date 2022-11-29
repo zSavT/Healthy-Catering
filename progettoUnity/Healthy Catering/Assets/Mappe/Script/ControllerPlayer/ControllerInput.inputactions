@@ -507,6 +507,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Piatti",
+                    "type": "Button",
+                    "id": "c545c4be-d046-4b4a-981c-8548d2b8bb66",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Ingredienti",
+                    "type": "Button",
+                    "id": "607ce380-fd1f-48ca-8228-bb3d7fba3509",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -947,6 +965,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Indietro",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f306564-aa79-4839-a16c-3bd2a6e321e9",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Piatti",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "582115ef-40a6-44ec-a156-a6664571028f",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Ingredienti",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

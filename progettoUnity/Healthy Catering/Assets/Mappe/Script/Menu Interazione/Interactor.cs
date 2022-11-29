@@ -277,6 +277,7 @@ public class Interactor : MonoBehaviour
     /// </summary>
     private void gestisciPCpuntato()
     {
+        PlayerSettings.addattamentoSpriteComandi(guiInGame.getTestoInterazione());
         inquadratoNPC.Invoke();
         if (controllerInput.Player.Interazione.IsPressed() && !magazzino.getPannelloMagazzinoAperto())
         {
@@ -292,6 +293,7 @@ public class Interactor : MonoBehaviour
     /// </summary>
     private void gestisciNPCpassantePuntato()
     {
+        PlayerSettings.addattamentoSpriteComandi(guiInGame.getTestoInterazione());
         inquadratoNPC.Invoke();
         if (controllerInput.Player.Interazione.IsPressed() && !(interazionePassanti.getPannelloInterazionePassantiAperto()) && !(menuAiuto.getPannelloMenuAiutoAperto()) && !(ricettarioScript.getRicettarioAperto()))
         {

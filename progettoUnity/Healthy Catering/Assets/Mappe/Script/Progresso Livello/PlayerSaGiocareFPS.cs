@@ -72,4 +72,9 @@ public class PlayerSaGiocareFPS : MonoBehaviour
     {
         Time.timeScale = 0f; //blocca il tempo
     }
+
+    public void distruggiOggetto()
+    {
+        Destroy(this.gameObject, 1f);
+    }
 }

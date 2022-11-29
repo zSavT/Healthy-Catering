@@ -16,6 +16,9 @@ public class MenuAiuto : MonoBehaviour
     [SerializeField] private Button tastoIndietro;
     [SerializeField] private TextMeshProUGUI testoNumeroPannelloAttuale;
     [SerializeField] private Image immagineSchermata;
+    [SerializeField] private Image comandiAvantiImmagine;
+    [SerializeField] private Image comandiIndietroImmagine;
+    [SerializeField] private TextMeshProUGUI testoUscita;
 
     private int ultimaPosizione;
 
@@ -48,7 +51,6 @@ public class MenuAiuto : MonoBehaviour
                 mostraProssimoMessaggioDiAiuto();
             else if (controllerInput.UI.Indietro.WasPressedThisFrame())
                 mostraPrecedenteMessaggioDiAiuto();
-
     }
 
     /// <summary>
@@ -68,6 +70,9 @@ public class MenuAiuto : MonoBehaviour
         setMediaPannelloAiuto(ultimaPosizione);
 
         apertoMenuAiuto = true; //TUTORIAL
+        PlayerSettings.addattamentoSpriteComandi(testoUscita);
+        comandiIndietroImmagine.GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("L1");
+        comandiAvantiImmagine.GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("R1");
     }
 
     private void setMediaPannelloAiuto(int pagina)

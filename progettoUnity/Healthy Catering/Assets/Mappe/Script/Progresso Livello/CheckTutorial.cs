@@ -4,41 +4,20 @@ using UnityEngine;
 
 public class CheckTutorial : MonoBehaviour
 {
-    //check WASD e mouse
-    private static bool premutoW = false;
-    private static bool premutoA = false;
-    private static bool premutoS = false;
-    private static bool premutoD = false;
 
-    public static bool checkWASDeMouse()
+    public static bool checkWASDeMouse(ControllerInput controllerInput)
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            premutoW = true;
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            premutoA = true;
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            premutoS = true;
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            premutoD = true;
-        }
-        return premutoW && premutoA && premutoS && premutoD;
+        return controllerInput.Player.Movimento.WasPressedThisFrame();
     }
 
-    public static bool checkSalto()
+    public static bool checkSalto(ControllerInput controllerInput)
     {
-        return Input.GetKeyUp(KeyCode.Space);
+        return controllerInput.Player.Salto.WasPressedThisFrame();
     }
 
-    public static bool checkSprint()
+    public static bool checkSprint(ControllerInput controllerInput)
     {
-        return Input.GetKeyUp(KeyCode.LeftShift);
+        return controllerInput.Player.Corsa.WasPressedThisFrame();
     }
 
     public static bool checkParlaConZio()
