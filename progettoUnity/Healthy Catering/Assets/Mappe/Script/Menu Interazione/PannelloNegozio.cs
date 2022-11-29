@@ -361,6 +361,7 @@ public class PannelloNegozio : MonoBehaviour
         }
         pannelloSeiSicuro.SetActive(true);
         testoEsc.gameObject.SetActive(false);
+        PlayerSettings.addattamentoSpriteComandi(testoEsc);
         pannelloSeiSicuroAperto = true;
     }
 

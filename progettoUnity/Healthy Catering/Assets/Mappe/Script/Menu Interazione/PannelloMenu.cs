@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.EventSystems;
 
 public class PannelloMenu : MonoBehaviour
 {
@@ -18,13 +19,14 @@ public class PannelloMenu : MonoBehaviour
     [SerializeField] private GameObject pannelloPrincipaleMenuCliente;
     [SerializeField] private GameObject pannelloMenu;
     [SerializeField] private GameObject pannelloCliente;
-
+    [SerializeField] private ScrollRect scroll;
     [SerializeField] private GameObject bottonePiatto; 
     [SerializeField] private GameObject pannelloPiatti;
     private bool pannelloMenuAperto;
 
     [Header("Pannello ingredienti piatto")]
     [SerializeField] private GameObject pannelloIngredientiPiatto;
+    [SerializeField] private TextMeshProUGUI testoEsciMenuIngredientiPiatto;
     public static bool pannelloIngredientiPiattoAperto;
 
     [Header("Pannello ingredienti giusti sbagliati")]
@@ -54,10 +56,14 @@ public class PannelloMenu : MonoBehaviour
     private Button[] bottoniPiatti; 
     List<Piatto> piatti;
 
+    private ControllerInput controllerInput;
+
     void Start()
     {
         blackListPiatti.Add("Frittura di pesce");
         blackListPiatti.Add("Patatine fritte");
+        controllerInput = new ControllerInput();
+        controllerInput.Enable();
         clienteServito = false;
         pannelloIngredientiPiatto.SetActive(false);
         pannelloConfermaPiatto.SetActive(false);
@@ -70,7 +76,7 @@ public class PannelloMenu : MonoBehaviour
     {
         if(pannelloIngredientiPiattoAperto)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (controllerInput.Player.UscitaMenu.WasPressedThisFrame())
             {
                 chiudiPannelloIngredientiPiatto();
             }
@@ -78,12 +84,20 @@ public class PannelloMenu : MonoBehaviour
 
         if (pannelloIngredientiGiustiSbagliatiAperto)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (controllerInput.Player.UscitaMenu.WasPerformedThisFrame())
             {
                 chiudiPannelloIngredientiGiustiSbagliati();
             }
         }
+
+        if (controllerInput.UI.MostraRicette.WasPressedThisFrame() && !pannelloIngredientiGiustiSbagliatiAperto && !getPannelloConfermaPiattoAperto())
+        {
+            Debug.Log(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Button>());
+            cambiaPannelloIngredientiPiattoConPiatto(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Button>());
+            apriPannelloIngredientiPiatto();
+        }
     }
+
 
     /// <summary>
     /// Il metodo attiva il gameObject del pannello cliente
@@ -92,6 +106,7 @@ public class PannelloMenu : MonoBehaviour
     {
         pannelloMenu.SetActive(true);
         pannelloCliente.SetActive(true);
+        EscPerUscireTesto.SetActive(true);
     }
 
     /// <summary>
@@ -119,6 +134,7 @@ public class PannelloMenu : MonoBehaviour
     public void apriPannelloMenuCliente()
     {
         pannelloMenuAperto = true;
+        PlayerSettings.addattamentoSpriteComandi(EscPerUscireTesto.GetComponent<TextMeshProUGUI>());
         pannelloPrincipaleMenuCliente.SetActive(true);
         apriMenuCliente();
     }
@@ -177,6 +193,10 @@ public class PannelloMenu : MonoBehaviour
         }
 
         aggiornaBottoniPiatti();
+        foreach (Button bottonePiatto in bottoniPiattiTemp)
+        {
+            Destroy(bottonePiatto.gameObject);
+        }
     }
 
     private List<Button> generaBottoniPiattiTemp()
@@ -217,7 +237,6 @@ public class PannelloMenu : MonoBehaviour
 
             aggiungiPiattiAPannelloPiatti(piattiDisponibili, piattiNonDisponibili);
         }
-
     }
 
     private void aggiungiPiattiAPannelloPiatti(List <Button> piattiDisponibili, List <Button> piattiNonDisponibili)
@@ -229,6 +248,8 @@ public class PannelloMenu : MonoBehaviour
         {
             temp.transform.SetParent(pannelloPiatti.transform);
         }
+        EventSystem.current.SetSelectedGameObject(piattiDisponibili[0].gameObject);
+
     }
 
     private void selezionaPiatto(Button bottone, List<Piatto> piatti, Cliente cliente)
@@ -336,7 +357,7 @@ public class PannelloMenu : MonoBehaviour
         //in posizione 0 c'e' il bottone per selezionare il piatto
         //e in posizione 1 c'e' il bottone per vedere gli ingredienti
         output.GetComponentsInChildren<Button>()[1].name = "Ingredienti " + piatto.nome;
-
+        output.navigation = outputGameObject.GetComponent<Button>().navigation;
         return output;
     }
 
@@ -352,13 +373,20 @@ public class PannelloMenu : MonoBehaviour
         pannelloIngredientiPiattoAperto = !pannelloIngredientiPiattoAperto;
     }
 
+    public bool getPannelloIngredientiPiattoAperto()
+    {
+        return pannelloIngredientiPiattoAperto;
+    }
+
     private void apriPannelloIngredientiPiatto()
     {
         if (pannelloIngredientiPiatto != null)
         {
             pannelloIngredientiPiatto.SetActive(true);
+            PlayerSettings.addattamentoSpriteComandi(testoEsciMenuIngredientiPiatto);
             pannelloIngredientiPiattoApertoChiuso();
             chiudiMenuCliente();
+            EscPerUscireTesto.SetActive(false);
         }
     }
 
@@ -377,6 +405,15 @@ public class PannelloMenu : MonoBehaviour
         pannelloConfermaPiattoAperto = !pannelloConfermaPiattoAperto;
     }
 
+    /// <summary>
+    /// Il metodo restiuisce il booleano pannelloConfermaPiattoAperto che controlla sei il panello conferma piatto e aperto o meno
+    /// </summary>
+    /// <returns>bool pannelloConfermaPiattoAperto</returns>
+    public bool getPannelloConfermaPiattoAperto()
+    {
+        return pannelloConfermaPiattoAperto;
+    }
+
     private void apriPannelloConfermaPiatto()
     {
         if (pannelloConfermaPiatto != null)
@@ -385,6 +422,7 @@ public class PannelloMenu : MonoBehaviour
             chiudiMenuCliente();
             pannelloConfermaPiattoApertoChiuso();
             EscPerUscireTesto.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(pannelloConfermaPiatto.GetComponentsInChildren<Button>()[0].gameObject);
         }
 
     }

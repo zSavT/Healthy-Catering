@@ -547,6 +547,15 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MostraRicette"",
+                    ""type"": ""Button"",
+                    ""id"": ""0e9b69d5-f10c-4704-a525-3bd27c82ff1c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1011,6 +1020,17 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Ingredienti"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""30c92c6e-9835-4a14-8367-901c3cee65c7"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MostraRicette"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1106,6 +1126,7 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
         m_UI_Indietro = m_UI.FindAction("Indietro", throwIfNotFound: true);
         m_UI_Piatti = m_UI.FindAction("Piatti", throwIfNotFound: true);
         m_UI_Ingredienti = m_UI.FindAction("Ingredienti", throwIfNotFound: true);
+        m_UI_MostraRicette = m_UI.FindAction("MostraRicette", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1284,6 +1305,7 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_Indietro;
     private readonly InputAction m_UI_Piatti;
     private readonly InputAction m_UI_Ingredienti;
+    private readonly InputAction m_UI_MostraRicette;
     public struct UIActions
     {
         private @ControllerInput m_Wrapper;
@@ -1302,6 +1324,7 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
         public InputAction @Indietro => m_Wrapper.m_UI_Indietro;
         public InputAction @Piatti => m_Wrapper.m_UI_Piatti;
         public InputAction @Ingredienti => m_Wrapper.m_UI_Ingredienti;
+        public InputAction @MostraRicette => m_Wrapper.m_UI_MostraRicette;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1353,6 +1376,9 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                 @Ingredienti.started -= m_Wrapper.m_UIActionsCallbackInterface.OnIngredienti;
                 @Ingredienti.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnIngredienti;
                 @Ingredienti.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnIngredienti;
+                @MostraRicette.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMostraRicette;
+                @MostraRicette.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMostraRicette;
+                @MostraRicette.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMostraRicette;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1399,6 +1425,9 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
                 @Ingredienti.started += instance.OnIngredienti;
                 @Ingredienti.performed += instance.OnIngredienti;
                 @Ingredienti.canceled += instance.OnIngredienti;
+                @MostraRicette.started += instance.OnMostraRicette;
+                @MostraRicette.performed += instance.OnMostraRicette;
+                @MostraRicette.canceled += instance.OnMostraRicette;
             }
         }
     }
@@ -1477,5 +1506,6 @@ public partial class @ControllerInput : IInputActionCollection2, IDisposable
         void OnIndietro(InputAction.CallbackContext context);
         void OnPiatti(InputAction.CallbackContext context);
         void OnIngredienti(InputAction.CallbackContext context);
+        void OnMostraRicette(InputAction.CallbackContext context);
     }
 }

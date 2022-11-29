@@ -525,6 +525,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "MostraRicette",
+                    "type": "Button",
+                    "id": "0e9b69d5-f10c-4704-a525-3bd27c82ff1c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -987,6 +996,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Ingredienti",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "30c92c6e-9835-4a14-8367-901c3cee65c7",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "MostraRicette",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

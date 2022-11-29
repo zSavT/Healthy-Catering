@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -42,7 +41,7 @@ public class Ricettario : MonoBehaviour
 
     private void Update()
     {
-        if (apertoRicettario)
+        if (ricettarioAperto)
             if (controllerInput.UI.Avanti.WasPressedThisFrame())
                 avantiPagina();
             else if (controllerInput.UI.Indietro.WasPressedThisFrame())

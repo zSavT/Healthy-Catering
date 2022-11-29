@@ -192,7 +192,7 @@ public class Interactor : MonoBehaviour
             {
                 if (!PannelloMenu.pannelloIngredientiPiattoAperto && !PannelloMenu.pannelloConfermaPiattoAperto && !PannelloMenu.pannelloIngredientiGiustiSbagliatiAperto)
                 {
-                    if (controllerInput.Player.UscitaMenu.IsPressed())
+                    if (controllerInput.Player.UscitaMenu.WasPressedThisFrame())
                     {
                         esciDaInterazioneCliente();
                     }
@@ -349,6 +349,12 @@ public class Interactor : MonoBehaviour
             !ricettarioScript.getRicettarioAperto()
             &&
             !menuAiuto.getPannelloMenuAiutoAperto()
+            &&
+            !pannelloMenuCliente.getPannelloConfermaPiattoAperto()
+            &&
+            !pannelloMenuCliente.getPannelloIngredientiPiattoAperto()
+            &&
+            !pannelloMenuCliente.gameObject.activeSelf
         );
     }
 

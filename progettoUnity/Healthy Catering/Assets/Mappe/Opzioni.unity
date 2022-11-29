@@ -1844,6 +1844,7 @@ GameObject:
   - component: {fileID: 362464492}
   - component: {fileID: 362464491}
   - component: {fileID: 362464490}
+  - component: {fileID: 362464493}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -1941,6 +1942,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362464488}
   m_CullTransparentMesh: 1
+--- !u!114 &362464493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362464488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f12cdfde91147a4e9ccc54602b6c529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 10
+  RewiredPlayerID: 0
 --- !u!1 &402535496
 GameObject:
   m_ObjectHideFlags: 0
@@ -10678,7 +10693,6 @@ MonoBehaviour:
   sliderVolumeMusica: {fileID: 2036615889}
   audioMixerSuoni: {fileID: 24100000, guid: 8a8b96b09803a99439c710b974e61f8c, type: 2}
   sliderVolumeSuoni: {fileID: 546549080}
-  suonoClick: {fileID: 343990790}
   tastoControlli: {fileID: 971469185}
   impostazioniControlli: {fileID: 777566301}
   sliderSensibilitaTesto: {fileID: 38735336}
