@@ -499,12 +499,13 @@ public class Interactor : MonoBehaviour
     /// </summary>
     public void esciDaInterazionePC()
     {
+        magazzino.chiudiPannelloMagazzino();
         playerRiprendiMovimento.Invoke();
 
         ritornaAllaPosizioneNormale();
         CambioCursore.cambioCursoreNormale();
         PuntatoreMouse.disabilitaCursore();
-        magazzino.chiudiPannelloMagazzino();
+        
     }
 
     /// <summary>
