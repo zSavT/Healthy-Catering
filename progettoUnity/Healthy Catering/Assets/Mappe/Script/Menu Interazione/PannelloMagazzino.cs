@@ -63,7 +63,7 @@ public class PannelloMagazzino : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(EventSystem.current.currentSelectedGameObject);
+        //Debug.Log(EventSystem.current.currentSelectedGameObject);
     }
 
     private void OnDestroy()
