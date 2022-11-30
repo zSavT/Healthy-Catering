@@ -55,18 +55,18 @@ public class ProgressoTutorial : MonoBehaviour
 
         scritteDaMostrare = new List<string> /*qui vanno inserite le varie scritte per bene*/
         {
-            "Premi <color=#B5D99C>W,A,S,D</color> per camminare.",
-            "Premi <color=#B5D99C>Spazio</color> per saltare.",
-            "Premi <color=#B5D99C>Shift</color> per correre.",
-            "Vai a parlare con tuo <color=#B5D99C>Zio</color>.",
-            "Raggiungi il <color=#B5D99C>Ristorante</color>.",
+            "Premi " + Costanti.tastoWASD + " per camminare.",
+            "Premi " + Costanti.tastoSpazio + " per saltare.",
+            "Premi " + Costanti.tastoShift + " per correre.",
+            "Vai a parlare con tuo " + Costanti.coloreVerde + "zio" + Costanti.fineColore + ".",
+            "Raggiungi il " + Costanti.coloreVerde + "Ristorante" + Costanti.fineColore + ".",
             "Servi un piatto idoneo al <color=#B5D99C>cliente</color>.",
             "Servi un piatto non idoneo al <color=#B5D99C>cliente</color>.",
             "Controlla il <color=#B5D99C>Magazzino</color>.",
             "Compra <color=#B5D99C>Ingredienti</color> dal negozio.",
-            "Chiedi informazioni alle <color=#B5D99C>Persone</color>.",
-            "Apri il ricettario con il tasto " + Costanti.coloreVerde + "R" + Costanti.fineColore + ".",
-            "Apri il menu aiuto con il tasto " + Costanti.coloreVerde + "H" + Costanti.fineColore + "."
+            "Chiedi informazioni alle " + Costanti.coloreVerde + "Persone" + Costanti.fineColore + ".",
+            "Apri il ricettario con il tasto " + Costanti.tastoR + ".",
+            "Apri il menu aiuto con il tasto " + Costanti.tastoH + "."
         };
 
         numeroScritteMostrate = 0;
@@ -309,8 +309,13 @@ public class ProgressoTutorial : MonoBehaviour
         obbiettivo1Testo.gameObject.SetActive(true);
     }
 
+    /// <summary>
+    /// Il metodo imposta il testo dell'obbiettivo da raggiungere
+    /// </summary>
+    /// <param name="output">string testo da inserire</param>
     private void setObiettivoTesto(string output)
     {
         obbiettivo1Testo.text = output;
+        PlayerSettings.addattamentoSpriteComandi(obbiettivo1Testo);
     }
 }

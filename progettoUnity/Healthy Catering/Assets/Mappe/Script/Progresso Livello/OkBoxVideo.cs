@@ -62,7 +62,7 @@ public class OkBoxVideo : MonoBehaviour
         PuntatoreMouse.abilitaCursore();
         CambioCursore.cambioCursoreNormale();
         pannello.SetActive(true);
-
+        PlayerSettings.addattamentoSpriteComandi(testo);
         if (posizione < Costanti.titoliOkBoxVideo.Count)
         {
             titolo.text = Costanti.titoliOkBoxVideo[posizione];

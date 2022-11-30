@@ -43,16 +43,20 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerEnterHandler, IPointe
 
     void Update()
     {
-        // Scroll via input.
-        InputScroll();
-        if (!mouseOver)
+        if(Utility.gamePadConnesso())
         {
-            // Lerp scrolling code.
-            m_ScrollRect.normalizedPosition = Vector2.Lerp(m_ScrollRect.normalizedPosition, m_NextScrollPosition, scrollSpeed * Time.unscaledDeltaTime);
-        }
-        else
-        {
-            m_NextScrollPosition = m_ScrollRect.normalizedPosition;
+            // Scroll via input.
+            InputScroll();
+
+            if (!mouseOver)
+            {
+                // Lerp scrolling code.
+                m_ScrollRect.normalizedPosition = Vector2.Lerp(m_ScrollRect.normalizedPosition, m_NextScrollPosition, scrollSpeed * Time.unscaledDeltaTime);
+            }
+            else
+            {
+                m_NextScrollPosition = m_ScrollRect.normalizedPosition;
+            }
         }
     }
     void InputScroll()

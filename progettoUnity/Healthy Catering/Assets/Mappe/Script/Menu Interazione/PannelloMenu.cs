@@ -58,6 +58,8 @@ public class PannelloMenu : MonoBehaviour
 
     private ControllerInput controllerInput;
 
+    private GameObject piattoSelezionatoBottone;
+
     void Start()
     {
         blackListPiatti.Add("Frittura di pesce");
@@ -74,7 +76,7 @@ public class PannelloMenu : MonoBehaviour
 
     void Update()
     {
-        if(pannelloIngredientiPiattoAperto)
+        if (pannelloIngredientiPiattoAperto)
         {
             if (controllerInput.Player.UscitaMenu.WasPressedThisFrame())
             {
@@ -89,12 +91,39 @@ public class PannelloMenu : MonoBehaviour
                 chiudiPannelloIngredientiGiustiSbagliati();
             }
         }
-
-        if (controllerInput.UI.MostraRicette.WasPressedThisFrame() && !pannelloIngredientiGiustiSbagliatiAperto && !getPannelloConfermaPiattoAperto())
+        if (pannelloPrincipaleMenuCliente.activeSelf)
         {
-            Debug.Log(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Button>());
-            cambiaPannelloIngredientiPiattoConPiatto(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Button>());
-            apriPannelloIngredientiPiatto();
+            if (controllerInput.UI.MostraRicette.WasPressedThisFrame() && !pannelloIngredientiGiustiSbagliatiAperto && !getPannelloConfermaPiattoAperto() && controlloSelectObjectCorretto())
+            {
+                Debug.Log(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Button>());
+                cambiaPannelloIngredientiPiattoConPiatto(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Button>());
+                apriPannelloIngredientiPiatto();
+            }
+            fixSelectObjectCorretto();
+        }
+    }
+
+    private bool controlloSelectObjectCorretto()
+    {
+        bool trovato = false;
+        foreach (Button temp in bottoniPiatti)
+        {
+            if (EventSystem.current.currentSelectedGameObject == temp.gameObject)
+            {
+                trovato = true; break;
+            }
+        }
+        return trovato;
+    }
+
+    private void fixSelectObjectCorretto()
+    {
+        if (controlloSelectObjectCorretto())
+        {
+            piattoSelezionatoBottone = EventSystem.current.currentSelectedGameObject;
+        } else if (!controlloSelectObjectCorretto() && !pannelloIngredientiGiustiSbagliatiAperto && !pannelloIngredientiPiattoAperto && !pannelloConfermaPiattoAperto) 
+        {
+            EventSystem.current.SetSelectedGameObject(piattoSelezionatoBottone);
         }
     }
 

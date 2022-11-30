@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 using TMPro;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// Classe principale per gestire le azioni del giocatore<para>
@@ -71,6 +72,7 @@ public class Interactor : MonoBehaviour
     void Update()
     {
         interazioneUtenteConNPCVari();
+        Debug.Log(EventSystem.current.currentSelectedGameObject);
     }
 
     /// <summary>
