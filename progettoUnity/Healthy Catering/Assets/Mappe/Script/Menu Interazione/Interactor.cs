@@ -145,7 +145,7 @@ public class Interactor : MonoBehaviour
     /// </summary>
     private void interazioneUtenteConNPCVari()
     {
-        if (menuApribile)
+        if (menuApribile && !PlayerSaGiocareFPS.pannelloSaGiocareAperto)
         {
             gestisciOggettiPuntatiEMenuAribiliConTasto();
 

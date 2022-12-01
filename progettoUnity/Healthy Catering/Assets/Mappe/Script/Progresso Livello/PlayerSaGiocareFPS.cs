@@ -11,12 +11,14 @@ public class PlayerSaGiocareFPS : MonoBehaviour
     // 1 = si
     // -1 = no
     public static int siOno = 0;
+    public static bool pannelloSaGiocareAperto = false;
 
     [SerializeField] private UnityEvent playerRiprendiMovimento;
 
     void Start()
     {
         pannello.SetActive(false);
+        pannelloSaGiocareAperto = false;
         siOno = 0;
     }
 
@@ -27,6 +29,7 @@ public class PlayerSaGiocareFPS : MonoBehaviour
         //playerStop.Invoke () chiamato in progresso tutorial
         PuntatoreMouse.abilitaCursore();
         CambioCursore.cambioCursoreNormale();
+        pannelloSaGiocareAperto = true;
     }
 
     public void chiudiPannelloSi()
@@ -35,6 +38,7 @@ public class PlayerSaGiocareFPS : MonoBehaviour
         pannello.SetActive(false);
         playerRiprendiMovimento.Invoke();
         siOno = 1;
+        pannelloSaGiocareAperto = false;
         resumeGame();
     }
 
@@ -44,6 +48,7 @@ public class PlayerSaGiocareFPS : MonoBehaviour
         pannello.SetActive(false);
         playerRiprendiMovimento.Invoke();
         siOno = -1;
+        pannelloSaGiocareAperto = false;
         resumeGame();
     }
 
