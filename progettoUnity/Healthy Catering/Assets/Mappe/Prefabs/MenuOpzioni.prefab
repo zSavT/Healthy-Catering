@@ -276,7 +276,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.546875, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -486,8 +486,8 @@ RectTransform:
   m_Father: {fileID: 1942628231}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.546875, y: 0}
-  m_AnchorMax: {x: 0.546875, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -848,7 +848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 3
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1988,8 +1988,8 @@ RectTransform:
   m_Father: {fileID: 328924248928420682}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2917,7 +2917,7 @@ RectTransform:
   m_Children:
   - {fileID: 328924249999488035}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3000,6 +3000,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuPausa: {fileID: 328924249999488032}
   menuAiuto: {fileID: 0}
+  primoElementoSelezionato: {fileID: 328924249629098806}
+  testoEsci: {fileID: 328924249944622821}
   aperturaMenuGioco:
     m_PersistentCalls:
       m_Calls:
@@ -3169,6 +3171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98291a72b1c8140448a74bdb5cb204f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tastoGrafica: {fileID: 328924250305443685}
+  impostazioniGrafica: {fileID: 328924248728556078}
   risoluzioniDisponibili: {fileID: 328924249629098808}
   livelloGrafica: {fileID: 328924250014312971}
   schermoIntero: {fileID: 328924248688779023}
@@ -3179,13 +3183,17 @@ MonoBehaviour:
   sliderVolumeMusica: {fileID: 328924250520376946}
   audioMixerSuoni: {fileID: 24100000, guid: 8a8b96b09803a99439c710b974e61f8c, type: 2}
   sliderVolumeSuoni: {fileID: 24491797}
-  suonoClick: {fileID: 0}
+  tastoControlli: {fileID: 328924250570220068}
+  impostazioniControlli: {fileID: 328924248948003914}
   sliderSensibilitaTesto: {fileID: 328924249870863798}
   sliderSensibilita: {fileID: 328924249293300114}
   sliderSensibilitaStickTesto: {fileID: 909673890938580566}
   sliderSensibilitaStick: {fileID: 9023912310406466129}
   sliderFovTesto: {fileID: 328924249741556229}
   sliderFov: {fileID: 328924250574483102}
+  vetAudio:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &328924248938512398
 GameObject:
   m_ObjectHideFlags: 0
@@ -4721,9 +4729,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.5882353}
+    m_PressedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.78431374}
+    m_SelectedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.5882353}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -5179,7 +5187,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5633,9 +5641,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.5882353}
+    m_PressedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.78431374}
+    m_SelectedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.5882353}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -7072,9 +7080,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.5882353}
+    m_PressedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.78431374}
+    m_SelectedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.5882353}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -7231,7 +7239,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Premi [ESC] per uscire
+  m_text: Premi <sprite=10> per uscire
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: b246c4190f4e46ec9352fe15a7b09ce0, type: 2}
@@ -7486,9 +7494,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.5882353}
+    m_PressedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.78431374}
+    m_SelectedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.5882353}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -10044,9 +10052,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.5882353}
+    m_PressedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.78431374}
+    m_SelectedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.5882353}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -11157,7 +11165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 3
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -11402,9 +11410,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.5882353}
+    m_PressedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.78431374}
+    m_SelectedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.5882353}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -11653,7 +11661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 3
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}

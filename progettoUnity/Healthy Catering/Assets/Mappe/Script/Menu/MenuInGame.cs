@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// Classe per la gestione delle impostazioni presenti nel menu in Game.<para>
@@ -17,8 +18,11 @@ public class MenuInGame : MonoBehaviour
     [Header("Menu Opzioni")]
     [SerializeField] private GameObject menuPausa;
     [SerializeField] private MenuAiuto menuAiuto;
+    [SerializeField] private GameObject primoElementoSelezionato;
+    [SerializeField] private TextMeshProUGUI testoEsci;
     [SerializeField] private UnityEvent aperturaMenuGioco;
     [SerializeField] private UnityEvent chiusuraMenuGioco;
+
 
     [Header("Elementi")]
     [SerializeField] private TextMeshProUGUI testoUscita;
@@ -72,6 +76,8 @@ public class MenuInGame : MonoBehaviour
         elementiUscita.SetActive(false);
     }
 
+    
+
     /// <summary>
     /// Metodo per controllare se il è stato premuto il tasto per aprire il menu opzioni e verificare che sia apribile in quel momento.
     /// </summary>
@@ -83,6 +89,8 @@ public class MenuInGame : MonoBehaviour
             {
                 if (!Interactor.pannelloAperto)
                 {
+                    EventSystem.current.SetSelectedGameObject(primoElementoSelezionato);
+                    PlayerSettings.addattamentoSpriteComandi(testoUscita);
                     if (giocoInPausa)
                     {
                         if (menuAiuto.getPannelloMenuAiutoAperto())

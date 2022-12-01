@@ -1955,7 +1955,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: 10
-  RewiredPlayerID: 0
 --- !u!1 &402535496
 GameObject:
   m_ObjectHideFlags: 0
@@ -8285,6 +8284,7 @@ GameObject:
   - component: {fileID: 1711606744}
   - component: {fileID: 1711606746}
   - component: {fileID: 1711606745}
+  - component: {fileID: 1711606747}
   m_Layer: 5
   m_Name: ClickRB
   m_TagString: Untagged
@@ -8350,6 +8350,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1711606743}
   m_CullTransparentMesh: 1
+--- !u!114 &1711606747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711606743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f898da72b6999c48b4d4d9aae3c4d05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1720929741
 GameObject:
   m_ObjectHideFlags: 0
@@ -10069,6 +10081,7 @@ GameObject:
   - component: {fileID: 1886293904}
   - component: {fileID: 1886293906}
   - component: {fileID: 1886293905}
+  - component: {fileID: 1886293907}
   m_Layer: 5
   m_Name: ClickLB
   m_TagString: Untagged
@@ -10134,6 +10147,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1886293903}
   m_CullTransparentMesh: 1
+--- !u!114 &1886293907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886293903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f898da72b6999c48b4d4d9aae3c4d05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1893535361
 GameObject:
   m_ObjectHideFlags: 0
@@ -10704,6 +10729,9 @@ MonoBehaviour:
   vetAudio:
   - {fileID: 343990790}
   - {fileID: 743201865}
+  immaginiControlli:
+  - {fileID: 1886293905}
+  - {fileID: 1711606745}
 --- !u!114 &1988159439
 MonoBehaviour:
   m_ObjectHideFlags: 0

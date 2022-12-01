@@ -47,12 +47,16 @@ public class OpzioniMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI sliderFovTesto;
     [SerializeField] private Slider sliderFov;
     private bool caricatiValori = false;
-    private GameObject ultimoElementoSelezionato;
-    private EventSystem eventSystem;
-    private ControllerInput controllerInput;
+
 
     [Header("Suoni Scena")]
     [SerializeField] private AudioSource[] vetAudio;
+
+    [Header("Controller Input")]
+    [SerializeField] private Image[] immaginiControlli;
+    private GameObject ultimoElementoSelezionato;
+    private EventSystem eventSystem;
+    private ControllerInput controllerInput;
 
     void Start()
     {
@@ -111,6 +115,7 @@ public class OpzioniMenu : MonoBehaviour
         sliderVolumeSuoni.value = PlayerSettings.caricaImpostazioniVolumeSuoni();
 
         caricatiValori = true;
+        addattamentoImmaginiControlli();
     }
 
 
@@ -136,6 +141,12 @@ public class OpzioniMenu : MonoBehaviour
         }
     }
 
+    private void addattamentoImmaginiControlli()
+    {
+        immaginiControlli[0].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("L1");
+        immaginiControlli[1].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("R1");
+    }
+
     /// <summary>
     /// Il metodo controlla e gestiscisce le periferiche di Input 
     /// </summary>
@@ -146,13 +157,15 @@ public class OpzioniMenu : MonoBehaviour
         switch (change)
         {
             case InputDeviceChange.Added:
-                // New Device.
+                addattamentoImmaginiControlli();
                 break;
             case InputDeviceChange.Disconnected:
                 ultimoElementoSelezionato = eventSystem.currentSelectedGameObject;
+                addattamentoImmaginiControlli();
                 break;
             case InputDeviceChange.Reconnected:
                 aggioraEventSystemPerControllerConnesso(ultimoElementoSelezionato);
+                addattamentoImmaginiControlli();
                 break;
             case InputDeviceChange.Removed:
                 // Remove from Input System entirely; by default, Devices stay in the system once discovered.
