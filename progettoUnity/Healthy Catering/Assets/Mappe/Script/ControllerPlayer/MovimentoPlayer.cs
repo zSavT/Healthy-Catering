@@ -38,7 +38,7 @@ public class MovimentoPlayer : MonoBehaviour
     private float z;
     private Vector3 movimento;
     private bool puoMuoversi;
-    public UnityEvent lockUnlockMovimento;
+    [SerializeField] private ControlloMouse movimentoVisuale;
     private Animator controllerAnimazione;
 
     void Start()
@@ -94,22 +94,13 @@ public class MovimentoPlayer : MonoBehaviour
     }
 
 
-
-    /// <summary>
-    /// Blocca o sblocca il movimento
-    /// </summary>
-    public void lockUnlockVisuale()
-    {
-        this.puoMuoversi = !puoMuoversi;
-        lockUnlockMovimento.Invoke();
-    }
-
     /// <summary>
     /// Blocca la possibilità di muoversi del player
     /// </summary>
     public void bloccaMovimento()
     {
         this.puoMuoversi = false;
+        movimentoVisuale.bloccaVisuale();
     }
 
     /// <summary>
@@ -118,6 +109,7 @@ public class MovimentoPlayer : MonoBehaviour
     public void sbloccaMovimento()
     {
         this.puoMuoversi = true;
+        movimentoVisuale.attivaMovimento();
     }
 
     /// <summary>
@@ -230,8 +222,9 @@ public class MovimentoPlayer : MonoBehaviour
             velocitaAttuale = velocitaBase;
             isSprinting = false;
         }
-        if (controllerInput.Player.Salto.IsPressed() && perTerra)
+        if (controllerInput.Player.Salto.WasPressedThisFrame() && perTerra && controllerInput.Player.Salto.enabled)
         {
+            Debug.Log(puoMuoversi);
             salto();
         }
         if (isFermo())

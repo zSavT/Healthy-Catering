@@ -72,7 +72,6 @@ public class Interactor : MonoBehaviour
     void Update()
     {
         interazioneUtenteConNPCVari();
-        Debug.Log(EventSystem.current.currentSelectedGameObject);
     }
 
     /// <summary>

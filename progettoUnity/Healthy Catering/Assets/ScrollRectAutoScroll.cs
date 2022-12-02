@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -16,6 +17,8 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerEnterHandler, IPointe
 
     void OnEnable()
     {
+        controllerInput = new ControllerInput();
+        controllerInput.UI.Enable();
         if (m_ScrollRect)
         {
             m_ScrollRect.content.GetComponentsInChildren(m_Selectables);
@@ -27,13 +30,16 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerEnterHandler, IPointe
     }
     void Start()
     {
-        controllerInput = new ControllerInput();
-        controllerInput.Enable();
         if (m_ScrollRect)
         {
             m_ScrollRect.content.GetComponentsInChildren(m_Selectables);
         }
         ScrollToSelected(true);
+    }
+
+    private void OnDisable()
+    {
+        controllerInput.UI.Disable();
     }
 
     private void OnDestroy()

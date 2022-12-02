@@ -22,7 +22,7 @@ public class MenuInGame : MonoBehaviour
     [SerializeField] private TextMeshProUGUI testoEsci;
     [SerializeField] private UnityEvent aperturaMenuGioco;
     [SerializeField] private UnityEvent chiusuraMenuGioco;
-
+    private OpzioniMenu opzioniMenu;
 
     [Header("Elementi")]
     [SerializeField] private TextMeshProUGUI testoUscita;
@@ -43,10 +43,25 @@ public class MenuInGame : MonoBehaviour
         attivaElementiIniziali();
     }
 
+    private void OnEnable()
+    {
+        controllerInput = new ControllerInput();
+        controllerInput.UI.Disable();
+        controllerInput.Player.Enable();
+        controllerInput.Player.Salto.Disable();
+    }
+
     // Update is called once per frame
     void Update()
     {
         checkTastoMenu();
+        resetObjectSelezionatoTastoTornaAlMenu();
+    }
+
+    private void OnDisable()
+    {
+        controllerInput.UI.Disable();
+        controllerInput.Player.Salto.Enable();
     }
 
     /// <summary>
@@ -55,6 +70,27 @@ public class MenuInGame : MonoBehaviour
     private void OnDestroy()
     {
         controllerInput.Disable();
+    }
+
+    private void resetObjectSelezionatoTastoTornaAlMenu()
+    {
+        if (EventSystem.current.currentSelectedGameObject == tornaIndietro.gameObject)
+        {
+            //Create a new navigation
+            Navigation newNav = new Navigation();
+            newNav.mode = Navigation.Mode.Explicit;
+            if (impostazioniControlli.activeSelf && !impostazioniGraficaAudio.activeSelf)
+            {
+                newNav.selectOnDown = impostazioniControlli.GetComponentsInChildren<Slider>()[0];
+                tornaIndietro.navigation = newNav;
+            }
+            else if (impostazioniGraficaAudio.activeSelf && !impostazioniControlli.activeSelf)
+            {
+                newNav.selectOnDown = impostazioniGraficaAudio.GetComponentsInChildren<TMP_Dropdown>()[1];
+                tornaIndietro.navigation = newNav;
+            }
+        }
+
     }
 
     /// <summary>
@@ -74,6 +110,7 @@ public class MenuInGame : MonoBehaviour
         impostazioniGraficaAudio.SetActive(true);
         tornaIndietro.gameObject.SetActive(true);
         elementiUscita.SetActive(false);
+        opzioniMenu = this.GetComponent<OpzioniMenu>();
     }
 
     
@@ -87,6 +124,7 @@ public class MenuInGame : MonoBehaviour
         {
             if (menuApribile)
             {
+                opzioniMenu.clickSuTastoGrafico();
                 if (!Interactor.pannelloAperto)
                 {
                     EventSystem.current.SetSelectedGameObject(primoElementoSelezionato);

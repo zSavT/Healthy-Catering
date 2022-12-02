@@ -62,8 +62,6 @@ public class OpzioniMenu : MonoBehaviour
     {
         CambioCursore.cambioCursoreNormale();
         eventSystem = EventSystem.current;
-        controllerInput = new ControllerInput();
-        controllerInput.Enable();
         //DALTONISMO
         daltonismo.value = PlayerSettings.caricaImpostazioniDaltonismo();
 
@@ -116,6 +114,18 @@ public class OpzioniMenu : MonoBehaviour
 
         caricatiValori = true;
         addattamentoImmaginiControlli();
+    }
+
+    private void OnEnable()
+    {
+        controllerInput = new ControllerInput();
+        controllerInput.UI.Enable();
+        controllerInput.Player.Disable();
+    }
+    private void OnDisable()
+    {
+        controllerInput.UI.Disable();
+        controllerInput.Player.Enable();
     }
 
 
