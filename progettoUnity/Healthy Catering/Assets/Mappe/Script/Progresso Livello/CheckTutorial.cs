@@ -52,10 +52,6 @@ public class CheckTutorial : MonoBehaviour
         return PannelloMagazzino.pannelloMagazzinoApertoPerTutorial;
     }
     
-    public static bool checkIsNelNegozio()
-    {
-        return true; //TODO
-    }
 
     public static bool checkCompratiIngredienti(Player giocatore)
     {

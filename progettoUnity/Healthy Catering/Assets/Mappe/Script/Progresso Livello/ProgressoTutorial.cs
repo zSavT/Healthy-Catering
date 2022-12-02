@@ -223,6 +223,7 @@ public class ProgressoTutorial : MonoBehaviour
                         OkBoxVideo.meccanicheServireCompatibileMostrato = true;
                     } else if (!OkBoxVideo.okBoxVideoAperto)
                         movimento.sbloccaMovimento();
+
                     if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
                         if (giocatore != null)
                             if (CheckTutorial.checkServitoPiattoCompatibile(giocatore))
@@ -241,13 +242,13 @@ public class ProgressoTutorial : MonoBehaviour
                         OkBoxVideo.meccanicheServireNonCompatibileMostrato = true;
                     } else if (!OkBoxVideo.okBoxVideoAperto)
                         movimento.sbloccaMovimento();
-                    if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
-                        if (giocatore != null)
-                            if (CheckTutorial.checkServitoPiattoNonCompatibile(giocatore))
-                            {
-                                guiInGame.aggiornaValorePunteggioSenzaAnimazione(giocatore.punteggio[0]);
-                                numeroScritteMostrate++;
-                            }
+
+                    if (giocatore != null)
+                        if (CheckTutorial.checkServitoPiattoNonCompatibile(giocatore))
+                        {
+                            guiInGame.aggiornaValorePunteggioSenzaAnimazione(giocatore.punteggio[0]);
+                            numeroScritteMostrate++;
+                        }
                 }
 
                 else if (numeroScritteMostrate == 7)
@@ -260,12 +261,16 @@ public class ProgressoTutorial : MonoBehaviour
                         OkBoxVideo.finitiIngredientiMostrato = true;
                     } else if (!OkBoxVideo.okBoxVideoAperto)
                         movimento.sbloccaMovimento();
-                    if (CheckTutorial.checkVistoMagazzino()) { numeroScritteMostrate++; }
+
+                    if (CheckTutorial.checkVistoMagazzino())
+                    { 
+                        numeroScritteMostrate++; 
+                    }
 
                     //nel magazzino dovremmo mettere un ingrediente che non e' presente nella ricetta ne del 
                     //Piatto compatibile ne in quella del piatto non compatibile, cosi che quando il giocatore 
                     //apre il magazzino non sia vuoto del tutto, se no sembra che il magazzino abbia solo la 
-                    //funzione di avvisarti che non hai pi� ingredienti
+                    //funzione di avvisarti che non hai più ingredienti
                     //magari possiamo cambiare la scritta a "il magazzino sarebbe cosi se ci fossero degli
                     //ingredienti" e poi far scomparire l'ingrediente temp che abbiamo inserito dopo 5 secondi
                 }
@@ -277,6 +282,7 @@ public class ProgressoTutorial : MonoBehaviour
                         okBoxVideo.apriOkBoxVideo(Costanti.doveEIlNegozio);
                     } else if (!OkBoxVideo.okBoxVideoAperto)
                         movimento.sbloccaMovimento();
+
                     if (!Interactor.nelRistorante && OkBoxVideo.doveEIlNegozioMostrato)
                     {
                         indicatoreDistanza.setTarget("negozio");
@@ -284,11 +290,10 @@ public class ProgressoTutorial : MonoBehaviour
                     {
                         indicatoreDistanza.setTarget("reset");
                     }
-                    if (CheckTutorial.checkIsNelNegozio()) //TODO implementazione
-                        if (CheckTutorial.checkCompratiIngredienti(giocatore)) 
-                        { 
-                            numeroScritteMostrate++; 
-                        };
+                    if (CheckTutorial.checkCompratiIngredienti(giocatore)) 
+                    { 
+                        numeroScritteMostrate++; 
+                    }
                 }
                 else if (numeroScritteMostrate == 9)
                 {

@@ -282,7 +282,7 @@ public class Interactor : MonoBehaviour
         inquadratoNPC.Invoke();
         if (controllerInput.Player.Interazione.IsPressed() && !magazzino.getPannelloMagazzinoAperto())
         {
-            magazzino.apriPannelloMagazzino(giocatore);
+            magazzino.apriPannelloMagazzino(giocatore, this.gameObject.GetComponent<MovimentoPlayer>());
             playerStop.Invoke();
             PuntatoreMouse.abilitaCursore();
             CambioCursore.cambioCursoreNormale();

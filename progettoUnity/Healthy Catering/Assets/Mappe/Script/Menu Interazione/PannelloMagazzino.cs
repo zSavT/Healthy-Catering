@@ -37,6 +37,7 @@ public class PannelloMagazzino : MonoBehaviour
 
     [Header ("Altro")]
     [SerializeField] private PannelloMostraRicette pannelloMostraRicette;
+    private MovimentoPlayer movimentoPlayer;
 
     private Player giocatore;
 
@@ -46,8 +47,6 @@ public class PannelloMagazzino : MonoBehaviour
 
     private void Start()
     {
-        controllerInput = new ControllerInput();
-        controllerInput.Enable();
         pannelloMagazzino.SetActive(false);
         cambiaSfondoDesktop();
         
@@ -59,6 +58,17 @@ public class PannelloMagazzino : MonoBehaviour
         pannelloXElementi = rimuoviTuttiFigliDaPannello(pannelloXElementi);
 
         copiaPannelloXElementi = Instantiate(pannelloXElementi);
+    }
+
+    private void OnEnable()
+    {
+        controllerInput = new ControllerInput();
+        controllerInput.UI.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controllerInput.UI.Disable();
     }
 
 
@@ -107,16 +117,18 @@ public class PannelloMagazzino : MonoBehaviour
         return pannello;//non sono sicuro sia necessario il return del pannello, se non serve poi lo togliamo
     }
 
-    public void apriPannelloMagazzino(Player player)
+    public void apriPannelloMagazzino(Player player, MovimentoPlayer controllerMovimento)
     {
         resetPannelloMagazzino();
         giocatore = player;
-
+        movimentoPlayer = controllerMovimento;
         pannelloInventarioCanvas.SetActive(false);
 
         popolaSchermata();
 
         setSchermataInizialePC();
+        if (Utility.gamePadConnesso())
+            movimentoPlayer.bloccaMovimento();
     }
 
     private void setSchermataInizialePC()
@@ -138,6 +150,9 @@ public class PannelloMagazzino : MonoBehaviour
         suonoChiusuraPC.Play();
 
         resetPannelloMagazzino();
+        if (Utility.gamePadConnesso())
+            controllerInput.Player.Salto.Disable();
+
     }
 
     private void resetPannelloMagazzino()
