@@ -16,7 +16,8 @@ public class OkBoxVideo : MonoBehaviour
 
     [SerializeField] private UnityEvent playerStop;
     [SerializeField] private UnityEvent playerRiprendiMovimento;
-
+    private ControllerInput controllerInput;
+    [SerializeField] private MovimentoPlayer movimentoPlayer;
     private Animazione animazione;
 
     public static bool WASDmostrato = false;
@@ -54,6 +55,20 @@ public class OkBoxVideo : MonoBehaviour
         animazione = immagineOGIF.GetComponent<Animazione>();
     }
 
+    private void OnEnable()
+    {
+        controllerInput = new ControllerInput();
+        controllerInput.UI.Disable();
+        controllerInput.Player.Enable();
+        controllerInput.Player.Salto.Disable();
+    }
+
+    private void OnDisable()
+    {
+        controllerInput.UI.Disable();
+        controllerInput.Player.Salto.Enable();
+    }
+
     public void apriOkBoxVideo(int posizione)
     {
         playerStop.Invoke();
@@ -79,6 +94,7 @@ public class OkBoxVideo : MonoBehaviour
 
     public void chiudiOkBoxVideo()
     {
+        StartCoroutine(attendi(2f));
         PuntatoreMouse.disabilitaCursore();
         pannello.SetActive(false);
         playerRiprendiMovimento.Invoke();
@@ -107,5 +123,16 @@ public class OkBoxVideo : MonoBehaviour
             Costanti.nomiAnimazioniOkBoxVideo [posizione], 
             "default"
         );
+    }
+
+    /// <summary>
+    /// Il metodo permette di attendere prima di proseguire
+    /// </summary>
+    /// <param name="attesa">Durata attesa</param>
+    /// <returns></returns>
+    IEnumerator attendi(float attesa)
+    {
+        Debug.Log(attesa);
+        yield return new WaitForSecondsRealtime(attesa);
     }
 }

@@ -103,6 +103,16 @@ public class MovimentoPlayer : MonoBehaviour
         movimentoVisuale.bloccaVisuale();
     }
 
+
+    /// <summary>
+    /// Il metodo setta la variabile booleana puoMuoversi.
+    /// </summary>
+    /// <param name="movimentoAttivo">booleano</param>
+    public void setPuoMuoversi(bool movimentoAttivo)
+    {
+        puoMuoversi = movimentoAttivo;
+    }
+
     /// <summary>
     /// Permette al player di potersi muovere
     /// </summary>

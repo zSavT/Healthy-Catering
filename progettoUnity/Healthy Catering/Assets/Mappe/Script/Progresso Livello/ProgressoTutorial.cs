@@ -93,6 +93,7 @@ public class ProgressoTutorial : MonoBehaviour
             else
             {
                 playerStop.Invoke();
+                moviemnto.bloccaMovimento();
                 playerSaGiocareFPS.apriPannelloPlayerSaGiocareFPS();
             }
         }
@@ -110,41 +111,68 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.WASDmostrato)
                     {
+                        playerSaGiocareFPS.distruggiOggetto();
+                        moviemnto.bloccaMovimento();
+                        controllerInput.Disable();
                         okBoxVideo.apriOkBoxVideo(Costanti.WASD);
                         OkBoxVideo.WASDmostrato = true;
                     }
-
+                    else
+                    {
+                        moviemnto.sbloccaMovimento();
+                        controllerInput.Enable();
+                    }
+                        
                     if (CheckTutorial.checkWASDeMouse(controllerInput)) { numeroScritteMostrate++; }
                 }
                 else if (numeroScritteMostrate == 1)
                 {
                     if (!OkBoxVideo.saltoMostrato)
                     {
+                        moviemnto.bloccaMovimento();
+                        controllerInput.Disable();
                         okBoxVideo.apriOkBoxVideo(Costanti.salto);
+
                         OkBoxVideo.saltoMostrato = true;
                     }
-
+                    else
+                    {
+                        moviemnto.sbloccaMovimento();
+                        controllerInput.Enable();
+                    }
                     if (CheckTutorial.checkSalto(controllerInput)) { if(moviemnto.perTerra) numeroScritteMostrate++; }
                 }
                 else if (numeroScritteMostrate == 2)
                 {
                     if (!OkBoxVideo.sprintMostrato)
                     {
+                        moviemnto.bloccaMovimento();
+                        controllerInput.Disable();
                         okBoxVideo.apriOkBoxVideo(Costanti.sprint);
                         OkBoxVideo.sprintMostrato = true;
                     }
-
+                    else
+                    {
+                        moviemnto.sbloccaMovimento();
+                        controllerInput.Enable();
+                    }
                     if (CheckTutorial.checkSprint(controllerInput)) { numeroScritteMostrate++; }
                 }
                 else if (numeroScritteMostrate == 3)
                 {
                     if (!OkBoxVideo.parlaZioMostrato)
                     {
-                        playerSaGiocareFPS.distruggiOggetto();
+                        
+                        moviemnto.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.parlaZio);
                         InterazionePassanti.parlatoConZio = false;
                     }
-                    if(OkBoxVideo.parlaZioMostrato && !Interactor.nelRistorante)
+                    else
+                    {
+                        moviemnto.sbloccaMovimento();
+                        controllerInput.Enable();
+                    }
+                    if (OkBoxVideo.parlaZioMostrato && !Interactor.nelRistorante)
                     {
                         indicatoreDistanza.setTarget("zio");
                     } else
@@ -157,13 +185,14 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.vaiAlRistoranteMostrato)
                     {
+                        moviemnto.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.vaiAlRistorante);
 
                     } else
                     {
+                        moviemnto.sbloccaMovimento();
                         indicatoreDistanza.setTarget("ristorante");
                     }
-
                     if (CheckTutorial.checkVaiRistorante())
                     {
                         giocatore.setInventarioLivello(0);
@@ -175,10 +204,11 @@ public class ProgressoTutorial : MonoBehaviour
                     indicatoreDistanza.setTarget("reset");
                     if (!OkBoxVideo.meccanicheServireCompatibileMostrato)
                     {
+                        moviemnto.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.meccanicheServireCompatibile);
                         OkBoxVideo.meccanicheServireCompatibileMostrato = true;
                     }
-
+                    moviemnto.sbloccaMovimento();
                     if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
                         if (giocatore != null)
                             if (CheckTutorial.checkServitoPiattoCompatibile(giocatore))
@@ -192,10 +222,11 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.meccanicheServireNonCompatibileMostrato)
                     {
+                        moviemnto.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.meccanicheServireNonCompatibile);
                         OkBoxVideo.meccanicheServireNonCompatibileMostrato = true;
                     }
-
+                    moviemnto.sbloccaMovimento();
                     if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
                         if (giocatore != null)
                             if (CheckTutorial.checkServitoPiattoNonCompatibile(giocatore))
@@ -210,10 +241,11 @@ public class ProgressoTutorial : MonoBehaviour
                     if (!OkBoxVideo.finitiIngredientiMostrato)
                     {
                         PannelloMagazzino.pannelloMagazzinoApertoPerTutorial = false;
+                        moviemnto.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.finitiIngredienti);
                         OkBoxVideo.finitiIngredientiMostrato = true;
                     }
-
+                    moviemnto.sbloccaMovimento();
                     if (CheckTutorial.checkVistoMagazzino()) { numeroScritteMostrate++; }
 
                     //nel magazzino dovremmo mettere un ingrediente che non e' presente nella ricetta ne del 
@@ -227,9 +259,11 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.doveEIlNegozioMostrato)
                     {
+                        moviemnto.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.doveEIlNegozio);
                     }
-                    if(!Interactor.nelRistorante && OkBoxVideo.doveEIlNegozioMostrato)
+                    moviemnto.sbloccaMovimento();
+                    if (!Interactor.nelRistorante && OkBoxVideo.doveEIlNegozioMostrato)
                     {
                         indicatoreDistanza.setTarget("negozio");
                     } else
@@ -243,6 +277,7 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.interazioneNPCMostrato)
                     {
+                        moviemnto.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.interazioneNPC);
                         OkBoxVideo.interazioneNPCMostrato = true;
 
@@ -259,6 +294,7 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.apriRicettarioMostrato)
                     {
+                        moviemnto.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.apriRicettario);
                         OkBoxVideo.apriRicettarioMostrato = true;
                     }
@@ -270,6 +306,7 @@ public class ProgressoTutorial : MonoBehaviour
 
                     if (!OkBoxVideo.apriMenuAiutoMostrato)
                     {
+                        moviemnto.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.apriMenuAiuto);
                         OkBoxVideo.apriMenuAiutoMostrato = true;
                     }
