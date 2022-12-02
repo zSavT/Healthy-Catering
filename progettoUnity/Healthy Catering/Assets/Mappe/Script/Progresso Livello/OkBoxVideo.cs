@@ -13,7 +13,7 @@ public class OkBoxVideo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI titolo;
     [SerializeField] private TextMeshProUGUI testo;
     [SerializeField] private Image immagineOGIF;
-
+    
     [SerializeField] private UnityEvent playerStop;
     [SerializeField] private UnityEvent playerRiprendiMovimento;
     private ControllerInput controllerInput;
@@ -32,6 +32,7 @@ public class OkBoxVideo : MonoBehaviour
     public static bool interazioneNPCMostrato = false;
     public static bool apriRicettarioMostrato = false;
     public static bool apriMenuAiutoMostrato = false;
+    public static bool okBoxVideoAperto = false;
     public static int indiceCorrente = 0;
 
     void Start()
@@ -48,6 +49,7 @@ public class OkBoxVideo : MonoBehaviour
         interazioneNPCMostrato = false;
         apriRicettarioMostrato = false;
         apriMenuAiutoMostrato = false;
+        okBoxVideoAperto = false;
         indiceCorrente = 0;
         pannello.SetActive(false);
         titolo.text = "";
@@ -71,6 +73,7 @@ public class OkBoxVideo : MonoBehaviour
 
     public void apriOkBoxVideo(int posizione)
     {
+        okBoxVideoAperto = true;
         playerStop.Invoke();
         indiceCorrente = posizione;
         Interactor.menuApribile = false;
@@ -94,7 +97,7 @@ public class OkBoxVideo : MonoBehaviour
 
     public void chiudiOkBoxVideo()
     {
-        StartCoroutine(attendi(2f));
+        okBoxVideoAperto = false;
         PuntatoreMouse.disabilitaCursore();
         pannello.SetActive(false);
         playerRiprendiMovimento.Invoke();
@@ -123,16 +126,5 @@ public class OkBoxVideo : MonoBehaviour
             Costanti.nomiAnimazioniOkBoxVideo [posizione], 
             "default"
         );
-    }
-
-    /// <summary>
-    /// Il metodo permette di attendere prima di proseguire
-    /// </summary>
-    /// <param name="attesa">Durata attesa</param>
-    /// <returns></returns>
-    IEnumerator attendi(float attesa)
-    {
-        Debug.Log(attesa);
-        yield return new WaitForSecondsRealtime(attesa);
     }
 }
