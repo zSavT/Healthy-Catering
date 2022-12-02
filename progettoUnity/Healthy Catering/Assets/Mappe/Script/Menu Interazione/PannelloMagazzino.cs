@@ -166,8 +166,13 @@ public class PannelloMagazzino : MonoBehaviour
             sfondoImmaginePC.sprite = Resources.Load<Sprite>("SchermataMagazzino4_3");
         else
             sfondoImmaginePC.sprite = Resources.Load<Sprite>("SchermataMagazzino");
-        Transform[] lista = pannelloMostraInventario.GetComponentsInChildren<Button>()[0].GetComponentInChildren<Button>().GetComponentsInChildren<Transform>();
-        EventSystem.current.SetSelectedGameObject(lista[3].gameObject);
+        if(!giocatore.inventarioVuoto())
+        {
+            Transform[] lista = pannelloMostraInventario.GetComponentsInChildren<Button>()[0].GetComponentInChildren<Button>().GetComponentsInChildren<Transform>();
+            EventSystem.current.SetSelectedGameObject(lista[3].gameObject);
+        } else
+            EventSystem.current.SetSelectedGameObject(tastoX.gameObject);
+
     }
 
     public void setEventSystemPrimoElemento()

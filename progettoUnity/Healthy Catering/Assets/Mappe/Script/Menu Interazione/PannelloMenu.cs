@@ -121,7 +121,7 @@ public class PannelloMenu : MonoBehaviour
         if (controlloSelectObjectCorretto())
         {
             piattoSelezionatoBottone = EventSystem.current.currentSelectedGameObject;
-        } else if (!controlloSelectObjectCorretto() && !pannelloIngredientiGiustiSbagliatiAperto && !pannelloIngredientiPiattoAperto && !pannelloConfermaPiattoAperto) 
+        } else if (!controlloSelectObjectCorretto() && !pannelloIngredientiGiustiSbagliatiAperto && !pannelloIngredientiPiattoAperto && !pannelloConfermaPiattoAperto || EventSystem.current.currentInputModule == null) 
         {
             EventSystem.current.SetSelectedGameObject(piattoSelezionatoBottone);
         }
