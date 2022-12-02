@@ -61,10 +61,6 @@ public class PannelloMagazzino : MonoBehaviour
         copiaPannelloXElementi = Instantiate(pannelloXElementi);
     }
 
-    private void Update()
-    {
-        //Debug.Log(EventSystem.current.currentSelectedGameObject);
-    }
 
     private void OnDestroy()
     {

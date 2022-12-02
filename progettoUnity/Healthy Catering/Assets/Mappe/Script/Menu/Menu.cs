@@ -55,7 +55,6 @@ public class Menu : MonoBehaviour
         }
         elementiCrediti.SetActive(false);
         CambioCursore.cambioCursoreNormale();
-        Debug.Log(elementiCrediti.GetComponentsInChildren<Transform>()[10].gameObject);
     }
 
     void Update()
@@ -126,7 +125,6 @@ public class Menu : MonoBehaviour
             if (!elementiUscita.activeSelf && !elementiCrediti.activeSelf && elementiMenuPrincipale.activeSelf)
             {
                 eventSystem.SetSelectedGameObject(elementiMenuPrincipale.GetComponentsInChildren<Transform>()[1].gameObject);
-                Debug.Log(elementiMenuPrincipale.GetComponentsInChildren<Transform>()[1].gameObject);
             }
                 
             else if (!elementiUscita.activeSelf && elementiCrediti.activeSelf && !elementiMenuPrincipale.activeSelf)

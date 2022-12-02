@@ -95,11 +95,11 @@ public class PannelloMenu : MonoBehaviour
         {
             if (controllerInput.UI.MostraRicette.WasPressedThisFrame() && !pannelloIngredientiGiustiSbagliatiAperto && !getPannelloConfermaPiattoAperto() && controlloSelectObjectCorretto())
             {
-                Debug.Log(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Button>());
                 cambiaPannelloIngredientiPiattoConPiatto(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Button>());
                 apriPannelloIngredientiPiatto();
             }
-            fixSelectObjectCorretto();
+            if(Utility.gamePadConnesso())
+                fixSelectObjectCorretto();
         }
     }
 

@@ -122,7 +122,7 @@ public class Interactable : MonoBehaviour
     /// <returns></returns>
     IEnumerator attendiFineAnimazione(float attesa)
     {
-        Debug.Log(attesa);
+        Debug.Log("Tempo da Attendere:" + attesa);
         animazione = true;
         yield return new WaitForSecondsRealtime(attesa);
         iterazioneIndex();

@@ -87,7 +87,6 @@ public class PannelloNegozio : MonoBehaviour
             cambiaPannelloCarosello(true);
         else if (controllerInput.UI.Indietro.WasPressedThisFrame() && pannelloAperto && bottoneIndietroPannelloNegozio.interactable && !pannelloSeiSicuroAperto)
             cambiaPannelloCarosello(false);
-        //Debug.Log(EventSystem.current.currentSelectedGameObject);
     }
 
     //INTERAZIONE NEGOZIO

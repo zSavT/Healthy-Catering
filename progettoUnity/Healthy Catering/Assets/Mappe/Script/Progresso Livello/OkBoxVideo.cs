@@ -57,6 +57,12 @@ public class OkBoxVideo : MonoBehaviour
         animazione = immagineOGIF.GetComponent<Animazione>();
     }
 
+    private void FixedUpdate()
+    {
+        if (EventSystem.current.currentSelectedGameObject == null && Utility.gamePadConnesso())
+            EventSystem.current.SetSelectedGameObject(bottoneConferma.gameObject);
+    }
+
     private void OnEnable()
     {
         controllerInput = new ControllerInput();
@@ -93,6 +99,7 @@ public class OkBoxVideo : MonoBehaviour
         }
         cambiaImmagine(posizione);
         EventSystem.current.SetSelectedGameObject(bottoneConferma.gameObject);
+
     }
 
     public void chiudiOkBoxVideo()

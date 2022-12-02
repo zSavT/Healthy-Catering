@@ -174,7 +174,7 @@ public class Player
         punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Math.Abs(punteggioDaAggiungere), trovaPercentualeNutriScore(nutriScore));
         punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Math.Abs(punteggioDaAggiungere), trovaPercentualeEcoScore(costoEco));
         this.punteggio [livello] += (int)punteggioDaAggiungere;
-        Debug.Log(this.punteggio[livello]);
+        Debug.Log("Punteggio: " + this.punteggio[livello]);
     }
 
     public float trovaPercentualeNutriScore(int nutriScore)
