@@ -12,8 +12,6 @@ public class ProgressoTutorial : MonoBehaviour
 {
     public static bool inTutorial;
     [SerializeField] private Gui guiInGame;
-    [Header("Video tutorial")]
-    [SerializeField] private GameObject canvasVideoTutorial;
 
     [Header("Obbiettivi Tutorial")]
     //testo obbiettivo da cambiare di volta in volta
@@ -49,7 +47,6 @@ public class ProgressoTutorial : MonoBehaviour
         controllerInput.Enable();
         inTutorial = true;
         saGiocareSettato = false;
-        canvasVideoTutorial.SetActive(true);
         //le disattivo per attivarle solo nel momento opportuno - Questi elementi sono nel loro specifico pannello, che va attivato poi quando serve.
         attivaObbiettiviTutorial();
 
