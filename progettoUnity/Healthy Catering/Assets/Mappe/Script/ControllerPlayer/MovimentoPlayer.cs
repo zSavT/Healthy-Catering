@@ -93,6 +93,11 @@ public class MovimentoPlayer : MonoBehaviour
             controllerAnimazione = gestoreModelli.getModelloAttivo().GetComponent<Animator>();
     }
 
+    public bool getPuoMuoversi()
+    {
+        return puoMuoversi;
+    }
+
 
     /// <summary>
     /// Blocca la possibilità di muoversi del player
@@ -234,6 +239,7 @@ public class MovimentoPlayer : MonoBehaviour
         }
         if (controllerInput.Player.Salto.WasPressedThisFrame() && perTerra && controllerInput.Player.Salto.enabled)
         {
+            Debug.Log(puoMuoversi);
             salto();
         }
         if (isFermo())

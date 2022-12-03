@@ -33,6 +33,8 @@ public class MenuInGame : MonoBehaviour
     [SerializeField] private GameObject impostazioniGraficaAudio;
     [SerializeField] private Button tornaIndietro;
     [SerializeField] private GameObject elementiUscita;
+
+    [SerializeField] private Interactor interazionePlayer;
     private bool giocoInPausa = false;
     private bool menuApribile;
     private bool uscitaAttiva = false;
@@ -172,6 +174,7 @@ public class MenuInGame : MonoBehaviour
     void resumeGame()
     {
         chiusuraMenuGioco.Invoke();
+        //interazionePlayer.playerRiprendiMovimento.Invoke();
         menuPausa.SetActive(false);
         Time.timeScale = 1f; //sblocca il tempo
         giocoInPausa = false;
@@ -183,6 +186,7 @@ public class MenuInGame : MonoBehaviour
     void pauseGame()
     {
         aperturaMenuGioco.Invoke();
+        //interazionePlayer.playerStop.Invoke();
         menuPausa.SetActive(true);
         Time.timeScale = 0f; //blocca il tempo
         giocoInPausa = true;

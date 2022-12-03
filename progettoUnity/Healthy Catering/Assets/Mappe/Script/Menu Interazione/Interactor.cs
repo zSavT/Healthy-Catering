@@ -409,7 +409,7 @@ public class Interactor : MonoBehaviour
     /// </summary>
     private void gestisciChiusuraNegozio()
     {
-        if (controllerInput.Player.UscitaMenu.IsPressed())
+        if (controllerInput.Player.UscitaMenu.WasPressedThisFrame())
         {
             negozio.chiudiPannelloNegozio();
             PuntatoreMouse.disabilitaCursore();
@@ -428,6 +428,7 @@ public class Interactor : MonoBehaviour
             npcPassivo.stopAnimazioneParlata(gameObject.transform);
             PuntatoreMouse.disabilitaCursore();
             playerRiprendiMovimento.Invoke();
+            Debug.Log("UEE3");
         }
     }
 
@@ -442,6 +443,7 @@ public class Interactor : MonoBehaviour
             ricettarioScript.chiudiRicettario();
             PuntatoreMouse.disabilitaCursore();
             playerRiprendiMovimento.Invoke();
+            Debug.Log("UEE4");
         }
     }
 
@@ -455,6 +457,7 @@ public class Interactor : MonoBehaviour
             menuAiuto.chiudiPannelloMenuAiuto();
             PuntatoreMouse.disabilitaCursore();
             playerRiprendiMovimento.Invoke();
+            Debug.Log("UEE5");
         }
     }
 

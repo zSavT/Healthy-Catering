@@ -119,7 +119,8 @@ public class ProgressoTutorial : MonoBehaviour
                     }
                     else if (!OkBoxVideo.okBoxVideoAperto)
                     {
-                        movimento.sbloccaMovimento();
+                        if(!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
                         controllerInput.Enable();
                     }
                         
@@ -140,7 +141,8 @@ public class ProgressoTutorial : MonoBehaviour
                     }
                     else if(!OkBoxVideo.okBoxVideoAperto)
                     {
-                        movimento.sbloccaMovimento();
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
                         controllerInput.Enable();
                     }
                     if (CheckTutorial.checkSalto(controllerInput)) 
@@ -160,7 +162,8 @@ public class ProgressoTutorial : MonoBehaviour
                     }
                     else if (!OkBoxVideo.okBoxVideoAperto)
                     {
-                        movimento.sbloccaMovimento();
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
                         controllerInput.Enable();
                     }
                     if (CheckTutorial.checkSprint(controllerInput)) 
@@ -179,7 +182,8 @@ public class ProgressoTutorial : MonoBehaviour
                     }
                     else if (!OkBoxVideo.okBoxVideoAperto)
                     {
-                        movimento.sbloccaMovimento();
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
                         controllerInput.Enable();
                     }
                     if (OkBoxVideo.parlaZioMostrato && !Interactor.nelRistorante)
@@ -204,7 +208,8 @@ public class ProgressoTutorial : MonoBehaviour
 
                     } else if (!OkBoxVideo.okBoxVideoAperto)
                     {
-                        movimento.sbloccaMovimento();
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
                         indicatoreDistanza.setTarget("ristorante");
                     }
                     if (CheckTutorial.checkVaiRistorante())
@@ -222,7 +227,8 @@ public class ProgressoTutorial : MonoBehaviour
                         okBoxVideo.apriOkBoxVideo(Costanti.meccanicheServireCompatibile);
                         OkBoxVideo.meccanicheServireCompatibileMostrato = true;
                     } else if (!OkBoxVideo.okBoxVideoAperto)
-                        movimento.sbloccaMovimento();
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
 
                     if (giocatore != null)
                         if (CheckTutorial.checkServitoPiattoCompatibile(giocatore))
@@ -240,7 +246,8 @@ public class ProgressoTutorial : MonoBehaviour
                         okBoxVideo.apriOkBoxVideo(Costanti.meccanicheServireNonCompatibile);
                         OkBoxVideo.meccanicheServireNonCompatibileMostrato = true;
                     } else if (!OkBoxVideo.okBoxVideoAperto)
-                        movimento.sbloccaMovimento();
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
 
                     if (giocatore != null)
                         if (CheckTutorial.checkServitoPiattoNonCompatibile(giocatore))
@@ -259,7 +266,8 @@ public class ProgressoTutorial : MonoBehaviour
                         okBoxVideo.apriOkBoxVideo(Costanti.finitiIngredienti);
                         OkBoxVideo.finitiIngredientiMostrato = true;
                     } else if (!OkBoxVideo.okBoxVideoAperto)
-                        movimento.sbloccaMovimento();
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
 
                     if (CheckTutorial.checkVistoMagazzino())
                     { 
@@ -280,7 +288,8 @@ public class ProgressoTutorial : MonoBehaviour
                         movimento.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.doveEIlNegozio);
                     } else if (!OkBoxVideo.okBoxVideoAperto)
-                        movimento.sbloccaMovimento();
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
 
                     if (!Interactor.nelRistorante && OkBoxVideo.doveEIlNegozioMostrato)
                     {
@@ -304,7 +313,8 @@ public class ProgressoTutorial : MonoBehaviour
 
                         indicatoreDistanza.setTarget("reset");
                     } else if (!OkBoxVideo.okBoxVideoAperto)
-                        movimento.sbloccaMovimento();
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
 
                     if (CheckTutorial.checkParlatoConNPC())
                     {
@@ -320,7 +330,8 @@ public class ProgressoTutorial : MonoBehaviour
                         okBoxVideo.apriOkBoxVideo(Costanti.apriRicettario);
                         OkBoxVideo.apriRicettarioMostrato = true;
                     } else if (!OkBoxVideo.okBoxVideoAperto)
-                        movimento.sbloccaMovimento();
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
                     if (CheckTutorial.checkMostratoRicettario()) 
                     { 
                         MenuAiuto.apertoMenuAiuto = false; 
@@ -337,7 +348,8 @@ public class ProgressoTutorial : MonoBehaviour
                         OkBoxVideo.apriMenuAiutoMostrato = true;
                     }
                     else if (!OkBoxVideo.okBoxVideoAperto)
-                        movimento.sbloccaMovimento();
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
 
                     if (CheckTutorial.checkMostratoMenuAiuto()) 
                     { 
