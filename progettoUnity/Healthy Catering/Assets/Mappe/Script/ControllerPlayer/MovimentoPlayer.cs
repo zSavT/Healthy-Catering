@@ -239,7 +239,6 @@ public class MovimentoPlayer : MonoBehaviour
         }
         if (controllerInput.Player.Salto.WasPressedThisFrame() && perTerra && controllerInput.Player.Salto.enabled)
         {
-            Debug.Log(puoMuoversi);
             salto();
         }
         if (isFermo())
