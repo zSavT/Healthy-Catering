@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using UnityEngine.InputSystem.XR;
+using System.Linq;
 
 /// <summary>
 /// Classe per la gestione delle impostazioni presenti nel menu iniziale del Gioco.<para>
@@ -26,9 +27,9 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject elementiProfiloNonEsistente;
     [SerializeField] private GameObject elementiUscita;
     [SerializeField] private Image immagineController;
-    private ControllerInput controllerInput;
-    private GameObject ultimoElementoSelezionato;
     private EventSystem eventSystem;
+    private GameObject ultimoElementoSelezionato;
+    private ControllerInput controllerInput;
     private List<Player> player = new List<Player>();
     //serve per eliminare altri elementi in visualilzzazione
     [SerializeField] private UnityEvent clickCrediti;
@@ -36,8 +37,9 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(PlayerSettings.tipologiaControllerInserito());
         controllerInput = new ControllerInput();
+        controllerInput.Enable();
+        Debug.Log(PlayerSettings.tipologiaControllerInserito());
         eventSystem = FindObjectOfType<EventSystem>();
         attivaDisattivaIconaController();
         gameVersion();
@@ -61,6 +63,13 @@ public class Menu : MonoBehaviour
     {
         attivaDisattivaIconaController();
         attivaDisattivaLivelli();
+
+        if(eventSystem.currentSelectedGameObject == null)
+        {
+            if (Utility.qualsiasiTastoPremuto(controllerInput))
+                eventSystem.SetSelectedGameObject(ultimoElementoSelezionato);
+        }else
+            ultimoElementoSelezionato = eventSystem.currentSelectedGameObject;
     }
 
     void Awake()
@@ -83,13 +92,13 @@ public class Menu : MonoBehaviour
         switch (change)
         {
             case InputDeviceChange.Added:
-                // New Device.
+                aggioraEventSystemPerControllerConnesso();
                 break;
             case InputDeviceChange.Disconnected:
-                ultimoElementoSelezionato = eventSystem.currentSelectedGameObject;
+                //
                 break;
             case InputDeviceChange.Reconnected:
-                aggioraEventSystemPerControllerConnesso(ultimoElementoSelezionato);
+                aggioraEventSystemPerControllerConnesso();
                 break;
             case InputDeviceChange.Removed:
                 // Remove from Input System entirely; by default, Devices stay in the system once discovered.
@@ -129,8 +138,8 @@ public class Menu : MonoBehaviour
                 
             else if (!elementiUscita.activeSelf && elementiCrediti.activeSelf && !elementiMenuPrincipale.activeSelf)
                 eventSystem.SetSelectedGameObject(elementiCrediti.GetComponentsInChildren<Transform>()[10].gameObject);
-            else if (!elementiUscita.activeSelf && !elementiCrediti.activeSelf && !elementiMenuPrincipale.activeSelf)
-                eventSystem.SetSelectedGameObject(elementiUscita.GetComponentsInChildren<Transform>()[0].gameObject);
+            else if (elementiUscita.activeSelf && !elementiCrediti.activeSelf && !elementiMenuPrincipale.activeSelf)
+                eventSystem.SetSelectedGameObject(elementiUscita.GetComponentsInChildren<Transform>()[1].gameObject);
     }
 
     /// <summary>

@@ -1,3 +1,5 @@
+using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class Utility{
@@ -26,5 +28,10 @@ public class Utility{
             return false;
         else
             return true;
+    }
+
+    public static bool qualsiasiTastoPremuto(ControllerInput controllerInput)
+    {
+        return Input.anyKey || controllerInput.Player.Movimento.WasPerformedThisFrame() || controllerInput.Player.MovimentoCamera.WasPerformedThisFrame();
     }
 }
