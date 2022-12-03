@@ -36,6 +36,7 @@ public class OpzioniMenu : MonoBehaviour
     [Header("Impostazioni Controlli")]
     [SerializeField] private GameObject tastoControlli;
     [SerializeField] private GameObject impostazioniControlli;
+    private bool comandiAttivi = true;
 
     [Header("Impostazioni Sensibilità")]
     [SerializeField] private TextMeshProUGUI sliderSensibilitaTesto;
@@ -114,6 +115,8 @@ public class OpzioniMenu : MonoBehaviour
 
         caricatiValori = true;
         addattamentoImmaginiControlli();
+
+        comandiAttivi = true;
     }
 
     private void OnEnable()
@@ -142,19 +145,26 @@ public class OpzioniMenu : MonoBehaviour
 
     private void Update()
     {
-        if(controllerInput.UI.Avanti.IsPressed())
-        {
-            clickSuTastoControlli();
-        } else if (controllerInput.UI.Indietro.IsPressed())
-        {
-            clickSuTastoGrafico();
-        }
+        if(Utility.gamePadConnesso())
+            if(comandiAttivi)
+                if(controllerInput.UI.Avanti.IsPressed())
+                {
+                    clickSuTastoControlli();
+                } else if (controllerInput.UI.Indietro.IsPressed())
+                {
+                    clickSuTastoGrafico();
+                }
     }
 
     private void addattamentoImmaginiControlli()
     {
         immaginiControlli[0].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("L1");
         immaginiControlli[1].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("R1");
+    }
+
+    public void setComandiAttivi(bool comandiAttivi)
+    {
+        this.comandiAttivi = comandiAttivi;
     }
 
     /// <summary>

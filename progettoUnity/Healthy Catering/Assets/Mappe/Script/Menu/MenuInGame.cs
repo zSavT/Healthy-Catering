@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
+using Newtonsoft.Json.Bson;
 
 /// <summary>
 /// Classe per la gestione delle impostazioni presenti nel menu in Game.<para>
@@ -34,7 +35,7 @@ public class MenuInGame : MonoBehaviour
     [SerializeField] private GameObject elementiUscita;
     private bool giocoInPausa = false;
     private bool menuApribile;
-
+    private bool uscitaAttiva = false;
     public static bool menuAperto = false;
 
     // Start is called before the first frame update
@@ -104,6 +105,7 @@ public class MenuInGame : MonoBehaviour
         controllerInput = new ControllerInput();
         controllerInput.Enable();
         giocoInPausa = false;
+        uscitaAttiva = false;
         menuApribile = true;
         menuPausa.SetActive(false);
         testoUscita.gameObject.SetActive(true);
@@ -123,36 +125,43 @@ public class MenuInGame : MonoBehaviour
     /// </summary>
     private void checkTastoMenu()
     {
-        if (controllerInput.Player.UscitaMenu.WasPressedThisFrame())
+        if(!uscitaAttiva)
         {
-            if (menuApribile)
+            opzioniMenu.setComandiAttivi(!uscitaAttiva);
+            if (controllerInput.Player.UscitaMenu.WasPressedThisFrame())
             {
-                opzioniMenu.clickSuTastoGrafico();
-                if (!Interactor.pannelloAperto)
+                if (menuApribile)
                 {
-                    EventSystem.current.SetSelectedGameObject(primoElementoSelezionato);
-                    PlayerSettings.addattamentoSpriteComandi(testoUscita);
-                    if (giocoInPausa)
+                    opzioniMenu.clickSuTastoGrafico();
+                    if (!Interactor.pannelloAperto)
                     {
-                        if (menuAiuto.getPannelloMenuAiutoAperto())
+                        EventSystem.current.SetSelectedGameObject(primoElementoSelezionato);
+                        PlayerSettings.addattamentoSpriteComandi(testoUscita);
+                        if (giocoInPausa)
                         {
-                            menuAiuto.chiudiPannelloMenuAiuto();
+                            if (menuAiuto.getPannelloMenuAiutoAperto())
+                            {
+                                menuAiuto.chiudiPannelloMenuAiuto();
+                            }
+                            else
+                            {
+                                menuAperto = false;
+                                resumeGame();
+                                PuntatoreMouse.disabilitaCursore();
+                            }
                         }
                         else
                         {
-                            menuAperto = false;
-                            resumeGame();
-                            PuntatoreMouse.disabilitaCursore();
+                            menuAperto = true;
+                            pauseGame();
+                            PuntatoreMouse.abilitaCursore();
                         }
-                    }
-                    else
-                    {
-                        menuAperto = true;
-                        pauseGame();
-                        PuntatoreMouse.abilitaCursore();
                     }
                 }
             }
+        } else
+        {
+            opzioniMenu.setComandiAttivi(!uscitaAttiva);
         }
     }
 
@@ -203,4 +212,13 @@ public class MenuInGame : MonoBehaviour
         return menuAperto;
     }
 
+    public void uscitaAperta()
+    {
+        uscitaAttiva = true;
+    }
+
+    public void uscitaChiusa()
+    {
+        uscitaAttiva = false;
+    }
 }
