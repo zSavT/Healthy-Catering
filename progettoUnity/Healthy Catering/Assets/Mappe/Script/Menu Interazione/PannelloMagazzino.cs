@@ -148,7 +148,7 @@ public class PannelloMagazzino : MonoBehaviour
         pannelloMagazzino.SetActive(false);
         pannelloMagazzinoAperto = false;
         suonoChiusuraPC.Play();
-
+        Debug.Log("perchè");
         resetPannelloMagazzino();
         if (Utility.gamePadConnesso())
             controllerInput.Player.Salto.Disable();
