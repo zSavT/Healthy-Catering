@@ -19,7 +19,6 @@ public class PannelloMenu : MonoBehaviour
     [SerializeField] private GameObject pannelloPrincipaleMenuCliente;
     [SerializeField] private GameObject pannelloMenu;
     [SerializeField] private GameObject pannelloCliente;
-    [SerializeField] private ScrollRect scroll;
     [SerializeField] private GameObject bottonePiatto; 
     [SerializeField] private GameObject pannelloPiatti;
     private bool pannelloMenuAperto;
@@ -99,7 +98,10 @@ public class PannelloMenu : MonoBehaviour
                 apriPannelloIngredientiPiatto();
             }
             if(Utility.gamePadConnesso())
+            {
                 fixSelectObjectCorretto();
+                aggiornaSpriteBottonePiatti();
+            }       
         }
     }
 
@@ -114,6 +116,14 @@ public class PannelloMenu : MonoBehaviour
             }
         }
         return trovato;
+    }
+
+    private void aggiornaSpriteBottonePiatti()
+    {
+        foreach (Button temp in bottoniPiatti)
+        {
+            PlayerSettings.addattamentoSpriteComandi(temp.GetComponentsInChildren<Button>()[1].GetComponentInChildren<TextMeshProUGUI>());
+        }
     }
 
     private void fixSelectObjectCorretto()
@@ -216,7 +226,7 @@ public class PannelloMenu : MonoBehaviour
                 cambiaPannelloIngredientiPiattoConPiatto(bottoneTemp.GetComponentsInChildren<Button>()[1]);
                 apriPannelloIngredientiPiatto();
             });
-
+            PlayerSettings.addattamentoSpriteComandi(bottoneTemp.GetComponentsInChildren<Button>()[1].GetComponentInChildren<TextMeshProUGUI>());
             bottoniPiatti[i] = bottoneTemp;
             i++;
         }

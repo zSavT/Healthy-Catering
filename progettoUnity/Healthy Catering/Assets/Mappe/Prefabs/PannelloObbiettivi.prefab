@@ -657,6 +657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc002ef26c814f94ea0bff6b77d805e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bottoneConferma: {fileID: 7108306947279961472}
   scrittaObbiettivo: {fileID: 7026049646795878460}
   coloreRaggiuntoObbiettivo:
     serializedVersion: 2
@@ -700,18 +701,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ControlloMouse, Assembly-CSharp
-        m_MethodName: bloccaVisuale
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Interactor, Assembly-CSharp
         m_MethodName: menuNonApribile
         m_Mode: 1
@@ -738,6 +727,7 @@ MonoBehaviour:
   schermataFineLivello: {fileID: 7026049647302790124}
   valorePunteggioPlayer: {fileID: 7026049648450118696}
   titoloSchermataFineLivello: {fileID: 7026049647547248400}
+  bottoneFineLivello: {fileID: 7026049646538577254}
   suonoVittoria: {fileID: 1528006694}
   disattivaElementiFineLivello:
     m_PersistentCalls:
@@ -802,7 +792,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  numeroDiClientiMassimi: 10
   particellare1: {fileID: 7026049646864199756}
   particellare2: {fileID: 7026049647856217426}
   suonoGameOver: {fileID: 2080686608}
@@ -1260,9 +1249,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7921569, g: 0.7921569, b: 0.7921569, a: 1}
-    m_PressedColor: {r: 0.6039216, g: 0.5882353, b: 0.5882353, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7921569, g: 0.7921569, b: 0.7921569, a: 0.5882353}
+    m_PressedColor: {r: 0.6039216, g: 0.5882353, b: 0.5882353, a: 0.78431374}
+    m_SelectedColor: {r: 0.7921569, g: 0.7921569, b: 0.7921569, a: 0.5882353}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1332,19 +1321,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MovimentoPlayer, Assembly-CSharp
-        m_MethodName: lockUnlockVisuale
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ControlloMouse, Assembly-CSharp
-        m_MethodName: attivaMovimento
+        m_MethodName: sbloccaMovimento
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

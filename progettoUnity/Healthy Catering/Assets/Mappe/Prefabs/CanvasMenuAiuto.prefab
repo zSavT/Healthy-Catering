@@ -763,7 +763,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Premi [ESC] per uscire
+  m_text: Premi <sprite=10> per uscire
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: b246c4190f4e46ec9352fe15a7b09ce0, type: 2}
@@ -790,7 +790,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.05
+  m_fontSize: 44.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1001,7 +1001,7 @@ RectTransform:
   m_Children:
   - {fileID: 3874265852237005497}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1091,6 +1091,7 @@ MonoBehaviour:
   immagineSchermata: {fileID: 3874265852111286465}
   comandiAvantiImmagine: {fileID: 2576519772344462485}
   comandiIndietroImmagine: {fileID: 5782648255985661359}
+  testoUscita: {fileID: 3874265853307622185}
 --- !u!1 &3874265854036034324
 GameObject:
   m_ObjectHideFlags: 0

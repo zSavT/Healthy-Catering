@@ -2360,8 +2360,6 @@ MonoBehaviour:
   layerUnityNPC:
     serializedVersion: 2
     m_Bits: 64
-  mainCamera: {fileID: 0}
-  posizioneCamera: {fileID: 0}
   posizioneCameraMenuCliente: {fileID: 4878910828240045144}
   pannelloMenuECliente: {fileID: 0}
   pannelloMenuCliente: {fileID: 0}
@@ -2400,7 +2398,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 5218992458153246271}
         m_TargetAssemblyTypeName: MovimentoPlayer, Assembly-CSharp
-        m_MethodName: lockUnlockVisuale
+        m_MethodName: bloccaMovimento
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2547,7 +2545,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 5218992458153246271}
         m_TargetAssemblyTypeName: MovimentoPlayer, Assembly-CSharp
-        m_MethodName: lockUnlockVisuale
+        m_MethodName: sbloccaMovimento
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2725,21 +2723,7 @@ MonoBehaviour:
   suonoCamminata: {fileID: 1714227744}
   suonoSprint: {fileID: 2135525251}
   suonoSalto: {fileID: 7249404530917402725}
-  lockUnlockMovimento:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5218992457125795454}
-        m_TargetAssemblyTypeName: ControlloMouse, Assembly-CSharp
-        m_MethodName: lockUnlockVisuale
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  movimentoVisuale: {fileID: 5218992457125795454}
 --- !u!114 &5218992457311572594
 MonoBehaviour:
   m_ObjectHideFlags: 0

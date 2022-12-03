@@ -563,7 +563,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Premi [ESC] per uscire
+  m_text: Premi <sprite=10> per uscire
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: b246c4190f4e46ec9352fe15a7b09ce0, type: 2}
@@ -582,7 +582,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: eeabaf6e464076f46a1840d5a8071511, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -590,7 +590,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.4
+  m_fontSize: 48.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -668,7 +668,7 @@ RectTransform:
   - {fileID: 2059755226}
   - {fileID: 155720109}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -754,7 +754,8 @@ MonoBehaviour:
   testoInterazionePassanti: {fileID: 5870404787347476367}
   suonoAperturaDialogo: {fileID: 2059755227}
   suonoDialogo: {fileID: 155720108}
-  immagineComando: {fileID: 0}
+  immagineComando: {fileID: 2562225069961381775}
+  testoUscita: {fileID: 5870404787585690177}
 --- !u!1 &5870404788600936966
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,8 +956,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 234.99998}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 784, y: -171}
+  m_SizeDelta: {x: 216.261, y: 66.052}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4461323370208526848
 CanvasRenderer:
@@ -986,9 +987,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 02ed5f61641d22543ad045b2661d9a7a, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

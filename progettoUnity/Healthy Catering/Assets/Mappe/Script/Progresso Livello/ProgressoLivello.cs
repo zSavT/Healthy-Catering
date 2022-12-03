@@ -3,12 +3,16 @@ using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Classe che gestisce gli obbiettivi del livello, ovvero il numero di clienti da servire ed il punteggio da raggiungere.
 /// </summary>
 public class ProgressoLivello : MonoBehaviour
 {
+    [Header("Elementi Generici")]
+    [SerializeField] private Button bottoneConferma;
     [SerializeField] private TextMeshProUGUI scrittaObbiettivo;
     [SerializeField] private Color32 coloreRaggiuntoObbiettivo;
     //da eventualmente eliminare se esiste un modo per accedere al punteggio nella classe player
@@ -46,6 +50,7 @@ public class ProgressoLivello : MonoBehaviour
     //Testo da inizializzare con il valore del punteggio del giocatore raggiunto a fine livello.
     [SerializeField] private TextMeshProUGUI valorePunteggioPlayer;
     [SerializeField] private TextMeshProUGUI titoloSchermataFineLivello;
+    [SerializeField] private Button bottoneFineLivello;
     [SerializeField] private AudioSource suonoVittoria;
     public UnityEvent disattivaElementiFineLivello;
 
@@ -76,6 +81,8 @@ public class ProgressoLivello : MonoBehaviour
             disattivaSoloObbiettivi();
         }
         punteggioPlayer = 0;
+        if(Utility.gamePadConnesso())
+            impostaEventSystemBottoneConferma();
     }
 
     private void Update()
@@ -87,6 +94,49 @@ public class ProgressoLivello : MonoBehaviour
         }
         if(!ProgressoTutorial.inTutorial)
             controlloGameOver();
+
+        if (Utility.gamePadConnesso())
+            if (!schermataFineLivello.activeSelf)
+                impostaEventSystemBottoneConferma();
+            else
+                EventSystem.current.SetSelectedGameObject(bottoneFineLivello.gameObject);
+    }
+
+    void Awake()
+    {
+        InputSystem.onDeviceChange += OnDeviceChange;
+    }
+
+    void OnDestroy()
+    {
+        InputSystem.onDeviceChange -= OnDeviceChange;
+    }
+
+    /// <summary>
+    /// Il metodo controlla e gestiscisce le periferiche di Input 
+    /// </summary>
+    /// <param name="device"></param>
+    /// <param name="change"></param>
+    public void OnDeviceChange(InputDevice device, InputDeviceChange change)
+    {
+        switch (change)
+        {
+            case InputDeviceChange.Added:
+                impostaEventSystemBottoneConferma();
+                break;
+            case InputDeviceChange.Disconnected:
+                //
+                break;
+            case InputDeviceChange.Reconnected:
+                impostaEventSystemBottoneConferma();
+                break;
+            case InputDeviceChange.Removed:
+                // Remove from Input System entirely; by default, Devices stay in the system once discovered.
+                break;
+            default:
+                // See InputDeviceChange reference for other event types.
+                break;
+        }
     }
 
     /// <summary>
@@ -94,6 +144,7 @@ public class ProgressoLivello : MonoBehaviour
     /// </summary>
     public void attivaPannelloRiepiloghiObbiettivi()
     {
+        impostaEventSystemBottoneConferma();
         playerStop.Invoke();
         PuntatoreMouse.abilitaCursore();
         pannelloObbiettiviInizioLivello.SetActive(true);
@@ -114,6 +165,11 @@ public class ProgressoLivello : MonoBehaviour
             punteggioPlayer = giocatore.punteggio[0];
         }
         valoriInizialiTesto();
+    }
+
+    private void impostaEventSystemBottoneConferma()
+    {
+        EventSystem.current.SetSelectedGameObject(bottoneConferma.gameObject);
     }
 
 
@@ -142,6 +198,7 @@ public class ProgressoLivello : MonoBehaviour
         main2.playOnAwake = false;
         suonoVittoria.gameObject.SetActive(false);
         suonoGameOver.gameObject.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(bottoneFineLivello.gameObject);
     }
 
 
@@ -211,7 +268,7 @@ public class ProgressoLivello : MonoBehaviour
             obbiettivoDueRaggiunto = true;
         } else
         {
-            //Solo l'obbiettivo due si pu� resettare perch� il punteggio pu� diminuire ma il numero dei clienti serviti no
+            //Solo l'obbiettivo due si può resettare perchè il punteggio pu� diminuire ma il numero dei clienti serviti no
             obbiettivoDueToogle.isOn = false;
             obbiettivoDue.color = Color.white;
         }
@@ -252,7 +309,8 @@ public class ProgressoLivello : MonoBehaviour
         disattivaElementiFineLivello.Invoke();
         PuntatoreMouse.abilitaCursore();
         disattivaObbiettiviETesto();
-       // GameObject.FindObjectOfType<Camera>().transform.position = new Vector3(0, 4000, 0);       //sposta la telecamera in ciealo
+        EventSystem.current.SetSelectedGameObject(bottoneFineLivello.gameObject);
+        // GameObject.FindObjectOfType<Camera>().transform.position = new Vector3(0, 4000, 0);       //sposta la telecamera in ciealo
     }
 
     /// <summary>
