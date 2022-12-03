@@ -245,7 +245,8 @@ public class ProgressoTutorial : MonoBehaviour
                         movimento.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.meccanicheServireNonCompatibile);
                         OkBoxVideo.meccanicheServireNonCompatibileMostrato = true;
-                    } else if (!OkBoxVideo.okBoxVideoAperto)
+                    }
+                    else if (!OkBoxVideo.okBoxVideoAperto)
                         if (!MenuInGame.menuAperto)
                             movimento.sbloccaMovimento();
 
@@ -273,13 +274,6 @@ public class ProgressoTutorial : MonoBehaviour
                     { 
                         numeroScritteMostrate++; 
                     }
-
-                    //nel magazzino dovremmo mettere un ingrediente che non e' presente nella ricetta ne del 
-                    //Piatto compatibile ne in quella del piatto non compatibile, cosi che quando il giocatore 
-                    //apre il magazzino non sia vuoto del tutto, se no sembra che il magazzino abbia solo la 
-                    //funzione di avvisarti che non hai più ingredienti
-                    //magari possiamo cambiare la scritta a "il magazzino sarebbe cosi se ci fossero degli
-                    //ingredienti" e poi far scomparire l'ingrediente temp che abbiamo inserito dopo 5 secondi
                 }
                 else if (numeroScritteMostrate == 8)
                 {
