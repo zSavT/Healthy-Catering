@@ -107,6 +107,7 @@ public class MenuInGame : MonoBehaviour
         giocoInPausa = false;
         uscitaAttiva = false;
         menuApribile = true;
+        menuAperto = false;
         menuPausa.SetActive(false);
         testoUscita.gameObject.SetActive(true);
         tastoGraficaAudio.gameObject.SetActive(true);

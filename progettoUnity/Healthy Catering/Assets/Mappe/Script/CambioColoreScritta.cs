@@ -9,20 +9,13 @@ using TMPro;
 /// </summary>
 public class CambioColoreScritta : MonoBehaviour
 {
-    private TextMeshProUGUI testo;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        testo = gameObject.GetComponent<TextMeshProUGUI>();
-    }
 
     /// <summary>
     /// Imposta colore grigio
     /// </summary>
     public void cambioColoreNonCliccatoGrigio()
     {
-        testo.color = new Color32(202, 202, 202, 125);
+        gameObject.GetComponent<TextMeshProUGUI>().color = new Color32(202, 202, 202, 125);
     }
 
     /// <summary>
@@ -30,7 +23,7 @@ public class CambioColoreScritta : MonoBehaviour
     /// </summary>
     public void cambioColoreCliccatoNero()
     {
-        testo.color = Color.black;
+        gameObject.GetComponent<TextMeshProUGUI>().color = Color.black;
     }
 
     /// <summary>
@@ -38,6 +31,6 @@ public class CambioColoreScritta : MonoBehaviour
     /// </summary>
     public void cambioColoreCliccatoBianco()
     {
-        testo.color = new Color32(255,255,255,255);
+        gameObject.GetComponent<TextMeshProUGUI>().color = new Color32(255,255,255,255);
     }
 }
