@@ -72,6 +72,9 @@ public class MenuInGame : MonoBehaviour
         controllerInput.Disable();
     }
 
+    /// <summary>
+    /// Il metodo re-imposta la Navigation del tasto per tornare al menu principale in base alla schermata attiva
+    /// </summary>
     private void resetObjectSelezionatoTastoTornaAlMenu()
     {
         if (EventSystem.current.currentSelectedGameObject == tornaIndietro.gameObject)

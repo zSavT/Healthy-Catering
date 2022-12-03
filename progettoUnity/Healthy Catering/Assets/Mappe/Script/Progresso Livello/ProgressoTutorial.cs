@@ -224,14 +224,13 @@ public class ProgressoTutorial : MonoBehaviour
                     } else if (!OkBoxVideo.okBoxVideoAperto)
                         movimento.sbloccaMovimento();
 
-                    if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
-                        if (giocatore != null)
-                            if (CheckTutorial.checkServitoPiattoCompatibile(giocatore))
-                            {
-                                guiInGame.aggiornaValorePunteggioSenzaAnimazione(giocatore.punteggio[0]);
-                                giocatore.setInventarioLivello(0.5);
-                                numeroScritteMostrate++;
-                            }
+                    if (giocatore != null)
+                        if (CheckTutorial.checkServitoPiattoCompatibile(giocatore))
+                        {
+                            guiInGame.aggiornaValorePunteggioSenzaAnimazione(giocatore.punteggio[0]);
+                            giocatore.setInventarioLivello(0.5);
+                            numeroScritteMostrate++;
+                        }
                 }
                 else if (numeroScritteMostrate == 6)
                 {

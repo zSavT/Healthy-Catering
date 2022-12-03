@@ -7,17 +7,23 @@ public class CheckTutorial : MonoBehaviour
 
     public static bool checkWASDeMouse(ControllerInput controllerInput)
     {
-        return controllerInput.Player.Movimento.WasPressedThisFrame();
+        if(!MenuInGame.menuAperto)
+            return controllerInput.Player.Movimento.WasPressedThisFrame();
+        return false;
     }
 
     public static bool checkSalto(ControllerInput controllerInput)
     {
-        return controllerInput.Player.Salto.WasPressedThisFrame();
+        if (!MenuInGame.menuAperto)
+            return controllerInput.Player.Salto.WasPressedThisFrame();
+        return false;
     }
 
     public static bool checkSprint(ControllerInput controllerInput)
     {
-        return controllerInput.Player.Corsa.WasPressedThisFrame();
+        if (!MenuInGame.menuAperto)
+            return controllerInput.Player.Corsa.WasPressedThisFrame();
+        return false;
     }
 
     public static bool checkParlaConZio()
@@ -30,11 +36,6 @@ public class CheckTutorial : MonoBehaviour
         float posizionePlayer = GameObject.FindGameObjectWithTag("Player").transform.position.y;
 
         return posizionePlayer < -500; // siccome e' nel ristorante la y e' minore di -500
-    }
-
-    public static bool checkIsAllaCassa()
-    {
-        return true; //TODO
     }
 
     public static bool checkServitoPiattoCompatibile(Player giocatore)

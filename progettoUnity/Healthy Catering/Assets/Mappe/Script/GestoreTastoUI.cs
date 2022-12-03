@@ -26,7 +26,6 @@ public class GestoreTastoUI : MonoBehaviour
             immagine.sprite = Resources.Load<Sprite>("immaginiComandi/click" + controller + comando);
         else
             immagine.sprite = Resources.Load<Sprite>("immaginiComandi/click");
-        Debug.Log("immaginiComandi/click" + controller + comando);
     }
 
 
