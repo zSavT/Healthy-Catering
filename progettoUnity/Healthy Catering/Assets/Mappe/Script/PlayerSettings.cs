@@ -448,9 +448,9 @@ public class PlayerSettings : MonoBehaviour
     {
         foreach (string nomeController in Input.GetJoystickNames())
         {
-            if (nomeController.Contains("XBOX"))
+            if (nomeController.Contains("XBOX") || nomeController.Contains("Xbox"))
                 return "Xbox";
-            if (nomeController.Contains("Playstation"))
+            if (nomeController.Contains("Playstation") || nomeController.Contains("Wireless"))
                 return "Playstation";
         }
         return "Generico";
