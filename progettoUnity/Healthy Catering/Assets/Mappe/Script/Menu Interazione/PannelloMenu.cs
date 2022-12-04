@@ -90,6 +90,13 @@ public class PannelloMenu : MonoBehaviour
                 chiudiPannelloIngredientiGiustiSbagliati();
             }
         }
+        if (pannelloConfermaPiatto.activeSelf)
+        {
+            if (EventSystem.current.currentSelectedGameObject == null && Utility.gamePadConnesso())
+            {
+                EventSystem.current.SetSelectedGameObject(pannelloConfermaPiatto.GetComponentsInChildren<Button>()[1].gameObject);
+            }
+        }
         if (pannelloPrincipaleMenuCliente.activeSelf)
         {
             if (controllerInput.UI.MostraRicette.WasPressedThisFrame() && !pannelloIngredientiGiustiSbagliatiAperto && !getPannelloConfermaPiattoAperto() && controlloSelectObjectCorretto())
@@ -100,8 +107,9 @@ public class PannelloMenu : MonoBehaviour
             if(Utility.gamePadConnesso())
             {
                 fixSelectObjectCorretto();
-                aggiornaSpriteBottonePiatti();
-            }       
+            }
+            aggiornaImmagineTastiPiatti();
+            PlayerSettings.addattamentoSpriteComandi(EscPerUscireTesto.GetComponent<TextMeshProUGUI>());
         }
     }
 
@@ -123,6 +131,14 @@ public class PannelloMenu : MonoBehaviour
         foreach (Button temp in bottoniPiatti)
         {
             PlayerSettings.addattamentoSpriteComandi(temp.GetComponentsInChildren<Button>()[1].GetComponentInChildren<TextMeshProUGUI>());
+        }
+    }
+
+    private void aggiornaImmagineTastiPiatti()
+    {
+        foreach (Button temp in bottoniPiatti)
+        {
+            temp.GetComponentsInChildren<Image>()[3].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("Triangolo");
         }
     }
 
