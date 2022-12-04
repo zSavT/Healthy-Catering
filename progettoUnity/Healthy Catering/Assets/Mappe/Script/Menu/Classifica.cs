@@ -14,18 +14,19 @@ using Wilberforce;
 /// </summary>
 public class Classifica : MonoBehaviour
 {
-    [SerializeField] private Camera cameraGioco;
+    [Header("Lista Classifica")]
     [SerializeField] private TextMeshProUGUI listaPunteggioLivello0;
     [SerializeField] private TextMeshProUGUI listaPunteggioLivello1;
     [SerializeField] private TextMeshProUGUI listaPunteggioLivello2;
+    [Header("Altro")]
     [SerializeField] private GameObject bottoneIndietro;
-    private EventSystem eventSystem;
+    private Camera cameraGioco;
     private List<Player> listaPlayer;
     private int numeroGiocatoriDaVisualizzare = 5;
 
     void Start()
     {
-        eventSystem = FindObjectOfType<EventSystem>();
+        cameraGioco = FindObjectOfType<Camera>();
         azzeraTextElementi();
         popolaClassificaLivello0();
         popolaClassificaLivello1();
@@ -36,6 +37,13 @@ public class Classifica : MonoBehaviour
     void Awake()
     {
         InputSystem.onDeviceChange += OnDeviceChange;
+    }
+
+    private void Update()
+    {
+        if (Utility.gamePadConnesso())
+            if (EventSystem.current.currentSelectedGameObject == null)
+                EventSystem.current.SetSelectedGameObject(bottoneIndietro);
     }
 
     void OnDestroy()
@@ -76,7 +84,7 @@ public class Classifica : MonoBehaviour
     private void aggioraEventSystemPerControllerConnesso(GameObject elementoDaSelezionare)
     {
         if (Utility.gamePadConnesso())
-            eventSystem.SetSelectedGameObject(elementoDaSelezionare);
+            EventSystem.current.SetSelectedGameObject(elementoDaSelezionare);
     }
 
     /// <summary>
@@ -84,9 +92,9 @@ public class Classifica : MonoBehaviour
     /// </summary>
     private void azzeraTextElementi()
     {
-        listaPunteggioLivello0.text = "";
-        listaPunteggioLivello1.text = "";
-        listaPunteggioLivello2.text = "";
+        listaPunteggioLivello0.text = string.Empty;
+        listaPunteggioLivello1.text = string.Empty;
+        listaPunteggioLivello2.text = string.Empty;
     }
 
     /// <summary>

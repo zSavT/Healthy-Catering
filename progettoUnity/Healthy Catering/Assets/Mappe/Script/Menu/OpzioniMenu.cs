@@ -146,14 +146,28 @@ public class OpzioniMenu : MonoBehaviour
     private void Update()
     {
         if(Utility.gamePadConnesso())
-            if(comandiAttivi)
-                if(controllerInput.UI.Avanti.IsPressed())
+        {
+            if (comandiAttivi)
+            {
+                if (controllerInput.UI.Avanti.IsPressed())
                 {
                     clickSuTastoControlli();
-                } else if (controllerInput.UI.Indietro.IsPressed())
+                }
+                else if (controllerInput.UI.Indietro.IsPressed())
                 {
                     clickSuTastoGrafico();
                 }
+                if(EventSystem.current.currentSelectedGameObject == null)
+                {
+                    if (Utility.qualsiasiTastoPremuto(controllerInput))
+                        if (impostazioniGrafica.activeSelf && !impostazioniControlli.activeSelf)
+                            EventSystem.current.SetSelectedGameObject(risoluzioniDisponibili.gameObject);
+                        else if (!impostazioniGrafica.activeSelf && impostazioniControlli.activeSelf)
+                            EventSystem.current.SetSelectedGameObject(sliderSensibilita.gameObject);
+                }
+            }
+        }
+
     }
 
     private void addattamentoImmaginiControlli()
