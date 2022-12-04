@@ -450,7 +450,7 @@ public class PlayerSettings : MonoBehaviour
         {
             if (nomeController.Contains("XBOX") || nomeController.Contains("Xbox"))
                 return "Xbox";
-            if (nomeController.Contains("Playstation") || nomeController.Contains("Wireless"))
+            else if (nomeController.Contains("Playstation") || nomeController.Contains("Wireless"))
                 return "Playstation";
         }
         return "Generico";

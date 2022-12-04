@@ -13,10 +13,9 @@ using UnityEngine.InputSystem;
 public class VideoTutorialScript : MonoBehaviour
 {
     [SerializeField] GameObject cameraGioco;
-    [SerializeField] VideoPlayer videoPlayer;
+    private VideoPlayer videoPlayer;
     [SerializeField] private AudioMixer audioMIxer;
     [SerializeField] private TextMeshProUGUI titolo;
-    private EventSystem eventSystem;
     [Header("Elementi Caricamento Livello")]
     [SerializeField] private Slider sliderCaricamento;        //slider del caricamento della partita
     [SerializeField] private UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
@@ -24,7 +23,6 @@ public class VideoTutorialScript : MonoBehaviour
     // Examples of VideoPlayer function
     void Start()
     {
-        eventSystem = FindObjectOfType<EventSystem>();
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         videoPlayer = cameraGioco.GetComponent<VideoPlayer>();
         /*
@@ -85,6 +83,12 @@ public class VideoTutorialScript : MonoBehaviour
         InputSystem.onDeviceChange -= OnDeviceChange;
     }
 
+    private void Update()
+    {
+        if (EventSystem.current.currentSelectedGameObject == null)
+            EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
+    }
+
     /// <summary>
     /// Il metodo controlla e gestiscisce le periferiche di Input 
     /// </summary>
@@ -95,13 +99,13 @@ public class VideoTutorialScript : MonoBehaviour
         switch (change)
         {
             case InputDeviceChange.Added:
-                // New Device.
+                EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
                 break;
             case InputDeviceChange.Disconnected:
 
                 break;
             case InputDeviceChange.Reconnected:
-                eventSystem.SetSelectedGameObject(eventSystem.currentSelectedGameObject);
+                EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
                 break;
             case InputDeviceChange.Removed:
                 // Remove from Input System entirely; by default, Devices stay in the system once discovered.

@@ -7,9 +7,6 @@ using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using Unity.VisualScripting;
-using UnityEngine.InputSystem.XR;
-using System.Linq;
 
 /// <summary>
 /// Classe per la gestione delle impostazioni presenti nel menu iniziale del Gioco.<para>
@@ -27,7 +24,6 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject elementiProfiloNonEsistente;
     [SerializeField] private GameObject elementiUscita;
     [SerializeField] private Image immagineController;
-    private EventSystem eventSystem;
     private GameObject ultimoElementoSelezionato;
     private ControllerInput controllerInput;
     private List<Player> player = new List<Player>();
@@ -37,26 +33,7 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
-        controllerInput = new ControllerInput();
-        controllerInput.Enable();
-        Debug.Log(PlayerSettings.tipologiaControllerInserito());
-        eventSystem = FindObjectOfType<EventSystem>();
-        attivaDisattivaIconaController();
-        gameVersion();
-        //disattivo a priori, per non visualizzarli in caso di errori di lettura dei nomi utenti ed evitare lo schermo occupato tutto da scritte
-        elementiProfiloNonEsistente.SetActive(false);               
-        cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
-        letturaNomiUtenti();
-        if (!presentePlayer())
-        {
-            elementiProfiloNonEsistente.SetActive(true);
-            elementiMenuPrincipale.SetActive(false);
-        } else
-        {
-            elementiProfiloNonEsistente.SetActive(false);
-        }
-        elementiCrediti.SetActive(false);
-        CambioCursore.cambioCursoreNormale();
+        inizializzazioneElementiIniziali();
     }
 
     void Update()
@@ -64,12 +41,12 @@ public class Menu : MonoBehaviour
         attivaDisattivaIconaController();
         attivaDisattivaLivelli();
 
-        if(eventSystem.currentSelectedGameObject == null)
+        if(EventSystem.current.currentSelectedGameObject == null)
         {
             if (Utility.qualsiasiTastoPremuto(controllerInput))
-                eventSystem.SetSelectedGameObject(ultimoElementoSelezionato);
+                EventSystem.current.SetSelectedGameObject(ultimoElementoSelezionato);
         }else
-            ultimoElementoSelezionato = eventSystem.currentSelectedGameObject;
+            ultimoElementoSelezionato = EventSystem.current.currentSelectedGameObject;
     }
 
     void Awake()
@@ -110,6 +87,33 @@ public class Menu : MonoBehaviour
     }
 
     /// <summary>
+    /// Il metodo inizializza tutti gli elementi iniziali per il menu principale
+    /// </summary>
+    private void inizializzazioneElementiIniziali()
+    {
+        controllerInput = new ControllerInput();
+        controllerInput.Enable();
+        Debug.Log(PlayerSettings.tipologiaControllerInserito());
+        attivaDisattivaIconaController();
+        gameVersion();
+        //disattivo a priori, per non visualizzarli in caso di errori di lettura dei nomi utenti ed evitare lo schermo occupato tutto da scritte
+        elementiProfiloNonEsistente.SetActive(false);
+        cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
+        letturaNomiUtenti();
+        if (!presentePlayer())
+        {
+            elementiProfiloNonEsistente.SetActive(true);
+            elementiMenuPrincipale.SetActive(false);
+        }
+        else
+        {
+            elementiProfiloNonEsistente.SetActive(false);
+        }
+        elementiCrediti.SetActive(false);
+        CambioCursore.cambioCursoreNormale();
+    }
+
+    /// <summary>
     /// Il metodo aumenta la trasparenza dell'icona del controller se inserito
     /// </summary>
     private void attivaDisattivaIconaController()
@@ -133,13 +137,13 @@ public class Menu : MonoBehaviour
         if (Utility.gamePadConnesso())
             if (!elementiUscita.activeSelf && !elementiCrediti.activeSelf && elementiMenuPrincipale.activeSelf)
             {
-                eventSystem.SetSelectedGameObject(elementiMenuPrincipale.GetComponentsInChildren<Transform>()[1].gameObject);
+                EventSystem.current.SetSelectedGameObject(elementiMenuPrincipale.GetComponentsInChildren<Transform>()[1].gameObject);
             }
                 
             else if (!elementiUscita.activeSelf && elementiCrediti.activeSelf && !elementiMenuPrincipale.activeSelf)
-                eventSystem.SetSelectedGameObject(elementiCrediti.GetComponentsInChildren<Transform>()[10].gameObject);
+                EventSystem.current.SetSelectedGameObject(elementiCrediti.GetComponentsInChildren<Transform>()[10].gameObject);
             else if (elementiUscita.activeSelf && !elementiCrediti.activeSelf && !elementiMenuPrincipale.activeSelf)
-                eventSystem.SetSelectedGameObject(elementiUscita.GetComponentsInChildren<Transform>()[1].gameObject);
+                EventSystem.current.SetSelectedGameObject(elementiUscita.GetComponentsInChildren<Transform>()[1].gameObject);
     }
 
     /// <summary>
@@ -149,7 +153,7 @@ public class Menu : MonoBehaviour
     private void aggioraEventSystemPerControllerConnesso(GameObject elementoDaSelezionare)
     {
         if (Utility.gamePadConnesso())
-            eventSystem.SetSelectedGameObject(elementoDaSelezionare);
+            EventSystem.current.SetSelectedGameObject(elementoDaSelezionare);
     }
 
     /// <summary>
@@ -280,6 +284,6 @@ public class Menu : MonoBehaviour
     /// <param name="bottoneIniziale">GameObject da impostare come elemento principale</param>
     public void impostaEventSystemSelezionato(GameObject bottoneIniziale)
     {
-        eventSystem.SetSelectedGameObject(bottoneIniziale);
+        EventSystem.current.SetSelectedGameObject(bottoneIniziale);
     }
 }
