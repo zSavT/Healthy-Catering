@@ -16,19 +16,23 @@ using UnityEngine.UI;
 /// </summary>
 public class Menu : MonoBehaviour
 {
-    [SerializeField] private Camera cameraGioco;
-    [SerializeField] private TextMeshProUGUI testoVersioneGioco;
-    [SerializeField] private TextMeshProUGUI companyName;
+    [Header("Pannelli")]
     [SerializeField] private GameObject elementiCrediti;
     [SerializeField] private GameObject elementiMenuPrincipale;
     [SerializeField] private GameObject elementiProfiloNonEsistente;
     [SerializeField] private GameObject elementiUscita;
+
+    [Header("Testo ed Altro")]
+    [SerializeField] private TextMeshProUGUI testoVersioneGioco;
+    [SerializeField] private TextMeshProUGUI companyName;
     [SerializeField] private Image immagineController;
+    //serve per eliminare altri elementi in visualilzzazione
+    [SerializeField] private UnityEvent clickCrediti;
+
     private GameObject ultimoElementoSelezionato;
     private ControllerInput controllerInput;
     private List<Player> player = new List<Player>();
-    //serve per eliminare altri elementi in visualilzzazione
-    [SerializeField] private UnityEvent clickCrediti;
+    private Camera cameraGioco;
 
 
     void Start()
@@ -93,7 +97,7 @@ public class Menu : MonoBehaviour
     {
         controllerInput = new ControllerInput();
         controllerInput.Enable();
-        Debug.Log(PlayerSettings.tipologiaControllerInserito());
+        cameraGioco = FindObjectOfType<Camera>();
         attivaDisattivaIconaController();
         gameVersion();
         //disattivo a priori, per non visualizzarli in caso di errori di lettura dei nomi utenti ed evitare lo schermo occupato tutto da scritte

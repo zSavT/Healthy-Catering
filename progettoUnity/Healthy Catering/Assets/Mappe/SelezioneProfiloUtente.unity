@@ -1386,9 +1386,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
-    m_PressedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.39215687}
-    m_SelectedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
+    m_HighlightedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
+    m_PressedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.78431374}
+    m_SelectedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1475,6 +1475,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1974323873}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 428178792}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1634,9 +1646,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
-    m_PressedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.39215687}
-    m_SelectedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
+    m_HighlightedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
+    m_PressedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.78431374}
+    m_SelectedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1711,6 +1723,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 718083704}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 428178792}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2182,9 +2206,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
-    m_PressedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.39215687}
-    m_SelectedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
+    m_HighlightedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
+    m_PressedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.78431374}
+    m_SelectedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2871,9 +2895,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
-    m_PressedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.39215687}
-    m_SelectedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
+    m_HighlightedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
+    m_PressedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.78431374}
+    m_SelectedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2948,6 +2972,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 428178792}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 428178792}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3294,9 +3330,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
-    m_PressedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.39215687}
-    m_SelectedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
+    m_HighlightedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
+    m_PressedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.78431374}
+    m_SelectedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3485,9 +3521,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
-    m_PressedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.39215687}
-    m_SelectedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
+    m_HighlightedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
+    m_PressedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.78431374}
+    m_SelectedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -4597,9 +4633,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
-    m_PressedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.39215687}
-    m_SelectedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
+    m_HighlightedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
+    m_PressedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.78431374}
+    m_SelectedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -7336,9 +7372,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
-    m_PressedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.39215687}
-    m_SelectedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
+    m_HighlightedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
+    m_PressedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.78431374}
+    m_SelectedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -8561,9 +8597,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
-    m_PressedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.39215687}
-    m_SelectedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
+    m_HighlightedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
+    m_PressedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.78431374}
+    m_SelectedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -8650,6 +8686,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 421785012}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 428178792}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8950,11 +8998,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementiGenereNeutro: {fileID: 1854744828}
   elementiDomandaUscita: {fileID: 1141563043}
+  elementiEliminazioneProfilo: {fileID: 2106590448}
   dropDownListaPlayer: {fileID: 1795986372}
   dropDownGenere: {fileID: 1063818618}
   dropDownColorePelle: {fileID: 838797304}
   dropDownModello3D: {fileID: 600646477}
-  cameraGioco: {fileID: 1949538935}
   suonoClick: {fileID: 1973371537}
 --- !u!1 &2031227889
 GameObject:
@@ -9098,9 +9146,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
-    m_PressedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.39215687}
-    m_SelectedColor: {r: 0.5647059, g: 0.5529412, b: 0.5529412, a: 0.23529412}
+    m_HighlightedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
+    m_PressedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.78431374}
+    m_SelectedColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0.5882353}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -9175,6 +9223,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 535617419}
+        m_TargetAssemblyTypeName: UnityEngine.EventSystems.EventSystem, UnityEngine.UI
+        m_MethodName: SetSelectedGameObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 421785012}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

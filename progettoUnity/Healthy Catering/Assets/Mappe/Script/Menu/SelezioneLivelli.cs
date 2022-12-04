@@ -25,12 +25,15 @@ public class SelezioneLivelli : MonoBehaviour
      * Classifica = 6
      * Video Tutorial = 7
      */
-    [SerializeField] private Camera cameraGioco;
+
+    private Camera cameraGioco;
+
+    [Header("Elementi Uscita")]
     [SerializeField] private GameObject elementiDomandaUscita;
 
     [Header("Controller comandi")]
-    private EventSystem eventSystem;
     private GameObject ultimoElementoSelezionato;
+    private ControllerInput controllerInput;
 
     [Header("Bottoni Livelli")]
     [SerializeField] private Button bottoneLivello0;
@@ -43,17 +46,12 @@ public class SelezioneLivelli : MonoBehaviour
 
     void Start()
     {
-        eventSystem = EventSystem.current;
-        cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
-        if (PlayerSettings.caricaProgressoLivello1() == 1)
-        {
-            bottoneLivello1.interactable = true;
-        }
-        if (PlayerSettings.caricaProgressoLivello2() == 1)
-        {
-            bottoneLivello2.interactable = true;
-        }
-        elementiDomandaUscita.SetActive(false);                                         //disattiva gli elementi della domanda all'uscita per non visualizzarli fin da subito
+        inizializzaElementiIniziali();
+    }
+
+    private void Update()
+    {
+        ControlloElementoDaSelezionare();
     }
 
     void Awake()
@@ -64,6 +62,11 @@ public class SelezioneLivelli : MonoBehaviour
     void OnDestroy()
     {
         InputSystem.onDeviceChange -= OnDeviceChange;
+    }
+
+    private void OnDisable()
+    {
+        controllerInput.Disable();
     }
 
     /// <summary>
@@ -79,7 +82,7 @@ public class SelezioneLivelli : MonoBehaviour
                 // New Device.
                 break;
             case InputDeviceChange.Disconnected:
-                ultimoElementoSelezionato = eventSystem.currentSelectedGameObject;
+                ultimoElementoSelezionato = EventSystem.current.currentSelectedGameObject;
                 break;
             case InputDeviceChange.Reconnected:
                 aggioraEventSystemPerControllerConnesso(ultimoElementoSelezionato);
@@ -94,13 +97,47 @@ public class SelezioneLivelli : MonoBehaviour
     }
 
     /// <summary>
+    /// Il metodo inizializza gli elementi iniziali del menu della scelta dei livelli
+    /// </summary>
+    private void inizializzaElementiIniziali()
+    {
+        cameraGioco = FindObjectOfType<Camera>();
+        cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
+        controllerInput = new ControllerInput();
+        controllerInput.Enable();
+        if (PlayerSettings.caricaProgressoLivello1() == 1)
+        {
+            bottoneLivello1.interactable = true;
+        }
+        if (PlayerSettings.caricaProgressoLivello2() == 1)
+        {
+            bottoneLivello2.interactable = true;
+        }
+        elementiDomandaUscita.SetActive(false);                 //disattiva gli elementi della domanda all'uscita per non visualizzarli fin da subito
+    }
+
+    /// <summary>
+    /// Il metodo se un GamePad è connesso, controlla se l'eventsystem.currentSelectedGameObject risulta nullo ed imposta quello corretto
+    /// </summary>
+    private void ControlloElementoDaSelezionare()
+    {
+        if(Utility.gamePadConnesso())
+            if(Utility.qualsiasiTastoPremuto(controllerInput))
+                if (EventSystem.current.currentSelectedGameObject == null)
+                    if (elementiDomandaUscita.activeSelf)
+                        EventSystem.current.SetSelectedGameObject(elementiDomandaUscita.GetComponentsInChildren<Button>()[1].gameObject);
+                    else
+                        EventSystem.current.SetSelectedGameObject(bottoneLivello0.gameObject);
+    }
+
+    /// <summary>
     /// Il metodo imposta come elemento selzionato dell'EventSystem l'oggetto passato in input
     /// </summary>
     /// <param name="elementoDaSelezionare">GameObject da impostare come elemento selezionato</param>
     private void aggioraEventSystemPerControllerConnesso(GameObject elementoDaSelezionare)
     {
         if (Utility.gamePadConnesso())
-            eventSystem.SetSelectedGameObject(elementoDaSelezionare);
+            EventSystem.current.SetSelectedGameObject(elementoDaSelezionare);
     }
 
     /// <summary>

@@ -4,6 +4,7 @@ using UnityEngine;
 using Wilberforce;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 /// <summary>
 /// Classe per la gestione delle impostazioni presenti nel menu della creazione profilo utente<para>
@@ -13,20 +14,23 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class SelezioneProfiloUtenteEsistente : MonoBehaviour
 {
-
+    [Header("Pannelli Elementi")]
     [SerializeField] private GameObject elementiGenereNeutro;
     [SerializeField] private GameObject elementiDomandaUscita;
+    [SerializeField] private GameObject elementiEliminazioneProfilo;
+    [Header("Dropdown Elementi")]
     [SerializeField] private TMP_Dropdown dropDownListaPlayer;
     [SerializeField] private TMP_Dropdown dropDownGenere;
     [SerializeField] private TMP_Dropdown dropDownColorePelle;
     [SerializeField] private TMP_Dropdown dropDownModello3D;
-    [SerializeField] private Camera cameraGioco;
+    [Header("Altro")]
     [SerializeField] private AudioSource suonoClick;
-    private EventSystem eventSystem;
+    private Camera cameraGioco;
+    private ControllerInput controllerInput;
     private GameObject ultimoElementoSelezionato;
     private List<Player> players = new List<Player>();
     private List<string> nomiPlayerPresenti = new List<string>();
-    private string nomeSelezionato = "";
+    private string nomeSelezionato = string.Empty;
     private int sceltaGenere;
     private int sceltaColorePelle;
     private int sceltaModelloPlayer;
@@ -36,19 +40,12 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        eventSystem = EventSystem.current;
-        cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
-        letturaNomiUtenti();
-        nomiPlayer();
-        aggiuntaNomiDropdown();
-        dropDownListaPlayer.value = indiceNomeGiocatoreInLista(PlayerSettings.caricaNomePlayerGiocante());
-        nomeSelezionato = dropDownListaPlayer.options[dropDownListaPlayer.value].text;
-        dropDownGenere.value = PlayerSettings.caricaGenereGiocatore(nomeSelezionato);
-        dropDownColorePelle.value = PlayerSettings.caricaColorePelle(nomeSelezionato);
-        dropDownModello3D.value = PlayerSettings.caricaGenereModello3D(nomeSelezionato);
-        attivaDisattivaImpostazioniGenereNeutro();
-        refreshValori();
-        elementiDomandaUscita.SetActive(false);
+        inizializzaElementiIniziali();
+    }
+
+    private void Update()
+    {
+        controlloElementoDaSelezionare();
     }
 
     void Awake()
@@ -59,6 +56,11 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     void OnDestroy()
     {
         InputSystem.onDeviceChange -= OnDeviceChange;
+    }
+
+    private void OnDisable()
+    {
+        controllerInput.Disable();
     }
 
     /// <summary>
@@ -74,7 +76,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
                 // New Device.
                 break;
             case InputDeviceChange.Disconnected:
-                ultimoElementoSelezionato = eventSystem.currentSelectedGameObject;
+                ultimoElementoSelezionato = EventSystem.current.currentSelectedGameObject;
                 break;
             case InputDeviceChange.Reconnected:
                 aggioraEventSystemPerControllerConnesso(ultimoElementoSelezionato);
@@ -89,13 +91,52 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
     }
 
     /// <summary>
+    /// Il metodo inizializza tutti gli elementi iniziali per il menu
+    /// </summary>
+    private void inizializzaElementiIniziali()
+    {
+        controllerInput = new ControllerInput();
+        controllerInput.Enable();
+        cameraGioco = FindObjectOfType<Camera>();
+        cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
+        letturaNomiUtenti();
+        nomiPlayer();
+        aggiuntaNomiDropdown();
+        dropDownListaPlayer.value = indiceNomeGiocatoreInLista(PlayerSettings.caricaNomePlayerGiocante());
+        nomeSelezionato = dropDownListaPlayer.options[dropDownListaPlayer.value].text;
+        dropDownGenere.value = PlayerSettings.caricaGenereGiocatore(nomeSelezionato);
+        dropDownColorePelle.value = PlayerSettings.caricaColorePelle(nomeSelezionato);
+        dropDownModello3D.value = PlayerSettings.caricaGenereModello3D(nomeSelezionato);
+        attivaDisattivaImpostazioniGenereNeutro();
+        refreshValori();
+        elementiDomandaUscita.SetActive(false);
+    }
+
+
+    /// <summary>
+    /// Il metodo se un GamePad è connesso, controlla se l'eventsystem.currentSelectedGameObject risulta nullo ed imposta quello corretto
+    /// </summary>
+    private void controlloElementoDaSelezionare()
+    {
+        if (Utility.gamePadConnesso())
+            if (EventSystem.current.currentSelectedGameObject == null)
+                if (Utility.qualsiasiTastoPremuto(controllerInput))
+                    if (elementiDomandaUscita.activeSelf && !elementiEliminazioneProfilo.activeSelf)
+                        EventSystem.current.SetSelectedGameObject(elementiDomandaUscita.GetComponentsInChildren<Button>()[1].gameObject);
+                   else if (!elementiDomandaUscita.activeSelf && elementiEliminazioneProfilo.activeSelf)
+                        EventSystem.current.SetSelectedGameObject(elementiEliminazioneProfilo.GetComponentsInChildren<Button>()[1].gameObject);
+                   else if (!elementiDomandaUscita.activeSelf && !elementiEliminazioneProfilo.activeSelf)
+                        EventSystem.current.SetSelectedGameObject(dropDownListaPlayer.gameObject);
+    }
+
+    /// <summary>
     /// Il metodo imposta come elemento selzionato dell'EventSystem l'oggetto passato in input
     /// </summary>
     /// <param name="elementoDaSelezionare">GameObject da impostare come elemento selezionato</param>
     private void aggioraEventSystemPerControllerConnesso(GameObject elementoDaSelezionare)
     {
         if (Utility.gamePadConnesso())
-            eventSystem.SetSelectedGameObject(elementoDaSelezionare);
+            EventSystem.current.SetSelectedGameObject(elementoDaSelezionare);
     }
 
     /// <summary>
@@ -261,7 +302,7 @@ public class SelezioneProfiloUtenteEsistente : MonoBehaviour
 
     /// <summary>
     /// Metodo che permette la corretta eliminazione del profilo utente selezionato al momento.<br>
-    /// Se il profilo eliminato � anche l'ultimo, verr� caricato il menu principale.</br>
+    /// Se il profilo eliminato è anche l'ultimo, verrà caricato il menu principale.</br>
     /// </summary>
     public void eliminazioneProfilo()
     {

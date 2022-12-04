@@ -240,8 +240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b1681e61aa7d44ca8b567788470f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraGioco: {fileID: 630913919}
-  videoPlayer: {fileID: 0}
   audioMIxer: {fileID: 24100000, guid: 7e80b91a87fa18a4dac7cec66de33ef3, type: 2}
   titolo: {fileID: 1002033866}
   sliderCaricamento: {fileID: 633423014}

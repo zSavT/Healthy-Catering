@@ -14,17 +14,18 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class SceltaImpostazioniPlayer : MonoBehaviour
 {
-
+    [Header("Pannelli Elementi")]
     [SerializeField] private GameObject elementiGenereNeutro;
-    [SerializeField] private GameObject tastoIndietro;
-    [SerializeField] private TMP_InputField inputFieldNomeGiocatore;
-    [SerializeField] private GameObject nomeGiaPreso;
     [SerializeField] private GameObject elementiSalvataggio;
     [SerializeField] private GameObject elementiConferma;
+    [Header("Altro")]
+    [SerializeField] private TMP_InputField inputFieldNomeGiocatore;
+    [SerializeField] private GameObject nomeGiaPreso;
+    [SerializeField] private GameObject tastoIndietro;
     [SerializeField] private Button bottoneSalva;
-    [SerializeField] private Camera cameraGioco;
     [SerializeField] private AudioSource suonoClick;
-    private EventSystem eventSystem;
+    private ControllerInput controllerInput;
+    private Camera cameraGioco;
     private GameObject ultimoElementoSelezionato;
     private List<Player> player = new List<Player>();
     private List<string> nomiPlayerPresenti = new List<string>();
@@ -37,20 +38,22 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        eventSystem = EventSystem.current;
-        PuntatoreMouse.abilitaCursore();
-        nomeGiocatoreScritto = "";
-        cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
-        player = new List<Player>();
-        genereNeutroScelto = false;
-        disattivaElementi();
-        controlloEsistenzaProfiliPlayer();
-        controlloNomeEsistente();
+        inizializzaElementiIniziali();
+    }
+
+    private void Update()
+    {
+        controlloElementoDaSelezionare();
     }
 
     void Awake()
     {
         InputSystem.onDeviceChange += OnDeviceChange;
+    }
+
+    private void OnDisable()
+    {
+        controllerInput.Disable();
     }
 
     void OnDestroy()
@@ -71,7 +74,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
                 // New Device.
                 break;
             case InputDeviceChange.Disconnected:
-                ultimoElementoSelezionato = eventSystem.currentSelectedGameObject;
+                ultimoElementoSelezionato = EventSystem.current.currentSelectedGameObject;
                 break;
             case InputDeviceChange.Reconnected:
                 aggioraEventSystemPerControllerConnesso(ultimoElementoSelezionato);
@@ -86,13 +89,47 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     }
 
     /// <summary>
+    /// Il metodo inizializza tutti gli elementi iniziali per il menu
+    /// </summary>
+    private void inizializzaElementiIniziali()
+    {
+        cameraGioco = FindObjectOfType<Camera>();
+        controllerInput = new ControllerInput();
+        controllerInput.Enable();
+        PuntatoreMouse.abilitaCursore();
+        nomeGiocatoreScritto = string.Empty;
+        cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
+        player = new List<Player>();
+        genereNeutroScelto = false;
+        disattivaElementi();
+        controlloEsistenzaProfiliPlayer();
+        controlloNomeEsistente();
+    }
+
+    /// <summary>
+    /// Il metodo se un GamePad è connesso, controlla se l'eventsystem.currentSelectedGameObject risulta nullo ed imposta quello corretto
+    /// </summary>
+    private void controlloElementoDaSelezionare()
+    {
+        if (Utility.gamePadConnesso())
+            if (EventSystem.current.currentSelectedGameObject == null)
+                if (Utility.qualsiasiTastoPremuto(controllerInput))
+                    if (elementiConferma.activeSelf && !elementiSalvataggio.activeSelf)
+                        EventSystem.current.SetSelectedGameObject(elementiConferma.GetComponentsInChildren<Button>()[1].gameObject);
+                    else if (!elementiConferma.activeSelf && elementiSalvataggio.activeSelf)
+                        EventSystem.current.SetSelectedGameObject(elementiSalvataggio.GetComponentsInChildren<Button>()[1].gameObject);
+                    else if (!elementiConferma.activeSelf && !elementiSalvataggio.activeSelf)
+                        EventSystem.current.SetSelectedGameObject(FindObjectOfType<TMP_Dropdown>().gameObject);
+    }
+
+    /// <summary>
     /// Il metodo imposta come elemento selzionato dell'EventSystem l'oggetto passato in input
     /// </summary>
     /// <param name="elementoDaSelezionare">GameObject da impostare come elemento selezionato</param>
     private void aggioraEventSystemPerControllerConnesso(GameObject elementoDaSelezionare)
     {
         if (Utility.gamePadConnesso())
-            eventSystem.SetSelectedGameObject(elementoDaSelezionare);
+            EventSystem.current.SetSelectedGameObject(elementoDaSelezionare);
     }
 
     /// <summary>

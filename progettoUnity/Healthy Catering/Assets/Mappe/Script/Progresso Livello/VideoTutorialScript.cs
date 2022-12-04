@@ -12,17 +12,19 @@ using UnityEngine.InputSystem;
 
 public class VideoTutorialScript : MonoBehaviour
 {
-    [SerializeField] GameObject cameraGioco;
-    private VideoPlayer videoPlayer;
-    [SerializeField] private AudioMixer audioMIxer;
+    [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private TextMeshProUGUI titolo;
     [Header("Elementi Caricamento Livello")]
     [SerializeField] private Slider sliderCaricamento;        //slider del caricamento della partita
     [SerializeField] private UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
 
+    private GameObject cameraGioco;
+    private VideoPlayer videoPlayer;
+
     // Examples of VideoPlayer function
     void Start()
     {
+        cameraGioco = FindObjectOfType<Camera>().gameObject;
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         videoPlayer = cameraGioco.GetComponent<VideoPlayer>();
         /*
@@ -70,7 +72,7 @@ public class VideoTutorialScript : MonoBehaviour
         // its prepareCompleted event.
         videoPlayer.Play();
         StartCoroutine(autoSkip(((float)videoPlayer.length) + 2f));          //Aggiungo un secondo di delay per dare la possibilità ai pc poco performanti di non caricarli troppo
-        audioMIxer.SetFloat("volume", -80f);
+        audioMixer.SetFloat("volume", -80f);
     }
 
     void Awake()
@@ -116,12 +118,19 @@ public class VideoTutorialScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo carica il livello del tutorial.
+    /// </summary>
     public void caricaLivelloTutorial()
     {
         titolo.gameObject.SetActive(true);
         StartCoroutine(caricamentoAsincrono(2));
     }
 
+    /// <summary>
+    /// Il metodo dopo avere atteso il tempo passato dalla variabile in input, carica il livello del tutorial.
+    /// </summary>
+    /// <param name="tempo">float tempo da attendere per caricare il livello del tutorial</param>
     IEnumerator autoSkip(float tempo)
     {
         yield return new WaitForSecondsRealtime(tempo);
