@@ -30,16 +30,21 @@ public class CheckTutorial : MonoBehaviour
     public static bool checkSalto(ControllerInput controllerInput)
     {
         if (!MenuInGame.menuAperto)
-            return controllerInput.Player.Salto.WasPressedThisFrame();
+            return controllerInput.Player.Salto.WasReleasedThisFrame();
         return false;
     }
 
     public static bool checkSprint(ControllerInput controllerInput)
     {
         if (!MenuInGame.menuAperto)
-            return controllerInput.Player.Corsa.WasPressedThisFrame();
+        {
+            return controllerInput.Player.Corsa.WasReleasedThisFrame();
+        }
+            
         return false;
     }
+
+
 
     public static bool checkParlaConZio()
     {

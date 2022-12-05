@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using System;
 using TMPro;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 /// <summary>
 /// Classe principale per gestire le azioni del giocatore<para>
@@ -595,5 +596,15 @@ public class Interactor : MonoBehaviour
     public Player getPlayer()
     {
         return giocatore;
+    }
+
+    /// <summary>
+    /// Il metodo attende il tempo passato in input
+    /// </summary>
+    /// <param name="attesa">Durata attesa</param>
+    /// <returns></returns>
+    public IEnumerator attendi(float attesa)
+    {
+        yield return new WaitForSecondsRealtime(attesa);
     }
 }

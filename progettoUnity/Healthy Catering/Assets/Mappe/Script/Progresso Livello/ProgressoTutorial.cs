@@ -384,6 +384,8 @@ public class ProgressoTutorial : MonoBehaviour
 
     }
 
+
+
     /// <summary>
     /// Metodo che attiva il TextMeshProUGUI dell'obbiettivo e quello del toggle<br></br>
     /// </summary>
