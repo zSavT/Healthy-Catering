@@ -10,6 +10,12 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Classe per gestire il video tutorial<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Canvas principale scena dove presente il video tutorial
+/// </para>
+/// </summary>
 public class VideoTutorialScript : MonoBehaviour
 {
     [SerializeField] private AudioMixer audioMixer;
