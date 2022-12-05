@@ -116,6 +116,14 @@ public class Costanti : MonoBehaviour
         "Deh, Mio padre proprio! De per forza!"
     };
 
+    public static readonly List<string> easterEgg2Frase = new List<string>
+    {
+        "Ciao Billone! Ti chiederai perchè sono qui, giustamente.",
+        "Sono semplicemente una grafica scartata fatta con tanto affetto ed amore...",
+        "ma...",
+        "Non servo più ormai, quindi ora vivo qui, in mezzo alla monnezza! Sigh"
+    };
+
     // NEGOZIO
     public static readonly int numeroBottoniNellaPaginaNegozio = 9;
     public static readonly int numeroPannelliXElementiNellaPaginaNegozio = 3;

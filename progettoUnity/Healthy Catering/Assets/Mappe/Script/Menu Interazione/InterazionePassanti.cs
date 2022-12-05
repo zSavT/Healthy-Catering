@@ -239,7 +239,11 @@ public class InterazionePassanti : MonoBehaviour
         else if (nomeNPC.Equals("EasterEgg1"))
         {
             return Costanti.easterEgg1Frase;
-        } else 
+        } else if (nomeNPC.Equals("EasterEgg2"))
+        {
+            return Costanti.easterEgg2Frase;
+        }
+        else 
         {
             //se l'npc e' gia presente nel dizionario
             foreach ((List<string>, List<string>) chiaveValore in scritteENPCsAssegnato)
