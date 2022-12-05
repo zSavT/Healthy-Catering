@@ -50,6 +50,7 @@ public class OkBoxVideo : MonoBehaviour
         apriRicettarioMostrato = false;
         apriMenuAiutoMostrato = false;
         okBoxVideoAperto = false;
+        CheckTutorial.tastiMovimentoPremuti = false;
         indiceCorrente = 0;
         pannello.SetActive(false);
         titolo.text = "";
@@ -59,8 +60,9 @@ public class OkBoxVideo : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (EventSystem.current.currentSelectedGameObject == null && Utility.gamePadConnesso())
-            EventSystem.current.SetSelectedGameObject(bottoneConferma.gameObject);
+        if(okBoxVideoAperto)
+            if (EventSystem.current.currentSelectedGameObject == null && Utility.gamePadConnesso())
+                EventSystem.current.SetSelectedGameObject(bottoneConferma.gameObject);
     }
 
     private void OnEnable()

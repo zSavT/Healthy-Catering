@@ -87,6 +87,10 @@ public class PannelloNegozio : MonoBehaviour
             cambiaPannelloCarosello(true);
         else if (controllerInput.UI.Indietro.WasPressedThisFrame() && pannelloAperto && bottoneIndietroPannelloNegozio.interactable && !pannelloSeiSicuroAperto)
             cambiaPannelloCarosello(false);
+        if(pannelloAperto)
+        {
+           aggiornaObjectSelected();
+        }
     }
 
     //INTERAZIONE NEGOZIO
@@ -99,6 +103,17 @@ public class PannelloNegozio : MonoBehaviour
 
         disattivaBottoniAvantiDietroSeServe();
         aggiornaBottoniPaginaCarosello();
+    }
+
+
+    private void aggiornaObjectSelected()
+    {
+        if (Utility.gamePadConnesso())
+            if (EventSystem.current.currentSelectedGameObject == null)
+                if (pannelloSeiSicuroAperto)
+                    EventSystem.current.SetSelectedGameObject(pannelloSeiSicuro.GetComponentsInChildren<Button>()[1].gameObject);
+                else
+                    EventSystem.current.SetSelectedGameObject(ingredientiBottoniFake[0].GetComponentsInChildren<Transform>()[4].gameObject);
     }
 
     private void disattivaBottoniAvantiDietroSeServe()
@@ -380,7 +395,8 @@ public class PannelloNegozio : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(pannelloSeiSicuro.GetComponentsInChildren<Button>()[1].gameObject);
         }
 
-            
+        bottoneAvantiPannelloNegozio.interactable = false;
+        bottoneIndietroPannelloNegozio.interactable = false;
         pannelloSeiSicuro.SetActive(true);
         testoEsc.gameObject.SetActive(false);
         PlayerSettings.addattamentoSpriteComandi(testoEsc);
@@ -538,8 +554,8 @@ public class PannelloNegozio : MonoBehaviour
             inNegozio = true;
         }
         resetQuantitaTuttiBottoni();
-        
 
+        disattivaBottoniAvantiDietroSeServe();
         foreach (Button temp in ingredientiBottoniFake)
             attivaDisattivaBottoniPiuMenoSeServe(temp, 0, prezzoDaPagare);
     }

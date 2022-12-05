@@ -11,7 +11,7 @@ public class CrossHairGioco : MonoBehaviour
 {
     [Header("CrossHair")]
     //riferimento allo sprit del crossHair
-    [SerializeField] private RawImage crossHair;
+    private RawImage crossHair;
     //colore base del crossHair
     [SerializeField] private Color32 coloreNormale;
     //colore del crossHair quando viene in contatto con un entità interagibile

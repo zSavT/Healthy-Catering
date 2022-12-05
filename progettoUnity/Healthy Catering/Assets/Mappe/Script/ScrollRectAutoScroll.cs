@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -49,11 +48,11 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerEnterHandler, IPointe
 
     void Update()
     {
-        if(Utility.gamePadConnesso())
+        if (Utility.gamePadConnesso())
         {
             // Scroll via input.
-            InputScroll();
 
+            InputScroll();
             if (!mouseOver)
             {
                 // Lerp scrolling code.
@@ -72,7 +71,7 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerEnterHandler, IPointe
             //remove the rePlayer getaxis calls is you aren't using Rewired
             //if it still doesn't work, check your input manager settings's axes and make sure they are defined properly
             //if you're using the new input system, this is also probably where you should replace the calls to the old one
-            if (controllerInput.UI.Navigate.IsPressed())
+            if (controllerInput.UI.Navigate.WasPressedThisFrame())
             {
                 ScrollToSelected(false);
             }
@@ -81,7 +80,14 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerEnterHandler, IPointe
     void ScrollToSelected(bool quickScroll)
     {
         int selectedIndex = -1;
-        Selectable selectedElement = EventSystem.current.currentSelectedGameObject ? EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>() : null;
+        Selectable selectedElement;
+
+        
+        selectedElement = EventSystem.current.currentSelectedGameObject ? EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>() : null;
+
+    
+           
+
 
         if (selectedElement)
         {
@@ -98,6 +104,11 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerEnterHandler, IPointe
             {
                 m_NextScrollPosition = new Vector2(0, 1 - (selectedIndex / ((float)m_Selectables.Count - 1)));
             }
+        }
+
+        if (PannelloMenu.pannelloMenuAperto)
+        {
+            Debug.Log(selectedIndex);
         }
     }
     public void OnPointerEnter(PointerEventData eventData)

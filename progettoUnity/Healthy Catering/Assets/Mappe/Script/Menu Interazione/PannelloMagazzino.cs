@@ -77,6 +77,32 @@ public class PannelloMagazzino : MonoBehaviour
         controllerInput.Disable();
     }
 
+    private void Update()
+    {
+        if(pannelloMagazzinoAperto)
+            resetObjectSelected();
+    }
+
+    private void resetObjectSelected()
+    {
+        if (Utility.gamePadConnesso())
+            if (EventSystem.current.currentSelectedGameObject == null)
+                if (Utility.qualsiasiTastoPremuto(controllerInput))
+                {
+                    if (!pannelloInventarioCanvas.gameObject.activeSelf && pannelloMostraRicette.gameObject.activeSelf)
+                    {
+                        EventSystem.current.SetSelectedGameObject(pannelloMostraRicette.gameObject.GetComponentsInChildren<Transform>()[5].gameObject);
+                    }
+                    if (pannelloInventarioCanvas.gameObject.activeSelf && pannelloMostraInventario.activeSelf && !pannelloMostraRicette.gameObject.activeSelf && !giocatore.inventarioVuoto())
+                    {
+                        EventSystem.current.SetSelectedGameObject(pannelliXElementiAttivi[0].GetComponentsInChildren<Button>()[1].gameObject);
+                    } else if (!pannelloInventarioCanvas.gameObject.activeSelf && !pannelloMostraRicette.gameObject.activeSelf)
+                    {
+                        EventSystem.current.SetSelectedGameObject(tastoMyInventory.gameObject);
+                    }
+                }
+    }
+
     public void cambiaSfondoDesktop()
     {
         if (AspectRatio(Screen.height, Screen.width) == "4:3" || AspectRatio(Screen.height, Screen.width) == "3:4")

@@ -1,14 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class CheckTutorial : MonoBehaviour
 {
-
-    public static bool checkWASDeMouse(ControllerInput controllerInput)
+    public static bool tastiMovimentoPremuti = false;
+    public static bool checkWASDeMouse(ControllerInput controllerInput, Transform posizionePlayer, Transform posizioneTarget)
     {
         if(!MenuInGame.menuAperto)
-            return controllerInput.Player.Movimento.WasPressedThisFrame();
+        {
+            if (!tastiMovimentoPremuti)
+                tastiMovimentoPremuti = controllerInput.Player.Movimento.WasPressedThisFrame();
+            else
+                return Vector3.Distance(posizionePlayer.position, posizioneTarget.position) < 1.2f;
+            /*
+            if (Vector3.Distance(posizionePlayer.position, posizioneTarget.position) < 1.2f)
+            {
+                Debug.Log("Raggiunto");
+                return controllerInput.Player.Movimento.WasPressedThisFrame();
+            }
+               */
+
+        }
+            
         return false;
     }
 

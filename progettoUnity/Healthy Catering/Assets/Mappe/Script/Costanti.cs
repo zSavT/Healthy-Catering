@@ -110,6 +110,12 @@ public class Costanti : MonoBehaviour
         "Spero che questo lavoro ti piacerà! E ricordati, sii sempre garbatƏ con i <color=#B5D99C>clienti</color>. Sapranno ricompensarti."
     };
 
+    public static readonly List<string> easterEgg1Frase = new List<string>
+    {
+        "Come sei riuscito ad arrivare qui?",
+        "Deh, Mio padre proprio! De per forza!"
+    };
+
     // NEGOZIO
     public static readonly int numeroBottoniNellaPaginaNegozio = 9;
     public static readonly int numeroPannelliXElementiNellaPaginaNegozio = 3;
@@ -228,7 +234,7 @@ public class Costanti : MonoBehaviour
     };
     public static readonly List<string> testiOkBoxVideo = new List<string>
     {
-        "Premi " + Costanti.coloreVerde + Costanti.tastoW + Costanti.fineColore + " per andare avanti, " + Costanti.coloreVerde + Costanti.tastoS + Costanti.fineColore + " per andare indietro, " + Costanti.coloreVerde + Costanti.tastoA + Costanti.fineColore + " per andare a sinistra, " + Costanti.coloreVerde + Costanti.tastoD + Costanti.fineColore + " per andare a destra. Il giocatore si muove verso la direzione inquadrata con il " + Costanti.coloreVerde + "mouse" + Costanti.fineColore + ". Ora prova a muoverti.",
+        "Premi " + Costanti.coloreVerde + Costanti.tastoW + Costanti.fineColore + " per andare avanti, " + Costanti.coloreVerde + Costanti.tastoS + Costanti.fineColore + " per andare indietro, " + Costanti.coloreVerde + Costanti.tastoA + Costanti.fineColore + " per andare a sinistra, " + Costanti.coloreVerde + Costanti.tastoD + Costanti.fineColore + " per andare a destra. Il giocatore si muove verso la direzione inquadrata con il " + Costanti.coloreVerde + "mouse" + Costanti.fineColore + ". Ora prova a muoverti e raggiungi il cono stradale sulla tua sinistra.",
         "Per saltare premi il tasto " + Costanti.coloreVerde + Costanti.tastoSpazio + Costanti.fineColore + ". Ora prova a saltare per proseguire.",
         "Per correre premi il tasto " + Costanti.coloreVerde + Costanti.tastoShift + Costanti.fineColore + ". Ora prova a correre.",
         "Per interagire con una persona premi " + Costanti.coloreVerde + Costanti.tastoE + Costanti.fineColore + ". Raggiungi tuo zio e interagisci con lui.",

@@ -30,7 +30,7 @@ public class ProgressoTutorial : MonoBehaviour
     [SerializeField] private ProgressoLivello progressoLivelloClassico;
 
     [SerializeField] private OkBoxVideo okBoxVideo;
-
+    [SerializeField] Transform posizioneDaRaggiungereTutorial;
     [SerializeField] private PlayerSaGiocareFPS playerSaGiocareFPS;
     private bool saGiocareSettato = false;
     [SerializeField] private UnityEvent playerStop;
@@ -52,7 +52,7 @@ public class ProgressoTutorial : MonoBehaviour
 
         scritteDaMostrare = new List<string> /*qui vanno inserite le varie scritte per bene*/
         {
-            "Premi " + Costanti.tastoWASD + " per camminare.",
+            "Premi " + Costanti.tastoWASD + " per camminare e raggiungi il cono stradale.",
             "Premi " + Costanti.tastoSpazio + " per saltare.",
             "Premi " + Costanti.tastoShift + " per correre.",
             "Vai a parlare con tuo " + Costanti.coloreVerde + "zio" + Costanti.fineColore + ".",
@@ -120,11 +120,19 @@ public class ProgressoTutorial : MonoBehaviour
                     else if (!OkBoxVideo.okBoxVideoAperto)
                     {
                         if(!MenuInGame.menuAperto)
+                        {
                             movimento.sbloccaMovimento();
+                            indicatoreDistanza.impostaSizeWayPoint(new Vector3(0.65f, 0.65f, 0.65f));
+                            indicatoreDistanza.setTarget("Cono");
+                        }
+                        if (Interactor.nelRistorante)
+                            indicatoreDistanza.setTarget("reset");
+                        else
+                            indicatoreDistanza.setTarget("Cono");
                         controllerInput.Enable();
                     }
                         
-                    if (CheckTutorial.checkWASDeMouse(controllerInput)) 
+                    if (CheckTutorial.checkWASDeMouse(controllerInput,movimento.gameObject.transform , posizioneDaRaggiungereTutorial)) 
                     { 
                         numeroScritteMostrate++;
                     }
@@ -133,6 +141,8 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.saltoMostrato)
                     {
+                        indicatoreDistanza.setTarget("reset");
+                        indicatoreDistanza.impostaSizeWayPoint(new Vector3(1, 1, 1));
                         movimento.bloccaMovimento();
                         controllerInput.Disable();
                         okBoxVideo.apriOkBoxVideo(Costanti.salto);
@@ -175,7 +185,8 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.parlaZioMostrato)
                     {
-                        
+                        if(playerSaGiocareFPS != null)
+                            playerSaGiocareFPS.distruggiOggetto();
                         movimento.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.parlaZio);
                         InterazionePassanti.parlatoConZio = false;
@@ -223,6 +234,7 @@ public class ProgressoTutorial : MonoBehaviour
                     indicatoreDistanza.setTarget("reset");
                     if (!OkBoxVideo.meccanicheServireCompatibileMostrato)
                     {
+                        iTween.Destroy(posizioneDaRaggiungereTutorial.gameObject);
                         movimento.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.meccanicheServireCompatibile);
                         OkBoxVideo.meccanicheServireCompatibileMostrato = true;

@@ -311,6 +311,7 @@ public class Interactor : MonoBehaviour
     /// </summary>
     private void gestiscinegoziantePuntato()
     {
+        PlayerSettings.addattamentoSpriteComandi(guiInGame.getTestoInterazione());
         inquadratoNPC.Invoke();
         negozio.animazioneNPCInquadrato();
         if (controllerInput.Player.Interazione.IsPressed() && !(negozio.getPannelloAperto()))
@@ -327,6 +328,7 @@ public class Interactor : MonoBehaviour
     /// </summary>
     private void gestisciPortaPuntata()
     {
+        PlayerSettings.addattamentoSpriteComandi(guiInGame.getTestoInterazione());
         inquadratoNPC.Invoke();
         if (controllerInput.Player.Interazione.IsPressed() && !(negozio.getPannelloAperto()))
         {

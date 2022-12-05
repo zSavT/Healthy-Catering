@@ -232,7 +232,14 @@ public class InterazionePassanti : MonoBehaviour
 
     private List<string> trovaScritteDaMostrare(string nomeNPC)
     {
-        if (!isNPCzio(nomeNPC))
+        if (isNPCzio(nomeNPC))
+        {
+            return Costanti.scritteZio;
+        }
+        else if (nomeNPC.Equals("EasterEgg1"))
+        {
+            return Costanti.easterEgg1Frase;
+        } else 
         {
             //se l'npc e' gia presente nel dizionario
             foreach ((List<string>, List<string>) chiaveValore in scritteENPCsAssegnato)
@@ -250,10 +257,6 @@ public class InterazionePassanti : MonoBehaviour
             ultimoNPCInteragitoNuovo = true;
 
             return scritteENPCsAssegnato[numeroDiScritteAssegnate].Item1;
-        }
-        else
-        {
-            return Costanti.scritteZio;
         }
     }
 

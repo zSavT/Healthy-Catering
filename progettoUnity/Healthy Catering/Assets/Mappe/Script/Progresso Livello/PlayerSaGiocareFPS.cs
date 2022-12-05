@@ -138,6 +138,6 @@ public class PlayerSaGiocareFPS : MonoBehaviour
 
     public void distruggiOggetto()
     {
-        Destroy(this.gameObject, 2f);
+        iTween.Destroy(this.gameObject, 2f);
     }
 }
