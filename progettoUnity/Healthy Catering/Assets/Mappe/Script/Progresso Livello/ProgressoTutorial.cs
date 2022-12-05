@@ -52,7 +52,7 @@ public class ProgressoTutorial : MonoBehaviour
 
         scritteDaMostrare = new List<string> /*qui vanno inserite le varie scritte per bene*/
         {
-            "Premi " + Costanti.tastoWASD + " per camminare e raggiungi il cono stradale.",
+            "Premi " + Costanti.tastoWASD + " per camminare e raggiungi il " + Costanti.coloreVerde + "cono" + Costanti.fineColore + " stradale.",
             "Premi " + Costanti.tastoSpazio + " per saltare.",
             "Premi " + Costanti.tastoShift + " per correre.",
             "Vai a parlare con tuo " + Costanti.coloreVerde + "zio" + Costanti.fineColore + ".",

@@ -234,7 +234,7 @@ public class Costanti : MonoBehaviour
     };
     public static readonly List<string> testiOkBoxVideo = new List<string>
     {
-        "Premi " + Costanti.coloreVerde + Costanti.tastoW + Costanti.fineColore + " per andare avanti, " + Costanti.coloreVerde + Costanti.tastoS + Costanti.fineColore + " per andare indietro, " + Costanti.coloreVerde + Costanti.tastoA + Costanti.fineColore + " per andare a sinistra, " + Costanti.coloreVerde + Costanti.tastoD + Costanti.fineColore + " per andare a destra. Il giocatore si muove verso la direzione inquadrata con il " + Costanti.coloreVerde + "mouse" + Costanti.fineColore + ". Ora prova a muoverti e raggiungi il cono stradale sulla tua sinistra.",
+        "Premi " + Costanti.coloreVerde + Costanti.tastoW + Costanti.fineColore + " per andare avanti, " + Costanti.coloreVerde + Costanti.tastoS + Costanti.fineColore + " per andare indietro, " + Costanti.coloreVerde + Costanti.tastoA + Costanti.fineColore + " per andare a sinistra, " + Costanti.coloreVerde + Costanti.tastoD + Costanti.fineColore + " per andare a destra. Il giocatore si muove verso la direzione inquadrata con il " + Costanti.coloreVerde + "mouse" + Costanti.fineColore + ". Ora prova a muoverti e raggiungi il " + Costanti.coloreVerde + "cono" + Costanti.fineColore + " stradale sulla tua sinistra.",
         "Per saltare premi il tasto " + Costanti.coloreVerde + Costanti.tastoSpazio + Costanti.fineColore + ". Ora prova a saltare per proseguire.",
         "Per correre premi il tasto " + Costanti.coloreVerde + Costanti.tastoShift + Costanti.fineColore + ". Ora prova a correre.",
         "Per interagire con una persona premi " + Costanti.coloreVerde + Costanti.tastoE + Costanti.fineColore + ". Raggiungi tuo zio e interagisci con lui.",
