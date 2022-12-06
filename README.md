@@ -22,6 +22,7 @@ Lo scopo del videogioco è di consolidare le conoscenze di coloro che hanno intr
   - Livello 0: Tutorial di gioco.
   - Livello 1: Patologia Diabete.
   - Livello 2: Patologia Ipertensione.
+- Supporto per tutte le tipologie di controller.
 
 ## Requisiti di Sistema
 
@@ -81,17 +82,25 @@ Il controllo qualità dei testi presenti nel gioco è stato eseguito da Vincenzo
 
 ![Classifica](doc/img/Screenshoot/Classifica.png "Classifica")
 
+![Menu Opzioni](doc/img/Screenshoot/MenuOpzioniClassico.png "Menu Opzioni")
+
+![GUI in Game](doc/img/Screenshoot/ScreenInGame.png "GUI in Game")
+
 ![Interazione Cliente](doc/img/Screenshoot/InterazioneCliente.png "GUI interazione cliente")
+
+![Menu PC](doc/img/Screenshoot/MenuMagazzinoDesktop.png "GUI Menu PC")
+
+![Menu Magazzino](doc/img/Screenshoot/MenuMagazzinoMyInventory.png "GUI Menu Magazzino")
 
 ![Menu Negozio](doc/img/Screenshoot/MenuNegozio.png "GUI Menu Negozio")
 
 ![GUI Interazione Passanti](doc/img/Screenshoot/InterazionePassanti.png "GUI Interazione Passanti")
 
-![GUI in Game](doc/img/Screenshoot/ScreenInGame.png "GUI in Game")
+![Menu Aiuto](doc/img/Screenshoot/MenuAiuto.png "Menu Aiuto")
+
+![Menu Ricettario](doc/img/Screenshoot/Ricettario.png "Menu Ricettario")
 
 ![Menu Opzioni](doc/img/Screenshoot/MenuOpzioni.PNG "GUI Menu opzioni")
-
-
 
 
 ---
