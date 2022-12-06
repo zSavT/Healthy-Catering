@@ -67,9 +67,12 @@ public class OpzioniMenu : MonoBehaviour
         daltonismo.value = PlayerSettings.caricaImpostazioniDaltonismo();
 
         //IMPOSTAZIONI CONTROLLI
-        sliderFov.value = PlayerSettings.caricaImpostazioniFov();
-        sliderSensibilita.value = PlayerSettings.caricaImpostazioniSensibilita();
-        sliderSensibilitaStick.value = PlayerSettings.caricaImpostazioniSensibilitaStick();
+        if(PlayerSettings.caricaPrimoAvvioSettaggiSensibilita() != 0)
+        {
+            sliderFov.value = PlayerSettings.caricaImpostazioniFov();
+            sliderSensibilita.value = PlayerSettings.caricaImpostazioniSensibilita();
+            sliderSensibilitaStick.value = PlayerSettings.caricaImpostazioniSensibilitaStick();
+        }
 
         //RISOLUZIONE
         risoluzioni = Screen.resolutions;
@@ -210,6 +213,9 @@ public class OpzioniMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo riproduce il suono dopo il click nel menu aiuto
+    /// </summary>
     private void playSuoniClick()
     {
         if (SceneManager.GetActiveScene().buildIndex != 1)

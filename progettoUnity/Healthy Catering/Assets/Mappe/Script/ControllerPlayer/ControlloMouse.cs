@@ -35,8 +35,12 @@ public class ControlloMouse : MonoBehaviour
 
     void Update()
     {
-        sensibilitaMouse = PlayerSettings.caricaImpostazioniSensibilita();
-        sensibilitaStick = PlayerSettings.caricaImpostazioniSensibilitaStick();
+        if (PlayerSettings.caricaPrimoAvvioSettaggiSensibilita() != 0)
+        {
+            sensibilitaMouse = PlayerSettings.caricaImpostazioniSensibilita();
+            sensibilitaStick = PlayerSettings.caricaImpostazioniSensibilitaStick();
+        }
+
         if (puoCambiareVisuale)
         {
             controlliInputVisuale();

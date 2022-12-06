@@ -125,7 +125,7 @@ public class ProgressoTutorial : MonoBehaviour
                             indicatoreDistanza.impostaSizeWayPoint(new Vector3(0.65f, 0.65f, 0.65f));
                             indicatoreDistanza.setTarget("Cono");
                         }
-                        if (Interactor.nelRistorante)
+                        if (Interactor.nelRistorante || MenuInGame.menuAperto)
                             indicatoreDistanza.setTarget("reset");
                         else
                             indicatoreDistanza.setTarget("Cono");
@@ -200,7 +200,7 @@ public class ProgressoTutorial : MonoBehaviour
                     if (OkBoxVideo.parlaZioMostrato && !Interactor.nelRistorante)
                     {
                         indicatoreDistanza.setTarget("zio");
-                    } else
+                    } else if ((Interactor.nelRistorante || MenuInGame.menuAperto) || OkBoxVideo.okBoxVideoAperto)
                     {
                         indicatoreDistanza.setTarget("reset");
                     }
@@ -223,6 +223,11 @@ public class ProgressoTutorial : MonoBehaviour
                             movimento.sbloccaMovimento();
                         indicatoreDistanza.setTarget("ristorante");
                     }
+                    if (MenuInGame.menuAperto || OkBoxVideo.okBoxVideoAperto)
+                        indicatoreDistanza.setTarget("reset");
+                    else
+                        indicatoreDistanza.setTarget("ristorante");
+
                     if (CheckTutorial.checkVaiRistorante())
                     {
                         giocatore.setInventarioLivello(0);
