@@ -93,6 +93,7 @@ public class VideoTutorialScript : MonoBehaviour
 
     private void Update()
     {
+        this.gameObject.GetComponentsInChildren<Image>()[1].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("X");
         if (EventSystem.current.currentSelectedGameObject == null)
             EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
     }

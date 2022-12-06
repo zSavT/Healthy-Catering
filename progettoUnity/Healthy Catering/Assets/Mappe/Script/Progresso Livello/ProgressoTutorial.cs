@@ -99,6 +99,7 @@ public class ProgressoTutorial : MonoBehaviour
         }
         else
         {
+            PlayerSettings.addattamentoSpriteComandi(obbiettivo1Testo);
             for (int i = 0; i < scritteDaMostrare.Count; i++)
             {
                 if (i == numeroScritteMostrate)

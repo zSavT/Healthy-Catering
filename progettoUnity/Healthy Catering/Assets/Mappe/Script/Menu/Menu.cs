@@ -108,6 +108,7 @@ public class Menu : MonoBehaviour
         {
             elementiProfiloNonEsistente.SetActive(true);
             elementiMenuPrincipale.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(elementiProfiloNonEsistente.GetComponentsInChildren<Button>()[1].gameObject);
         }
         else
         {

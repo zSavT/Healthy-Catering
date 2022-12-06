@@ -29,8 +29,13 @@ public class PlayerSaGiocareFPS : MonoBehaviour
     private void Update()
     {
         if (Utility.gamePadConnesso())
-            if (EventSystem.current.currentSelectedGameObject == null)
+            if (EventSystem.current.currentSelectedGameObject != bottoneNo)
                 EventSystem.current.SetSelectedGameObject(bottoneNo);
+    }
+
+    private void OnEnable()
+    {
+        EventSystem.current.SetSelectedGameObject(bottoneNo);
     }
 
     void Awake()
@@ -138,6 +143,6 @@ public class PlayerSaGiocareFPS : MonoBehaviour
 
     public void distruggiOggetto()
     {
-        iTween.Destroy(this.gameObject, 2f);
+        iTween.Destroy(this.gameObject, 0.2f);
     }
 }
