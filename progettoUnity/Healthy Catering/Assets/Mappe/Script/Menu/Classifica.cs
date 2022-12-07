@@ -9,7 +9,7 @@ using Wilberforce;
 /// <summary>
 /// Classe per la gestione della classifica del gioco.<para>
 /// <strong>Da aggiungere a:</strong><br></br>
-/// Pannello dove sono presenti gli elementi della classifica (Va bene in realt� qualsiasi oggetto).
+/// Pannello dove sono presenti gli elementi della classifica (Va bene in realtà qualsiasi oggetto).
 /// </para>
 /// </summary>
 public class Classifica : MonoBehaviour

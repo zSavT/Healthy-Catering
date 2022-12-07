@@ -26,6 +26,7 @@ public class VideoTutorialScript : MonoBehaviour
 
     private GameObject cameraGioco;
     private VideoPlayer videoPlayer;
+    private bool avvioLivello = false;
 
     // Examples of VideoPlayer function
     void Start()
@@ -79,6 +80,7 @@ public class VideoTutorialScript : MonoBehaviour
         videoPlayer.Play();
         StartCoroutine(autoSkip(((float)videoPlayer.length) + 2f));          //Aggiungo un secondo di delay per dare la possibilità ai pc poco performanti di non caricarli troppo
         audioMixer.SetFloat("volume", -80f);
+        avvioLivello = false;
     }
 
     void Awake()
@@ -93,9 +95,12 @@ public class VideoTutorialScript : MonoBehaviour
 
     private void Update()
     {
-        this.gameObject.GetComponentsInChildren<Image>()[1].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("X");
-        if (EventSystem.current.currentSelectedGameObject == null)
-            EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
+        if(!avvioLivello)
+        {
+            this.gameObject.GetComponentsInChildren<Image>()[1].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("X");
+            if (EventSystem.current.currentSelectedGameObject == null)
+                EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
+        }
     }
 
     /// <summary>
@@ -130,6 +135,7 @@ public class VideoTutorialScript : MonoBehaviour
     /// </summary>
     public void caricaLivelloTutorial()
     {
+        avvioLivello = true;
         titolo.gameObject.SetActive(true);
         StartCoroutine(caricamentoAsincrono(2));
     }
@@ -161,5 +167,7 @@ public class VideoTutorialScript : MonoBehaviour
             yield return null;
         }
     }
+
+
 
 }

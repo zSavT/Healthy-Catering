@@ -3,7 +3,6 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
-using System;
 using UnityEngine.EventSystems;
 
 public class PannelloMenu : MonoBehaviour
@@ -47,7 +46,7 @@ public class PannelloMenu : MonoBehaviour
 
     [Header("Altro")]
     [SerializeField] private TextMeshProUGUI testoConfermaPiatto;
-    [SerializeField] private GameObject EscPerUscireTesto; //Lo imposto come GameObject e non come testo, perch� mi interessa solo attivarlo disattivarlo velocemente
+    [SerializeField] private GameObject EscPerUscireTesto; //Lo imposto come GameObject e non come testo, perchè mi interessa solo attivarlo disattivarlo velocemente
     public UnityEvent chiusuraInterazioneCliente;
     private List<string> blackListPiatti = new List<string>();
 
