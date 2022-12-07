@@ -17,14 +17,18 @@ using System.Text.RegularExpressions;
 public class InterazionePassanti : MonoBehaviour
 {
     //UNITY
+    [Header("Elementi Interazione Passanti")]
     [SerializeField] private GameObject pannelloInterazionePassanti;
-    private bool pannelloInterazionePassantiAperto;
-    [SerializeField] private Button bottoneAvanti;
-    [SerializeField] private TextMeshProUGUI testoInterazionePassanti;
-    [SerializeField] private AudioSource suonoAperturaDialogo;
-    [SerializeField] private AudioSource suonoDialogo;
     [SerializeField] private Image immagineComando;
     [SerializeField] private TextMeshProUGUI testoUscita;
+    [SerializeField] private Button bottoneAvanti;
+    [SerializeField] private TextMeshProUGUI testoInterazionePassanti;
+    [Header("Audio interazione")]
+    [SerializeField] private AudioSource suonoAperturaDialogo;
+    [SerializeField] private AudioSource suonoDialogo;
+
+
+    private bool pannelloInterazionePassantiAperto;
 
     //TROVA STRINGHE
     /*
@@ -83,6 +87,9 @@ public class InterazionePassanti : MonoBehaviour
         controllerInput.Disable();
     }
 
+    /// <summary>
+    /// Il metodo controlla il numero di pagine rimanenti di testo e disattiva o attiva il bottone per andare avanti.
+    /// </summary>
     private void modificaInteractableBottoneInBasePosizioneScrittaMostrata()
     {
         if (controlloNumeroPagine())
@@ -95,11 +102,18 @@ public class InterazionePassanti : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo controlla il numero di pagine mancanti da mostrare
+    /// </summary>
+    /// <returns>True: non ci sono pagine successive, False: ci sono pagine da mostrare</returns>
     private bool controlloNumeroPagine()
     {
         return indiceScrittaMostrataOra == scritteMostrateOra.Count - 1;
     }
 
+    /// <summary>
+    /// Il metodo carica e gestisce tutti i testi dell'interazioni con i passanti in base al livello selezionato.
+    /// </summary>
     private void getTutteLeScritteInterazione()
     {
         string filePath = "";
@@ -289,6 +303,9 @@ public class InterazionePassanti : MonoBehaviour
         return pannelloInterazionePassantiAperto;
     }
 
+    /// <summary>
+    /// Il metodo chiude il pannello di interazione passanti 
+    /// </summary>
     public void chiudiPannelloInterazionePassanti()
     {
         pannelloInterazionePassanti.SetActive(false);

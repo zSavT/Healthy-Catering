@@ -201,7 +201,7 @@ public class MenuInGame : MonoBehaviour
     }
 
     /// <summary>
-    /// Metodo per impostare che il menu non � apribile
+    /// Metodo per impostare che il menu non è apribile
     /// </summary>
     public void menuDisattivo()
     {

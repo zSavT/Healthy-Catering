@@ -267,7 +267,7 @@ public class Menu : MonoBehaviour
     }
 
     /// <summary>
-    /// Metodo per aggiornare il testo della versione del gioco e il nome della societ�.
+    /// Metodo per aggiornare il testo della versione del gioco e il nome della società.
     /// </summary>
     private void gameVersion()
     {

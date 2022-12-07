@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -141,6 +139,9 @@ public class PlayerSaGiocareFPS : MonoBehaviour
         Time.timeScale = 0f; //blocca il tempo
     }
 
+    /// <summary>
+    /// Il metodo distrugge il gameObject della classe
+    /// </summary>
     public void distruggiOggetto()
     {
         iTween.Destroy(this.gameObject, 0.2f);

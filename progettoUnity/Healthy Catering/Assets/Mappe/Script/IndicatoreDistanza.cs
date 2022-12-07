@@ -10,18 +10,20 @@ public class IndicatoreDistanza : MonoBehaviour
     [SerializeField] private Image img;
     // The target (location, enemy, etc..)
     private Transform target = null;
-
+    [SerializeField] private TextMeshProUGUI meter;
+    [SerializeField] private MenuInGame menuInGame;
+    [Header("Posizioni obbiettivi")]
     [SerializeField] Transform posizioneMovimento;
     [SerializeField] Transform posizioneZio;
     [SerializeField] Transform posizioneRistorante;
     [SerializeField] Transform posizioneNegozio;
 
     // UI Text to display the distance
-    [SerializeField] private TextMeshProUGUI meter;
+
     // To adjust the position of the icon
     public Vector3 offset;
 
-    [SerializeField] private MenuInGame menuInGame;
+
     private Transform ultimoTarget = null;
     private bool checkMenuInGameAperto = false;
 

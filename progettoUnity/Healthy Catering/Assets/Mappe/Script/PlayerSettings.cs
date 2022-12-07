@@ -44,10 +44,10 @@ public class PlayerSettings : MonoBehaviour
     }
 
     /// <summary>
-    /// Caricare variabile per confermare che � stato avviato per la prima volta il gioco (e non il livello) e quindi non � stato mai creato un player.<br></br>
+    /// Caricare variabile per confermare che è stato avviato per la prima volta il gioco (e non il livello) e quindi non � stato mai creato un player.<br></br>
     /// <strong>Usato in</strong> <see cref="SceltaImpostazioniPlayer.controlloNomeEsistente"/>
     /// </summary>
-    /// <returns>0 � la prima volta che si avvia il livello, 1 � stato gi� avviato una volta.</returns>
+    /// <returns>0 è la prima volta che si avvia il livello, 1 è stato già avviato una volta.</returns>
     public static int caricaPrimoAvvio()
     {
         return PlayerPrefs.GetInt("primoAvvio");
@@ -199,7 +199,7 @@ public class PlayerSettings : MonoBehaviour
     //GENERE GIOCATORE
 
     /// <summary>
-    /// Salva l'impostazione genere del giocatore. Se la scelta del genere � diversa da neutro, allora ver� salvato anche il genere del modelo<br></br>
+    /// Salva l'impostazione genere del giocatore. Se la scelta del genere è diversa da neutro, allora verrà salvato anche il genere del modelo<br></br>
     /// Valori possibili:<br></br>
     /// <strong>0: Maschio<br>1: Femmina</br><br>2: Neutro</br></strong>
     /// </summary>
@@ -249,18 +249,18 @@ public class PlayerSettings : MonoBehaviour
     //SENSIBILITA' MOUSE
 
     /// <summary>
-    /// Metodo che salva il valore della sensibilit� scelta dal giocatore.
+    /// Metodo che salva il valore della sensibilità scelta dal giocatore.
     /// </summary>
-    /// <param name="sensibilita">Valore della sensibilit� scelta dal giocatore nello slider</param>
+    /// <param name="sensibilita">Valore della sensibilità scelta dal giocatore nello slider</param>
     public static void salvaImpostazioniSensibilita(float sensibilita)
     {
         PlayerPrefs.SetFloat("sensibilita", sensibilita);
     }
 
     /// <summary>
-    /// Metodo che carica il valore della sensibilit� salvata in precedenza dal giocatore.
+    /// Metodo che carica il valore della sensibilità salvata in precedenza dal giocatore.
     /// </summary>
-    /// <returns>Valore della sensibilit�</returns>
+    /// <returns>Valore della sensibilità</returns>
     public static float caricaImpostazioniSensibilita()
     {
         return PlayerPrefs.GetFloat("sensibilita");

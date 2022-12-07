@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using System.Xml.Linq;
+
 
 /// <summary>
 /// Classe per la gestione delle impostazioni del gioco.<para>
