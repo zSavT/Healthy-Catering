@@ -28,7 +28,6 @@ public class PlayerSaGiocareFPS : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(EventSystem.current.currentSelectedGameObject);
         if (Utility.gamePadConnesso())
             if (EventSystem.current.currentSelectedGameObject == null)
             {

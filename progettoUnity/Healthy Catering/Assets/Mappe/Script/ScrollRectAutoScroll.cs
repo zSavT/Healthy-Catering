@@ -22,18 +22,24 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerEnterHandler, IPointe
         {
             m_ScrollRect.content.GetComponentsInChildren(m_Selectables);
         }
+        m_NextScrollPosition = Vector2.up;
+        m_ScrollRect.normalizedPosition = Vector2.up;
+        ScrollToSelected(false);
     }
-    void Awake()
+
+    private void Awake()
     {
         m_ScrollRect = GetComponent<ScrollRect>();
     }
+
     void Start()
     {
+        
         if (m_ScrollRect)
         {
             m_ScrollRect.content.GetComponentsInChildren(m_Selectables);
         }
-        ScrollToSelected(true);
+        ScrollToSelected(false);
     }
 
     private void OnDisable()
@@ -48,20 +54,17 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerEnterHandler, IPointe
 
     void Update()
     {
-        if (Utility.gamePadConnesso())
-        {
-            // Scroll via input.
+        // Scroll via input.
 
-            InputScroll();
-            if (!mouseOver)
-            {
-                // Lerp scrolling code.
-                m_ScrollRect.normalizedPosition = Vector2.Lerp(m_ScrollRect.normalizedPosition, m_NextScrollPosition, scrollSpeed * Time.unscaledDeltaTime);
-            }
-            else
-            {
-                m_NextScrollPosition = m_ScrollRect.normalizedPosition;
-            }
+        InputScroll();
+        if (!mouseOver)
+        {
+            // Lerp scrolling code.
+            m_ScrollRect.normalizedPosition = Vector2.Lerp(m_ScrollRect.normalizedPosition, m_NextScrollPosition, scrollSpeed * Time.unscaledDeltaTime);
+        }
+        else
+        {
+            //m_NextScrollPosition = m_ScrollRect.normalizedPosition;
         }
     }
     void InputScroll()
@@ -105,12 +108,8 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerEnterHandler, IPointe
                 m_NextScrollPosition = new Vector2(0, 1 - (selectedIndex / ((float)m_Selectables.Count - 1)));
             }
         }
-
-        if (PannelloMenu.pannelloMenuAperto)
-        {
-            Debug.Log(selectedIndex);
-        }
     }
+    
     public void OnPointerEnter(PointerEventData eventData)
     {
         mouseOver = true;

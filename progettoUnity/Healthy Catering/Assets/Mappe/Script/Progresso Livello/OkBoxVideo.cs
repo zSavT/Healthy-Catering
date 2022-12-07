@@ -58,7 +58,6 @@ public class OkBoxVideo : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(okBoxVideoAperto);
         if(okBoxVideoAperto)
             if (EventSystem.current.currentSelectedGameObject == null && Utility.gamePadConnesso())
                     EventSystem.current.SetSelectedGameObject(bottoneConferma.gameObject);

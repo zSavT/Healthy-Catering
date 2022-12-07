@@ -67,6 +67,8 @@ public class Interactor : MonoBehaviour
     void Start()
     {
         inizializzaValori();
+        if (Application.isEditor)
+            QualitySettings.SetQualityLevel(0);
     }
 
     void Update()

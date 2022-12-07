@@ -46,6 +46,8 @@ public class PannelloMenu : MonoBehaviour
 
     [Header("Altro")]
     [SerializeField] private TextMeshProUGUI testoConfermaPiatto;
+    [SerializeField] private Scrollbar scroll;
+    [SerializeField] private ScrollRect scrollReact;
     [SerializeField] private GameObject EscPerUscireTesto; //Lo imposto come GameObject e non come testo, perchè mi interessa solo attivarlo disattivarlo velocemente
     public UnityEvent chiusuraInterazioneCliente;
     private List<string> blackListPiatti = new List<string>();
@@ -71,6 +73,7 @@ public class PannelloMenu : MonoBehaviour
         piatti = Costanti.databasePiatti;
         generaBottoniPiatti();
     }
+
 
     void Update()
     {
@@ -148,7 +151,6 @@ public class PannelloMenu : MonoBehaviour
     {
         if (pannelloConfermaPiattoAperto && EventSystem.current.currentSelectedGameObject == null && !pannelloIngredientiGiustiSbagliatiAperto && !pannelloIngredientiPiattoAperto && !pannelloCliente.activeSelf && !pannelloMenu.activeSelf)
         {
-            Debug.Log("ue");
             EventSystem.current.SetSelectedGameObject(pannelloConfermaPiatto.GetComponentsInChildren<Button>()[1].gameObject);
         } else if (controlloSelectObjectCorretto())
         {
@@ -197,6 +199,8 @@ public class PannelloMenu : MonoBehaviour
     public void apriPannelloMenuCliente()
     {
         pannelloMenuAperto = true;
+        scroll.value = 0;
+        scrollReact.verticalNormalizedPosition= 0;
         PlayerSettings.addattamentoSpriteComandi(EscPerUscireTesto.GetComponent<TextMeshProUGUI>());
         pannelloPrincipaleMenuCliente.SetActive(true);
         apriMenuCliente();
@@ -288,13 +292,19 @@ public class PannelloMenu : MonoBehaviour
 
                 if (!(Piatto.nomeToPiatto (bottonePiatto.name)).piattoInInventario(giocatore.inventario))
                 {
-                    bottonePiatto.interactable = false;
+                    bottonePiatto.interactable = true;
                     piattiNonDisponibili.Add(bottonePiatto);
+                    bottonePiatto.onClick.RemoveAllListeners();
+                    bottonePiatto.GetComponentsInChildren<TextMeshProUGUI>()[3].text = "Piatto non servibile, ingredienti  insufficienti";
                 }
                 else
                 {
                     bottonePiatto.interactable = true;
                     piattiDisponibili.Add(bottonePiatto);
+                    bottonePiatto.onClick.AddListener(() => {
+                         selezionaPiatto(bottonePiatto, piatti, cliente);
+                     });
+                    bottonePiatto.GetComponentsInChildren<TextMeshProUGUI>()[3].text = string.Empty;
                 }
             }
 
@@ -483,7 +493,7 @@ public class PannelloMenu : MonoBehaviour
         {
             pannelloConfermaPiatto.SetActive(true);
             chiudiMenuCliente();
-            pannelloConfermaPiattoApertoChiuso();
+            pannelloConfermaPiattoAperto = true;
             EscPerUscireTesto.SetActive(false);
             EventSystem.current.SetSelectedGameObject(pannelloConfermaPiatto.GetComponentsInChildren<Button>()[0].gameObject);
         }
@@ -495,7 +505,7 @@ public class PannelloMenu : MonoBehaviour
         if (pannelloConfermaPiatto != null)
         {
             pannelloConfermaPiatto.SetActive(false);
-            pannelloConfermaPiattoApertoChiuso();
+            pannelloConfermaPiattoAperto = false;
             apriMenuCliente();
             EscPerUscireTesto.SetActive(true);
             controllerAnimazioneCliente.animazioneCamminata();
@@ -507,7 +517,7 @@ public class PannelloMenu : MonoBehaviour
         if (pannelloConfermaPiatto != null)
         {
             pannelloConfermaPiatto.SetActive(false);
-            pannelloConfermaPiattoApertoChiuso();
+            pannelloConfermaPiattoAperto = false;
             EscPerUscireTesto.SetActive(true);
             apriMenuCliente();
         }
