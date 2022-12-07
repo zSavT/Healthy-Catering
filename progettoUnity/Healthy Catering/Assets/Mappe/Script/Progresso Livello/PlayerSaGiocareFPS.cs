@@ -8,6 +8,7 @@ public class PlayerSaGiocareFPS : MonoBehaviour
 
     [SerializeField] GameObject pannello;
     [SerializeField] GameObject bottoneNo;
+    [SerializeField] GameObject bottoneSi;
     private GameObject ultimoElementoSelezionato;
     // 0 = nessuno selezionato
     // 1 = si
@@ -19,6 +20,7 @@ public class PlayerSaGiocareFPS : MonoBehaviour
 
     void Start()
     {
+        ultimoElementoSelezionato = bottoneSi;
         pannello.SetActive(false);
         pannelloSaGiocareAperto = false;
         siOno = 0;
@@ -26,9 +28,14 @@ public class PlayerSaGiocareFPS : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(EventSystem.current.currentSelectedGameObject);
         if (Utility.gamePadConnesso())
-            if (EventSystem.current.currentSelectedGameObject != bottoneNo)
-                EventSystem.current.SetSelectedGameObject(bottoneNo);
+            if (EventSystem.current.currentSelectedGameObject == null)
+            {
+                if (EventSystem.current.currentSelectedGameObject != bottoneNo && EventSystem.current.currentSelectedGameObject != bottoneSi)
+                    EventSystem.current.SetSelectedGameObject(ultimoElementoSelezionato);
+            } else
+                ultimoElementoSelezionato = EventSystem.current.currentSelectedGameObject;
     }
 
     private void OnEnable()

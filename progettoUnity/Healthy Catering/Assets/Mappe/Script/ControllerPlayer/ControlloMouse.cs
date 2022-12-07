@@ -83,7 +83,8 @@ public class ControlloMouse : MonoBehaviour
         {
             PlayerSettings.salvaPrimoAvvioSettaggiSensibilita();
             PlayerSettings.salvaImpostazioniSensibilita(sensibilitaMouse);
-            PlayerSettings.salvaImpostazioniSensibilita(sensibilitaStick);
+            PlayerSettings.salvaImpostazioniSensibilitaStick(sensibilitaStick);
+            PlayerSettings.salvaImpostazioniFov(90f);
         }
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

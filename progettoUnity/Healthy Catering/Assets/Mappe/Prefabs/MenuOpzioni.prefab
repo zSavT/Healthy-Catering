@@ -3143,7 +3143,7 @@ RectTransform:
   m_Children:
   - {fileID: 328924249999488035}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3409,6 +3409,7 @@ MonoBehaviour:
   impostazioniGraficaAudio: {fileID: 328924248728556078}
   tornaIndietro: {fileID: 328924248557582328}
   elementiUscita: {fileID: 4216513275324748015}
+  bottoneNoUscita: {fileID: 7297407614406535886}
   interazionePlayer: {fileID: 0}
 --- !u!114 &328924248935061441
 MonoBehaviour:

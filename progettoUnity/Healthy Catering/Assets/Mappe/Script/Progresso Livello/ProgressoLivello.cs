@@ -81,7 +81,7 @@ public class ProgressoLivello : MonoBehaviour
             disattivaSoloObbiettivi();
         }
         punteggioPlayer = 0;
-        if(Utility.gamePadConnesso())
+        if(Utility.gamePadConnesso() && PlayerSettings.livelloSelezionato != 0)
             impostaEventSystemBottoneConferma();
     }
 

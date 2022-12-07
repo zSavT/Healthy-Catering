@@ -33,6 +33,7 @@ public class MenuInGame : MonoBehaviour
     [SerializeField] private GameObject impostazioniGraficaAudio;
     [SerializeField] private Button tornaIndietro;
     [SerializeField] private GameObject elementiUscita;
+    [SerializeField] private GameObject bottoneNoUscita;
 
     [SerializeField] private Interactor interazionePlayer;
     private bool giocoInPausa = false;
@@ -59,6 +60,8 @@ public class MenuInGame : MonoBehaviour
     {
         checkTastoMenu();
         resetObjectSelezionatoTastoTornaAlMenu();
+        if (elementiUscita.activeSelf && EventSystem.current.currentSelectedGameObject == null && menuAperto)
+            EventSystem.current.SetSelectedGameObject(bottoneNoUscita);
     }
 
     private void OnDisable()
