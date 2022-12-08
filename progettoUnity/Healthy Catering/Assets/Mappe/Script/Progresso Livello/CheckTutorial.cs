@@ -1,6 +1,11 @@
 using UnityEngine;
 
-
+/// <summary>
+/// Classe per la gestione delle azioni del Tutorial in game
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Nessun GameObject
+/// </para>
+/// </summary>
 public class CheckTutorial : MonoBehaviour
 {
     public static bool tastiMovimentoPremuti = false;
