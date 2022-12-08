@@ -44,6 +44,9 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     private void Update()
     {
         controlloElementoDaSelezionare();
+        if (EventSystem.current.currentSelectedGameObject == inputFieldNomeGiocatore.gameObject)
+            if (controllerInput.UI.Navigate.WasPressedThisFrame())
+                EventSystem.current.SetSelectedGameObject(FindObjectOfType<TMP_Dropdown>().gameObject);
     }
 
     void Awake()

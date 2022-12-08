@@ -43,9 +43,11 @@ public class PannelloMagazzino : MonoBehaviour
     private List<GameObject> pannelliXElementiAttivi = new List<GameObject>();
 
     private ControllerInput controllerInput;
+    private int indicePannello = 0;
 
     private void Start()
     {
+        indicePannello = 0;
         pannelloMagazzino.SetActive(false);
         cambiaSfondoDesktop();
         
@@ -94,7 +96,8 @@ public class PannelloMagazzino : MonoBehaviour
                     }
                     if (pannelloInventarioCanvas.gameObject.activeSelf && pannelloMostraInventario.activeSelf && !pannelloMostraRicette.gameObject.activeSelf && !giocatore.inventarioVuoto())
                     {
-                        EventSystem.current.SetSelectedGameObject(pannelliXElementiAttivi[0].GetComponentsInChildren<Button>()[1].gameObject);
+                        setEventSystemPrimoElemento();
+
                     } else if (!pannelloInventarioCanvas.gameObject.activeSelf && !pannelloMostraRicette.gameObject.activeSelf)
                     {
                         EventSystem.current.SetSelectedGameObject(tastoMyInventory.gameObject);
@@ -174,6 +177,9 @@ public class PannelloMagazzino : MonoBehaviour
         pannelloMagazzinoAperto = false;
         suonoChiusuraPC.Play();
         resetPannelloMagazzino();
+        if (indicePannello == 0)
+            indicePannello++;
+        indicePannello++;
         if (Utility.gamePadConnesso())
             controllerInput.Player.Salto.Disable();
 
@@ -185,8 +191,10 @@ public class PannelloMagazzino : MonoBehaviour
         {
             Destroy(pannelloXElementiTemp);
         }
+
         pannelloXElementi = rimuoviTuttiFigliDaPannello(pannelloXElementi);
         pannelliXElementiAttivi = new List<GameObject>();
+
     }
 
     public bool getPannelloMagazzinoAperto()

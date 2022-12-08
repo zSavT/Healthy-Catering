@@ -106,6 +106,7 @@ public class Menu : MonoBehaviour
         letturaNomiUtenti();
         if (!presentePlayer())
         {
+            PlayerSettings.resetTuttiValori();
             elementiProfiloNonEsistente.SetActive(true);
             elementiMenuPrincipale.SetActive(false);
             EventSystem.current.SetSelectedGameObject(elementiProfiloNonEsistente.GetComponentsInChildren<Button>()[1].gameObject);
