@@ -201,7 +201,8 @@ public class ProgressoTutorial : MonoBehaviour
                     if (OkBoxVideo.parlaZioMostrato && !Interactor.nelRistorante)
                     {
                         indicatoreDistanza.setTarget("zio");
-                    } else if ((Interactor.nelRistorante || MenuInGame.menuAperto) || OkBoxVideo.okBoxVideoAperto)
+                    }
+                    if ((Interactor.nelRistorante || MenuInGame.menuAperto) || OkBoxVideo.okBoxVideoAperto)
                     {
                         indicatoreDistanza.setTarget("reset");
                     }
