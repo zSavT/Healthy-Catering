@@ -332,10 +332,11 @@ public class Interactor : MonoBehaviour
     {
         PlayerSettings.addattamentoSpriteComandi(guiInGame.getTestoInterazione());
         inquadratoNPC.Invoke();
-        if (controllerInput.Player.Interazione.IsPressed() && !(negozio.getPannelloAperto()))
+        if (controllerInput.Player.Interazione.WasPressedThisFrame() && !(negozio.getPannelloAperto()))
         {
             suonoNegozio.Play();
             this.gameObject.transform.position = destinazioneTeleport.transform.position;
+            this.gameObject.transform.rotation = destinazioneTeleport.transform.rotation;
             nelRistorante = !nelRistorante;
         }
     }

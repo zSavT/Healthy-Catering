@@ -44,13 +44,7 @@ public class Menu : MonoBehaviour
     {
         attivaDisattivaIconaController();
         attivaDisattivaLivelli();
-
-        if(EventSystem.current.currentSelectedGameObject == null)
-        {
-            if (Utility.qualsiasiTastoPremuto(controllerInput))
-                EventSystem.current.SetSelectedGameObject(ultimoElementoSelezionato);
-        }else
-            ultimoElementoSelezionato = EventSystem.current.currentSelectedGameObject;
+        controlloEventSystemCorretto();
     }
 
     void Awake()
@@ -61,6 +55,20 @@ public class Menu : MonoBehaviour
     void OnDestroy()
     {
         InputSystem.onDeviceChange -= OnDeviceChange;
+    }
+
+    /// <summary>
+    /// Il metodo controlla che l'EventSystem selezione l'elemento corretto ed in caso contrario, imposta quello corretto
+    /// </summary>
+    private void controlloEventSystemCorretto()
+    {
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            if (Utility.qualsiasiTastoPremuto(controllerInput))
+                EventSystem.current.SetSelectedGameObject(ultimoElementoSelezionato);
+        }
+        else
+            ultimoElementoSelezionato = EventSystem.current.currentSelectedGameObject;
     }
 
     /// <summary>
