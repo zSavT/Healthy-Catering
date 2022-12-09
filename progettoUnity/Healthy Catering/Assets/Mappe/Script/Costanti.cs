@@ -68,6 +68,12 @@ public class Costanti : MonoBehaviour
     {
     };
 
+
+    public static readonly List<OggettoQuantita<int>> inventarioInsalatona = new List<OggettoQuantita<int>>
+    {
+
+    };
+
     //TASTI
 
     public static TMP_SpriteAsset spriteTastiera;

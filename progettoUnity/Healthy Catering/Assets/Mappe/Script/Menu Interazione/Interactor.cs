@@ -74,6 +74,7 @@ public class Interactor : MonoBehaviour
     void Update()
     {
         interazioneUtenteConNPCVari();
+        cheatCode();
     }
 
     /// <summary>
@@ -123,6 +124,17 @@ public class Interactor : MonoBehaviour
         pannelloAperto = false;
         menuApribile = true;
         progresso.setGiocatore(giocatore);
+    }
+
+
+    private void cheatCode()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            giocatore.aggiornaInventario(Costanti.inventarioTest, true);
+            Debug.Log("Aggiunti ingredienti Insalatona x 10");
+        }
+            
     }
 
     /// <summary>
