@@ -23,7 +23,7 @@ public class MuroInvisibile : MonoBehaviour
         triggerTocco = GameObject.FindGameObjectWithTag("CheckPavimento").transform;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         controlloCollisioneAcqua();
     }

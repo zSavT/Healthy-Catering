@@ -100,11 +100,11 @@ public class ProgressoTutorial : MonoBehaviour
         else
         {
             PlayerSettings.addattamentoSpriteComandi(obbiettivo1Testo);
-            for (int i = 0; i < scritteDaMostrare.Count; i++)
+            if (OkBoxVideo.indiceCorrente < scritteDaMostrare.Count)
             {
-                if (i == numeroScritteMostrate)
+                if (OkBoxVideo.indiceCorrente == numeroScritteMostrate)
                 {
-                    setObiettivoTesto(scritteDaMostrare[i]);
+                    setObiettivoTesto(scritteDaMostrare[OkBoxVideo.indiceCorrente]);
                     giocatore = interazioniPlayer.getPlayer();
                 }
 
