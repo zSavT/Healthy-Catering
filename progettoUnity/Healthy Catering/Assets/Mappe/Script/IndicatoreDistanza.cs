@@ -10,17 +10,20 @@ public class IndicatoreDistanza : MonoBehaviour
     [SerializeField] private Image img;
     // The target (location, enemy, etc..)
     private Transform target = null;
-
+    [SerializeField] private TextMeshProUGUI meter;
+    [SerializeField] private MenuInGame menuInGame;
+    [Header("Posizioni obbiettivi")]
+    [SerializeField] Transform posizioneMovimento;
     [SerializeField] Transform posizioneZio;
     [SerializeField] Transform posizioneRistorante;
     [SerializeField] Transform posizioneNegozio;
 
     // UI Text to display the distance
-    [SerializeField] private TextMeshProUGUI meter;
+
     // To adjust the position of the icon
     public Vector3 offset;
 
-    [SerializeField] private MenuInGame menuInGame;
+
     private Transform ultimoTarget = null;
     private bool checkMenuInGameAperto = false;
 
@@ -107,11 +110,24 @@ public class IndicatoreDistanza : MonoBehaviour
         {
             target = posizioneNegozio;
         }
+        else if (cosa.Equals("Cono"))
+        {
+            target = posizioneMovimento;
+        }
         else
         {
             target = null;
             disattivaWayPoint();
         }
+    }
+
+    /// <summary>
+    /// Il metodo permette di impostare la scale del wayPoint
+    /// </summary>
+    /// <param name="size">Vector3 size da impostare</param>
+    public void impostaSizeWayPoint(Vector3 size)
+    {
+        pannelloWayPoint.transform.localScale = size;
     }
 
     public void setTarget(Transform newTarget)

@@ -8,14 +8,17 @@ using UnityEngine;
 /// </summary>
 public class ControlloMouse : MonoBehaviour
 {
-    
+    private ControllerInput controlloStick;
     [Header("Impostazioni Camera")]
     [SerializeField] private Transform posizioneCameraIniziale;         //deve essere il primo elemento nel contenitore del giocatore per l'autoset
     [SerializeField] private float posizioneCameraFovMassimo = 0.51f;  
     private Camera cameraGioco;
     [Header("Impostazioni Mouse")]
-    [SerializeField] private float sensibilitaMouse = 250f;     //250 valore mediano
+    [SerializeField] private float sensibilitaMouse = 10f;     //50 valore mediano, max 100
     [SerializeField] private float rangeVisuale = 90f;
+
+    [Header("Impostazioni Controller")]
+    [SerializeField] private float sensibilitaStick = 100f;     //250 max value
 
     private Transform modelloPlayer;
     private float xRotation = 0f;
@@ -23,9 +26,48 @@ public class ControlloMouse : MonoBehaviour
     private float mouseY;
     bool puoCambiareVisuale;
     private float posizioneZcamera;
+    private Vector2 movimentoStick;
 
     void Start()
     {
+        inizializzazioneElementi();
+    }
+
+    void Update()
+    {
+        if (PlayerSettings.caricaPrimoAvvioSettaggiSensibilita() != 0)
+        {
+            sensibilitaMouse = PlayerSettings.caricaImpostazioniSensibilita();
+            sensibilitaStick = PlayerSettings.caricaImpostazioniSensibilitaStick();
+        }
+
+        if (puoCambiareVisuale)
+        {
+            controlliInputVisuale();
+            movimentoEffettivoMouse();
+        }
+        if(!Interactor.pannelloAperto)
+        {
+            aggiornamentoFovInGame();
+        }
+    }
+
+    /// <summary>
+    /// Il metodo alla disattivazione dell'oggetto, disattiva il controller.
+    /// </summary>
+    private void OnDisable()
+    {
+        controlloStick.Disable();
+    }
+
+    /// <summary>
+    /// Inizializzazione elementi iniziali classe.
+    /// </summary>
+    private void inizializzazioneElementi()
+    {
+        controlloStick = new ControllerInput();
+        controlloStick.Enable();
+        movimentoStick = new Vector2();
         modelloPlayer = this.transform.parent.transform;
         if (posizioneCameraIniziale == null)
             try
@@ -41,6 +83,8 @@ public class ControlloMouse : MonoBehaviour
         {
             PlayerSettings.salvaPrimoAvvioSettaggiSensibilita();
             PlayerSettings.salvaImpostazioniSensibilita(sensibilitaMouse);
+            PlayerSettings.salvaImpostazioniSensibilitaStick(sensibilitaStick);
+            PlayerSettings.salvaImpostazioniFov(90f);
         }
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -49,21 +93,33 @@ public class ControlloMouse : MonoBehaviour
         aggiornamentoFovInGame();
     }
 
-    void Update()
+    /// <summary>
+    /// Il metodo permette l'effettivo movimento della visuale dato dai valori di MouseX e MouseY
+    /// </summary>
+    private void movimentoEffettivoMouse()
     {
-        sensibilitaMouse = PlayerSettings.caricaImpostazioniSensibilita();
-        if (puoCambiareVisuale)
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -rangeVisuale, rangeVisuale);
+        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        modelloPlayer.Rotate(Vector3.up * mouseX);
+    }
+
+    /// <summary>
+    /// Il metodo aggiorna i valori MouseX e MouseY in base alla tipologia di input utilizzato
+    /// </summary>
+    private void controlliInputVisuale()
+    {
+        if (controlloStick.Player.MovimentoCamera.IsPressed())
         {
-            mouseX = Input.GetAxis("Mouse X") * sensibilitaMouse * Time.deltaTime;
-            mouseY = Input.GetAxis("Mouse Y") * sensibilitaMouse * Time.deltaTime;
-            xRotation -= mouseY;
-            xRotation = Mathf.Clamp(xRotation, -rangeVisuale, rangeVisuale);
-            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-            modelloPlayer.Rotate(Vector3.up * mouseX);
+            movimentoStick = controlloStick.Player.MovimentoCamera.ReadValue<Vector2>();
+            mouseX = movimentoStick.x * sensibilitaStick * Time.deltaTime;
+            mouseY = movimentoStick.y * sensibilitaStick * Time.deltaTime;
         }
-        if(!Interactor.pannelloAperto)
+        else
         {
-            aggiornamentoFovInGame();
+            mouseX = controlloStick.Player.MouseX.ReadValue<float>() * sensibilitaMouse * Time.deltaTime;
+            mouseY = controlloStick.Player.MouseY.ReadValue<float>() * sensibilitaMouse * Time.deltaTime;
+
         }
     }
 

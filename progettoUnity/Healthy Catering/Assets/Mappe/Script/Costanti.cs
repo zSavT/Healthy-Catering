@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 
-public class Costanti
+public class Costanti : MonoBehaviour
 {
     // DATABASE OGGETTI
     public static readonly List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
@@ -68,6 +68,35 @@ public class Costanti
     {
     };
 
+
+    public static readonly List<OggettoQuantita<int>> inventarioInsalatona = new List<OggettoQuantita<int>>
+    {
+
+    };
+
+    //TASTI
+
+    public static TMP_SpriteAsset spriteTastiera;
+    public static TMP_SpriteAsset spriteXbox;
+    public static TMP_SpriteAsset spritePlaystation;
+
+    //TASTI TASTIERA
+    public static string tastoW = "<sprite=0>";
+    public static string tastoS = "<sprite=1>";
+    public static string tastoA = "<sprite=2>";
+    public static string tastoD = "<sprite=3>";
+    public static string tastoE = "<sprite=4>";
+    public static string tastoH = "<sprite=5>";
+    public static string tastoR = "<sprite=6>";
+    public static string tastoShift = "<sprite=7>";
+    public static string tastoSpazio = "<sprite=8>";
+    public static string tastoClickSinistro = "<sprite=9>";
+    public static string tastoEsc = "<sprite=10>";
+    public static string tastoWASD = "<sprite=11>";
+
+    //TASTI CONTROLLER XBOX
+
+
     // INDENTAZIONE COLORI E CSS GENERALE
     public static readonly string fineColore = "</color>";
     public static readonly string colorePiatti = "<color=#FFA64C>";
@@ -85,6 +114,20 @@ public class Costanti
     {
         "Eccoti qua! Questo edificio è il nostro <color=#B5D99C>ristorante</color>, o meglio, il tuo.",
         "Spero che questo lavoro ti piacerà! E ricordati, sii sempre garbatƏ con i <color=#B5D99C>clienti</color>. Sapranno ricompensarti."
+    };
+
+    public static readonly List<string> easterEgg1Frase = new List<string>
+    {
+        "Come sei riuscito ad arrivare qui?",
+        "Deh, Mio padre proprio! De per forza!"
+    };
+
+    public static readonly List<string> easterEgg2Frase = new List<string>
+    {
+        "Ciao Billone! Ti chiederai perchè sono qui, giustamente.",
+        "Sono semplicemente una grafica scartata fatta con tanto affetto ed amore...",
+        "ma...",
+        "Non servo più ormai, quindi ora vivo qui, in mezzo alla monnezza! Sigh"
     };
 
     // NEGOZIO
@@ -113,13 +156,13 @@ public class Costanti
     };
     public static readonly List<string> testiMenuAiuto = new List<string>
     {
-        "Utilizza i tasti \"" + Costanti.coloreVerde + "W" + Costanti.fineColore + "\", \"" + Costanti.coloreVerde + "A" + Costanti.fineColore + "\", \"" + Costanti.coloreVerde + "S" + Costanti.fineColore + "\", " + Costanti.coloreVerde + "D" + Costanti.fineColore + "\" per muoveti rispettivamente in \"" +Costanti.coloreVerde + "Avanti" + Costanti.fineColore + "\", \"" + Costanti.coloreVerde + "Sinistra" + Costanti.fineColore + "\", \"" + Costanti.coloreVerde + "Indietro" + Costanti.fineColore + "\", \"" + Costanti.coloreVerde + "Destra" + Costanti.fineColore + "\". In più premi il tasto \"" + Costanti.coloreVerde + "Spazio" + Costanti.fineColore + "\" per saltare e tieni premuto il tasto \"" + Costanti.coloreVerde + "Shift" + Costanti.fineColore + "\" per correre mentre ti muovi.",
-        "Per servire un cliente al bancone inquadralo e premi “" + Costanti.coloreVerde + "E" + Costanti.fineColore + "”. Utilizza il mouse e seleziona il " + Costanti.colorePiatti + "piatto" + Costanti.fineColore + " da servire attraverso la relativa schermata sulla sinistra.",
+        "Utilizza i tasti " + Costanti.coloreVerde + Costanti.tastoW + Costanti.fineColore + ", " + Costanti.coloreVerde + Costanti.tastoA + Costanti.fineColore + ", " + Costanti.coloreVerde + Costanti.tastoS + Costanti.fineColore + ", " + Costanti.coloreVerde + Costanti.tastoD + Costanti.fineColore + " per muoveti rispettivamente in " + Costanti.coloreVerde + "Avanti" + Costanti.fineColore + ", " + Costanti.coloreVerde + "Sinistra" + Costanti.fineColore + ", " + Costanti.coloreVerde + "Indietro" + Costanti.fineColore + ", " + Costanti.coloreVerde + "Destra" + Costanti.fineColore + ". In più premi il tasto " + Costanti.coloreVerde + Costanti.tastoSpazio + Costanti.fineColore + " per saltare e tieni premuto il tasto " + Costanti.coloreVerde + Costanti.tastoShift + Costanti.fineColore + " per correre mentre ti muovi.",
+        "Per servire un cliente al bancone inquadralo e premi " + Costanti.coloreVerde + Costanti.tastoE + Costanti.fineColore + ". Utilizza il mouse e seleziona il " + Costanti.colorePiatti + "piatto" + Costanti.fineColore + " da servire attraverso la relativa schermata sulla sinistra.",
         "Scegliere il piatto migliore fra quelli disponibili ti permette di aumentare denaro e punteggio, così da poter superare il livello. Se servi un " + Costanti.colorePiatti + "piatto" + Costanti.fineColore + " dove è presente un " + Costanti.coloreIngredienti + "ingrediente" + Costanti.fineColore + " non compatibile con la " + Costanti.colorePatologia + "patologia" + Costanti.fineColore + " e/o " + Costanti.coloreDieta + "dieta" + Costanti.fineColore + " del cliente, verrà mostrato un pop-up che riporta quali degli " + Costanti.coloreIngredienti + "ingredienti" + Costanti.fineColore + " sono compatibili e quali no.",
         "Servire un "  + Costanti.colorePiatti + "piatto " + Costanti.fineColore + "non idoneo comporta penalità al punteggio e non si riceveranno bonus in denaro. Bonus e malus vengono calcolati in base alla compatibilità del piatto e ai suoi volori " + Costanti.coloreVerde + "nutriScore" + Costanti.fineColore +  " e " + Costanti.coloreVerde +  "costoEco" + Costanti.fineColore + ".",
-        "Puoi scegliere solo " + Costanti.colorePiatti + "piatti" + Costanti.fineColore + " di cui sono disponibili tutti gli " + Costanti.coloreIngredienti + "ingredienti" + Costanti.fineColore + " nelle quantità necessarie. Devi tenere conto degli " + Costanti.coloreIngredienti + "ingredienti" + Costanti.fineColore + " disponibili nel magazzino e comprare quelli mancanti. Puoi visionoare lo stato del magazzino aprendo il programma \"" + Costanti.coloreVerde + "MyInventory" + Costanti.fineColore + "\", accessibile nel computer nell'ufficio del ristorante.",
+        "Puoi scegliere solo " + Costanti.colorePiatti + "piatti" + Costanti.fineColore + " di cui sono disponibili tutti gli " + Costanti.coloreIngredienti + "ingredienti" + Costanti.fineColore + " nelle quantità necessarie. Devi tenere conto degli " + Costanti.coloreIngredienti + "ingredienti" + Costanti.fineColore + " disponibili nel magazzino e comprare quelli mancanti. Puoi visionoare lo stato del magazzino aprendo il programma " + Costanti.coloreVerde + "MyInventory" + Costanti.fineColore + ", accessibile nel computer nell'ufficio del ristorante.",
         "I bonus per la vendita del " + Costanti.colorePiatti + "piatto" + Costanti.fineColore + " è calcolato come segue:\n" + Costanti.coloreVerde + "Prezzo finale" + Costanti.fineColore + " = prezzo base (costo di tutti gli ingredienti + 10%)\n+ bonus affinità (+5% se il piatto è affine al cliente, -5% se non lo è)\n+ extra bonus (3%, 2% o 1% se il " + Costanti.colorePiatti + "piatto" + Costanti.fineColore + " servito è rispettivamente il primo, secondo o terzo migliore servibile).\n" + Costanti.coloreVerde + "Puntegggio" + Costanti.fineColore + " = Valore base (100 se viene servito un piatto affine, -10 altrimenti). Sono poi aggiunti bonus in base al " + Costanti.coloreVerde + "nutriScore" + Costanti.fineColore + " e al " + Costanti.coloreVerde + "costoEco" + Costanti.fineColore + " calcolati come segue:",
-        "Interagire con i " + Costanti.coloreVerde + "passanti" + Costanti.fineColore + " in giro per la città permetterà di ottenere " + Costanti.coloreVerde + "suggerimenti" + Costanti.fineColore + " utili per servire " + Costanti.colorePiatti + "piatti" + Costanti.fineColore + " migliori, sia dal punto di vista dell’affinità con le " + Costanti.colorePatologia + "patologie" + Costanti.fineColore + " che dal punto di vista del " + Costanti.coloreVerde + "nutriScore" + Costanti.fineColore +  " e dell'" + Costanti.coloreVerde +  "costoEco" + Costanti.fineColore + ". Per interagire con un passante, inquadralo e premi “" + Costanti.coloreVerde + "E" + Costanti.fineColore + "”.",
+        "Interagire con i " + Costanti.coloreVerde + "passanti" + Costanti.fineColore + " in giro per la città permetterà di ottenere " + Costanti.coloreVerde + "suggerimenti" + Costanti.fineColore + " utili per servire " + Costanti.colorePiatti + "piatti" + Costanti.fineColore + " migliori, sia dal punto di vista dell’affinità con le " + Costanti.colorePatologia + "patologie" + Costanti.fineColore + " che dal punto di vista del " + Costanti.coloreVerde + "nutriScore" + Costanti.fineColore +  " e dell'" + Costanti.coloreVerde +  "costoEco" + Costanti.fineColore + ". Per interagire con un passante, inquadralo e premi " + Costanti.tastoE + ".",
         "Per acquistare nuovi " + Costanti.coloreIngredienti + "ingredienti " + Costanti.fineColore + "per il ristorante, bisogna recarsi al " + Costanti.coloreVerde + "negozio" + Costanti.fineColore + ". Interagendo con il negoziante, sarà possibile scegliere gli ingredienti da acquistare con i soldi a disposizione. Nel " + Costanti.coloreVerde + "negozio" + Costanti.fineColore + " seleziona la quantità dell'" + Costanti.coloreIngredienti + "ingrediente" + Costanti.fineColore + " che ti interessa, aggiungila al carrello e poi prosegui con l'acquisto finale.",
         "Sul " + Costanti.coloreVerde + "ricettario" + Costanti.fineColore + " è possibile visionare tutte le ricette per i " + Costanti.colorePiatti + "piatti" + Costanti.fineColore + " e gli " + Costanti.coloreIngredienti + "ingredienti" + Costanti.fineColore + " presenti nel gioco. In più è possibile visionare anche la scheda tecnica di un "  + Costanti.coloreIngredienti + "ingrediente" + Costanti.fineColore + " e di un " + Costanti.colorePiatti+ "piatto" + Costanti.fineColore +" per visionare le sue caratteristiche (" + Costanti.coloreVerde + "costoEco" + Costanti.fineColore + "- " + Costanti.coloreVerde + "nutriScore " + Costanti.fineColore + "- breve descrizione).",
         "All'inizio del livello sono mostrati i criteri di " + Costanti.coloreVerde + "vittoria" + Costanti.fineColore + " e " + Costanti.coloreVerde + "Game Over" + Costanti.fineColore + ", come ad esempio servire un certo numero di " + Costanti.coloreVerde + "clienti" + Costanti.fineColore + " e ottenere un certo " + Costanti.coloreVerde + "punteggio" + Costanti.fineColore + ".\nPuoi osservare il progresso degli obbiettivi in alto a destra. Una volta raggiunti tutti gli obbiettivi, il livello è superato e appare una schermata in cui è visibile un breve riepilogo con l'opzione per tornare al menu principale. Il Game Over avviene invece se, dopo aver servito il numero massimo di " + Costanti.coloreVerde + "clienti" + Costanti.fineColore + ", non si raggiungono i " + Costanti.coloreVerde + "restanti obbiettivi" + Costanti.fineColore + " oppure non si dispone di denaro sufficiente ad acquistare " + Costanti.coloreIngredienti + "ingredienti" + Costanti.fineColore + ". In tal caso, si avvia la schermata di Game Over, dove è possibile tornare al menu principale."
@@ -205,18 +248,18 @@ public class Costanti
     };
     public static readonly List<string> testiOkBoxVideo = new List<string>
     {
-        "Premi “" + Costanti.coloreVerde + "W" + Costanti.fineColore + "” per andare avanti, “" + Costanti.coloreVerde + "S" + Costanti.fineColore + "” per andare indietro, “" + Costanti.coloreVerde + "A" + Costanti.fineColore + "” per andare a sinistra, “" + Costanti.coloreVerde + "D" + Costanti.fineColore + "” per andare a destra. Il giocatore si muove verso la direzione inquadrata con il “" + Costanti.coloreVerde + "mouse" + Costanti.fineColore + "”. Ora prova a muoverti.",
-        "Per saltare premi il tasto “" + Costanti.coloreVerde + "Spazio" + Costanti.fineColore + "”. Ora prova a saltare per proseguire.",
-        "Per correre premi il tasto “" + Costanti.coloreVerde + "Shift" + Costanti.fineColore + "”. Ora prova a correre.",
-        "Per interagire con una persona premi “" + Costanti.coloreVerde + "E" + Costanti.fineColore + "”. Raggiungi tuo zio e interagisci con lui.",
-        "Per entrare nel " + Costanti.coloreVerde + "ristorante" + Costanti.fineColore + " premi “" + Costanti.coloreVerde + "E" + Costanti.fineColore + "” una volta inquadrata la porta con il mouse. Fai lo stesso per uscire. Ora entra nel ristorante.",
-        "Per servire un cliente al bancone inquadralo e premi “" + Costanti.coloreVerde + "E" + Costanti.fineColore + "”. Per scegliere un " + Costanti.colorePiatti + "piatto " + Costanti.fineColore + "selezionalo dal menu sulla sinistra. È importante servire un " + Costanti.colorePiatti + "piatto " + Costanti.fineColore + "idoneo al cliente, ovvero la " + Costanti.coloreDieta + "dieta " + Costanti.fineColore + "e le " + Costanti.colorePatologia + "patologie" + Costanti.fineColore + ". Servire piatti idonei permette di ricevere dei bonus. Ora prova a servire un piatto idoneo al cliente al bancone.",
+        "Premi " + Costanti.coloreVerde + Costanti.tastoW + Costanti.fineColore + " per andare avanti, " + Costanti.coloreVerde + Costanti.tastoS + Costanti.fineColore + " per andare indietro, " + Costanti.coloreVerde + Costanti.tastoA + Costanti.fineColore + " per andare a sinistra, " + Costanti.coloreVerde + Costanti.tastoD + Costanti.fineColore + " per andare a destra. Il giocatore si muove verso la direzione inquadrata con il " + Costanti.coloreVerde + "mouse" + Costanti.fineColore + ". Ora prova a muoverti e raggiungi il " + Costanti.coloreVerde + "cono" + Costanti.fineColore + " stradale sulla tua sinistra.",
+        "Per saltare premi il tasto " + Costanti.coloreVerde + Costanti.tastoSpazio + Costanti.fineColore + ". Ora prova a saltare per proseguire.",
+        "Per correre premi il tasto " + Costanti.coloreVerde + Costanti.tastoShift + Costanti.fineColore + ". Ora prova a correre.",
+        "Per interagire con una persona premi " + Costanti.coloreVerde + Costanti.tastoE + Costanti.fineColore + ". Raggiungi tuo zio e interagisci con lui.",
+        "Per entrare nel " + Costanti.coloreVerde + "ristorante" + Costanti.fineColore + " premi " + Costanti.coloreVerde + Costanti.tastoE + Costanti.fineColore + " una volta inquadrata la porta con il mouse. Fai lo stesso per uscire. Ora entra nel ristorante.",
+        "Per servire un cliente al bancone inquadralo e premi " + Costanti.tastoE + ". Per scegliere un " + Costanti.colorePiatti + "piatto " + Costanti.fineColore + "selezionalo dal menu sulla sinistra. È importante servire un " + Costanti.colorePiatti + "piatto " + Costanti.fineColore + "idoneo al cliente, ovvero la " + Costanti.coloreDieta + "dieta " + Costanti.fineColore + "e le " + Costanti.colorePatologia + "patologie" + Costanti.fineColore + ". Servire piatti idonei permette di ricevere dei bonus. Ora prova a servire un piatto idoneo al cliente al bancone.",
         "Servire un "  + Costanti.colorePiatti + "piatto " + Costanti.fineColore + "non idoneo comporta penalità al punteggio e non si riceveranno bonus in denaro. Bonus e malus vengono calcolati in base alla compatibilità del piatto e ai suoi volori " + Costanti.coloreVerde + "nutriScore" + Costanti.fineColore + " e " + Costanti.coloreVerde + "costoEco" + Costanti.fineColore + ". Consulta il " + Costanti.coloreVerde + "menu aiuto " + Costanti.fineColore + "per ulteriori informazioni. Ora prova a servire un piatto non idoneo al cliente al bancone.",
-        "Controlla il " + Costanti.coloreVerde + "magazzino" + Costanti.fineColore + " per tener d'occhio quali " + Costanti.coloreIngredienti + "ingredienti" + Costanti.fineColore + " sono disponibili per la realizzazione dei " + Costanti.colorePiatti + "piatti" + Costanti.fineColore + ". Servendo un " + Costanti.colorePiatti + "piatto" + Costanti.fineColore + ", diminuiscono nel magazzino le quantità di " + Costanti.coloreIngredienti + "ingredienti" + Costanti.fineColore + " che in esso figurano. Puoi verificare lo stato del magazzino dal " + Costanti.coloreVerde + "PC" + Costanti.fineColore + " presente in " + Costanti.coloreVerde + "ufficio" + Costanti.fineColore + " attraverso il programma “" + Costanti.coloreVerde + "MyInventory" + Costanti.fineColore + "”. Ora raggiungi l'ufficio e controlla lo stato del magazzino.",
+        "Controlla il " + Costanti.coloreVerde + "magazzino" + Costanti.fineColore + " per tener d'occhio quali " + Costanti.coloreIngredienti + "ingredienti" + Costanti.fineColore + " sono disponibili per la realizzazione dei " + Costanti.colorePiatti + "piatti" + Costanti.fineColore + ". Servendo un " + Costanti.colorePiatti + "piatto" + Costanti.fineColore + ", diminuiscono nel magazzino le quantità di " + Costanti.coloreIngredienti + "ingredienti" + Costanti.fineColore + " che in esso figurano. Puoi verificare lo stato del magazzino dal " + Costanti.coloreVerde + "PC" + Costanti.fineColore + " presente in " + Costanti.coloreVerde + "ufficio" + Costanti.fineColore + " attraverso il programma " + Costanti.coloreVerde + "MyInventory" + Costanti.fineColore + ". Ora raggiungi l'ufficio e controlla lo stato del magazzino.",
         "Per fare rifornimenti di " + Costanti.coloreIngredienti + "ingredienti " + Costanti.fineColore + "visita il " + Costanti.coloreVerde + "negozio " + Costanti.fineColore + "dove acquistare con i soldi guadagnati, quelli necessari a realizzare altri " + Costanti.colorePiatti + "piatti" + Costanti.fineColore + ". Nel " + Costanti.coloreVerde + "negozio" + Costanti.fineColore + " seleziona la quantità dell'" + Costanti.coloreIngredienti + "ingrediente" + Costanti.fineColore + " che ti interessa, aggiungila al carrello e poi prosegui con l'acquisto finale. Ora esci dal " + Costanti.coloreVerde + "ristorante" + Costanti.fineColore + ", raggiungi il " + Costanti.coloreVerde + "negozio" + Costanti.fineColore + " e compra un " + Costanti.coloreIngredienti + "ingrediente" + Costanti.fineColore + ".",
         "Interagire con i " + Costanti.coloreVerde + "passanti" + Costanti.fineColore + " in giro per la città ti permette di ottenere " + Costanti.coloreVerde + "suggerimenti" + Costanti.fineColore + " utili a servire " + Costanti.colorePiatti + "piatti " + Costanti.fineColore + "migliori, sia per affinità con le " + Costanti.colorePatologia + "patologie" + Costanti.fineColore + " che per " + Costanti.coloreVerde + "nutriScore" + Costanti.fineColore + " e " + Costanti.coloreVerde + "costoEco" + Costanti.fineColore + ". Ora prova a parlare con una persona.",
-        "Puoi utilizzare il " + Costanti.coloreVerde + "ricettario" + Costanti.fineColore + " quando e dove vuoi. Premi il tasto “" + Costanti.coloreVerde + "R" + Costanti.fineColore + "” per visualizzarlo e controllare le quantità di " + Costanti.coloreIngredienti + "ingredienti " + Costanti.fineColore + "di un " + Costanti.colorePiatti + "piatto " + Costanti.fineColore + "e i valori " + Costanti.coloreVerde + "nutriScore" + Costanti.fineColore + " e " + Costanti.coloreVerde + "costoEco" + Costanti.fineColore + " di " + Costanti.colorePiatti + "piatti" + Costanti.fineColore + " e " + Costanti.coloreIngredienti + "ingredienti" + Costanti.fineColore + " nelle loro schede tecniche.",
-        "Puoi consultare il " + Costanti.coloreVerde + "menu aiuto" + Costanti.fineColore + " quando e dove vuoi premendo il tasto “" + Costanti.coloreVerde + "H" + Costanti.fineColore + "”. Al suo interno trovi tutte le informazioni e le meccaniche del gioco mostrate in precedenza.",
+        "Puoi utilizzare il " + Costanti.coloreVerde + "ricettario" + Costanti.fineColore + " quando e dove vuoi. Premi il tasto " + Costanti.coloreVerde + Costanti.tastoR + Costanti.fineColore + " per visualizzarlo e controllare le quantità di " + Costanti.coloreIngredienti + "ingredienti " + Costanti.fineColore + "di un " + Costanti.colorePiatti + "piatto " + Costanti.fineColore + "e i valori " + Costanti.coloreVerde + "nutriScore" + Costanti.fineColore + " e " + Costanti.coloreVerde + "costoEco" + Costanti.fineColore + " di " + Costanti.colorePiatti + "piatti" + Costanti.fineColore + " e " + Costanti.coloreIngredienti + "ingredienti" + Costanti.fineColore + " nelle loro schede tecniche.",
+        "Puoi consultare il " + Costanti.coloreVerde + "menu aiuto" + Costanti.fineColore + " quando e dove vuoi premendo il tasto " + Costanti.coloreVerde + Costanti.tastoH + Costanti.fineColore + ". Al suo interno trovi tutte le informazioni e le meccaniche del gioco mostrate in precedenza.",
     };
     public static readonly List<string> nomiAnimazioniOkBoxVideo = new List<string>
     {

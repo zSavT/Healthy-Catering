@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
+using UnityEngine.EventSystems;
 
 public class PannelloNegozio : MonoBehaviour
 {
@@ -15,6 +14,7 @@ public class PannelloNegozio : MonoBehaviour
     [SerializeField] private GameObject pannelloXElementi;
     [SerializeField] private Button templateSingoloIngrediente;
     [SerializeField] private Button bottoneCarrello;
+    [SerializeField] private Image[] immaginiAvantiIndietroTasti;
     private Button copiaTemplateSingoloIngrediente;
     private bool pannelloAperto = false;
 
@@ -47,12 +47,16 @@ public class PannelloNegozio : MonoBehaviour
     private float prezzoDaPagare;
     [SerializeField] TextMeshProUGUI testoTotaleCarello;
 
-    [Header ("tutorial")]
+    [Header ("Tutorial")]
     public static bool compratoIngredientePerTutorial = false;
+
+    private ControllerInput controllerInput;
 
 
     void Start()
     {
+        controllerInput = new ControllerInput();
+        controllerInput.Enable();
         animazione = GetComponentInParent<Animator>();
         bottoneCarrello.interactable = false;
         //GESTIONE PANNELLO E FIGLI
@@ -70,9 +74,21 @@ public class PannelloNegozio : MonoBehaviour
         bottoneIndietroPannelloNegozio.onClick.AddListener(() => { cambiaPannelloCarosello(false); });
         disattivaBottoniAvantiDietroSeServe();
 
-        chiudiPannelloSeiSicuro();
+        //chiudiPannelloSeiSicuro();
         ingredienteAttualmenteSelezionato = null;
         quantitaAttualmenteSelezionata = 0;
+    }
+
+    private void Update()
+    {
+        if(controllerInput.UI.Avanti.WasPressedThisFrame()  && pannelloAperto && bottoneAvantiPannelloNegozio.interactable && !pannelloSeiSicuroAperto)
+            cambiaPannelloCarosello(true);
+        else if (controllerInput.UI.Indietro.WasPressedThisFrame() && pannelloAperto && bottoneIndietroPannelloNegozio.interactable && !pannelloSeiSicuroAperto)
+            cambiaPannelloCarosello(false);
+        if(pannelloAperto)
+        {
+           aggiornaObjectSelected();
+        }
     }
 
     //INTERAZIONE NEGOZIO
@@ -85,6 +101,17 @@ public class PannelloNegozio : MonoBehaviour
 
         disattivaBottoniAvantiDietroSeServe();
         aggiornaBottoniPaginaCarosello();
+    }
+
+
+    private void aggiornaObjectSelected()
+    {
+        if (Utility.gamePadConnesso())
+            if (EventSystem.current.currentSelectedGameObject == null)
+                if (pannelloSeiSicuroAperto)
+                    EventSystem.current.SetSelectedGameObject(pannelloSeiSicuro.GetComponentsInChildren<Button>()[1].gameObject);
+                else
+                    EventSystem.current.SetSelectedGameObject(ingredientiBottoniFake[0].GetComponentsInChildren<Transform>()[4].gameObject);
     }
 
     private void disattivaBottoniAvantiDietroSeServe()
@@ -132,7 +159,6 @@ public class PannelloNegozio : MonoBehaviour
             }
             i++;
         }
-
         return output;
     }
 
@@ -200,6 +226,7 @@ public class PannelloNegozio : MonoBehaviour
             }
             i++;
         }
+        EventSystem.current.SetSelectedGameObject(ingredientiBottoniFake[0].GetComponentsInChildren<Transform>()[4].gameObject);
     }
 
     private void attivaTuttiIBottoniNelPannelloNegozio()
@@ -269,7 +296,7 @@ public class PannelloNegozio : MonoBehaviour
                 singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text
             );
 
-            attivaDisattivaBottoniPiuMenoSeServe(singoloIngredienteTemp, quantitaSelezionata, 0);
+            
 
             if (quantitaSelezionata > 0)
             {
@@ -278,6 +305,7 @@ public class PannelloNegozio : MonoBehaviour
 
             quantitaSelezionata = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text);
             attivaDisattivaBottoneCompra(singoloIngredienteTemp, quantitaSelezionata);
+            attivaDisattivaBottoniPiuMenoSeServe(singoloIngredienteTemp, quantitaSelezionata, 0);
         });
     }
 
@@ -287,13 +315,14 @@ public class PannelloNegozio : MonoBehaviour
         singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAumentaQuantita].onClick.AddListener(() => {
             int quantitaSelezionata = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text);
 
-            attivaDisattivaBottoniPiuMenoSeServe(singoloIngredienteTemp, quantitaSelezionata, costoIngrediente);
+            
 
             if (giocatore.soldi - prezzoDaPagare - (costoIngrediente * (quantitaSelezionata + 1)) >= 0)
                 singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text = (quantitaSelezionata + 1).ToString();
 
             quantitaSelezionata = System.Int32.Parse(singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text);
             attivaDisattivaBottoneCompra(singoloIngredienteTemp, quantitaSelezionata);
+            attivaDisattivaBottoniPiuMenoSeServe(singoloIngredienteTemp, quantitaSelezionata, costoIngrediente);
         });
     }
 
@@ -316,6 +345,8 @@ public class PannelloNegozio : MonoBehaviour
             singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAumentaQuantita].interactable = false;
         else
             singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAumentaQuantita].interactable = true;
+        if (singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneDiminuisciQuantita].interactable == false)
+            EventSystem.current.SetSelectedGameObject(singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAumentaQuantita].gameObject);
     }
 
     private void aggiungiListenerCompraIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
@@ -354,13 +385,19 @@ public class PannelloNegozio : MonoBehaviour
         if (inNegozio)
         {
             testoPannelloSeiSicuro.text = "Sei sicuro di voler aggiungere al carrello " + Costanti.coloreIngredienti + ingredienteAttualmenteSelezionato.nome + Costanti.fineColore + " x" + quantitaAttualmenteSelezionata.ToString();
+            EventSystem.current.SetSelectedGameObject(pannelloSeiSicuro.GetComponentsInChildren<Button>()[1].gameObject);
         }
         else
         {
             testoPannelloSeiSicuro.text = creaStringaPannelloSeiSicuroCarrello();
+            EventSystem.current.SetSelectedGameObject(pannelloSeiSicuro.GetComponentsInChildren<Button>()[1].gameObject);
         }
+
+        bottoneAvantiPannelloNegozio.interactable = false;
+        bottoneIndietroPannelloNegozio.interactable = false;
         pannelloSeiSicuro.SetActive(true);
         testoEsc.gameObject.SetActive(false);
+        PlayerSettings.addattamentoSpriteComandi(testoEsc);
         pannelloSeiSicuroAperto = true;
     }
 
@@ -440,6 +477,7 @@ public class PannelloNegozio : MonoBehaviour
                 testoTotaleCarello.text = Costanti.coloreVerde + "Totale Carrello: " + Costanti.fineColore + prezzoDaPagare.ToString("0.00");
             }
             chiudiPannelloSeiSicuro();
+            EventSystem.current.SetSelectedGameObject(ingredientiBottoniFake[0].GetComponentsInChildren<Transform>()[4].gameObject);
             if (carrello.Count > 0)
                 bottoneCarrello.interactable = true;
             else
@@ -469,6 +507,7 @@ public class PannelloNegozio : MonoBehaviour
             inNegozio = true;
 
             chiudiPannelloSeiSicuro();
+            EventSystem.current.SetSelectedGameObject(ingredientiBottoniFake[0].GetComponentsInChildren<Transform>()[4].gameObject);
         }
     }
 
@@ -490,23 +529,33 @@ public class PannelloNegozio : MonoBehaviour
         ingredienteAttualmenteSelezionato = null;
         quantitaAttualmenteSelezionata = 0;
         chiudiPannelloSeiSicuro();
+        EventSystem.current.SetSelectedGameObject(ingredientiBottoniFake[0].GetComponentsInChildren<Transform>()[4].gameObject);
     }
 
     private void chiudiPannelloSeiSicuro()
     {
         testoPannelloSeiSicuro.text = "You werent supposed to be able to get here you know";
+
         pannelloSeiSicuro.SetActive(false);
 
         if (ingredientiBottoniFake != null)
             foreach (Button ingrediente in ingredientiBottoniFake)
                 attivaDisattivaBottoneCompra(ingrediente, 0);
-        bottoneCarrello.interactable = false;
+        if (carrello.Count > 0)
+            bottoneCarrello.interactable = true;
+        else
+            bottoneCarrello.interactable = false;
         pannelloSeiSicuroAperto = false;
 
         if (!inNegozio)
         {
             inNegozio = true;
         }
+        resetQuantitaTuttiBottoni();
+
+        disattivaBottoniAvantiDietroSeServe();
+        foreach (Button temp in ingredientiBottoniFake)
+            attivaDisattivaBottoniPiuMenoSeServe(temp, 0, prezzoDaPagare);
     }
 
     //GESTIONE PANNELLO E RELATIVI
@@ -518,8 +567,12 @@ public class PannelloNegozio : MonoBehaviour
         canvasPannelloNegozio.SetActive(true);
         aggiornaBottoniPaginaCarosello();
         chiudiPannelloSeiSicuro();
+       // EventSystem.current.SetSelectedGameObject(ingredientiBottoniFake[0].gameObject);
         soldiGiocatore.text = Costanti.coloreVerde + "Denaro: " + Costanti.fineColore + giocatore.soldi.ToString("0.00");
         resetSituazioneCarello();
+        EventSystem.current.SetSelectedGameObject(ingredientiBottoniFake[0].GetComponentsInChildren<Transform>()[4].gameObject);
+        immaginiAvantiIndietroTasti[0].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("L1");
+        immaginiAvantiIndietroTasti[1].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("R1");
     }
 
     private void resetSituazioneCarello()
@@ -528,6 +581,7 @@ public class PannelloNegozio : MonoBehaviour
         prezzoDaPagare = 0;
         carrello = new List<Ingrediente>();
         testoTotaleCarello.text = Costanti.coloreVerde + "Totale Carrello: " + Costanti.fineColore + 0.ToString("0.00");
+        Destroy(pannelloXElementi);
     }
 
     public void chiudiPannelloNegozio()

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,6 +14,9 @@ public class Ricettario : MonoBehaviour
     [SerializeField] Button switchIngredienti;
     [SerializeField] Button bottoneAltriDati;
     [SerializeField] TextMeshProUGUI testoBottoneAltriDati;
+    [SerializeField] TextMeshProUGUI tastoUscita;
+    [SerializeField] Image[] immaginiControlli;
+    private ControllerInput controllerInput;
 
     private List<Ingrediente> databaseIngredienti = Costanti.databaseIngredienti;
     private List<Piatto> databasePiatti = Costanti.databasePiatti;
@@ -32,7 +34,24 @@ public class Ricettario : MonoBehaviour
 
     private void Start()
     {
+        controllerInput= new ControllerInput();
+        controllerInput.Enable();
         chiudiRicettario();
+    }
+
+    private void Update()
+    {
+        if (ricettarioAperto)
+            if (controllerInput.UI.Avanti.WasPressedThisFrame())
+                avantiPagina();
+            else if (controllerInput.UI.Indietro.WasPressedThisFrame())
+                indietroPagina();
+            else if (controllerInput.UI.Submit.WasPressedThisFrame())
+                visualizzaAltriDati();
+            else if (controllerInput.UI.Ingredienti.WasPressedThisFrame())
+                switchToIngredientiView();
+            else if (controllerInput.UI.Piatti.WasPressedThisFrame())
+                switchToPiattiView();
     }
 
     /// <summary>
@@ -247,6 +266,14 @@ public class Ricettario : MonoBehaviour
         ricettarioAperto = true;
 
         apertoRicettario = true;//TUTORIAL
+
+        PlayerSettings.addattamentoSpriteComandi(testoSchermata);
+        PlayerSettings.addattamentoSpriteComandi(tastoUscita);
+        immaginiControlli[0].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("L1");
+        immaginiControlli[1].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("R1");
+        immaginiControlli[2].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("X");
+        immaginiControlli[3].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("L2");
+        immaginiControlli[4].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("R2");
     }
 
     /// <summary>

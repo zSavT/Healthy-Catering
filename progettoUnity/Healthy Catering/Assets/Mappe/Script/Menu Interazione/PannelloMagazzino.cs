@@ -1,8 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class PannelloMagazzino : MonoBehaviour
 {
@@ -11,6 +11,7 @@ public class PannelloMagazzino : MonoBehaviour
     private bool pannelloMagazzinoAperto;
     [SerializeField] private Image sfondoImmaginePC;
     [SerializeField] private Button tastoX;
+    [SerializeField] private Button tastoMyInventory;
 
     public static bool pannelloMagazzinoApertoPerTutorial = false;
 
@@ -33,17 +34,23 @@ public class PannelloMagazzino : MonoBehaviour
     [Header ("Bottone ingrediente")]
     private Button bottoneIngredienteTemplate;
 
-    [Header ("altro")]
+    [Header ("Altro")]
     [SerializeField] private PannelloMostraRicette pannelloMostraRicette;
+    private MovimentoPlayer movimentoPlayer;
 
     private Player giocatore;
 
     private List<GameObject> pannelliXElementiAttivi = new List<GameObject>();
 
+    private ControllerInput controllerInput;
+    private int indicePannello = 0;
+
     private void Start()
     {
-        cambiaSfondoDesktop();
+        indicePannello = 0;
         pannelloMagazzino.SetActive(false);
+        cambiaSfondoDesktop();
+        
 
         //creo una copia del bottone template
         bottoneIngredienteTemplate = Instantiate(pannelloXElementi.GetComponentInChildren<Button>());
@@ -54,12 +61,58 @@ public class PannelloMagazzino : MonoBehaviour
         copiaPannelloXElementi = Instantiate(pannelloXElementi);
     }
 
+    private void OnEnable()
+    {
+        controllerInput = new ControllerInput();
+        controllerInput.UI.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controllerInput.UI.Disable();
+    }
+
+
+    private void OnDestroy()
+    {
+        controllerInput.Disable();
+    }
+
+    private void Update()
+    {
+        if(pannelloMagazzinoAperto)
+            resetObjectSelected();
+    }
+
+    private void resetObjectSelected()
+    {
+        if (Utility.gamePadConnesso())
+            if (EventSystem.current.currentSelectedGameObject == null)
+                if (Utility.qualsiasiTastoPremuto(controllerInput))
+                {
+                    if (!pannelloInventarioCanvas.gameObject.activeSelf && pannelloMostraRicette.gameObject.activeSelf)
+                    {
+                        EventSystem.current.SetSelectedGameObject(pannelloMostraRicette.gameObject.GetComponentsInChildren<Transform>()[5].gameObject);
+                    }
+                    if (pannelloInventarioCanvas.gameObject.activeSelf && pannelloMostraInventario.activeSelf && !pannelloMostraRicette.gameObject.activeSelf && !giocatore.inventarioVuoto())
+                    {
+                        setEventSystemPrimoElemento();
+
+                    } else if (!pannelloInventarioCanvas.gameObject.activeSelf && !pannelloMostraRicette.gameObject.activeSelf)
+                    {
+                        EventSystem.current.SetSelectedGameObject(tastoMyInventory.gameObject);
+                    }
+                }
+    }
+
     public void cambiaSfondoDesktop()
     {
         if (AspectRatio(Screen.height, Screen.width) == "4:3" || AspectRatio(Screen.height, Screen.width) == "3:4")
             sfondoImmaginePC.sprite = Resources.Load<Sprite>("SfondoBasePC4_3");
         else
             sfondoImmaginePC.sprite = Resources.Load<Sprite>("SfondoBasePC");
+        if(pannelloMagazzino.activeSelf)
+            EventSystem.current.SetSelectedGameObject(tastoMyInventory.gameObject);
     }
 
     /// <summary>
@@ -92,15 +145,18 @@ public class PannelloMagazzino : MonoBehaviour
         return pannello;//non sono sicuro sia necessario il return del pannello, se non serve poi lo togliamo
     }
 
-    public void apriPannelloMagazzino(Player player)
+    public void apriPannelloMagazzino(Player player, MovimentoPlayer controllerMovimento)
     {
+        resetPannelloMagazzino();
         giocatore = player;
-
+        movimentoPlayer = controllerMovimento;
         pannelloInventarioCanvas.SetActive(false);
-    
+
         popolaSchermata();
 
         setSchermataInizialePC();
+        if (Utility.gamePadConnesso())
+            movimentoPlayer.bloccaMovimento();
     }
 
     private void setSchermataInizialePC()
@@ -110,7 +166,7 @@ public class PannelloMagazzino : MonoBehaviour
         pannelloMagazzinoAperto = true;
         pannelloMostraRicette.chiudiPannelloMostraRicette();
         cambiaSfondoDesktop();
-
+        EventSystem.current.SetSelectedGameObject(tastoMyInventory.gameObject);
         suonoAperturaPC.Play();
     }
 
@@ -120,8 +176,13 @@ public class PannelloMagazzino : MonoBehaviour
         pannelloMagazzino.SetActive(false);
         pannelloMagazzinoAperto = false;
         suonoChiusuraPC.Play();
-
         resetPannelloMagazzino();
+        if (indicePannello == 0)
+            indicePannello++;
+        indicePannello++;
+        if (Utility.gamePadConnesso())
+            controllerInput.Player.Salto.Disable();
+
     }
 
     private void resetPannelloMagazzino()
@@ -131,7 +192,9 @@ public class PannelloMagazzino : MonoBehaviour
             Destroy(pannelloXElementiTemp);
         }
 
+        pannelloXElementi = rimuoviTuttiFigliDaPannello(pannelloXElementi);
         pannelliXElementiAttivi = new List<GameObject>();
+
     }
 
     public bool getPannelloMagazzinoAperto()
@@ -146,6 +209,19 @@ public class PannelloMagazzino : MonoBehaviour
             sfondoImmaginePC.sprite = Resources.Load<Sprite>("SchermataMagazzino4_3");
         else
             sfondoImmaginePC.sprite = Resources.Load<Sprite>("SchermataMagazzino");
+        if(!giocatore.inventarioVuoto())
+        {
+            Transform[] lista = pannelloMostraInventario.GetComponentsInChildren<Button>()[0].GetComponentInChildren<Button>().GetComponentsInChildren<Transform>();
+            EventSystem.current.SetSelectedGameObject(lista[3].gameObject);
+        } else
+            EventSystem.current.SetSelectedGameObject(tastoX.gameObject);
+
+    }
+
+    public void setEventSystemPrimoElemento()
+    {
+        Transform[] lista = pannelloMostraInventario.GetComponentsInChildren<Button>()[0].GetComponentInChildren<Button>().GetComponentsInChildren<Transform>();
+        EventSystem.current.SetSelectedGameObject(lista[3].gameObject);
     }
 
     private void popolaSchermata()
@@ -153,7 +229,6 @@ public class PannelloMagazzino : MonoBehaviour
         if (!giocatore.inventarioVuoto())
         {
             List<OggettoQuantita<int>> inventario = giocatore.inventario;
-            
             pannelloXElementi.SetActive(true);
 
             int numeroBottoniAggiuntiFinoAdOraInPannelloXElementi = 0;
@@ -163,10 +238,9 @@ public class PannelloMagazzino : MonoBehaviour
                 if(oggettoDellInventario.quantita != 0)
                 {
                     Button bottoneDaAggiungereTemp = creaBottoneConValoriIngrediente(oggettoDellInventario, bottoneIngredienteTemplate);
-
+                    
                     bottoneDaAggiungereTemp.transform.SetParent(pannelloXElementi.transform, false);
                     numeroBottoniAggiuntiFinoAdOraInPannelloXElementi++;
-
                     if ((numeroBottoniAggiuntiFinoAdOraInPannelloXElementi > Costanti.bottoniMassimiPerPannelloXElementi)
                         &&
                         (oggettoDellInventario != inventario[inventario.Count - 1])) // se e' diverso dall'ultimo elemento, previene che venga creato un pannello vuoto
@@ -180,11 +254,13 @@ public class PannelloMagazzino : MonoBehaviour
 
             if (!testoInventarioVuoto.text.Equals(""))
                 testoInventarioVuoto.text = "";
+
         }
         else
         {
             testoInventarioVuoto.text = Costanti.testoInventarioVuotoString;
             pannelloXElementi.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(tastoX.gameObject);
         }
     }
 

@@ -4,6 +4,9 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Wilberforce;
 using TMPro;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 /// <summary>
 /// Classe per la gestione delle impostazioni presenti nel menu iniziale del Gioco.<para>
@@ -13,28 +16,110 @@ using TMPro;
 /// </summary>
 public class Menu : MonoBehaviour
 {
-    [SerializeField] private Camera cameraGioco;
-    [SerializeField] private TextMeshProUGUI testoVersioneGioco;
-    [SerializeField] private TextMeshProUGUI companyName;
+    [Header("Pannelli")]
     [SerializeField] private GameObject elementiCrediti;
     [SerializeField] private GameObject elementiMenuPrincipale;
     [SerializeField] private GameObject elementiProfiloNonEsistente;
-    private List<Player> player = new List<Player>();
+    [SerializeField] private GameObject elementiUscita;
+
+    [Header("Testo ed Altro")]
+    [SerializeField] private TextMeshProUGUI testoVersioneGioco;
+    [SerializeField] private TextMeshProUGUI companyName;
+    [SerializeField] private Image immagineController;
     //serve per eliminare altri elementi in visualilzzazione
-    [SerializeField] private UnityEvent clickCrediti;             
+    [SerializeField] private UnityEvent clickCrediti;
+
+    private GameObject ultimoElementoSelezionato;
+    private ControllerInput controllerInput;
+    private List<Player> player = new List<Player>();
+    private Camera cameraGioco;
+
 
     void Start()
     {
+        inizializzazioneElementiIniziali();
+    }
+
+    void Update()
+    {
+        attivaDisattivaIconaController();
+        attivaDisattivaLivelli();
+        controlloEventSystemCorretto();
+    }
+
+    void Awake()
+    {
+        InputSystem.onDeviceChange += OnDeviceChange;
+    }
+
+    void OnDestroy()
+    {
+        InputSystem.onDeviceChange -= OnDeviceChange;
+    }
+
+    /// <summary>
+    /// Il metodo controlla che l'EventSystem selezione l'elemento corretto ed in caso contrario, imposta quello corretto
+    /// </summary>
+    private void controlloEventSystemCorretto()
+    {
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            if (Utility.qualsiasiTastoPremuto(controllerInput))
+                EventSystem.current.SetSelectedGameObject(ultimoElementoSelezionato);
+        }
+        else
+            ultimoElementoSelezionato = EventSystem.current.currentSelectedGameObject;
+    }
+
+    /// <summary>
+    /// Il metodo controlla e gestiscisce le periferiche di Input 
+    /// </summary>
+    /// <param name="device"></param>
+    /// <param name="change"></param>
+    public void OnDeviceChange(InputDevice device, InputDeviceChange change)
+    {
+        switch (change)
+        {
+            case InputDeviceChange.Added:
+                aggioraEventSystemPerControllerConnesso();
+                break;
+            case InputDeviceChange.Disconnected:
+                //
+                break;
+            case InputDeviceChange.Reconnected:
+                aggioraEventSystemPerControllerConnesso();
+                break;
+            case InputDeviceChange.Removed:
+                // Remove from Input System entirely; by default, Devices stay in the system once discovered.
+                break;
+            default:
+                // See InputDeviceChange reference for other event types.
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Il metodo inizializza tutti gli elementi iniziali per il menu principale
+    /// </summary>
+    private void inizializzazioneElementiIniziali()
+    {
+        controllerInput = new ControllerInput();
+        controllerInput.Enable();
+        cameraGioco = FindObjectOfType<Camera>();
+        attivaDisattivaIconaController();
         gameVersion();
         //disattivo a priori, per non visualizzarli in caso di errori di lettura dei nomi utenti ed evitare lo schermo occupato tutto da scritte
-        elementiProfiloNonEsistente.SetActive(false);               
+        elementiProfiloNonEsistente.SetActive(false);
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         letturaNomiUtenti();
         if (!presentePlayer())
         {
+            PlayerSettings.resetTuttiValori();
             elementiProfiloNonEsistente.SetActive(true);
             elementiMenuPrincipale.SetActive(false);
-        } else
+            EventSystem.current.SetSelectedGameObject(elementiProfiloNonEsistente.GetComponentsInChildren<Button>()[1].gameObject);
+        }
+        else
         {
             elementiProfiloNonEsistente.SetActive(false);
         }
@@ -42,9 +127,47 @@ public class Menu : MonoBehaviour
         CambioCursore.cambioCursoreNormale();
     }
 
-    void Update()
+    /// <summary>
+    /// Il metodo aumenta la trasparenza dell'icona del controller se inserito
+    /// </summary>
+    private void attivaDisattivaIconaController()
     {
-        attivaDisattivaLivelli();
+        if (Utility.gamePadConnesso())
+        {
+            immagineController.color = new Color32(255, 255, 255, 255);
+            immagineController.gameObject.GetComponent<ToolTip>().setMessaggio("Controller " + PlayerSettings.tipologiaControllerInserito() + " connesso.");
+        } else
+        {
+            immagineController.color = new Color32(255, 255, 255, 127);
+            immagineController.gameObject.GetComponent<ToolTip>().setMessaggio("Controller non connesso."); ;
+        }
+    }
+
+    /// <summary>
+    /// Il metodo aggiorna l'elemento selezionato
+    /// </summary>
+    private void aggioraEventSystemPerControllerConnesso()
+    {
+        if (Utility.gamePadConnesso())
+            if (!elementiUscita.activeSelf && !elementiCrediti.activeSelf && elementiMenuPrincipale.activeSelf)
+            {
+                EventSystem.current.SetSelectedGameObject(elementiMenuPrincipale.GetComponentsInChildren<Transform>()[1].gameObject);
+            }
+                
+            else if (!elementiUscita.activeSelf && elementiCrediti.activeSelf && !elementiMenuPrincipale.activeSelf)
+                EventSystem.current.SetSelectedGameObject(elementiCrediti.GetComponentsInChildren<Transform>()[10].gameObject);
+            else if (elementiUscita.activeSelf && !elementiCrediti.activeSelf && !elementiMenuPrincipale.activeSelf)
+                EventSystem.current.SetSelectedGameObject(elementiUscita.GetComponentsInChildren<Transform>()[1].gameObject);
+    }
+
+    /// <summary>
+    /// Il metodo imposta come elemento selzionato dell'EventSystem l'oggetto passato in input
+    /// </summary>
+    /// <param name="elementoDaSelezionare">GameObject da impostare come elemento selezionato</param>
+    private void aggioraEventSystemPerControllerConnesso(GameObject elementoDaSelezionare)
+    {
+        if (Utility.gamePadConnesso())
+            EventSystem.current.SetSelectedGameObject(elementoDaSelezionare);
     }
 
     /// <summary>
@@ -58,7 +181,7 @@ public class Menu : MonoBehaviour
     /// <summary>
     /// Metodo per controllare se sono presenti o meno dei player nel database.
     /// </summary>
-    /// <returns>True: � presente almeno un player, false: non esiste alcun player</returns>
+    /// <returns>True: è presente almeno un player, false: non esiste alcun player</returns>
     private bool presentePlayer()
     {
         return player.Count > 0;
@@ -80,7 +203,6 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene(5);
     }
 
-    //metodo per triggerare a mano i livelli, da eliminare poi.
     /// <summary>
     /// Metodo per attivare i livelli tramite cheatcode
     /// </summary>
@@ -154,7 +276,7 @@ public class Menu : MonoBehaviour
     }
 
     /// <summary>
-    /// Metodo per aggiornare il testo della versione del gioco e il nome della societ�.
+    /// Metodo per aggiornare il testo della versione del gioco e il nome della società.
     /// </summary>
     private void gameVersion()
     {
@@ -168,5 +290,14 @@ public class Menu : MonoBehaviour
     public void classifica()
     {
         SelezioneLivelli.caricaClassifica();
+    }
+
+    /// <summary>
+    /// Il metodo imposta il gameObject passato come quello selezionato dal EventSystem
+    /// </summary>
+    /// <param name="bottoneIniziale">GameObject da impostare come elemento principale</param>
+    public void impostaEventSystemSelezionato(GameObject bottoneIniziale)
+    {
+        EventSystem.current.SetSelectedGameObject(bottoneIniziale);
     }
 }

@@ -1,20 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class OkBoxVideo : MonoBehaviour
 {
     [SerializeField] private GameObject pannello;
+    [SerializeField] private Button bottoneConferma;
     [SerializeField] private TextMeshProUGUI titolo;
     [SerializeField] private TextMeshProUGUI testo;
     [SerializeField] private Image immagineOGIF;
-
+    
     [SerializeField] private UnityEvent playerStop;
     [SerializeField] private UnityEvent playerRiprendiMovimento;
-
+    private ControllerInput controllerInput;
+    [SerializeField] private MovimentoPlayer movimentoPlayer;
     private Animazione animazione;
 
     public static bool WASDmostrato = false;
@@ -29,6 +30,7 @@ public class OkBoxVideo : MonoBehaviour
     public static bool interazioneNPCMostrato = false;
     public static bool apriRicettarioMostrato = false;
     public static bool apriMenuAiutoMostrato = false;
+    public static bool okBoxVideoAperto = false;
     public static int indiceCorrente = 0;
 
     void Start()
@@ -45,6 +47,8 @@ public class OkBoxVideo : MonoBehaviour
         interazioneNPCMostrato = false;
         apriRicettarioMostrato = false;
         apriMenuAiutoMostrato = false;
+        okBoxVideoAperto = false;
+        CheckTutorial.tastiMovimentoPremuti = false;
         indiceCorrente = 0;
         pannello.SetActive(false);
         titolo.text = "";
@@ -52,15 +56,37 @@ public class OkBoxVideo : MonoBehaviour
         animazione = immagineOGIF.GetComponent<Animazione>();
     }
 
+    private void FixedUpdate()
+    {
+        if(okBoxVideoAperto)
+            if (EventSystem.current.currentSelectedGameObject == null && Utility.gamePadConnesso())
+                    EventSystem.current.SetSelectedGameObject(bottoneConferma.gameObject);
+    }
+
+    private void OnEnable()
+    {
+        controllerInput = new ControllerInput();
+        controllerInput.UI.Disable();
+        controllerInput.Player.Enable();
+        controllerInput.Player.Salto.Disable();
+    }
+
+    private void OnDisable()
+    {
+        controllerInput.UI.Disable();
+        controllerInput.Player.Salto.Enable();
+    }
+
     public void apriOkBoxVideo(int posizione)
     {
+        okBoxVideoAperto = true;
         playerStop.Invoke();
         indiceCorrente = posizione;
         Interactor.menuApribile = false;
         PuntatoreMouse.abilitaCursore();
         CambioCursore.cambioCursoreNormale();
         pannello.SetActive(true);
-
+        PlayerSettings.addattamentoSpriteComandi(testo);
         if (posizione < Costanti.titoliOkBoxVideo.Count)
         {
             titolo.text = Costanti.titoliOkBoxVideo[posizione];
@@ -72,10 +98,13 @@ public class OkBoxVideo : MonoBehaviour
             testo.text = "";
         }
         cambiaImmagine(posizione);
+        EventSystem.current.SetSelectedGameObject(bottoneConferma.gameObject);
+
     }
 
     public void chiudiOkBoxVideo()
     {
+        okBoxVideoAperto = false;
         PuntatoreMouse.disabilitaCursore();
         pannello.SetActive(false);
         playerRiprendiMovimento.Invoke();
@@ -105,4 +134,6 @@ public class OkBoxVideo : MonoBehaviour
             "default"
         );
     }
+
+
 }

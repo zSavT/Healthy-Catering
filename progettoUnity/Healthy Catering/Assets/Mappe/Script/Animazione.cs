@@ -83,6 +83,13 @@ public class Animazione : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo permette di caricare le immagini per l'animazione
+    /// </summary>
+    /// <param name="cartella">string dove è presente il file dell'animazione</param>
+    /// <param name="nomeGif">string nome della stringa da inserire</param>
+    /// <param name="nomeGifDefault">string nome della gif di default</param>
+    /// <exception cref="System.Exception"></exception>
     public void caricaAnimazione(string cartella, string nomeGif, string nomeGifDefault)
     {
         sprites = new List<Sprite>();

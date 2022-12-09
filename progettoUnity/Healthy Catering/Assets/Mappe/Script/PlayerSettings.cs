@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -43,10 +44,10 @@ public class PlayerSettings : MonoBehaviour
     }
 
     /// <summary>
-    /// Caricare variabile per confermare che � stato avviato per la prima volta il gioco (e non il livello) e quindi non � stato mai creato un player.<br></br>
+    /// Caricare variabile per confermare che è stato avviato per la prima volta il gioco (e non il livello) e quindi non � stato mai creato un player.<br></br>
     /// <strong>Usato in</strong> <see cref="SceltaImpostazioniPlayer.controlloNomeEsistente"/>
     /// </summary>
-    /// <returns>0 � la prima volta che si avvia il livello, 1 � stato gi� avviato una volta.</returns>
+    /// <returns>0 è la prima volta che si avvia il livello, 1 è stato già avviato una volta.</returns>
     public static int caricaPrimoAvvio()
     {
         return PlayerPrefs.GetInt("primoAvvio");
@@ -61,16 +62,16 @@ public class PlayerSettings : MonoBehaviour
     }
 
     /// <summary>
-    /// Carica variabile per controllo del primo avvio per settare il valore della sensibilit� del mouse.
+    /// Carica variabile per controllo del primo avvio per settare il valore della sensibilità del mouse e dello stick.
     /// </summary>
-    /// <returns>0 � la prima volta che si avvia il livello, 1 � stato gi� avviato una volta.</returns>
+    /// <returns>0 è la prima volta che si avvia il livello, 1 è stato giù avviato una volta.</returns>
     public static int caricaPrimoAvvioSettaggiSensibilita()
     {
         return PlayerPrefs.GetInt(caricaNomePlayerGiocante() + "_primoAvvioSensibilita");
     }
 
     /// <summary>
-    /// Salva variabile per controllo del primo avvio per settare il valore della sensibilit� del mouse.
+    /// Salva variabile per controllo del primo avvio per settare il valore della sensibilità del mouse e dello stick.
     /// </summary>
     public static void salvaPrimoAvvioSettaggiSensibilita()
     {
@@ -128,7 +129,7 @@ public class PlayerSettings : MonoBehaviour
     //LIVELLO 1
 
     /// <summary>
-    /// Salva se il livello 1 � stato completato o meno per il profilo del giocatore giocante.
+    /// Salva se il livello 1 è stato completato o meno per il profilo del giocatore giocante.
     /// </summary>
     /// <param name="completato">True completato, false non completato</param>
     public static void salvaProgressoLivello1(bool completato)
@@ -140,7 +141,7 @@ public class PlayerSettings : MonoBehaviour
     }
 
     /// <summary>
-    /// Carica se il livello 1 � stato completato o meno per il profilo del giocatore giocante.
+    /// Carica se il livello 1 è stato completato o meno per il profilo del giocatore giocante.
     /// </summary>
     /// <returns>1 completato, 0 non completato.</returns>
     public static int caricaProgressoLivello1()
@@ -151,7 +152,7 @@ public class PlayerSettings : MonoBehaviour
     //LIVELLO 2
 
     /// <summary>
-    /// Salva se il livello 2 � stato completato o meno per il profilo del giocatore giocante.
+    /// Salva se il livello 2 è stato completato o meno per il profilo del giocatore giocante.
     /// </summary>
     /// <param name="completato">True completato, false non completato</param>
     public static void salvaProgressoLivello2(bool completato)
@@ -163,7 +164,7 @@ public class PlayerSettings : MonoBehaviour
     }
 
     /// <summary>
-    /// Carica se il livello 2 � stato completato o meno per il profilo del giocatore giocante.
+    /// Carica se il livello 2 è stato completato o meno per il profilo del giocatore giocante.
     /// </summary>
     /// <returns>1 completato, 0 non completato.</returns>
     public static int caricaProgressoLivello2()
@@ -198,7 +199,7 @@ public class PlayerSettings : MonoBehaviour
     //GENERE GIOCATORE
 
     /// <summary>
-    /// Salva l'impostazione genere del giocatore. Se la scelta del genere � diversa da neutro, allora ver� salvato anche il genere del modelo<br></br>
+    /// Salva l'impostazione genere del giocatore. Se la scelta del genere è diversa da neutro, allora verrà salvato anche il genere del modelo<br></br>
     /// Valori possibili:<br></br>
     /// <strong>0: Maschio<br>1: Femmina</br><br>2: Neutro</br></strong>
     /// </summary>
@@ -248,21 +249,41 @@ public class PlayerSettings : MonoBehaviour
     //SENSIBILITA' MOUSE
 
     /// <summary>
-    /// Metodo che salva il valore della sensibilit� scelta dal giocatore.
+    /// Metodo che salva il valore della sensibilità scelta dal giocatore.
     /// </summary>
-    /// <param name="sensibilita">Valore della sensibilit� scelta dal giocatore nello slider</param>
+    /// <param name="sensibilita">Valore della sensibilità scelta dal giocatore nello slider</param>
     public static void salvaImpostazioniSensibilita(float sensibilita)
     {
         PlayerPrefs.SetFloat("sensibilita", sensibilita);
     }
 
     /// <summary>
-    /// Metodo che carica il valore della sensibilit� salvata in precedenza dal giocatore.
+    /// Metodo che carica il valore della sensibilità salvata in precedenza dal giocatore.
     /// </summary>
-    /// <returns>Valore della sensibilit�</returns>
+    /// <returns>Valore della sensibilità</returns>
     public static float caricaImpostazioniSensibilita()
     {
         return PlayerPrefs.GetFloat("sensibilita");
+    }
+
+    //SENSIBILITA' STICK
+
+    /// <summary>
+    /// Metodo che salva il valore della sensibilità Stick scelta dal giocatore.
+    /// </summary>
+    /// <param name="sensibilita">Valore della sensibilità Stick scelta dal giocatore nello slider</param>
+    public static void salvaImpostazioniSensibilitaStick(float sensibilita)
+    {
+        PlayerPrefs.SetFloat("sensibilitaStick", sensibilita);
+    }
+
+    /// <summary>
+    /// Metodo che carica il valore della sensibilità Stick salvata in precedenza dal giocatore.
+    /// </summary>
+    /// <returns>Valore della sensibilità</returns>
+    public static float caricaImpostazioniSensibilitaStick()
+    {
+        return PlayerPrefs.GetFloat("sensibilitaStick");
     }
 
     //RISOLUZIONE
@@ -417,4 +438,40 @@ public class PlayerSettings : MonoBehaviour
     {
         return PlayerPrefs.GetInt("framerateLibero") == 0;
     }
-}
+
+
+    /// <summary>
+    /// Il metodo restituisce il nome del controller inserito
+    /// </summary>
+    /// <returns>string del nome del controller</returns>
+    public static string tipologiaControllerInserito()
+    {
+        foreach (string nomeController in Input.GetJoystickNames())
+        {
+            if (nomeController.Contains("XBOX") || nomeController.Contains("Xbox"))
+                return "Xbox";
+            else if (nomeController.Contains("Playstation") || nomeController.Contains("Wireless"))
+                return "Playstation";
+        }
+        return "Generico";
+
+    }
+
+    /// <summary>
+    /// Il metodo cambia gli sprite asset in base alla tipologia di controller inserito
+    /// </summary>
+    /// <param name="testo">TextMeshProUGUI da cambiare sprite asset</param>
+    public static void addattamentoSpriteComandi(TextMeshProUGUI testo)
+    {
+        if (Utility.gamePadConnesso())
+            if (tipologiaControllerInserito() == "Xbox")
+                testo.spriteAsset = Costanti.spriteXbox;
+            else if (tipologiaControllerInserito() == "Playstation")
+                testo.spriteAsset = Costanti.spritePlaystation;
+            else
+                testo.spriteAsset = Costanti.spriteXbox;
+        else
+            testo.spriteAsset = Costanti.spriteTastiera;
+    }
+
+    }

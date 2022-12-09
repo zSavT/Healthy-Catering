@@ -1,26 +1,37 @@
 using System.Collections;
-using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.Video;
-using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.Audio;
+using UnityEngine.Video;
+using UnityEngine.UI;
 using Wilberforce;
+using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
+/// <summary>
+/// Classe per gestire il video tutorial<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Canvas principale scena dove presente il video tutorial
+/// </para>
+/// </summary>
 public class VideoTutorialScript : MonoBehaviour
 {
-    [SerializeField] GameObject cameraGioco;
-    [SerializeField] VideoPlayer videoPlayer;
-    [SerializeField] private AudioMixer audioMIxer;
+    [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private TextMeshProUGUI titolo;
     [Header("Elementi Caricamento Livello")]
     [SerializeField] private Slider sliderCaricamento;        //slider del caricamento della partita
     [SerializeField] private UnityEvent allAvvio;             //serve per eliminare altri elementi in visualilzzazione
 
+    private GameObject cameraGioco;
+    private VideoPlayer videoPlayer;
+    private bool avvioLivello = false;
+
     // Examples of VideoPlayer function
     void Start()
     {
+        cameraGioco = FindObjectOfType<Camera>().gameObject;
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         videoPlayer = cameraGioco.GetComponent<VideoPlayer>();
         /*
@@ -68,15 +79,71 @@ public class VideoTutorialScript : MonoBehaviour
         // its prepareCompleted event.
         videoPlayer.Play();
         StartCoroutine(autoSkip(((float)videoPlayer.length) + 2f));          //Aggiungo un secondo di delay per dare la possibilità ai pc poco performanti di non caricarli troppo
-        audioMIxer.SetFloat("volume", -80f);
+        audioMixer.SetFloat("volume", -80f);
+        avvioLivello = false;
     }
 
+    void Awake()
+    {
+        InputSystem.onDeviceChange += OnDeviceChange;
+    }
+
+    void OnDestroy()
+    {
+        InputSystem.onDeviceChange -= OnDeviceChange;
+    }
+
+    private void Update()
+    {
+        if(!avvioLivello)
+        {
+            this.gameObject.GetComponentsInChildren<Image>()[1].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("X");
+            if (EventSystem.current.currentSelectedGameObject == null)
+                EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
+        }
+    }
+
+    /// <summary>
+    /// Il metodo controlla e gestiscisce le periferiche di Input 
+    /// </summary>
+    /// <param name="device"></param>
+    /// <param name="change"></param>
+    public void OnDeviceChange(InputDevice device, InputDeviceChange change)
+    {
+        switch (change)
+        {
+            case InputDeviceChange.Added:
+                EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
+                break;
+            case InputDeviceChange.Disconnected:
+
+                break;
+            case InputDeviceChange.Reconnected:
+                EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
+                break;
+            case InputDeviceChange.Removed:
+                // Remove from Input System entirely; by default, Devices stay in the system once discovered.
+                break;
+            default:
+                // See InputDeviceChange reference for other event types.
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Il metodo carica il livello del tutorial.
+    /// </summary>
     public void caricaLivelloTutorial()
     {
+        avvioLivello = true;
         titolo.gameObject.SetActive(true);
         StartCoroutine(caricamentoAsincrono(2));
     }
 
+    /// <summary>
+    /// Il metodo dopo avere atteso il tempo passato dalla variabile in input, carica il livello del tutorial.
+    /// </summary>
+    /// <param name="tempo">float tempo da attendere per caricare il livello del tutorial</param>
     IEnumerator autoSkip(float tempo)
     {
         yield return new WaitForSecondsRealtime(tempo);
@@ -100,5 +167,7 @@ public class VideoTutorialScript : MonoBehaviour
             yield return null;
         }
     }
+
+
 
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+
 public class MenuAiuto : MonoBehaviour
 {
     private bool pannelloMenuAiutoAperto;
@@ -15,6 +16,9 @@ public class MenuAiuto : MonoBehaviour
     [SerializeField] private Button tastoIndietro;
     [SerializeField] private TextMeshProUGUI testoNumeroPannelloAttuale;
     [SerializeField] private Image immagineSchermata;
+    [SerializeField] private Image comandiAvantiImmagine;
+    [SerializeField] private Image comandiIndietroImmagine;
+    [SerializeField] private TextMeshProUGUI testoUscita;
 
     private int ultimaPosizione;
 
@@ -22,10 +26,13 @@ public class MenuAiuto : MonoBehaviour
 
     public static bool apertoMenuAiuto = false;//TUTORIAL
 
+    private ControllerInput controllerInput;
+
     void Start()
     {
         pannelloMenuAiuto.SetActive(false);
-
+        controllerInput = new ControllerInput();
+        controllerInput.Enable();
         pannelloMenuAiutoAperto = false;
         tastoAvanti.onClick.AddListener(mostraProssimoMessaggioDiAiuto);
         tastoIndietro.onClick.AddListener(mostraPrecedenteMessaggioDiAiuto);
@@ -37,14 +44,35 @@ public class MenuAiuto : MonoBehaviour
         animazione = immagineSchermata.GetComponent<Animazione>();
     }
 
+    private void Update()
+    {
+        if (pannelloMenuAiutoAperto)
+            if (controllerInput.UI.Avanti.WasPressedThisFrame())
+                mostraProssimoMessaggioDiAiuto();
+            else if (controllerInput.UI.Indietro.WasPressedThisFrame())
+                mostraPrecedenteMessaggioDiAiuto();
+    }
+
+    /// <summary>
+    /// Disattiva il controller alla eliminazione dell'oggetto
+    /// </summary>
+    private void OnDestroy()
+    {
+        controllerInput.Disable();
+    }
+
     public void apriPannelloMenuAiuto()
     {
+        PlayerSettings.addattamentoSpriteComandi(testoAiuto);
         pannelloMenuAiuto.SetActive(true);
         pannelloMenuAiutoAperto = true;
 
         setMediaPannelloAiuto(ultimaPosizione);
 
         apertoMenuAiuto = true; //TUTORIAL
+        PlayerSettings.addattamentoSpriteComandi(testoUscita);
+        comandiIndietroImmagine.GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("L1");
+        comandiAvantiImmagine.GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("R1");
     }
 
     private void setMediaPannelloAiuto(int pagina)

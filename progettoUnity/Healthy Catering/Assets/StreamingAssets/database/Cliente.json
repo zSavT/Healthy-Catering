@@ -26,7 +26,7 @@
     },
     {
         "nome": "Maria",
-        "dieta": 1,
+        "dieta": 0,
         "listaIdPatologie": []
     },
     {
@@ -41,7 +41,7 @@
     },
     {
         "nome": "Herman",
-        "dieta": 1,
+        "dieta": 0,
         "listaIdPatologie": []
     },
     {
@@ -128,7 +128,7 @@
     },
     {
         "nome": "Jason",
-        "dieta": 1,
+        "dieta": 0,
         "listaIdPatologie": [
             0
         ]
@@ -310,7 +310,7 @@
     },
     {
         "nome": "Madonna",
-        "dieta": 1,
+        "dieta": 0,
         "listaIdPatologie": [
             1
         ]
@@ -441,7 +441,7 @@
     },
     {
         "nome": "Michael",
-        "dieta": 2,
+        "dieta": 0,
         "listaIdPatologie": [
             0,
             1

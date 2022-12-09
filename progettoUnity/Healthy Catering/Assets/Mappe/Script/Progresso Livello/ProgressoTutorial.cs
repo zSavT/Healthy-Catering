@@ -12,8 +12,6 @@ public class ProgressoTutorial : MonoBehaviour
 {
     public static bool inTutorial;
     [SerializeField] private Gui guiInGame;
-    [Header("Video tutorial")]
-    [SerializeField] private GameObject canvasVideoTutorial;
 
     [Header("Obbiettivi Tutorial")]
     //testo obbiettivo da cambiare di volta in volta
@@ -32,36 +30,40 @@ public class ProgressoTutorial : MonoBehaviour
     [SerializeField] private ProgressoLivello progressoLivelloClassico;
 
     [SerializeField] private OkBoxVideo okBoxVideo;
-
+    [SerializeField] Transform posizioneDaRaggiungereTutorial;
     [SerializeField] private PlayerSaGiocareFPS playerSaGiocareFPS;
     private bool saGiocareSettato = false;
     [SerializeField] private UnityEvent playerStop;
     private int siOno = 0;
-    [SerializeField] private MovimentoPlayer moviemnto;
+    [SerializeField] private MovimentoPlayer movimento;
 
     [SerializeField] IndicatoreDistanza indicatoreDistanza;
+
+    private ControllerInput controllerInput;
+
     private void Start()
     {
+        controllerInput = new ControllerInput();
+        controllerInput.Enable();
         inTutorial = true;
         saGiocareSettato = false;
-        canvasVideoTutorial.SetActive(true);
         //le disattivo per attivarle solo nel momento opportuno - Questi elementi sono nel loro specifico pannello, che va attivato poi quando serve.
         attivaObbiettiviTutorial();
 
         scritteDaMostrare = new List<string> /*qui vanno inserite le varie scritte per bene*/
         {
-            "Premi <color=#B5D99C>W,A,S,D</color> per camminare.",
-            "Premi <color=#B5D99C>Spazio</color> per saltare.",
-            "Premi <color=#B5D99C>Shift</color> per correre.",
-            "Vai a parlare con tuo <color=#B5D99C>Zio</color>.",
-            "Raggiungi il <color=#B5D99C>Ristorante</color>.",
+            "Premi " + Costanti.tastoWASD + " per camminare e raggiungi il " + Costanti.coloreVerde + "cono" + Costanti.fineColore + " stradale.",
+            "Premi " + Costanti.tastoSpazio + " per saltare.",
+            "Premi " + Costanti.tastoShift + " per correre.",
+            "Vai a parlare con tuo " + Costanti.coloreVerde + "zio" + Costanti.fineColore + ".",
+            "Raggiungi il " + Costanti.coloreVerde + "Ristorante" + Costanti.fineColore + ".",
             "Servi un piatto idoneo al <color=#B5D99C>cliente</color>.",
             "Servi un piatto non idoneo al <color=#B5D99C>cliente</color>.",
             "Controlla il <color=#B5D99C>Magazzino</color>.",
             "Compra <color=#B5D99C>Ingredienti</color> dal negozio.",
-            "Chiedi informazioni alle <color=#B5D99C>Persone</color>.",
-            "Apri il ricettario con il tasto " + Costanti.coloreVerde + "R" + Costanti.fineColore + ".",
-            "Apri il menu aiuto con il tasto " + Costanti.coloreVerde + "H" + Costanti.fineColore + "."
+            "Chiedi informazioni alle " + Costanti.coloreVerde + "Persone" + Costanti.fineColore + ".",
+            "Apri il ricettario con il tasto " + Costanti.tastoR + ".",
+            "Apri il menu aiuto con il tasto " + Costanti.tastoH + "."
         };
 
         numeroScritteMostrate = 0;
@@ -71,9 +73,6 @@ public class ProgressoTutorial : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Attuale indice");
-        Debug.Log(numeroScritteMostrate);
-        Debug.Log(OkBoxVideo.meccanicheServireNonCompatibileMostrato);
         if (!saGiocareSettato)
         {
             if (PlayerSaGiocareFPS.siOnoSettato())
@@ -94,11 +93,13 @@ public class ProgressoTutorial : MonoBehaviour
             else
             {
                 playerStop.Invoke();
+                movimento.bloccaMovimento();
                 playerSaGiocareFPS.apriPannelloPlayerSaGiocareFPS();
             }
         }
         else
         {
+            PlayerSettings.addattamentoSpriteComandi(obbiettivo1Testo);
             for (int i = 0; i < scritteDaMostrare.Count; i++)
             {
                 if (i == numeroScritteMostrate)
@@ -111,58 +112,123 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.WASDmostrato)
                     {
+                        playerSaGiocareFPS.distruggiOggetto();
+                        movimento.bloccaMovimento();
+                        controllerInput.Disable();
                         okBoxVideo.apriOkBoxVideo(Costanti.WASD);
                         OkBoxVideo.WASDmostrato = true;
                     }
-
-                    if (CheckTutorial.checkWASDeMouse()) { numeroScritteMostrate++; }
+                    else if (!OkBoxVideo.okBoxVideoAperto)
+                    {
+                        if(!MenuInGame.menuAperto)
+                        {
+                            movimento.sbloccaMovimento();
+                            indicatoreDistanza.impostaSizeWayPoint(new Vector3(0.65f, 0.65f, 0.65f));
+                            indicatoreDistanza.setTarget("Cono");
+                        }
+                        if (Interactor.nelRistorante || MenuInGame.menuAperto)
+                            indicatoreDistanza.setTarget("reset");
+                        else
+                            indicatoreDistanza.setTarget("Cono");
+                        controllerInput.Enable();
+                    }
+                        
+                    if (CheckTutorial.checkWASDeMouse(controllerInput,movimento.gameObject.transform , posizioneDaRaggiungereTutorial)) 
+                    { 
+                        numeroScritteMostrate++;
+                    }
                 }
                 else if (numeroScritteMostrate == 1)
                 {
                     if (!OkBoxVideo.saltoMostrato)
                     {
+                        indicatoreDistanza.setTarget("reset");
+                        indicatoreDistanza.impostaSizeWayPoint(new Vector3(1, 1, 1));
+                        movimento.bloccaMovimento();
+                        controllerInput.Disable();
                         okBoxVideo.apriOkBoxVideo(Costanti.salto);
+
                         OkBoxVideo.saltoMostrato = true;
                     }
-
-                    if (CheckTutorial.checkSalto()) { if(moviemnto.perTerra) numeroScritteMostrate++; }
+                    else if(!OkBoxVideo.okBoxVideoAperto)
+                    {
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
+                        controllerInput.Enable();
+                    }
+                    if (CheckTutorial.checkSalto(controllerInput)) 
+                    { 
+                        if(movimento.perTerra) 
+                           numeroScritteMostrate++; 
+                    }
                 }
                 else if (numeroScritteMostrate == 2)
                 {
                     if (!OkBoxVideo.sprintMostrato)
                     {
+                        movimento.bloccaMovimento();
+                        controllerInput.Disable();
                         okBoxVideo.apriOkBoxVideo(Costanti.sprint);
                         OkBoxVideo.sprintMostrato = true;
                     }
-
-                    if (CheckTutorial.checkSprint()) { numeroScritteMostrate++; }
+                    else if (!OkBoxVideo.okBoxVideoAperto)
+                    {
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
+                        controllerInput.Enable();
+                    }
+                    if (CheckTutorial.checkSprint(controllerInput)) 
+                    { 
+                        numeroScritteMostrate++; 
+                    }
                 }
                 else if (numeroScritteMostrate == 3)
                 {
                     if (!OkBoxVideo.parlaZioMostrato)
                     {
+                        if(playerSaGiocareFPS != null)
+                            playerSaGiocareFPS.distruggiOggetto();
+                        movimento.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.parlaZio);
                         InterazionePassanti.parlatoConZio = false;
                     }
-                    if(OkBoxVideo.parlaZioMostrato && !Interactor.nelRistorante)
+                    else if (!OkBoxVideo.okBoxVideoAperto)
+                    {
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
+                        controllerInput.Enable();
+                    }
+                    if (OkBoxVideo.parlaZioMostrato && !Interactor.nelRistorante)
                     {
                         indicatoreDistanza.setTarget("zio");
-                    } else
+                    }
+                    if ((Interactor.nelRistorante || MenuInGame.menuAperto) || OkBoxVideo.okBoxVideoAperto)
                     {
                         indicatoreDistanza.setTarget("reset");
                     }
-                    if (CheckTutorial.checkParlaConZio()) { indicatoreDistanza.setTarget("reset"); numeroScritteMostrate++; }
+                    if (CheckTutorial.checkParlaConZio())
+                    { 
+                        indicatoreDistanza.setTarget("reset"); 
+                        numeroScritteMostrate++; 
+                    }
                 }
                 else if (numeroScritteMostrate == 4)
                 {
                     if (!OkBoxVideo.vaiAlRistoranteMostrato)
                     {
+                        movimento.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.vaiAlRistorante);
 
-                    } else
+                    } else if (!OkBoxVideo.okBoxVideoAperto)
                     {
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
                         indicatoreDistanza.setTarget("ristorante");
                     }
+                    if (MenuInGame.menuAperto || OkBoxVideo.okBoxVideoAperto)
+                        indicatoreDistanza.setTarget("reset");
+                    else
+                        indicatoreDistanza.setTarget("ristorante");
 
                     if (CheckTutorial.checkVaiRistorante())
                     {
@@ -175,34 +241,40 @@ public class ProgressoTutorial : MonoBehaviour
                     indicatoreDistanza.setTarget("reset");
                     if (!OkBoxVideo.meccanicheServireCompatibileMostrato)
                     {
+                        iTween.Destroy(posizioneDaRaggiungereTutorial.gameObject);
+                        movimento.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.meccanicheServireCompatibile);
                         OkBoxVideo.meccanicheServireCompatibileMostrato = true;
-                    }
+                    } else if (!OkBoxVideo.okBoxVideoAperto)
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
 
-                    if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
-                        if (giocatore != null)
-                            if (CheckTutorial.checkServitoPiattoCompatibile(giocatore))
-                            {
-                                guiInGame.aggiornaValorePunteggioSenzaAnimazione(giocatore.punteggio[0]);
-                                giocatore.setInventarioLivello(0.5);
-                                numeroScritteMostrate++;
-                            }
+                    if (giocatore != null)
+                        if (CheckTutorial.checkServitoPiattoCompatibile(giocatore))
+                        {
+                            guiInGame.aggiornaValorePunteggioSenzaAnimazione(giocatore.punteggio[0]);
+                            giocatore.setInventarioLivello(0.5);
+                            numeroScritteMostrate++;
+                        }
                 }
                 else if (numeroScritteMostrate == 6)
                 {
                     if (!OkBoxVideo.meccanicheServireNonCompatibileMostrato)
                     {
+                        movimento.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.meccanicheServireNonCompatibile);
                         OkBoxVideo.meccanicheServireNonCompatibileMostrato = true;
                     }
+                    else if (!OkBoxVideo.okBoxVideoAperto)
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
 
-                    if (CheckTutorial.checkIsAllaCassa()) //TODO implementazione
-                        if (giocatore != null)
-                            if (CheckTutorial.checkServitoPiattoNonCompatibile(giocatore))
-                            {
-                                guiInGame.aggiornaValorePunteggioSenzaAnimazione(giocatore.punteggio[0]);
-                                numeroScritteMostrate++;
-                            }
+                    if (giocatore != null)
+                        if (CheckTutorial.checkServitoPiattoNonCompatibile(giocatore))
+                        {
+                            guiInGame.aggiornaValorePunteggioSenzaAnimazione(giocatore.punteggio[0]);
+                            numeroScritteMostrate++;
+                        }
                 }
 
                 else if (numeroScritteMostrate == 7)
@@ -210,44 +282,52 @@ public class ProgressoTutorial : MonoBehaviour
                     if (!OkBoxVideo.finitiIngredientiMostrato)
                     {
                         PannelloMagazzino.pannelloMagazzinoApertoPerTutorial = false;
+                        movimento.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.finitiIngredienti);
                         OkBoxVideo.finitiIngredientiMostrato = true;
+                    } else if (!OkBoxVideo.okBoxVideoAperto)
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
+
+                    if (CheckTutorial.checkVistoMagazzino())
+                    { 
+                        numeroScritteMostrate++; 
                     }
-
-                    if (CheckTutorial.checkVistoMagazzino()) { numeroScritteMostrate++; }
-
-                    //nel magazzino dovremmo mettere un ingrediente che non e' presente nella ricetta ne del 
-                    //Piatto compatibile ne in quella del piatto non compatibile, cosi che quando il giocatore 
-                    //apre il magazzino non sia vuoto del tutto, se no sembra che il magazzino abbia solo la 
-                    //funzione di avvisarti che non hai pi� ingredienti
-                    //magari possiamo cambiare la scritta a "il magazzino sarebbe cosi se ci fossero degli
-                    //ingredienti" e poi far scomparire l'ingrediente temp che abbiamo inserito dopo 5 secondi
                 }
                 else if (numeroScritteMostrate == 8)
                 {
                     if (!OkBoxVideo.doveEIlNegozioMostrato)
                     {
+                        movimento.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.doveEIlNegozio);
-                    }
-                    if(!Interactor.nelRistorante && OkBoxVideo.doveEIlNegozioMostrato)
+                    } else if (!OkBoxVideo.okBoxVideoAperto)
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
+
+                    if (!Interactor.nelRistorante && OkBoxVideo.doveEIlNegozioMostrato)
                     {
                         indicatoreDistanza.setTarget("negozio");
                     } else
                     {
                         indicatoreDistanza.setTarget("reset");
                     }
-                    if (CheckTutorial.checkIsNelNegozio()) //TODO implementazione
-                        if (CheckTutorial.checkCompratiIngredienti(giocatore)) { numeroScritteMostrate++; };
+                    if (CheckTutorial.checkCompratiIngredienti(giocatore)) 
+                    { 
+                        numeroScritteMostrate++; 
+                    }
                 }
                 else if (numeroScritteMostrate == 9)
                 {
                     if (!OkBoxVideo.interazioneNPCMostrato)
                     {
+                        movimento.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.interazioneNPC);
                         OkBoxVideo.interazioneNPCMostrato = true;
 
                         indicatoreDistanza.setTarget("reset");
-                    }
+                    } else if (!OkBoxVideo.okBoxVideoAperto)
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
 
                     if (CheckTutorial.checkParlatoConNPC())
                     {
@@ -259,22 +339,35 @@ public class ProgressoTutorial : MonoBehaviour
                 {
                     if (!OkBoxVideo.apriRicettarioMostrato)
                     {
+                        movimento.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.apriRicettario);
                         OkBoxVideo.apriRicettarioMostrato = true;
-                    }
-
-                    if (CheckTutorial.checkMostratoRicettario()) { MenuAiuto.apertoMenuAiuto = false; numeroScritteMostrate++; };
+                    } else if (!OkBoxVideo.okBoxVideoAperto)
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
+                    if (CheckTutorial.checkMostratoRicettario()) 
+                    { 
+                        MenuAiuto.apertoMenuAiuto = false; 
+                        numeroScritteMostrate++;
+                    };
                 }
                 else if (numeroScritteMostrate == 11)
                 {
 
                     if (!OkBoxVideo.apriMenuAiutoMostrato)
                     {
+                        movimento.bloccaMovimento();
                         okBoxVideo.apriOkBoxVideo(Costanti.apriMenuAiuto);
                         OkBoxVideo.apriMenuAiutoMostrato = true;
                     }
+                    else if (!OkBoxVideo.okBoxVideoAperto)
+                        if (!MenuInGame.menuAperto)
+                            movimento.sbloccaMovimento();
 
-                    if (CheckTutorial.checkMostratoMenuAiuto()) { numeroScritteMostrate++; };
+                    if (CheckTutorial.checkMostratoMenuAiuto()) 
+                    { 
+                        numeroScritteMostrate++;
+                    };
                 }
                 else
                 {
@@ -298,6 +391,8 @@ public class ProgressoTutorial : MonoBehaviour
 
     }
 
+
+
     /// <summary>
     /// Metodo che attiva il TextMeshProUGUI dell'obbiettivo e quello del toggle<br></br>
     /// </summary>
@@ -306,8 +401,13 @@ public class ProgressoTutorial : MonoBehaviour
         obbiettivo1Testo.gameObject.SetActive(true);
     }
 
+    /// <summary>
+    /// Il metodo imposta il testo dell'obbiettivo da raggiungere
+    /// </summary>
+    /// <param name="output">string testo da inserire</param>
     private void setObiettivoTesto(string output)
     {
         obbiettivo1Testo.text = output;
+        PlayerSettings.addattamentoSpriteComandi(obbiettivo1Testo);
     }
 }

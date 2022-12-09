@@ -3,20 +3,32 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using System.Linq;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
 
+
+/// <summary>
+/// Classe per gestire l'interazione con gli NPC passivi<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Modello NPC passivo interno (non contenitore)
+/// </para>
+/// </summary>
 public class InterazionePassanti : MonoBehaviour
 {
     //UNITY
+    [Header("Elementi Interazione Passanti")]
     [SerializeField] private GameObject pannelloInterazionePassanti;
-    private bool pannelloInterazionePassantiAperto;
+    [SerializeField] private Image immagineComando;
+    [SerializeField] private TextMeshProUGUI testoUscita;
     [SerializeField] private Button bottoneAvanti;
     [SerializeField] private TextMeshProUGUI testoInterazionePassanti;
+    [Header("Audio interazione")]
     [SerializeField] private AudioSource suonoAperturaDialogo;
     [SerializeField] private AudioSource suonoDialogo;
+
+
+    private bool pannelloInterazionePassantiAperto;
 
     //TROVA STRINGHE
     /*
@@ -41,8 +53,12 @@ public class InterazionePassanti : MonoBehaviour
     public static bool parlatoConZio = false;
     private int numeroMassimoDiCaratteriPerSchermata = 90;
 
+    private ControllerInput controllerInput;
+
     private void Start()
     {
+        controllerInput = new ControllerInput();
+        controllerInput.Enable();
         pannelloInterazionePassanti.SetActive(false);
         pannelloInterazionePassantiAperto = false;
         
@@ -58,11 +74,25 @@ public class InterazionePassanti : MonoBehaviour
         {
             modificaInteractableBottoneInBasePosizioneScrittaMostrata();
         }
+        if (pannelloInterazionePassantiAperto)
+            if (controllerInput.UI.Submit.WasPressedThisFrame() && !controlloNumeroPagine())
+                mostraProssimaScrittaDaMostrateOra();
     }
 
+    /// <summary>
+    /// Disattiva il controller alla eliminazione dell'oggetto
+    /// </summary>
+    private void OnDestroy()
+    {
+        controllerInput.Disable();
+    }
+
+    /// <summary>
+    /// Il metodo controlla il numero di pagine rimanenti di testo e disattiva o attiva il bottone per andare avanti.
+    /// </summary>
     private void modificaInteractableBottoneInBasePosizioneScrittaMostrata()
     {
-        if (indiceScrittaMostrataOra == scritteMostrateOra.Count - 1)
+        if (controlloNumeroPagine())
         {
             bottoneAvanti.interactable = false;
         }
@@ -72,6 +102,18 @@ public class InterazionePassanti : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo controlla il numero di pagine mancanti da mostrare
+    /// </summary>
+    /// <returns>True: non ci sono pagine successive, False: ci sono pagine da mostrare</returns>
+    private bool controlloNumeroPagine()
+    {
+        return indiceScrittaMostrataOra == scritteMostrateOra.Count - 1;
+    }
+
+    /// <summary>
+    /// Il metodo carica e gestisce tutti i testi dell'interazioni con i passanti in base al livello selezionato.
+    /// </summary>
     private void getTutteLeScritteInterazione()
     {
         string filePath = "";
@@ -198,11 +240,24 @@ public class InterazionePassanti : MonoBehaviour
             parlatoConZio = true;
             parlatoConNPC = false;
         }
+        immagineComando.GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("X");
+        PlayerSettings.addattamentoSpriteComandi(testoUscita);
     }
 
     private List<string> trovaScritteDaMostrare(string nomeNPC)
     {
-        if (!isNPCzio(nomeNPC))
+        if (isNPCzio(nomeNPC))
+        {
+            return Costanti.scritteZio;
+        }
+        else if (nomeNPC.Equals("EasterEgg1"))
+        {
+            return Costanti.easterEgg1Frase;
+        } else if (nomeNPC.Equals("EasterEgg2"))
+        {
+            return Costanti.easterEgg2Frase;
+        }
+        else 
         {
             //se l'npc e' gia presente nel dizionario
             foreach ((List<string>, List<string>) chiaveValore in scritteENPCsAssegnato)
@@ -220,10 +275,6 @@ public class InterazionePassanti : MonoBehaviour
             ultimoNPCInteragitoNuovo = true;
 
             return scritteENPCsAssegnato[numeroDiScritteAssegnate].Item1;
-        }
-        else
-        {
-            return Costanti.scritteZio;
         }
     }
 
@@ -252,6 +303,9 @@ public class InterazionePassanti : MonoBehaviour
         return pannelloInterazionePassantiAperto;
     }
 
+    /// <summary>
+    /// Il metodo chiude il pannello di interazione passanti 
+    /// </summary>
     public void chiudiPannelloInterazionePassanti()
     {
         pannelloInterazionePassanti.SetActive(false);

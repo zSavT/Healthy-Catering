@@ -14,6 +14,7 @@ public class Gui : MonoBehaviour
     [Header("Testo valori")]
     [SerializeField] private TextMeshProUGUI soldiTesto;
     [SerializeField] private TextMeshProUGUI punteggioTesto;
+    [SerializeField] private TextMeshProUGUI testoInterazione;
 
     [Header("Animazioni")]
     [SerializeField] private ParticleSystem animazioneSoldi;
@@ -30,6 +31,15 @@ public class Gui : MonoBehaviour
     void start()
     {
         bloccaAnimazioniParticellari();
+    }
+
+    /// <summary>
+    /// Il metodo restituisce il testo dell'interazione nella GUI
+    /// </summary>
+    /// <returns>TextMeshProUGUI uscita del testo</returns>
+    public TextMeshProUGUI getTestoInterazione()
+    {
+        return testoInterazione;
     }
 
     /// <summary>

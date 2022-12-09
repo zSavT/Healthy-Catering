@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
 using Newtonsoft.Json;
 
 public class Player
@@ -103,6 +102,10 @@ public class Player
         return (this.nome.Equals(((Player)obj).nome));
     }
 
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
 
     public override string ToString()
     {
@@ -170,7 +173,7 @@ public class Player
         punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Math.Abs(punteggioDaAggiungere), trovaPercentualeNutriScore(nutriScore));
         punteggioDaAggiungere += Utility.calcolaCostoPercentuale(Math.Abs(punteggioDaAggiungere), trovaPercentualeEcoScore(costoEco));
         this.punteggio [livello] += (int)punteggioDaAggiungere;
-        Debug.Log(this.punteggio[livello]);
+        Debug.Log("Punteggio: " + this.punteggio[livello]);
     }
 
     public float trovaPercentualeNutriScore(int nutriScore)

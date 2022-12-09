@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class PannelloMostraRicette : MonoBehaviour
 {
     [SerializeField] private GameObject pannelloMostraRicette;
+    [SerializeField] private GameObject tornaIndietroTasto;
     private bool pannelloMostraRicetteAperto = false;
     [SerializeField] private TextMeshProUGUI titoloPannelloMostraRicette;
     [SerializeField] private TextMeshProUGUI listaRicettePannelloMostraRicette;
@@ -20,6 +22,7 @@ public class PannelloMostraRicette : MonoBehaviour
 
         pannelloMostraRicette.SetActive(true);
         pannelloMostraRicetteAperto = true;
+        EventSystem.current.SetSelectedGameObject(tornaIndietroTasto);
     }
 
     private string creaStringaRicetteRealizzabili (List <Piatto> piattiRealizzabili)

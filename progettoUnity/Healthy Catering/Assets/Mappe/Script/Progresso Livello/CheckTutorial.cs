@@ -1,45 +1,53 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Classe per la gestione delle azioni del Tutorial in game
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Nessun GameObject
+/// </para>
+/// </summary>
 public class CheckTutorial : MonoBehaviour
 {
-    //check WASD e mouse
-    private static bool premutoW = false;
-    private static bool premutoA = false;
-    private static bool premutoS = false;
-    private static bool premutoD = false;
-
-    public static bool checkWASDeMouse()
+    public static bool tastiMovimentoPremuti = false;
+    public static bool checkWASDeMouse(ControllerInput controllerInput, Transform posizionePlayer, Transform posizioneTarget)
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if(!MenuInGame.menuAperto)
         {
-            premutoW = true;
+            if (!tastiMovimentoPremuti)
+                tastiMovimentoPremuti = controllerInput.Player.Movimento.WasPressedThisFrame();
+            else
+                return Vector3.Distance(posizionePlayer.position, posizioneTarget.position) < 1.2f;
+            /*
+            if (Vector3.Distance(posizionePlayer.position, posizioneTarget.position) < 1.2f)
+            {
+                Debug.Log("Raggiunto");
+                return controllerInput.Player.Movimento.WasPressedThisFrame();
+            }
+               */
+
         }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            premutoA = true;
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            premutoS = true;
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            premutoD = true;
-        }
-        return premutoW && premutoA && premutoS && premutoD;
+            
+        return false;
     }
 
-    public static bool checkSalto()
+    public static bool checkSalto(ControllerInput controllerInput)
     {
-        return Input.GetKeyUp(KeyCode.Space);
+        if (!MenuInGame.menuAperto)
+            return controllerInput.Player.Salto.WasReleasedThisFrame();
+        return false;
     }
 
-    public static bool checkSprint()
+    public static bool checkSprint(ControllerInput controllerInput)
     {
-        return Input.GetKeyUp(KeyCode.LeftShift);
+        if (!MenuInGame.menuAperto)
+        {
+            return controllerInput.Player.Corsa.WasReleasedThisFrame();
+        }
+            
+        return false;
     }
+
+
 
     public static bool checkParlaConZio()
     {
@@ -51,11 +59,6 @@ public class CheckTutorial : MonoBehaviour
         float posizionePlayer = GameObject.FindGameObjectWithTag("Player").transform.position.y;
 
         return posizionePlayer < -500; // siccome e' nel ristorante la y e' minore di -500
-    }
-
-    public static bool checkIsAllaCassa()
-    {
-        return true; //TODO
     }
 
     public static bool checkServitoPiattoCompatibile(Player giocatore)
@@ -73,10 +76,6 @@ public class CheckTutorial : MonoBehaviour
         return PannelloMagazzino.pannelloMagazzinoApertoPerTutorial;
     }
     
-    public static bool checkIsNelNegozio()
-    {
-        return true; //TODO
-    }
 
     public static bool checkCompratiIngredienti(Player giocatore)
     {

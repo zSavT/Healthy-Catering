@@ -38,6 +38,11 @@ public class Patologia
             && (this.descrizione.Equals(((Patologia)obj).descrizione));
     }
 
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
     public override string ToString()
     {
         return "Patologia:" + "\n\t" + this.nome + "\n" + "Descrizione: " + "\n\t" + this.descrizione + "\n" + "Fine patologia " + this.nome;

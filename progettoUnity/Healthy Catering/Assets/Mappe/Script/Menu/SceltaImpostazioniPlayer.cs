@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using TMPro;
 using Wilberforce;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Classe per la gestione delle impostazioni presenti nel menu del profilo utente per la modifica e selezione.<para>
@@ -13,16 +14,19 @@ using Wilberforce;
 /// </summary>
 public class SceltaImpostazioniPlayer : MonoBehaviour
 {
-
+    [Header("Pannelli Elementi")]
     [SerializeField] private GameObject elementiGenereNeutro;
-    [SerializeField] private GameObject tastoIndietro;
-    [SerializeField] private TMP_InputField inputFieldNomeGiocatore;
-    [SerializeField] private GameObject nomeGiaPreso;
     [SerializeField] private GameObject elementiSalvataggio;
     [SerializeField] private GameObject elementiConferma;
+    [Header("Altro")]
+    [SerializeField] private TMP_InputField inputFieldNomeGiocatore;
+    [SerializeField] private GameObject nomeGiaPreso;
+    [SerializeField] private GameObject tastoIndietro;
     [SerializeField] private Button bottoneSalva;
-    [SerializeField] private Camera cameraGioco;
     [SerializeField] private AudioSource suonoClick;
+    private ControllerInput controllerInput;
+    private Camera cameraGioco;
+    private GameObject ultimoElementoSelezionato;
     private List<Player> player = new List<Player>();
     private List<string> nomiPlayerPresenti = new List<string>();
     private string nomeGiocatoreScritto;
@@ -34,13 +38,101 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        inizializzaElementiIniziali();
+    }
+
+    private void Update()
+    {
+        controlloElementoDaSelezionare();
+        if (EventSystem.current.currentSelectedGameObject == inputFieldNomeGiocatore.gameObject)
+            if (controllerInput.UI.Navigate.WasPressedThisFrame())
+                EventSystem.current.SetSelectedGameObject(FindObjectOfType<TMP_Dropdown>().gameObject);
+    }
+
+    void Awake()
+    {
+        InputSystem.onDeviceChange += OnDeviceChange;
+    }
+
+    private void OnDisable()
+    {
+        controllerInput.Disable();
+    }
+
+    void OnDestroy()
+    {
+        InputSystem.onDeviceChange -= OnDeviceChange;
+    }
+
+    /// <summary>
+    /// Il metodo controlla e gestiscisce le periferiche di Input 
+    /// </summary>
+    /// <param name="device"></param>
+    /// <param name="change"></param>
+    public void OnDeviceChange(InputDevice device, InputDeviceChange change)
+    {
+        switch (change)
+        {
+            case InputDeviceChange.Added:
+                // New Device.
+                break;
+            case InputDeviceChange.Disconnected:
+                ultimoElementoSelezionato = EventSystem.current.currentSelectedGameObject;
+                break;
+            case InputDeviceChange.Reconnected:
+                aggioraEventSystemPerControllerConnesso(ultimoElementoSelezionato);
+                break;
+            case InputDeviceChange.Removed:
+                // Remove from Input System entirely; by default, Devices stay in the system once discovered.
+                break;
+            default:
+                // See InputDeviceChange reference for other event types.
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Il metodo inizializza tutti gli elementi iniziali per il menu
+    /// </summary>
+    private void inizializzaElementiIniziali()
+    {
+        cameraGioco = FindObjectOfType<Camera>();
+        controllerInput = new ControllerInput();
+        controllerInput.Enable();
         PuntatoreMouse.abilitaCursore();
-        nomeGiocatoreScritto = "";
+        nomeGiocatoreScritto = string.Empty;
         cameraGioco.GetComponent<Colorblind>().Type = PlayerSettings.caricaImpostazioniDaltonismo();
         player = new List<Player>();
         genereNeutroScelto = false;
         disattivaElementi();
         controlloEsistenzaProfiliPlayer();
+        controlloNomeEsistente();
+    }
+
+    /// <summary>
+    /// Il metodo se un GamePad è connesso, controlla se l'eventsystem.currentSelectedGameObject risulta nullo ed imposta quello corretto
+    /// </summary>
+    private void controlloElementoDaSelezionare()
+    {
+        if (Utility.gamePadConnesso())
+            if (EventSystem.current.currentSelectedGameObject == null)
+                if (Utility.qualsiasiTastoPremuto(controllerInput))
+                    if (elementiConferma.activeSelf && !elementiSalvataggio.activeSelf)
+                        EventSystem.current.SetSelectedGameObject(elementiConferma.GetComponentsInChildren<Button>()[1].gameObject);
+                    else if (!elementiConferma.activeSelf && elementiSalvataggio.activeSelf)
+                        EventSystem.current.SetSelectedGameObject(elementiSalvataggio.GetComponentsInChildren<Button>()[1].gameObject);
+                    else if (!elementiConferma.activeSelf && !elementiSalvataggio.activeSelf)
+                        EventSystem.current.SetSelectedGameObject(FindObjectOfType<TMP_Dropdown>().gameObject);
+    }
+
+    /// <summary>
+    /// Il metodo imposta come elemento selzionato dell'EventSystem l'oggetto passato in input
+    /// </summary>
+    /// <param name="elementoDaSelezionare">GameObject da impostare come elemento selezionato</param>
+    private void aggioraEventSystemPerControllerConnesso(GameObject elementoDaSelezionare)
+    {
+        if (Utility.gamePadConnesso())
+            EventSystem.current.SetSelectedGameObject(elementoDaSelezionare);
     }
 
     /// <summary>
@@ -55,11 +147,11 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     }
 
     /// <summary>
-    /// Controlla se il nome inserito dall'utente, corrisponde con uno gi� presente nella lista.
+    /// Controlla se il nome inserito dall'utente, corrisponde con uno già presente nella lista.
     /// </summary>
     public void controlloNomeEsistente()
     {
-        if (nomeGiocatoreScritto != "")
+        if (nomeGiocatoreScritto != string.Empty)
         {
             bottoneSalva.interactable = true;
             if (PlayerSettings.caricaPrimoAvvio() == 1)
@@ -151,7 +243,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
 
     /// <summary>
     /// Salva tutte le impostazioni fatte dal giocatore, salva il giocatore su file<br></br>
-    /// Se la scena � stata caricata dal livello tutorial, dopo il salvataggio ritorna al livello tutorial.<br></br>
+    /// Se la scena è stata caricata dal livello tutorial, dopo il salvataggio ritorna al livello tutorial.<br></br>
     /// In caso contrario carica la scena del menu principale. Utilizza 
     /// <see cref="PlayerSettings"/>.
     /// </summary>

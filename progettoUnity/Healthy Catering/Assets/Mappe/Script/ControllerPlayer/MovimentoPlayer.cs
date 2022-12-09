@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Classe per la gestione del movimento del giocatore<para>
@@ -9,18 +10,17 @@ using UnityEngine.Events;
 /// </summary>
 public class MovimentoPlayer : MonoBehaviour
 {
-    private CharacterController controller;
+    private CharacterController characterController;
+    private ControllerInput controllerInput;
 
     [Header("Movimento")]
     private ModelloPlayer gestoreModelli;
     [SerializeField] private float velocitaBase = 5f;
     [SerializeField] private float velocitaSprint = 8f;
-    [SerializeField] private KeyCode tastoSprint;
     private float velocitaAttuale = 0;
     private bool isSprinting;
 
     [Header("Salto")]
-    [SerializeField] private KeyCode tastoSalto;
     [SerializeField] private float altezzaSalto = 0.35f;
     [SerializeField] private float distanzaPavimento = 0.4f;
     [SerializeField] private float gravita = -9.8f;
@@ -38,20 +38,12 @@ public class MovimentoPlayer : MonoBehaviour
     private float z;
     private Vector3 movimento;
     private bool puoMuoversi;
-    public UnityEvent lockUnlockMovimento;
+    [SerializeField] private ControlloMouse movimentoVisuale;
     private Animator controllerAnimazione;
 
     void Start()
     {
-        controlloPavimento = GameObject.FindGameObjectWithTag("CheckPavimento").transform;
-        controller = GetComponent<CharacterController>();
-        puoMuoversi = true;
-        gestoreModelli = GetComponent<ModelloPlayer>();
-        if (PlayerSettings.caricaGenereModello3D(PlayerSettings.caricaNomePlayerGiocante()) == 1)
-            controllerAnimazione = gestoreModelli.getModelloAttivo().GetComponent<Animator>();
-        else if (PlayerSettings.caricaGenereModello3D(PlayerSettings.caricaNomePlayerGiocante()) == 0)
-            controllerAnimazione = gestoreModelli.getModelloAttivo().GetComponent<Animator>();
-
+        inizializzazioneElementi();
     }
 
     void Update()
@@ -77,13 +69,35 @@ public class MovimentoPlayer : MonoBehaviour
     }
 
     /// <summary>
-    /// Blocca o sblocca il movimento
+    /// Disattiva il controller alla eliminazione dell'oggetto
     /// </summary>
-    public void lockUnlockVisuale()
+    private void OnDestroy()
     {
-        this.puoMuoversi = !puoMuoversi;
-        lockUnlockMovimento.Invoke();
+        controllerInput.Disable();
     }
+
+    /// <summary>
+    /// Inizializza i valori iniziali degli oggetti della classe
+    /// </summary>
+    private void inizializzazioneElementi()
+    {
+        controllerInput = new ControllerInput();
+        controllerInput.Enable();
+        controlloPavimento = GameObject.FindGameObjectWithTag("CheckPavimento").transform;
+        characterController = GetComponent<CharacterController>();
+        puoMuoversi = true;
+        gestoreModelli = GetComponent<ModelloPlayer>();
+        if (PlayerSettings.caricaGenereModello3D(PlayerSettings.caricaNomePlayerGiocante()) == 1)
+            controllerAnimazione = gestoreModelli.getModelloAttivo().GetComponent<Animator>();
+        else if (PlayerSettings.caricaGenereModello3D(PlayerSettings.caricaNomePlayerGiocante()) == 0)
+            controllerAnimazione = gestoreModelli.getModelloAttivo().GetComponent<Animator>();
+    }
+
+    public bool getPuoMuoversi()
+    {
+        return puoMuoversi;
+    }
+
 
     /// <summary>
     /// Blocca la possibilità di muoversi del player
@@ -91,6 +105,17 @@ public class MovimentoPlayer : MonoBehaviour
     public void bloccaMovimento()
     {
         this.puoMuoversi = false;
+        movimentoVisuale.bloccaVisuale();
+    }
+
+
+    /// <summary>
+    /// Il metodo setta la variabile booleana puoMuoversi.
+    /// </summary>
+    /// <param name="movimentoAttivo">booleano</param>
+    public void setPuoMuoversi(bool movimentoAttivo)
+    {
+        puoMuoversi = movimentoAttivo;
     }
 
     /// <summary>
@@ -99,6 +124,7 @@ public class MovimentoPlayer : MonoBehaviour
     public void sbloccaMovimento()
     {
         this.puoMuoversi = true;
+        movimentoVisuale.attivaMovimento();
     }
 
     /// <summary>
@@ -106,7 +132,7 @@ public class MovimentoPlayer : MonoBehaviour
     /// </summary>
     private void movimentoEffettivo()
     {
-        controller.Move(movimento * velocitaAttuale * Time.deltaTime);
+        characterController.Move(movimento * velocitaAttuale * Time.deltaTime);
     }
 
     /// <summary>
@@ -114,8 +140,8 @@ public class MovimentoPlayer : MonoBehaviour
     /// </summary>
     private void controlloTastiMovimento()
     {
-        x = Input.GetAxis("Horizontal");
-        z = Input.GetAxis("Vertical");
+        x = controllerInput.Player.Movimento.ReadValue<Vector2>().x;
+        z = controllerInput.Player.Movimento.ReadValue<Vector2>().y;
         movimento = transform.right * x + transform.forward * z;
         if (z > 0)
         {
@@ -168,7 +194,7 @@ public class MovimentoPlayer : MonoBehaviour
     }
 
     /// <summary>
-    /// Controlla la velocit� dei movimenti.
+    /// Controlla la velocità dei movimenti.
     /// </summary>
     private void controlloVelocita()
     {
@@ -184,7 +210,7 @@ public class MovimentoPlayer : MonoBehaviour
     private void controlloGravita()
     {
         velocita.y += gravita * Time.deltaTime;
-        controller.Move(velocita * Time.deltaTime);
+        characterController.Move(velocita * Time.deltaTime);
     }
 
     /// <summary>
@@ -201,20 +227,17 @@ public class MovimentoPlayer : MonoBehaviour
     /// </summary>
     private void controlloComandi()
     {
-        if (Input.GetKey(tastoSprint))
+        if (controllerInput.Player.Corsa.IsPressed())
         {
             sprint();
         }
-        else if (Input.GetKeyUp(tastoSprint))
-        {
-            suonoSprint.Stop();
-        }
         else
         {
+            suonoSprint.Stop();
             velocitaAttuale = velocitaBase;
             isSprinting = false;
         }
-        if (Input.GetKeyDown(tastoSalto) && perTerra)
+        if (controllerInput.Player.Salto.WasPressedThisFrame() && perTerra && controllerInput.Player.Salto.enabled)
         {
             salto();
         }
@@ -225,7 +248,7 @@ public class MovimentoPlayer : MonoBehaviour
     }
 
     /// <summary>
-    /// Se il giocatore � per terra, pu� sprintare
+    /// Se il giocatore è per terra, può sprintare
     /// </summary>
     private void sprint()
     {
@@ -254,9 +277,9 @@ public class MovimentoPlayer : MonoBehaviour
 
 
     /// <summary>
-    /// Controlla se il giocotore � fermo o meno.
+    /// Controlla se il giocotore è fermo o meno.
     /// </summary>
-    /// <returns><strong>True</strong>: il giocatore � fermo.<br><strong>False</strong>: il giocatore non � fermo.</br></returns>
+    /// <returns><strong>True</strong>: il giocatore è fermo.<br><strong>False</strong>: il giocatore non è fermo.</br></returns>
     private bool isFermo()
     {
         return x == 0 && z == 0;
