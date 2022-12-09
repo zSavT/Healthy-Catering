@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Mappe/Opzioni.unity
     guid: 47ae8ef6368c47f4596fcdf1b9906090
   - enabled: 1
-    path: Assets/Mappe/videoInziale/Citta.unity
+    path: Assets/Mappe/Citta.unity
     guid: 782fc05060c563444976fa10cee3fa17
   - enabled: 1
     path: Assets/Mappe/SelezioneLivelli.unity
