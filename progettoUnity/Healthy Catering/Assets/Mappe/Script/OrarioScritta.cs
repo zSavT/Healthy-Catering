@@ -2,6 +2,9 @@ using System;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Classe per la stampa dell'orario su un text object
+/// </summary>
 public class OrarioScritta : MonoBehaviour
 {
 
