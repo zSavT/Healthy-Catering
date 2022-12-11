@@ -17,7 +17,7 @@ public class ModelloPlayer : MonoBehaviour
     [SerializeField] private Material textureBianco;
     [SerializeField] private Material textureNero;
     [SerializeField] private Material textureMulatto;
-    string nomeGiocatore = "";
+    string nomeGiocatore = string.Empty;
 
     void Start()
     {

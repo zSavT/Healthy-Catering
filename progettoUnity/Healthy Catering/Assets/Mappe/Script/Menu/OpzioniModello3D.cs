@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class OpzioniModello3D : MonoBehaviour
@@ -9,6 +10,11 @@ public class OpzioniModello3D : MonoBehaviour
     private float angolo = 180;
     private GameObject modelloMaschile;
     private GameObject modelloFemminile;
+    [Header("Texture pelle modello 3D")]
+    //EVENTUALMENTE POSSONO ESSERE TOLTI SE CARICHIAMO LE TEXTURE DALLA CARTELLA RISORSE
+    [SerializeField] private Material textureBianco;
+    [SerializeField] private Material textureNero;
+    [SerializeField] private Material textureMulatto;
 
     private void Start()
     {
@@ -37,8 +43,8 @@ public class OpzioniModello3D : MonoBehaviour
                 attivaModelloFemminile();
             }
         }
-            
 
+        setTexturePelle(getModelloAttivo());
         Debug.Log(modelloMaschile);
         Debug.Log(modelloFemminile);
     }
@@ -62,6 +68,55 @@ public class OpzioniModello3D : MonoBehaviour
                 target = 0;
             target += 0.08f;
         }
+    }
+
+    /// <summary>
+    /// Metodo per impostare il colore della pelle del modello 3D del giocatore
+    /// </summary>
+    private void setTexturePelle(GameObject modello)
+    {
+        if (PlayerSettings.caricaColorePelle(PlayerSettings.caricaNomePlayerGiocante()) == 0)
+        {
+            modello.GetComponentInChildren<Renderer>().material = textureBianco;
+        }
+        else if (PlayerSettings.caricaColorePelle(PlayerSettings.caricaNomePlayerGiocante()) == 1)
+        {
+            modello.GetComponentInChildren<Renderer>().material = textureNero;
+        }
+        else if (PlayerSettings.caricaColorePelle(PlayerSettings.caricaNomePlayerGiocante()) == 2)
+        {
+            modello.GetComponentInChildren<Renderer>().material = textureMulatto;
+        }
+    }
+
+
+
+    /// <summary>
+    /// Metodo per impostare il colore della pelle del modello 3D del giocatore
+    /// </summary>
+    /// <param name="scelta">int scelta colore pelle modello</param>
+    public void setTexturePelle(int scelta)
+    {
+        if (scelta == 0)
+        {
+            getModelloAttivo().GetComponentInChildren<Renderer>().material = textureBianco;
+        }
+        else if (scelta == 1)
+        {
+            getModelloAttivo().GetComponentInChildren<Renderer>().material = textureNero;
+        }
+        else if (scelta == 2)
+        {
+            getModelloAttivo().GetComponentInChildren<Renderer>().material = textureMulatto;
+        }
+    }
+
+    private GameObject getModelloAttivo()
+    {
+        if (modelloFemminile.activeSelf && !modelloMaschile.activeSelf)
+            return modelloFemminile;
+        else
+            return modelloMaschile;
     }
 
     private void attivaModelloMaschile()
