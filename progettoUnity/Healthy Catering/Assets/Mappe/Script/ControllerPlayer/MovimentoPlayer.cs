@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.InputSystem;
 
 /// <summary>
 /// Classe per la gestione del movimento del giocatore<para>
@@ -93,6 +91,10 @@ public class MovimentoPlayer : MonoBehaviour
             controllerAnimazione = gestoreModelli.getModelloAttivo().GetComponent<Animator>();
     }
 
+    /// <summary>
+    /// Il metodo restituisce la variabile puoMuoversi
+    /// </summary>
+    /// <returns>bool puoMuoversi</returns>
     public bool getPuoMuoversi()
     {
         return puoMuoversi;

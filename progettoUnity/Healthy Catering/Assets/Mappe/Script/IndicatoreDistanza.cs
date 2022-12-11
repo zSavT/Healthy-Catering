@@ -2,6 +2,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Classe per gestire l'indicatore dell'obbiettivo da raggiungere<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Camera principale del gioco.
+/// </para>
+/// </summary>
 public class IndicatoreDistanza : MonoBehaviour
 {
     [SerializeField] private GameObject pannelloWayPoint;
@@ -95,6 +101,10 @@ public class IndicatoreDistanza : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo imposta il target attuale da visualizzare
+    /// </summary>
+    /// <param name="cosa">string del target da visualizzare e raggiungere</param>
     public void setTarget(string cosa)
     {
         attivaWayPoint();
@@ -130,6 +140,10 @@ public class IndicatoreDistanza : MonoBehaviour
         pannelloWayPoint.transform.localScale = size;
     }
 
+    /// <summary>
+    /// Il metodo imposta il target attuale da visualizzare
+    /// </summary>
+    /// <param name="newTarget">Transform posizione nuovo target</param>
     public void setTarget(Transform newTarget)
     {
         if (newTarget == null)
@@ -144,21 +158,34 @@ public class IndicatoreDistanza : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo imposta l'ultimo target con quello attuale
+    /// </summary>
     public void setUltimoTarget()
     {
         ultimoTarget = target;
     }
 
+    /// <summary>
+    /// Il metodo restituisce il Transform dell'ultimo Target
+    /// </summary>
+    /// <returns>Transform posizione ultimo target</returns>
     public Transform getUltimoTarget()
     {
         return ultimoTarget;
     }
 
+    /// <summary>
+    /// Il metodo attiva il GameObject dell'indicatore in game
+    /// </summary>
     private void attivaWayPoint()
     {
         pannelloWayPoint.SetActive(true);
     }
 
+    /// <summary>
+    /// Il metodo disattiva il GameObject dell'indicatore in game
+    /// </summary>
     private void disattivaWayPoint()
     {
         pannelloWayPoint.SetActive(false);
