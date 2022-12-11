@@ -2,6 +2,12 @@
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Classe con le costanti del gioco<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Nulla
+/// </para>
+/// </summary>
 public class Costanti : MonoBehaviour
 {
     // DATABASE OGGETTI

@@ -56,9 +56,7 @@ public class CheckTutorial : MonoBehaviour
 
     public static bool checkVaiRistorante()
     {
-        float posizionePlayer = GameObject.FindGameObjectWithTag("Player").transform.position.y;
-
-        return posizionePlayer < -500; // siccome e' nel ristorante la y e' minore di -500
+        return Interactor.nelRistorante;
     }
 
     public static bool checkServitoPiattoCompatibile(Player giocatore)
