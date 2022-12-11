@@ -775,6 +775,30 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1005063940}
+    - target: {fileID: 707564272041627470, guid: e0c16daf34aa8b14b9e5b5928d9686ef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 707564272041627470, guid: e0c16daf34aa8b14b9e5b5928d9686ef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 707564272041627470, guid: e0c16daf34aa8b14b9e5b5928d9686ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529813578238092931, guid: e0c16daf34aa8b14b9e5b5928d9686ef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529813578238092931, guid: e0c16daf34aa8b14b9e5b5928d9686ef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529813578238092931, guid: e0c16daf34aa8b14b9e5b5928d9686ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 8166575361265391917, guid: e0c16daf34aa8b14b9e5b5928d9686ef, type: 3}
       propertyPath: m_Name
       value: Modelli3D
@@ -8922,8 +8946,8 @@ Camera:
   m_GameObject: {fileID: 1949538933}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 4
+  m_BackGroundColor: {r: 0.70980394, g: 0.83921576, b: 0.62352943, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
