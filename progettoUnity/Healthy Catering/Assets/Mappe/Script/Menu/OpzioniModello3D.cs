@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -19,6 +20,9 @@ public class OpzioniModello3D : MonoBehaviour
     [SerializeField] private Material textureBianco;
     [SerializeField] private Material textureNero;
     [SerializeField] private Material textureMulatto;
+
+    [Header("Genere Neutro opzioni")]
+    [SerializeField] private GameObject dropDownGenere;
 
     private void Start()
     {
@@ -74,6 +78,11 @@ public class OpzioniModello3D : MonoBehaviour
                 target += 0.08f;
             }
         }
+        if (dropDownGenere.activeSelf)
+            if (dropDownGenere.GetComponentInChildren<TMP_Dropdown>().value == 0)
+                attivaModelloMaschile();
+            else
+                attivaModelloFemminile();
     }
 
 

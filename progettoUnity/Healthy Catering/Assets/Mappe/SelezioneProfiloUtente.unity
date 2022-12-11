@@ -2259,9 +2259,9 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Maschile
+    - m_Text: Modello 1
       m_Image: {fileID: 0}
-    - m_Text: Femminile
+    - m_Text: Modello 2
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2416,7 +2416,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Maschile
+  m_text: Modello 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -4476,7 +4476,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Maschio
+  m_text: Uomo
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -4722,9 +4722,9 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Maschio
+    - m_Text: Uomo
       m_Image: {fileID: 0}
-    - m_Text: Femmina
+    - m_Text: Donna
       m_Image: {fileID: 0}
     - m_Text: Neutro
       m_Image: {fileID: 0}
@@ -9838,6 +9838,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8166575361265391919, guid: e0c16daf34aa8b14b9e5b5928d9686ef, type: 3}
+      propertyPath: dropDownGenere
+      value: 
+      objectReference: {fileID: 1854744828}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
