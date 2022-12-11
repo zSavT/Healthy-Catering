@@ -23,6 +23,7 @@ public class OpzioniModello3D : MonoBehaviour
 
     [Header("Genere Neutro opzioni")]
     [SerializeField] private GameObject dropDownGenere;
+    [SerializeField] private TMP_Dropdown dropDownPelle;
 
     private void Start()
     {
@@ -79,10 +80,13 @@ public class OpzioniModello3D : MonoBehaviour
             }
         }
         if (dropDownGenere.activeSelf)
+        {
+            //setTexturePelle(dropDownPelle.value);
             if (dropDownGenere.GetComponentInChildren<TMP_Dropdown>().value == 0)
                 attivamodelloUomo();
             else
                 attivamodelloDonna();
+        }      
     }
 
 
@@ -116,7 +120,7 @@ public class OpzioniModello3D : MonoBehaviour
 
 
     /// <summary>
-    /// Metodo per impostare il colore della pelle del modello 3D del giocatore
+    /// Il metodo per impostare il colore della pelle del modello 3D del giocatore
     /// </summary>
     /// <param name="scelta">int scelta colore pelle modello<strong>0: Caucasico<br>1: Asiatico</br><br>2: Afro</br></strong></param>
     public void setTexturePelle(int scelta)
@@ -152,6 +156,7 @@ public class OpzioniModello3D : MonoBehaviour
     /// </summary>
     private void attivamodelloUomo()
     {
+        setTexturePelle(dropDownPelle.value);
         modelloDonna.SetActive(false);
         modelloUomo.transform.rotation = Quaternion.Euler(0, target, 0);
         modelloUomo.SetActive(true);
@@ -162,6 +167,7 @@ public class OpzioniModello3D : MonoBehaviour
     /// </summary>
     private void attivamodelloDonna()
     {
+        setTexturePelle(dropDownPelle.value);
         modelloDonna.SetActive(true);
         modelloDonna.transform.rotation = Quaternion.Euler(0, target, 0);
         modelloUomo.SetActive(false);
