@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -11,14 +12,18 @@ public class OpzioniModello3D : MonoBehaviour
     private float r;
     private float target;
     private float angolo = 180;
-    private GameObject modelloMaschile;
-    private GameObject modelloFemminile;
+    private GameObject modelloUomo;
+    private GameObject modelloDonna;
     private bool puoGirare = true;
     [Header("Texture pelle modello 3D")]
     //EVENTUALMENTE POSSONO ESSERE TOLTI SE CARICHIAMO LE TEXTURE DALLA CARTELLA RISORSE
     [SerializeField] private Material textureBianco;
     [SerializeField] private Material textureNero;
     [SerializeField] private Material textureMulatto;
+
+    [Header("Genere Neutro opzioni")]
+    [SerializeField] private GameObject dropDownGenere;
+    [SerializeField] private TMP_Dropdown dropDownPelle;
 
     private void Start()
     {
@@ -27,25 +32,25 @@ public class OpzioniModello3D : MonoBehaviour
         foreach (Transform temp in this.gameObject.GetComponentsInChildren<Transform>())
         {
             if (temp.gameObject.name == "Character_BusinessMan_Shirt_01")
-                modelloMaschile = temp.gameObject;
+                modelloUomo = temp.gameObject;
             else if (temp.gameObject.name == "Character_Female_Jacket_01")
-                modelloFemminile = temp.gameObject;
+                modelloDonna = temp.gameObject;
         }
         if (PlayerSettings.caricaGenereGiocatore(PlayerSettings.caricaNomePlayerGiocante()) == 0)
         {
-            attivaModelloMaschile();
+            attivamodelloUomo();
         }
         else if (PlayerSettings.caricaGenereGiocatore(PlayerSettings.caricaNomePlayerGiocante()) == 1)
         {
-            attivaModelloFemminile();
+            attivamodelloDonna();
         } else
         {
             if(PlayerSettings.caricaGenereModello3D(PlayerSettings.caricaNomePlayerGiocante()) == 0)
             {
-                attivaModelloMaschile();
+                attivamodelloUomo();
             } else
             {
-                attivaModelloFemminile();
+                attivamodelloDonna();
             }
         }
         setTexturePelle(getModelloAttivo());
@@ -57,23 +62,31 @@ public class OpzioniModello3D : MonoBehaviour
     {
         if (puoGirare)
         {
-            if (modelloMaschile.activeSelf && !modelloFemminile.activeSelf)
+            if (modelloUomo.activeSelf && !modelloDonna.activeSelf)
             {
-                angolo = Mathf.SmoothDampAngle(modelloMaschile.transform.eulerAngles.y, target, ref r, 0.1f);
-                modelloMaschile.transform.rotation = Quaternion.Euler(0, angolo, 0);
+                angolo = Mathf.SmoothDampAngle(modelloUomo.transform.eulerAngles.y, target, ref r, 0.1f);
+                modelloUomo.transform.rotation = Quaternion.Euler(0, angolo, 0);
                 if (target >= 360)
                     target = 0;
                 target += 0.08f;
             }
-            else if (!modelloMaschile.activeSelf && modelloFemminile.activeSelf)
+            else if (!modelloUomo.activeSelf && modelloDonna.activeSelf)
             {
-                angolo = Mathf.SmoothDampAngle(modelloFemminile.transform.eulerAngles.y, target, ref r, 0.1f);
-                modelloFemminile.transform.rotation = Quaternion.Euler(0, angolo, 0);
+                angolo = Mathf.SmoothDampAngle(modelloDonna.transform.eulerAngles.y, target, ref r, 0.1f);
+                modelloDonna.transform.rotation = Quaternion.Euler(0, angolo, 0);
                 if (target >= 360)
                     target = 0;
                 target += 0.08f;
             }
         }
+        if (dropDownGenere.activeSelf)
+        {
+            //setTexturePelle(dropDownPelle.value);
+            if (dropDownGenere.GetComponentInChildren<TMP_Dropdown>().value == 0)
+                attivamodelloUomo();
+            else
+                attivamodelloDonna();
+        }      
     }
 
 
@@ -107,7 +120,7 @@ public class OpzioniModello3D : MonoBehaviour
 
 
     /// <summary>
-    /// Metodo per impostare il colore della pelle del modello 3D del giocatore
+    /// Il metodo per impostare il colore della pelle del modello 3D del giocatore
     /// </summary>
     /// <param name="scelta">int scelta colore pelle modello<strong>0: Caucasico<br>1: Asiatico</br><br>2: Afro</br></strong></param>
     public void setTexturePelle(int scelta)
@@ -132,42 +145,44 @@ public class OpzioniModello3D : MonoBehaviour
     /// <returns>GameObject modello attivo</returns>
     private GameObject getModelloAttivo()
     {
-        if (modelloFemminile.activeSelf && !modelloMaschile.activeSelf)
-            return modelloFemminile;
+        if (modelloDonna.activeSelf && !modelloUomo.activeSelf)
+            return modelloDonna;
         else
-            return modelloMaschile;
+            return modelloUomo;
     }
 
     /// <summary>
     /// Il metodo attiva il modello maschile e disattiva quello femminile ed aggiorna l'angolo
     /// </summary>
-    private void attivaModelloMaschile()
+    private void attivamodelloUomo()
     {
-        modelloFemminile.SetActive(false);
-        modelloMaschile.transform.rotation = Quaternion.Euler(0, target, 0);
-        modelloMaschile.SetActive(true);
+        setTexturePelle(dropDownPelle.value);
+        modelloDonna.SetActive(false);
+        modelloUomo.transform.rotation = Quaternion.Euler(0, target, 0);
+        modelloUomo.SetActive(true);
     }
 
     /// <summary>
     /// Il metodo attiva il modello femminile e disattiva il modello maschile ed aggiorna l'angolo
     /// </summary>
-    private void attivaModelloFemminile()
+    private void attivamodelloDonna()
     {
-        modelloFemminile.SetActive(true);
-        modelloFemminile.transform.rotation = Quaternion.Euler(0, target, 0);
-        modelloMaschile.SetActive(false);
+        setTexturePelle(dropDownPelle.value);
+        modelloDonna.SetActive(true);
+        modelloDonna.transform.rotation = Quaternion.Euler(0, target, 0);
+        modelloUomo.SetActive(false);
     }
 
     /// <summary>
     /// Il metodo attiva il modello corrispondente all'indice scelto passato in input
     /// </summary>
-    /// <param name="valoreScelta">int indice genere<br>0: Modello Maschile</strong><br></br><strong>1: Modello Femminile</strong></br></param>
+    /// <param name="valoreScelta">int indice genere<br>0: Modello Uomo</strong><br></br><strong>1: Modello Donna</strong></br></param>
     public void attivaGenereModello(int valoreScelta)
     {
         if(valoreScelta == 0)
-            attivaModelloMaschile();
+            attivamodelloUomo();
         else if (valoreScelta == 1)
-            attivaModelloFemminile();
+            attivamodelloDonna();
     }
 
     /// <summary>
