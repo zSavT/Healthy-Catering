@@ -5,6 +5,7 @@ using TMPro;
 using Wilberforce;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 /// <summary>
 /// Classe per la gestione delle impostazioni presenti nel menu del profilo utente per la modifica e selezione.<para>
@@ -20,6 +21,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     [SerializeField] private GameObject elementiConferma;
     [Header("Altro")]
     [SerializeField] private TMP_InputField inputFieldNomeGiocatore;
+    [SerializeField] private TextMeshProUGUI testoPremiX;
     [SerializeField] private GameObject nomeGiaPreso;
     [SerializeField] private GameObject tastoIndietro;
     [SerializeField] private Button bottoneSalva;
@@ -43,10 +45,14 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
 
     private void Update()
     {
+        if (Utility.gamePadConnesso())
+        {
+            testoPremiX.text = "Premi <sprite=9> per confermare";
+            PlayerSettings.addattamentoSpriteComandi(testoPremiX);
+        }
+        else
+            testoPremiX.text = string.Empty;
         controlloElementoDaSelezionare();
-        if (EventSystem.current.currentSelectedGameObject == inputFieldNomeGiocatore.gameObject)
-            if (controllerInput.UI.Navigate.WasPressedThisFrame())
-                EventSystem.current.SetSelectedGameObject(FindObjectOfType<TMP_Dropdown>().gameObject);
     }
 
     void Awake()
@@ -96,6 +102,12 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     /// </summary>
     private void inizializzaElementiIniziali()
     {
+        if (Costanti.spriteTastiera == null)
+        {
+            Costanti.spriteTastiera = Resources.Load<TMP_SpriteAsset>("tastiTastiera");
+            Costanti.spriteXbox = Resources.Load<TMP_SpriteAsset>("tastiXbox");
+            Costanti.spritePlaystation = Resources.Load<TMP_SpriteAsset>("tastiPlaystation");
+        }
         cameraGioco = FindObjectOfType<Camera>();
         controllerInput = new ControllerInput();
         controllerInput.Enable();
@@ -116,6 +128,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     {
         if (Utility.gamePadConnesso())
             if (EventSystem.current.currentSelectedGameObject == null)
+            {
                 if (Utility.qualsiasiTastoPremuto(controllerInput))
                     if (elementiConferma.activeSelf && !elementiSalvataggio.activeSelf)
                         EventSystem.current.SetSelectedGameObject(elementiConferma.GetComponentsInChildren<Button>()[1].gameObject);
@@ -123,6 +136,10 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
                         EventSystem.current.SetSelectedGameObject(elementiSalvataggio.GetComponentsInChildren<Button>()[1].gameObject);
                     else if (!elementiConferma.activeSelf && !elementiSalvataggio.activeSelf)
                         EventSystem.current.SetSelectedGameObject(FindObjectOfType<TMP_Dropdown>().gameObject);
+            }
+            if (EventSystem.current.currentSelectedGameObject == inputFieldNomeGiocatore.gameObject)
+                if (controllerInput.UI.Submit.WasPerformedThisFrame())
+                    EventSystem.current.SetSelectedGameObject(FindObjectOfType<TMP_Dropdown>().gameObject);
     }
 
     /// <summary>

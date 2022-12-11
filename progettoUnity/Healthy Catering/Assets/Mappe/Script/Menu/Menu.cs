@@ -103,6 +103,12 @@ public class Menu : MonoBehaviour
     /// </summary>
     private void inizializzazioneElementiIniziali()
     {
+        if (Costanti.spriteTastiera == null)
+        {
+            Costanti.spriteTastiera = Resources.Load<TMP_SpriteAsset>("tastiTastiera");
+            Costanti.spriteXbox = Resources.Load<TMP_SpriteAsset>("tastiXbox");
+            Costanti.spritePlaystation = Resources.Load<TMP_SpriteAsset>("tastiPlaystation");
+        }
         controllerInput = new ControllerInput();
         controllerInput.Enable();
         cameraGioco = FindObjectOfType<Camera>();
