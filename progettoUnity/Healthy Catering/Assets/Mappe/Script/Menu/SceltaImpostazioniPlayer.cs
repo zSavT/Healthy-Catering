@@ -307,7 +307,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     /// <summary>
     /// Metodo che salva localmente il valore della scelta del genere del modello del giocatore.
     /// </summary>
-    /// <param name="indice">Indice scela del modello player<br><strong>0: Maschio<br>1: Femmina</br></strong></br></param>
+    /// <param name="indice">Indice scela del modello player<br><strong>0: Uomo<br>1: Donna</br></strong></br></param>
     public void setSceltaModelloGiocatore(int indice)
     {
         suonoClick.Play();
@@ -318,7 +318,7 @@ public class SceltaImpostazioniPlayer : MonoBehaviour
     /// Metodo che salva localmente la scelta del genere scelto dal giocatore e controlla se il genere scelto sia quello neutro.<br></br>
     /// In caso affermativo attiva il dropdown per la scelta del genere del modello, altrimenti lo disattiva.
     /// </summary>
-    /// <param name="indiceScelta">Indice dropdown del genere<br><strong>0: Maschio<br>1: Femmina</br><br>2: Neutro</br></strong></br></param>
+    /// <param name="indiceScelta">Indice dropdown del genere<br><strong>0: Uomo<br>1: Donna</br><br>2: Neutro</br></strong></br></param>
     public void dropdownGenere(int indiceScelta)
     {
         suonoClick.Play();
