@@ -3,6 +3,12 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Classe per la gestione del pannello dei messaggi per il tutorial sa il giocatore ha mai giocato il FPS<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Contenitore/pannello del box per il tutorial PlayerSaGiocareFPS.
+/// </para>
+/// </summary>
 public class PlayerSaGiocareFPS : MonoBehaviour
 {
 
@@ -89,6 +95,9 @@ public class PlayerSaGiocareFPS : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(elementoDaSelezionare);
     }
 
+    /// <summary>
+    /// Il metodo permette di aprire il pannello Player Sa Giocare FPS
+    /// </summary>
     public void apriPannelloPlayerSaGiocareFPS()
     {
         pauseGame();
@@ -99,6 +108,9 @@ public class PlayerSaGiocareFPS : MonoBehaviour
         pannelloSaGiocareAperto = true;
     }
 
+    /// <summary>
+    /// Il metodo inizializza i valori per il caso in cui il giocatore sa giocare già agli FPS
+    /// </summary>
     public void chiudiPannelloSi()
     {
         PuntatoreMouse.disabilitaCursore();
@@ -109,6 +121,9 @@ public class PlayerSaGiocareFPS : MonoBehaviour
         resumeGame();
     }
 
+    /// <summary>
+    /// Il metodo inizializza i valori per il caso in cui il giocatore non sa giocare già agli FPS
+    /// </summary>
     public void chiudiPannelloNo()
     {
         PuntatoreMouse.disabilitaCursore();
@@ -119,11 +134,20 @@ public class PlayerSaGiocareFPS : MonoBehaviour
         resumeGame();
     }
 
+    /// <summary>
+    /// Il metodo controlla se la variabile del giocatore è settata o meno (0 vuol dire che non è stata ancora inserita la scelta)
+    /// </summary>
+    /// <returns>bool True: Il giocatore ha effettuato la scelta, False: Il giocatore non ha ancora inserito la scelta</returns>
     public static bool siOnoSettato ()
     {
         return siOno != 0;
     }
 
+    /// <summary>
+    /// Il metodo restituisce il metodo
+    /// </summary>
+    /// <returns>int valore della scelta, <strong>0: Non settato, 1: Il giocatore sa giocare, -1: Non sa giocare</strong>
+    /// </returns>
     public static int getSiOno()
     {
         return siOno;

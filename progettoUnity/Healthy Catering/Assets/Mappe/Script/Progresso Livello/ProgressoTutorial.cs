@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 /// <summary>
 /// Classe dedicata alla gestione del tutorial del livello 0
@@ -11,7 +9,7 @@ using UnityEngine.UI;
 public class ProgressoTutorial : MonoBehaviour
 {
     public static bool inTutorial;
-    [SerializeField] private Gui guiInGame;
+
 
     [Header("Obbiettivi Tutorial")]
     //testo obbiettivo da cambiare di volta in volta
@@ -26,19 +24,21 @@ public class ProgressoTutorial : MonoBehaviour
     private bool finitoTutorial;
 
     private Player giocatore = null;
+    [Header("Altro")]
+    [SerializeField] private Gui guiInGame;
     [SerializeField] private Interactor interazioniPlayer;
     [SerializeField] private ProgressoLivello progressoLivelloClassico;
 
     [SerializeField] private OkBoxVideo okBoxVideo;
     [SerializeField] Transform posizioneDaRaggiungereTutorial;
     [SerializeField] private PlayerSaGiocareFPS playerSaGiocareFPS;
-    private bool saGiocareSettato = false;
-    [SerializeField] private UnityEvent playerStop;
+
     private int siOno = 0;
     [SerializeField] private MovimentoPlayer movimento;
 
     [SerializeField] IndicatoreDistanza indicatoreDistanza;
-
+    private bool saGiocareSettato = false;
+    [SerializeField] private UnityEvent playerStop;
     private ControllerInput controllerInput;
 
     private void Start()
