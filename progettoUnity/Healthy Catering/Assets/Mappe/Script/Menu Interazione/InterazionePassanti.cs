@@ -141,6 +141,11 @@ public class InterazionePassanti : MonoBehaviour
         numeroDiScritteTotale = tutteLeScritte.Count;
     }
 
+    /// <summary>
+    /// Il metodo prende una sequenza, come un elenco, e riorganizza l'ordine degli elementi.
+    /// </summary>
+    /// <param name="values">List di string da spostare</param>
+    /// <returns></returns>
     private List<string> shuffleList(List<string> values)
     {
         System.Random rand = new System.Random();
@@ -149,6 +154,11 @@ public class InterazionePassanti : MonoBehaviour
         return values;
     }
 
+    /// <summary>
+    /// Il metodo divide la stringa per la visualizzazione in pagine del messaggio
+    /// </summary>
+    /// <param name="scritta">string scritta da controllare e dividere</param>
+    /// <returns>List di string divise</returns>
     private List<string> dividiStringa(string scritta)
     {
         List<string> output = new List<string>();
@@ -180,6 +190,11 @@ public class InterazionePassanti : MonoBehaviour
         return output;
     }
 
+    /// <summary>
+    /// Il metodo controlla se nella stringa sono presenti dei tag e non li considera per la lunghezza della stringa
+    /// </summary>
+    /// <param name="temp">string stringa da controllare</param>
+    /// <returns>int lunghezza stringa</returns>
     private int trovaVeraLunghezzaStringaPerColore(string temp)
     {
         if ((temp.Contains(Costanti.coloreInizio)) && (temp.Contains(Costanti.fineColore)))
@@ -195,6 +210,11 @@ public class InterazionePassanti : MonoBehaviour
         return temp.Length;
     }
 
+    /// <summary>
+    /// Il metodo rimuove l'ultima parola presente nella stringa
+    /// </summary>
+    /// <param name="temp">string la stringa da controllare</param>
+    /// <returns>string stringa aggiornata senza ultima parola</returns>
     private string rimuoviUltimaParola(string temp)
     {
         if (!temp.Equals(""))
@@ -209,12 +229,19 @@ public class InterazionePassanti : MonoBehaviour
         return temp;
     }
 
+    /// <summary>
+    /// Il metodo permette di aggiornare l'indice delle frasi da mostrare e aggiorna il testo visualizzato con quello successivo
+    /// </summary>
     private void mostraProssimaScrittaDaMostrateOra()
     {
         indiceScrittaMostrataOra++;
         testoInterazionePassanti.text = scritteMostrateOra[indiceScrittaMostrataOra];
     }
 
+    /// <summary>
+    /// Il metodo apre il pannello dell'interazioni con i passanti ed attiva il testo corretto da visualizzare in base al nome del NPC puntato
+    /// </summary>
+    /// <param name="nomeNPC">string nome del NPC puntato</param>
     public void apriPannelloInterazionePassanti(string nomeNPC)
     {
         suonoAperturaDialogo.Play();
@@ -244,6 +271,11 @@ public class InterazionePassanti : MonoBehaviour
         PlayerSettings.addattamentoSpriteComandi(testoUscita);
     }
 
+    /// <summary>
+    /// Il metodo assegna il giusto testo da inizializzare in base al nome del NPC
+    /// </summary>
+    /// <param name="nomeNPC">string nome del NPC</param>
+    /// <returns>lista di stringhe contenente il messaggio corretto da visualizzare</returns>
     private List<string> trovaScritteDaMostrare(string nomeNPC)
     {
         if (isNPCzio(nomeNPC))
@@ -278,11 +310,21 @@ public class InterazionePassanti : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo controlla se il nome del NPC inquadrato è quello dello zio nel tutorial
+    /// </summary>
+    /// <param name="nomeNPC">string nome NPC</param>
+    /// <returns>bool, True: NPC è zio, False: NPC non zio</returns>
     private bool isNPCzio(string nomeNPC)
     {
         return (nomeNPC.ToLower().Contains("zio") || nomeNPC.ToLower().Contains("tutorial"));
     }
 
+    /// <summary>
+    /// Il metodo controlla se npc inquadrato è l'ultimo visualizzato o uno nuovo ed aggiorna i valori di conseguenza.
+    /// <para>Il metodo permette di visualizzare al punto rimasto in precedenza nella visualizzazione se il giocatore decide di chiudere il pannello 
+    /// interazione con i passanti, prima di leggere tutto il testo presente nelle altre schede</para>
+    /// </summary>
     private void aggiornaValoreNumeroScritteAssegnate()
     {
         if (ultimoNPCInteragitoNuovo)
@@ -298,6 +340,10 @@ public class InterazionePassanti : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo restituisce la variabile pannelloInterazionePassantiAperto per il controllo dello stato di apertura del pannello
+    /// </summary>
+    /// <returns>bool True: Pannello Aperto, False: Pannello Chiuso</returns>
     public bool getPannelloInterazionePassantiAperto()
     {
         return pannelloInterazionePassantiAperto;

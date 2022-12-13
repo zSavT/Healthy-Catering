@@ -20,6 +20,7 @@ public class InteractableNPCPassivi : MonoBehaviour
         {
             rotazioneOriginale = GetComponentInParent<Transform>().rotation;
         }
+
         animazione = GetComponentInParent<Animator>();
     }
 
@@ -33,7 +34,7 @@ public class InteractableNPCPassivi : MonoBehaviour
         {
             gameObject.transform.parent.LookAt(posizionePlayer);
         }
-        animazione.SetBool("parlando", true);
+        animazione.SetBool("parlando", false);
     }
 
     /// <summary>
