@@ -130,7 +130,10 @@ public class Interactor : MonoBehaviour
         progresso.setGiocatore(giocatore);
     }
 
-
+    /// <summary>
+    /// Il metodo controlla i trucchi che si possono attivare
+    /// <para><strong>F1:</strong> Aggiunge x10 gli ingredienti per preparare l'insalatona</para>
+    /// </summary>
     private void cheatCode()
     {
         if (Input.GetKeyDown(KeyCode.F1))

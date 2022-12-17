@@ -5,6 +5,12 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Classe per gestire il Menu clienti<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// GameObject pannello principale MenuCliente
+/// </para>
+/// </summary>
 public class PannelloMenu : MonoBehaviour
 {
     //Variabili di supporto e linking
@@ -118,6 +124,11 @@ public class PannelloMenu : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// Il metodo controlla se il currentObject selezionato dall'eventSystem sia quello corretto presente nella lista piatti
+    /// </summary>
+    /// <returns>bool True: Object corretto, False, Object non corretto</returns>
     private bool controlloSelectObjectCorretto()
     {
         bool trovato = false;
@@ -131,6 +142,9 @@ public class PannelloMenu : MonoBehaviour
         return trovato;
     }
 
+    /// <summary>
+    /// Il metodo aggionra gli sprite nei testi presenti nei bottoni dei piatti in base alla tipologia di input
+    /// </summary>
     private void aggiornaSpriteBottonePiatti()
     {
         foreach (Button temp in bottoniPiatti)
@@ -139,6 +153,9 @@ public class PannelloMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo aggiorna l'immagine dei tasti nei piatti in base al tipo di input
+    /// </summary>
     private void aggiornaImmagineTastiPiatti()
     {
         foreach (Button temp in bottoniPiatti)
@@ -147,6 +164,9 @@ public class PannelloMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo controlla ed aggiorna l'EventSystem per l'oggetto corretto
+    /// </summary>
     private void fixSelectObjectCorretto()
     {
         if (pannelloConfermaPiattoAperto && EventSystem.current.currentSelectedGameObject == null && !pannelloIngredientiGiustiSbagliatiAperto && !pannelloIngredientiPiattoAperto && !pannelloCliente.activeSelf && !pannelloMenu.activeSelf)
@@ -233,6 +253,9 @@ public class PannelloMenu : MonoBehaviour
         giocatore = giocatorePartita;
     }
 
+    /// <summary>
+    /// Il metodo genera gli effettivi bottoni del pannello piatti
+    /// </summary>
     private void generaBottoniPiatti()
     {
         bottoniPiatti = new Button[piatti.Count];
@@ -266,6 +289,10 @@ public class PannelloMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo genera la lista dei bottoni dei piatti per l'iniizializzazione
+    /// </summary>
+    /// <returns>List bottoni piatti</returns>
     private List<Button> generaBottoniPiattiTemp()
     {
         List<Button> bottoniPiattiTemp = new List<Button>();
@@ -279,6 +306,10 @@ public class PannelloMenu : MonoBehaviour
         return bottoniPiattiTemp;
     }
 
+
+    /// <summary>
+    /// Il metodo aggiorna la lista dei piatti disponibili e quelli non disponibili
+    /// </summary>
     private void aggiornaBottoniPiatti()
     {
         if (bottoniPiatti != null)
@@ -312,6 +343,11 @@ public class PannelloMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo aggiorna il pannello dei piatti con quelli disponibili e quelli non disponibili
+    /// </summary>
+    /// <param name="piattiDisponibili">list piatti realizzabili</param>
+    /// <param name="piattiNonDisponibili">list piatti non realizzabili</param>
     private void aggiungiPiattiAPannelloPiatti(List <Button> piattiDisponibili, List <Button> piattiNonDisponibili)
     {
         piattiDisponibili.AddRange(piattiNonDisponibili);
@@ -325,6 +361,12 @@ public class PannelloMenu : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Il metodo controlla quale piatto è selezioato tra la lista di quelli presenti
+    /// </summary>
+    /// <param name="bottone">Button bottone attualmente selezioato</param>
+    /// <param name="piatti">List piatti contenente tutti i piatti esistenti</param>
+    /// <param name="cliente">Cliente cliente servito</param>
     private void selezionaPiatto(Button bottone, List<Piatto> piatti, Cliente cliente)
     {
         foreach (Piatto piatto in piatti)
@@ -339,6 +381,9 @@ public class PannelloMenu : MonoBehaviour
         setPannelloConfermaConNomePiatto(piattoSelezionato.nome);
     }
 
+    /// <summary>
+    /// Il metodo serve per confermare l'acquisto di un piatto
+    /// </summary>
     public void confermaPiattoDaBottone()
     {
         clienteServito = true;
@@ -380,16 +425,24 @@ public class PannelloMenu : MonoBehaviour
             chiusuraInterazioneCliente.Invoke();
         }
         livelloProgresso.servitoCliente(giocatore.punteggio[PlayerSettings.livelloSelezionato]);
-        animazioni(affinitaPatologiePiatto, affinitaDietaPiatto, guadagno);
+        animazioni(affinitaPatologiePiatto, affinitaDietaPiatto);
         aggiornaBottoniPiatti();
     }
 
+    /// <summary>
+    /// Il metodo aggiorna i parametri del pannello conferma piatto
+    /// </summary>
+    /// <param name="nomePiatto">string nomePiatto nome del piatto da inserire nel titolo del pannello</param>
     private void setPannelloConfermaConNomePiatto(string nomePiatto)
     {
         apriPannelloConfermaPiatto();
         testoConfermaPiatto.text = "Sei sicuro di voler servire il piatto: \n" + Costanti.colorePiatti + nomePiatto + Costanti.fineColore;
     }
 
+    /// <summary>
+    /// Il metodo carica i valori del piatto del bottone mostra ingredienti
+    /// </summary>
+    /// <param name="bottoneMostraIngredienti">Button bottoneMostraIngredienti bottone del ingrediente cliccato per mostrare gli ingredienti</param>
     private void cambiaPannelloIngredientiPiattoConPiatto(Button bottoneMostraIngredienti)
     {
         Piatto piattoSelezionato = Piatto.getPiattoFromNomeBottone(bottoneMostraIngredienti.name);
@@ -402,7 +455,12 @@ public class PannelloMenu : MonoBehaviour
         pannelloIngredientiPiatto.GetComponent<Canvas>().GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Ingredienti:\n" + Costanti.coloreIngredienti + ingredientiPiatto + Costanti.fineColore;
     }
 
-    private void animazioni(bool affinitaPatologiePiatto, bool affinitaDietaPiatto, float guadagno)
+    /// <summary>
+    /// Il metodo avvia l'animazione del cliente dopo aver servito un piatto
+    /// </summary>
+    /// <param name="affinitaPatologiePiatto">bool affinitaPatologiePiatto True: Piatto affine patologie, False: Piatto non affine con le patologie</param>
+    /// <param name="affinitaDietaPiatto">bool affinitaDietaPiatto, True: Piatto affine alla dieta, False: Piatto non affine alla dieta</param>
+    private void animazioni(bool affinitaPatologiePiatto, bool affinitaDietaPiatto)
     {
         if(affinitaPatologiePiatto && affinitaDietaPiatto)
         {
@@ -410,6 +468,12 @@ public class PannelloMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo genera tutti i bottoni del piatto ed inizializza i loro valori
+    /// </summary>
+    /// <param name="piatto">Piatto da inizializzare i valori nel pannello</param>
+    /// <param name="bottonePiatto">GameObjec del bottone da inizializzare</param>
+    /// <returns>Button generato del piatto</returns>
     private Button generaBottonePiatto(Piatto piatto, GameObject bottonePiatto)
     {
         GameObject outputGameObject = (GameObject)Instantiate(bottonePiatto);
@@ -434,6 +498,10 @@ public class PannelloMenu : MonoBehaviour
         return output;
     }
 
+    /// <summary>
+    /// Il metood permette di inizializzare tutti i valori del cliente nel pannello cliente
+    /// </summary>
+    /// <param name="cliente">Cliente cliente da leggere i valori</param>
     private void caricaClienteInPanello(Cliente cliente)
     {
         pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Costanti.grassetto + Utility.getStringaConCapitalLetterIniziale(cliente.nome) + Costanti.fineGrassetto;
@@ -441,16 +509,27 @@ public class PannelloMenu : MonoBehaviour
         pannelloCliente.GetComponentsInChildren<TextMeshProUGUI>()[2].text = Costanti.grassetto + "Tieni conto che il cliente ha problemi con:\n" + Costanti.fineGrassetto + Costanti.colorePatologia + Patologia.listIdToListPatologie(cliente.listaIdPatologie) + Costanti.fineColore;
     }
 
+    /// <summary>
+    /// Il metodo permette di invertire il valore della variabile pannelloIngredientiPiattoAperto
+    /// </summary>
     private void pannelloIngredientiPiattoApertoChiuso()
     {
         pannelloIngredientiPiattoAperto = !pannelloIngredientiPiattoAperto;
     }
 
+    /// <summary>
+    /// Il metodo restituisce la variabile booleana pannelloIngredientiPiattoAperto
+    /// </summary>
+    /// <returns>bool pannelloIngredientiPiattoAperto, True: Pannello Aperto, False: Pannello Chiuso</returns>
     public bool getPannelloIngredientiPiattoAperto()
     {
         return pannelloIngredientiPiattoAperto;
     }
 
+
+    /// <summary>
+    /// Il metodo permette di aprire il pannello Ingredienti piatto
+    /// </summary>
     private void apriPannelloIngredientiPiatto()
     {
         if (pannelloIngredientiPiatto != null)
@@ -463,6 +542,9 @@ public class PannelloMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo permette chiude il pannello ingredienti Piatto
+    /// </summary>
     private void chiudiPannelloIngredientiPiatto()
     {
         if (pannelloIngredientiPiatto != null)
@@ -473,10 +555,6 @@ public class PannelloMenu : MonoBehaviour
         }
     }
 
-    private void pannelloConfermaPiattoApertoChiuso()
-    {
-        pannelloConfermaPiattoAperto = !pannelloConfermaPiattoAperto;
-    }
 
     /// <summary>
     /// Il metodo restiuisce il booleano pannelloConfermaPiattoAperto che controlla sei il panello conferma piatto e aperto o meno
@@ -487,6 +565,9 @@ public class PannelloMenu : MonoBehaviour
         return pannelloConfermaPiattoAperto;
     }
 
+    /// <summary>
+    /// Il metodo apre il pannello Conferma Piatto
+    /// </summary>
     private void apriPannelloConfermaPiatto()
     {
         if (pannelloConfermaPiatto != null)
@@ -500,6 +581,9 @@ public class PannelloMenu : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Il metodo chiude il pannello conferma piatto
+    /// </summary>
     private void chiudiPannelloConfermaPiatto()
     {
         if (pannelloConfermaPiatto != null)
@@ -512,6 +596,9 @@ public class PannelloMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo disattiva il pannello Conferma Piatto selezionando la scelta "NO"
+    /// </summary>
     public void chiudiPannelloConfermaPiattoDopoNO()
     {
         if (pannelloConfermaPiatto != null)

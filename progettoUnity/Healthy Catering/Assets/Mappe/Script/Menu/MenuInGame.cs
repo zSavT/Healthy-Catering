@@ -220,11 +220,17 @@ public class MenuInGame : MonoBehaviour
         return menuAperto;
     }
 
+    /// <summary>
+    /// Il metodo setta la variabile uscitaAttiva su vero
+    /// </summary>
     public void uscitaAperta()
     {
         uscitaAttiva = true;
     }
 
+    /// <summary>
+    /// Il metodo setta la variabile uscitaAttiva su falso
+    /// </summary>
     public void uscitaChiusa()
     {
         uscitaAttiva = false;

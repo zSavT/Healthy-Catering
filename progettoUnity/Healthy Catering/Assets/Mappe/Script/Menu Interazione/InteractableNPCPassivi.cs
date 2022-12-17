@@ -34,7 +34,7 @@ public class InteractableNPCPassivi : MonoBehaviour
         {
             gameObject.transform.parent.LookAt(posizionePlayer);
         }
-        animazione.SetBool("parlando", false);
+        animazione.SetBool("parlando", true);
     }
 
     /// <summary>
