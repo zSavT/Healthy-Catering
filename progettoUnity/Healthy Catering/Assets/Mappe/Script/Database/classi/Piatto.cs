@@ -192,35 +192,6 @@ public class Piatto
         return (int)(sommanutriScore / numeroIngredienti);
     }
 
-    private List<int> getPatologieCompatibili(List<Ingrediente> databaseIngredienti = null)
-    {
-        databaseIngredienti ??= Costanti.databaseIngredienti;
-
-        List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto(databaseIngredienti);
-        List<int> IdtutteLePatologie = Patologia.getListIdTutteLePatologie();
-
-        foreach (Ingrediente ingrediente in ingredientiPiatto)
-            foreach (int id in IdtutteLePatologie)
-                if (!(ingrediente.listaIdPatologieCompatibili.Contains(id)))
-                    IdtutteLePatologie.Remove(id);
-
-        return IdtutteLePatologie;
-    }
-
-    private int getDietaMinimaCompatibile(List<Ingrediente> databaseIngredienti = null)
-    {
-        databaseIngredienti ??= Costanti.databaseIngredienti;
-
-        List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto(databaseIngredienti);
-        int output = -1;
-
-        foreach (Ingrediente ingrediente in ingredientiPiatto)
-            if (output < ingrediente.dieta)
-                output = ingrediente.dieta;
-
-        return output;
-    }
-
     public List<Ingrediente> getIngredientiPiatto(List<Ingrediente> databaseIngredienti = null)
     {
         databaseIngredienti ??= Costanti.databaseIngredienti;

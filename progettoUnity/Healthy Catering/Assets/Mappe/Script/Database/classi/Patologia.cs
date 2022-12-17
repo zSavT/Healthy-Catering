@@ -53,35 +53,12 @@ public class Patologia
 
     }
 
-
-    private static List<int> convertiListaPatologieStringToListaIdPatologia(List<string> listaPatolgie)
-    {
-        List<int> patologieConvertite = new List<int>();
-
-        foreach (string patologiaString in listaPatolgie)
-        {
-            try
-            {
-                patologieConvertite.Add(patologiaStringToIdPatologia(patologiaString));
-            }
-            catch (InvalidOperationException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
-        return patologieConvertite;
-    }
-
-    private static int patologiaStringToIdPatologia(string patologia)
-    {
-        if (patologia == "diabete")
-            return 0;
-        //TODO aggiungere altre patologie
-        else
-            throw new InvalidOperationException("Nome patologia non valido");
-    }
-
+    /// <summary>
+    /// Il metodo converte la lista di ID di patologie passata in input in una stringa formatta
+    /// </summary>
+    /// <param name="ids">lista ID (int) patologie</param>
+    /// <param name="DatabasePatologie">database patologie da controllare</param>
+    /// <returns>stringa formatta</returns>
     public static string listIdToListPatologie(List<int> ids, List<Patologia> DatabasePatologie = null)
     {
         string idsString = "";
@@ -102,6 +79,13 @@ public class Patologia
         return idsString;
     }
 
+    /// <summary>
+    /// Il metodo permette di convertire ID passato in input in Patologia
+    /// </summary>
+    /// <param name="id">int ID da controllare</param>
+    /// <param name="databasePatologie">database patologie da controllare</param>
+    /// <returns>Patologia corrispondente all'ID passato</returns>
+    /// <exception cref="Exception">ID patologia non presente</exception>
     private static Patologia idToPatologia(int id, List<Patologia> databasePatologie = null)
     {
         if (id == -1)
@@ -116,7 +100,11 @@ public class Patologia
         throw new Exception("Patologia non trovata idToPatologia");
     }
 
-
+    /// <summary>
+    /// Il metodo permette di ricevere la lista di ID di tutte le patologie esistenti
+    /// </summary>
+    /// <param name="databasePatologie">database patologia da controllare</param>
+    /// <returns>list ID (int) patologie esistenti</returns>
     public static List<int> getListIdTutteLePatologie(List<Patologia> databasePatologie = null)
     {
         databasePatologie ??= Costanti.databasePatologie;

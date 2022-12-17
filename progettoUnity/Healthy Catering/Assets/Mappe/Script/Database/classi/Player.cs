@@ -302,6 +302,11 @@ public class Player
 
     //DATABASE
 
+    /// <summary>
+    /// Il metodo restituisce la lista sortata secondo <see cref="PlayerComparer"/> dei giocatori presenti nel database
+    /// </summary>
+    /// <param name="databasePlayer">database player presenti</param>
+    /// <returns>lista player sortata</returns>
     public static List <Player> getListaSortata(List <Player> databasePlayer = null){
         databasePlayer ??= Database.getDatabaseOggetto (new Player());
         
