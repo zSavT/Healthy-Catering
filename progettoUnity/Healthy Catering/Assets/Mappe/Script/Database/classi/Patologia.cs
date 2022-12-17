@@ -53,32 +53,6 @@ public class Patologia
 
     }
 
-    public static List<int> getNewListaIdPatologieFromUtente(string output)
-    {
-        List<string> patologieInput = fillListaPatologieStringhe(output);
-        //returna una lista vuota di interi (id) se la lista data dall'utente è vuota
-        if (patologieInput.Count == 0)
-        {
-            return new List<int>();
-        }
-        return convertiListaPatologieStringToListaIdPatologia(patologieInput);
-    }
-
-    private static List<string> fillListaPatologieStringhe(string output)
-    {
-        Console.WriteLine(output);
-
-        List<string> patologieInput = new List<string>();
-        while (true)
-        {
-            string patologiaTemp = Console.ReadLine();
-            if ((patologiaTemp.ToLower().Equals("no")) || (patologiaTemp.ToLower().Equals("fine")))
-                break;
-            patologieInput.Add(patologiaTemp);
-        }
-
-        return patologieInput;
-    }
 
     private static List<int> convertiListaPatologieStringToListaIdPatologia(List<string> listaPatolgie)
     {

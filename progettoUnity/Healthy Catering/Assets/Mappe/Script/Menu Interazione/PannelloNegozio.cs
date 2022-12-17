@@ -217,9 +217,18 @@ public class PannelloNegozio : MonoBehaviour
     /// <param name="singoloIngredienteTemp">Button singoloIngredienteTemp bottone da aggiungere al pannello</param>
     private void aggiungiBottoneFakeIngredientiAlPannelloXElementi(GameObject pannelloXElementiTemp, Button singoloIngredienteTemp)
     {
-        singoloIngredienteTemp.gameObject.transform.SetParent(pannelloXElementi.transform, false);
+        aggiungiSingoloIngredienteAPanelloXElementi(singoloIngredienteTemp, pannelloXElementiTemp);
     }
 
+    /// <summary>
+    /// Il metodo permette di aggiungere i bottoni generari al pannello 
+    /// </summary>
+    /// <param name="pannelloXElementi">GameObject pannelloXElementiTemp da aggiungere gli elementi</param>
+    /// <param name="singoloIngrediente">Button singoloIngredienteTemp bottone da aggiungere al pannello</param>
+    private void aggiungiSingoloIngredienteAPanelloXElementi(Button singoloIngrediente, GameObject pannelloXElementi)
+    {
+        singoloIngrediente.gameObject.transform.SetParent(pannelloXElementi.transform, false);
+    }
     /// <summary>
     /// Il metodo permette di aggiungere il pannello X Elementi al pannello principale del negozio
     /// </summary>

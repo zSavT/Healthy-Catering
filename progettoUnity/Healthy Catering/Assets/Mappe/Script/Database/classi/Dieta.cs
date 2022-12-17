@@ -69,21 +69,4 @@ public class Dieta
         else
             throw new InvalidOperationException("Id dieta inserito non valido");
     }
-
-    public static int getNewDietaFromUtente(string output)
-    {
-        string dietaTemp;
-        int dietaTempInt = -1;
-        Console.WriteLine(output);
-        dietaTemp = Console.ReadLine();
-        try
-        {
-            dietaTempInt = dietaStringToIdDieta(dietaTemp);
-        }
-        catch (InvalidOperationException e)
-        {
-            Console.WriteLine(e.Message);
-        }
-        return dietaTempInt;
-    }
 }

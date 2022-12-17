@@ -302,32 +302,6 @@ public class Player
 
     //DATABASE
 
-
-    private static List<int> chiediQuantitaIngredienti(List<Ingrediente> ingredientiGiaPresenti)
-    {
-        List<int> quantita = new List<int>();
-        foreach (Ingrediente ingrediente in ingredientiGiaPresenti)
-        {
-            int numero = -1;
-            while (numero < 0)
-                numero = Database.getNewIntFromUtente("Quanti " + ingrediente.ToString() + "\n" + " devono essere presenti nell'inventario?");
-            quantita.Add(numero);
-        }
-        return quantita;
-    }
-
-    private static List<OggettoQuantita<int>> creaInventarioFromListaIngredientiEQuantita(List<Ingrediente> ingredientiGiaPresenti, List<int> quantitaIngredientiNuovi)
-    {
-        if (ingredientiGiaPresenti.Count == quantitaIngredientiNuovi.Count)
-        {
-            List<OggettoQuantita<int>> output = new List<OggettoQuantita<int>>();
-            for (int i = 0; i < ingredientiGiaPresenti.Count; i++)
-                output.Add(new OggettoQuantita<int>(ingredientiGiaPresenti[i].idIngrediente, quantitaIngredientiNuovi[i]));
-            return output;
-        }
-        throw new Exception("Le dimensioni della lista contente gli ingredienti e le quantita di essi non corrispondo");
-    }
-
     public static List <Player> getListaSortata(List <Player> databasePlayer = null){
         databasePlayer ??= Database.getDatabaseOggetto (new Player());
         

@@ -159,53 +159,6 @@ public class Ingrediente
         return output;
     }
 
-    public static Ingrediente checkIngredienteOnonimoGiaPresente(string nomeIngrediente)
-    {
-        List<Ingrediente> ingredientiConNomeSimileInDatabase = getIngredientiConNomeSimileInDatabase(nomeIngrediente);
-        if (ingredientiConNomeSimileInDatabase.Count > 0)
-            return scegliIngredienteConNomeSimile(nomeIngrediente, ingredientiConNomeSimileInDatabase);
-        else return null;
-    }
-
-    public static List<Ingrediente> getIngredientiConNomeSimileInDatabase(string nomeIngrediente, List<Ingrediente> databaseIngredienti = null)
-    {
-        databaseIngredienti ??= Costanti.databaseIngredienti;
-
-        List<Ingrediente> output = new List<Ingrediente>();
-        foreach (Ingrediente ingredienteTemp in databaseIngredienti)
-        {
-            if ((ingredienteTemp.nome.ToLower().Contains(nomeIngrediente.ToLower())))
-            {
-                output.Add(ingredienteTemp);
-            }
-        }
-
-        return output;
-    }
-
-    public static Ingrediente scegliIngredienteConNomeSimile(string nomeIngrediente, List<Ingrediente> ingredientiConNomeSimile)
-    {
-        int numero = -1;
-        while ((numero < 0) || (numero >= ingredientiConNomeSimile.Count))
-        {
-            numero = Database.getNewIntFromUtente(getStampaIngredientiSimiliPerSceltaUtente(nomeIngrediente, ingredientiConNomeSimile));
-            if (numero == 0)
-                return null;
-        }
-        return ingredientiConNomeSimile[numero - 1];
-    }
-
-    private static string getStampaIngredientiSimiliPerSceltaUtente(string nomeIngrediente, List<Ingrediente> ingredientiConNomeSimile)
-    {
-        string output = "Il nome dell'ingrediente che hai inserito (" + nomeIngrediente + ") non è stato trovato ma sono stati trovati ingredienti con nomi simili, intendi uno di questi? Inserisci '0' per uscire da questo menu";
-
-        int i = 1;
-        foreach (Ingrediente ingredienteSimile in ingredientiConNomeSimile)
-            output = "\n" + i.ToString() + ") " + ingredienteSimile.nome;
-
-        return output;
-    }
-
     public static Ingrediente idToIngrediente(int id, List<Ingrediente> databaseIngredienti = null)
     {
         if (id == -1)
