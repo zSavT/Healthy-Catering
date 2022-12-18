@@ -81,6 +81,10 @@ public class Piatto
         return output;/* = output + "Fine piatto " + this.nome;*/
     }
 
+    /// <summary>
+    /// Il metodo restituisce la stringa quantità ingredienti presenti nel database con il relativo nome
+    /// </summary>
+    /// <returns>string nome e quantità di tutti gli ingredienti</returns>
     public string getListaIngredientiQuantitaToString()
     {
         string ingredientiQuantitaString = "";
@@ -102,6 +106,11 @@ public class Piatto
 
     }
 
+    /// <summary>
+    /// Il metodo permette di calcolare il consto base dell'ingrediente
+    /// </summary>
+    /// <param name="databaseIngredienti">database ingredienti per la ricerca dell'ingredienti</param>
+    /// <returns>float costo base ingrediente</returns>
     public float calcolaCostoBase(List <Ingrediente> databaseIngredienti = null)
     {
         databaseIngredienti ??= Costanti.databaseIngredienti;
@@ -245,22 +254,11 @@ public class Piatto
         return true;
     }
 
-    public static Piatto getPiattoFromNomeBottone(string nomePiattoBottone, List <Piatto> databasePiatti = null)
-    {
-        databasePiatti ??= Costanti.databasePiatti;
-
-        Piatto piattoSelezionato = new Piatto();
-        foreach (Piatto piatto in databasePiatti)
-        {
-            if (nomePiattoBottone.Contains(piatto.nome))//contains perché viene aggiunta la stringa ingredienti nel nome del bottone
-            {
-                piattoSelezionato = piatto;
-                break;
-            }
-        }
-        return piattoSelezionato;
-    }
-
+    /// <summary>
+    /// Il metodo controlla se nell'inventario passato in input è presente tutto il necessario per avere il piatto
+    /// </summary>
+    /// <param name="inventario">List <OggettoQuantita<int>> inventario da controllare</param>
+    /// <returns>bool, True: Ingredienti e Quantità presenti per servire il piatto, False:  Ingredienti e Quantità presenti per servire il piatto</returns>
     public bool piattoInInventario(List <OggettoQuantita<int>> inventario)
     {
         bool ingredienteTrovato = false;
@@ -290,6 +288,11 @@ public class Piatto
 
     //FUNZIONI PER DATABASE
 
+    /// <summary>
+    /// Il metodo permette di restituire il Piatto corrispondente alla stringa passata in input
+    /// </summary>
+    /// <param name="nome">string nome del piatto</param>
+    /// <returns>Piatto ricercato</returns>
     public static Piatto nomeToPiatto (string nome)
     {
         foreach (Piatto temp in Costanti.databasePiatti)

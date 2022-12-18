@@ -445,7 +445,8 @@ public class PannelloMenu : MonoBehaviour
     /// <param name="bottoneMostraIngredienti">Button bottoneMostraIngredienti bottone del ingrediente cliccato per mostrare gli ingredienti</param>
     private void cambiaPannelloIngredientiPiattoConPiatto(Button bottoneMostraIngredienti)
     {
-        Piatto piattoSelezionato = Piatto.getPiattoFromNomeBottone(bottoneMostraIngredienti.name);
+        Piatto piattoSelezionato = Piatto.nomeToPiatto(bottoneMostraIngredienti.name);
+        //Piatto piattoSelezionato = Piatto.getPiattoFromNomeBottone(bottoneMostraIngredienti.name);
 
         string ingredientiPiatto = piattoSelezionato.getListaIngredientiQuantitaToString();
 
