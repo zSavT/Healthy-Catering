@@ -46,6 +46,12 @@ public class Dieta
 
     }
 
+    /// <summary>
+    /// Il metodo converte il nome della dieta passata in input con ID corrispoondente di tale dieta
+    /// </summary>
+    /// <param name="dieta">string dieta da convertire</param>
+    /// <returns>int id dieta<para><string>0: Vegana, 1: Vegetariana, 2:Onnivora</string></para></returns>
+    /// <exception cref="InvalidOperationException">Dieta passata non trovata</exception>
     private static int dietaStringToIdDieta(string dieta)
     {
         if (dieta.ToLower() == "vegana")
@@ -58,6 +64,12 @@ public class Dieta
             throw new InvalidOperationException("Dieta inserita non valida");
     }
 
+    /// <summary>
+    /// Il metodo permette di convertire ID passatto in input con la stringa corrispondente del nome della dieta
+    /// </summary>
+    /// <param name="id">int id dieta da convertire <para><string>0: Vegana, 1: Vegetariana, 2:Onnivora</string></para></param>
+    /// <returns>string nome dieta</returns>
+    /// <exception cref="InvalidOperationException">ID passatto non esistente</exception>
     public static string IdDietaToDietaString(int id)
     {
         if (id == 0)
@@ -68,22 +80,5 @@ public class Dieta
             return "Onnivora";
         else
             throw new InvalidOperationException("Id dieta inserito non valido");
-    }
-
-    public static int getNewDietaFromUtente(string output)
-    {
-        string dietaTemp;
-        int dietaTempInt = -1;
-        Console.WriteLine(output);
-        dietaTemp = Console.ReadLine();
-        try
-        {
-            dietaTempInt = dietaStringToIdDieta(dietaTemp);
-        }
-        catch (InvalidOperationException e)
-        {
-            Console.WriteLine(e.Message);
-        }
-        return dietaTempInt;
     }
 }

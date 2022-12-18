@@ -137,6 +137,10 @@ public class Player
 
     }
 
+    /// <summary>
+    /// Il metodo controlla se esistono piatti realizzabili con l'inventario del Player
+    /// </summary>
+    /// <returns>booleano True: Almeno un piatto realizzabile con l'inventario del piatto, False: Nessun piatto realizzabile con l'inventario del Player</returns>
     public bool piattiRealizzabiliConInventario()
     {
         bool realizzabilePiatti = false;
@@ -153,15 +157,31 @@ public class Player
         return realizzabilePiatti;
     }
 
+    /// <summary>
+    /// Il metodo permette di aumentare il denaro del player
+    /// </summary>
+    /// <param name="guadagno">float denaro da aggiungere</param>
     public void guadagna(float guadagno)
     {
         this.soldi += guadagno;
     }
+
+    /// <summary>
+    /// Il metodo permette di diminuire il denaro del player
+    /// </summary>
+    /// <param name="guadagno">float denaro da sottrarre</param>
     public void paga(float guadagno)
     {
         this.soldi -= guadagno;
     }
 
+    /// <summary>
+    /// Il metodo permette di aggiornare il punteggio del giocatore
+    /// </summary>
+    /// <param name="affine">booleano, True: Piatto affine al cliente, False: Piatto non affine al cliente</param>
+    /// <param name="nutriScore">int valore nutriScore</param>
+    /// <param name="costoEco">float costoEco</param>
+    /// <param name="livello">int indice livello</param>
     public void aggiungiDiminuisciPunteggio(bool affine, int nutriScore, float costoEco, int livello)
     {
         float punteggioDaAggiungere;
@@ -176,6 +196,11 @@ public class Player
         Debug.Log("Punteggio: " + this.punteggio[livello]);
     }
 
+    /// <summary>
+    /// Il metodo permette di calcolare la percentuale del bonus del nutriScore
+    /// </summary>
+    /// <param name="nutriScore">float costoEco</param>
+    /// <returns>float percetuale</returns>
     public float trovaPercentualeNutriScore(int nutriScore)
     {
         if (nutriScore == 1)
@@ -190,6 +215,11 @@ public class Player
             return -10;
     }
 
+    /// <summary>
+    /// Il metodo permette di calcolare la percentuale del bonus del costoEco
+    /// </summary>
+    /// <param name="costoEco">float costoEco</param>
+    /// <returns>float percetuale</returns>
     public float trovaPercentualeEcoScore(float costoEco)
     {
         if (Utility.compresoFra(costoEco, 0, 10))
@@ -204,12 +234,22 @@ public class Player
             return -10;
     }
 
+    /// <summary>
+    /// Il metodo permette di aggiornare l'inventario del player
+    /// </summary>
+    /// <param name="ingrediente">Lista di ingredienti da aggiungere o rimuovere dall'inventario del cliente</param>
+    /// <param name="compra">booleano True: Gli ingredienti devono essere rimossi dall'inventario, False: Gli ingredienti devono essere aggiunti all'inventario</param>
     public void aggiornaInventario(OggettoQuantita<int> ingrediente, bool compra)
     {
         //compra == true se compra, false se vendi
         compraVendiSingoloIngrediente(ingrediente, compra);
     }
 
+    /// <summary>
+    /// Il metodo permette di aggiornare l'inventario del player
+    /// </summary>
+    /// <param name="oggettoDaComprare">Lista di oggetti da aggiungere o rimuovere dall'inventario del cliente</param>
+    /// <param name="compra">booleano True: Gli oggettoDaComprare devono essere rimossi dall'inventario, False: Gli oggettoDaComprare devono essere aggiunti all'inventario</param>
     private void compraVendiSingoloIngrediente(OggettoQuantita<int> oggettoDaComprare, bool compra)
     {
         //compra == true se compra, false se vendi
@@ -246,6 +286,12 @@ public class Player
     }
 
     //@overloading (trovo il tag per l'override ma non per l'overloading :| , pero è quello)
+
+    /// <summary>
+    /// Il metodo permette di aggiornare l'inventario del player
+    /// </summary>
+    /// <param name="ingredienti">Lista di ingredienti da aggiungere o rimuovere dall'inventario del cliente</param>
+    /// <param name="compra">booleano True: Gli ingredienti devono essere rimossi dall'inventario, False: Gli ingredienti devono essere aggiunti all'inventario</param>
     public void aggiornaInventario(List<OggettoQuantita<int>> ingredienti, bool compra)
     {   
         //compra == true se compra, false se vendi
@@ -255,6 +301,10 @@ public class Player
         }
     }
 
+    /// <summary>
+    /// Il metodo controlla se l'inventario del player è vuoto
+    /// </summary>
+    /// <returns>booleano True: Inventario vuoto, Falso: Inventario non vuoto</returns>
     public bool inventarioVuoto()
     {
         foreach (OggettoQuantita<int> ingrediente in inventario)
@@ -267,6 +317,10 @@ public class Player
         return true;
     }
 
+    /// <summary>
+    /// Il metodo restituisce la stringa dell'intero inventario del player
+    /// </summary>
+    /// <returns>string inventario player</returns>
     public string stampaInventario()
     {
         string output = "";
@@ -278,6 +332,10 @@ public class Player
         return output;
     }
 
+    /// <summary>
+    /// Il metodo permette di impostare un inventario specifico in base al livello del gioco
+    /// </summary>
+    /// <param name="livello">double livello</param>
     public void setInventarioLivello (double livello)
     {
         switch (livello)
@@ -302,32 +360,11 @@ public class Player
 
     //DATABASE
 
-
-    private static List<int> chiediQuantitaIngredienti(List<Ingrediente> ingredientiGiaPresenti)
-    {
-        List<int> quantita = new List<int>();
-        foreach (Ingrediente ingrediente in ingredientiGiaPresenti)
-        {
-            int numero = -1;
-            while (numero < 0)
-                numero = Database.getNewIntFromUtente("Quanti " + ingrediente.ToString() + "\n" + " devono essere presenti nell'inventario?");
-            quantita.Add(numero);
-        }
-        return quantita;
-    }
-
-    private static List<OggettoQuantita<int>> creaInventarioFromListaIngredientiEQuantita(List<Ingrediente> ingredientiGiaPresenti, List<int> quantitaIngredientiNuovi)
-    {
-        if (ingredientiGiaPresenti.Count == quantitaIngredientiNuovi.Count)
-        {
-            List<OggettoQuantita<int>> output = new List<OggettoQuantita<int>>();
-            for (int i = 0; i < ingredientiGiaPresenti.Count; i++)
-                output.Add(new OggettoQuantita<int>(ingredientiGiaPresenti[i].idIngrediente, quantitaIngredientiNuovi[i]));
-            return output;
-        }
-        throw new Exception("Le dimensioni della lista contente gli ingredienti e le quantita di essi non corrispondo");
-    }
-
+    /// <summary>
+    /// Il metodo restituisce la lista sortata secondo <see cref="PlayerComparer"/> dei giocatori presenti nel database
+    /// </summary>
+    /// <param name="databasePlayer">database player presenti</param>
+    /// <returns>lista player sortata</returns>
     public static List <Player> getListaSortata(List <Player> databasePlayer = null){
         databasePlayer ??= Database.getDatabaseOggetto (new Player());
         

@@ -62,6 +62,11 @@ public class Cliente
 
     }
 
+    /// <summary>
+    /// Il metodo restituisce la lista degli ingredienti non campatibili con la patologia del cliente della lista degli ingredienti passati in input
+    /// </summary>
+    /// <param name="ingredientiPiatto">List<Ingrediente> ingredientiPiatto da controllare</param>
+    /// <returns>List ingredienti non compatibili</returns>
     public List<Ingrediente> getListaIngredientiNonCompatibiliPatologie(List<Ingrediente> ingredientiPiatto)
     {
         List<Ingrediente> ingredientiNonCompatibili = new List<Ingrediente>();
@@ -82,6 +87,12 @@ public class Cliente
         return ingredientiNonCompatibili;
     }
 
+
+    /// <summary>
+    /// Il metodo restituisce la lista degli ingredienti non campatibili con la dieta del cliente della lista degli ingredienti passati in input
+    /// </summary>
+    /// <param name="ingredientiPiatto">List<Ingrediente> ingredientiPiatto da controllare</param>
+    /// <returns>List ingredienti non compatibili</returns>
     public List<Ingrediente> getListaIngredientiNonCompatibiliDieta(List<Ingrediente> ingredientiPiatto)
     {
         List<Ingrediente> ingredientiNonCompatibili = new List<Ingrediente>();

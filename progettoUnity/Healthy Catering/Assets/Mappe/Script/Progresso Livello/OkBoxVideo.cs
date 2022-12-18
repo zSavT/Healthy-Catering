@@ -4,9 +4,16 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Classe per la gestione del pannello dei messaggi per il tutorial<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// Contenitore/pannello del box per il tutorial.
+/// </para>
+/// </summary>
 public class OkBoxVideo : MonoBehaviour
 {
-    [SerializeField] private GameObject pannello;
+    [Header("Elementi pannello Ok Box Video")]
+    private GameObject pannello;
     [SerializeField] private Button bottoneConferma;
     [SerializeField] private TextMeshProUGUI titolo;
     [SerializeField] private TextMeshProUGUI testo;
@@ -35,6 +42,7 @@ public class OkBoxVideo : MonoBehaviour
 
     void Start()
     {
+        pannello = this.gameObject.GetComponentsInChildren<Transform>()[1].gameObject;
         WASDmostrato = false;
         saltoMostrato = false;
         sprintMostrato = false;
@@ -77,6 +85,10 @@ public class OkBoxVideo : MonoBehaviour
         controllerInput.Player.Salto.Enable();
     }
 
+    /// <summary>
+    /// Il metodo apre il pannello Ok Box Video con inizializzando tutti i valori in base all'indice del box da dover aprire
+    /// </summary>
+    /// <param name="posizione">int indice tipologia di testo da visualizzare</param>
     public void apriOkBoxVideo(int posizione)
     {
         okBoxVideoAperto = true;
@@ -95,13 +107,16 @@ public class OkBoxVideo : MonoBehaviour
         else
         {
             titolo.text = "errore";
-            testo.text = "";
+            testo.text = string.Empty;
         }
         cambiaImmagine(posizione);
         EventSystem.current.SetSelectedGameObject(bottoneConferma.gameObject);
 
     }
 
+    /// <summary>
+    /// Il metodo chiude il pannello Ok Box Video
+    /// </summary>
     public void chiudiOkBoxVideo()
     {
         okBoxVideoAperto = false;
@@ -126,6 +141,10 @@ public class OkBoxVideo : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo aggiorna la gif presente nel pannello in base all'indice passato
+    /// </summary>
+    /// <param name="posizione">int indice posizione valori da mostrare</param>
     private void cambiaImmagine(int posizione)
     {
         animazione.caricaAnimazione(

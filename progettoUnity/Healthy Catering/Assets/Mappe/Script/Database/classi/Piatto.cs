@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 public class Piatto
@@ -81,6 +80,10 @@ public class Piatto
         return output;/* = output + "Fine piatto " + this.nome;*/
     }
 
+    /// <summary>
+    /// Il metodo restituisce la stringa quantità ingredienti presenti nel database con il relativo nome
+    /// </summary>
+    /// <returns>string nome e quantità di tutti gli ingredienti</returns>
     public string getListaIngredientiQuantitaToString()
     {
         string ingredientiQuantitaString = "";
@@ -102,6 +105,11 @@ public class Piatto
 
     }
 
+    /// <summary>
+    /// Il metodo permette di calcolare il consto base dell'ingrediente
+    /// </summary>
+    /// <param name="databaseIngredienti">database ingredienti per la ricerca dell'ingredienti</param>
+    /// <returns>float costo base ingrediente</returns>
     public float calcolaCostoBase(List <Ingrediente> databaseIngredienti = null)
     {
         databaseIngredienti ??= Costanti.databaseIngredienti;
@@ -113,6 +121,12 @@ public class Piatto
         return costo + ((costo * percentualeGuadagnoSulPiatto) / 100);
     }
 
+    /// <summary>
+    /// Il metodo restituisce il costo con i bonus applicati
+    /// </summary>
+    /// <param name="affine">bool True: Piatto Affine, False: Piatto non affine</param>
+    /// <param name="costoBase">float costo base del piatto</param>
+    /// <returns>float costo finale del piatto</returns>
     public float calcolaCostoConBonus (bool affine, float costoBase){
         if (affine){
             float output;
@@ -131,6 +145,11 @@ public class Piatto
         return costoBase - Utility.calcolaCostoPercentuale(costoBase, 5);
     }
 
+    /// <summary>
+    /// Il metodo permette di restituire una lista sortata di piatti secondo il criterio di <see cref="PiattiComparer"/>
+    /// </summary>
+    /// <param name="databasePiatti">database piatti</param>
+    /// <returns>List piatti sortata</returns>
     private List <Piatto> getListaAffinitaOrdinata(List <Piatto> databasePiatti = null){
         databasePiatti ??= Database.getDatabaseOggetto (this);
         
@@ -165,6 +184,11 @@ public class Piatto
         }
     }
 
+    /// <summary>
+    /// Il metodo permette di calcolare il CostoEco del piatto
+    /// </summary>
+    /// <param name="databaseIngredienti">database ingredienti</param>
+    /// <returns>int valore CostoEco</returns>
     public float calcolaCostoEco(List <Ingrediente> databaseIngredienti = null)
     {
         databaseIngredienti ??= Costanti.databaseIngredienti;
@@ -176,6 +200,11 @@ public class Piatto
         return costoEco;
     }
 
+    /// <summary>
+    /// Il metodo permette di calcolare il NutriScore del piatto
+    /// </summary>
+    /// <param name="databaseIngredienti">database ingredienti</param>
+    /// <returns>int valore nutriScore</returns>
     public int calcolaNutriScore(List <Ingrediente> databaseIngredienti = null)
     {
         databaseIngredienti ??= Costanti.databaseIngredienti;
@@ -192,35 +221,11 @@ public class Piatto
         return (int)(sommanutriScore / numeroIngredienti);
     }
 
-    private List<int> getPatologieCompatibili(List<Ingrediente> databaseIngredienti = null)
-    {
-        databaseIngredienti ??= Costanti.databaseIngredienti;
-
-        List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto(databaseIngredienti);
-        List<int> IdtutteLePatologie = Patologia.getListIdTutteLePatologie();
-
-        foreach (Ingrediente ingrediente in ingredientiPiatto)
-            foreach (int id in IdtutteLePatologie)
-                if (!(ingrediente.listaIdPatologieCompatibili.Contains(id)))
-                    IdtutteLePatologie.Remove(id);
-
-        return IdtutteLePatologie;
-    }
-
-    private int getDietaMinimaCompatibile(List<Ingrediente> databaseIngredienti = null)
-    {
-        databaseIngredienti ??= Costanti.databaseIngredienti;
-
-        List<Ingrediente> ingredientiPiatto = this.getIngredientiPiatto(databaseIngredienti);
-        int output = -1;
-
-        foreach (Ingrediente ingrediente in ingredientiPiatto)
-            if (output < ingrediente.dieta)
-                output = ingrediente.dieta;
-
-        return output;
-    }
-
+    /// <summary>
+    /// Il metodo permette di convertire la lista di ID ingredienti del piatto in una lista di ingredienti (sempre del piatto)
+    /// </summary>
+    /// <param name="databaseIngredienti">Database ingredienti da controllare</param>
+    /// <returns>List ingredienti presenti nel piatto</returns>
     public List<Ingrediente> getIngredientiPiatto(List<Ingrediente> databaseIngredienti = null)
     {
         databaseIngredienti ??= Costanti.databaseIngredienti;
@@ -239,6 +244,11 @@ public class Piatto
         return ingredientiPiatto;
     }
 
+    /// <summary>
+    /// Il metodo controlla se il cliente è compatibile con il piatto
+    /// </summary>
+    /// <param name="cliente">Cliente cliente da controllare</param>
+    /// <returns>booleano True: Compatibile con cliente, False: Non compatibile con il cliente</returns>
     public bool checkAffinitaConCliente (Cliente cliente)
     {
         bool patologieCompatibili = checkAffinitaPatologiePiatto(this.listaIdIngredientiQuantita, cliente.listaIdPatologie);
@@ -247,6 +257,12 @@ public class Piatto
         return (patologieCompatibili && dietaCompatibile);
     }
 
+    /// <summary>
+    /// Il metodo restituisce un booleano se la lista di ingredienti passati in input è compatibile o meno con la Patolgia passata in input
+    /// </summary>
+    /// <param name="listaIdIngredientiQuantita">(List <OggettoQuantita<int>> lista ID Ingredienti Quantita</param>
+    /// <param name="listaIdPatologieCliente">ID patologia</param>
+    /// <returns>booleano True: Patolgia compatibile con il piatto, False: Patolgia non compatibile con il piatto</returns>
     public bool checkAffinitaPatologiePiatto(List <OggettoQuantita <int>> listaIdIngredientiQuantita, List <int> listaIdPatologieCliente)
     {
         foreach (int idPatologiaCliente in listaIdPatologieCliente)
@@ -262,6 +278,12 @@ public class Piatto
         return true;
     }
 
+    /// <summary>
+    /// Il metodo restituisce un booleano se la lista di ingredienti passati in input è compatibile o meno con la dieta passata in input
+    /// </summary>
+    /// <param name="listaIdIngredientiQuantita">(List <OggettoQuantita<int>> lista ID Ingredienti Quantita</param>
+    /// <param name="dietaCliente">ID dieta</param>
+    /// <returns>booleano True: Dieta compatibile con il piatto, False: Dieta non compatibile con il piatto</returns>
     public bool checkAffinitaDietaPiatto(List <OggettoQuantita<int>> listaIdIngredientiQuantita, int dietaCliente)
     {
         foreach (OggettoQuantita<int> idIngredienteEQuantita in listaIdIngredientiQuantita)
@@ -274,22 +296,11 @@ public class Piatto
         return true;
     }
 
-    public static Piatto getPiattoFromNomeBottone(string nomePiattoBottone, List <Piatto> databasePiatti = null)
-    {
-        databasePiatti ??= Costanti.databasePiatti;
-
-        Piatto piattoSelezionato = new Piatto();
-        foreach (Piatto piatto in databasePiatti)
-        {
-            if (nomePiattoBottone.Contains(piatto.nome))//contains perché viene aggiunta la stringa ingredienti nel nome del bottone
-            {
-                piattoSelezionato = piatto;
-                break;
-            }
-        }
-        return piattoSelezionato;
-    }
-
+    /// <summary>
+    /// Il metodo controlla se nell'inventario passato in input è presente tutto il necessario per avere il piatto
+    /// </summary>
+    /// <param name="inventario">List <OggettoQuantita<int>> inventario da controllare</param>
+    /// <returns>bool, True: Ingredienti e Quantità presenti per servire il piatto, False:  Ingredienti e Quantità presenti per servire il piatto</returns>
     public bool piattoInInventario(List <OggettoQuantita<int>> inventario)
     {
         bool ingredienteTrovato = false;
@@ -318,75 +329,12 @@ public class Piatto
     }
 
     //FUNZIONI PER DATABASE
-    public static Piatto checkPiattoOnonimoGiaPresente(string nomePiatto, List<Piatto> piattiConNomeSimileInDatabase = null)
-    {
-        piattiConNomeSimileInDatabase ??= getPiattiConNomeSimileInDatabase(nomePiatto);
 
-        if (piattiConNomeSimileInDatabase.Count > 0)
-        {
-            int scelta = Database.getNewIntFromUtente(getStringaStampaPiattiConNomeSimilePerSceltaUtente(nomePiatto, piattiConNomeSimileInDatabase));
-            if (scelta != -1)
-                return piattiConNomeSimileInDatabase[scelta - 1];
-        }
-
-        return null;
-    }
-    
-    private static List<Piatto> getPiattiConNomeSimileInDatabase(string nomePiatto, List<Piatto> databasePiatti = null)
-    {
-        databasePiatti ??= Costanti.databasePiatti;
-
-        List<Piatto> output = new List<Piatto>();
-        string nomePiattoPerConfronto = nomePiatto.ToLower();
-
-        foreach (Piatto piattoTemp in databasePiatti)
-            if ((piattoTemp.nome.ToLower().Contains(nomePiattoPerConfronto)) || (nomePiattoPerConfronto.Contains(piattoTemp.nome.ToLower())))
-                output.Add(piattoTemp);
-
-        return output;
-    }
-
-    private static string getStringaStampaPiattiConNomeSimilePerSceltaUtente(string nomePiatto, List<Piatto> piattiConNomeSimileInDatabase)
-    {
-        string output = "Il nome del piatto che hai inserito (" + nomePiatto + ") non è stato trovato ma sono stati trovati piatti con nomi simili, intendi uno di questi? Inserisci 'no' per uscire da questo menu\n";
-
-        int i = 1;
-        foreach (Piatto piatto in piattiConNomeSimileInDatabase)
-            output = i.ToString() + ") " + piatto.nome + "\n";
-
-        return output;
-    }
-
-    private static List<string> getNomeIngredientiFromUtente(string nomePiatto)
-    {
-        Console.WriteLine("Inserisci il nome degli ingredienti del piatto " + nomePiatto + " e la keyword 'fine' quando vuoi finire l'inserimento");
-
-        List<string> nomiIngredienti = new List<string>();
-        string input = "";
-
-        while (true)
-        {
-            input = Console.ReadLine();
-            if (input.Equals("fine"))
-                break;
-            nomiIngredienti.Add(input);
-        }
-
-        return nomiIngredienti;
-    }
-
-
-    private static int getQuantitaIngredienteNelPiattoFromUtente(string nomeIngrediente, string nomePiatto)
-    {
-        while (true)
-        {
-            int numero = Database.getNewIntFromUtente("Qual'è la quantita di " + nomeIngrediente + " nel piatto " + nomePiatto);
-
-            if (numero > 0)
-                return numero;
-        }
-    }
-
+    /// <summary>
+    /// Il metodo permette di restituire il Piatto corrispondente alla stringa passata in input
+    /// </summary>
+    /// <param name="nome">string nome del piatto</param>
+    /// <returns>Piatto ricercato</returns>
     public static Piatto nomeToPiatto (string nome)
     {
         foreach (Piatto temp in Costanti.databasePiatti)

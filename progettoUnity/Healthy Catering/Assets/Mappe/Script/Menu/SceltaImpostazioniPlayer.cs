@@ -5,7 +5,6 @@ using TMPro;
 using Wilberforce;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using Unity.VisualScripting;
 
 /// <summary>
 /// Classe per la gestione delle impostazioni presenti nel menu del profilo utente per la modifica e selezione.<para>

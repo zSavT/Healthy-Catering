@@ -42,6 +42,12 @@ public class OggettoQuantita<Oggetto>
 
     }
 
+    /// <summary>
+    /// Il metodo permette di controllare se le due liste passate in input hanno lo stesso numero di elementi
+    /// </summary>
+    /// <param name="lista1">List<OggettoQuantita<int>> lista1</param>
+    /// <param name="lista2">List<OggettoQuantita<int>> lista2</param>
+    /// <returns>bool True: Le due liste Uguali, False: Le due liste diverse</returns>
     public static bool listeIdQuantitaUguali(List<OggettoQuantita<int>> lista1, List<OggettoQuantita<int>> lista2)
     {
         if (lista1.Count != lista2.Count)

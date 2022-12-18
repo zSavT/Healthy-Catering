@@ -20,6 +20,7 @@ public class InteractableNPCPassivi : MonoBehaviour
         {
             rotazioneOriginale = GetComponentInParent<Transform>().rotation;
         }
+
         animazione = GetComponentInParent<Animator>();
     }
 

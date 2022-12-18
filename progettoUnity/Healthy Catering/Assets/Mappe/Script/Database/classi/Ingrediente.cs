@@ -90,33 +90,10 @@ public class Ingrediente
 
     }
 
-    public static bool ingredienteCompatibilePatologia (int idIngrediente, int idPatologia)
-    {
-        Ingrediente ingrediente = idToIngrediente(idIngrediente);
-
-        foreach (int id in ingrediente.listaIdPatologieCompatibili)
-            if (id == idPatologia)
-                return true;
-
-        return false;
-    }
-
-    private static char idNutriScoreToString(int id)
-    {
-        if (id == 0)
-            return 'A';
-        if (id == 1)
-            return 'B';
-        if (id == 2)
-            return 'C';
-        if (id == 3)
-            return 'D';
-        if (id == 4)
-            return 'E';
-        else
-            throw new InvalidOperationException("Id nutriscore inserito non valido");
-    }
-
+    /// <summary>
+    /// Il metodo restituisce la lista piatti realizzabili con l'ingrediente
+    /// </summary>
+    /// <returns>list piatto realizzabili</returns>
     public List<Piatto> getListaPiattiRealizzabiliConIngrediente()
     {
         List<Piatto> ricettePossibiliConIngrediente = new List<Piatto>();
@@ -135,6 +112,11 @@ public class Ingrediente
 
         return ricettePossibiliConIngrediente;
     }
+
+    /// <summary>
+    /// Il metodo restituisce la stringa piatti realizzabili con l'ingrediente
+    /// </summary>
+    /// <returns>stringa piatti realizzabili</returns>
     public string getListaPiattiRealizzabiliConIngredienteToSingolaString()
     {
         List<Piatto> ricettePossibiliConIngrediente = new List<Piatto>();
@@ -159,53 +141,13 @@ public class Ingrediente
         return output;
     }
 
-    public static Ingrediente checkIngredienteOnonimoGiaPresente(string nomeIngrediente)
-    {
-        List<Ingrediente> ingredientiConNomeSimileInDatabase = getIngredientiConNomeSimileInDatabase(nomeIngrediente);
-        if (ingredientiConNomeSimileInDatabase.Count > 0)
-            return scegliIngredienteConNomeSimile(nomeIngrediente, ingredientiConNomeSimileInDatabase);
-        else return null;
-    }
-
-    public static List<Ingrediente> getIngredientiConNomeSimileInDatabase(string nomeIngrediente, List<Ingrediente> databaseIngredienti = null)
-    {
-        databaseIngredienti ??= Costanti.databaseIngredienti;
-
-        List<Ingrediente> output = new List<Ingrediente>();
-        foreach (Ingrediente ingredienteTemp in databaseIngredienti)
-        {
-            if ((ingredienteTemp.nome.ToLower().Contains(nomeIngrediente.ToLower())))
-            {
-                output.Add(ingredienteTemp);
-            }
-        }
-
-        return output;
-    }
-
-    public static Ingrediente scegliIngredienteConNomeSimile(string nomeIngrediente, List<Ingrediente> ingredientiConNomeSimile)
-    {
-        int numero = -1;
-        while ((numero < 0) || (numero >= ingredientiConNomeSimile.Count))
-        {
-            numero = Database.getNewIntFromUtente(getStampaIngredientiSimiliPerSceltaUtente(nomeIngrediente, ingredientiConNomeSimile));
-            if (numero == 0)
-                return null;
-        }
-        return ingredientiConNomeSimile[numero - 1];
-    }
-
-    private static string getStampaIngredientiSimiliPerSceltaUtente(string nomeIngrediente, List<Ingrediente> ingredientiConNomeSimile)
-    {
-        string output = "Il nome dell'ingrediente che hai inserito (" + nomeIngrediente + ") non è stato trovato ma sono stati trovati ingredienti con nomi simili, intendi uno di questi? Inserisci '0' per uscire da questo menu";
-
-        int i = 1;
-        foreach (Ingrediente ingredienteSimile in ingredientiConNomeSimile)
-            output = "\n" + i.ToString() + ") " + ingredienteSimile.nome;
-
-        return output;
-    }
-
+    /// <summary>
+    /// Il metodo permette di convertire ID passato in input passato in Ingrediente corrispondente
+    /// </summary>
+    /// <param name="id">int ID da convertire</param>
+    /// <param name="databaseIngredienti">database ingredienti da controllare</param>
+    /// <returns>Ingrediente corrispondente all'ID</returns>
+    /// <exception cref="Exception">ID ingrediente passato inesistente</exception>
     public static Ingrediente idToIngrediente(int id, List<Ingrediente> databaseIngredienti = null)
     {
         if (id == -1)
@@ -224,6 +166,11 @@ public class Ingrediente
         throw new Exception("Ingrediente non trovato idToIngrediente " + id.ToString());
     }
 
+    /// <summary>
+    /// Il metodo permette di ottenere la stringa corrispondente della lista di ingredienti passata in input formatta
+    /// </summary>
+    /// <param name="ingredienti">lista ingredienti</param>
+    /// <returns>string corrispondente alla lista passata in input</returns>
     public static string listIngredientiToStringa (List <Ingrediente> ingredienti)
     {
         string output = "";
@@ -232,6 +179,30 @@ public class Ingrediente
             output += ingrediente.nome + "\n";
         }
         return output;
+    }
+
+    //METODO NON UTILIZZATI MA EVENTUALMENTE UTILI
+
+    /// <summary>
+    /// Il metodo converte ID dell'ingrediente passato del nustri score passato in input in char
+    /// </summary>
+    /// <param name="id">int ID ingrediente</param>
+    /// <returns>char corrispondente al nutri score</returns>
+    /// <exception cref="InvalidOperationException"></exception>
+    private static char idNutriScoreToString(int id)
+    {
+        if (id == 0)
+            return 'A';
+        if (id == 1)
+            return 'B';
+        if (id == 2)
+            return 'C';
+        if (id == 3)
+            return 'D';
+        if (id == 4)
+            return 'E';
+        else
+            throw new InvalidOperationException("Id nutriscore inserito non valido");
     }
 
 }

@@ -4,6 +4,12 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Classe per gestire il menu Negozio<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// GameObject del modello del negoziante (Non il contenitore principale)
+/// </para>
+/// </summary>
 public class PannelloNegozio : MonoBehaviour
 {
     private Animator animazione;
@@ -92,6 +98,11 @@ public class PannelloNegozio : MonoBehaviour
     }
 
     //INTERAZIONE NEGOZIO
+
+    /// <summary>
+    /// Il metodo permette di cambiare la visualizzazione dei pannelli con gli ingredienti (pagine) controllando se disattivare o meno i bottoni avanti e indietro
+    /// </summary>
+    /// <param name="avanti">bool avanti, True: Visualizzare pagina successiva, False: Visualizzare pagina precedente</param>
     private void cambiaPannelloCarosello(bool avanti)
     {
         if (avanti)
@@ -104,6 +115,9 @@ public class PannelloNegozio : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Il metodo aggiorna il GameObject da selezionare dal EventSystem se il controller è collegato, quando quest'ultimo risulta null
+    /// </summary>
     private void aggiornaObjectSelected()
     {
         if (Utility.gamePadConnesso())
@@ -114,6 +128,9 @@ public class PannelloNegozio : MonoBehaviour
                     EventSystem.current.SetSelectedGameObject(ingredientiBottoniFake[0].GetComponentsInChildren<Transform>()[4].gameObject);
     }
 
+    /// <summary>
+    /// Il metodo permette di disattivare i bottoni per navigare nei menu in base alla pagina visualizzata (Ultima pagina disattiva il bottone avanti, prima pagina disattiva il bottone indietro)
+    /// </summary>
     private void disattivaBottoniAvantiDietroSeServe()
     {
         if (ultimaPaginaVisualizzata == ultimaPaginaPossibile)
@@ -135,6 +152,9 @@ public class PannelloNegozio : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo aggiorna i bottoni della pagina del carosello
+    /// </summary>
     public void aggiornaBottoniPaginaCarosello()
     {
         if (ingredientiBottoniFake == null)
@@ -143,6 +163,10 @@ public class PannelloNegozio : MonoBehaviour
         aggiornaValoriBottoniFake();
     }
 
+    /// <summary>
+    /// Il metodo permette di inzializzare tutti i bottoni necessari per il pannelo negozio
+    /// </summary>
+    /// <returns>List bottoni generati aggiornati</returns>
     private Button [] creaIstanzeBottoniFakeNeiPannelli()
     {
         Button[] output = new Button[Costanti.numeroBottoniNellaPaginaNegozio];
@@ -150,7 +174,7 @@ public class PannelloNegozio : MonoBehaviour
         int i = 0;
         while (i < Costanti.numeroPannelliXElementiNellaPaginaNegozio)
         {
-            Button [] temp = inizializzaPannelloXElementiVuoto(i);
+            Button [] temp = inizializzaPannelloXElementiVuoto();
             int j = 0;
             while(j < numeroIngredientiPerPannelloXElementi)
             {
@@ -162,7 +186,11 @@ public class PannelloNegozio : MonoBehaviour
         return output;
     }
 
-    private Button[] inizializzaPannelloXElementiVuoto(int volte)
+    /// <summary>
+    /// Il metodo permette di inizializzare e linkare i bottoni nel pannello
+    /// </summary>
+    /// <returns>List button aggiornata</returns>
+    private Button[] inizializzaPannelloXElementiVuoto()
     {
         Button[] output = new Button[numeroIngredientiPerPannelloXElementi];
 
@@ -182,22 +210,38 @@ public class PannelloNegozio : MonoBehaviour
         return output;
     }
 
+    /// <summary>
+    /// Il metodo permette di aggiungere i bottoni generari al pannello 
+    /// </summary>
+    /// <param name="pannelloXElementiTemp">GameObject pannelloXElementiTemp da aggiungere gli elementi</param>
+    /// <param name="singoloIngredienteTemp">Button singoloIngredienteTemp bottone da aggiungere al pannello</param>
     private void aggiungiBottoneFakeIngredientiAlPannelloXElementi(GameObject pannelloXElementiTemp, Button singoloIngredienteTemp)
     {
         aggiungiSingoloIngredienteAPanelloXElementi(singoloIngredienteTemp, pannelloXElementiTemp);
     }
 
+    /// <summary>
+    /// Il metodo permette di aggiungere i bottoni generari al pannello 
+    /// </summary>
+    /// <param name="pannelloXElementi">GameObject pannelloXElementiTemp da aggiungere gli elementi</param>
+    /// <param name="singoloIngrediente">Button singoloIngredienteTemp bottone da aggiungere al pannello</param>
     private void aggiungiSingoloIngredienteAPanelloXElementi(Button singoloIngrediente, GameObject pannelloXElementi)
     {
         singoloIngrediente.gameObject.transform.SetParent(pannelloXElementi.transform, false);
     }
-
+    /// <summary>
+    /// Il metodo permette di aggiungere il pannello X Elementi al pannello principale del negozio
+    /// </summary>
+    /// <param name="pannelloXElementiTemp">GameObject pannelloXElementiTemp da aggiungere al pannello principale</param>
     private void aggiungiPannelloXElementiAllaSchermata(GameObject pannelloXElementiTemp)
     {
         pannelloXElementiTemp.gameObject.transform.SetParent(pannelloNegozio.transform, false);
         pannelloXElementiTemp.SetActive(true);
     }
 
+    /// <summary>
+    /// Il metodo aggiorna la lista dei bottoni degli ingredienti
+    /// </summary>
     private void aggiornaValoriBottoniFake()
     {
         //serve perche' se qualche ingrediente e' stato disattivato prima,
@@ -229,6 +273,9 @@ public class PannelloNegozio : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(ingredientiBottoniFake[0].GetComponentsInChildren<Transform>()[4].gameObject);
     }
 
+    /// <summary>
+    /// Il metodo permette di attivare tutti i bottoni nel pannello negozio
+    /// </summary>
     private void attivaTuttiIBottoniNelPannelloNegozio()
     {
         foreach (Button temp in ingredientiBottoniFake)
@@ -240,6 +287,11 @@ public class PannelloNegozio : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo permmette di trovare l'indice degli ingredienti da inserire
+    /// </summary>
+    /// <param name="numeroIngredientiInseritiFinoAdOra">int numero ingredienti aggiunti fino a quel momento</param>
+    /// <returns>int indice piatto da inserire</returns>
     private int trovaIndicePiattoDaInserire(int numeroIngredientiInseritiFinoAdOra)
     {
         int indice = (ultimaPaginaVisualizzata * Costanti.numeroBottoniNellaPaginaNegozio) + numeroIngredientiInseritiFinoAdOra;
@@ -250,6 +302,12 @@ public class PannelloNegozio : MonoBehaviour
         return -1;
     }
 
+    /// <summary>
+    /// Il metodo permette di popolare tutti gli elementi negli ingredienti
+    /// </summary>
+    /// <param name="singoloIngredienteTemp">Button singoloIngredienteTemp da modificare</param>
+    /// <param name="ingrediente">Ingrediente da inserire nel bottone le sue info</param>
+    /// <returns>Button passato in input modificato</returns>
     private Button popolaSingoloIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
     {
         rimuoviTuttiIVecchiListener(singoloIngredienteTemp);
@@ -267,6 +325,10 @@ public class PannelloNegozio : MonoBehaviour
         return singoloIngredienteTemp;
     }
 
+    /// <summary>
+    /// Il metodo permette di rimuovere tutti i listener dagli elementi presenti nel bottone e sottobottoni presenti nel bottone in input
+    /// </summary>
+    /// <param name="singoloIngredienteTemp">Button singoloIngredienteTemp da modificare</param>
     private void rimuoviTuttiIVecchiListener(Button singoloIngredienteTemp)
     {
         singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAumentaQuantita].onClick.RemoveAllListeners();
@@ -274,6 +336,12 @@ public class PannelloNegozio : MonoBehaviour
         singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAggiungiIngredienteAlCarrello].onClick.RemoveAllListeners();
     }
 
+    /// <summary>
+    /// Il metodo permette di aggiornare il testo del bottone passato in input
+    /// </summary>
+    /// <param name="singoloIngredienteTemp">Button singoloIngredienteTemp bottone da modificare il testo</param>
+    /// <param name="nomeIngrediente">string nome dell'ingrediente</param>
+    /// <param name="costoIngrediente">string costo dell'ingrediente</param>
     private void modificaTesto(Button singoloIngredienteTemp, string nomeIngrediente, string costoIngrediente)
     {
         singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[0].text = Costanti.coloreIngredienti + nomeIngrediente + Costanti.fineColore;
@@ -281,6 +349,11 @@ public class PannelloNegozio : MonoBehaviour
         singoloIngredienteTemp.GetComponentsInChildren<TextMeshProUGUI>()[2].text = "0";
     }
 
+    /// <summary>
+    /// Il metodo permette di aggiungere i Listener agli ingredienti + e -
+    /// </summary>
+    /// <param name="singoloIngredienteTemp">Button singoloIngredienteTemp bottone da aggiungere listener</param>
+    /// <param name="costoIngrediente">float costoIngrediente bottone</param>
     private void aggiungiGestioneBottoniQuantita(Button singoloIngredienteTemp, float costoIngrediente)
     {
         aggiungiGestioneBottoneQuantitaDiminuisci(singoloIngredienteTemp);
@@ -288,6 +361,10 @@ public class PannelloNegozio : MonoBehaviour
         aggiungiGestioneBottoneQuantitaAumenta(singoloIngredienteTemp, costoIngrediente);
     }
 
+    /// <summary>
+    /// Il metodo permette di gestire la diminuzione della quantità dell'ingredietne selezionato
+    /// </summary>
+    /// <param name="singoloIngredienteTemp">Button singoloIngredienteTemp per la gestione del bottone diminuisci</param>
     private void aggiungiGestioneBottoneQuantitaDiminuisci(Button singoloIngredienteTemp)
     {
         //bottone diminuisci quantita 
@@ -309,6 +386,11 @@ public class PannelloNegozio : MonoBehaviour
         });
     }
 
+    /// <summary>
+    /// Il metodo permette di gestire la quantità dell'ingrediente passato in input
+    /// </summary>
+    /// <param name="singoloIngredienteTemp">Button singoloIngredienteTemp ingrediente per il controllo</param>
+    /// <param name="costoIngrediente">float costoIngrediente</param>
     private void aggiungiGestioneBottoneQuantitaAumenta(Button singoloIngredienteTemp, float costoIngrediente)
     {
         //bottone aumenta quantita 
@@ -326,6 +408,12 @@ public class PannelloNegozio : MonoBehaviour
         });
     }
 
+    /// <summary>
+    /// Il metodo permette di disattivare il tasto più o meno per la gestione della quantità se il tasto
+    /// </summary>
+    /// <param name="singoloIngredienteTemp">Button singoloIngredienteTemp per disattivare i bottoni + e -</param>
+    /// <param name="quantitaSelezionata">int quantità selezionata al momento</param>
+    /// <param name="costoIngrediente">float costoIngrediente dell'ingrediente</param>
     private void attivaDisattivaBottoniPiuMenoSeServe(Button singoloIngredienteTemp, int quantitaSelezionata, float costoIngrediente)
     {
         if (quantitaSelezionata == 0)
@@ -349,6 +437,11 @@ public class PannelloNegozio : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAumentaQuantita].gameObject);
     }
 
+    /// <summary>
+    /// Il metodo aggiorna il Listener al bottone passato in input
+    /// </summary>
+    /// <param name="singoloIngredienteTemp">Button singoloIngredienteTemp da aggiungere Listener</param>
+    /// <param name="ingrediente"></param>
     private void aggiungiListenerCompraIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
     {
         //bottone mostra compra 
@@ -360,6 +453,11 @@ public class PannelloNegozio : MonoBehaviour
         });
     }
 
+    /// <summary>
+    /// Il metodo disattiva il bottone compra se la quantità presente nel bottone è uguale a 0
+    /// </summary>
+    /// <param name="singoloIngredienteTemp">Button singoloIngredienteTemp bottone ingrediente da controllare</param>
+    /// <param name="quantita">int quantità del ingrediente impostata</param>
     private void attivaDisattivaBottoneCompra(Button singoloIngredienteTemp, int quantita)
     {
         if (quantita > 0)
@@ -368,6 +466,11 @@ public class PannelloNegozio : MonoBehaviour
             singoloIngredienteTemp.GetComponentsInChildren<Button>()[Costanti.posizioneBottoneAggiungiIngredienteAlCarrello].interactable = false;
     }
 
+    /// <summary>
+    /// Il metodo di aggiornare l'immagine dell'ingrediente con quella corretta
+    /// </summary>
+    /// <param name="singoloIngredienteTemp">Button dell'ingrediente</param>
+    /// <param name="ingrediente">Ingrediente ingrediente del bottone</param>
     private void modificaImmagineIngrediente(Button singoloIngredienteTemp, Ingrediente ingrediente)
     {
         singoloIngredienteTemp.GetComponentsInChildren<Image>()[6].name = "immagine ingrediente " + ingrediente.nome;
@@ -380,6 +483,9 @@ public class PannelloNegozio : MonoBehaviour
         singoloIngredienteTemp.GetComponentsInChildren<Image>()[6].sprite = nuovaImmagine;
     }
 
+    /// <summary>
+    /// Il metodo permette di aprire il pannello sei sicuro per l'aggiunto dell'ingrediente al carrello
+    /// </summary>
     public void apriPannelloSeiSicuro()
     {
         if (inNegozio)
@@ -401,6 +507,10 @@ public class PannelloNegozio : MonoBehaviour
         pannelloSeiSicuroAperto = true;
     }
 
+    /// <summary>
+    /// Il metodo inizializza il pannello Sei Sicuro per l'acquista degli elementi nel carello
+    /// </summary>
+    /// <returns>string per il pannello sei sicuro per l'acquisto nel carrello</returns>
     private string creaStringaPannelloSeiSicuroCarrello()
     {
         string output = "Sei sicuro di voler comprare i seguenti ingredienti:\n";
@@ -416,6 +526,10 @@ public class PannelloNegozio : MonoBehaviour
         return output;
     }
 
+    /// <summary>
+    /// Il metodo permette di convertire in quantità il numero degli elementi presenti nel carrello
+    /// </summary>
+    /// <returns>List di OggettiQuantità</returns>
     private List<OggettoQuantita<int>> trasformaCarrelloInOggettoQuantita()
     {
         List<OggettoQuantita<int>> output = new List<OggettoQuantita<int>>();
@@ -446,6 +560,10 @@ public class PannelloNegozio : MonoBehaviour
         return output;
     }
 
+    /// <summary>
+    /// Il metodo permette di disattivare il bottone passato in input
+    /// </summary>
+    /// <param name="indicePrimoIngredienteDaDisattivare">int indice ingrediente da disattivare</param>
     private void disattivaIBottoniSuccessivi(int indicePrimoIngredienteDaDisattivare)
     {
         while (indicePrimoIngredienteDaDisattivare < Costanti.numeroBottoniNellaPaginaNegozio)
@@ -456,6 +574,10 @@ public class PannelloNegozio : MonoBehaviour
     }
 
     //METODI DEI BOTTONI DEL PANNELLO SEI SICURO
+
+    /// <summary>
+    /// Il metodo permette di aggiungere gli ingredienti al carrello
+    /// </summary>
     public void aggiungiIngredienteACarrello()
     {
         if (inNegozio)
@@ -485,6 +607,9 @@ public class PannelloNegozio : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo permette di acquistare gli ingredienti presenti nel carrello
+    /// </summary>
     public void compraIngredientiNelCarrello()
     {
         if (!inNegozio)
@@ -511,11 +636,17 @@ public class PannelloNegozio : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo imposta la variabile booleana inNegozio su false
+    /// </summary>
     public void setInNegozioToInCarrello()
     {
         inNegozio = false;
     }
 
+    /// <summary>
+    /// Il metodo permette di resettare il valore della quantità selezionata da tutti i piatti
+    /// </summary>
     public void resetQuantitaTuttiBottoni()
     {
         foreach (Button ingrediente in ingredientiBottoniFake)
@@ -524,6 +655,9 @@ public class PannelloNegozio : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo permette di bloccare l'operazione di acquisto
+    /// </summary>
     public void annullaCompraIngrediente()
     {
         ingredienteAttualmenteSelezionato = null;
@@ -532,6 +666,9 @@ public class PannelloNegozio : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(ingredientiBottoniFake[0].GetComponentsInChildren<Transform>()[4].gameObject);
     }
 
+    /// <summary>
+    /// Il metodo permette di chiudere il pannello sei sicuro, resettando i valori
+    /// </summary>
     private void chiudiPannelloSeiSicuro()
     {
         testoPannelloSeiSicuro.text = "You werent supposed to be able to get here you know";
@@ -559,6 +696,11 @@ public class PannelloNegozio : MonoBehaviour
     }
 
     //GESTIONE PANNELLO E RELATIVI
+
+    /// <summary>
+    /// Il metodo permette di aprire il pannelo negozio
+    /// </summary>
+    /// <param name="giocatorePassato">Player giocatorePassato</param>
     public void apriPannelloNegozio(Player giocatorePassato)
     {
         giocatore = giocatorePassato;
@@ -574,7 +716,10 @@ public class PannelloNegozio : MonoBehaviour
         immaginiAvantiIndietroTasti[0].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("L1");
         immaginiAvantiIndietroTasti[1].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("R1");
     }
-
+    
+    /// <summary>
+    /// Il metodo permette di resettare le variabili nel pannello carrello
+    /// </summary>
     private void resetSituazioneCarello()
     {
         //reset delle cose nel carrello
@@ -584,6 +729,9 @@ public class PannelloNegozio : MonoBehaviour
         Destroy(pannelloXElementi);
     }
 
+    /// <summary>
+    /// Il metodo permette la chiusura del pannello del negozio
+    /// </summary>
     public void chiudiPannelloNegozio()
     {
         pannelloAperto = false;
@@ -592,27 +740,46 @@ public class PannelloNegozio : MonoBehaviour
         animazioneNPCIdle();
     }
 
+    /// <summary>
+    /// Il metodo restituisce la variabile booleana pannelloAperto per il controllo del pannello principale
+    /// </summary>
+    /// <returns>bool pannelloSeiSicuroAperto, True: Pannello Principale aperto, False: Pannello Principale non aperto</returns>
     public bool getPannelloAperto()
     {
         return pannelloAperto;
     }
 
+    /// <summary>
+    /// Il metodo restituisce la variabile booleana pannelloSeiSicuroAperto per il controllo del medesimo pannello
+    /// </summary>
+    /// <returns>bool pannelloSeiSicuroAperto, True: Pannello Sei Sicuro aperto, False: Pannello Sei Sicuro non aperto</returns>
     public bool getPannelloConfermaAperto()
     {
         return pannelloSeiSicuroAperto;
     }
 
+
+    /// <summary>
+    /// Il metodo permette di avviare l'animazione del negoziante mentre è inquadrato
+    /// </summary>
     public void animazioneNPCInquadrato()
     {
         animazione.SetBool("inquadrato", true);
     }
 
+
+    /// <summary>
+    /// Il metodo permette di avviare l'animazione del negoziante fermo
+    /// </summary>
     public void animazioneNPCIdle()
     {
         animazione.SetBool("parlante", false);
         animazione.SetBool("inquadrato", false);
     }
 
+    /// <summary>
+    /// Il metodo permette di avviare l'animazione del negoziante mentre parla
+    /// </summary>
     private void animazioneNPCParlante()
     {
         animazione.SetBool("parlante", true);

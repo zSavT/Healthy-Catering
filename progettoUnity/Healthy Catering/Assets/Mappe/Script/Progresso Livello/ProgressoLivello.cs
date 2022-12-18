@@ -167,6 +167,9 @@ public class ProgressoLivello : MonoBehaviour
         valoriInizialiTesto();
     }
 
+    /// <summary>
+    /// Il metodo imposta l'EventSystem sul bottone della conferma
+    /// </summary>
     private void impostaEventSystemBottoneConferma()
     {
         EventSystem.current.SetSelectedGameObject(bottoneConferma.gameObject);

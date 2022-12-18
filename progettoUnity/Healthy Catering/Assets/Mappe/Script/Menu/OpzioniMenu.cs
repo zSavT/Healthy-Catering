@@ -173,12 +173,19 @@ public class OpzioniMenu : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Il metodo permette di aggiornare l'immagine presente nel pannello per i comandi in base all'input utilizzato
+    /// </summary>
     private void addattamentoImmaginiControlli()
     {
         immaginiControlli[0].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("L1");
         immaginiControlli[1].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("R1");
     }
 
+    /// <summary>
+    /// Il metodo imposta il valore alla variabile booleana comandiAttivi con quella passata in input
+    /// </summary>
+    /// <param name="comandiAttivi">bool comandiAttivi</param>
     public void setComandiAttivi(bool comandiAttivi)
     {
         this.comandiAttivi = comandiAttivi;

@@ -4,6 +4,12 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Classe per gestire il Menu Magazzino<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// GameObject da puntare per attivare il Menu Magazzino (PC)
+/// </para>
+/// </summary>
 public class PannelloMagazzino : MonoBehaviour
 {
     [Header ("Gestione pannello PC")]
@@ -84,6 +90,9 @@ public class PannelloMagazzino : MonoBehaviour
             resetObjectSelected();
     }
 
+    /// <summary>
+    /// Il metodo resetta il gameObject da selezionare (Con EventSystem) quando il gamepad è connesso in base alla sezione attualmente attiva
+    /// </summary>
     private void resetObjectSelected()
     {
         if (Utility.gamePadConnesso())
@@ -105,6 +114,9 @@ public class PannelloMagazzino : MonoBehaviour
                 }
     }
 
+    /// <summary>
+    /// Il metodo cambia immagine del pannello del magazzino con la visualizzazione del desktop ed attiva la versione del desktop corretta per il rapporto utilizzato
+    /// </summary>
     public void cambiaSfondoDesktop()
     {
         if (AspectRatio(Screen.height, Screen.width) == "4:3" || AspectRatio(Screen.height, Screen.width) == "3:4")
@@ -135,6 +147,11 @@ public class PannelloMagazzino : MonoBehaviour
         return (oa / a).ToString() + ":" + (ob / a).ToString();
     }
 
+    /// <summary>
+    /// Il metodo rimuove tutti i figli presenti nel GameObject passato in input
+    /// </summary>
+    /// <param name="pannello">GameObject pannello da elimianare i figli all'intero</param>
+    /// <returns></returns>
     private GameObject rimuoviTuttiFigliDaPannello(GameObject pannello)
     {
         foreach (Transform child in pannello.transform)
@@ -145,6 +162,10 @@ public class PannelloMagazzino : MonoBehaviour
         return pannello;//non sono sicuro sia necessario il return del pannello, se non serve poi lo togliamo
     }
 
+    /// <summary>
+    /// Il metodo apre il pannello magazzino correttamente
+    /// <param name="player">Player giocatore</param>
+    /// <param name="controllerMovimento">MovimentoPlayer controllerMovimento per bloccare gli input non voluti</param>
     public void apriPannelloMagazzino(Player player, MovimentoPlayer controllerMovimento)
     {
         resetPannelloMagazzino();
@@ -159,6 +180,9 @@ public class PannelloMagazzino : MonoBehaviour
             movimentoPlayer.bloccaMovimento();
     }
 
+    /// <summary>
+    /// Il metodo permette di impostare la schermata iniziale del pannello magazzino
+    /// </summary>
     private void setSchermataInizialePC()
     {
         CambioCursore.cambioCursoreNormale();
@@ -170,6 +194,9 @@ public class PannelloMagazzino : MonoBehaviour
         suonoAperturaPC.Play();
     }
 
+    /// <summary>
+    /// Il metodo chiude il pannello magazzino correttamente 
+    /// </summary>
     public void chiudiPannelloMagazzino()
     {
         pannelloMostraRicette.chiudiPannelloMostraRicette();
@@ -185,6 +212,9 @@ public class PannelloMagazzino : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Il metodo permette di resettare la situazione degli oggetti del pannello del magazzino
+    /// </summary>
     private void resetPannelloMagazzino()
     {
         foreach (GameObject pannelloXElementiTemp in pannelliXElementiAttivi)
@@ -197,11 +227,18 @@ public class PannelloMagazzino : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Il metodo restiuisce la variabile pannelloMagazzinoAperto
+    /// </summary>
+    /// <returns>bool pannelloMagazzinoAperto True: Il pannello è aperto, False: Il pannello è chiuso</returns>
     public bool getPannelloMagazzinoAperto()
     {
         return pannelloMagazzinoAperto;
     }
 
+    /// <summary>
+    /// Il metodo cambia immagine del pannello del magazzino con la visualizzazione del magazzino ed attiva la versione del magazzino corretta per il rapporto utilizzato
+    /// </summary>
     public void cambiaSfondoMagazzino()
     {
         pannelloMagazzinoApertoPerTutorial = true;
@@ -218,12 +255,18 @@ public class PannelloMagazzino : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Il metodo imposta EventSystem con il primo elemento della lista di oggetti
+    /// </summary>
     public void setEventSystemPrimoElemento()
     {
         Transform[] lista = pannelloMostraInventario.GetComponentsInChildren<Button>()[0].GetComponentInChildren<Button>().GetComponentsInChildren<Transform>();
         EventSystem.current.SetSelectedGameObject(lista[3].gameObject);
     }
 
+    /// <summary>
+    /// Il metodo inizializza tutti gli oggetti presenti nel pannello magazzino in base alla situazione dell'inventario del player
+    /// </summary>
     private void popolaSchermata()
     {   
         if (!giocatore.inventarioVuoto())
@@ -264,6 +307,12 @@ public class PannelloMagazzino : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo crea ed inizializza i bottoni per gli ingredienti presenti
+    /// </summary>
+    /// <param name="oggettoDellInventario">OggettoQuantita<int> lista di id degli ingredienti presenti nell'invetario del giocatore</param>
+    /// <param name="bottoneIngredienteTemplate">Button da inizializzare</param>
+    /// <returns></returns>
     private Button creaBottoneConValoriIngrediente(OggettoQuantita<int> oggettoDellInventario, Button bottoneIngredienteTemplate)
     {
         Ingrediente ingrediente = Ingrediente.idToIngrediente(oggettoDellInventario.oggetto);
@@ -282,6 +331,9 @@ public class PannelloMagazzino : MonoBehaviour
         return output;
     }
 
+    /// <summary>
+    /// Il metodo aggiunge gli elementi al sottopannello per contenenre gli ingredienti
+    /// </summary>
     private void aggiungiPannelloXElementi()
     {
         GameObject nuovoPannelloXElementi = Instantiate(copiaPannelloXElementi);

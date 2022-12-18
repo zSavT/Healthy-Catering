@@ -3,18 +3,27 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Classe per gestire Ricettario<para>
+/// <strong>Da aggiungere a:</strong><br></br>
+/// GameObject del Ricettario (Il parent principale)
+/// </para>
+/// </summary>
 public class Ricettario : MonoBehaviour
 {
     [SerializeField] GameObject pannelloPrincipale;
+    [Header("Testi Ricettario")]
     [SerializeField] TextMeshProUGUI titoloSchermata;
     [SerializeField] TextMeshProUGUI testoSchermata;
+    [SerializeField] TextMeshProUGUI testoBottoneAltriDati;
+    [SerializeField] TextMeshProUGUI tastoUscita;
+    [Header("Bottoni Ricettario")]
     [SerializeField] Button avanti;
     [SerializeField] Button indietro;
     [SerializeField] Button switchPiatti;
     [SerializeField] Button switchIngredienti;
     [SerializeField] Button bottoneAltriDati;
-    [SerializeField] TextMeshProUGUI testoBottoneAltriDati;
-    [SerializeField] TextMeshProUGUI tastoUscita;
+    [Header("Immagini")]
     [SerializeField] Image[] immaginiControlli;
     private ControllerInput controllerInput;
 
@@ -34,7 +43,8 @@ public class Ricettario : MonoBehaviour
 
     private void Start()
     {
-        controllerInput= new ControllerInput();
+        pannelloPrincipale = this.gameObject.GetComponentsInChildren<Transform>()[1].gameObject;
+        controllerInput = new ControllerInput();
         controllerInput.Enable();
         chiudiRicettario();
     }
@@ -220,7 +230,7 @@ public class Ricettario : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Il metodo permette di avviare la visualizzazione dei dati tecnici e viceversa relativi al piatto o ingrediente attualmente visualizzato
     /// </summary>
     public void visualizzaAltriDati()
     {
