@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 public class Piatto
@@ -122,6 +121,12 @@ public class Piatto
         return costo + ((costo * percentualeGuadagnoSulPiatto) / 100);
     }
 
+    /// <summary>
+    /// Il metodo restituisce il costo con i bonus applicati
+    /// </summary>
+    /// <param name="affine">bool True: Piatto Affine, False: Piatto non affine</param>
+    /// <param name="costoBase">float costo base del piatto</param>
+    /// <returns>float costo finale del piatto</returns>
     public float calcolaCostoConBonus (bool affine, float costoBase){
         if (affine){
             float output;
@@ -140,6 +145,11 @@ public class Piatto
         return costoBase - Utility.calcolaCostoPercentuale(costoBase, 5);
     }
 
+    /// <summary>
+    /// Il metodo permette di restituire una lista sortata di piatti secondo il criterio di <see cref="PiattiComparer"/>
+    /// </summary>
+    /// <param name="databasePiatti">database piatti</param>
+    /// <returns>List piatti sortata</returns>
     private List <Piatto> getListaAffinitaOrdinata(List <Piatto> databasePiatti = null){
         databasePiatti ??= Database.getDatabaseOggetto (this);
         
@@ -174,6 +184,11 @@ public class Piatto
         }
     }
 
+    /// <summary>
+    /// Il metodo permette di calcolare il CostoEco del piatto
+    /// </summary>
+    /// <param name="databaseIngredienti">database ingredienti</param>
+    /// <returns>int valore CostoEco</returns>
     public float calcolaCostoEco(List <Ingrediente> databaseIngredienti = null)
     {
         databaseIngredienti ??= Costanti.databaseIngredienti;
@@ -185,6 +200,11 @@ public class Piatto
         return costoEco;
     }
 
+    /// <summary>
+    /// Il metodo permette di calcolare il NutriScore del piatto
+    /// </summary>
+    /// <param name="databaseIngredienti">database ingredienti</param>
+    /// <returns>int valore nutriScore</returns>
     public int calcolaNutriScore(List <Ingrediente> databaseIngredienti = null)
     {
         databaseIngredienti ??= Costanti.databaseIngredienti;
@@ -201,6 +221,11 @@ public class Piatto
         return (int)(sommanutriScore / numeroIngredienti);
     }
 
+    /// <summary>
+    /// Il metodo permette di convertire la lista di ID ingredienti del piatto in una lista di ingredienti (sempre del piatto)
+    /// </summary>
+    /// <param name="databaseIngredienti">Database ingredienti da controllare</param>
+    /// <returns>List ingredienti presenti nel piatto</returns>
     public List<Ingrediente> getIngredientiPiatto(List<Ingrediente> databaseIngredienti = null)
     {
         databaseIngredienti ??= Costanti.databaseIngredienti;
@@ -219,6 +244,11 @@ public class Piatto
         return ingredientiPiatto;
     }
 
+    /// <summary>
+    /// Il metodo controlla se il cliente è compatibile con il piatto
+    /// </summary>
+    /// <param name="cliente">Cliente cliente da controllare</param>
+    /// <returns>booleano True: Compatibile con cliente, False: Non compatibile con il cliente</returns>
     public bool checkAffinitaConCliente (Cliente cliente)
     {
         bool patologieCompatibili = checkAffinitaPatologiePiatto(this.listaIdIngredientiQuantita, cliente.listaIdPatologie);
@@ -227,6 +257,12 @@ public class Piatto
         return (patologieCompatibili && dietaCompatibile);
     }
 
+    /// <summary>
+    /// Il metodo restituisce un booleano se la lista di ingredienti passati in input è compatibile o meno con la Patolgia passata in input
+    /// </summary>
+    /// <param name="listaIdIngredientiQuantita">(List <OggettoQuantita<int>> lista ID Ingredienti Quantita</param>
+    /// <param name="listaIdPatologieCliente">ID patologia</param>
+    /// <returns>booleano True: Patolgia compatibile con il piatto, False: Patolgia non compatibile con il piatto</returns>
     public bool checkAffinitaPatologiePiatto(List <OggettoQuantita <int>> listaIdIngredientiQuantita, List <int> listaIdPatologieCliente)
     {
         foreach (int idPatologiaCliente in listaIdPatologieCliente)
@@ -242,6 +278,12 @@ public class Piatto
         return true;
     }
 
+    /// <summary>
+    /// Il metodo restituisce un booleano se la lista di ingredienti passati in input è compatibile o meno con la dieta passata in input
+    /// </summary>
+    /// <param name="listaIdIngredientiQuantita">(List <OggettoQuantita<int>> lista ID Ingredienti Quantita</param>
+    /// <param name="dietaCliente">ID dieta</param>
+    /// <returns>booleano True: Dieta compatibile con il piatto, False: Dieta non compatibile con il piatto</returns>
     public bool checkAffinitaDietaPiatto(List <OggettoQuantita<int>> listaIdIngredientiQuantita, int dietaCliente)
     {
         foreach (OggettoQuantita<int> idIngredienteEQuantita in listaIdIngredientiQuantita)
