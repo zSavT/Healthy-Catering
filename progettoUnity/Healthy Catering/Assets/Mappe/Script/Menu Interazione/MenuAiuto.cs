@@ -53,10 +53,13 @@ public class MenuAiuto : MonoBehaviour
     private void Update()
     {
         if (pannelloMenuAiutoAperto)
+        {
+            addattamentoGraficaComandi();
             if (controllerInput.UI.Avanti.WasPressedThisFrame())
                 mostraProssimoMessaggioDiAiuto();
             else if (controllerInput.UI.Indietro.WasPressedThisFrame())
                 mostraPrecedenteMessaggioDiAiuto();
+        }
     }
 
     /// <summary>
@@ -80,6 +83,14 @@ public class MenuAiuto : MonoBehaviour
 
         apertoMenuAiuto = true; //TUTORIAL
 
+        addattamentoGraficaComandi();
+    }
+
+    /// <summary>
+    /// Il metodo aggiorna la grafica dei tasti in game
+    /// </summary>
+    private void addattamentoGraficaComandi()
+    {
         //Aggiornamento immagini e sprite per il controller
         PlayerSettings.addattamentoSpriteComandi(testoUscita);
         PlayerSettings.addattamentoSpriteComandi(testoAiuto);

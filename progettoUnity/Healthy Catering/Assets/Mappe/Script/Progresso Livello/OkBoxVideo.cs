@@ -67,8 +67,11 @@ public class OkBoxVideo : MonoBehaviour
     private void FixedUpdate()
     {
         if(okBoxVideoAperto)
+        {
+            PlayerSettings.addattamentoSpriteComandi(testo);
             if (EventSystem.current.currentSelectedGameObject == null && Utility.gamePadConnesso())
-                    EventSystem.current.SetSelectedGameObject(bottoneConferma.gameObject);
+                EventSystem.current.SetSelectedGameObject(bottoneConferma.gameObject);
+        }
     }
 
     private void OnEnable()
