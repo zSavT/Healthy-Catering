@@ -93,8 +93,19 @@ public class PannelloNegozio : MonoBehaviour
             cambiaPannelloCarosello(false);
         if(pannelloAperto)
         {
-           aggiornaObjectSelected();
+            aggiornamentoGraficaTasti();
+            aggiornaObjectSelected();
         }
+    }
+
+    /// <summary>
+    /// Il metodo permette di aggiornare gli sprite e le immagini dei comandi
+    /// </summary>
+    private void aggiornamentoGraficaTasti()
+    {
+        PlayerSettings.addattamentoSpriteComandi(testoEsc);
+        immaginiAvantiIndietroTasti[0].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("L1");
+        immaginiAvantiIndietroTasti[1].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("R1");
     }
 
     //INTERAZIONE NEGOZIO
@@ -503,7 +514,7 @@ public class PannelloNegozio : MonoBehaviour
         bottoneIndietroPannelloNegozio.interactable = false;
         pannelloSeiSicuro.SetActive(true);
         testoEsc.gameObject.SetActive(false);
-        PlayerSettings.addattamentoSpriteComandi(testoEsc);
+        aggiornamentoGraficaTasti();
         pannelloSeiSicuroAperto = true;
     }
 
@@ -713,8 +724,7 @@ public class PannelloNegozio : MonoBehaviour
         soldiGiocatore.text = Costanti.coloreVerde + "Denaro: " + Costanti.fineColore + giocatore.soldi.ToString("0.00");
         resetSituazioneCarello();
         EventSystem.current.SetSelectedGameObject(ingredientiBottoniFake[0].GetComponentsInChildren<Transform>()[4].gameObject);
-        immaginiAvantiIndietroTasti[0].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("L1");
-        immaginiAvantiIndietroTasti[1].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("R1");
+        aggiornamentoGraficaTasti();
     }
     
     /// <summary>
