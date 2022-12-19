@@ -120,6 +120,7 @@ public class PannelloMenu : MonoBehaviour
                 }
                 aggiornaImmagineTastiPiatti();
                 PlayerSettings.addattamentoSpriteComandi(EscPerUscireTesto.GetComponent<TextMeshProUGUI>());
+                PlayerSettings.addattamentoSpriteComandi(testoEsciMenuIngredientiPiatto);
             }
         }
     }
