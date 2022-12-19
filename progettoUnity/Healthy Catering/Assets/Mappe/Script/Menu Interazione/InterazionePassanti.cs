@@ -74,8 +74,11 @@ public class InterazionePassanti : MonoBehaviour
             modificaInteractableBottoneInBasePosizioneScrittaMostrata();
         }
         if (pannelloInterazionePassantiAperto)
+        {
+            addattamentoSpriteComandiInput();
             if (controllerInput.UI.Submit.WasPressedThisFrame() && !controlloNumeroPagine())
                 mostraProssimaScrittaDaMostrateOra();
+        } 
     }
 
     /// <summary>
@@ -266,6 +269,14 @@ public class InterazionePassanti : MonoBehaviour
             parlatoConZio = true;
             parlatoConNPC = false;
         }
+        addattamentoSpriteComandiInput();
+    }
+
+    /// <summary>
+    /// Il metodo permette di addattare gli sprite e le immagine in base all'input
+    /// </summary>
+    private void addattamentoSpriteComandiInput()
+    {
         immagineComando.GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("X");
         PlayerSettings.addattamentoSpriteComandi(testoUscita);
     }
