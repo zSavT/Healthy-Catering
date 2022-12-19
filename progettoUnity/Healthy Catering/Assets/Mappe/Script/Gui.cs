@@ -34,6 +34,20 @@ public class Gui : MonoBehaviour
     }
 
     /// <summary>
+    /// Il metodo permette di addattare gli sprite e le immagine in base all'input
+    /// </summary>
+    private void addattamentoSpriteComandiInput()
+    {
+        PlayerSettings.addattamentoSpriteComandi(testoInterazione);
+    }
+
+    private void Update()
+    {
+        if (testoInterazione.gameObject.activeInHierarchy)
+            addattamentoSpriteComandiInput();
+    }
+
+    /// <summary>
     /// Il metodo restituisce il testo dell'interazione nella GUI
     /// </summary>
     /// <returns>TextMeshProUGUI uscita del testo</returns>
