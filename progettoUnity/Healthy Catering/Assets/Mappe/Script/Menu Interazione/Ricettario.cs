@@ -52,6 +52,8 @@ public class Ricettario : MonoBehaviour
     private void Update()
     {
         if (ricettarioAperto)
+        {
+            addattamentoComandiSpriteInput();
             if (controllerInput.UI.Avanti.WasPressedThisFrame())
                 avantiPagina();
             else if (controllerInput.UI.Indietro.WasPressedThisFrame())
@@ -62,6 +64,7 @@ public class Ricettario : MonoBehaviour
                 switchToIngredientiView();
             else if (controllerInput.UI.Piatti.WasPressedThisFrame())
                 switchToPiattiView();
+        }
     }
 
     /// <summary>
@@ -277,6 +280,14 @@ public class Ricettario : MonoBehaviour
 
         apertoRicettario = true;//TUTORIAL
 
+        addattamentoComandiSpriteInput();
+    }
+
+    /// <summary>
+    /// Il metodo permette di aggiornare gli sprite e le immagini dei comandi in base alla tipologia di input
+    /// </summary>
+    private void addattamentoComandiSpriteInput()
+    {
         PlayerSettings.addattamentoSpriteComandi(testoSchermata);
         PlayerSettings.addattamentoSpriteComandi(tastoUscita);
         immaginiControlli[0].GetComponent<GestoreTastoUI>().impostaImmagineInBaseInput("L1");
