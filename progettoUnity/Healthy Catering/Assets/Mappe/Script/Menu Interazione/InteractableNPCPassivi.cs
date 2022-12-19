@@ -12,6 +12,7 @@ public class InteractableNPCPassivi : MonoBehaviour
     private Animator animazione;
     private Quaternion rotazioneOriginale;
     [SerializeField] private bool girabile = true;
+    [SerializeField] private bool animazioneParlanteAttiva = true;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,8 @@ public class InteractableNPCPassivi : MonoBehaviour
         {
             gameObject.transform.parent.LookAt(posizionePlayer);
         }
-        animazione.SetBool("parlando", true);
+        if(animazioneParlanteAttiva)
+            animazione.SetBool("parlando", true);
     }
 
     /// <summary>
@@ -47,7 +49,8 @@ public class InteractableNPCPassivi : MonoBehaviour
         {
             gameObject.transform.parent.transform.rotation = rotazioneOriginale;
         }
-        animazione.SetBool("parlando", false);
+        if(!animazioneParlanteAttiva)
+            animazione.SetBool("parlando", false);
     }
 
 }
