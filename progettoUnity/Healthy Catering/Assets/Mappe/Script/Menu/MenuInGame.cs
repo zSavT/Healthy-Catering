@@ -58,6 +58,8 @@ public class MenuInGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (menuAperto)
+            PlayerSettings.addattamentoSpriteComandi(testoEsci);
         checkTastoMenu();
         resetObjectSelezionatoTastoTornaAlMenu();
         if (elementiUscita.activeSelf && EventSystem.current.currentSelectedGameObject == null && menuAperto)
