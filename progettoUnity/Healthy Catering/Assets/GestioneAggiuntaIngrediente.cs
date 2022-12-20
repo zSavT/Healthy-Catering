@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -45,7 +44,7 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     /// <summary>
@@ -93,28 +92,31 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
     public void popolaElementiDropDownPatologieIngredienti()
     {
         patologieIngredienteDropDown.ClearOptions();
-        patologieIngredienteDropDown.AddOptions(Patologia.getListStringNomePatologie(listaPatologieIngredienteNuovo));
+        //patologieIngredienteDropDown.AddOptions(Patologia.getListStringNomePatologie(listaPatologieIngredienteNuovo));
+        listaPatologieIngredienteNuovo = Costanti.databasePatologie;
+        Debug.Log(listaPatologieIngredienteNuovo.Capacity);
+        foreach (Patologia temp in listaPatologieIngredienteNuovo)
+            Debug.Log(temp.nome);
     }
 
     public void aggiungiPatologieIngredienteNuovo()
     {
-
-        listaPatologieIngredienteNuovo.Add(Patologia.getPatologiaDaID(patologieEsistentiDropDown.value));
+        Debug.Log("Stringa patologia nome" + patologieEsistentiDropDown.options[patologieEsistentiDropDown.value].text);
+        listaPatologieIngredienteNuovo.Add(Patologia.getPatologiaDaNome(patologieEsistentiDropDown.options[patologieEsistentiDropDown.value].text));
+        
+        aggiornaDropDownPatologieDisponibili();
         popolaElementiDropDownPatologieIngredienti();
 
     }
 
     private void aggiornaDropDownPatologieDisponibili()
     {
-        /*
+        List<Patologia> temp = Costanti.databasePatologie;
+        //patologieEsistentiDropDown.AddOptions(Patologia.getListStringNomePatologie());
+        temp = temp.Except(listaPatologieIngredienteNuovo).ToList();
         patologieEsistentiDropDown.ClearOptions();
-        foreach (Patologia temp in (Patologia.getListStringNomePatologie()))
-        {
-            if (temp.nome.Equals(listaPatologieIngredienteNuovo))
-
-        }
-        patologieEsistentiDropDown.AddOptions(Patologia.getListStringNomePatologie().Remove());
-        */
+        patologieEsistentiDropDown.AddOptions(Patologia.getListStringNomePatologie(temp));
     }
 
 }
+

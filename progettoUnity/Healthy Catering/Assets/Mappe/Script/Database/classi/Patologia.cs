@@ -1,8 +1,9 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
 
-public class Patologia
+using UnityEngine;
+
+public class Patologia 
 {
     public int idPatologia = -1;
 
@@ -74,7 +75,8 @@ public class Patologia
                 if (temp.idPatologia != -1)
                     idsString = idsString + temp.nome + "\n";
             }
-        } else
+        }
+        else
             idsString = "nessuna patologia";
         return idsString;
     }
@@ -125,10 +127,14 @@ public class Patologia
     public static List<string> getListStringNomePatologie(List<Patologia> databasePatologie)
     {
         List<string> output = new List<string>();
-        if (databasePatologie.Count > 0)
+        if (databasePatologie.Count > 0 && databasePatologie != null)
         {
             foreach (Patologia patologia in databasePatologie)
+            {
+                Debug.Log(patologia.nome);
                 output.Add(patologia.nome);
+            }
+               
         }
         return output;
     }
@@ -150,7 +156,15 @@ public class Patologia
     public static Patologia getPatologiaDaID(int id)
     {
         foreach (Patologia patologia in Costanti.databasePatologie)
-            if(patologia.idPatologia.Equals(id))
+            if (patologia.idPatologia.Equals(id))
+                return patologia;
+        return null;
+    }
+
+    public static Patologia getPatologiaDaNome(string nome)
+    {
+        foreach (Patologia patologia in Costanti.databasePatologie)
+            if (patologia.idPatologia.Equals(nome))
                 return patologia;
         return null;
     }
