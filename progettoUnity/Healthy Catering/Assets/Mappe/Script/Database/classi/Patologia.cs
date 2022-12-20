@@ -116,4 +116,42 @@ public class Patologia
 
         return output;
     }
+
+    /// <summary>
+    /// Il metodo restituisce una lista di stringhe contenente il nome delle patologie presenti nel database
+    /// </summary>
+    /// <param name="databasePatologie">database patologie</param>
+    /// <returns>List di string di patologie nel database</returns>
+    public static List<string> getListStringNomePatologie(List<Patologia> databasePatologie)
+    {
+        List<string> output = new List<string>();
+        if (databasePatologie.Count > 0)
+        {
+            foreach (Patologia patologia in databasePatologie)
+                output.Add(patologia.nome);
+        }
+        return output;
+    }
+
+    /// <summary>
+    /// Il metodo restituisce una lista di stringhe contenente il nome delle patologie presenti nel database caricato
+    /// </summary>
+    /// <returns>List di string di patologie nel database</returns>
+    public static List<string> getListStringNomePatologie()
+    {
+        List<string> output = new List<string>();
+
+        foreach (Patologia patologia in Costanti.databasePatologie)
+            output.Add(patologia.nome);
+
+        return output;
+    }
+
+    public static Patologia getPatologiaDaID(int id)
+    {
+        foreach (Patologia patologia in Costanti.databasePatologie)
+            if(patologia.idPatologia.Equals(id))
+                return patologia;
+        return null;
+    }
 }
