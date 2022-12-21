@@ -35,6 +35,7 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
     [SerializeField] private TextMeshProUGUI testoIngredienteGiaPresente;
     [SerializeField] private TextMeshProUGUI testoDescrizioneNonValida;
     [SerializeField] private TextMeshProUGUI testoCostoNonValida;
+    [SerializeField] private TextMeshProUGUI testoCostoEcoNonValida;
 
     [Header("Testo e Altro")]
     [SerializeField] private int numeroCaratteriMinimiDescrizione = 20;
@@ -42,6 +43,8 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
     //BOOLEANI DI CONTROLLO
     private bool nomeValido = false;
     private bool descrizioneValida = false;
+    private bool costoValida = false;
+    private bool costoEcoValido = false;
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +63,8 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
         controlloNomeIngredienteInserito();
         nomeValido = false;
         descrizioneValida = false;
+        costoValida = false;
+        costoValida = false;
         testoDescrizioneNonValida.text = "Inserire più di " + numeroCaratteriMinimiDescrizione + " caratteri";
     }
 
@@ -183,21 +188,59 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
         }  
     }
 
+    /// <summary>
+    /// Il metodo controlla se la descrizione inserita rispetta i criteri di dimensione <see cref="numeroCaratteriMinimiDescrizione"/>
+    /// </summary>
     public void controlloDescrizioneIngredienteValida()
     {
         if(descrizioneIngredienteInputField.text.Count() > numeroCaratteriMinimiDescrizione)
         {
             testoDescrizioneNonValida.gameObject.SetActive(false);
+            descrizioneValida = true;
         }
         else
         {
+            descrizioneValida = false;
             testoDescrizioneNonValida.gameObject.SetActive(true);
         }
     }
 
+    /// <summary>
+    /// Il metodo controllo se il costo dell'ingrediente inserito è valido
+    /// </summary>
     public void controlloCostoIngredienteValido()
     {
+        if(!string.IsNullOrEmpty(costoIngredienteInputField.text))
+        {
+            if(!costoIngredienteInputField.text.Equals("-"))
+            {
+                if (int.Parse(costoIngredienteInputField.text) > 0)
+                {
+                    testoCostoNonValida.gameObject.SetActive(false);
+                    costoValida = true;
+                }
+                else
+                {
+                    costoValida = false;
+                    testoCostoNonValida.gameObject.SetActive(true);
+                }
+            }
+        }
+        else
+        {
+            costoValida = false;
+            testoCostoNonValida.gameObject.SetActive(true);
+        }
 
+    }
+
+    /// <summary>
+    /// Il metodo restituisce l'intero inserito costo ingrediente
+    /// </summary>
+    /// <returns>int valore inserito</returns>
+    private int getCostoIngredienteImpostato()
+    { 
+        return int.Parse(costoIngredienteInputField.text);
     }
 
 
