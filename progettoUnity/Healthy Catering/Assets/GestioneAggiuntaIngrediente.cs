@@ -1,3 +1,4 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,7 +31,17 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
     [SerializeField] private Button bottoneAggiungiIngredieti;
     [SerializeField] private Button bottoneRimuoviIngredienti;
 
+    [Header("Testi Controlli")]
+    [SerializeField] private TextMeshProUGUI testoIngredienteGiaPresente;
+    [SerializeField] private TextMeshProUGUI testoDescrizioneNonValida;
+    [SerializeField] private TextMeshProUGUI testoCostoNonValida;
 
+    [Header("Testo e Altro")]
+    [SerializeField] private int numeroCaratteriMinimiDescrizione = 20;
+
+    //BOOLEANI DI CONTROLLO
+    private bool nomeValido = false;
+    private bool descrizioneValida = false;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +57,10 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
         contenitoreIngredienti = this.gameObject;
         popolaElementiDropDownPatologieEsistenti();
         patologieIngredienteDropDown.ClearOptions();
+        controlloNomeIngredienteInserito();
+        nomeValido = false;
+        descrizioneValida = false;
+        testoDescrizioneNonValida.text = "Inserire più di " + numeroCaratteriMinimiDescrizione + " caratteri";
     }
 
     /// <summary>
@@ -144,13 +159,47 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
         }
     }
 
-    /*
-    private void controlloNomeIngredienteInserito()
+    /// <summary>
+    /// Il metodo controlla se il nome dell'ingrediente inserito è già presente, in tal caso blocca il salvataggio ed attiva il messaggio di errore!
+    /// </summary>
+    public void controlloNomeIngredienteInserito()
     {
-        Costanti.databaseIngredienti.Contains()
-        nomeIngredienteInputField.text
+        if (nomeIngredienteInputField.text.Equals(string.Empty))
+        {
+            testoIngredienteGiaPresente.gameObject.SetActive(true);
+            testoIngredienteGiaPresente.text = "Il campo non può essere vuoto";
+            nomeValido = false;
+        }
+        else if (Ingrediente.checkIngredienteOnonimoGiaPresente(nomeIngredienteInputField.text))
+        {
+            testoIngredienteGiaPresente.gameObject.SetActive(true);
+            testoIngredienteGiaPresente.text = "Ingrediente già presente!";
+            nomeValido = false;
+        }
+        else
+        {
+            testoIngredienteGiaPresente.gameObject.SetActive(false);
+            nomeValido = true;
+        }  
     }
-    */
+
+    public void controlloDescrizioneIngredienteValida()
+    {
+        if(descrizioneIngredienteInputField.text.Count() > numeroCaratteriMinimiDescrizione)
+        {
+            testoDescrizioneNonValida.gameObject.SetActive(false);
+        }
+        else
+        {
+            testoDescrizioneNonValida.gameObject.SetActive(true);
+        }
+    }
+
+    public void controlloCostoIngredienteValido()
+    {
+
+    }
+
 
 }
 
