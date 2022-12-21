@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-
 using UnityEngine;
 
 public class Patologia 
@@ -36,7 +35,8 @@ public class Patologia
             return false;
         }
         return (this.nome.Equals(((Patologia)obj).nome))
-            && (this.descrizione.Equals(((Patologia)obj).descrizione));
+            && (this.descrizione.Equals(((Patologia)obj).descrizione)
+            && (this.idPatologia.Equals(((Patologia)obj).idPatologia)));
     }
 
     public override int GetHashCode()
@@ -130,11 +130,7 @@ public class Patologia
         if (databasePatologie.Count > 0 && databasePatologie != null)
         {
             foreach (Patologia patologia in databasePatologie)
-            {
-                Debug.Log(patologia.nome);
                 output.Add(patologia.nome);
-            }
-               
         }
         return output;
     }
@@ -163,9 +159,13 @@ public class Patologia
 
     public static Patologia getPatologiaDaNome(string nome)
     {
+        Patologia temp = null;
         foreach (Patologia patologia in Costanti.databasePatologie)
-            if (patologia.idPatologia.Equals(nome))
-                return patologia;
-        return null;
+            if (patologia.nome.Equals(nome))
+            {
+                temp = patologia;
+            }
+
+        return temp;
     }
 }

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -57,4 +59,15 @@ public class Utility{
     {
         return Input.anyKey || controllerInput.Player.Movimento.WasPerformedThisFrame() || controllerInput.Player.MovimentoCamera.WasPerformedThisFrame();
     }
+
+
+    public static List<T> differenzaListe<T>(List<T> lista1, List<T> lista2)
+    {
+        List<T> temp = lista1;
+        foreach(T temp1 in lista2)
+            if(lista1.Contains(temp1))
+                    temp.Remove(temp1);
+        return temp;
+    }
+
 }

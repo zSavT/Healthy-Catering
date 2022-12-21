@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,19 +30,12 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
     [SerializeField] private Button bottoneAggiungiIngredieti;
     [SerializeField] private Button bottoneRimuoviIngredienti;
 
-    [Header("Altro")]
-    private List<Patologia> listaPatologieIngredienteNuovo;
+
 
     // Start is called before the first frame update
     void Start()
     {
         inizializzaElementiIniziali();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     /// <summary>
@@ -53,9 +44,8 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
     private void inizializzaElementiIniziali()
     {
         contenitoreIngredienti = this.gameObject;
-        listaPatologieIngredienteNuovo = new List<Patologia>();
         popolaElementiDropDownPatologieEsistenti();
-        popolaElementiDropDownPatologieIngredienti();
+        patologieIngredienteDropDown.ClearOptions();
     }
 
     /// <summary>
@@ -74,12 +64,45 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
         contenitoreIngredienti.SetActive(false);
     }
 
+    /// <summary>
+    /// Il metodo permette di rimuovere l'elemento nel dropdown passato in input
+    /// </summary>
+    /// <param name="dropdown">TMP_Dropdown dropdown da rimuovere l'elemento</param>
+    /// <param name="nomeElementoDaRimuovere">string nome elemento da eliminare</param>
+    private void rimuoviElementoDropDown(TMP_Dropdown dropdown, string nomeElementoDaRimuovere)
+    {
+        for (int i = 0; i < dropdown.options.Count; i++)
+            if (dropdown.options[i].text.Equals(nomeElementoDaRimuovere))
+            {
+                dropdown.options.RemoveAt(i);
+                break;
+            }
+        dropdown.RefreshShownValue();
+    }
+
+    /// <summary>
+    /// Il metodo permette di aggiungere l'elemento nel dropdown passato in input
+    /// </summary>
+    /// <param name="dropdown">TMP_Dropdown dropdown da aggiungere l'elemento</param>
+    /// <param name="elementoDaAggiungere">string nome elemento da aggiungere</param>
+    private void aggiungiElementoDropDown(TMP_Dropdown dropdown, TMP_Dropdown.OptionData elementoDaAggiungere)
+    {
+        dropdown.options.Add(elementoDaAggiungere);
+        dropdown.RefreshShownValue();
+    }
+
+    //PATOLOGIE
+
+    /// <summary>
+    /// Il metodo permette di inserire tutte le patologie esistenti nel dropdown delle patologie esistenti
+    /// </summary>
     public void popolaElementiDropDownPatologieEsistenti()
     {
         patologieEsistentiDropDown.ClearOptions();
         patologieEsistentiDropDown.AddOptions(Patologia.getListStringNomePatologie());
     }
 
+    /*
     private List<string> getPatologie()
     {
         List<string> opzioni = new List<string>();
@@ -88,35 +111,46 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
             opzioni.Add(temp.nome);
         return opzioni;
     }
+    */
 
-    public void popolaElementiDropDownPatologieIngredienti()
-    {
-        patologieIngredienteDropDown.ClearOptions();
-        //patologieIngredienteDropDown.AddOptions(Patologia.getListStringNomePatologie(listaPatologieIngredienteNuovo));
-        listaPatologieIngredienteNuovo = Costanti.databasePatologie;
-        Debug.Log(listaPatologieIngredienteNuovo.Capacity);
-        foreach (Patologia temp in listaPatologieIngredienteNuovo)
-            Debug.Log(temp.nome);
-    }
-
+    /// <summary>
+    /// Il metodo permette di spostare la patologia selezionata nel dropdown patologieEsistentiDropDown nel dropdown patologieIngredienteDropDown
+    /// </summary>
     public void aggiungiPatologieIngredienteNuovo()
     {
-        Debug.Log("Stringa patologia nome" + patologieEsistentiDropDown.options[patologieEsistentiDropDown.value].text);
-        listaPatologieIngredienteNuovo.Add(Patologia.getPatologiaDaNome(patologieEsistentiDropDown.options[patologieEsistentiDropDown.value].text));
-        
-        aggiornaDropDownPatologieDisponibili();
-        popolaElementiDropDownPatologieIngredienti();
+        if(patologieEsistentiDropDown.options.Count != 0)
+        {
+            aggiungiElementoDropDown(patologieIngredienteDropDown, new TMP_Dropdown.OptionData(patologieEsistentiDropDown.options[patologieEsistentiDropDown.value].text));
+            rimuoviElementoDropDown(patologieEsistentiDropDown, patologieEsistentiDropDown.options[patologieEsistentiDropDown.value].text);
+            bottoneAggiungiIngredieti.interactable = true;
+            if (patologieEsistentiDropDown.options.Count == 0)
+                bottoneAggiungiIngredieti.interactable = false;
+        }
 
     }
 
-    private void aggiornaDropDownPatologieDisponibili()
+    /// <summary>
+    /// Il metodo permette di spostare la patologia selezionata nel dropdown patologieIngredienteDropDown nel dropdown patologieEsistentiDropDown
+    /// </summary>
+    public void rimuoviPatologiaIngredienteNuovo()
     {
-        List<Patologia> temp = Costanti.databasePatologie;
-        //patologieEsistentiDropDown.AddOptions(Patologia.getListStringNomePatologie());
-        temp = temp.Except(listaPatologieIngredienteNuovo).ToList();
-        patologieEsistentiDropDown.ClearOptions();
-        patologieEsistentiDropDown.AddOptions(Patologia.getListStringNomePatologie(temp));
+        if (patologieIngredienteDropDown.options.Count != 0)
+        {
+            bottoneRimuoviIngredienti.interactable = true;
+            aggiungiElementoDropDown(patologieEsistentiDropDown, new TMP_Dropdown.OptionData(patologieIngredienteDropDown.options[patologieIngredienteDropDown.value].text));
+            rimuoviElementoDropDown(patologieIngredienteDropDown, patologieIngredienteDropDown.options[patologieIngredienteDropDown.value].text);
+            if (patologieIngredienteDropDown.options.Count == 0)
+                bottoneRimuoviIngredienti.interactable = false;
+        }
     }
+
+    /*
+    private void controlloNomeIngredienteInserito()
+    {
+        Costanti.databaseIngredienti.Contains()
+        nomeIngredienteInputField.text
+    }
+    */
 
 }
 
