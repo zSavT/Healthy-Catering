@@ -21,6 +21,12 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
 
     [Header("Bottoni")]
     [SerializeField] private Button bottoneSalvaPiatto;
+    [SerializeField] private Button bottoneAggiungi;
+    [SerializeField] private Button bottoneRimuovi;
+
+    [Header("DropDown")]
+    [SerializeField] private TMP_Dropdown ingredientiDisponibili;
+    [SerializeField] private TMP_Dropdown ingredientiInseriti;
 
     [Header("Testi Controlli")]
     [SerializeField] private TextMeshProUGUI testoPiattoGiaPresente;
@@ -72,6 +78,7 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
     private void inizializzaElementiPiatto()
     {
         contenitorePiatto = this.gameObject;
+        aggiuntaElementiDropDownIngredienti(true);
         testoDescrizioneNonValida.text = "Inserire più di " + numeroCaratteriMinimiDescrizione + " caratteri";
     }
 
@@ -124,6 +131,35 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
     {
         return nomeValido && descrizioneValida;
     }
+
+    private void aggiuntaElementiDropDownIngredienti(bool pulisciPrima)
+    {
+        if(pulisciPrima)
+            ingredientiDisponibili.ClearOptions();
+        foreach (Ingrediente temp in Costanti.databaseIngredienti)
+        {
+            Utility.aggiungiElementoDropDown(ingredientiDisponibili, new TMP_Dropdown.OptionData(temp.nome));
+        }
+    }
+
+    /// <summary>
+    /// Il metodo
+    /// </summary>
+    public void aggiuntaElementoDropDownIngredienti()
+    {
+        Utility.aggiungiElementoDropDown(ingredientiInseriti, new TMP_Dropdown.OptionData(ingredientiDisponibili.options[ingredientiDisponibili.value].text));
+        Utility.rimuoviElementoDropDown(ingredientiDisponibili, ingredientiDisponibili.options[ingredientiDisponibili.value].text);
+    }
+
+    /// <summary>
+    /// Il metodo
+    /// </summary>
+    public void RimuoviElementoDropDownIngredienti()
+    {
+        Utility.aggiungiElementoDropDown(ingredientiDisponibili, new TMP_Dropdown.OptionData(ingredientiInseriti.options[ingredientiInseriti.value].text));
+        Utility.rimuoviElementoDropDown(ingredientiInseriti, ingredientiInseriti.options[ingredientiInseriti.value].text);
+    }
+
 
     /// <summary>
     /// Il metodo permette di creare ed aggiungere la Piatto nel database e su file

@@ -95,32 +95,6 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
         contenitoreIngredienti.SetActive(false);
     }
 
-    /// <summary>
-    /// Il metodo permette di rimuovere l'elemento nel dropdown passato in input
-    /// </summary>
-    /// <param name="dropdown">TMP_Dropdown dropdown da rimuovere l'elemento</param>
-    /// <param name="nomeElementoDaRimuovere">string nome elemento da eliminare</param>
-    private void rimuoviElementoDropDown(TMP_Dropdown dropdown, string nomeElementoDaRimuovere)
-    {
-        for (int i = 0; i < dropdown.options.Count; i++)
-            if (dropdown.options[i].text.Equals(nomeElementoDaRimuovere))
-            {
-                dropdown.options.RemoveAt(i);
-                break;
-            }
-        dropdown.RefreshShownValue();
-    }
-
-    /// <summary>
-    /// Il metodo permette di aggiungere l'elemento nel dropdown passato in input
-    /// </summary>
-    /// <param name="dropdown">TMP_Dropdown dropdown da aggiungere l'elemento</param>
-    /// <param name="elementoDaAggiungere">string nome elemento da aggiungere</param>
-    private void aggiungiElementoDropDown(TMP_Dropdown dropdown, TMP_Dropdown.OptionData elementoDaAggiungere)
-    {
-        dropdown.options.Add(elementoDaAggiungere);
-        dropdown.RefreshShownValue();
-    }
 
     //PATOLOGIE
 
@@ -140,8 +114,8 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
     {
         if(patologieEsistentiDropDown.options.Count != 0)
         {
-            aggiungiElementoDropDown(patologieIngredienteDropDown, new TMP_Dropdown.OptionData(patologieEsistentiDropDown.options[patologieEsistentiDropDown.value].text));
-            rimuoviElementoDropDown(patologieEsistentiDropDown, patologieEsistentiDropDown.options[patologieEsistentiDropDown.value].text);
+            Utility.aggiungiElementoDropDown(patologieIngredienteDropDown, new TMP_Dropdown.OptionData(patologieEsistentiDropDown.options[patologieEsistentiDropDown.value].text));
+            Utility.rimuoviElementoDropDown(patologieEsistentiDropDown, patologieEsistentiDropDown.options[patologieEsistentiDropDown.value].text);
             bottoneAggiungiIngredieti.interactable = true;
             if (patologieEsistentiDropDown.options.Count == 0)
                 bottoneAggiungiIngredieti.interactable = false;
@@ -157,8 +131,8 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
         if (patologieIngredienteDropDown.options.Count != 0)
         {
             bottoneRimuoviIngredienti.interactable = true;
-            aggiungiElementoDropDown(patologieEsistentiDropDown, new TMP_Dropdown.OptionData(patologieIngredienteDropDown.options[patologieIngredienteDropDown.value].text));
-            rimuoviElementoDropDown(patologieIngredienteDropDown, patologieIngredienteDropDown.options[patologieIngredienteDropDown.value].text);
+            Utility.aggiungiElementoDropDown(patologieEsistentiDropDown, new TMP_Dropdown.OptionData(patologieIngredienteDropDown.options[patologieIngredienteDropDown.value].text));
+            Utility.rimuoviElementoDropDown(patologieIngredienteDropDown, patologieIngredienteDropDown.options[patologieIngredienteDropDown.value].text);
             if (patologieIngredienteDropDown.options.Count == 0)
                 bottoneRimuoviIngredienti.interactable = false;
         }

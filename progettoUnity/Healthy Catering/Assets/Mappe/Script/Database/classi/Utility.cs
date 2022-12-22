@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class Utility{
@@ -58,6 +57,33 @@ public class Utility{
     public static bool qualsiasiTastoPremuto(ControllerInput controllerInput)
     {
         return Input.anyKey || controllerInput.Player.Movimento.WasPerformedThisFrame() || controllerInput.Player.MovimentoCamera.WasPerformedThisFrame();
+    }
+
+    /// <summary>
+    /// Il metodo permette di rimuovere l'elemento nel dropdown passato in input
+    /// </summary>
+    /// <param name="dropdown">TMP_Dropdown dropdown da rimuovere l'elemento</param>
+    /// <param name="nomeElementoDaRimuovere">string nome elemento da eliminare</param>
+    public static void rimuoviElementoDropDown(TMP_Dropdown dropdown, string nomeElementoDaRimuovere)
+    {
+        for (int i = 0; i < dropdown.options.Count; i++)
+            if (dropdown.options[i].text.Equals(nomeElementoDaRimuovere))
+            {
+                dropdown.options.RemoveAt(i);
+                break;
+            }
+        dropdown.RefreshShownValue();
+    }
+
+    /// <summary>
+    /// Il metodo permette di aggiungere l'elemento nel dropdown passato in input
+    /// </summary>
+    /// <param name="dropdown">TMP_Dropdown dropdown da aggiungere l'elemento</param>
+    /// <param name="elementoDaAggiungere">string nome elemento da aggiungere</param>
+    public static void aggiungiElementoDropDown(TMP_Dropdown dropdown, TMP_Dropdown.OptionData elementoDaAggiungere)
+    {
+        dropdown.options.Add(elementoDaAggiungere);
+        dropdown.RefreshShownValue();
     }
 
 
