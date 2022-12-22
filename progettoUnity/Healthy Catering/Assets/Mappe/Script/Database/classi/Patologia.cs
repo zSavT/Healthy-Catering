@@ -151,6 +151,11 @@ public class Patologia
         return output;
     }
 
+    /// <summary>
+    /// Il metodo permette di restituire la patologia corrispondente all'ID passato
+    /// </summary>
+    /// <param name="id">int ID patologia</param>
+    /// <returns>Patologia corrispondente all'ID (Se ID non è stato trovato, restiuisce null)</returns>
     public static Patologia getPatologiaDaID(int id)
     {
         foreach (Patologia patologia in Costanti.databasePatologie)
@@ -159,6 +164,24 @@ public class Patologia
         return null;
     }
 
+    /// <summary>
+    /// Il metodo controlla se nel database è presente la patologia passata
+    /// </summary>
+    /// <param name="patologia">Patologia patologia da controllare se esiste</param>
+    /// <param name="databasePatologie">databasePatologie da controllare</param>
+    /// <returns>booleano, True: Patologia esiste nel database, False: Patologia non esiste nel database</returns>
+    public static bool patologiaEsistente(Patologia patologia, List<Patologia> databasePatologie = null)
+    {
+        databasePatologie ??= Costanti.databasePatologie;
+        return databasePatologie.Contains(patologia);
+    }
+
+
+    /// <summary>
+    /// Il metodo permette di restituire la patologia corrispondente all'nome passato
+    /// </summary>
+    /// <param name="nome">int ID patologia</param>
+    /// <returns>Patologia corrispondente all'nome (Se nome non è stato trovato, restiuisce null)</returns>
     public static Patologia getPatologiaDaNome(string nome)
     {
         Patologia temp = null;

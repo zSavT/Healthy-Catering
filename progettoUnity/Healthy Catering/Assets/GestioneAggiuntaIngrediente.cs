@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -134,17 +133,6 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
         patologieEsistentiDropDown.AddOptions(Patologia.getListStringNomePatologie());
     }
 
-    /*
-    private List<string> getPatologie()
-    {
-        List<string> opzioni = new List<string>();
-
-        foreach (Patologia temp in Costanti.databasePatologie)
-            opzioni.Add(temp.nome);
-        return opzioni;
-    }
-    */
-
     /// <summary>
     /// Il metodo permette di spostare la patologia selezionata nel dropdown patologieEsistentiDropDown nel dropdown patologieIngredienteDropDown
     /// </summary>
@@ -205,7 +193,7 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
     /// </summary>
     public void controlloDescrizioneIngredienteValida()
     {
-        if(descrizioneIngredienteInputField.text.Count() > numeroCaratteriMinimiDescrizione)
+        if(descrizioneIngredienteInputField.text.Length > numeroCaratteriMinimiDescrizione)
         {
             testoDescrizioneNonValida.gameObject.SetActive(false);
             descrizioneValida = true;
