@@ -119,6 +119,8 @@ public class Patologia
         return output;
     }
 
+    
+
     /// <summary>
     /// Il metodo restituisce una lista di stringhe contenente il nome delle patologie presenti nel database
     /// </summary>

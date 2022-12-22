@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -30,6 +31,7 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
     [Header("Bottoni")]
     [SerializeField] private Button bottoneAggiungiIngredieti;
     [SerializeField] private Button bottoneRimuoviIngredienti;
+    [SerializeField] private Button bottoneSalvaIngrediente;
 
     [Header("Testi Controlli")]
     [SerializeField] private TextMeshProUGUI testoIngredienteGiaPresente;
@@ -50,6 +52,16 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
     void Start()
     {
         inizializzaElementiIniziali();
+    }
+
+    private void Update()
+    {
+        if (contenitoreIngredienti.gameObject.activeInHierarchy)
+            if (tuttiValoriCorrettiInseriti())
+                bottoneSalvaIngrediente.interactable = true;
+            else
+                bottoneSalvaIngrediente.interactable = false;
+
     }
 
     /// <summary>
@@ -235,14 +247,92 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
     }
 
     /// <summary>
+    /// Il metodo controlla se il costoEco inserito è valido
+    /// </summary>
+    public void controlloCostoEcoValido()
+    {
+        if (!string.IsNullOrEmpty(costoEcoIngredienteInputField.text))
+        {
+            if (!costoEcoIngredienteInputField.text.Equals("-"))
+            {
+                if (int.Parse(costoEcoIngredienteInputField.text) >= 0)
+                {
+                    costoEcoValido = true;
+                    testoCostoEcoNonValida.gameObject.SetActive(false);
+                }
+                else
+                {
+                    testoCostoEcoNonValida.text = "Numeri negativi non validi, inserisci un numero >= 0";
+                    testoCostoEcoNonValida.gameObject.SetActive(true);
+                    costoEcoValido = false;
+                }
+            }
+            else
+            {
+                testoCostoEcoNonValida.text = "Numeri negativi non validi, inserisci un numero >= 0";
+                testoCostoEcoNonValida.gameObject.SetActive(true);
+                costoEcoValido = false;
+            }
+        }
+        else
+        {
+            testoCostoEcoNonValida.text = "Inserisci un numero >= 0";
+            testoCostoEcoNonValida.gameObject.SetActive(true);
+            costoEcoValido = false;
+        }
+    }
+
+    /// <summary>
     /// Il metodo restituisce l'intero inserito costo ingrediente
     /// </summary>
     /// <returns>int valore inserito</returns>
     private int getCostoIngredienteImpostato()
-    { 
+    {
         return int.Parse(costoIngredienteInputField.text);
     }
 
+    /// <summary>
+    /// Il metodo restituisce l'intero inserito costoEco ingrediente
+    /// </summary>
+    /// <returns>int valore inserito</returns>
+    private int getCostoEcoIngredienteImpostato()
+    {
+        return int.Parse(costoEcoIngredienteInputField.text);
+    }
+
+    /// <summary>
+    /// Il metodo controlla se tutti i criteri per la creazione degli ingredienti è valido
+    /// </summary>
+    /// <returns>booleano True: Tutte i vincoli rispettati, False: Uno o più vincoli non rispetati</returns>
+    private bool tuttiValoriCorrettiInseriti()
+    {
+        return nomeValido && descrizioneValida && costoValida && costoEcoValido;
+    }
+
+    /// <summary>
+    /// Il metodo restituisce la lista di ID delle patologie scelte
+    /// </summary>
+    /// <returns>List<int> patologie</returns>
+    private List<int> getListaPatologieScelte()
+    {
+        List<Patologia> temp;
+        temp = new List<Patologia>();
+        foreach (var patologia in patologieIngredienteDropDown.options)
+        {
+            temp.Add(Patologia.getPatologiaDaNome(patologia.text));
+        }
+        return Patologia.getListIdTutteLePatologie(temp);
+    }
+
+    /// <summary>
+    /// Il metodo permette di creare ed aggiungere l'ingrediente nel database e su file
+    /// </summary>
+    public void creaIngrediente()
+    {
+        Ingrediente nuuovo = new Ingrediente(Costanti.databaseIngredienti.Count, nomeIngredienteInputField.text, descrizioneIngredienteInputField.text, getCostoIngredienteImpostato(), getCostoEcoIngredienteImpostato(), nutriScoreIngredienteDropDown.value, dietaIngredienteDropDown.value, getListaPatologieScelte());
+        Costanti.databaseIngredienti.Add(nuuovo);
+        Database.aggiornaDatabaseOggetto(Costanti.databaseIngredienti);
+    }
 
 }
 
