@@ -14,6 +14,7 @@ public class MenuAggiuntaElementiPersonalizzati : MonoBehaviour
     [Header("Gestori singoli")]
     [SerializeField] private GestioneAggiuntaIngrediente ingrediente;
     [SerializeField] private GestioneAggiuntaPatologia patologia;
+    [SerializeField] private GestioneAggiuntaPiatto piatto;
 
     [Header("Dropdown Scelta")]
     [SerializeField] private TMP_Dropdown dropdownScelta;
@@ -31,18 +32,14 @@ public class MenuAggiuntaElementiPersonalizzati : MonoBehaviour
     {
         bottoneSi.onClick.RemoveAllListeners();
         bottoneNo.onClick.RemoveAllListeners();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         attivaElementoScelto();
     }
+
 
     /// <summary>
     /// Il metodo attiva gli elementi in base alla scelta fatta nel dropdown
     /// </summary>
-    private void attivaElementoScelto()
+    public void attivaElementoScelto()
     {
         if (dropdownScelta.value == 0)
         {
@@ -50,22 +47,19 @@ public class MenuAggiuntaElementiPersonalizzati : MonoBehaviour
             bottoneNo.onClick.RemoveAllListeners();
             ingrediente.attivaVisualeIngredienti();
             bottoneSalva.GetComponentInChildren<TextMeshProUGUI>().text = "Salva Ingrediente";
-            patologia.disattivaVisualeIngredienti();
-            bottoneSi.onClick.AddListener(() => 
-            { 
-                ingrediente.creaIngrediente(); 
+            patologia.disattivaVisualePatologia();
+            piatto.disattivaVisualePiatto();
+            bottoneSi.onClick.AddListener(() =>
+            {
+                ingrediente.creaIngrediente();
                 ingrediente.attivaVisualeIngredienti();
-                bottoneSalva.gameObject.SetActive(true);
-                bottoneIndietro.gameObject.SetActive(true);
-                elementiUscita.SetActive(false);
+                attivaElementiDopoClick();
             }
             );
             bottoneNo.onClick.AddListener(() =>
             {
-                elementiUscita.SetActive(false);
                 ingrediente.attivaVisualeIngredienti();
-                bottoneSalva.gameObject.SetActive(true);
-                bottoneIndietro.gameObject.SetActive(true);
+                attivaElementiDopoClick();
             }
             );
        }
@@ -74,34 +68,56 @@ public class MenuAggiuntaElementiPersonalizzati : MonoBehaviour
         {
             bottoneSi.onClick.RemoveAllListeners();
             bottoneNo.onClick.RemoveAllListeners();
+            patologia.attivaVisualePatologia();
             bottoneSalva.GetComponentInChildren<TextMeshProUGUI>().text = "Salva Patologia";
             ingrediente.disattivaVisualeIngredienti();
-            patologia.attivaVisualeIngredienti();
+            piatto.disattivaVisualePiatto();
             bottoneSi.onClick.AddListener(() =>
             {
                 patologia.creaPatologia();
-                patologia.attivaVisualeIngredienti();
-                bottoneSalva.gameObject.SetActive(true);
-                bottoneIndietro.gameObject.SetActive(true);
-                elementiUscita.SetActive(false);
+                patologia.attivaVisualePatologia();
+                attivaElementiDopoClick();
             }
             );
             bottoneNo.onClick.AddListener(() =>
             {
-                patologia.attivaVisualeIngredienti();
-                bottoneSalva.gameObject.SetActive(true);
-                bottoneIndietro.gameObject.SetActive(true);
-                elementiUscita.SetActive(false);
+                patologia.attivaVisualePatologia();
+                attivaElementiDopoClick();
             }
             );
+
+
         } else if (dropdownScelta.value == 2)
         {
             bottoneSi.onClick.RemoveAllListeners();
             bottoneNo.onClick.RemoveAllListeners();
+            piatto.attivaVisualePiatto();
             bottoneSalva.GetComponentInChildren<TextMeshProUGUI>().text = "Salva Piatto";
             ingrediente.disattivaVisualeIngredienti();
+            patologia.disattivaVisualePatologia();
+            bottoneSi.onClick.AddListener(() =>
+            {
+                piatto.creaPiatto();
+                piatto.attivaVisualePiatto();
+                attivaElementiDopoClick();
+            }
+);
+            bottoneNo.onClick.AddListener(() =>
+            {
+                patologia.attivaVisualePatologia();
+                attivaElementiDopoClick();
+            }
+            );
         }
     }
 
-
+    /// <summary>
+    /// Il metodo attiva gli elementi dopo i click
+    /// </summary>
+    private void attivaElementiDopoClick()
+    {
+        bottoneSalva.gameObject.SetActive(true);
+        bottoneIndietro.gameObject.SetActive(true);
+        elementiUscita.SetActive(false);
+    }
 }

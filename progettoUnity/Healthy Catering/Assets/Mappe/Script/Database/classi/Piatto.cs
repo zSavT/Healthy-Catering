@@ -328,6 +328,24 @@ public class Piatto
         return true;
     }
 
+    /// <summary>
+    /// Il metodo controlla se esiste un piatto con lo stesso nome nel database
+    /// </summary>
+    /// <param name="nomePiatto">string nome del piatto</param>
+    /// <param name="databasePiatti">database piatti</param>
+    /// <returns>booleano True: Piatto con lo stesso nome presente, False: Piatto con lo stesso nome non presente</returns>
+    public static bool checkPiattoOnonimoPresente(string nomePiatto, List<Piatto> databasePiatti = null)
+    {
+        databasePiatti ??= Costanti.databasePiatti;
+
+        foreach (Piatto temp in databasePiatti)
+            if (temp.nome.Equals(nomePiatto))
+            {
+                return true;
+            }
+        return false;       
+    }
+
     //FUNZIONI PER DATABASE
 
     /// <summary>

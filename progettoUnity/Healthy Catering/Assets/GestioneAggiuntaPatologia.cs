@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -53,7 +51,7 @@ public class GestioneAggiuntaPatologia : MonoBehaviour
     /// <summary>
     /// Il metodo attiva tutti gli elementi della patologia
     /// </summary>
-    public void attivaVisualeIngredienti()
+    public void attivaVisualePatologia()
     {
         contenitorePatologia.SetActive(true);
     }
@@ -61,7 +59,7 @@ public class GestioneAggiuntaPatologia : MonoBehaviour
     /// <summary>
     /// Il metodo disattiva tutti gli elementi della patologia
     /// </summary>
-    public void disattivaVisualeIngredienti()
+    public void disattivaVisualePatologia()
     {
         contenitorePatologia.SetActive(false);
     }
@@ -76,7 +74,7 @@ public class GestioneAggiuntaPatologia : MonoBehaviour
     }
 
     /// <summary>
-    /// Il metodo controlla se il nome dell'ingrediente inserito è già presente, in tal caso blocca il salvataggio ed attiva il messaggio di errore!
+    /// Il metodo controlla se il nome dell'Patologia inserito è già presente, in tal caso blocca il salvataggio ed attiva il messaggio di errore!
     /// </summary>
     public void controlloNomePatologiaInserito()
     {
