@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -153,6 +150,10 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
         return nomeValido && descrizioneValida && almenoUnIngrediente;
     }
 
+    /// <summary>
+    /// Il metodo permette di aggiungere un elemento al dropdown degli ingredienti inseriti
+    /// </summary>
+    /// <param name="pulisciPrima">booleano True: Elimina i valori gi‡ presenti prima, False: Non rimuove prima i valori gi‡ presenti</param>
     private void aggiuntaElementiDropDownIngredienti(bool pulisciPrima)
     {
         if(pulisciPrima)
@@ -164,7 +165,7 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
     }
 
     /// <summary>
-    /// Il metodo
+    /// Il metodo gestisce l'inserimento di un nuovo ingrediente al piatto nuovo
     /// </summary>
     public void aggiuntaElementoDropDownIngredienti()
     {
@@ -173,6 +174,10 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
         refreshValoriDropdownIngredientiInseriti(true);
     }
 
+    /// <summary>
+    /// Il metodo aggiorna i valori presenti nel dropdown
+    /// </summary>
+    /// <param name="inserimento">bool, True: Aggiunge il nuovo ingrediente al piatto, False: Non inserire l'ingrediente</param>
     private void refreshValoriDropdownIngredientiInseriti(bool inserimento)
     {
 
@@ -189,7 +194,7 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
 
 
     /// <summary>
-    /// Il metodo
+    /// Il metodo permette di rimuovere l'ingrediente selezionato nella lista di ingredienti aggiunti al nuovo piatto.
     /// </summary>
     public void RimuoviElementoDropDownIngredienti()
     {
@@ -199,6 +204,10 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
         refreshValoriDropdownIngredientiInseriti(false);
     }
 
+    /// <summary>
+    /// Il metodo aggiorna il testo della label della quantit‡ ingredienti in base all'ingrediente selezionato.
+    /// <para>Se la lista degli ingredienti inseriti Ë vuota, il valore inserito non comprende il nome di nessun ingrediente</para>
+    /// </summary>
     public void aggiornaTestoQuantit‡Ingrediente()
     {
         if (ingredientiInseriti.options.Count() > 0)
@@ -210,6 +219,11 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
             testoQuantit‡.text = "Quantit‡ ingrediente:";
     }
 
+    /// <summary>
+    /// Il metodo permette di aggiornare il valore della quantit‡ in base all'ingrediente selezionato nella lista di OggettiQuantit‡
+    /// </summary>
+    /// <param name="quantit‡"></param>
+    /// <param name="nomeIngredienteDaAggiornare"></param>
     private void aggiornaQuantit‡IngredienteInserito(int quantit‡, string nomeIngredienteDaAggiornare)
     {
        foreach (OggettoQuantita<int> oggettoQuantita in listaIngredientiQuantit‡)
@@ -222,6 +236,11 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo permette di rimuovere l'ingrediente dalla lista degli ingredienti inseriti. 
+    /// <para>Se la lista degli ingredienti inseriti Ë vuota, la variabile almeno <strong>UnIngrediente</strong> viene settato su false</para>
+    /// </summary>
+    /// <param name="nomeIngredienteDaRimuovere">string nome dell'ingrediente da eliminare</param>
     private void rimuoviDaListaIngredientiIngrediente(string nomeIngredienteDaRimuovere)
     {
         foreach (OggettoQuantita<int> oggettoQuantita in listaIngredientiQuantit‡)
@@ -236,6 +255,9 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Il metodo permette di aumentare di una unit‡ numerica il valore della quantit‡ numerica
+    /// </summary>
     private void aumentaQuantit‡Ingrediente()
     {
         bottonePi˘.onClick.AddListener(() =>
@@ -246,7 +268,9 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
         );
     }
 
-
+    /// <summary>
+    /// Il metodo permette di diminuire di una unit‡ numerica il valore della quantit‡ numerica
+    /// </summary>
     private void diminuisciQuantit‡Ingrediente()
     {
         bottoneMeno.onClick.AddListener(() =>
@@ -259,16 +283,16 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
         );
     }
 
+    /// <summary>
+    /// Il metodo permette di aggiornare il valore del testo della quantit‡ dell'ingrediente selezionato per il piatto
+    /// </summary>
+    /// <param name="index"></param>
     public void aggiornaValoreQuantit‡IngredienteSelezionato(int index)
     {
-        Debug.Log(ingredientiInseriti.options[index].text);
-        
         foreach (OggettoQuantita<int> oggettoQuantita in listaIngredientiQuantit‡)
         {
-            Debug.Log(Ingrediente.idToIngrediente(oggettoQuantita.oggetto).nome);
             if (oggettoQuantita.oggetto.Equals(Ingrediente.getIngredienteDaNome(ingredientiInseriti.options[index].text).idIngrediente))
             {
-                Debug.Log(oggettoQuantita.quantita);
                 quantit‡Valore.text = oggettoQuantita.quantita.ToString();
                 break;
             }

@@ -120,7 +120,10 @@ public class MenuAggiuntaElementiPersonalizzati : MonoBehaviour
         bottoneIndietro.gameObject.SetActive(true);
         elementiUscita.SetActive(false);
     }
-
+    
+    /// <summary>
+    /// Il metodo permette di caricare la scena del menu principale
+    /// </summary>
     public void menuPrincipale()
     {
         SelezioneLivelli.caricaMenuPrincipale();
