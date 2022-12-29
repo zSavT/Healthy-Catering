@@ -2208,7 +2208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &182672022
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9266,12 +9266,12 @@ RectTransform:
   - {fileID: 1917623355}
   - {fileID: 103088700}
   - {fileID: 536046328}
-  - {fileID: 950069666}
   - {fileID: 2118365873}
   - {fileID: 1035545178}
   - {fileID: 1800866498}
   - {fileID: 39089557}
   - {fileID: 470562612}
+  - {fileID: 950069666}
   - {fileID: 1394145513}
   - {fileID: 352356442}
   m_Father: {fileID: 1455885014}
@@ -9299,6 +9299,10 @@ MonoBehaviour:
   bottoneSalvaPiatto: {fileID: 440158603}
   bottoneAggiungi: {fileID: 1800866499}
   bottoneRimuovi: {fileID: 39089558}
+  "bottonePi\xF9": {fileID: 1119451346}
+  bottoneMeno: {fileID: 1082766599}
+  "quantit\xE0Valore": {fileID: 1775214320}
+  "testoQuantit\xE0": {fileID: 352356443}
   ingredientiDisponibili: {fileID: 1035545179}
   ingredientiInseriti: {fileID: 1394145514}
   testoPiattoGiaPresente: {fileID: 103088701}
@@ -9377,7 +9381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -86.5, y: -152.5}
+  m_AnchoredPosition: {x: -89.1, y: -149.4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &951213655
@@ -10431,8 +10435,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SceltaImpostazioniPlayer, Assembly-CSharp
+      - m_Target: {fileID: 1988159438}
+        m_TargetAssemblyTypeName: MenuAggiuntaElementiPersonalizzati, Assembly-CSharp
         m_MethodName: menuPrincipale
         m_Mode: 1
         m_Arguments:
@@ -10785,7 +10789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 109.5, y: -81.144}
+  m_AnchoredPosition: {x: 68.9, y: -81.144}
   m_SizeDelta: {x: 21.697, y: 17.312}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1082766599
@@ -11230,7 +11234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 69.151, y: -81.144}
+  m_AnchoredPosition: {x: 111.4, y: -81.144}
   m_SizeDelta: {x: 21.697, y: 17.312}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1119451346
@@ -13033,7 +13037,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1356881966
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13586,7 +13590,31 @@ MonoBehaviour:
     m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 925825154}
+        m_TargetAssemblyTypeName: GestioneAggiuntaPiatto, Assembly-CSharp
+        m_MethodName: "aggiornaTestoQuantit\xE0Ingrediente"
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 925825154}
+        m_TargetAssemblyTypeName: GestioneAggiuntaPiatto, Assembly-CSharp
+        m_MethodName: "aggiornaValoreQuantit\xE0IngredienteSelezionato"
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1394145515
 MonoBehaviour:
@@ -17431,7 +17459,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}

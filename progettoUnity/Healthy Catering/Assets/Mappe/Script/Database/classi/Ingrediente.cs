@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine.InputSystem.Editor;
 
 public class Ingrediente
 {
@@ -214,6 +215,25 @@ public class Ingrediente
         }
 
         return output;
+    }
+
+    /// <summary>
+    /// Il metodo permette di ricercare nel database un ingrediente tramite il suo nome ed restituirlo in output
+    /// </summary>
+    /// <param name="nomeIngredienteDaCercare">string nome dell'ingrediente da ricercare</param>
+    /// <param name="databaseIngredienti">database ingrediente dove ricercare l'ingrediente</param>
+    /// <returns>Ingrediente ricercato. Se non è stato ritrovato nessun ingrediente, il valore di ritorno è null</returns>
+    public static Ingrediente getIngredienteDaNome(string nomeIngredienteDaCercare, List<Ingrediente> databaseIngredienti = null)
+    {
+        databaseIngredienti ??= Costanti.databaseIngredienti;
+        foreach (Ingrediente ingredienteTemp in databaseIngredienti)
+        {
+            if ((ingredienteTemp.nome.ToLower().Equals(nomeIngredienteDaCercare.ToLower())))
+            {
+                return ingredienteTemp;
+            }
+        }
+        return new Ingrediente(100, "B", "L", 1, 1 ,1 ,1, new List<int>());
     }
 
     //METODO NON UTILIZZATI MA EVENTUALMENTE UTILI

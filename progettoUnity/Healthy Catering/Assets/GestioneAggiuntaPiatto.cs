@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,6 +27,12 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
     [SerializeField] private Button bottoneAggiungi;
     [SerializeField] private Button bottoneRimuovi;
 
+    [Header("Quantit‡")]
+    [SerializeField] private Button bottonePi˘;
+    [SerializeField] private Button bottoneMeno;
+    [SerializeField] private TextMeshProUGUI quantit‡Valore;
+    [SerializeField] private TextMeshProUGUI testoQuantit‡;
+
     [Header("DropDown")]
     [SerializeField] private TMP_Dropdown ingredientiDisponibili;
     [SerializeField] private TMP_Dropdown ingredientiInseriti;
@@ -34,11 +43,13 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
 
     [Header("Testo e Altro")]
     [SerializeField] private int numeroCaratteriMinimiDescrizione = 20;
+    private List<OggettoQuantita<int>> listaIngredientiQuantit‡ = new List<OggettoQuantita<int>>();
 
 
     //BOOLEANI DI CONTROLLO
     private bool nomeValido = false;
     private bool descrizioneValida = false;
+    private bool almenoUnIngrediente = false;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +65,14 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
                 bottoneSalvaPiatto.interactable = true;
             else
                 bottoneSalvaPiatto.interactable = false;
+        if(Input.GetKeyUp(KeyCode.F1))
+        {
+            foreach (OggettoQuantita<int> oggettoQuantita in listaIngredientiQuantit‡)
+            {
+                Debug.Log(Ingrediente.idToIngrediente(oggettoQuantita.oggetto).nome);
+            }
+        }    
+
     }
 
     /// <summary>
@@ -80,6 +99,8 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
         contenitorePiatto = this.gameObject;
         aggiuntaElementiDropDownIngredienti(true);
         testoDescrizioneNonValida.text = "Inserire pi˘ di " + numeroCaratteriMinimiDescrizione + " caratteri";
+        aumentaQuantit‡Ingrediente();
+        diminuisciQuantit‡Ingrediente();
     }
 
     /// <summary>
@@ -129,7 +150,7 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
     /// <returns>booleano True: Tutte i vincoli rispettati, False: Uno o pi˘ vincoli non rispetati</returns>
     private bool tuttiValoriCorrettiInseriti()
     {
-        return nomeValido && descrizioneValida;
+        return nomeValido && descrizioneValida && almenoUnIngrediente;
     }
 
     private void aggiuntaElementiDropDownIngredienti(bool pulisciPrima)
@@ -149,27 +170,118 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
     {
         Utility.aggiungiElementoDropDown(ingredientiInseriti, new TMP_Dropdown.OptionData(ingredientiDisponibili.options[ingredientiDisponibili.value].text));
         Utility.rimuoviElementoDropDown(ingredientiDisponibili, ingredientiDisponibili.options[ingredientiDisponibili.value].text);
+        refreshValoriDropdownIngredientiInseriti(true);
     }
+
+    private void refreshValoriDropdownIngredientiInseriti(bool inserimento)
+    {
+
+        ingredientiInseriti.value = ingredientiInseriti.options.Count()-1;
+        ingredientiInseriti.RefreshShownValue();
+        if (inserimento)
+        {
+            listaIngredientiQuantit‡.Add(new OggettoQuantita<int>(Ingrediente.getIngredienteDaNome(ingredientiInseriti.options[ingredientiInseriti.value].text).idIngrediente, 1));
+            almenoUnIngrediente = true;
+        }
+        aggiornaTestoQuantit‡Ingrediente();
+    }
+
+
 
     /// <summary>
     /// Il metodo
     /// </summary>
     public void RimuoviElementoDropDownIngredienti()
     {
+        rimuoviDaListaIngredientiIngrediente(ingredientiInseriti.options[ingredientiInseriti.value].text);
         Utility.aggiungiElementoDropDown(ingredientiDisponibili, new TMP_Dropdown.OptionData(ingredientiInseriti.options[ingredientiInseriti.value].text));
         Utility.rimuoviElementoDropDown(ingredientiInseriti, ingredientiInseriti.options[ingredientiInseriti.value].text);
+        refreshValoriDropdownIngredientiInseriti(false);
     }
 
+    public void aggiornaTestoQuantit‡Ingrediente()
+    {
+        if (ingredientiInseriti.options.Count() > 0)
+        {
+            testoQuantit‡.text = "Quantit‡ ingrediente \"" + ingredientiInseriti.options[ingredientiInseriti.value].text + "\":";
+            aggiornaValoreQuantit‡IngredienteSelezionato(ingredientiInseriti.value);
+        }
+        else
+            testoQuantit‡.text = "Quantit‡ ingrediente:";
+    }
+
+    private void aggiornaQuantit‡IngredienteInserito(int quantit‡, string nomeIngredienteDaAggiornare)
+    {
+       foreach (OggettoQuantita<int> oggettoQuantita in listaIngredientiQuantit‡)
+        {
+            if (oggettoQuantita.oggetto.Equals(Ingrediente.getIngredienteDaNome(nomeIngredienteDaAggiornare).idIngrediente))
+            {
+                oggettoQuantita.quantita = quantit‡;
+                break;
+            }
+        }
+    }
+
+    private void rimuoviDaListaIngredientiIngrediente(string nomeIngredienteDaRimuovere)
+    {
+        foreach (OggettoQuantita<int> oggettoQuantita in listaIngredientiQuantit‡)
+        {
+            if (oggettoQuantita.oggetto.Equals(Ingrediente.getIngredienteDaNome(nomeIngredienteDaRimuovere).idIngrediente))
+            {
+                listaIngredientiQuantit‡.Remove(oggettoQuantita);
+                if (listaIngredientiQuantit‡.Count() == 0)
+                    almenoUnIngrediente = false;
+                break;
+            }
+        }
+    }
+
+    private void aumentaQuantit‡Ingrediente()
+    {
+        bottonePi˘.onClick.AddListener(() =>
+        {
+            quantit‡Valore.text = (int.Parse(quantit‡Valore.text) + 1).ToString();
+            aggiornaQuantit‡IngredienteInserito(int.Parse(quantit‡Valore.text), ingredientiInseriti.options[ingredientiInseriti.value].text);
+        }
+        );
+    }
+
+
+    private void diminuisciQuantit‡Ingrediente()
+    {
+        bottoneMeno.onClick.AddListener(() =>
+        {
+            quantit‡Valore.text = (int.Parse(quantit‡Valore.text) - 1).ToString();
+            if ((int.Parse(quantit‡Valore.text) < 1))
+                quantit‡Valore.text = "1";
+            aggiornaQuantit‡IngredienteInserito(int.Parse(quantit‡Valore.text), ingredientiInseriti.options[ingredientiInseriti.value].text);
+        }
+        );
+    }
+
+    public void aggiornaValoreQuantit‡IngredienteSelezionato(int index)
+    {
+        Debug.Log(ingredientiInseriti.options[index].text);
+        
+        foreach (OggettoQuantita<int> oggettoQuantita in listaIngredientiQuantit‡)
+        {
+            Debug.Log(Ingrediente.idToIngrediente(oggettoQuantita.oggetto).nome);
+            if (oggettoQuantita.oggetto.Equals(Ingrediente.getIngredienteDaNome(ingredientiInseriti.options[index].text).idIngrediente))
+            {
+                Debug.Log(oggettoQuantita.quantita);
+                quantit‡Valore.text = oggettoQuantita.quantita.ToString();
+                break;
+            }
+        }
+    }
 
     /// <summary>
     /// Il metodo permette di creare ed aggiungere la Piatto nel database e su file
     /// </summary>
     public void creaPiatto()
     {
-        /*
-        Piatto nuovo = new Piatto(nomePiattoInputField.text, descrizionePiattoInputField.text);
+        Piatto nuovo = new Piatto(nomePiattoInputField.text, descrizionePiattoInputField.text, listaIngredientiQuantit‡);
         Costanti.databasePiatti.Add(nuovo);
         Database.aggiornaDatabaseOggetto(Costanti.databasePiatti);
-        */
     }
 }

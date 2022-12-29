@@ -120,4 +120,9 @@ public class MenuAggiuntaElementiPersonalizzati : MonoBehaviour
         bottoneIndietro.gameObject.SetActive(true);
         elementiUscita.SetActive(false);
     }
+
+    public void menuPrincipale()
+    {
+        SelezioneLivelli.caricaMenuPrincipale();
+    }
 }
