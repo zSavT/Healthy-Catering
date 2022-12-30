@@ -252,5 +252,13 @@ public class SelezioneLivelli : MonoBehaviour
         SceneManager.LoadScene(7);
     }
 
+    /// <summary>
+    /// Carica la scena della creazione elementi.
+    /// </summary>
+    public static void caricareCreazioneElementi()
+    {
+        SceneManager.LoadScene(10);
+    }
+
 }
 

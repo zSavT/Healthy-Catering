@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 39089558}
   m_Layer: 5
   m_Name: ButtonRimuovi
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1125,7 +1125,7 @@ GameObject:
   - component: {fileID: 102346605}
   m_Layer: 5
   m_Name: InputFieldCostoIngrediente
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2808,7 +2808,7 @@ GameObject:
   - component: {fileID: 316441106}
   m_Layer: 5
   m_Name: ButtonAggiungi
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4081,7 +4081,7 @@ GameObject:
   - component: {fileID: 426611526}
   m_Layer: 5
   m_Name: DropdownDieta
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4992,7 +4992,7 @@ GameObject:
   - component: {fileID: 487721414}
   m_Layer: 5
   m_Name: InputFieldNome
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5987,7 +5987,7 @@ GameObject:
   - component: {fileID: 569036113}
   m_Layer: 5
   m_Name: DropdownPatologie
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6762,7 +6762,7 @@ GameObject:
   - component: {fileID: 674028811}
   m_Layer: 5
   m_Name: DropdownPatologieIngrediente
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8066,7 +8066,7 @@ GameObject:
   - component: {fileID: 806640183}
   m_Layer: 5
   m_Name: DropdownScelta
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10223,7 +10223,7 @@ GameObject:
   - component: {fileID: 1035545179}
   m_Layer: 5
   m_Name: DropdownIngredientiEsistenti
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10766,7 +10766,7 @@ GameObject:
   - component: {fileID: 1082766599}
   m_Layer: 5
   m_Name: '-'
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11023,7 +11023,7 @@ GameObject:
   - component: {fileID: 1119386258}
   m_Layer: 5
   m_Name: InputFieldDescrizione
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11211,7 +11211,7 @@ GameObject:
   - component: {fileID: 1119451346}
   m_Layer: 5
   m_Name: +
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12471,7 +12471,7 @@ GameObject:
   - component: {fileID: 1332179315}
   m_Layer: 5
   m_Name: InputFieldCostoEco
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12712,7 +12712,7 @@ GameObject:
   - component: {fileID: 1351332220}
   m_Layer: 5
   m_Name: InputFieldDescrizione
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13510,7 +13510,7 @@ GameObject:
   - component: {fileID: 1394145514}
   m_Layer: 5
   m_Name: DropdownIngredientiInseriti
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16613,7 +16613,7 @@ GameObject:
   - component: {fileID: 1720564273}
   m_Layer: 5
   m_Name: InputFieldNome
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17761,7 +17761,7 @@ GameObject:
   - component: {fileID: 1800866499}
   m_Layer: 5
   m_Name: ButtonAggiungi
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19218,7 +19218,7 @@ GameObject:
   - component: {fileID: 1917623356}
   m_Layer: 5
   m_Name: InputFieldDescrizione
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19648,7 +19648,7 @@ GameObject:
   - component: {fileID: 1961803589}
   m_Layer: 5
   m_Name: ButtonRimuovi
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20902,7 +20902,7 @@ GameObject:
   - component: {fileID: 2061958591}
   m_Layer: 5
   m_Name: DropdownNutriScore
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21545,7 +21545,7 @@ GameObject:
   - component: {fileID: 2126230167}
   m_Layer: 5
   m_Name: InputFieldNome
-  m_TagString: Untagged
+  m_TagString: Interagibile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

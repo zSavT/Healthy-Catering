@@ -134,6 +134,14 @@ public class Menu : MonoBehaviour
     }
 
     /// <summary>
+    /// Il metodo permette di caricare la creazione elementi
+    /// </summary>
+    public void caricaElementiPersonalizzati()
+    {
+        SelezioneLivelli.caricareCreazioneElementi();
+    }
+
+    /// <summary>
     /// Il metodo aumenta la trasparenza dell'icona del controller se inserito
     /// </summary>
     private void attivaDisattivaIconaController()
