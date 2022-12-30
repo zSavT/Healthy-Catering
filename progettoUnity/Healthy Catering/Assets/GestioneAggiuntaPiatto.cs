@@ -73,6 +73,32 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
     }
 
     /// <summary>
+    /// Il metodo permette di impostare i placeHolder iniziali
+    /// </summary>
+    private void impostaPlaceHolder()
+    {
+        nomePiattoInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Imposta nome Piatto";
+        descrizionePiattoInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Imposta Descrizione Piatto";
+
+    }
+
+    /// <summary>
+    /// Il metodo resetta tutti i valori inseriti
+    /// </summary>
+    public void resetValoriInseriti()
+    {
+        nomePiattoInputField.text = string.Empty;
+        descrizionePiattoInputField.text = string.Empty;
+        aggiuntaElementiDropDownIngredienti(true);
+        ingredientiDisponibili.RefreshShownValue();
+        ingredientiInseriti.ClearOptions();
+        ingredientiInseriti.RefreshShownValue();
+        listaIngredientiQuantit‡.Clear();
+        quantit‡Valore.text = "1";
+
+    }
+
+    /// <summary>
     /// Il metodo attiva tutti gli elementi della Piatto
     /// </summary>
     public void attivaVisualePiatto()
@@ -98,6 +124,7 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
         testoDescrizioneNonValida.text = "Inserire pi˘ di " + numeroCaratteriMinimiDescrizione + " caratteri";
         aumentaQuantit‡Ingrediente();
         diminuisciQuantit‡Ingrediente();
+        impostaPlaceHolder();
     }
 
     /// <summary>

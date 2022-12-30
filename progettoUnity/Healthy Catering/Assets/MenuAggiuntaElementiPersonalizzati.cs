@@ -48,7 +48,9 @@ public class MenuAggiuntaElementiPersonalizzati : MonoBehaviour
             ingrediente.attivaVisualeIngredienti();
             bottoneSalva.GetComponentInChildren<TextMeshProUGUI>().text = "Salva Ingrediente";
             patologia.disattivaVisualePatologia();
+            patologia.resetValoriInseriti();
             piatto.disattivaVisualePiatto();
+            piatto.resetValoriInseriti();
             bottoneSi.onClick.AddListener(() =>
             {
                 ingrediente.creaIngrediente();
@@ -71,7 +73,9 @@ public class MenuAggiuntaElementiPersonalizzati : MonoBehaviour
             patologia.attivaVisualePatologia();
             bottoneSalva.GetComponentInChildren<TextMeshProUGUI>().text = "Salva Patologia";
             ingrediente.disattivaVisualeIngredienti();
+            ingrediente.resetValoriInseriti();
             piatto.disattivaVisualePiatto();
+            piatto.resetValoriInseriti();
             bottoneSi.onClick.AddListener(() =>
             {
                 patologia.creaPatologia();
@@ -94,7 +98,9 @@ public class MenuAggiuntaElementiPersonalizzati : MonoBehaviour
             piatto.attivaVisualePiatto();
             bottoneSalva.GetComponentInChildren<TextMeshProUGUI>().text = "Salva Piatto";
             ingrediente.disattivaVisualeIngredienti();
+            ingrediente.resetValoriInseriti();
             patologia.disattivaVisualePatologia();
+            patologia.resetValoriInseriti();
             bottoneSi.onClick.AddListener(() =>
             {
                 piatto.creaPiatto();

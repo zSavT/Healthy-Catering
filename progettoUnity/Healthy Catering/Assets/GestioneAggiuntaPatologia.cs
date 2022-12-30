@@ -49,6 +49,24 @@ public class GestioneAggiuntaPatologia : MonoBehaviour
     }
 
     /// <summary>
+    /// Il metodo inizializza i placeHolder degli input field
+    /// </summary>
+    private void inizializzaPlaceHolderInputField()
+    {
+        nomePatologiaInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Inserisci nome Patologia";
+        descrizionePatologiaInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Descrizione Patologia";
+    }
+
+    /// <summary>
+    /// Il metodo permette di resettare tutti i valori inseriti nei form
+    /// </summary>
+    public void resetValoriInseriti()
+    {
+        nomePatologiaInputField.text = string.Empty;
+        descrizionePatologiaInputField.text = string.Empty;
+    }
+
+    /// <summary>
     /// Il metodo attiva tutti gli elementi della patologia
     /// </summary>
     public void attivaVisualePatologia()
@@ -71,6 +89,7 @@ public class GestioneAggiuntaPatologia : MonoBehaviour
     {
         contenitorePatologia = this.gameObject;
         testoDescrizioneNonValida.text = "Inserire più di " + numeroCaratteriMinimiDescrizione + " caratteri";
+        inizializzaPlaceHolderInputField();
     }
 
     /// <summary>

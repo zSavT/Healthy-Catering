@@ -72,12 +72,39 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
         popolaElementiDropDownPatologieEsistenti();
         patologieIngredienteDropDown.ClearOptions();
         controlloNomeIngredienteInserito();
+        inizializzaPlaceHolderInputField();
         nomeValido = false;
         descrizioneValida = false;
         costoValida = false;
         costoValida = false;
         testoDescrizioneNonValida.text = "Inserire più di " + numeroCaratteriMinimiDescrizione + " caratteri";
     }
+
+    /// <summary>
+    /// Il metodo inizializza i placeHolder degli input field
+    /// </summary>
+    private void inizializzaPlaceHolderInputField()
+    {
+        nomeIngredienteInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Inserisci nome ingrediente";
+        descrizioneIngredienteInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Descrizione ingrediente";
+        costoIngredienteInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Inserisci Costo ingrediente";
+        costoEcoIngredienteInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Inserisci CostoEco";
+    }
+
+    /// <summary>
+    /// Il metodo permette di resettare tutti i valori inseriti nei form
+    /// </summary>
+    public void resetValoriInseriti()
+    {
+        nomeIngredienteInputField.text = string.Empty;
+        descrizioneIngredienteInputField.text = string.Empty;
+        costoIngredienteInputField.text = string.Empty;
+        costoEcoIngredienteInputField.text = string.Empty;
+        popolaElementiDropDownPatologieEsistenti();
+        patologieIngredienteDropDown.ClearOptions();
+        patologieIngredienteDropDown.RefreshShownValue();
+    }
+
 
     /// <summary>
     /// Il metodo attiva tutti gli elementi degli ingredienti
@@ -105,6 +132,7 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
     {
         patologieEsistentiDropDown.ClearOptions();
         patologieEsistentiDropDown.AddOptions(Patologia.getListStringNomePatologie());
+        patologieIngredienteDropDown.RefreshShownValue();
     }
 
     /// <summary>
