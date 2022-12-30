@@ -24,7 +24,6 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerEnterHandler, IPointe
         }
         m_NextScrollPosition = Vector2.up;
         m_ScrollRect.normalizedPosition = Vector2.up;
-        ScrollToSelected(false);
     }
 
     private void Awake()
@@ -56,6 +55,10 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerEnterHandler, IPointe
     {
         // Scroll via input.
 
+        if (m_ScrollRect)
+        {
+            m_ScrollRect.content.GetComponentsInChildren(m_Selectables);
+        }
         InputScroll();
         if (!mouseOver)
         {
