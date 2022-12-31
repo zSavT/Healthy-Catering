@@ -150,6 +150,8 @@ public class GestioneAggiuntaPatologia : MonoBehaviour
         Patologia nuovo = new Patologia(Costanti.databasePatologie.Count, nomePatologiaInputField.text, descrizionePatologiaInputField.text);
         Costanti.databasePatologie.Add(nuovo);
         Database.aggiornaDatabaseOggetto(Costanti.databasePatologie);
+        Costanti.databasePatologie = Database.getDatabaseOggetto(new Patologia());
+        resetValoriInseriti();
     }
 
 }

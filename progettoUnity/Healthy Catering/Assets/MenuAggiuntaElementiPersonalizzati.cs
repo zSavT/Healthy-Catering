@@ -74,6 +74,7 @@ public class MenuAggiuntaElementiPersonalizzati : MonoBehaviour
             bottoneSalva.GetComponentInChildren<TextMeshProUGUI>().text = "Salva Patologia";
             ingrediente.disattivaVisualeIngredienti();
             ingrediente.resetValoriInseriti();
+            patologia.resetValoriInseriti();
             piatto.disattivaVisualePiatto();
             piatto.resetValoriInseriti();
             bottoneSi.onClick.AddListener(() =>
@@ -101,6 +102,7 @@ public class MenuAggiuntaElementiPersonalizzati : MonoBehaviour
             ingrediente.resetValoriInseriti();
             patologia.disattivaVisualePatologia();
             patologia.resetValoriInseriti();
+            piatto.resetValoriInseriti();
             bottoneSi.onClick.AddListener(() =>
             {
                 piatto.creaPiatto();

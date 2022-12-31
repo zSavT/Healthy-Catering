@@ -319,9 +319,11 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
     /// </summary>
     public void creaIngrediente()
     {
-        Ingrediente nuuovo = new Ingrediente(Costanti.databaseIngredienti.Count, nomeIngredienteInputField.text, descrizioneIngredienteInputField.text, getCostoIngredienteImpostato(), getCostoEcoIngredienteImpostato(), nutriScoreIngredienteDropDown.value, dietaIngredienteDropDown.value, getListaPatologieScelte());
-        Costanti.databaseIngredienti.Add(nuuovo);
+        Ingrediente nuovo = new Ingrediente(Costanti.databaseIngredienti.Count, nomeIngredienteInputField.text, descrizioneIngredienteInputField.text, getCostoIngredienteImpostato(), getCostoEcoIngredienteImpostato(), nutriScoreIngredienteDropDown.value, dietaIngredienteDropDown.value, getListaPatologieScelte());
+        Costanti.databaseIngredienti.Add(nuovo);
         Database.aggiornaDatabaseOggetto(Costanti.databaseIngredienti);
+        Costanti.databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
+        resetValoriInseriti();
     }
 
 }

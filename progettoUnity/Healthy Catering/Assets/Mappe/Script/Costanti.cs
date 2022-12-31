@@ -11,13 +11,13 @@ using UnityEngine;
 public class Costanti : MonoBehaviour
 {
     // DATABASE OGGETTI
-    public static readonly List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
+    public static List<Ingrediente> databaseIngredienti = Database.getDatabaseOggetto(new Ingrediente());
     
-    public static readonly List<Piatto> databasePiatti = Database.getDatabaseOggetto(new Piatto());
+    public static List<Piatto> databasePiatti = Database.getDatabaseOggetto(new Piatto());
 
-    public static readonly List<Patologia> databasePatologie = Database.getDatabaseOggetto(new Patologia());
+    public static List<Patologia> databasePatologie = Database.getDatabaseOggetto(new Patologia());
 
-    public static readonly List<Cliente> databaseClienti = Database.getDatabaseOggetto(new Cliente());
+    public static List<Cliente> databaseClienti = Database.getDatabaseOggetto(new Cliente());
 
     // INVENTARI LIVELLI
     public static readonly List<OggettoQuantita<int>> inventarioLivello0 = new List<OggettoQuantita<int>>

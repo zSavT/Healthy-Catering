@@ -28,7 +28,7 @@ public class Gui : MonoBehaviour
     private int valorePrecedentePunteggio = 0;
     private Coroutine CountingCoroutine;
 
-    void start()
+    void Start()
     {
         bloccaAnimazioniParticellari();
     }

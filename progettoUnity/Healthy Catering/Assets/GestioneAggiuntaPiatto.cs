@@ -334,5 +334,7 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
         Piatto nuovo = new Piatto(nomePiattoInputField.text, descrizionePiattoInputField.text, listaIngredientiQuantità);
         Costanti.databasePiatti.Add(nuovo);
         Database.aggiornaDatabaseOggetto(Costanti.databasePiatti);
+        Costanti.databasePiatti = Database.getDatabaseOggetto(new Piatto());
+        resetValoriInseriti();
     }
 }
