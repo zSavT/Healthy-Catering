@@ -77,8 +77,8 @@ public class GestioneAggiuntaPiatto : MonoBehaviour
     /// </summary>
     private void impostaPlaceHolder()
     {
-        nomePiattoInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Imposta nome Piatto";
-        descrizionePiattoInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Imposta Descrizione Piatto";
+        nomePiattoInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Imposta nome Piatto...";
+        descrizionePiattoInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Imposta Descrizione Piatto...";
 
     }
 

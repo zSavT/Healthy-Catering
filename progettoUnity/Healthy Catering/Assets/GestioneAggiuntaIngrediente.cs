@@ -85,10 +85,10 @@ public class GestioneAggiuntaIngrediente : MonoBehaviour
     /// </summary>
     private void inizializzaPlaceHolderInputField()
     {
-        nomeIngredienteInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Inserisci nome ingrediente";
-        descrizioneIngredienteInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Descrizione ingrediente";
-        costoIngredienteInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Inserisci Costo ingrediente";
-        costoEcoIngredienteInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Inserisci CostoEco";
+        nomeIngredienteInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Inserisci nome ingrediente...";
+        descrizioneIngredienteInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Descrizione ingrediente...";
+        costoIngredienteInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Inserisci Costo ingrediente...";
+        costoEcoIngredienteInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Inserisci CostoEco...";
     }
 
     /// <summary>

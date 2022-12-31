@@ -53,8 +53,8 @@ public class GestioneAggiuntaPatologia : MonoBehaviour
     /// </summary>
     private void inizializzaPlaceHolderInputField()
     {
-        nomePatologiaInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Inserisci nome Patologia";
-        descrizionePatologiaInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Descrizione Patologia";
+        nomePatologiaInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Inserisci nome Patologia...";
+        descrizionePatologiaInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Descrizione Patologia...";
     }
 
     /// <summary>
