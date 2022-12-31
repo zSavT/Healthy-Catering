@@ -107,10 +107,12 @@ public class SelezioneLivelli : MonoBehaviour
         controllerInput.Enable();
         if (PlayerSettings.caricaProgressoLivello1() == 1)
         {
+            bottoneLivello1.GetComponent<Image>().sprite = Resources.Load<Sprite>("Livello1Attivo");
             bottoneLivello1.interactable = true;
         }
         if (PlayerSettings.caricaProgressoLivello2() == 1)
         {
+            bottoneLivello2.GetComponent<Image>().sprite = Resources.Load<Sprite>("Livello2Attivo");
             bottoneLivello2.interactable = true;
         }
         elementiDomandaUscita.SetActive(false);                 //disattiva gli elementi della domanda all'uscita per non visualizzarli fin da subito
