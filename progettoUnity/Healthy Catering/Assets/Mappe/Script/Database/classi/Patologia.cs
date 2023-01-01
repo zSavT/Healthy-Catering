@@ -1,8 +1,8 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class Patologia
+public class Patologia 
 {
     public int idPatologia = -1;
 
@@ -35,7 +35,8 @@ public class Patologia
             return false;
         }
         return (this.nome.Equals(((Patologia)obj).nome))
-            && (this.descrizione.Equals(((Patologia)obj).descrizione));
+            && (this.descrizione.Equals(((Patologia)obj).descrizione)
+            && (this.idPatologia.Equals(((Patologia)obj).idPatologia)));
     }
 
     public override int GetHashCode()
@@ -74,7 +75,8 @@ public class Patologia
                 if (temp.idPatologia != -1)
                     idsString = idsString + temp.nome + "\n";
             }
-        } else
+        }
+        else
             idsString = "nessuna patologia";
         return idsString;
     }
@@ -115,5 +117,80 @@ public class Patologia
             output.Add(patologia.idPatologia);
 
         return output;
+    }
+
+    
+
+    /// <summary>
+    /// Il metodo restituisce una lista di stringhe contenente il nome delle patologie presenti nel database
+    /// </summary>
+    /// <param name="databasePatologie">database patologie</param>
+    /// <returns>List di string di patologie nel database</returns>
+    public static List<string> getListStringNomePatologie(List<Patologia> databasePatologie)
+    {
+        List<string> output = new List<string>();
+        if (databasePatologie.Count > 0 && databasePatologie != null)
+        {
+            foreach (Patologia patologia in databasePatologie)
+                output.Add(patologia.nome);
+        }
+        return output;
+    }
+
+    /// <summary>
+    /// Il metodo restituisce una lista di stringhe contenente il nome delle patologie presenti nel database caricato
+    /// </summary>
+    /// <returns>List di string di patologie nel database</returns>
+    public static List<string> getListStringNomePatologie()
+    {
+        List<string> output = new List<string>();
+
+        foreach (Patologia patologia in Costanti.databasePatologie)
+            output.Add(patologia.nome);
+
+        return output;
+    }
+
+    /// <summary>
+    /// Il metodo permette di restituire la patologia corrispondente all'ID passato
+    /// </summary>
+    /// <param name="id">int ID patologia</param>
+    /// <returns>Patologia corrispondente all'ID (Se ID non è stato trovato, restiuisce null)</returns>
+    public static Patologia getPatologiaDaID(int id)
+    {
+        foreach (Patologia patologia in Costanti.databasePatologie)
+            if (patologia.idPatologia.Equals(id))
+                return patologia;
+        return null;
+    }
+
+    /// <summary>
+    /// Il metodo controlla se nel database è presente la patologia passata
+    /// </summary>
+    /// <param name="patologia">Patologia patologia da controllare se esiste</param>
+    /// <param name="databasePatologie">databasePatologie da controllare</param>
+    /// <returns>booleano, True: Patologia esiste nel database, False: Patologia non esiste nel database</returns>
+    public static bool patologiaEsistente(Patologia patologia, List<Patologia> databasePatologie = null)
+    {
+        databasePatologie ??= Costanti.databasePatologie;
+        return databasePatologie.Contains(patologia);
+    }
+
+
+    /// <summary>
+    /// Il metodo permette di restituire la patologia corrispondente all'nome passato
+    /// </summary>
+    /// <param name="nome">int ID patologia</param>
+    /// <returns>Patologia corrispondente all'nome (Se nome non è stato trovato, restiuisce null)</returns>
+    public static Patologia getPatologiaDaNome(string nome)
+    {
+        Patologia temp = null;
+        foreach (Patologia patologia in Costanti.databasePatologie)
+            if (patologia.nome.Equals(nome))
+            {
+                temp = patologia;
+            }
+
+        return temp;
     }
 }

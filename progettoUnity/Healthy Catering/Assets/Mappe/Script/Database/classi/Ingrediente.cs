@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine.InputSystem.Editor;
 
 public class Ingrediente
 {
@@ -179,6 +180,60 @@ public class Ingrediente
             output += ingrediente.nome + "\n";
         }
         return output;
+    }
+
+    /// <summary>
+    /// Il metodo controlla se nel database sono presenti ingredienti con lo stesso nome passato in Input
+    /// </summary>
+    /// <param name="nomeIngrediente">string nome ingrediente da controllare</param>
+    /// <returns>booleano True: É presente l'ingrediente, False: Non è presente l'ingrediente</returns>
+    public static bool checkIngredienteOnonimoGiaPresente(string nomeIngrediente)
+    {
+        List<Ingrediente> ingredientiConNomeSimileInDatabase = getIngredientiConNomeUgualeInDatabase(nomeIngrediente);
+        if (ingredientiConNomeSimileInDatabase.Count > 0)
+            return true;
+        else return false;
+    }
+
+    /// <summary>
+    /// Il metodo restituisce una lista di tutti gli ingredienti con il nome uguale a quello passato in input
+    /// </summary>
+    /// <param name="nomeIngrediente">string nome ingrediente da controllare</param>
+    /// <param name="databaseIngredienti">database ingredienti da controllare</param>
+    /// <returns>List<Ingrediente> ingredienti con lo stesso nome</returns>
+    public static List<Ingrediente> getIngredientiConNomeUgualeInDatabase(string nomeIngrediente, List<Ingrediente> databaseIngredienti = null)
+    {
+        databaseIngredienti ??= Costanti.databaseIngredienti;
+
+        List<Ingrediente> output = new List<Ingrediente>();
+        foreach (Ingrediente ingredienteTemp in databaseIngredienti)
+        {
+            if ((ingredienteTemp.nome.ToLower().Equals(nomeIngrediente.ToLower())))
+            {
+                output.Add(ingredienteTemp);
+            }
+        }
+
+        return output;
+    }
+
+    /// <summary>
+    /// Il metodo permette di ricercare nel database un ingrediente tramite il suo nome ed restituirlo in output
+    /// </summary>
+    /// <param name="nomeIngredienteDaCercare">string nome dell'ingrediente da ricercare</param>
+    /// <param name="databaseIngredienti">database ingrediente dove ricercare l'ingrediente</param>
+    /// <returns>Ingrediente ricercato. Se non è stato ritrovato nessun ingrediente, il valore di ritorno è null</returns>
+    public static Ingrediente getIngredienteDaNome(string nomeIngredienteDaCercare, List<Ingrediente> databaseIngredienti = null)
+    {
+        databaseIngredienti ??= Costanti.databaseIngredienti;
+        foreach (Ingrediente ingredienteTemp in databaseIngredienti)
+        {
+            if ((ingredienteTemp.nome.ToLower().Equals(nomeIngredienteDaCercare.ToLower())))
+            {
+                return ingredienteTemp;
+            }
+        }
+        return new Ingrediente(100, "B", "L", 1, 1 ,1 ,1, new List<int>());
     }
 
     //METODO NON UTILIZZATI MA EVENTUALMENTE UTILI
