@@ -8278,7 +8278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Patologie Ingredienti
+  m_text: Patologie Ingrediente
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -11484,8 +11484,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.908, y: 122.362}
-  m_SizeDelta: {x: 260.26, y: 86.877}
+  m_AnchoredPosition: {x: -0.089, y: 120.365}
+  m_SizeDelta: {x: 298.195, y: 90.87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1119386258
 MonoBehaviour:
@@ -13417,8 +13417,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.908, y: 55.362}
-  m_SizeDelta: {x: 260.26, y: 86.877}
+  m_AnchoredPosition: {x: -1.087, y: 55.362}
+  m_SizeDelta: {x: 296.198, y: 86.877}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1351332220
 MonoBehaviour:
@@ -19926,8 +19926,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.908, y: 122.362}
-  m_SizeDelta: {x: 260.26, y: 86.877}
+  m_AnchoredPosition: {x: -1.087, y: 117.9}
+  m_SizeDelta: {x: 300.192, y: 95.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1917623356
 MonoBehaviour:

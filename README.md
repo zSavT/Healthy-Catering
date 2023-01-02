@@ -22,6 +22,7 @@ Lo scopo del videogioco è di consolidare le conoscenze di coloro che hanno intr
   - Livello 0: Tutorial di gioco.
   - Livello 1: Patologia Diabete.
   - Livello 2: Patologia Ipertensione.
+- Possibilità di aggiungere nuovi Ingredienti, Patologie e Piatti direttamente in gioco.
 - Supporto per tutte le tipologie di controller.
 
 ## Requisiti di Sistema
@@ -83,6 +84,8 @@ Il controllo qualità dei testi presenti nel gioco è stato eseguito da Vincenzo
 ![Classifica](doc/img/Screenshoot/Classifica.png "Classifica")
 
 ![Menu Opzioni](doc/img/Screenshoot/MenuOpzioniClassico.png "Menu Opzioni")
+
+![Menu Creazione Elementi](doc/img/Screenshoot/CreazioneNuoviElementiIngrediente.png "Creazione Elementi")
 
 ![GUI in Game](doc/img/Screenshoot/ScreenInGame.png "GUI in Game")
 
