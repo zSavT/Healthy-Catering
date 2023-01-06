@@ -24,6 +24,7 @@ Lo scopo del videogioco è di consolidare le conoscenze di coloro che hanno intr
   - Livello 2: Patologia Ipertensione.
 - Possibilità di aggiungere nuovi Ingredienti, Patologie e Piatti direttamente in gioco.
 - Supporto per tutte le tipologie di controller.
+- Supporto VR [IN SVILUPPO].
 
 ## Requisiti di Sistema
 
