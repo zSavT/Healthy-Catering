@@ -78,9 +78,9 @@ public class Ingrediente
     public override string ToString()
     {
         return this.descrizione + "\n\n" +
-        "Costo: "  + this.costo + "\n" +
+        "Costo: " + this.costo + "\n" +
         "Costo eco: " + this.costoEco + "\n" +
-        "Nutriscore: " + this.nutriScore + "\n";/* +
+        "Nutriscore: " + idNutriScoreToString(this.nutriScore) + "\n";/* +
         "Dieta compatibile:" + "\n\t" + Dieta.IdDietaToDietaString(this.dieta) + "\n" +
         "Patologie compatibili:" + Patologia.listIdToListPatologie(this.listaIdPatologieCompatibili);*/
     }
@@ -243,7 +243,7 @@ public class Ingrediente
     /// <param name="id">int ID ingrediente</param>
     /// <returns>char corrispondente al nutri score</returns>
     /// <exception cref="InvalidOperationException"></exception>
-    private static char idNutriScoreToString(int id)
+    public static char idNutriScoreToString(int id)
     {
         if (id == 0)
             return 'A';

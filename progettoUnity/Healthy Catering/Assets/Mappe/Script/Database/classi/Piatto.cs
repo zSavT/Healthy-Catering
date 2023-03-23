@@ -70,7 +70,7 @@ public class Piatto
         string output = this.descrizione + "\n\n" +
         "Costo: " + this.calcolaCostoBase() + "\n" +
         "Costo eco: " + this.calcolaCostoEco() + "\n" +
-        "Nutriscore: " + this.calcolaNutriScore() + "\n";
+        "Nutriscore: " + Ingrediente.idNutriScoreToString(this.calcolaNutriScore()) + "\n";
         /*
         if (listaIdIngredientiQuantita.Count > 0)
         { 
