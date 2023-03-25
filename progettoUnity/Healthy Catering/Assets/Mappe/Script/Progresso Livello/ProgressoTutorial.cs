@@ -59,7 +59,7 @@ public class ProgressoTutorial : MonoBehaviour
             "Raggiungi il " + Costanti.coloreVerde + "Ristorante" + Costanti.fineColore + ".",
             "Servi un piatto idoneo al <color=#B5D99C>cliente</color>.",
             "Servi un piatto non idoneo al <color=#B5D99C>cliente</color>.",
-            "Controlla il <color=#B5D99C>Magazzino</color>.",
+            "Controlla il <color=#B5D99C>PC</color> in ufficio.",
             "Compra <color=#B5D99C>Ingredienti</color> dal negozio.",
             "Chiedi informazioni alle " + Costanti.coloreVerde + "Persone" + Costanti.fineColore + ".",
             "Apri il ricettario con il tasto " + Costanti.tastoR + ".",
