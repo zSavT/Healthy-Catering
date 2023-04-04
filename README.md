@@ -24,7 +24,7 @@ Lo scopo del videogioco è di consolidare le conoscenze di coloro che hanno intr
   - Livello 2: Patologia Ipertensione.
 - Possibilità di aggiungere nuovi Ingredienti, Patologie e Piatti direttamente in gioco.
 - Supporto per tutte le tipologie di controller.
-- Supporto VR [IN SVILUPPO SU UN'ALTRA REPO].
+- Supporto VR.
 
 ## Requisiti di Sistema
 
@@ -34,7 +34,7 @@ I requisiti Hardware e Software del gioco:
 
 -	Processore: architettura X64 con SSE2
 -	RAM: 1 GB per l’esecuzione
--	Hard Disk: 1,6 GB
+-	Hard Disk: 1,78 GB
 -	Scheda video: Scheda grafica integrata nel processore
 -	Risoluzione: 320x240 o superiori - Aspect Ratio: 4:3 e/o 16:9
 
