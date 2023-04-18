@@ -51,6 +51,12 @@ I requisiti Hardware e Software del gioco:
 ### NOTA BENE!
 L'aspect ratio 4:3 non è pienamento supportato, l'esperienza potrebbe variare rispetto alla modalità 16:9 pienamente supportata.
 
+### Requisiti consigliati versione VR
+
+- Processore: Intel i5-4590 / AMD Ryzen 5 1500X.
+- RAM: 8 GB.
+- Scheda video: GeForce Nvidia serie 900 o equivalente AMD.
+- Hard Disk: 2.80 GB.
 
 ### Requisiti Software
 
