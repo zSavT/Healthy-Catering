@@ -10,6 +10,20 @@
 
 Lo scopo del videogioco è di consolidare le conoscenze di coloro che hanno intrapreso uno studio presso un istituto Alberghiero o un corso concernente le Scienze della Nutrizione e/o corsi simili mirati alla sensibilizzazione sul tema della corretta alimentazione per lo più indirizzata a individui caratterizzati da un certo quadro patologico, con annesso accenno all’argomento ‘’sostenibilità ambientale’’. In più il gioco permetterà al giocatore di imparare a gestire al meglio il proprio denaro, come aspetto secondario del gioco.
 
+- [Healthy Catering  ](#healthy-catering--)
+  - [Caratteristiche Gioco](#caratteristiche-gioco)
+  - [Requisiti di Sistema](#requisiti-di-sistema)
+    - [Requisiti minimi](#requisiti-minimi)
+    - [Requisiti consigliati](#requisiti-consigliati)
+    - [Requisiti consigliati versione VR](#requisiti-consigliati-versione-vr)
+    - [Requisiti Software](#requisiti-software)
+  - [Aiutanti](#aiutanti)
+    - [Colonna Sonora](#colonna-sonora)
+    - [Design Artist](#design-artist)
+    - [3D Artist](#3d-artist)
+    - [Revisore Testi](#revisore-testi)
+  - [Immagini di gioco](#immagini-di-gioco)
+
 ## Caratteristiche Gioco
 
 - Gioco in prima persona.
@@ -48,7 +62,7 @@ I requisiti Hardware e Software del gioco:
 -	Risoluzione: 1920x1080 o superiori - Aspect Ratio: 16:9
 
 
-### NOTA BENE!
+**NOTA BENE!**<p>
 L'aspect ratio 4:3 non è pienamento supportato, l'esperienza potrebbe variare rispetto alla modalità 16:9 pienamente supportata.
 
 ### Requisiti consigliati versione VR
