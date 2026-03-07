@@ -63,7 +63,7 @@ I requisiti Hardware e Software del gioco:
 
 
 **NOTA BENE!**<p>
-L'aspect ratio 4:3 non è pienamento supportato, l'esperienza potrebbe variare rispetto alla modalità 16:9 pienamente supportata.
+L'aspect ratio 4:3 non è pienamente supportato, l'esperienza potrebbe variare rispetto alla modalità 16:9 pienamente supportata.
 
 ### Requisiti consigliati versione VR
 
@@ -79,7 +79,7 @@ L'aspect ratio 4:3 non è pienamento supportato, l'esperienza potrebbe variare r
 ## Aiutanti
 
 ### Colonna Sonora
-La colonna sonora è sta realizzata da [@AleCongi (Profilo GitHub)](https://github.com/AleCongi), profilo [Spotify](https://open.spotify.com/artist/4iiwwWtSPD6yEIKclYS0s6).<br>
+La colonna sonora è stata realizzata da [@AleCongi (Profilo GitHub)](https://github.com/AleCongi), profilo [Spotify](https://open.spotify.com/artist/4iiwwWtSPD6yEIKclYS0s6).<br>
 
 ### Design Artist
 
